@@ -43,3 +43,9 @@ Feature: Complete TROS permit details
        | start date | permit duration | permit expiry date |
        | 03/15/2023 | 30              | April 14, 2023     |
 
+@orv2-561
+  Scenario: 
+    Given 
+     When 
+     Then 
+     And 
