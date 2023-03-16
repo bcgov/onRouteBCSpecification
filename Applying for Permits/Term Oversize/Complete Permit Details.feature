@@ -18,30 +18,28 @@ Feature: Complete TROS permit details
   Scenario: Permit duration
     Given the CV Client is at "Permit Application"
      When they select "Permit Duration"
-     Then they see increments of 30 as follows:
-        | 30 |
-        | 60 |
-        | 90 |
+     Then they see increments of 30 day as follows:
+        | 30  |
+        | 60  |
+        | 90  |
         | 120 |
         | 150 |
-        | 180 | 
+        | 180 |
         | 210 |
-        | 240 | 
+        | 240 |
         | 270 |
         | 300 |
         | 330 |
-        | 360 |
-        | 1y |
+        | 1y  |
       And 1y is equal to 365 days 
 
 @orv2-561
   Scenario: Permit duration calculation
     Given the CV Client is at "Permit Application"
      When they select a <permit duration>
-     Then the <permit expiry date> displays a future date that is a multiple of the <permit duration> and the <current date>
+     Then the <permit expiry date> displays a future date that is the <permit duration> plus the <start date>
 
      Example:
-       | current date | permit duration | permit expiry date |
-       | 03/15/2023 | 30 | April 14, 2023 |
-       | 
+       | start date | permit duration | permit expiry date |
+       | 03/15/2023 | 30              | April 14, 2023     |
 
