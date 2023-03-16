@@ -47,6 +47,3 @@ Feature: Complete Contact Details
     Given 
      When 
      Then 
-
-
-
