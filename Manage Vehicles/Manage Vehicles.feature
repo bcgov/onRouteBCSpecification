@@ -45,7 +45,6 @@ Scenario: Show mandatory fields
  
     Examples:
     | mandatory field  | mandatory field error message |
-    | Prov/State       | This is a required field      |
     | VIN              | This is a required field      |
     | Plate            | This is a required field      |
     | Year             | This is a required field      |
@@ -95,7 +94,6 @@ Scenario: Show mandatory fields
 
     Examples:
     | mandatory field  | mandatory field error message |
-    | Prov/State       | This is a required field      |
     | VIN              | This is a required field      |
     | Plate            | This is a required field      |
     | Year             | This is a required field      |
