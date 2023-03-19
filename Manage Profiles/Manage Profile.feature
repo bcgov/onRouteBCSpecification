@@ -170,7 +170,9 @@ Scenario: Indicate mandatory "My Information" fields    
     Examples:  
       | mandatory field | mandatory field error message | 
       | First Name      | This is a required field      | 
-      | Last Name       | This is a required field      | 
+      | Last Name       | This is a required field      |
+      | Country         | This is a required field.     | 
+      | Province/Sate   | This is a required field.     |
       | City            | This is a required field      | 
       | Primary Phone   | This is a required field      | 
       | Email           | This is a required field      | 
