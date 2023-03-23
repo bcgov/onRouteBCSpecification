@@ -14,15 +14,4 @@ Feature: Send permit and receipt documents
      When they successfully completed payment
      Then their generated permit PDF and receipt PDF are faxed to the contact fax number
 
-  Scenario:Permit receipt is generated
-    Given the CV client has completed payment
-    When they have successfuly completed payment
-    Then a PDF receipt is generated with the following information:
-          | Issued by: |Either "Provincal Permit Centre" (IDIR was use to create the permit) or "onRouteBC" (all other log in types outside of IDIR was used to create permit)
-          | Transaction ID | provided by paybc
-          | Recieved on behlad of | Business account name          
-          | Payment Method | provided by paybc
-          | Transaction Date| provided by paybc
-          | Permit Decription | Full name of the permit
-          | Permit Number | unique permit number
-          | Amount Paid | CND dollar amount
+

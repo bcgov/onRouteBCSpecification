@@ -93,8 +93,50 @@ Stinger Steered Automobile Transporters
 
 
 @orv-560
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: The Client inputs their Vehicle information
+    Given the CV Client is at the "Permit Application" page
+     When They are at the "Vehicle Information" section
+     And  Choose to input their Vehicle Information and not select a previously saved Power unit or Trailer
+     Then they fill in the following vehicle information:
+        | VIN (last 6 digits)|  
+        | Plate              |
+        | Make               |
+        | Year               |
+        | Country            |
+        | Province           |
+        | Vehicle Type       |
+        | Vehicle Sub-type   |    
 
+@orv2-560
+Scenario: Show mandatory fields 
+    Given the CV Client is inputing their "Vehicle Information" 
+    When they do not enter valid data into a <mandatory field>
+    Then they see <mandatory field error message> (as presented in the Wireframe)  
+    And they wont be able to "continue" until resolved
+ 
+    Examples:
+    | mandatory field  | mandatory field error message |
+    | VIN              | This is a required field      |
+    | Plate            | This is a required field      |
+    | Year             | This is a required field      |
+    | Make             | This is a required field      |
+    | Licensed GVW     | This is a required field      |
+    | Vehicle Type     | This is a required field      |
+    | Vehicle Sub-type | This is a required field      |
+    | Country          | This is a required field      |
+
+@orv2-560
+Scenario: Save new vehicle to "Vehicle Inventory"
+    Given The CV Client manually inputed their "Vehicle Information"
+    When the VIN dosent match an existing VIN in their "Vehicle Inventory"
+    And if they select YES to <would you like to add/update this vehicle to your vehicle inventory?>
+    Then the Vehicle will be added to their "Vehicle Inventory" when they select <continue>
+    And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
+
+@orv2-560
+  Scenario: Update exsiting vehicle to "Vehicle Inventory"
+    Given The CV Client manually inputed their "Vehicle Information"
+    When the VIN does match an existing VIN in their "Vehicle Inventory"
+    And if they select YES to <would you like to add/update this vehicle to your vehicle inventory?>
+    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select <continue>
+    And if the select NO the vehicle will not be updated in their "Vehicle Inventory"

@@ -42,6 +42,7 @@ Feature: Complete Contact Details
         | Email           |
         | Fax             |
      Then the "Contact Information" reflects their changes
+     Then these changes to "Contact Information" apply only to this permit and not the "Contact Information" previously saved in the database
 
   Scenario: 
     Given 

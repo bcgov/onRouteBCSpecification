@@ -12,7 +12,7 @@ Feature: Complete TROS permit details
     Given the CV Client is at "Permit Application"
      When they enter a "Start Date" before the current date
      Then the start date is not accepted
-     And they see ""
+     And they see "Start Date cannot be in the past."
 
 @orv2-561
   Scenario: Permit duration
@@ -44,8 +44,15 @@ Feature: Complete TROS permit details
        | 03/15/2023 | 30              | April 14, 2023     |
 
 @orv2-561
-  Scenario: 
-    Given 
-     When 
-     Then 
-     And 
+  Scenario: User sees an information box
+    Given the CV Client is at "Permit Application"
+    When they are about to select a <commodities Decription>
+    Then they see an an information box above <commodities Decriptions> with text {See Wiresframe for text and format}
+
+@orv2-561
+  Scenario: Select the Commodities below and their respective CVSE forms
+    Given the CV Client is at "Permit Application"
+     When they select a <"commodities" Decription> 
+     Then they corresponding CVSE form will be attached to their permit after payment
+     And they are able to select multiple <"commodities" Descriptions>
+     And by default <Gerneral Permit Conditions> and <Permit Scope and limitation> are already selected for the user and cannont be unselected. 
