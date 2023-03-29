@@ -2,7 +2,7 @@
 Feature: TROS Application Vehicle Details
    As a CV Client I need to be able to recall a vehicle from m vehicle inventory or add new vehicle informatin to my permit application so that I can receive a valid TROS permit for my vehicle.
 
-@orv-560
+@orv-551
   Scenario: TROS eligible "Power Unit"
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
@@ -34,7 +34,7 @@ Feature: TROS Application Vehicle Details
        | Buses/Crummies |
        | Farm Vehicles |
 
-@orv-560
+@orv-551
   Scenario: TROS eligible "Trailer"
     Given a CV Client is at "Trailer" for a TROS permit application
      When they choose to recall a "Trailer" from their inventory 
@@ -92,7 +92,7 @@ Specially Authorized Vehicles
 Stinger Steered Automobile Transporters
 
 
-@orv-560
+@orv-551
   Scenario: The Client inputs their Vehicle information
     Given the CV Client is at the "Permit Application" page
      When They are at the "Vehicle Information" section
@@ -107,7 +107,7 @@ Stinger Steered Automobile Transporters
         | Vehicle Type       |
         | Vehicle Sub-type   |    
 
-@orv2-560
+@orv2-551
 Scenario: Show mandatory fields 
     Given the CV Client is inputing their "Vehicle Information" 
     When they do not enter valid data into a <mandatory field>
@@ -124,7 +124,7 @@ Scenario: Show mandatory fields
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
-@orv2-560
+@orv2-551
 Scenario: Save new vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
     When the VIN dosent match an existing VIN in their "Vehicle Inventory"
@@ -132,7 +132,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Then the Vehicle will be added to their "Vehicle Inventory" when they select <continue>
     And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
 
-@orv2-560
+@orv2-551
   Scenario: Update exsiting vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
     When the VIN does match an existing VIN in their "Vehicle Inventory"
