@@ -53,6 +53,6 @@ Feature: Complete TROS permit details
   Scenario: Select the Commodities below and their respective CVSE forms
     Given the CV Client is at "Permit Application"
      When they select a <"commodities" Decription> 
-     Then they corresponding CVSE form will be attached to their permit after payment
+     Then the corresponding CVSE form will be attached to their permit after payment
      And they are able to select multiple <"commodities" Descriptions>
      And by default <Gerneral Permit Conditions> and <Permit Scope and limitation> are already selected for the user and cannont be unselected. 
