@@ -37,11 +37,12 @@ Feature: Complete TROS permit details
   Scenario: Permit duration calculation
     Given the CV Client is at "Permit Application"
      When they select a <permit duration>
-     Then the <permit expiry date> displays a future date that is the <permit duration> plus the <start date>
+     Then the <permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <start date>
 
      Example:
        | start date | permit duration | permit expiry date |
-       | 03/15/2023 | 30              | April 14, 2023     |
+       | 03/01/2023 | 30              | March 30, 2023     |
+       | 03/15/2023 | 30              | April 13, 2023     |
 
 @orv2-550
   Scenario: User sees an information box

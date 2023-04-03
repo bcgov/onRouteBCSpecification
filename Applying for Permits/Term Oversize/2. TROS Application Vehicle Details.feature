@@ -7,38 +7,38 @@ Feature: TROS Application Vehicle Details
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
      Then they see only "Power Units" eligible for a TROS permit:
-       | Concrete Pumper Trucks |
-       | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain|
-       | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile |
-       | Double Decker Buses |
-       | Fixed Equipment - Trucks/Graders etc. |
-       | Intercity Buses (Pulling Pony Trailers) |
-       | Logging Trucks |
-       | Logging Trucks - Off-Highway |
-       | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
-       Long Combination Vehicles (LCV) - Turnpike Doubles | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m | 
-       | Oil and Gas - Bed Trucks | Oil and Gas - Oilfield Sows |
-       | Oil and Gas - Service Rigs and Rathole |
+       | Concrete Pumper Trucks                                                                    |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain                                    |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                                         |
+       | Double Decker Buses                                                                       |
+       | Fixed Equipment - Trucks/Graders etc.                                                     |
+       | Intercity Buses (Pulling Pony Trailers)                                                   |
+       | Logging Trucks                                                                            |
+       | Logging Trucks - Off-Highway                                                              |
+       | Long Combination Vehicles (LCV) - Rocky Mountain Doubles                                  |
+       Long Combination Vehicles (LCV) - Turnpike Doubles | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m |
+       | Oil and Gas - Bed Trucks                                                                  | Oil and Gas - Oilfield Sows |
+       | Oil and Gas - Service Rigs and Rathole                                                    |
        | Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
-       | Picker Truck Tractors |
-       | Specially Authorized Vehicles |
-       | Tow Vehicles |
-       | Truck Tractors |
-       | Truck Tractors - Stinger Steered |
-       | Trucks |
-       | Trucks Equipped with Front or Underbody Plow Blades |
+       | Picker Truck Tractors                                                                     |
+       | Specially Authorized Vehicles                                                             |
+       | Tow Vehicles                                                                              |
+       | Truck Tractors                                                                            |
+       | Truck Tractors - Stinger Steered                                                          |
+       | Trucks                                                                                    |
+       | Trucks Equipped with Front or Underbody Plow Blades                                       |
      And they do not see:
        | Oil and Gas - Service Rigs |
-       | Scrapers |
-       | Taxis |
-       | Buses/Crummies |
-       | Farm Vehicles |
+       | Scrapers                   |
+       | Taxis                      |
+       | Buses/Crummies             |
+       | Farm Vehicles              |
 
 @orv-551
   Scenario: TROS eligible "Trailer"
     Given a CV Client is at "Trailer" for a TROS permit application
      When they choose to recall a "Trailer" from their inventory 
-     Then they see only "Trailrs" eligible for a TROS permit:
+     Then they see only "Trailers" eligible for a TROS permit:
        | Boosters |
        | Dollies 
 Fixed Equipment - Conveyors
@@ -80,8 +80,7 @@ Semi-Trailers with Crane
 Steering Trailers - Manned
 Steering Trailers - Self/Remote
 Stinger Steered Automobile Transporters
-
-     And they do not see:
+    And they do not see:
        | Manufactured Homes, Modular Buildings, Structures and Houseboats (<= 5.0 m OAW) with Attached Axles
 Manufactured Homes, Modular Buildings, Structures and Houseboats (> 5.0 m OAW) with Attached Axles
 Park Model Homes with Attached Axles
@@ -127,15 +126,23 @@ Scenario: Show mandatory fields
 @orv2-551
 Scenario: Save new vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
-    When the VIN dosent match an existing VIN in their "Vehicle Inventory"
-    And if they select YES to <would you like to add/update this vehicle to your vehicle inventory?>
-    Then the Vehicle will be added to their "Vehicle Inventory" when they select <continue>
+    When the VIN + Company dosent match an existing VIN in their "Vehicle Inventory"
+    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
+    Then the Vehicle will be added to their "Vehicle Inventory" when they select "continue"
     And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
 
 @orv2-551
   Scenario: Update exsiting vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
-    When the VIN does match an existing VIN in their "Vehicle Inventory"
-    And if they select YES to <would you like to add/update this vehicle to your vehicle inventory?>
-    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select <continue>
+    When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
+    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
+    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
+    And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
+
+@orv2-551
+  Scenario: 
+    Given The CV Client manually inputed their "Vehicle Information"
+    When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
+    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
+    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
     And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
