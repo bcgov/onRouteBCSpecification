@@ -40,9 +40,9 @@ Feature: TROS Application Vehicle Details
      When they choose to recall a "Trailer" from their inventory 
      Then they see only "Trailers" eligible for a TROS permit:
        | Boosters |
-       | Dollies 
-Fixed Equipment - Conveyors
-Fixed Equipment - Counter Flow Asphalt Drum Mixers
+       | Dollies | 
+       | Fixed Equipment - Conveyors |
+       | Fixed Equipment - Counter Flow Asphalt Drum Mixers |
 Fixed Equipment - Pony Trailers
 Fixed Equipment - Portable Asphalt Baghouses
 Fixed Equipment - Semi-Trailers
@@ -140,9 +140,31 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
 
 @orv2-551
-  Scenario: 
-    Given The CV Client manually inputed their "Vehicle Information"
-    When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
-    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
-    And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
+  Scenario: Find vehicle in inventory by Unit Number
+    Given the CV Client has selected Unit Number in "Choose from"
+    When they enter <unit number> in "Select Vehicle"
+    Then the <vehicle> is displayed
+  
+  Example:
+       | unit number | vehicle |
+       | 123         | 1       |
+       | 123         | 12      |
+       | 123         | 123     |
+       | 1           | 1       |
+       | 1           | 12      |
+       | 1           | 123     |
+
+@orv2-551
+  Scenario: Find vehicle in inventory by Plate Number
+    Given the CV Client has selected Plate Number Number in "Choose from"
+    When they enter <plate number> in "Select Vehicle"
+    Then the <vehicle> is displayed
+  
+  Example:
+      | unit number | vehicle |
+      | 123         | 1       |
+      | 123         | 12      |
+      | 123         | 123     |
+      | 1           | 1       |
+      | 1           | 12      |
+      | 1           | 123     |
