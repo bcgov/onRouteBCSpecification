@@ -1,0 +1,37 @@
+title Permit Application Sequence
+
+bottomparticipants
+fontawesome5solid f4df "CV Client / Browser" as CV
+fontawesome5brands f395 "onRouteBC" as ORBC
+fontawesome5solid f1c0 "Database" as DB
+
+CV->ORBC: Click 'Apply for Permit'
+ORBC-->>CV: Show permit type selection screen
+CV->ORBC:Submit chosen permit type\n(e.g. 'TROS')
+ORBC-->>CV: Display appropriate permit form
+CV->ORBC: Submit permit details
+ORBC-->>DB: Save permit details
+DB->DB: Generate Permit\nApplication Number
+ORBC-->>CV: Display summary screen
+CV->ORBC: Confirm permit details
+note over CV,ORBC: Done by clicking 'Agree', 'Continue',\nor a similar button, after checking off\nthe attestations.
+ORBC->>DB: Save submitted permit\ndetails
+ref over ORBC,DB: Policy Check Sequence
+ORBC->ORBC: Generate invoice number
+ORBC->>DB: Set permit status to \n'waiting for payment'
+ORBC-->>CV: Provide payment options screen
+note over CV,ORBC: Question: do we take payment prior to\nor after approval, if not auto-approvable?
+alt PayBC / Credit Card
+ref over CV,DB: PayBC Sequence
+else Credit Account
+ref over CV,DB: Credit Account Sequence
+else GA Office
+ORBC-->>CV: Display instructions for paying\nat a GA office
+ref over CV,DB: Process Payment from GA Office Sequence
+end
+ref over ORBC: Register Payment with CFS Sequence
+alt Permit can be auto-approved
+ref over CV,DB: Permit Auto-Approve Sequence
+else Permit cannot be auto-approved
+ref over CV,DB: Manual Permit Approval Sequence
+end

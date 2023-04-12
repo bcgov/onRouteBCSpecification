@@ -1,0 +1,25 @@
+title Permit Auto-Approve Sequence
+
+bottomparticipants
+fontawesome5solid f4df "CV Client / Browser" as CV
+fontawesome5brands f395 "onRouteBC" as ORBC
+fontawesome5solid f1c0 "Database" as DB
+participantgroup #lightblue **Common Components**
+fontawesome5solid f1c1 CDOGS
+fontawesome5solid f0c7 COMS
+fontawesome5solid f0e0 CHES
+end
+
+abox over CV,DB: Sequence begins with successful payment (PayBC, Account, GA, etc.)
+ORBC->ORBC: Generate permit number (likely\nwill involve interaction with DB)
+ORBC->CDOGS: Generate permit PDF, supplying relevant permit details in JSON
+CDOGS-->>ORBC: Return generated permit PDF
+ORBC->COMS: Save permit PDF
+COMS-->>ORBC: Return permit PDF document ID
+ORBC->>DB: Save permit PDF document id
+ORBC->>DB: Set permit status to 'issued'
+ORBC->CHES: Send confirmation and summary email to permit applicant
+CHES->CHES: Schedule email
+note over CHES: This will involve interaction with an\nsmtp server and ultimately goes to\nthe client, but we are only concerned\nwith the interaction with CHES and\nit takes care of the rest.
+CHES-->>ORBC: Response stating the email is scheduled (or sent, TBD)
+ORBC-->>CV: Show permit approved screen\nwith download link

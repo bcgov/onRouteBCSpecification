@@ -1,0 +1,14 @@
+title Register Payment with CFS Sequence
+
+bottomparticipants
+fontawesome5brands f395 "onRouteBC" as ORBC
+fontawesome5solid f570 CFS
+
+opt If no account for customer
+ORBC->CFS: Create customer account
+CFS-->>ORBC: Response that customer account created successfully
+end
+ORBC->CFS: Create invoice
+CFS-->>ORBC: Response that invoice created successfully
+ORBC->CFS: Create receipt for invoice
+CFS-->>ORBC: Response that receipt created successfully
