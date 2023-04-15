@@ -53,11 +53,11 @@ Scenario: New CV Client Business BCeID user first time sign into onRouteBC compl
     And they are assigned the "Admin" role for the CV Client onRoute Profile 
     And they are directed to a "Success" page
 
-@orv2-369
+@orv2-369 @orv-672
 Scenario: CV Client Business BCeID sign into onRouteBC
     Given the CV Client onRouteBC Profile exists
     When they sign in successfully using their BCeID credentials 
-    Then they are directed to the "Home Page" 
+    Then they are directed to the "Permits" page "Applications in Progress" tab
 
 @orv2-369
 Scenario: CV Client Business BCeID navigates away from first time sign in to onRouteBC
