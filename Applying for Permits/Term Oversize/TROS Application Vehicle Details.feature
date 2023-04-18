@@ -145,6 +145,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Given the CV Client has selected Unit Number in "Choose from"
     When they enter <unit number> in "Select Vehicle"
     Then the <vehicle> is displayed
+    And they are grouped by the vehicle type either "Power Unit" or "Trailer"
   
   Example:
     | unit number | vehicle |
@@ -160,7 +161,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Given the CV Client has selected Plate Number Number in "Choose from"
     When they enter <plate number> in "Select Vehicle"
     Then the <vehicle> is displayed
-  
+    And they are grouped by the vehicle type either "Power Unit" or "Trailer"
   Example:
     | unit number | vehicle |
     | 123         | 1       |
