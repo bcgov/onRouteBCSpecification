@@ -2,8 +2,7 @@ Feature: Add and view Power Unit
     As a CV Client, I need to be able to add a new Power Unit to my vehicle inventory, so that they can use this vehicle in a permit application.
  
 Background:
- 
-    Given a customer is authenticated and logged in and has the appropriate onRouteBC role
+     Given a customer is authenticated and logged in and has the appropriate onRouteBC role
  
 @orv2-141
 Scenario: Create a Power Unit 
