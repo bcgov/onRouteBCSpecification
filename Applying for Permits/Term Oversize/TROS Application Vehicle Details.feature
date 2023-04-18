@@ -145,28 +145,28 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Given the CV Client has selected Unit Number in "Choose from"
     When they enter <unit number> in "Select Vehicle"
     Then the <vehicle> is displayed
-    And they are grouped by the vehicle type either "Power Unit" or "Trailer"
+    And they are grouped by the <vehicle type> either "Power Unit" or "Trailer"
   
   Example:
-    | unit number | vehicle |
-    | 123         | 1       |
-    | 123         | 12      |
-    | 123         | 123     |
-    | 1           | 1       |
-    | 1           | 12      |
-    | 1           | 123     |
+    | unit number | vehicle | vehicle type |
+    | 123         | 1       | Power Unit   |
+    | 123         | 12      | Power Unit   |
+    | 123         | 123     | Power Unit   |
+    | 1           | 1       | Trailer      |
+    | 1           | 12      | Trailer      |
+    | 1           | 123     | Power Unit   |
 
 @orv2-551
   Scenario: Find vehicle in inventory by Plate Number
     Given the CV Client has selected Plate Number Number in "Choose from"
     When they enter <plate number> in "Select Vehicle"
     Then the <vehicle> is displayed
-    And they are grouped by the vehicle type either "Power Unit" or "Trailer"
+    And they are grouped by the <vehicle type> either "Power Unit" or "Trailer"
   Example:
-    | unit number | vehicle |
-    | 123         | 1       |
-    | 123         | 12      |
-    | 123         | 123     |
-    | 1           | 1       |
-    | 1           | 12      |
-    | 1           | 123     |
+    | unit number | vehicle | vehicle type |
+    | 123         | 1       | Power Unit   |
+    | 123         | 12      | Power Unit   |
+    | 123         | 123     | Power Unit   |
+    | 1           | 1       | Trailer      |
+    | 1           | 12      | Trailer      |
+    | 1           | 123     | Power Unit   |
