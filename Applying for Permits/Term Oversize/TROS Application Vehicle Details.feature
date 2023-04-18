@@ -16,8 +16,10 @@ Feature: TROS Application Vehicle Details
        | Logging Trucks                                                                            |
        | Logging Trucks - Off-Highway                                                              |
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles                                  |
-       Long Combination Vehicles (LCV) - Turnpike Doubles | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m |
-       | Oil and Gas - Bed Trucks                                                                  | Oil and Gas - Oilfield Sows |
+       | Long Combination Vehicles (LCV) - Turnpike Doubles                                        |
+       | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m                                |
+       | Oil and Gas - Oilfield Sows                                                               |
+       | Oil and Gas - Bed Trucks                                                                  |
        | Oil and Gas - Service Rigs and Rathole                                                    |
        | Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
        | Picker Truck Tractors                                                                     |
@@ -90,7 +92,6 @@ Feature: TROS Application Vehicle Details
       | Specially Authorized Vehicles                                                                       |
       | Stinger Steered Automobile Transporters                                                             |
 
-
 @orv-551
   Scenario: The Client inputs their Vehicle information
     Given the CV Client is at the "Permit Application" page
@@ -106,7 +107,7 @@ Feature: TROS Application Vehicle Details
        | Vehicle Type       |
        | Vehicle Sub-type   |    
 
-@orv2-551
+@orv2-551 @orv2-555
 Scenario: Show mandatory fields 
     Given the CV Client is inputing their "Vehicle Information" 
     When they do not enter valid data into a <mandatory field>
