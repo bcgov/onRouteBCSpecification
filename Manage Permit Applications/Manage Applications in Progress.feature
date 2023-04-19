@@ -45,13 +45,7 @@ Feature: Save Permit Application
   Scenario: In application saved timeout
     Given the CV Client is at a permit application page and has saved the application
      When the system timeout is reached
-     Then current changes are lost the application remains in its previously saved state
-
-@orv-555
-  Scenario: In application saved timeout
-    Given the CV Client is at a permit application page and has saved the application
-     When the system timeout is reached
-     Then current changes are lost the application remains in its previously saved state    
+     Then current changes are lost the application remains in its previously saved state  
      
 @orv-555
   Scenario: Manual save application
