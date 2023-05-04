@@ -1,14 +1,11 @@
 ## Next Actions/Notes
-- Mobile testing emulators
+- Research mobile testing emulators
 - Are there desktop emulators we could use and do they support versions?
-- Ask Peter re OSX versioning
+- Ask Peter re OSX versioning - A. OSX devices are unmanaged
 - Discuss with Dev team re the possibility of story completion to BVT within a sprint
-- ~~Bryan will engage IMB for testing practice in the new process
+- Bryan Lane will engage IMB for testing practice in the new process
 	- cadence, when do you test?, continuous testing?
 
-## Agile Testing Concepts
-![[Pasted image 20230421180741.png]]
-![[Pasted image 20230424090858.png]]
 ## Intro
 
 
@@ -124,7 +121,7 @@ end
 
 | Test Type | People                | When and What                            | Data | Manual or Automated? |
 | --------- | --------------------- | ---------------------------------------- | ---- | -------------------- |
-| UX/UI     | UX Designers and Devs | Testing Dev complete from prior Sprint   |      | Manual                     |
+| UX/UI     | UX Designers and Devs | Testing Dev complete from prior Sprint   |      | Manual               |
 | BVT       | IMB and SMES          | Testing Dev complete from prior Sprint   |      | Manual               |
 | UAT       | Users and SMES        | Testing BVT complete from current Sprint |      | Manual               |
 |           |                       |                                          |      |                      |
