@@ -58,13 +58,16 @@ Verify:
 ##### BVT
 Using onRouteBC Specifications as test cases and includes the review of underlying transactions (e.g., database writes) as well as the assessment of the correct application of business process, policy and regulation.
 - Completed by technical and SME staff
+- Bugs are tracked in JIRA and processed during backlog refinement activities
 - Black box and white box
 
 ##### UAT
-Can use onRouteBC specifications as test cases or not. End users test a release candidate to ensure it meets usability needs.
-- Completed by end users (e.g. CV Clients, PPC Staff)
+Can use onRouteBC Specifications as test cases or not. End users test a release candidate or production to ensure it meets usability needs.
+- Completed by end users (e.g. CV Clients, PPC Staff) 
+- Triaged with product team (UX Design, PO, BA)
 - Usability testing (User research)
 - Operational acceptance (can you complete a business process task)
+- Feedback tracked in JIRA as story stubs and processed during backlog refinement activities
 - Black box
 - Beta testing?
 
