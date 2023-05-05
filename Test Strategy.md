@@ -30,7 +30,7 @@
 
 ### Sizes
 #### Small (Unit)
-- Testing smallest pieces of software to ensure they behave as expected
+Testing smallest pieces of software to ensure they behave as expected
 
 #### Medium (Component)
 Testing multiple portions of software 
