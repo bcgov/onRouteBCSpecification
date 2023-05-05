@@ -70,7 +70,8 @@ Can use onRouteBC specifications as test cases or not. End users test a release 
 
 ##### Integration (Medium)
 Verify communication and interaction between components to find interface defects
-- 
+
+
 ##### Smoke
 - Post release high-level functional
 
