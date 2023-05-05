@@ -106,7 +106,7 @@ participant x as UX/UI
 participant b as BVT
 participant u as UAT
 
-note over d: Sprtint 1 Dev Complete
+note over d: Sprint 1 Dev Complete
 loop Corrections/Bug Reports
 	d-->x: Test Sprint 1 Dev Complete
 end
