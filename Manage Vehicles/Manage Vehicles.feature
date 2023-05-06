@@ -126,6 +126,7 @@ Scenario: Delete a vehicle continue with delete
     When they choose to continue delete
     Then The chosen vehicle is removed from their vehicle inventory
     And they are directed to their vehicle inventory 
+    And they see "Vehicle Deleted"
     And the deleted vehicle is not shown in their vehicle inventory
 
 @orv2-340
