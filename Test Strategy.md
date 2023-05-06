@@ -10,6 +10,8 @@
 
 
 ## QA Environments
+Test: https://onroutebc-test-frontend.apps.silver.devops.gov.bc.ca/
+UAT: https://onroutebc-uat-frontend.apps.silver.devops.gov.bc.ca/
 ### Automation Tools
 - 
 ### Operating Systems
