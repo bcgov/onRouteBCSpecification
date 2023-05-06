@@ -136,7 +136,8 @@ Scenario: Bulk delete multiple vehicles
     When they choose delete
     Then the chosen vehicles are removed from their vehicle inventory
     And they are directed to their vehicle inventory 
-    And The deleted vehicles are not shown in their vehicle inventory
+    And they see "Vehicle Deleted"
+    And the deleted vehicles are not shown in their vehicle inventory
 
 @orv2-341
 Feature: Edit Vehicle Details
