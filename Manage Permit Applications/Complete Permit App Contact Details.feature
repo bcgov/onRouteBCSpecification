@@ -1,7 +1,7 @@
 Feature: Complete Contact Details
     As a CV Client I want to review and update my permit contact details so that I can receive a permit with valid contact information.
 
-  @orv2-549
+  @orv2-549-1
   Scenario: View company information
     Given the CV Client is at the "Permits" page
      When they choose to start a permit
@@ -14,7 +14,7 @@ Feature: Complete Contact Details
         | company  information confirmation message |
         | company mailing address                   |
 
-  @orv2-549  
+  @orv2-549-2
   Scenario: View contact information 
     Given the CV Client is at the "Permit Application" page
      When they view "Contact Information"
@@ -29,7 +29,7 @@ Feature: Complete Contact Details
        | Fax             |
      And they see "The permit will be sent..." information box
 
-  @orv2-549  
+  @orv2-549-3
   Scenario: Update contact information 
     Given the CV Client is at the "Permit Application" page
      When they update "Contact Information":
@@ -42,4 +42,4 @@ Feature: Complete Contact Details
        | Email           |
        | Fax             |
      Then the "Contact Information" reflects their changes
-     Then these changes to "Contact Information" apply only to this permit and not the "Contact Information" previously saved in the database
+     And these changes to "Contact Information" apply only to this permit and not the "Contact Information" previously saved in the database
