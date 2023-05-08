@@ -2,7 +2,7 @@
 Feature: TROS Application Vehicle Details
    As a CV Client I need to be able to recall a vehicle from m vehicle inventory or add new vehicle informatin to my permit application so that I can receive a valid TROS permit for my vehicle.
 
-@orv-551
+@orv-551-1
   Scenario: TROS eligible "Power Unit"
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
@@ -36,7 +36,7 @@ Feature: TROS Application Vehicle Details
        | Buses/Crummies             |
        | Farm Vehicles              |
 
-@orv-551
+@orv-551-2
   Scenario: TROS eligible "Trailer"
     Given a CV Client is at "Trailer" for a TROS permit application
      When they choose to recall a "Trailer" from their inventory 
@@ -92,7 +92,7 @@ Feature: TROS Application Vehicle Details
       | Specially Authorized Vehicles                                                                       |
       | Stinger Steered Automobile Transporters                                                             |
 
-@orv-551
+@orv-551-3
   Scenario: The Client inputs their Vehicle information
     Given the CV Client is at the "Permit Application" page
      When They are at the "Vehicle Information" section
@@ -107,7 +107,7 @@ Feature: TROS Application Vehicle Details
        | Vehicle Type       |
        | Vehicle Sub-type   |    
 
-@orv2-551 @orv2-555
+@orv2-551-4 @orv2-555
 Scenario: Show mandatory fields 
     Given the CV Client is inputing their "Vehicle Information" 
     When they do not enter valid data into a <mandatory field>
@@ -124,7 +124,7 @@ Scenario: Show mandatory fields
       | Vehicle Sub-type | This is a required field      |
       | Country          | This is a required field      |
 
-@orv2-551
+@orv2-551-5
 Scenario: Save new vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
     When the VIN + Company dosent match an existing VIN in their "Vehicle Inventory"
@@ -132,7 +132,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Then the Vehicle will be added to their "Vehicle Inventory" when they select "continue"
     And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
 
-@orv2-551
+@orv2-551-8
   Scenario: Update exsiting vehicle to "Vehicle Inventory"
     Given The CV Client manually inputed their "Vehicle Information"
     When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
@@ -140,7 +140,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
     And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
 
-@orv2-551
+@orv2-551-6
   Scenario: Find vehicle in inventory by Unit Number
     Given the CV Client has selected Unit Number in "Choose from"
     When they enter <unit number> in "Select Vehicle"
@@ -156,7 +156,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     | 1           | 12      | Trailer      |
     | 1           | 123     | Power Unit   |
 
-@orv2-551
+@orv2-551-7
   Scenario: Find vehicle in inventory by Plate Number
     Given the CV Client has selected Plate Number Number in "Choose from"
     When they enter <plate number> in "Select Vehicle"
