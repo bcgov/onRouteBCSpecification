@@ -105,20 +105,20 @@ Scenario: Show mandatory fields
 Feature: Delete Vehicles
 As a CV Client, I need to delete individual vehicles or a group of vehicles I no longer need in my vehicle inventory.
 
-@orv2-340
+@orv2-340-1
 Scenario: Choose a vehicle to perform an action on
     Given the CV Client is at their vehicle inventory
     And they are viewing either Power Units or Trailers
     When they choose a vehicle in the list
     Then The chosen vehicle is indicated
 
-@orv2-340 @orv2-341
+@orv2-340-2 @orv2-341
 Scenario: Delete vehicle warning
     Given the CV Client chooses a vehicle in either Power Units or Trailers
     When they choose delete vehicle 
     Then they see "Are you sure you want to delete this? This action cannot be undone."
 
-@orv2-340
+@orv2-340-3
 Scenario: Delete a vehicle continue with delete
     Given the CV Client chooses a vehicle in either Power Units or Trailers
     And the choosen vehicle is indicated
@@ -143,14 +143,14 @@ Scenario: Bulk delete multiple vehicles
 Feature: Edit Vehicle Details
 As a CV Client, I need to edit individual vehicle details so that I can keep my individual vehicle details up to date.
 
-@orv2-341
+@orv2-341-1
 Scenario: Indicate chosen vehicle
     Given the user is at their vehicle inventory
     And the user is viewing either Power Units or Trailers
     When the user chooses a vehicle in the list
     Then The chosen vehicle is indicated
    
-@orv2-341 
+@orv2-341-2
 Scenario: Edit vehicle details
     Given the user chooses a vehicle in either Power Units or Trailers
     And the user chooses edit vehicle 
