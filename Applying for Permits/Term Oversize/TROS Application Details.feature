@@ -49,7 +49,7 @@ Feature: Complete TROS permit details
   Scenario: User sees an information box
     Given the CV Client is at "Permit Application"
     When they are about to select a <commodities Decription>
-    Then they see an an information box above <commodities Decriptions> with text {See Wiresframe for text and format}
+    Then they see an an information box above <commodities Decriptions> with text {See UX Hifi Design for text and format}
 
 @orv2-550-6
   Scenario: Select the Commodities below and their respective CVSE forms
