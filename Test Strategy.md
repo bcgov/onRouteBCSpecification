@@ -34,14 +34,20 @@ UAT: https://onroutebc-uat-frontend.apps.silver.devops.gov.bc.ca/
 
 ### Sizes
 #### Small (Unit)
-Testing smallest pieces of software to ensure they behave as expected
+Testing smallest pieces of code software
+- Code blocks
+- Single scenarios in a feature
 
 #### Medium (Component)
 Testing multiple portions of software 
+- Multiple code blocks or entire microservice
+- All scenarios in a feature 
 
 #### Large (End_to_end)
 Verify the whole system meets business goals
-- Persona journeys
+- Testing 
+- Multiple components tested within the application
+- Persona journeys testing multple features to complete an entire workflow (e.g. buying a permit)
 
 ### Types
 
