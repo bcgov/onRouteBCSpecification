@@ -4,14 +4,14 @@ Feature: Add and view Power Unit
 Background:
      Given a customer is authenticated and logged in and has the appropriate onRouteBC role
  
-@orv2-141
+@orv2-141-1
 Scenario: Create a Power Unit 
     Given the CV Client is viewing the vehicle inventory
     When they choose to add a vehicle
     And they choose to add a Power Unit to inventory 
     Then they are directed to an empty Power Unit page
  
-@orv2-141
+@orv2-141-2
 Scenario: Save changes to a Power Unit
     Given the CV Client is editing a Power Unit
     When they save changes
@@ -19,13 +19,13 @@ Scenario: Save changes to a Power Unit
     And they are directed to the vehicle inventory
     And the saved Power Unit is shown in the vehicle inventory with the saved data
  
-@orv2-141
+@orv2-14-3
 Scenario: Cancel create Power Unit
     Given the CV Client is editing a Power Unit
     When they cancel edit
     Then they see "You have unsaved changes. If you continue, all your changes will be lost."
  
-@orv2-141
+@orv2-141-4
 Scenario: Cancel create Power Unit discard changes
     Given the CV Client is editing a Power Unit
     When they cancel edit
@@ -34,7 +34,7 @@ Scenario: Cancel create Power Unit discard changes
     And they are directed to the vehicle inventory
     And the cancelled Power Unit is not shown in the vehicle inventory
  
-@orv2-141
+@orv2-141-5
 Scenario: Show mandatory fields 
     Given the CV Client is editing a Power Unit 
     When they do not enter valid data into a <mandatory field>
@@ -55,19 +55,19 @@ Scenario: Show mandatory fields
 Feature: Add edit and view trailers
     As a CV Client, I need to be able to add a new trailer to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
 
-@orv-325
+@orv-325-1
 Scenario: Choose vehicle type to add to inventory  
     Given the CV Client is at the vehicle inventory page
     When they select "Add Vehicle"  
     Then they are directed to choose to add a Power Unit or Trailer to inventory
 
-@orv-325
+@orv-325-2
 Scenario: Create a Trailer 
     Given the CV Client is at the choose to add a Power Unit or Trailer to inventory
     When they select Trailer
     Then they are directed to an empty Add Trailer page
 
-@orv-325
+@orv-325-3
 Scenario: Save changes to a Trailer
     Given the CV Client at the Trailer page
     When they save
@@ -76,7 +76,7 @@ Scenario: Save changes to a Trailer
     And the saved Trailer is shown in the vehicle inventory with changed data
     And they see "Vehicle has been saved successfully"
 
-@orv-325
+@orv-325-4
 Scenario: Cancel create Trailer continue without saving
     Given the user is editing a Trailer
     When the user cancels edit
@@ -84,7 +84,7 @@ Scenario: Cancel create Trailer continue without saving
     Then the Trailer is not saved
     And the user is directed to the vehicle inventory
 
-@orv-325
+@orv-325-5
 Scenario: Show mandatory fields
     Given the user is editing a Trailer
     When the user does not enter valid data into a mandatory field
