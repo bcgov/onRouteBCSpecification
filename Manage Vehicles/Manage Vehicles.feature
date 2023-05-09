@@ -52,11 +52,6 @@ Scenario: Show mandatory fields
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
-@orv2-145-1  
-Scenario: View Power Units Inventory
-  Given the CV Client is at Vehicle Inventory
-   When they choose to view Power Units
-   Then they are directed to the Power Unit page
     
 Feature: Add edit and view trailers
     As a CV Client, I need to be able to add a new trailer to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
@@ -166,6 +161,15 @@ Scenario: Edit vehicle details
     And the user is directed to their vehicle inventory 
     And the saved vehicle is displayed in their vehicle inventory with changed data
 
+Feature View vehicle inventory lists
+   As a CV Client, I need to be able to view all vehicles in my inventory so that I can select them to complete actions.
+
+@orv2-145-1  
+Scenario: View Power Units Inventory
+  Given the CV Client is at Vehicle Inventory
+   When they choose to view Power Units
+   Then they are directed to the Power Unit page
+
 @orv2-145-2
 Scenario: View Trailer inventory list
   Given the CV Client is at Vehicle Inventory
@@ -173,9 +177,9 @@ Scenario: View Trailer inventory list
    Then they are directed to the Trailer page
 
 @orv2-145-3
-Scenario: Trailer list columns
+Scenario: Vehicle list columns
   Given the CV Client is at Vehicle Inventory
-   When they choose to view Trailer
+   When they choose to view a Power Unit or Trailer lists
    Then they see the folling columns
      | Unit # |
      | Make |
@@ -183,4 +187,12 @@ Scenario: Trailer list columns
      | Plate |
      | Vehicle Type |
      | Date Created |
-   And it is sorted by Date Created in decending order
+   And it is sorted by Date Created in descending order
+
+@orv2-145-4
+ Scenario: Vehicle lists optional sort
+  Given the CV Client is at Power Unit or Trailer tab
+   When they choose to sort by Date Created
+   Then the list is sorted in reverse order from the previously chosen sort order
+
+
