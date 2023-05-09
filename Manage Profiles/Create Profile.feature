@@ -1,7 +1,8 @@
+@e2e1
 Feature: Create New onRouteBC Profile
     As a CV Client Business BCeID user I want to sign in to onRouteBC using my BCeID credentials so that I can complete my company and user information details and create my onRouteBC Profile.
 
-@orv2-369-1
+@orv2-369-1 
 Scenario: First CV Client Business BCeID user sign into onRouteBC
     Given they have valid BCeID credentials
     And the CV Client onRouteBC Profile does not exist

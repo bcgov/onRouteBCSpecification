@@ -1,3 +1,4 @@
+@e2e2
 Feature: Add edit and view Power Unit
     As a CV Client, I need to be able to add a new Power Unit to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
  

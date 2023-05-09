@@ -1,3 +1,4 @@
+@e2e3
 Feature: Complete Contact Details
     As a CV Client I want to review and update my permit contact details so that I can receive a permit with valid contact information.
 

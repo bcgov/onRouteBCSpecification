@@ -1,3 +1,4 @@
+@e2e4
 Feature: Complete TROS permit details
     As a CV Client I need to enter the parameters of my desired TRS permit so that I can get approved and recieve my permit.
 
