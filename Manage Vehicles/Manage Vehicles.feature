@@ -1,5 +1,5 @@
-Feature: Add and view Power Unit
-    As a CV Client, I need to be able to add a new Power Unit to my vehicle inventory, so that they can use this vehicle in a permit application.
+Feature: Add edit and view Power Unit
+    As a CV Client, I need to be able to add a new Power Unit to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
  
 Background:
      Given a customer is authenticated and logged in and has the appropriate onRouteBC role
@@ -52,6 +52,12 @@ Scenario: Show mandatory fields
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
+@orv2-145-1  
+Scenario: View Power Units Inventory
+  Given the CV Client is at Vehicle Inventory
+   When they choose to view Power Units
+   Then they are directed to the Power Unit page
+    
 Feature: Add edit and view trailers
     As a CV Client, I need to be able to add a new trailer to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
 
@@ -159,3 +165,22 @@ Scenario: Edit vehicle details
     Then the changes are saved
     And the user is directed to their vehicle inventory 
     And the saved vehicle is displayed in their vehicle inventory with changed data
+
+@orv2-145-2
+Scenario: View Trailer inventory list
+  Given the CV Client is at Vehicle Inventory
+   When they choose to view Trailer
+   Then they are directed to the Trailer page
+
+@orv2-145-3
+Scenario: Trailer list columns
+  Given the CV Client is at Vehicle Inventory
+   When they choose to view Trailer
+   Then they see the folling columns
+     | Unit # |
+     | Make |
+     | VIN |
+     | Plate |
+     | Vehicle Type |
+     | Date Created |
+   And it is sorted by Date Created in decending order
