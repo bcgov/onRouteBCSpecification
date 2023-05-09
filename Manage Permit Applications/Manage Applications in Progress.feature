@@ -30,7 +30,14 @@ Feature: Delete Permit Application
     Given the CV Client is at the "Applications in Progress" tab
      When they select one or more application
      And they choose to delete
-     Then the aplications are deleted
+     Then the applications are deleted
+
+@orv-557-2
+  Scenario: Delete application in progress
+    Given the CV Client is at the "Applications in Progress" tab
+     When they select a permit application
+     And they choose to delete
+     Then the application is deleted
 
 Feature: Save Permit Application
    As a CV Client I need to save my permit application so that I can complete them at a later date.
@@ -77,13 +84,15 @@ Feature: Save Permit Application
      Then they remain at the permit application page
      And they see the mandatory field warning for invalid or missing mandatory fields
 
-
 Feature: Edit Application in progress
-  Scenario: 
-    Given 
-     When 
-     Then 
+   As a CV Client I need to be able to edit a permit application before I submit it so that I can have the flexibility to submit when it is ready.
 
+@orv2-685-1
+  Scenario: Open existing Permit Application 
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have application in progress
+     When they choose to view an application in progress
+     Then they are directed to the selected "Permit Application" page 
 
 Feature: Leave permit application
 As a CV Client I want to leave a permit application I am currently editing so that I can return to it at a later time.
