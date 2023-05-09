@@ -33,7 +33,7 @@ Feature: Complete TROS permit details
         | 1y  |
       And 1y is equal to 365 days 
 
-@orv2-550-4 @orv2-555
+@orv2-550-4 @orv2-555-7
   Scenario: Permit duration calculation
     Given the CV Client is at "Permit Application"
      When they select a <permit duration>

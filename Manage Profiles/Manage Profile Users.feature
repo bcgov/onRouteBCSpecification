@@ -1,13 +1,13 @@
 Feature: Add new users
 As a CV Client admin I want to add new users to my onRouteBC profile so that they can use my profile based on their assigned role.
 
-@orv2-363
+@orv2-363-1
 Scenario: Navigate to Add User page
     Given the CV Client admin is at the "User Management" page
     When they select "Add User"
     Then they are directed to the "Add User" page
 
-@orv2-363
+@orv2-363-2
 Scenario: Input new pending user BCeID username
     Given the CV Client admin is at the "Add User" page
     When they input a BCeID username
@@ -16,32 +16,32 @@ Scenario: Input new pending user BCeID username
     And they are directed to the "User Management" page
     And the newly added user is displayed as pending
 
-@orv2-363
+@orv2-363-3
 Scenario: Cancel add new user
     Given the CV Client admin is at the "Add User" page
     When they select "Cancel"
     Then they are directed to the "User Management" page
    
-@orv2-363
+@orv2-363-4
 Scenario: Does not assign new pending user to user group
     Given the CV Client admin is at the "Add User" page
     When they a "User Group" is not assigned
     And they select "Add User"
     Then they see "You must assign a User group"
 
-@orv2-363
+@orv2-363-5
 Scenario: Default new pending user to user group "Permit Applicant"
     Given the CV Client admin is at the "Add User" page
     When they view the "User Group" assignment list
     Then they see "Permit Applicant" checked
 
-@orv2-363
+@orv2-363-6
 Scenario: Assign new pending user to one or more user groups
     Given the CV Client admin is at the "Add User" page
     When they assign one or more "User Groups"
     Then they see indication of each assigned role
 
-@orv2-363
+@orv2-363-7
 Scenario: View user group permissions
     Given the CV Client admin is at the "Add New User" page
     When they select "User Groups and Permissions"

@@ -181,10 +181,10 @@ Scenario: Vehicle list columns
   Given the CV Client is at Vehicle Inventory
    When they choose to view a Power Unit or Trailer lists
    Then they see the folling columns
-     | Unit # |
-     | Make |
-     | VIN |
-     | Plate |
+     | Unit #       |
+     | Make         |
+     | VIN          |
+     | Plate        |
      | Vehicle Type |
      | Date Created |
    And it is sorted by Date Created in descending order

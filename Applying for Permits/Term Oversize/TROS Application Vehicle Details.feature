@@ -107,7 +107,7 @@ Feature: TROS Application Vehicle Details
        | Vehicle Type       |
        | Vehicle Sub-type   |    
 
-@orv2-551-4 @orv2-555
+@orv2-551-4 @orv2-555-8
 Scenario: Show mandatory fields 
     Given the CV Client is inputing their "Vehicle Information" 
     When they do not enter valid data into a <mandatory field>

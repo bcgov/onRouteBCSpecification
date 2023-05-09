@@ -1,13 +1,13 @@
 Feature: View Applications in Progress
    As a CV Client I want to view a list of my applications so that I can manage their submission, payment or deletion.
 
-@orv-672
+@orv-672-1
   Scenario: View list applications do not exist
     Given the CV Client is at the "Applications in Progress" tab
      When they do not have applications in progress
      Then they see "No Records Found" empty state page message
 
-@orv-672
+@orv-672-2
   Scenario: View list applications exist
     Given the CV Client has applications in progress
      When they are viewing the "Applications in Progress" tab
@@ -25,7 +25,7 @@ Feature: View Applications in Progress
 Feature: Delete Permit Application
    As a CV Client I need to delete permit applications I no longer need so that I can maintain my permit applications list.
 
-@orv-557
+@orv-557-1
   Scenario: Bulk delete applications in progress
     Given the CV Client is at the "Applications in Progress" tab
      When they select one or more application
@@ -35,19 +35,19 @@ Feature: Delete Permit Application
 Feature: Save Permit Application
    As a CV Client I need to save my permit application so that I can complete them at a later date.
 
-@orv-555
+@orv-555-1
   Scenario: In application not saved timeout
     Given the CV Client is at a permit application page and has not saved the application
      When the system timeout is reached
      Then the application is not saved
 
-@orv-555
+@orv-555-2
   Scenario: In application saved timeout
     Given the CV Client is at a permit application page and has saved the application
      When the system timeout is reached
      Then current changes are lost the application remains in its previously saved state  
      
-@orv-555
+@orv-555-3
   Scenario: Manual save application
     Given the CV Client is at a permit application page
      When they save the application
@@ -56,21 +56,21 @@ Feature: Save Permit Application
      And the application is displayed in the Applications in Progress list
      And the "Last Updated" timestamp reflects the date and time they saved it
 
-@orv-555
+@orv-555-4
   Scenario: Manual save mandatory fields
     Given the CV Client is at a permit application page
      When they save the application with invalid or missing mandatory fields
      Then current changes are saved 
      And they see "Saved to Applications in Progress"
 
-@orv-555
+@orv-555-5
   Scenario: Save on continue
     Given the CV Client is at a permit application page
      When they choose to continue
      Then the application is saved 
      And they are directed to the "Review and Confirm Details" page
 
-@orv-555
+@orv-555-6
   Scenario: Save on continue invalid mandatory fields
     Given the CV Client is at a permit application page and has invalid or missing mandatory fields
      When they choose to continue
@@ -88,14 +88,14 @@ Feature: Edit Application in progress
 Feature: Leave permit application
 As a CV Client I want to leave a permit application I am currently editing so that I can return to it at a later time.
 
-  @orv2-687
+  @orv2-687-1
   Scenario: Leave unsaved
     Given the CV Client is at the "Permit Application" page 
       And has not saved
      When they choose to leave the application in onRouteBC
      Then they see "Leave application? You have unsaved changes in your permit application. If you leave all your changes will be lost. This action cannot be undone."
 
-  @orv2-687
+  @orv2-687-2
   Scenario: Leave unsaved discard changes
     Given the CV Client is at the "Permit Application" page 
       And has not saved
@@ -103,7 +103,7 @@ As a CV Client I want to leave a permit application I am currently editing so th
      Then they are directed to the "Permit" page "Applications in Progress" tab
       And the permit application is not saved
 
-  @orv2-687
+  @orv2-687-3
   Scenario: Leave saved
     Given the CV Client is at the "Permit Application" page 
       And has saved
@@ -113,14 +113,14 @@ As a CV Client I want to leave a permit application I am currently editing so th
       And the application is displayed in the "Applications in Progress" list
       And the "Last Updated" timestamp reflects the date and time they last saved???
 
-  @orv2-687
+  @orv2-687-4
   Scenario: Close browser unsaved
     Given the CV Client is at the "Permit Application" page 
       And has not saved
      When they choose to leave the application by a method outside onRoute
      Then the permit application is not saved 
 
-  @orv2-687
+  @orv2-687-5
   Scenario: Close browser saved
     Given the CV Client is at the "Permit Application" page 
       And has saved
