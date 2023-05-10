@@ -1,13 +1,13 @@
 Feature: View Applications in Progress
    As a CV Client I want to view a list of my applications so that I can manage their submission, payment or deletion.
 
-@orv-672-1
+@orv-548-1
   Scenario: View list applications do not exist
     Given the CV Client is at the "Applications in Progress" tab
      When they do not have applications in progress
      Then they see "No Records Found" empty state page message
 
-@orv-672-2
+@orv-548-2
   Scenario: View list applications exist
     Given the CV Client has applications in progress
      When they are viewing the "Applications in Progress" tab
@@ -42,7 +42,7 @@ Feature: Delete Permit Application
 Feature: Save Permit Application
    As a CV Client I need to save my permit application so that I can complete them at a later date.
 
-@orv-555-1
+@orv-555-1 @orv2-685-2
   Scenario: In application not saved timeout
     Given the CV Client is at a permit application page and has not saved the application
      When the system timeout is reached
