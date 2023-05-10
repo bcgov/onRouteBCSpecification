@@ -95,7 +95,7 @@ Feature: Edit Application in progress
      Then they are directed to the selected "Permit Application" page 
 
 Feature: Leave permit application
-As a CV Client I want to leave a permit application I am currently editing so that I can return to it at a later time.
+As a CV Client I want to leave a permit application I am currently editing so that I can return to it at a later time or cancel the application.
 
   @orv2-687-1
   Scenario: Leave unsaved
