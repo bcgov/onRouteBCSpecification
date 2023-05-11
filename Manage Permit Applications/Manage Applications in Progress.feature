@@ -97,14 +97,14 @@ Feature: Edit Application in progress
 Feature: Leave permit application
 As a CV Client I want to leave a permit application I am currently editing so that I can return to it at a later time or cancel the application.
 
-  @orv2-687-1
+  @orv2-847-1
   Scenario: Leave unsaved
     Given the CV Client is at the "Permit Application" page 
       And has not saved
      When they choose to leave the application in onRouteBC
      Then they see "Leave application? You have unsaved changes in your permit application. If you leave all your changes will be lost. This action cannot be undone."
 
-  @orv2-687-2
+  @orv2-847-2
   Scenario: Leave unsaved discard changes
     Given the CV Client is at the "Permit Application" page 
       And has not saved
@@ -112,7 +112,7 @@ As a CV Client I want to leave a permit application I am currently editing so th
      Then they are directed to the "Permit" page "Applications in Progress" tab
       And the permit application is not saved
 
-  @orv2-687-3
+  @orv2-847-3
   Scenario: Leave saved
     Given the CV Client is at the "Permit Application" page 
       And has saved
@@ -122,14 +122,14 @@ As a CV Client I want to leave a permit application I am currently editing so th
       And the application is displayed in the "Applications in Progress" list
       And the "Last Updated" timestamp reflects the date and time they last saved???
 
-  @orv2-687-4
+  @orv2-847-4
   Scenario: Close browser unsaved
     Given the CV Client is at the "Permit Application" page 
       And has not saved
      When they choose to leave the application by a method outside onRoute
      Then the permit application is not saved 
 
-  @orv2-687-5
+  @orv2-847-5
   Scenario: Close browser saved
     Given the CV Client is at the "Permit Application" page 
       And has saved
