@@ -30,14 +30,16 @@ Feature: Delete Permit Application
     Given the CV Client is at the "Applications in Progress" tab
      When they select one or more application
      And they choose to delete
-     Then the applications are deleted
+     Then the applications are assigned a "cancelled" status
+     And remain visible only to staff users
 
 @orv-557-2
   Scenario: Delete application in progress
     Given the CV Client is at the "Applications in Progress" tab
      When they select a permit application
      And they choose to delete
-     Then the application is deleted
+    Then the applications are assigned the a "cancelled" status
+     And remain visible only to staff users
 
 Feature: Save Permit Application
    As a CV Client I need to save my permit application so that I can complete them at a later date.
