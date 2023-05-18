@@ -79,7 +79,7 @@ Background: Users can have the following statuses:
     | Pending     |
     | Deactivated |
 
-@orv2-480
+@orv2-480-1
 Scenario: Sort list of users
     Given the CV Client admin is at the "User Management" page
     When they select any of the following column headers:
@@ -92,7 +92,7 @@ Scenario: Sort list of users
     Then the list is sorted by the selected column header
     And the sort order is the reverse of the previously selected order
 
-@orv2-480 
+@orv2-480-2
 Scenario: Delete a user 
     Given the CV Client admin is at the "Delete user?" warning
     When they select "Delete"
@@ -100,19 +100,19 @@ Scenario: Delete a user
     And they are directed to the "User Management" page
     And the user is removed from the "User Management" page
 
-@orv2-480 
+@orv2-480-3
 Scenario: Delete a user warning
     Given the CV Client admin is at the "User Management" page
     When they select "Delete"
     Then they see "Are you sure you want to delete this user? This action cannot be undone." 
 
-@orv2-480 
+@orv2-480-4
 Scenario: Cancel a user deletion
     Given the CV Client admin is at the "Delete user?" warning
     When they select "Cancel"
     Then they are directed to the "User Management" page
 
-@orv2-480 
+@orv2-480-5
 Scenario: View onRouteBC profile users
     Given the CV Client admin is at the "User Management" page
     When they view "Active Users" or "Pending Users" or "Deactivated Users"
@@ -125,21 +125,39 @@ Scenario: View onRouteBC profile users
     But "Pending Users" does not display headers "First Name", "Last Name" or "Email"
     And "Pending Users" displays header "BCeID Username"
 
-@orv2-480 
+@orv2-480-6
 Scenario: View and edit user "My Information"
     Given the CV Client admin is at the "User Management" page
     When they select "Edit"
     Then they are directed to the "Edit User" page
 
-@orv2-480 
+@orv2-480-7
 Scenario: Cancel view and edit user "My Information"
     Given the CV Client admin is at the "Edit User" page
     When they select "Cancel"
     Then they are directed to the "User Management" page
 
-@orv2-480 
+@orv2-480-8 
 Scenario: Save edit changes to user "My Information"
     Given the CV Client admin is at the "Edit User" page
     When they select "Save"
     Then they are directed to the "User Management" page
     And they see "Changes Saved" notification
+
+@orv2-480-9 
+Scenario: Indicate mandatory "My Information" fields    
+    Given the CV Client Admin is editing a users "My Information"
+    When they do not enter valid data into a <mandatory field>  
+    And they choose to save changes    
+    Then they see <mandatory field error message>     
+    And they cannot save their changes
+
+    Examples:  
+      | mandatory field | mandatory field error message | 
+      | First Name      | This is a required field      | 
+      | Last Name       | This is a required field      |
+      | Country         | This is a required field.     | 
+      | Province/Sate   | This is a required field.     |
+      | City            | This is a required field      | 
+      | Primary Phone   | This is a required field      | 
+      | Email           | This is a required field      | 

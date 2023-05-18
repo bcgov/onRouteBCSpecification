@@ -121,7 +121,7 @@ Feature: View/Edit CV Client user information
 
 Background: 
 
-@orv2-353
+@orv2-353-1
 Scenario: View "My Information"
     Given the CV Client Admin or User is at the onRouteBC home page
     When they select "Profile"
@@ -129,7 +129,7 @@ Scenario: View "My Information"
     Then they are directed to "My Information" page
     And only fields that contain data are displayed
 
-@orv2-353
+@orv2-353-2
 Scenario: Edit "My Information"
     Given the CV Client Admin or User chooses to edit their "My Information"
     When they select "Edit"
@@ -150,7 +150,7 @@ Scenario: Edit "My Information"
       | Ext               | Yes      | 
       | Fax               | Yes      | 
     
-@orv2-353
+@orv2-353-3
 Scenario: Save edits to "My Information"
     Given the CV Client Admin or User is at their "My Information" edit page
     When they make changes to their "My Information"
@@ -159,7 +159,7 @@ Scenario: Save edits to "My Information"
     And they are directed to their "My Information" page
     And their changes are displayed
 
-@orv2-353 @orv2-480
+@orv2-353-4
 Scenario: Indicate mandatory "My Information" fields    
     Given the CV Client Admin or User is editing their "My Information"
     When they do not enter valid data into a <mandatory field>  
@@ -177,7 +177,7 @@ Scenario: Indicate mandatory "My Information" fields    
       | Primary Phone   | This is a required field      | 
       | Email           | This is a required field      | 
 
-@orv2-353
+@orv2-353-5
 Scenario: Cancel edit "My Information"
     Given the CV Client Admin is editing their "My Information" page
     When they make changes to their user information
@@ -185,14 +185,14 @@ Scenario: Cancel edit "My Information"
     Then the changes are not saved 
     And they are directed to their "My Information" page
 
-@orv2-353"
+@orv2-353-6
 Scenario: Edit "My Information" navigate away from page
     Given the CV Client Admin or User is at their "My Information" page
     When they make changes to their user information
     And they navigate away from the My Information page 
     Then the changes are not saved 
 
-@orv2-353
+@orv2-353-7
 Scenario: One time populate "My Information" with BCeID user data at first login
     Given the CV Client Admin or User has logged into onRouteBC for the first time
     And they are at the "My Information" page
