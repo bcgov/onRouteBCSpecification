@@ -32,20 +32,20 @@ Scenario: First CV Client Business BCeID user complete "My Information" in wizar
     And they are directed to a success page
     And they get a unique onRouteBC Client Number
 
-@orv2-369-5
+@orv2-907-1
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC
     Given the CV Client onRouteBC Profile exists
     When they successfully sign in using their BCeID credentials
     Then they are directed to the "My Information" page in the wizard
 
-@orv2-369-6 @orv2-363-8
+@orv2-907-2 @orv2-363-8
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC username does not match that entered by CV Client admin
     Given the CV Client onRouteBC Profile exists
     When they enter valid BCeID credentials
     Then they are directed to the "Contact Administrator" page in the wizard
     And they see "Contact your company onRouteBC administrator for assistance."
 
-@orv2-369-7
+@orv2-907-3
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC complete user "My Information"
     Given they are at the "My Information" page in the wizard
     When they input all required fields in "My Information" 
@@ -67,13 +67,13 @@ Scenario: CV Client Business BCeID navigates away from first time sign in to onR
     When they navigate away from the page
     Then the onRouteBC account is not created
 
-@orv2-369-10
+@orv2-907-5
 Scenario: CV Client Business BCeID user added to a company profile first time sign in
     Given the CV Client Business BCeID user has been added to a company profile
     When they sign in successfully using their BCeID credentials
     Then they are directed to an accept invitation page
     
-@orv2-369-11
+@orv2-907-4
 Scenario: CV Client Business BCeID user added to a company profile first time sign in decline add to onRouteBC profile
     Given the CV Client Business BCeID user is at the invitation welcome page
     When they decline the invitation

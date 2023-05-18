@@ -159,7 +159,7 @@ Scenario: Save edits to "My Information"
     And they are directed to their "My Information" page
     And their changes are displayed
 
-@orv2-353 @orv2-480 @orv2-549
+@orv2-353 @orv2-480
 Scenario: Indicate mandatory "My Information" fields    
     Given the CV Client Admin or User is editing their "My Information"
     When they do not enter valid data into a <mandatory field>  

@@ -103,7 +103,7 @@ Scenario: Show mandatory fields
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
-@orv2-340
+
 Feature: Delete Vehicles
 As a CV Client, I need to delete individual vehicles or a group of vehicles I no longer need in my vehicle inventory.
 
@@ -131,7 +131,7 @@ Scenario: Delete a vehicle continue with delete
     And they see "Vehicle Deleted"
     And the deleted vehicle is not shown in their vehicle inventory
 
-@orv2-340
+@orv2-340-4
 Scenario: Bulk delete multiple vehicles
     Given the CV Client chooses more than one vehicle in either Power Units or Trailers
     And delete is available

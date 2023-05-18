@@ -44,3 +44,21 @@ Feature: Complete Contact Details
        | Fax             |
      Then the "Contact Information" reflects their changes
      And these changes to "Contact Information" apply only to this permit and not the "Contact Information" previously saved in the database
+
+@orv2-549-4
+Scenario: Indicate mandatory "Contact Information" fields    
+    Given the CV Client Admin or User is editing their "Contact Information"
+    When they do not enter valid data into a <mandatory field>  
+    And they choose to continue  
+    Then they see <mandatory field error message>     
+    And they cannot save their changes
+
+    Examples:  
+      | mandatory field | mandatory field error message | 
+      | First Name      | This is a required field      | 
+      | Last Name       | This is a required field      |
+      | Country         | This is a required field.     | 
+      | Province/Sate   | This is a required field.     |
+      | City            | This is a required field      | 
+      | Primary Phone   | This is a required field      | 
+      | Email           | This is a required field      | 
