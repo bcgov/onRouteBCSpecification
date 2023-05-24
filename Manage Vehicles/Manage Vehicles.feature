@@ -114,7 +114,7 @@ Scenario: Choose a vehicle to perform an action on
     When they choose a vehicle in the list
     Then The chosen vehicle is indicated
 
-@orv2-340-2 @orv2-341
+@orv2-340-2
 Scenario: Delete vehicle warning
     Given the CV Client chooses a vehicle in either Power Units or Trailers
     When they choose delete vehicle 
@@ -141,7 +141,6 @@ Scenario: Bulk delete multiple vehicles
     And they see "Vehicle Deleted"
     And the deleted vehicles are not shown in their vehicle inventory
 
-@orv2-341
 Feature: Edit Vehicle Details
 As a CV Client, I need to edit individual vehicle details so that I can keep my individual vehicle details up to date.
 
