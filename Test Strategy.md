@@ -55,9 +55,15 @@ Verify the whole system meets business goals
 Assessing developed front end UX/UI against HiFi Design (Prototype)
 Verify:
 - Meets Government UI standards
-- Tab stops?
-- UI elements (e.g. drop down behaviour, hover behaviour)
-- Static messages
+- Textual Content: Confirm static informational text, 
+- Functionality: Functional aspects of the UI, such as ensuring that buttons, links, forms, and other interactive elements work as intended, drop downs, cursor hover.
+- Usability: Clarity, consistency, intuitiveness, and efficiency of user interactions.
+- Responsiveness: How the UI responds to different screen sizes and resolutions. Test the UI's adaptability and ensure that it remains usable across various platforms and browsers.
+- Accessibility: Testing with keyboard navigation, colour contrast, text resizing, and other accessibility standards, tab stops.
+- Performance: UI performance testing to evaluate the responsiveness and speed of the UI
+- Visual Design: Visual aesthetics, including layout, colour scheme, typography, and graphics. Verify that the UI adheres to the brand guidelines and provides a visually pleasing experience.
+- Error Handling: How the UI handles and communicates errors to users. Will include scenarios such as validation errors and user input errors.
+- Compatibility: UI should work seamlessly across different operating systems, browsers, and devices.
 
 #### Functional
 Comparing software functions and features with desired system behaviour state changes Gherkin scenarios (onRouteBC Specification)
@@ -83,7 +89,6 @@ Can use onRouteBC Specifications as test cases or not. End users test a release 
 
 ##### Integration (Medium)
 Verify communication and interaction between components to find interface defects
-
 
 ##### Smoke
 - Post release high-level functional
