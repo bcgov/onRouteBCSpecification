@@ -49,7 +49,6 @@ Scenario: Show mandatory fields
     | Plate            | This is a required field      |
     | Year             | This is a required field      |
     | Make             | This is a required field      |
-    | Licensed GVW     | This is a required field      |
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
@@ -113,6 +112,7 @@ Scenario: Choose a vehicle to perform an action on
     And they are viewing either Power Units or Trailers
     When they choose a vehicle in the list
     Then The chosen vehicle is indicated
+     And The vehicle delete option is enabled
 
 @orv2-340-2
 Scenario: Delete vehicle warning
