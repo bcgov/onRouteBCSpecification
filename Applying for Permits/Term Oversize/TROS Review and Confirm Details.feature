@@ -83,8 +83,3 @@ Scenario: Edit Application
     When they choose to edit the application
     Then they are directed to the "Permit Application" page
 
-
-Scenario: Proceed to pay
-    Given a CV Client is at the "Review abd Confirm Details" page
-    When they choose to pay for the permit
-    Then they are directed to the "Pay for Permit" page
