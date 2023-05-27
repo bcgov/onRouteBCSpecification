@@ -1,0 +1,10 @@
+<permit number> ::= <source>-<sequence>-<random> | <source>-<sequence>-<random>-<revision>
+<source> ::= <permit source> | <application source>
+<permit source> ::= P<permit approval method>
+<permit approval method> ::= 0 | 1 | 2
+<application source> ::= A<application origin>
+<application origin> ::= 1 | 2
+<sequence> ::= <d><d><d><d><d><d><d><d>
+<d> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<random> ::= <d><d><d>
+<revision> ::= A<d><d>
