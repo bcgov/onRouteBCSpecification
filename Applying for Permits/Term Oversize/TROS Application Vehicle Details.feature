@@ -7,28 +7,59 @@ Feature: TROS Application Vehicle Details
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
      Then they see only "Power Units" eligible for a TROS permit:
-       | Concrete Pumper Trucks                                                                    |
-       | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain                                    |
-       | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                                         |
-       | Double Decker Buses                                                                       |
-       | Fixed Equipment - Trucks/Graders etc.                                                     |
-       | Intercity Buses (Pulling Pony Trailers)                                                   |
-       | Logging Trucks                                                                            |
-       | Logging Trucks - Off-Highway                                                              |
-       | Long Combination Vehicles (LCV) - Rocky Mountain Doubles                                  |
-       | Long Combination Vehicles (LCV) - Turnpike Doubles                                        |
-       | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m                                |
-       | Oil and Gas - Oilfield Sows                                                               |
-       | Oil and Gas - Bed Trucks                                                                  |
-       | Oil and Gas - Service Rigs and Rathole                                                    |
-       | Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
-       | Picker Truck Tractors                                                                     |
-       | Specially Authorized Vehicles                                                             |
-       | Tow Vehicles                                                                              |
-       | Truck Tractors                                                                            |
-       | Truck Tractors - Stinger Steered                                                          |
-       | Trucks                                                                                    |
-       | Trucks Equipped with Front or Underbody Plow Blades                                       |
+       | Concrete Pumper Trucks                                                                                                           |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain                                                                           |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                                                                                |
+       | Double Decker Buses                                                                                                              |
+       | Fixed Equipment - Trucks/Graders etc.                                                                                            |
+       | Intercity Buses (Pulling Pony Trailers)                                                                                          |
+       | Logging Trucks                                                                                                                   |
+       | Logging Trucks - Off-Highway                                                                                                     |
+       | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m                                                                       |
+       | Oil and Gas - Oilfield Sows                                                                                                      |
+       | Oil and Gas - Bed Trucks                                                                                                         |
+       | Oil and Gas - Service Rigs and Rathole Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
+       | Picker Truck Tractors                                                                                                            |
+       | Specially Authorized Vehicles                                                                                                    |
+       | Tow Vehicles                                                                                                                     |
+       | Truck Tractors                                                                                                                   |
+       | Truck Tractors - Stinger Steered                                                                                                 |
+       | Trucks                                                                                                                           |
+       | Trucks Equipped with Front or Underbody Plow Blades                                                                              |
+     And they do not see:
+       | Oil and Gas - Service Rigs |
+       | Scrapers                   |
+       | Taxis                      |
+       | Buses/Crummies             |
+       | Farm Vehicles              |
+
+@orv-551-9
+  Scenario: TROS eligible "Power Unit"
+    Given a CV Client is at "Vehicle Details" for a TROS permit application
+      And they are designated as an LCV CV Client
+     When they choose to recall a "Power Unit" from their inventory 
+     Then they see only "Power Units" eligible for a TROS permit:
+       | Concrete Pumper Trucks                                                                                                           |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain                                                                           |
+       | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                                                                                |
+       | Double Decker Buses                                                                                                              |
+       | Fixed Equipment - Trucks/Graders etc.                                                                                            |
+       | Intercity Buses (Pulling Pony Trailers)                                                                                          |
+       | Logging Trucks                                                                                                                   |
+       | Logging Trucks - Off-Highway                                                                                                     |
+       | Long Combination Vehicles (LCV) - Rocky Mountain Doubles                                                                         |
+       | Long Combination Vehicles (LCV) - Turnpike Doubles                                                                               |
+       | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m                                                                       |
+       | Oil and Gas - Oilfield Sows                                                                                                      |
+       | Oil and Gas - Bed Trucks                                                                                                         |
+       | Oil and Gas - Service Rigs and Rathole Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
+       | Picker Truck Tractors                                                                                                            |
+       | Specially Authorized Vehicles                                                                                                    |
+       | Tow Vehicles                                                                                                                     |
+       | Truck Tractors                                                                                                                   |
+       | Truck Tractors - Stinger Steered                                                                                                 |
+       | Trucks                                                                                                                           |
+       | Trucks Equipped with Front or Underbody Plow Blades                                                                              |
      And they do not see:
        | Oil and Gas - Service Rigs |
        | Scrapers                   |
@@ -90,7 +121,6 @@ Feature: TROS Application Vehicle Details
       | Semi-Trailers - Widespread Tandems                                                                  |
       | Semi-Trailers - A-Trains and C-Trains                                                               |
       | Specially Authorized Vehicles                                                                       |
-      | Stinger Steered Automobile Transporters                                                             |
 
 @orv-551-3
   Scenario: The Client inputs their Vehicle information
@@ -138,7 +168,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
     Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
-    And if the select NO the vehicle will not be updated in their "Vehicle Inventory"
+    And if they select NO the vehicle will not be updated in their "Vehicle Inventory"
 
 @orv2-551-6
   Scenario: Find vehicle in inventory by Unit Number
