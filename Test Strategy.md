@@ -146,9 +146,14 @@ end
 |           |                       |                                          |      |                      |
 
 ## Corrections
-- UX/UI fix prior to BVT?
 - Bug reports assume fixing at a later date
 - JIRA Bug issue creation
+
+## UX/UI 
+  - Issues contrary to gov design policy get individual tickets
+  - Functional issues triage with BA
+  - Design issues that are considered of particular importance will get individual tickets e.g., BC Logo being in the wrong position
+
 
 ## Future Updates
 - aligning version control and traceability
