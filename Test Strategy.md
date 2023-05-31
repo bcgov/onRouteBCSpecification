@@ -116,21 +116,21 @@ Using onRouteBC Specifications as test cases and comparing against dev complete 
 ```mermaid
 sequenceDiagram
 
-title Testing Sequence (In Sprint 2)
+title Testing Sequence
 
 autonumber
 participant d as Dev
 participant x as UX/UI
 participant b as BVT
-participant u as UAT
+participant u as User
 
-note over d: Sprint 1 Dev Complete
+note over d: Dev Complete
 loop Corrections/Bug Reports
-	d-->x: Test Sprint 1 Dev Complete
+	d-->x: Test Dev Complete
 end
 x-->>b: UX/UI Test Complete
 loop Corrections/Bug Reports
-	b-->d: Test Sprint 1 Dev Complete
+	b-->d: Test Dev Complete
 end	
 b-->>u: BVT Test Complete
 loop Corrections/Bug Reports
@@ -142,8 +142,8 @@ end
 | --------- | --------------------- | ---------------------------------------- | ---- | -------------------- |
 | UX/UI     | UX Designers and Devs | Testing Dev complete from prior Sprint   |      | Manual               |
 | BVT       | IMB and SMES          | Testing Dev complete from prior Sprint   |      | Manual               |
-| UAT       | Users and SMES        | Testing BVT complete from current Sprint |      | Manual               |
-|           |                       |                                          |      |                      |
+| User      | Users and SMES        | Testing BVT complete from current Sprint |      | Manual               |
+| DEV       |                       |                                          |      |                      |
 
 ## Corrections
 - Bug reports assume fixing at a later date
