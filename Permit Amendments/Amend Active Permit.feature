@@ -3,21 +3,31 @@ Feature:  Amend an active permit
 
 @orv2-938-1
   Scenario: Change vehicle plate
-    Given 
-     When 
-     Then 
+    Given a PPC Clerk has chosen to change the plate number
+     When they update the vehicle plate number
+     Then the change is accepted
 
 @orv2-938-2
-  Scenario: Extend term length
-    Given 
-     When 
-     Then 
+  Scenario: Extend permit duration
+    Given a PPC Clerk has chosen to extend the permit duration
+     When they extend <permit duration>
+     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+
+     Examples:
+       | permit expiry date | permit duration | amended permit expiry date |
+       | March 30, 2023     | 30              | April 29, 2023             |
+       | April 13, 2023     | 30              | May 13, 2023               |
 
 @orv2-938-3
   Scenario: Shorten term length
-    Given 
-     When 
-     Then 
+    Given a PPC Clerk has chosen to shorten the permit duration
+     When they shorten <permit duration>
+     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+
+     Examples:
+       | permit expiry date | permit duration | amended permit expiry date |
+       | March 30, 2023     | 30              | April 29, 2023             |
+       | April 13, 2023     | 30              | May 13, 2023               |
 
 @orv2-938-4
   Scenario: Change vehicle
@@ -35,7 +45,7 @@ Feature:  Amend an active permit
 
    Examples:
      | <PPC Clerk username> | <timestamped>             | <amendment reason>                                |
-     | jdoe                 | April 15, 8colon23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
+     | jdoe                 | Apr. 15, 2023, 8colon23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
 @orv2-938-6
   Scenario: Calculate amendment fee
@@ -51,9 +61,9 @@ Feature:  Amend an active permit
 
 @orv2-938-8
   Scenario: Indicate change made
-    Given 
-     When 
-     Then 
+    Given a PPC clerk is at the "Review and Confirm Details" page
+     When they review their updates made
+     Then the information updated is indicated as "Changed"
 
 @orv2-938-9
   Scenario: Record reason for amendment
@@ -62,8 +72,9 @@ Feature:  Amend an active permit
      Then 
 
 @orv2-938-10
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: Reason for amendment mandatory
+    Given a PPC Clerk is at the "Amend Permit" page 
+     When they attempt to save or continue
+      And they have not entered a reason for amendment
+     Then they see "This is a required field"
 
