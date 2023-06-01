@@ -5,7 +5,7 @@ Feature: Send permit and receipt documents
   Scenario: Send permit and receipt to email
     Given the CV Client has completed payment
      When they have successfully completed payment 
-     Then their generated permit PDF and receipt PDF are emailed to:
+     Then their generated permit PDF and receipt PDF are emailed as attachments to:
        | company profile email address |
        | entered contact email address |
 
