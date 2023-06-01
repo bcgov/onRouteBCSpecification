@@ -9,7 +9,7 @@ Feature: Complete Contact Details
      Then they are directed to the "Permit Application" page
       And they see the following header information:
         | permit type name                          |
-        | application number                        |
+        | application number (Empty)                |
         | company name                              |
         | onRouteBC client number                   |
         | company  information confirmation message |

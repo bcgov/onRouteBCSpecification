@@ -1,5 +1,5 @@
 Feature: Display permit application header information
-    As a CV Vlient I want to be able to view a header details so that I can refer to this application in progress 
+    As a CV Client I want to be able to view a header details so that I can refer to this application in progress 
  
 @orv2-552-1
   Scenario: Display application number
