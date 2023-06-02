@@ -134,7 +134,7 @@ loop Corrections/Bug Reports
 end	
 b-->>u: BVT Test Complete
 loop Corrections/Bug Reports
-	b-->u: Test Sprint 1 Dev Complete
+	u-->d: Test Dev Complete
 end	
 ```
 

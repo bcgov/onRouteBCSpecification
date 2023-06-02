@@ -8,11 +8,18 @@ Feature: Send permit and receipt documents
      Then their generated permit PDF and receipt PDF are emailed as attachments to:
        | company profile email address |
        | entered contact email address |
+      And the CV Client cannot reply to the email
 
 @orv2-936-2
   Scenario: Send permit and receipt to fax number
     Given the CV Client has entered a fax number
      When they successfully completed payment
      Then their generated permit PDF and receipt PDF are faxed to the contact fax number
+
+@orv2-936-3
+  Scenario: Send email from
+    Given the CV Client has successfully completed payment
+     When 
+     Then 
 
 
