@@ -150,6 +150,7 @@ end
 - JIRA Bug issue creation
 
 ## UX/UI 
+Bug Template: 
   - Issues contrary to gov design policy get individual tickets
   - Functional issues triage with BA
   - Design issues that are considered of particular importance will get individual tickets e.g., BC Logo being in the wrong position
