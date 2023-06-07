@@ -32,6 +32,8 @@ Feature: TROS Application Vehicle Details
        | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain                                                                           |
        | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                                                                                |
        | Oil and Gas - Service Rigs and Rathole Augers Only Equipped with Heavy Front Projected Crane (must exceed 14,000 kg tare weight) |
+       | Long Combination Vehicles (LCV) - Rocky Mountain Doubles                                                                         |
+       | Long Combination Vehicles (LCV) - Turnpike Doubles                                                                               |
 
   @orv-551-2
   Scenario: TROS eligible "Trailer"
@@ -78,7 +80,7 @@ Feature: TROS Application Vehicle Details
       | Manufactured Homes, Modular Buildings, Structures and Houseboats (> 5.0 m OAW) with Attached Axles  |
       | Park Model Homes with Attached Axles                                                                |
       | Semi-Trailers - Steering Trailers                                                                   |
-      | Semi-Trailers - Widespread Tandems                                                                  |
+      | Semi-Trailers - Spread Tandems                                                                  |
       | Semi-Trailers - A-Trains and C-Trains                                                               |
       | Specially Authorized Vehicles                                                                       |
       | Steering Trailers - Manned                                                                          |
