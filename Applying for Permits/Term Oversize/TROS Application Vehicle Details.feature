@@ -77,6 +77,7 @@ Feature: TROS Application Vehicle Details
        | Semi-Trailers - Walled B-Trains (Chip Trucks)                                                  |
        | Semi-Trailers - With Crane                                                                     |
        | Semi-Trailers - Wide Wheelers                                                                  |
+       | Semi-Trailers - Wheelers                                                                       |
        | Stinger Steered Automobile Transporters                                                        |
     And they do not see:
       | Manufactured Homes, Modular Buildings, Structures and Houseboats (<= 5.0 m OAW) with Attached Axles |
