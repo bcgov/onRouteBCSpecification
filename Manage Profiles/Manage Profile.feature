@@ -4,7 +4,7 @@ Feature: View/Edit CV Client Company Information Details
 
 Background: The CV Client Business BCeID User Admin (CV Client Admin) has successfully logged into onRouteBC using their business BCeID and completed the creation of their onRouteBC Profile.
 
-@orv2-354
+@orv2-354-1
 Scenario: View "Company Information"
     Given the CV Client Admin is at the onRouteBC home page
     When they select "Profile"
@@ -12,7 +12,7 @@ Scenario: View "Company Information"
     Then they are directed to the "Company Information" page
     And only fields that contain data are displayed
     
-@orv2-354
+@orv2-354-2
 Scenario: View BCeID company data
     Given the CV Client Admin is at their "Company Information"
     When they are viewing the "Company Information" page <BCeID data fields>
@@ -24,7 +24,7 @@ Scenario: View BCeID company data
       | Company Legal Name | bceid_business_name | 
       | Email              | BCeID email         |
 
-@orv2-354
+@orv2-354-3
 Scenario: Edit "Company Information"
     Given the CV Client Admin chooses to edit their "Company Information"
     And they are at the "Company Information" page
@@ -56,7 +56,7 @@ Scenario: Edit "Company Information"
       | City                 | Yes      | 
       | Province/State       | Yes      | 
 
-@orv2-354
+@orv2-354-4
 Scenario: Save edits to "Company Information"
     Given the CV Client Admin is at their "Company Information" edit page
     And they save changes 
@@ -64,21 +64,21 @@ Scenario: Save edits to "Company Information"
     And they are directed to the "Company Information" page
     And their changes are displayed
 
-@orv2-354
+@orv2-354-5
 Scenario: Cancel edit "Company Information"
     Given the CV Client Admin editing their "Company Information" page
     When they select "Cancel"
     Then the changes are not saved 
     And they are directed to the "Company Information" page
 
-@orv2-354
+@orv2-354-6
 Scenario: Edit company information navigate away from "Company Information" page
     Given the CV Client Admin is at their "Company Information" page
     When they make changes to their "Company Information"
     And they navigate away from the "Company Information" page 
     Then the changes are not saved 
 
-@orv2-354
+@orv2-354-7
 Scenario: Indicate mandatory fields    
     Given the CV Client Admin is editing their "Company Information"
     When they do not enter valid data into a <mandatory field>  
@@ -101,7 +101,7 @@ Scenario: Indicate mandatory fields    
       | Primary Contact Email      | This is a required field.      | 
       | Primary Contact City       | This is a required field.      | 
 
-@orv2-354
+@orv2-354-8
 Scenario: Remove mailing address designation
     Given the CV Client Admin is at their "Company Information" page
     When they remove the company mailing address designation default

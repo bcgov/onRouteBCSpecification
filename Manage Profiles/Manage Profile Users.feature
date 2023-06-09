@@ -1,6 +1,11 @@
 Feature: Add new users
 As a CV Client admin I want to add new users to my onRouteBC profile so that they can use my profile based on their assigned role.
 
+Scenario: Wrong username added 
+    Given the CV Client admin is at the "User Management" page
+    When they 
+    Then they 
+
 @orv2-363-1
 Scenario: Navigate to Add User page
     Given the CV Client admin is at the "User Management" page

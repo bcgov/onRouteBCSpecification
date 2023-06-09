@@ -195,4 +195,27 @@ Scenario: Vehicle list columns
    When they choose to sort by Date Created
    Then the list is sorted in reverse order from the previously chosen sort order
 
+Feature: Search for Permit
+   As a CV Client I need to search my vehicle inventory so that I can find specific vehicles in my inventory.
+
+@orv2-292-1
+  Scenario: Search vehicle inventory by 
+    Given a CV Client is at their vehicle inventory
+    And they view either Power Units or Trailers
+    When they choose to <search>
+    And they enter a <parameter>
+    Then <displayed> vehicles are shown
+
+   Examples:
+     | search       | parameter | displayed                                                |
+     | Unit Number  | 12345     | all vehicles with Unit Number 12345                      |
+     | Plate        | Bob24     | all vehicles with Plate Bob24                            |
+     | Make         | 123       | all vehicles with Unit Number with the characters 123    |
+     | Vehicle Type | Bob       | all vehicles with Vehicle Type with the 3 characters Bob |
+     | VIN          | 568       | all vehicles with VIN with the 3 characters 568          |
+     | Date Created | 23        | all vehicles with Date Created with the 2 characters 23  |
+
+  
+
+
 
