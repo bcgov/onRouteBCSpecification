@@ -36,7 +36,7 @@ Scenario: First CV Client Business BCeID user complete "My Information" in wizar
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC
     Given the CV Client onRouteBC Profile exists
     When they successfully sign in using their BCeID credentials
-    Then they are directed to the "My Information" page in the wizard
+    Then they are directed to the "My Information" page
 
 @orv2-907-2 @orv2-363-8
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC username does not match that entered by CV Client admin
