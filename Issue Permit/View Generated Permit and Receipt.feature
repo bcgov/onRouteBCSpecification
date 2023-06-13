@@ -7,7 +7,7 @@ Feature: View generated permit
       And they are at the "Success" page
      When they choose to view the permit 
      Then the generated permit pdf is displayed
-      And the selected CVSE Forms are attached
+      And the CVSE Forms chosen in the permit application are attached
 
 @orv2-766-2
   Scenario: View generated permit unsuccessful payment
