@@ -5,5 +5,10 @@ Feature: PPC Clerk log into onRouteBC
   Scenario: Log in using IDIR
     Given a PPC Clerk has valid IDIR credentials
      When they log into onRouteBC using their IDIR credentials
-     Then they are directed to the global search page
+     Then they are directed to the "global search page"
 
+@orv2-945-2
+  Scenario: Log in using IDIR invalid credentials
+    Given a PPC Clerk has invalid IDIR credentials
+     When they log into onRouteBC using their IDIR credentials
+     Then they see "The username or password you entered is incorrect"
