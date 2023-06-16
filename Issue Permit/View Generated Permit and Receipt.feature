@@ -5,7 +5,7 @@ Feature: View generated permit
   Scenario: View generated permit
     Given the CV Client has successuly purchased a permit
       And they are at the "Success" page
-     When they choose to view the permit 
+     When they choose to view the permit
      Then the generated permit pdf is displayed
       And the CVSE Forms chosen in the permit application are attached
 
