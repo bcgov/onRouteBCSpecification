@@ -101,21 +101,6 @@ Scenario: Indicate mandatory fields    
       | Primary Contact Email      | This is a required field.      | 
       | Primary Contact City       | This is a required field.      | 
 
-@orv2-354-8
-Scenario: Remove mailing address designation
-    Given the CV Client Admin is at their "Company Information" page
-    When they remove the company mailing address designation default
-    Then they see additional blank <mailing address fields>     
-    And some  <mailing address fields> have a <mandatory field error message> when left blank
-    
-    Examples: 
-      | mailing address fields | mandatory field error message |
-      | Address Line 1         | This is a required field.     |
-      | City                   | This is a required field.     |
-      | Province/State         | This is a required field.     |
-      | Postal Code/Zip Code   | This is a required field.     |
-      | Country                | This is a required field.     |
-
 Feature: View/Edit CV Client user information
     As a CV Client Admin or User I want to manage "My Information" so that I can maintain my contact details.
 
