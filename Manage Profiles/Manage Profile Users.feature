@@ -82,7 +82,6 @@ As a CV Client admin I want to view and edit information about users so that I c
 Background: Users can have the following statuses:
     | Active      |
     | Pending     |
-    | Deactivated |
 
 @orv2-480-1
 Scenario: Sort list of users

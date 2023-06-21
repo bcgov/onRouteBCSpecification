@@ -27,3 +27,9 @@ Feature: PPC Clerk log into onRouteBC
           | idir_username  |
           | name           |
           | email          |
+
+@orv2-945-4
+  Scenario: Log in using valid IDIR invalid onRouteBC credentials
+    Given a PPC Clerk attempts to log into onRouteBC
+     When they log into onRouteBC using their IDIR credentials
+     Then they see "Unauthorized Error Page"
