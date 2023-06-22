@@ -32,4 +32,4 @@ Feature: PPC Clerk log into onRouteBC
   Scenario: Log in using valid IDIR invalid onRouteBC credentials
     Given a PPC Clerk attempts to log into onRouteBC
      When they log into onRouteBC using their IDIR credentials
-     Then they see "Unauthorized Error Page"
+     Then they see "Universal Unauthorized Error Page"
