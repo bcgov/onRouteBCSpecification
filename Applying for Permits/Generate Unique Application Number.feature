@@ -1,6 +1,8 @@
 Feature: Generate unique permit application number
    As staff I need to ensure a unique permit application number id generated so that each application can be identified individually.
 
+Rule: 
+
 @orv2-835-1
   Scenario: Generate permit application number
     Given the CV Client has entered all require permit application information
