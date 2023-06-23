@@ -151,10 +151,10 @@ end
 
 ## UX/UI 
 Bug Template: 
-  - Issues contrary to gov design policy get individual tickets
-  - Functional issues triage with BA
-  - Design issues that are considered of particular importance will get individual tickets e.g., BC Logo being in the wrong position
-
+- Issues contrary to gov design policy get individual tickets
+- Minor design issues can be documenting together in a single bug ticket
+- Functional issues triage with BA
+- Design issues considered of particular importance will get individual tickets e.g., Impacts branding like BC Logo being in the wrong position
 
 ## Future Updates
 - aligning version control and traceability
