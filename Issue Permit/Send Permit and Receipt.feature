@@ -17,7 +17,7 @@ Feature: Send permit and receipt documents
      Then their generated permit PDF and receipt PDF are faxed to the contact fax number
 
 @orv2-936-3
-  Scenario: Send email from
+  Scenario: Send email from...
     Given the CV Client has successfully completed payment
      When 
      Then 
