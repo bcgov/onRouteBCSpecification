@@ -36,15 +36,8 @@ Rule: A unique application is generated when a permit application is saved to on
       And each <part> is separated by a hyphen
 
      Examples:
-       | source                                                                 | part               | specification |
-       | "A" for Application or "P" for Permit                                  | application source | 1 character   |
-       | "1" created by PPC or "2" created online by CV Client                  | application origin | 1 digit       |
-       | a sequence number starting at 00010000                                 | sequence           | 8 digits      |
-       | a random number                                                        | random             | 3 digits      |
-       | version sequence from 01-99, not included with base permit (version 0) | version            | A + 2 digits  |
-
-
-  Scenario: 
-    Given 
-     When 
-     Then 
+       | source                                                | part               | specification |
+       | "A" for Application                                   | application source | 1 character   |
+       | "1" created by PPC or "2" created online by CV Client | application origin | 1 digit       |
+       | a sequence number starting at 00010000                | sequence           | 8 digits      |
+       | a random number                                       | random             | 3 digits      |
