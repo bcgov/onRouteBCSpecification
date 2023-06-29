@@ -36,14 +36,13 @@ Scenario: First CV Client Business BCeID user complete "My Information" in wizar
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC
     Given the CV Client onRouteBC Profile exists
     When they successfully sign in using their BCeID credentials
-    Then they are directed to the "My Information" page
+    Then they are directed to the "Universal Unauthorized Error Page" page
 
-@orv2-907-2 @orv2-363-8
+@orv2-907-2
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC username does not match that entered by CV Client admin
     Given the CV Client onRouteBC Profile exists
     When they enter valid BCeID credentials
-    Then they are directed to the "Contact Administrator" page in the wizard
-    And they see "Contact your company onRouteBC administrator for assistance."
+    Then they are directed to the "
 
 @orv2-907-3
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC complete user "My Information"

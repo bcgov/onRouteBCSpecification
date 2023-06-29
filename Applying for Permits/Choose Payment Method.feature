@@ -6,14 +6,7 @@ Scenario: Proceed to pay
     Given a CV Client is at the "Review abd Confirm Details" page
     When they choose to pay for the permit
     Then they are directed to the "Pay for Permit" page
-
-@orv2-553-2
-  Scenario: Choose payment method
-    Given A CV Client is at the "Pay for Permit" page
-     When they want to choose a payment method
-     Then they see the following options:
-        | Use PayBC |
-      And it is choosen by default
+     And they see option to "Pay Now"
 
 @orv2-553-3
 Scenario: Permit application purchase summary
@@ -36,11 +29,4 @@ Scenario: Fee calculation summary
 
     Example:
       | item1 | total |
-      | 30    | 30    |
-
-@orv2-553-5
-  Scenario: Pay
-    Given A CV Client is at the "Pay for Permit" page
-     When they want to pay
-     Then they...
-  
+      | 30    | 30    |  
