@@ -1,7 +1,7 @@
 Feature: Generate unique permit application number
    As staff I need to ensure a unique permit application number id generated so that each application can be identified individually.
 
-Rule: A unique application is generated when a permit application is saved to onRouteBC
+Rule: A unique application number is generated when a permit application is saved in onRouteBC
 
 @orv2-835-1
   Scenario: Generate permit application number
@@ -37,7 +37,7 @@ Rule: A unique application is generated when a permit application is saved to on
 
      Examples:
        | source                                                | part               | specification |
-       | "A" for Application                                   | application source | 1 character   |
+       | "A" for permit aion                                   | application source | 1 character   |
        | "1" created by PPC or "2" created online by CV Client | application origin | 1 digit       |
        | a sequence number starting at 00010000                | sequence           | 8 digits      |
        | a random number                                       | random             | 3 digits      |
