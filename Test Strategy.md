@@ -138,12 +138,14 @@ loop Corrections/Bug Reports
 end	
 ```
 
-| Test Type | People                | When and What                            | Data | Manual or Automated? |
-| --------- | --------------------- | ---------------------------------------- | ---- | -------------------- |
-| UX/UI     | UX Designers and Devs | Testing Dev complete from prior Sprint   |      | Manual               |
-| BVT       | IMB and SMES          | Testing Dev complete from prior Sprint   |      | Manual               |
-| User      | Users and SMES        | Testing BVT complete from current Sprint |      | Manual               |
-| DEV       |                       |                                          |      |                      |
+| Test Type   | People                | When and What             | Data | Manual or Automated? |
+| ----------- | --------------------- | ------------------------- | ---- | -------------------- |
+| UX/UI       | UX Designers and Devs | Testing Dev complete      |      | Manual               |
+| BVT         | IMB and SMES          | Testing Dev complete      |      | Manual               |
+| User        | Users and SMES        | Testing BVT complete      |      | Manual               |
+| Unit        | Dev Team              | Testing code complete     |      | Manual               |
+| Integration | Dev Team / IMB        | Testing function complete |      | Manual               |
+| Contract    | Dev Team / IMB        | Testing function complete |      | Manual               |
 
 ## Corrections
 - Bug reports assume fixing at a later date

@@ -34,24 +34,47 @@ Scenario: First CV Client Business BCeID user complete "My Information" in wizar
 
 @orv2-907-1
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC
-    Given the CV Client onRouteBC Profile exists
+    Given the CV Client has valid BCeID credentials
+      And they have been added to onRouteBC by a CV Client Admin
     When they successfully sign in using their BCeID credentials
-    Then they are directed to the "Universal Unauthorized Error Page" page
+    Then they are directed to the "Welcome to onRouteBC" page
+     And they see the company name for the profile they have been added to
+     And they see the option to finish creating their onRouteBC profile
 
 @orv2-907-2
 Scenario: New CV Client Business BCeID user first time sign into onRouteBC username does not match that entered by CV Client admin
-    Given the CV Client onRouteBC Profile exists
-    When they enter valid BCeID credentials
-    Then they are directed to the "
+    Given the CV Client Admin added them to onRouteBC using an incorrect username
+     When they successfully sign in using their BCeID credentials
+     Then they are directed to the "Universal Unauthorized Access" page
 
 @orv2-907-3
-Scenario: New CV Client Business BCeID user first time sign into onRouteBC complete user "My Information"
-    Given they are at the "My Information" page in the wizard
-    When they input all required fields in "My Information" 
-    And they can complete the wizard
-    Then their "My Information" details are saved
-    And they are assigned the "Admin" role for the CV Client onRoute Profile 
+Scenario: New CV Client Business BCeID user first time sign into onRouteBC complete profile
+    Given they are at the "Welcome to onRouteBC" page
+      And they choose to finish completing their onRouteBC profile
+     When they input all required fields in "My Information"
+       | First Name       |
+       | Last Name        |
+       | Email            |
+       | Primary Phone    |
+       | Country          |
+       | Province / State |
+       | City             |
+    And choose to finish
+   Then their "My Information" details are saved
+    And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
     And they are directed to a "Success" page
+
+@orv2-907-4
+Scenario: New CV Client Business BCeID user completed profile setup
+    Given the CV Client Business BCeID user has completed their profile
+     When they choose to view their profile
+     Then they are directed to company information
+
+@orv2-907-5
+Scenario: New CV Client Business BCeID user completed profile setup
+    Given the CV Client Business BCeID user has completed their profile
+     When they choose to apply for a permit
+     Then they are directed to applications in progress
 
 @orv2-369-8 @orv-672-3
 Scenario: CV Client Business BCeID sign into onRouteBC
@@ -65,20 +88,6 @@ Scenario: CV Client Business BCeID navigates away from first time sign in to onR
     And they have not completed the onRouteBC account creation
     When they navigate away from the page
     Then the onRouteBC account is not created
-
-@orv2-907-5
-Scenario: CV Client Business BCeID user added to a company profile first time sign in
-    Given the CV Client Business BCeID user has been added to a company profile
-    When they sign in successfully using their BCeID credentials
-    Then they are directed to an accept invitation page
-    
-@orv2-907-4
-Scenario: CV Client Business BCeID user added to a company profile first time sign in decline add to onRouteBC profile
-    Given the CV Client Business BCeID user is at the invitation welcome page
-    When they decline the invitation
-    Then they are directed to the Welcome to onRouteBC page
-    And they are removed from the "Pending User" list of the company that added them
-    And their pending record is attributed as "declined"
 
 @orv2-369-12
 Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
