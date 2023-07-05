@@ -30,7 +30,7 @@ Feature: Delete Permit Application
     Given the CV Client is at the "Applications in Progress" tab
      When they select one or more application
      And they choose to delete
-     Then the applications are assigned a "cancelled" status
+     Then the applications are removed from the application in progress list
      And remain visible only to staff users
 
 @orv-557-2
@@ -38,7 +38,7 @@ Feature: Delete Permit Application
     Given the CV Client is at the "Applications in Progress" tab
      When they select a permit application
      And they choose to delete
-    Then the applications are assigned the a "cancelled" status
+    Then the applications are removed from the application in progress list
      And remain visible only to staff users
 
 Feature: Save Permit Application
