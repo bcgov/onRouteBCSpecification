@@ -1,25 +1,28 @@
 Feature: Add new users
 As a CV Client admin I want to add new users to my onRouteBC profile so that they can use my profile based on their assigned role.
 
-Scenario: Wrong username added 
-    Given the CV Client admin is at the "User Management" page
-    When they 
-    Then they 
-
 @orv2-363-1
 Scenario: Navigate to Add User page
     Given the CV Client admin is at the "User Management" page
     When they select "Add User"
     Then they are directed to the "Add User" page
+     And the default user group is "Permit Applicant"
 
 @orv2-363-2
 Scenario: Input new pending user BCeID username
     Given the CV Client admin is at the "Add User" page
     When they input a BCeID username
     And they select "Add"
-    Then they see "User Added"
     And they are directed to the "User Management" page
+    Then they see "User Added" notification
     And the newly added user is displayed as pending
+
+@orv2-363-8
+Scenario: Attempt add without inputting username
+    Given the CV Client admin is at the "Add User" page
+    When they choose to add user
+     And they have not inputted a username
+    And they see "This is a mandatory field" notification 
 
 @orv2-363-3
 Scenario: Cancel add new user
@@ -28,17 +31,11 @@ Scenario: Cancel add new user
     Then they are directed to the "User Management" page
    
 @orv2-363-4
-Scenario: Does not assign new pending user to user group
+Scenario: Does not user group
     Given the CV Client admin is at the "Add User" page
-    When they a "User Group" is not assigned
+    When  a "User Group" is not assigned
     And they select "Add User"
-    Then they see "You must assign a User group"
-
-@orv2-363-5
-Scenario: Default new pending user to user group "Permit Applicant"
-    Given the CV Client admin is at the "Add User" page
-    When they view the "User Group" assignment list
-    Then they see "Permit Applicant" checked
+    Then they see "You must assign a user group" notification
 
 @orv2-363-6
 Scenario: Assign new pending user to one or more user groups
@@ -51,7 +48,7 @@ Scenario: View user group permissions
     Given the CV Client admin is at the "Add New User" page
     When they select "User Groups and Permissions"
     Then they are directed to the "User Groups and Permission" page
-    And they see <function> and <permission> a <Administrator> and <Permit Applicant> has permission to use; Y for yes and N for no
+    And they see <function>, <permission> and roles <Administrator> and <Permit Applicant> with permission to use; Y for yes and N for no
 
     Examples:
       | function                   | permission                             | Administrator | Permit Applicant |
