@@ -8,6 +8,8 @@ Feature: View generated permit
      When they choose to view the permit
      Then the generated permit pdf is displayed
       And the CVSE Forms chosen in the permit application are attached
+      
+Add naming rule
 
 Feature: View generated permit payment receipt
    As a CV Client I want to be able to view the permit payment receipt pdf that is generated based on my permit application submission after successful purchase, so that I can manage my onRouteBC accounting.
@@ -18,3 +20,5 @@ Feature: View generated permit payment receipt
       And they are at the "Success" page
      When they choose to view the permit payment receipt 
      Then the generated permit payment receipt pdf is displayed
+
+Add naming rule

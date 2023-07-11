@@ -43,17 +43,19 @@ Feature: Search for permits
      When they hover over truncated text
      Then they see the entire text line
 
-@orv2-937-5
+@orv2-937-5 (in flux)
   Scenario: Search for permit by plate number
     Given a PPC Clerk has chosen to search by plate number
-     When they search by the <plate number> using first 10 characters or less
-     Then they see permit <results> with the first 10 or less characters used in the search
-      And hyphens or spaces are ignored
+     When they search by the <plate number> using the exact plate number
+     Then they see permit <results> with only the exact characters used in the search
+      And they do not see <partial results>
 
   Examples:
-   | plate number | Results |
-   | Bob24        | Bob24   |
-   | Bob          | Bob24   |
+   | plate number | Results   | partial results |
+   | Bob24        | Bob24     | Bob24567        |
+   | Bob234567    | Bob234567 | Bob23           |
+   | A-12345      | A-12345   | A-1234567       |
+   | A-123-123    | A-123-123 | A-123           |
 
 @orv2-937-6
   Scenario: Show only active permits
