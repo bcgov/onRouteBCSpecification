@@ -65,6 +65,7 @@ Rule: CV Clients PA and SA can search for active permits by unit # and plate
      | parameter | displayed                          |
      | 12345     | all permits with Unit Number 12345 |
      | 123       | all permits with Unit Number 12345 |
+     | 1         | all permits with Unit Number 12345 | 
 
 @orv2-952-2
   Scenario: Search by unit # no unit #
@@ -82,6 +83,7 @@ Rule: CV Clients PA and SA can search for active permits by unit # and plate
      | parameter | displayed                     |
      | A12345    | all permits with plate A12345 |
      | A123      | all permits with plate A12345 |
+     | A         | all permits with plate A12345 |
 
 @orv2-953
 Rule: CV Clients PA and SA can sort the list of actice permits
