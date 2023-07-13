@@ -77,7 +77,7 @@ Scenario: New CV Client Business BCeID user completed profile setup
      Then they are directed to applications in progress
 
 @orv2-369-8 @orv-672-3
-Scenario: CV Client Business BCeID sign into onRouteBC
+Scenario: CV Client Business BCeID login onRouteBC
     Given the CV Client onRouteBC Profile exists
     When they sign in successfully using their BCeID credentials 
     Then they are directed to the "Permits" page "Applications in Progress" tab
@@ -98,7 +98,7 @@ Scenario: CV Client Business BCeID user added to a company profile first time si
     And they are designated as an "Active User" 
 
 @orv2-369-13
-Scenario: CV Client Business BCeID attempts to sign into onRouteBC and BCeID is not working
+Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
     Given the CV Client Admin or User has valid BCeID credentials 
     When they attempt to sign in using their BCeID credentials
     Then they are directed to a BCeID error page
