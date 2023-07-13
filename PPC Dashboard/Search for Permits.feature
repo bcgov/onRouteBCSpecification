@@ -6,11 +6,14 @@ Feature: Search for permits
     Given a PPC Clerk has chosen to search by permit number
      When they search by the <permit number> using the first 11 characters of the permit
      Then they see permit <results> with the first 11 characters used in the search
+      And all permit <statuses> can be displayed if found
 
   Examples:
-   | Permit number | Results             |
-   | P1-82364275   | P1-82364275-175-A01 |
-   | P1-37982658   | P1-37982658-946-A01 |
+   | Permit number | Results             | statuses |
+   | P1-82364275   | P1-82364275-175-A01 | Issued   |
+   | P1-37982658   | P1-37982658-946-A01 | Expired  |
+   | P1-37982658   | P1-37982658-946-A01 | Revoked  |
+   | P1-37982658   | P1-37982658-946-A01 | Voided   |
   
 @orv2-937-2
   Scenario: Default to search by permit number
@@ -43,19 +46,19 @@ Feature: Search for permits
      When they hover over truncated text
      Then they see the entire text line
 
-@orv2-937-5 (in flux)
+@orv2-937-5
   Scenario: Search for permit by plate number
     Given a PPC Clerk has chosen to search by plate number
      When they search by the <plate number> using the exact plate number
      Then they see permit <results> with only the exact characters used in the search
-      And they do not see <partial results>
+      And all permit <statuses> can be displayed if found
 
   Examples:
-   | plate number | Results   | partial results |
-   | Bob24        | Bob24     | Bob24567        |
-   | Bob234567    | Bob234567 | Bob23           |
-   | A-12345      | A-12345   | A-1234567       |
-   | A-123-123    | A-123-123 | A-123           |
+   | plate number | Results   | statuses |
+   | Bob24        | Bob24     | Issued   |
+   | Bob234567    | Bob234567 | Expired  |
+   | A-12345      | A-12345   | Revoked  |
+   | A-123-123    | A-123-123 | Voided   |
 
 @orv2-937-6
   Scenario: Show only active permits
