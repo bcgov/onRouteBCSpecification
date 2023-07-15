@@ -1,4 +1,4 @@
-Feature: Search for permits
+Feature: PPC Clerk search for permits
    As a PPC Clerk I want to search for a CV Client permit so that I can amend it and reissue a revised legal permit.
 
 @orv2-937-1
