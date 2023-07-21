@@ -2,7 +2,7 @@ Feature: Generate Permit Payment Receipt
 
 Rule: Generate unique permit payment receipt number
 
-@orv2-1176
+@orv2-1176-1
   Scenario: 
     Given the CV Client has successfully purchased a permit
      When they are at the "Success" page
@@ -14,3 +14,20 @@ Rule: Generate unique permit payment receipt number
      | 20230717     | 00000001                  |
      | 20230717     | 00000002                  |
      | 20230717     | 00000003                  |
+
+
+Rule: Save permit payment receipt pdf using the generated permit payment receipt number as the filename
+
+@orv2-1066-1
+  Scenario: View permit payment receipt
+    Given the CV Client has successuly purchased a permit
+      And they are at the "Success" page
+     When they choose to view the permit payment receipt 
+     Then the generated permit payment receipt pdf is displayed
+      And the file name is the <permit payment recipt number>
+
+      Examples:
+         | permit payment recipt number |
+         | 20230717-00000001            |
+         | 20230717-00000002            |
+         | 20230717-00000003            |

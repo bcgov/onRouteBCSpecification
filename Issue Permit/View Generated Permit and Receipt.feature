@@ -20,5 +20,3 @@ Feature: View generated permit payment receipt
       And they are at the "Success" page
      When they choose to view the permit payment receipt 
      Then the generated permit payment receipt pdf is displayed
-
-Add naming rule
