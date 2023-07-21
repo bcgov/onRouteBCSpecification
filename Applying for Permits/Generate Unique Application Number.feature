@@ -37,7 +37,7 @@ Rule: A unique application number is generated when a permit application is save
 
      Examples:
        | source                                                | part               | specification |
-       | "A" for permit aion                                   | application source | 1 character   |
+       | "A" for permit aplication                             | application source | 1 character   |
        | "1" created by PPC or "2" created online by CV Client | application origin | 1 digit       |
        | a sequence number starting at 00010000                | sequence           | 8 digits      |
        | a random number                                       | random             | 3 digits      |

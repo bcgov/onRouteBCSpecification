@@ -21,8 +21,4 @@ Feature: View generated permit payment receipt
      When they choose to view the permit payment receipt 
      Then the generated permit payment receipt pdf is displayed
 
-
-
-Add receipt numbering scheme
-
 Add naming rule
