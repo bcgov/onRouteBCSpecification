@@ -22,7 +22,7 @@ Rule: A CV Client can pay for a permit with VISA, Master Card or American Expres
      Then they are redirected to the "Pay for Permit" page in onRouteBC
 
   @orv2-1119-3   
-  Scenario: CV Client chnages payment method at payment processor
+  Scenario: CV Client changes payment method at payment processor
      Given the CV client chooses to use a different payment method
       When they choose from the list
          | VISA             |

@@ -152,11 +152,17 @@ end
 - JIRA Bug issue creation
 
 ## UX/UI 
+### Process
+- Any team member can complete testing
+- Minor tickets (tickets with multiple minor design issues) can be assigned to the UX designer for review and assessment
+  - If the UX designer sees an issue they feel is of greater importance they can extarct from that ticket and created a new individual bug ticket
+  - The remaining items can remain in the ticket and subsequently be closed as "won't do" by either the UX designer or PO
+ 
 Bug Template: 
 - Issues contrary to gov design policy get individual tickets
-- Minor design issues can be documenting together in a single bug ticket
+- Minor design issues can be documented together in a single bug ticket
 - Functional issues triage with BA
-- Design issues considered of particular importance will get individual tickets e.g., Impacts branding like BC Logo being in the wrong position
+- Design issues considered of particular importance will get individual tickets e.g., Impacts branding like BC Logo being in the wrong position, spelling errors
 
 ## Future Updates
 - aligning version control and traceability
