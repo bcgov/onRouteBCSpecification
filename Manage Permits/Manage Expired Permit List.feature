@@ -83,6 +83,13 @@ Rule: CV Clients PA and SA can search for Expired permits by unit # and plate
      | A12345    | all expired permits with plate A12345 |
      | A123      | all expired permits with plate A12345 |
 
+@orv2-1008-4
+  Scenario: Search by plate no plate exists
+    Given the CV Client has Expired Permits
+      And the plate does not exist in their inventory
+     When they choose to search by plate
+     Then they see "No records found" 
+
 @orv2-1009
 Rule: CV Clients PA and SA can sort the list of expired permits
 
