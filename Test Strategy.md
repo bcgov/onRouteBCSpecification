@@ -155,7 +155,7 @@ end
 ### Process
 - Any team member can complete testing
 - Minor tickets (tickets with multiple minor design issues) can be assigned to the UX designer for review and assessment
-  - If the UX designer sees an issue they feel is of greater importance they can extarct from that ticket and created a new individual bug ticket
+  - If the UX designer sees an issue they feel is of greater importance they can extract from that ticket and created a new individual bug ticket
   - The remaining items can remain in the ticket and subsequently be closed as "won't do" by either the UX designer or PO
  
 Bug Template: 
