@@ -33,7 +33,6 @@ Rule: A unique application number is generated when a permit application is save
      When the permit application number is generated
      Then the source is used for each <part> of the application number
       And the have a <specification>
-      And each <part> is separated by a hyphen
 
      Examples:
        | source                                                | part               | specification |

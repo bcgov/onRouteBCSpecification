@@ -9,7 +9,21 @@ Feature: View generated permit
      Then the generated permit pdf is displayed
       And the CVSE Forms chosen in the permit application are attached
       
-Add naming rule
+Rule: Save permit pdf using the generated permit payment receipt number as the filename
+
+@orv2-1065-1
+  Scenario: View permit pdf
+    Given the CV Client has successuly purchased a permit
+      And they are at the "Success" page
+     When they choose to view the permit  
+     Then the generated permit payment pdf is displayed
+      And the file name is the <permit number>
+
+      Examples:
+         | permit number   |
+         | P1-82364275-175 |
+         | P1-82364279-203 |
+         | P2-82364280-389 |
 
 Feature: View generated permit payment receipt
    As a CV Client I want to be able to view the permit payment receipt pdf that is generated based on my permit application submission after successful purchase, so that I can manage my onRouteBC accounting.
