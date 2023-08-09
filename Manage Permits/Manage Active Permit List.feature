@@ -86,7 +86,7 @@ Rule: CV Clients PA and SA can search for active permits by unit # and plate
      | A         | all permits with plate A12345 |
 
 @orv2-953
-Rule: CV Clients PA and SA can sort the list of actice permits
+Rule: CV Clients PA and SA can sort the list of active permits
 
 Scenario: Sort list of active permits
     Given the CV Client chooses to sort by a specific column
