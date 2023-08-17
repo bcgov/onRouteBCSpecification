@@ -31,7 +31,7 @@ Scenario: Cancel add new user
     Then they are directed to the "User Management" page
    
 @orv2-363-4
-Scenario: Does not user group
+Scenario: User group not assigned 
     Given the CV Client admin is at the "Add User" page
     When  a "User Group" is not assigned
     And they select "Add User"
@@ -83,6 +83,12 @@ Scenario: Delete one or more users selection indication
     Given the CV Client admin chooses to delete one or more users
     When they choose a user to delete
     Then the choosen user is indicated 
+
+@orv2-480-10
+Scenario: Admin delete self
+    Given the CV Client admin chooses to delete themselves
+    When they attempt to delete their profile
+    Then they are unable to select their profile
 
 @orv2-480-5
 Scenario: Delete one or more users warning
