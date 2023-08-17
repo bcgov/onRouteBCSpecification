@@ -26,7 +26,7 @@ Rule: CV Clients PA and SA can view Expired permits if any exist and see relevan
      And the default sort order is "Permit Start Date" newest at the top
      And CV Client PA only see permits they created
      And "Applicant" is the first name and last name of the CV Client user that submitted the permit application
-     And they see "Refunds and amendments can be requested over the phone by calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."
+     And they see "Refunds and amendments can be requested over the phone using calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."
 
 @orv2-995-3
   Scenario: No Expired permits
@@ -53,12 +53,12 @@ Scenario: View permit pdf
      Then they see the permit pdf in a new browser tab
 
 @orv2-1008
-Rule: CV Clients PA and SA can search for Expired permits by unit # and plate
+Rule: CV Clients PA and SA can search for Expired permits using unit # and plate
 
 @orv2-1008-1
-  Scenario: Search by unit #
+  Scenario: Search using unit #
     Given the CV Client has Expired permits that have a vehicle with a unit number
-     When they choose to search by <parameter>
+     When they choose to search using <parameter>
      Then <displayed> expired permits are shown
 
    Examples:
@@ -67,15 +67,15 @@ Rule: CV Clients PA and SA can search for Expired permits by unit # and plate
      | 123       | all expired permits with Unit Number 12345 |
 
 @orv2-1008-2
-  Scenario: Search by unit # no unit #
+  Scenario: Search using unit # no unit #
     Given the CV Client has Expired permits that have a vehicle without unit number
-     When they choose to search by unit #
+     When they choose to search using unit #
      Then they see "No records found" 
 
 @orv2-1008-3
-  Scenario: Search by plate
+  Scenario: Search using plate
     Given the CV Client has Expired permits
-     When they choose to search by <parameter>
+     When they choose to search using <parameter>
      Then <displayed> expired permits are shown
 
    Examples:
@@ -84,17 +84,17 @@ Rule: CV Clients PA and SA can search for Expired permits by unit # and plate
      | A123      | all expired permits with plate A12345 |
 
 @orv2-1008-4
-  Scenario: Search by plate no plate exists
+  Scenario: Search using plate no plate exists
     Given the CV Client has Expired Permits
       And the plate does not exist in their inventory
-     When they choose to search by plate
+     When they choose to search using plate
      Then they see "No records found" 
 
 @orv2-1009
 Rule: CV Clients PA and SA can sort the list of expired permits
 
 Scenario: Sort list of Expired permits
-    Given the CV Client chooses to sort by a specific column
+    Given the CV Client chooses to sort using a specific column
     When they select any of the following column headers:
         | Permit #          |
         | Permit Type       |
@@ -103,7 +103,7 @@ Scenario: Sort list of Expired permits
         | Permit Start Date |
         | Permit End Date   |
         | Applicant         |
-    Then the list is sorted by the selected column header
+    Then the list is sorted using the selected column header
     And the sort order is the reverse of the previously selected order
         
 
