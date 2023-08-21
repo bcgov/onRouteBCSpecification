@@ -8,7 +8,7 @@ Scenario: First CV Client Business BCeID user sign into onRouteBC
     And the CV Client onRouteBC Profile does not exist
     When they successfully sign in using their BCeID credentials
     Then they are directed to the "Welcome to onRouteBC" page
-    And they see thier BCeID "Company Legal Name"
+    And they see their BCeID "Company Legal Name"
 
 @orv2-369-2
 Scenario: First CV Client Business BCeID user sign into onRouteBC create new profile
