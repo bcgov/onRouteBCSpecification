@@ -126,6 +126,7 @@ Scenario: Edit "My Information"
       | my info fields    | editable | 
       | First Name        | No       | 
       | Last Name         | No       | 
+      | User Group        | No       |
       | Email             | Yes      | 
       | City              | Yes      | 
       | Province/State    | Yes      | 
