@@ -1,38 +1,108 @@
-Feature: Permit Payment and Refund Summary Report
+Feature: PPC staff can generate a Permit Payment and Refund Summary Report that lists all payment and refund transactions completed in onRouteBC summarized by user.
 
-Rule: Filter report results
+Rule: PPC staff can choose filter parameters to include desired transactions
 
-  Scenario: Filter by issued by
-    Given 
-     When 
-     Then 
+@orv2-1166-1
+Scenario: Filter report results
+    Given PPC staff chooses to include transactions with a specific <parameter>:
+     | issued by      |
+     | from           |
+     | to             |
+     When they choose a <parameter> <options>
+     Then they see payment and refund transaction <results> that include the <parameter> <options> choosen
 
-  Scenario: Filter by start and end date
-    Given 
-     When 
-     Then 
+Examples:
+        | parameter      | options               | results                                             |
+        | issued by      | self issued           | only completed by CV Clients                        |
+        | issued by      | PPC                   | only completed by PPC                               |
+        | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
+        | from           | 2023/02/10 09:00 PM   | completed on or after 2023/02/10 09:00 PM           |
+        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 09:00 PM          |
 
-Rule: Generate report with permit financial transaction information
+Rule: Payment and refund detail has default parameters
 
+@orv2-1166-2
+  Scenario: Default parameters
+    Given PPC staff chooses to view a payment and refund report
+     When they choose to view the payment and refund detail report
+     Then they see the <parameters> with <default options>
 
+     Examples:
+        | parameters     | default options      |
+        | issued by      | self issued and PPC  |
+        | from           | previous day at 9 pm |
+        | to             | previous day at 9 pm |
 
-Rule: Format pdf output to 8.5x11 letter size layout
+Rule: Generate report with permit financial transaction data
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+@orv2-1166-3
+  Scenario: Display payment and refund transaction data
+    Given PPC staff have choosen their desired parameter options 
+     When they view the report
+     Then they see the following information about each payment and refund transaction:
+        | payment method |
+        | user           |
+        | amount         |
 
-Rule: Number pages consecutively
+@orv2-1166-4
+Scenario: User is not PPC staff
+  Given a transaction was completed by a CV Client
+   When the transaction is listed in the report
+   Then the user is "SELF_ISSUED"
 
-  Scenario: Filter by issued by
-    Given 
-     When 
-     Then 
+Rule: Display header information
 
-Rule: Print run date / time on generated report
+@orv2-1166-5
+  Scenario: Display payment and refund detail header information
+    Given PPC staff have choosen their desired parameter options 
+     When they view the report
+     Then they see the following header information:
+        | report title   | the title of the report                   |
+        | run date       | the date and time the report is generated |
+        | issued by      | choosen parameter options                 |
+        | time period    | choosen parameter options                 |
 
-  Scenario: Filter by issued by
-    Given 
-     When 
-     Then 
+@orv2-1166-6
+Rule: Group by payments and refunds
+
+@orv2-1166-7
+Rule: Sort by payments and refunds groups
+
+@orv2-1166-8
+Rule: Group by payment method
+
+@orv2-1166-9
+Rule: Sort by payment method in ascending order
+
+@orv2-1166-10
+Rule: Sub total (amount) payment method and user
+
+@orv2-1166-11
+Rule: Sub total payment method
+
+@orv2-1166-12
+Rule: Sub total payments and refunds
+
+@orv2-1166-13
+Rule: List sub totals of all payments, refunds and deposits by payment method in tabular format
+
+@orv2-1166-14
+Rule: Sub total deposit by payment method (payments less refunds)
+
+@orv2-1166-15
+Rule: Sub total all deposits
+
+@orv2-1166-16
+Rule: Total all deposits
+
+@orv2-1166-17
+Rule: List sub total of permits sold by permit type 
+
+@orv2-1166-18
+Rule Total all permits sold
+
+@orv2-1166-19
+Rule: Format pdf output to 8.5x11 letter size landscape layout
+
+@orv2-1166-20
+Rule: Number pages consecutively in footer

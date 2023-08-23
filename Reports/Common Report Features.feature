@@ -4,7 +4,7 @@ Rule: Default report type choosen on reports page
 
   Scenario: Arrive at reports page
     Given PPC staff are at the reports page
-     When view the list of available reports 
+     When they view the list of available reports 
      Then the Permit Payment and Refund Summary report is choosen
   
 Rule: Choose report type

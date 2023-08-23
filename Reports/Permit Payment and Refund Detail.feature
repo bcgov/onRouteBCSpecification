@@ -1,7 +1,8 @@
-Feature: Permit Payment and Refund Detail Report
+Feature: PPC staff can generate a Permit Payment and Refund Detail Report that lists all payment and refund transactions completed in onRouteBC individually.
 
 Rule: PPC staff can filter report results to include desired tranasactions
 
+@orv2-556-1
   Scenario: Filter report results
     Given PPC staff chooses to include transactions with a specific <parameter>:
      | issued by      |
@@ -17,9 +18,9 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | parameter      | options               | results                                             |
         | issued by      | self issued           | only completed by CV Clients                        |
         | issued by      | PPC                   | only completed by PPC                               |
-        | issued by      | self issued and ppc   | completed by both ppc and self issued by cv clients |
+        | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
         | permit type    | TROS                  | only TROS permits                                   |
-        | permit type    | TROS and TROW         | both TROS and TROW permits                          |
+        | permit type    | TROS and TROW         | both TROS and TROW permit types                          |
         | permit type    | all permit types      | all permit types                                    |
         | payment method | web - visa and cash   | only paid using Web - Visa and Cash                 |
         | payment method | cash                  | only paid using Cash                                |
@@ -31,6 +32,7 @@ Rule: PPC staff can filter report results to include desired tranasactions
 
 Rule: Payment and refund detail parameters have limited options
 
+@orv2-556-2
     Scenario: PPC staff chooses to filter report results
     Given PPC staff chooses to filter report results 
      When they choose a <parameter> 
@@ -64,6 +66,7 @@ Rule: Payment and refund detail parameters have limited options
 
 Rule: Payment and refund detail has default parameters
 
+@orv2-556-3
   Scenario: Default parameters
     Given PPC staff chooses to view a payment and refund report
      When they choose to view the payment and refund detail report
@@ -78,13 +81,14 @@ Rule: Payment and refund detail has default parameters
         | from           | previous day at 9 pm |
         | to             | previous day at 9 pm |
 
-Rule: Generate report with permit financial transaction information
+Rule: Generate report with permit financial transaction data
 
-  Scenario: Display payment and refund transaction information
+@orv2-556-4
+  Scenario: Display payment and refund transaction data
     Given PPC staff have choosen their desired parameter options 
      When they view the report
      Then they see the following information about each payment and refund transaction:
-        | issued on      |
+        | issued on      | 
         | transaction ID |
         | payment method |
         | receipt #      |
@@ -93,42 +97,65 @@ Rule: Generate report with permit financial transaction information
         | user           |
         | amount         |
 
+@orv2-556-5
+Scenario: User is not PPC staff
+  Given a transaction was completed by a CV Client
+   When the transaction is listed in the report
+   Then the user is "SELF_ISSUED"
+
 Rule: Display header information
 
+@orv2-556-6
   Scenario: Display payment and refund detail header information
     Given PPC staff have choosen their desired parameter options 
      When they view the report
      Then they see the following header information:
         | report title   | the title of the report                   |
-        | run date       | they date and time the report is gnerated |
+        | run date       | the date and time the report is generated |
         | issued by      | choosen parameter options                 |
         | payment method | choosen parameter options                 |
         | permit type    | choosen parameter options                 |
         | time period    | choosen parameter options                 |
 
+@orv2-556-7
 Rule: Group by payments and refunds
 
+@orv2-556-8
+Rule: Sort by payments and refunds groups 
+
+@orv2-556-9
 Rule: Group by payment method
 
-Rule: Sort by payment method then issued on
+@orv2-556-10
+Rule: Sort by payment method then issued on in ascending order
 
+@orv2-556-11
 Rule: Sub total payment method
 
+@orv2-556-12
 Rule: Sub total payments and refunds
 
+@orv2-556-13
+Rule: List sub totals of all payments, refunds and deposits by payment method in tabular format
+
+@orv2-556-14
 Rule: Sub total deposit by payment method (payments less refunds)
 
-Rule: List all sub totals of payments, refunds and deposit by payment method in tabular format
-
+@orv2-556-15
 Rule: Sub total all deposits by payment method
 
+@orv2-556-16
 Rule: Total all deposits
 
+@orv2-556-17
 Rule: List sub total of permits sold by permit type 
 
+@orv2-556-18
 Rule Total all permits sold
 
+@orv2-556-19
 Rule: Format pdf output to 8.5x11 letter size landscape layout
 
-Rule: Number pages consecutively
+@orv2-556-20
+Rule: Number pages consecutively in footer
 
