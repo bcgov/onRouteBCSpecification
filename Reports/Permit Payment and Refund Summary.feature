@@ -16,8 +16,8 @@ Examples:
         | issued by      | self issued           | only completed by CV Clients                        |
         | issued by      | PPC                   | only completed by PPC                               |
         | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
-        | from           | 2023/02/10 09:00 PM   | completed on or after 2023/02/10 09:00 PM           |
-        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 09:00 PM          |
+        | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
+        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
 
 Rule: Payment and refund detail has default parameters
 
@@ -61,7 +61,8 @@ Rule: Display header information
         | run date       | the date and time the report is generated |
         | issued by      | choosen parameter options                 |
         | time period    | choosen parameter options                 |
-
+      And multiple parameter options are separated by a comma
+ 
 @orv2-1166-6
 Rule: Group by payments and refunds
 

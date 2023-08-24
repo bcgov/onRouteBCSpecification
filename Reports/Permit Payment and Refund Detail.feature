@@ -28,7 +28,7 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | user           | JWILLSIE              | only completed JWILLSIE                             |
         | user           | JWILLSIE and KOPARKIN | completed by both JWILLSIE and KOPARKIN             |
         | from           | 2023/02/10 09:00 PM   | completed on or after 2023/02/10 09:00 PM           |
-        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 09:00 PM          |
+        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
 
 Rule: Payment and refund detail parameters have limited options
 
@@ -116,6 +116,7 @@ Rule: Display header information
         | payment method | choosen parameter options                 |
         | permit type    | choosen parameter options                 |
         | time period    | choosen parameter options                 |
+      And multiple parameter options are separated by a comma
 
 @orv2-556-7
 Rule: Group by payments and refunds
