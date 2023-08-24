@@ -15,9 +15,9 @@ Rule: Choose report type
      Then the choosen report is indicated
       And the choosen report parameters are displayed
 
-Rule View report
+Rule: View report
 
   Scenario: View report
     Given PPC staff chooses to view a report
      When they choose to view the report
-     Then the report is displayed in a new browser window
+     Then the report pdf is displayed in a new browser window
