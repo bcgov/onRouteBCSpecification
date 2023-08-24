@@ -1,10 +1,10 @@
 Feature: PPC staff can generate a Permit Payment and Refund Summary Report that lists all payment and refund transactions completed in onRouteBC summarized by user.
 
-Rule: PPC staff can choose filter parameters to include desired transactions
+Rule: PPC staff can choose filter parameters to include only desired transaction information
 
 @orv2-1166-1
 Scenario: Filter report results
-    Given PPC staff chooses to include transactions with a specific <parameter>:
+    Given PPC staff chooses to include transactions that match specific <parameter>:
      | issued by      |
      | from           |
      | to             |
@@ -19,7 +19,19 @@ Examples:
         | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
         | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
 
-Rule: Payment and refund detail has default parameters
+Rule: Payment and refund summary parameters have limited options
+
+@orv2-556-2
+    Scenario: PPC staff chooses to filter report results
+    Given PPC staff chooses to filter report results 
+     When they choose a <parameter> 
+     Then they see <options>
+
+     Examples:
+        | parameter | options          | description                                                                                                               |
+        | issued by | self issued, PPC | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
+        
+Rule: Payment and refund detail have default parameters
 
 @orv2-1166-2
   Scenario: Default parameters
@@ -28,10 +40,10 @@ Rule: Payment and refund detail has default parameters
      Then they see the <parameters> with <default options>
 
      Examples:
-        | parameters     | default options      |
-        | issued by      | self issued and PPC  |
-        | from           | previous day at 9 pm |
-        | to             | previous day at 9 pm |
+        | parameters | default options            |
+        | issued by  | self issued and PPC        |
+        | from       | previous day at 09:00 pm   |
+        | to         | current day at 08:59.99 pm |
 
 Rule: Generate report with permit financial transaction data
 

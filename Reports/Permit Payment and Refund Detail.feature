@@ -4,7 +4,7 @@ Rule: PPC staff can filter report results to include desired tranasactions
 
 @orv2-556-1
   Scenario: Filter report results
-    Given PPC staff chooses to include transactions with a specific <parameter>:
+    Given PPC staff chooses to include transactions that match specific <parameter>:
      | issued by      |
      | permit type    |
      | payment method |
@@ -20,15 +20,15 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | issued by      | PPC                   | only completed by PPC                               |
         | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
         | permit type    | TROS                  | only TROS permits                                   |
-        | permit type    | TROS and TROW         | both TROS and TROW permit types                          |
+        | permit type    | TROS and TROW         | both TROS and TROW permit types                     |
         | permit type    | all permit types      | all permit types                                    |
         | payment method | web - visa and cash   | only paid using Web - Visa and Cash                 |
         | payment method | cash                  | only paid using Cash                                |
         | user           | all users             | all ppc and self issued users                       |
-        | user           | JWILLSIE              | only completed JWILLSIE                             |
+        | user           | JWILLSIE              | only completed by JWILLSIE                          |
         | user           | JWILLSIE and KOPARKIN | completed by both JWILLSIE and KOPARKIN             |
         | from           | 2023/02/10 09:00 PM   | completed on or after 2023/02/10 09:00 PM           |
-        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
+        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM       |
 
 Rule: Payment and refund detail parameters have limited options
 
@@ -39,31 +39,12 @@ Rule: Payment and refund detail parameters have limited options
      Then they see <options>
 
      Examples:
-        | parameter   | options                     | description                                                                                                    |
-        | issued by   | self issued, PPC            | payment and refund transactions made by either CV Clients (self issued) or staff (PPC)                         |
-        | permit type | all permit types, TROS etc. | all permit types includes all permit type payment and refund transactions or could be one or many permit types |
-        | payment method | all payment methods, Cash, Cheque
-        Credit Account
-        GA Payment
-        Icepay - AMEX
-        Icepay Debit
-        Icepay - Mastercard
-        Icepay - Mastercard (Debit)
-        Icepay - Visa
-        Icepay - Visa (Debit)
-        POS - AMEX
-        PoS - Debit
-        PoS - Mastercard
-        Po - Mastercard (Debit)
-        Po - Visa
-        PoS - Visa (Debit)
-        Web - AMEX
-        Web - Mastercard
-        Web - Mastercard (Debit)
-        Web - Visa
-        Web - Visa (Debit) | all payment methods would include all payment and refund transactions completed using any payment method or one or many payment methods |
-        | user        | all users, JWILLSIE etc.    | all users would include all payment and refund transactions completed or one or many users                     |
-
+        | parameter      | options                                | description                                                                                                               |
+        | issued by      | self issued, PPC                       | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
+        | permit type    | all permit types, TROS etc.            | list of all permit types supported by onRouteBC, one or many selections possible                                          |
+        | payment method | all payment methods, Cash, Cheque etc. | list of all payment methods supported by onRouteBC, one or many selections possible                                       |
+        | user           | all users, JWILLSIE etc.               | list all users authorized to use reports, one or many selections possible                                                 |
+        
 Rule: Payment and refund detail has default parameters
 
 @orv2-556-3
@@ -73,13 +54,13 @@ Rule: Payment and refund detail has default parameters
      Then they see the <parameters> with <default options>
 
      Examples:
-        | parameters     | default options      |
-        | issued by      | self issued and PPC  |
-        | permit type    | all permit types     |
-        | payment method | all payment methods  |
-        | user           | all users            |
-        | from           | previous day at 9 pm |
-        | to             | previous day at 9 pm |
+        | parameters     | default options            |
+        | issued by      | self issued and PPC        |
+        | permit type    | all permit types           |
+        | payment method | all payment methods        |
+        | user           | all users                  |
+        | from           | previous day at 09:00 pm   |
+        | to             | current day at 08:59.99 pm |
 
 Rule: Generate report with permit financial transaction data
 
