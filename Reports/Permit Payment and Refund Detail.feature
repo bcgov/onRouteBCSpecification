@@ -27,24 +27,24 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | user           | all users             | all ppc and self issued users                       |
         | user           | JWILLSIE              | only completed by JWILLSIE                          |
         | user           | JWILLSIE and KOPARKIN | completed by both JWILLSIE and KOPARKIN             |
-        | from           | 2023/02/10 09:00 PM   | completed on or after 2023/02/10 09:00 PM           |
+        | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
         | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM       |
 
 Rule: Payment and refund detail parameters have limited options
 
 @orv2-556-2
-    Scenario: PPC staff chooses to filter report results
-    Given PPC staff chooses to filter report results 
-     When they choose a <parameter> 
-     Then they see <options>
+   Scenario: PPC staff chooses to filter report results
+   Given PPC staff chooses to filter report results 
+    When they choose a <parameter> 
+    Then they see <options>
 
-     Examples:
-        | parameter      | options                                | description                                                                                                               |
-        | issued by      | self issued, PPC                       | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
-        | permit type    | all permit types, TROS etc.            | list of all permit types supported by onRouteBC, one or many selections possible                                          |
-        | payment method | all payment methods, Cash, Cheque etc. | list of all payment methods supported by onRouteBC, one or many selections possible                                       |
-        | user           | all users, JWILLSIE etc.               | list all users authorized to use reports, one or many selections possible                                                 |
-        
+    Examples:
+       | parameter      | options                                | description                                                                                                               |
+       | issued by      | self issued, PPC                       | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
+       | permit type    | all permit types, TROS etc.            | list of all permit types supported by onRouteBC, one or many selections possible                                          |
+       | payment method | all payment methods, Cash, Cheque etc. | list of all payment methods supported by onRouteBC, one or many selections possible                                       |
+       | user           | all users, JWILLSIE etc.               | list all users authorized to use reports, one or many selections possible                                                 |
+       
 Rule: Payment and refund detail has default parameters
 
 @orv2-556-3

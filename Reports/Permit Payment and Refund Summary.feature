@@ -3,34 +3,34 @@ Feature: PPC staff can generate a Permit Payment and Refund Summary Report that 
 Rule: PPC staff can choose filter parameters to include only desired transaction information
 
 @orv2-1166-1
-Scenario: Filter report results
-    Given PPC staff chooses to include transactions that match specific <parameter>:
-     | issued by      |
-     | from           |
-     | to             |
-     When they choose a <parameter> <options>
-     Then they see payment and refund transaction <results> that include the <parameter> <options> choosen
+  Scenario: Filter report results
+      Given PPC staff chooses to include transactions that match specific <parameter>:
+       | issued by      |
+       | from           |
+       | to             |
+       When they choose a <parameter> <options>
+       Then they see payment and refund transaction <results> that include the <parameter> <options> choosen
 
-Examples:
-        | parameter      | options               | results                                             |
-        | issued by      | self issued           | only completed by CV Clients                        |
-        | issued by      | PPC                   | only completed by PPC                               |
-        | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
-        | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
-        | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
+  Examples:
+          | parameter      | options               | results                                             |
+          | issued by      | self issued           | only completed by CV Clients                        |
+          | issued by      | PPC                   | only completed by PPC                               |
+          | issued by      | self issued and ppc   | completed by both ppc and self issued by CV Clients |
+          | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
+          | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
 
 Rule: Payment and refund summary parameters have limited options
 
 @orv2-556-2
-    Scenario: PPC staff chooses to filter report results
-    Given PPC staff chooses to filter report results 
-     When they choose a <parameter> 
-     Then they see <options>
+  Scenario: PPC staff chooses to filter report results
+  Given PPC staff chooses to filter report results 
+   When they choose a <parameter> 
+   Then they see <options>
 
-     Examples:
-        | parameter | options          | description                                                                                                               |
-        | issued by | self issued, PPC | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
-        
+   Examples:
+      | parameter | options          | description                                                                                                               |
+      | issued by | self issued, PPC | payment and refund transactions made by either CV Clients (self issued) or staff (PPC), one or many selection is possible |
+       
 Rule: Payment and refund detail have default parameters
 
 @orv2-1166-2
@@ -65,7 +65,7 @@ Scenario: User is not PPC staff
 Rule: Display header information
 
 @orv2-1166-5
-  Scenario: Display payment and refund detail header information
+  Scenario: Display payment and refund summary header information
     Given PPC staff have choosen their desired parameter options 
      When they view the report
      Then they see the following header information:
