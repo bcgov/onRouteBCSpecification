@@ -89,10 +89,10 @@ Feature: PPC Clerk search for permits
      Then they see only valid <actions> for each permit <status>
 
   Examples:
-    | actions      | status                   |
-    | Amend        | active permit            |
-    | View Receipt | active or expired permit |
-    | Resend       | active or expired permit |
+    | actions      | status                                      |
+    | Amend        | active permit                               |
+    | View Receipt | active, superseded, void and expired permit |
+    | Resend       | active, superseded, void and expired permit |
      
 @orv2-937-9
   Scenario: Sort search results

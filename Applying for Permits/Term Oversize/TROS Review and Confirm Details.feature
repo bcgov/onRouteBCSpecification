@@ -59,7 +59,7 @@ Examples:
   | 270  | 270        |
   | 300  | 300        |
   | 330  | 330        |
-  | 1y   | 365        |
+  | 1y   | 360        |
 
 @orv2-627-6
 Scenario: Attestations

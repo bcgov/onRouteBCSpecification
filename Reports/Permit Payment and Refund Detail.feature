@@ -30,6 +30,11 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
         | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM       |
 
+  Scenario: Disable user selection
+    Given PPC staff is at Permit Payment and Refund Detail Report parameters page
+     When they choose to include only self issued
+     Then they are unable to choose users
+
 Rule: Payment and refund detail parameters have limited options
 
 @orv2-556-2
