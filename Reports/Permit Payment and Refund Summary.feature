@@ -19,6 +19,22 @@ Rule: PPC staff can choose filter parameters to include only desired transaction
           | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
           | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM          |
 
+Rule: when only self issued is choosen PPC staff are unable to choose users
+
+  Scenario: Disable user selection
+    Given PPC staff is at Permit Payment and Refund Detail Report parameters page
+     When they choose to include only self issued
+     Then they are unable to choose users
+
+Rule: when issued by is not choosen PPC staff are unable to view report and choose other parameters
+
+  Scenario: Issued by not choosen
+    Given PPC staff have not choosen and issued by
+     When they attempt to viw the report
+      And choose other parameters
+     Then they cannot view the report
+      And choose other parameters
+
 Rule: Payment and refund summary parameters have limited options
 
 @orv2-556-2
