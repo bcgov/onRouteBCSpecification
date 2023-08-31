@@ -125,10 +125,10 @@ Rule: Sub total all deposits
 Rule: Total all deposits
 
 @orv2-1166-17
-Rule: List sub total of permits sold by permit type 
+Rule: List sub total of new permits sold by permit type 
 
 @orv2-1166-18
-Rule Total all permits sold
+Rule Total all new permits sold
 
 @orv2-1166-19
 Rule: Format pdf output to 8.5x11 letter size landscape layout
