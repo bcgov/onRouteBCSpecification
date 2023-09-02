@@ -1,8 +1,20 @@
 Feature: PPC Admin revoke permit
 
+Rule: Record transaction id
+
+Rule: Default to previous payment method
+
+Rule: Choose cheque payment method
+
+Rule: View previous financial transaction information for permit being voided
+
+Rule: Indicate debit or credit
+
+Rule: Indicate void success
+
 Rule: Only PPC Admin can void a permit
 
-Rule: Void is always a full refund
+Rule: Void is always a full refund of all purchases made for a permit
 
 Rule: Can go back from payment screen and change reason
 
