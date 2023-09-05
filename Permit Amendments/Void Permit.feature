@@ -1,4 +1,10 @@
+Feature: Void a permit
+
 Rule: Only PPC Admin can void a permit
+
+Rule: Cannot void or revoke a void permit
+
+Rule: Cannot void a term permit once it has reached its effective date
 
 Rule: Void a permit
 
@@ -89,25 +95,29 @@ Rule: Void is always a full refund of all purchases made for a permit
      Then they see the total amount of all previous transactions for the voiding permit
       And refunds amounts are displayed as a negative number
 
-Rule: Record transaction id
-
-@orv2-1057
-
-
 Rule: Default to previous payment method
 
 @orv2-1057
-
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 Rule: Choose cheque payment method
 
 @orv2-1057
+  Scenario: 
+    Given 
+     When 
+     Then 
 
-
-
-Rule: Indicate debit or credit
+Rule: Record transaction id
 
 @orv2-1057
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 Rule: Indicate void success
 
@@ -121,6 +131,3 @@ Rule: Return to search results after finish, with active toggle off so all permi
      When 
      Then 
 
-Rule: Cannot void or revoke a void permit
-
-Rule: Cannot void a term permit once it has reached its effective date
