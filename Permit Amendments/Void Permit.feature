@@ -142,6 +142,12 @@ Rule: Finish void permit
      | previous search string | search results                                |
      | P2-00408617            | all permits with matching first 11 characters |
 
+Rule: Generate void permit
+
+Rule: Supersede voided permit
+
+Rule: Generate void permit pdf
+
 @orv2-1057
   Scenario: Generate void permit pdf
     Given the PPC Admin has inputted all mandatory information at finish voiding
@@ -154,8 +160,9 @@ Rule: Finish void permit
         | expiry date      | date/time updated to reflect the date the void pdf is generated     |
         | watermark        | a void watermark is displayed                                       |
   
+Rule: Generate void permit pdf receipt
 
-May. 10, 2023, 10:40 am PDT: Permit is voided because the road was closed.
+
 
 @orv2-1057
   Scenario: Permit label changes
@@ -165,17 +172,13 @@ May. 10, 2023, 10:40 am PDT: Permit is voided because the road was closed.
 
      Examples:
      | changes | labels                                |
-     |             | all permits with matching first 11 characters |
+     | voided permit            | all permits with matching first 11 characters |
 
 @orv2-1057
   Scenario: Associate payment method
     Given 
      When 
      Then 
-
-Rule: Generate void permit pdf
-
-Rule: Generate void permit pdf receipt
 
 Rule: Send void permit document to contact details from void permit page
 
