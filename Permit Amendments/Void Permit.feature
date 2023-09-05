@@ -98,36 +98,60 @@ Rule: Void is always a full refund of all purchases made for a permit
 Rule: Default to previous payment method
 
 @orv2-1057
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: Choose a refund method
+    Given the PPC Admin is at the finish voiding page
+     When they decided to choose a refund method
+     Then the previous payment method is chosen
+      And the previous payment method is indicated as chosen
+      And the previous payment method is displayed
 
 Rule: Choose cheque payment method
 
 @orv2-1057
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-Rule: Record transaction id
+  Scenario: Refund by cheque
+    Given the PPC Admin is at the finish voiding page
+     When they choose to refund by cheque
+     Then only refund by cheque is indicated as a refund method
+   
+Rule: Input mandatory transaction id
 
 @orv2-1057
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: Do not input transaction ID
+    Given the PPC Admin has chosen to refund to previous payment method
+     When they do not input a trabsaction ID
+      And they attempt to finish
+     Then they see "This is a required field"
+      And they cannot finish
+
+
 
 Rule: Indicate void success
 
 @orv2-1057
-
-Rule: Return to search results after finish, with active toggle off so all permits are viewable in the list
-
-@orv2-1057
   Scenario: 
     Given 
      When 
      Then 
 
+Rule: Finish void permit
+
+@orv2-1057
+  Scenario: Retrun to previous search results
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then they are directed to the search results page 
+      And they see indication of successful void
+      And they see search results of the previous search string 
+      And the active toggle is off
+
+@orv2-1057
+  Scenario: Permit label changes
+    Given 
+     When 
+     Then       
+
+@orv2-1057
+  Scenario: Associate payment method
+    Given 
+     When 
+     Then 
