@@ -6,7 +6,7 @@ Rule: Cannot void or revoke a void permit
 
 Rule: Cannot void a term permit once it has reached its effective date
 
-Rule: Void a permit
+Rule: PPC Admin can void a permit
 
 @orv2-1057
   Scenario: Found permit to void
@@ -123,35 +123,73 @@ Rule: Input mandatory transaction id
      Then they see "This is a required field"
       And they cannot finish
 
-
-
-Rule: Indicate void success
-
-@orv2-1057
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 Rule: Finish void permit
 
 @orv2-1057
-  Scenario: Retrun to previous search results
+  Scenario: Return to previous search results
     Given the PPC Admin has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
      Then they are directed to the search results page 
       And they see indication of successful void
-      And they see search results of the previous search string 
       And the active toggle is off
+
+  Scenario: Previous search string
+    Given the PPC Admin has finished a void permit
+     When they are directed to the <search results> page
+     Then they see the <previous search string> results
+
+     Examples:
+     | previous search string | search results                                |
+     | P2-00408617            | all permits with matching first 11 characters |
+
+@orv2-1057
+  Scenario: Generate void permit pdf
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then the permit pdf is generated
+      And the following information is updated on the generated void pdf:
+        | description      | information                                                         |
+        | revision history | reflects the date/time and freetext comment inputted at void permit |
+        | revised on       | date/time updated to reflect the date the void pdf is generated     |
+        | expiry date      | date/time updated to reflect the date the void pdf is generated     |
+        | watermark        | a void watermark is displayed                                       |
+  
+
+May. 10, 2023, 10:40 am PDT: Permit is voided because the road was closed.
 
 @orv2-1057
   Scenario: Permit label changes
-    Given 
-     When 
-     Then       
+    Given the PPC Admin has finished a void permit
+     When they are directed to the search results page
+     Then they see the permit <labels> updated to reflect the voided permit <changes>
+
+     Examples:
+     | changes | labels                                |
+     |             | all permits with matching first 11 characters |
 
 @orv2-1057
   Scenario: Associate payment method
     Given 
      When 
      Then 
+
+Rule: Generate void permit pdf
+
+Rule: Generate void permit pdf receipt
+
+Rule: Send void permit document to contact details from void permit page
+
+@orv2-936-1
+  Scenario: Send void permit and void receipt to email
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they finsh voiding a permit
+     Then the generated void permit PDF and void receipt PDF are emailed as attachments to:
+       | company contact email address |
+       | entered contact email address |
+      And the CV Client cannot reply to the email
+
+@orv2-936-2
+  Scenario: Send permit and receipt to fax number
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they successfully completed payment
+     Then their generated permit PDF and receipt PDF are faxed to the contact fax number
