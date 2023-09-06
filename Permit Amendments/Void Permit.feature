@@ -1,10 +1,10 @@
 Feature: Void a permit
 
-Rule: Only PPC SA can void a permit
-
 Rule: Cannot void a void permit
 
 Rule: Cannot void a term permit once it has reached its effective date
+
+Rule: Only PPC SA can void a permit
 
 Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
 
@@ -12,7 +12,7 @@ Rule: PPC and SA can resend void permit documents
 
 Rule: PPC SA can void a permit
 
-@orv2-1057
+@orv2-1057-0
   Scenario: Found permit to void
     Given the PPC SA has found a valid permit to void
      When they choose to void it
@@ -33,7 +33,7 @@ Rule: PPC SA can void a permit
 
 Rule: Choose contact details to send void permit documents too
 
-@orv2-1057
+@orv2-1057-1
   Scenario: Update contact details
     Given the PPC SA is voiding a permit
      When they are at the void permit page
@@ -42,7 +42,7 @@ Rule: Choose contact details to send void permit documents too
 
 Rule: Reason for void is mandatory
 
-@orv2-1057
+@orv2-1057-2
   Scenario: Do not input void reason
     Given the PPC SA is voiding a permit
      When they do not input a void reason
@@ -52,7 +52,7 @@ Rule: Reason for void is mandatory
 
 Rule: Input refund details of the total amount paid for the voiding permit
 
-@orv2-1057
+@orv2-1057-3
   Scenario: Input refund details
     Given the PPC SA has inputted a reason for voiding
      When they choose to continue
@@ -70,7 +70,7 @@ Rule: Input refund details of the total amount paid for the voiding permit
 
 Rule: Can go back from payment screen and change reason
 
-@orv2-1057
+@orv2-1057-4
   Scenario: Change void details
     Given the PPC SA is at the finish voiding page
      When they choose to change void details
@@ -79,7 +79,7 @@ Rule: Can go back from payment screen and change reason
 
 Rule: View previous financial transaction information for permit being voided
 
-@orv2-1057
+@orv2-1057-5
   Scenario: Display previous voiding permit transactions
     Given the PPC SA is at the finish voiding page
      When they view transaction history
@@ -92,7 +92,7 @@ Rule: View previous financial transaction information for permit being voided
 
 Rule: Void is always a full refund of all purchases made for a permit
 
-@orv2-1057
+@orv2-1057-6
   Scenario: 
     Given the PPC SA is at the finish voiding page
      When they view the fee summary
@@ -101,7 +101,7 @@ Rule: Void is always a full refund of all purchases made for a permit
 
 Rule: Default to previous payment method
 
-@orv2-1057
+@orv2-1057-7
   Scenario: Choose a refund method
     Given the PPC SA is at the finish voiding page
      When they decided to choose a refund method
@@ -111,7 +111,7 @@ Rule: Default to previous payment method
 
 Rule: Choose cheque payment method
 
-@orv2-1057
+@orv2-1057-8
   Scenario: Refund by cheque
     Given the PPC SA is at the finish voiding page
      When they choose to refund by cheque
@@ -119,7 +119,7 @@ Rule: Choose cheque payment method
    
 Rule: Input mandatory transaction id
 
-@orv2-1057
+@orv2-1057-9
   Scenario: Do not input transaction ID
     Given the PPC SA has chosen to refund to previous payment method
      When they do not input a transaction ID
@@ -129,7 +129,7 @@ Rule: Input mandatory transaction id
 
 Rule: Finish void permit
 
-@orv2-1057
+@orv2-1057-10
   Scenario: Return to previous search results
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
@@ -137,6 +137,7 @@ Rule: Finish void permit
       And they see indication of successful void
       And the active toggle is off
 
+@orv2-1057-11
   Scenario: Previous search string
     Given the PPC SA has finished a void permit
      When they are directed to the <search results> page
@@ -148,7 +149,7 @@ Rule: Finish void permit
 
 Rule: Generate void permit
 
-@orv2-1057
+@orv2-1057-12
   Scenario Outline: Generate void permit
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
@@ -163,7 +164,7 @@ Rule: Generate void permit
 
 Rule: Supersede voided permit
 
-@orv2-1057
+@orv2-1057-13
   Scenario: Supersede voided permit
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
@@ -172,7 +173,7 @@ Rule: Supersede voided permit
 
 Rule: Generate void permit pdf
 
-@orv2-1064-1
+@orv2-1057-14
   Scenario: Generate void permit pdf
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
@@ -186,6 +187,7 @@ Rule: Generate void permit pdf
   
 Rule: Generate void permit pdf receipt
 
+@orv2-1064-1
   Scenario: Generate void permit pdf receipt
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
@@ -194,7 +196,7 @@ Rule: Generate void permit pdf receipt
         | transaction id | inputted by the PPC SA |
       And the total amount is represented as a negative number as a "-" preceding the "$"
         
-@orv2-1057
+@orv2-1057-15
   Scenario: Permit label changes
     Given the PPC SA has finished a void permit
      When they are directed to the search results page
@@ -206,7 +208,7 @@ Rule: Generate void permit pdf receipt
 
 Rule: Send void permit documents to contact details from void permit page
 
-@orv2-936-1
+@orv2-1057-16
   Scenario: Send void permit and void receipt to email
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they finish voiding a permit
@@ -215,7 +217,7 @@ Rule: Send void permit documents to contact details from void permit page
        | entered contact email address |
       And the CV Client cannot reply to the email
 
-@orv2-936-2
+@orv2-1057-17
   Scenario: Send permit and receipt to fax number
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they successfully completed payment
