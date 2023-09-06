@@ -145,13 +145,23 @@ Rule: Finish void permit
 Rule: Generate void permit
 
 @orv2-1057
-  Scenario: Generate void permit
+  Scenario Outline: Generate void permit
     Given the PPC Admin has inputted all mandatory information at finish voiding
      When they choose to finish voiding the permit
-     Then the permit is generated
-      And the permit number is 
+     Then the void permit is generated
+      And the <permit number> is suffixed with a <revision number> preceded by a "-"
+
+      Examples:
+        | permit number   | revision number |
+        | P2-00408617-873 | -R2             |
 
 Rule: Supersede voided permit
+
+  Scenario: Supersede voided permit
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then the voided permit is labeled as superseded
+      And the permit end date is updated to the date the void permit is generated
 
 @orv2-1057
   Scenario: Generate void permit pdf
