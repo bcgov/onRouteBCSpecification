@@ -144,7 +144,20 @@ Rule: Finish void permit
 
 Rule: Generate void permit
 
+@orv2-1057
+  Scenario: Generate void permit
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then the permit is generated
+      And the permit number is 
+
 Rule: Supersede voided permit
+
+@orv2-1057
+  Scenario: Generate void permit pdf
+    Given the PPC Admin has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then the permit pdf is generated
 
 Rule: Generate void permit pdf
 
@@ -180,7 +193,7 @@ Rule: Generate void permit pdf receipt
      When 
      Then 
 
-Rule: Send void permit document to contact details from void permit page
+Rule: Send void permit documents to contact details from void permit page
 
 @orv2-936-1
   Scenario: Send void permit and void receipt to email
