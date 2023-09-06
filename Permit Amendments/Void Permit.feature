@@ -1,6 +1,6 @@
 Feature: Void a permit
 
-Rule: Cannot void a void permit
+Rule: Cannot void a void, superseded or expired permit
 
 Rule: Cannot void a term permit once it has reached its effective date
 
