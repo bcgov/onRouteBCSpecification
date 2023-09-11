@@ -30,6 +30,7 @@ Rule: PPC SA can void a permit
          | banner                | company client number  of voiding permit |
          | fee summary           | voiding permit description               |
          | fee summary           | total refund amount                      |
+         | revoke permit option  | mechanism to revoke permit               |
 
 Rule: Choose contact details to send void permit documents too
 
@@ -214,7 +215,7 @@ Rule: Send void permit documents to contact details from void permit page
      When they finish voiding a permit
      Then the generated void permit PDF and void receipt PDF are emailed as attachments to:
        | company contact email address |
-       | entered contact email address |
+       | email address inputted at void permit |
       And the CV Client cannot reply to the email
 
 @orv2-1057-17
