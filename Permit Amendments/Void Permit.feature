@@ -117,12 +117,6 @@ Rule: Default to previous payment method card type
         | Web - VISA               | PPC - VISA               |
         | Web - Mastercard (Debit) | PPC - Mastercard (Debit) |
 
-@orv2-1057-18
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 Rule: Choose cheque payment method
 
 @orv2-1057-8
