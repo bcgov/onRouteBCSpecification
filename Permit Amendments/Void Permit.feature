@@ -100,15 +100,28 @@ Rule: Void is always a full refund of all purchases made for a permit
      Then they see the total amount of all previous transactions for the voiding permit
       And refunds amounts are displayed as a negative number
 
-Rule: Default to previous payment method
+Rule: Default to previous payment method card type
 
 @orv2-1057-7
   Scenario: Choose a refund method
     Given the PPC SA is at the finish voiding page
      When they decided to choose a refund method
-     Then the previous payment method is chosen
-      And the previous payment method is indicated as chosen
+     Then the previous payment method is <card type> chosen
+      And the previous payment method is indicated as chosen with the <PPC prefix>
       And the previous payment method is displayed
+
+      Examples:
+        | card type                | PPC prefix               |
+        | Icepay - VISA            | PPC - VISA               |
+        | Icepay - Mastercard      | PPC - Mastercard         |
+        | Web - VISA               | PPC - VISA               |
+        | Web - Mastercard (Debit) | PPC - Mastercard (Debit) |
+
+@orv2-1057-18
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 Rule: Choose cheque payment method
 
@@ -223,3 +236,9 @@ Rule: Send void permit documents to contact details from void permit page
     Given the PPC SA has inputted all mandatory information at finish voiding
      When they successfully completed payment
      Then their generated permit PDF and receipt PDF are faxed to the contact fax number
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
