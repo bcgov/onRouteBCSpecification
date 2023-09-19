@@ -93,6 +93,7 @@ Feature: PPC Clerk search for permits
     | Amend        | active permit                               |
     | View Receipt | active, superseded, void and expired permit |
     | Resend       | active, superseded, void and expired permit |
+    | Void         | issued but NOT active permit                |
      
 @orv2-937-9
   Scenario: Sort search results

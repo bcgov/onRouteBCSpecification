@@ -1,6 +1,26 @@
 Feature:  Amend an active TROS permit 
    As PPC staff I need to be able to amend an active TROS permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
+@orv2-938-11
+  Scenario: Found permit to amend
+    Given the PPC SA has found a valid permit to amend
+     When they choose to amend it
+     Then they are directed to the amend permit page
+      And they see:
+         | description           | information                              |
+         | page header           | Void Permit                              |
+         | cookie crumb location | Void Permit                              |
+         | permit type name      | of voiding permit                        |
+         | permit number         | of voiding permit                        |
+         | permit start date     | of voiding permit                        |
+         | permit end date       | of voiding permit                        |
+         | vehicle plate         | of voiding permit                        |
+         | banner                | company name of voiding permit           |
+         | banner                | company client number  of voiding permit |
+         | fee summary           | voiding permit description               |
+         | fee summary           | total refund amount                      |
+         | revoke permit option  | mechanism to revoke permit               |
+
 Rule: PPC SA and PC can change a TROS permit vehicle plate 
 
 @orv2-938-1

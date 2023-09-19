@@ -2,7 +2,7 @@ Feature: Void a permit
 
 Rule: Cannot void a void, superseded or expired permit
 
-Rule: Cannot void a term permit once it has reached its effective date
+Rule: Cannot void a term permit once it has reached its effective date (this means we will be unable to revoke a term permit)
 
 Rule: Only PPC SA can void a permit
 
