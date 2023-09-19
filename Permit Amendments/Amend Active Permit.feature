@@ -1,39 +1,47 @@
-Feature:  Amend an active permit 
-   As a PPC Clerk I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
+Feature:  Amend an active TROS permit 
+   As PPC staff I need to be able to amend an active TROS permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
+
+Rule: PPC SA and PC can change a TROS permit vehicle plate 
 
 @orv2-938-1
   Scenario: Change vehicle plate
-    Given a PPC Clerk has chosen to change the plate number
+    Given a PPC SA or PC has chosen to change the plate number
      When they update the vehicle plate number
      Then the change is accepted
 
-@orv2-938-2
-  Scenario: Extend term duration
-    Given a PPC Clerk has chosen to extend the permit duration
-     When they extend <permit duration>
-     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+Rule: PPC SA and PC can change a TROS permit's duration 
 
-     Examples:
-       | permit expiry date | permit duration | amended permit expiry date |
-       | March 30, 2023     | 30              | April 29, 2023             |
-       | April 13, 2023     | 30              | May 13, 2023               |
+# @orv2-938-2 (Deprecated for version 1 of this feature)
+#  Scenario: Extend term duration
+#    Given a PPC SA or PC has chosen to extend the permit duration
+#     When they extend <permit duration>
+#     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+
+#     Examples:
+#       | permit expiry date | permit duration | amended permit expiry date |
+#       | March 30, 2023     | 30              | April 29, 2023             |
+#       | April 13, 2023     | 30              | May 13, 2023               |
   
 @orv2-938-3
   Scenario: Shorten term duration
-    Given a PPC Clerk has chosen to shorten the permit duration
+    Given a PPC SA or PC has chosen to shorten the permit duration
      When they shorten <permit duration>
      Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
      
      Examples:
        | permit expiry date | permit duration | amended permit expiry date |
-       | March 30, 2023     | 30              | April 29, 2023             |
-       | April 13, 2023     | 30              | May 13, 2023               |
+       | April 29, 2023     | 30              | March 30, 2023             |
+       | May 13, 2023       | 30              | April 13, 2023             |
+
+Rule: PPC SA and PC can change a TROS permit vehicle 
 
 @orv2-938-4
   Scenario: Change vehicle
-    Given a PPC Clerk has chosen to change the vehicle
+    Given a PPC SA or PC has chosen to change the vehicle
      When they update the vehicle
      Then the change is accepted
+
+Rule: PPC SA and PC can add free text amendment Reason 
 
 @orv2-938-5
   Scenario: Save amendment reason
@@ -44,8 +52,17 @@ Feature:  Amend an active permit
       And the logged in <PPC Staff username> is saved
 
    Examples:
-     | <PPC Staff username> | <timestamped>             | <amendment reason>                                |
-     | jdoe                 | Apr. 15, 2023, 8colon23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
+     | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
+     | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
+
+
+@orv2-938-7
+  Scenario: Attempt to continue without updating amendment
+    Given a PPC SA or PC has not inputted a reasonf ro amendment amendment 
+     When they chose to continue to review and confirm details
+     Then they see "This is a required field"
+
+Rule: The fee credit or debit is calculated if is is affected by the amendment 
 
 @orv2-938-6
   Scenario: Calculate amendment fee
@@ -53,11 +70,7 @@ Feature:  Amend an active permit
      When 
      Then 
 
-@orv2-938-7
-  Scenario: Display working in company name
-    Given A PPC Staff chooses to amend a permit
-     When they choose a permit to amend
-     Then they see "You are currently working in <Company Name>."
+Rule: Amendment change is indicated 
 
 @orv2-938-8
   Scenario: Indicate change made
