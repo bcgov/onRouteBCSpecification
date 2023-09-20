@@ -88,10 +88,14 @@ Rule: PPC SA and PC can add free text amendment Reason
      | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
      | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
-
 @orv2-938-7
+<<<<<<< HEAD
+  Scenario: Attempt to continue without updating amendment reason
+    Given a PPC SA or PC has not inputted a reason for amendment 
+=======
   Scenario: Attempt to continue without updating amendment
     Given a PPC SA or PC has not inputted a reason for amendment amendment 
+>>>>>>> 5307463e07dc3d3cdfed67fe75b09fabaebad39a
      When they chose to continue to review and confirm details
      Then they see "This is a required field"
 
