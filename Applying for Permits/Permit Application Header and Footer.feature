@@ -5,7 +5,7 @@ Feature: Display permit application header information
   Scenario: Display application number
     Given the CV Client is at the "Permit Application" page
      When they save the permit application
-     Then they see a uniqe permit application number
+     Then they see a unique permit application number
 
 @orv2-552-2
   Scenario: Display date created
