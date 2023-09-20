@@ -42,30 +42,6 @@ Rule: PPC SA and PC can change a TROS permit vehicle plate
      When they update the vehicle plate number
      Then the change is accepted
 
-Rule: PPC SA and PC can change a TROS permit's duration 
-
-# @orv2-938-2 (Deprecated for version 1 of this feature)
-#  Scenario: Extend term duration
-#    Given a PPC SA or PC has chosen to extend the permit duration
-#     When they extend <permit duration>
-#     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
-
-#     Examples:
-#       | permit expiry date | permit duration | amended permit expiry date |
-#       | March 30, 2023     | 30              | April 29, 2023             |
-#       | April 13, 2023     | 30              | May 13, 2023               |
-  
-@orv2-938-3
-  Scenario: Shorten term duration
-    Given a PPC SA or PC has chosen to shorten the permit duration
-     When they shorten <permit duration>
-     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
-     
-     Examples:
-       | permit expiry date | permit duration | amended permit expiry date |
-       | April 29, 2023     | 30              | March 30, 2023             |
-       | May 13, 2023       | 30              | April 13, 2023             |
-
 Rule: PPC SA and PC can change a TROS permit vehicle 
 
 @orv2-938-4
