@@ -3,7 +3,7 @@ Feature:  Amend an active TROS permit
 
 Rule: PPC SA or PC can amend an issued or active permit
 
-@orv2-938-11
+@orv2-938
   Scenario: Found permit to amend
     Given the PPC SA has found a valid permit to amend
      When they choose to amend it
@@ -22,7 +22,7 @@ Rule: PPC SA or PC can amend an issued or active permit
 
 Rule: PPC SA or PC can change all permit details of the amending permit
 
-@orv2-938-
+@orv2-938
 Scenario: PPC SA or PC choose to amend a valid permit
     Given the PPC SA or PC has chosen to amend a valid permit
      When they are at the amend permit page
@@ -42,9 +42,33 @@ Rule: PPC SA and PC can change a TROS permit vehicle plate
      When they update the vehicle plate number
      Then the change is accepted
 
+Rule: PPC SA and PC can change a TROS permit's duration 
+
+# @orv2-938-2 (Deprecated for version 1 of this feature)
+#  Scenario: Extend term duration
+#    Given a PPC SA or PC has chosen to extend the permit duration
+#     When they extend <permit duration>
+#     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+
+#     Examples:
+#       | permit expiry date | permit duration | amended permit expiry date |
+#       | March 30, 2023     | 30              | April 29, 2023             |
+#       | April 13, 2023     | 30              | May 13, 2023               |
+  
+@orv2-938
+  Scenario: Shorten term duration
+    Given a PPC SA or PC has chosen to shorten the permit duration
+     When they shorten <permit duration>
+     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
+     
+     Examples:
+       | permit expiry date | permit duration | amended permit expiry date |
+       | April 29, 2023     | 30              | March 30, 2023             |
+       | May 13, 2023       | 30              | April 13, 2023             |
+
 Rule: PPC SA and PC can change a TROS permit vehicle 
 
-@orv2-938-4
+@orv2-938
   Scenario: Change vehicle
     Given a PPC SA or PC has chosen to change the vehicle
      When they update the vehicle
@@ -52,7 +76,7 @@ Rule: PPC SA and PC can change a TROS permit vehicle
 
 Rule: PPC SA and PC can add free text amendment Reason 
 
-@orv2-938-5
+@orv2-938
   Scenario: Save amendment reason
     Given the PPC Staff has recorded an amenment reason
      When they choose to save the permit application or continue to "Review and Confirm Details"
@@ -77,7 +101,7 @@ Rule: PPC SA and PC can add free text amendment Reason
 
 Rule: The fee credit or debit is calculated if is is affected by the amendment 
 
-@orv2-938-6
+@orv2-938
   Scenario: Calculate amendment fee
     Given the  
      When 
@@ -85,13 +109,13 @@ Rule: The fee credit or debit is calculated if is is affected by the amendment
 
 Rule: Amendment change is indicated 
 
-@orv2-938-8
+@orv2-938
   Scenario: Indicate change made
     Given a PPC staff is at the "Review and Confirm Details" page
      When they review their updates made
      Then the information updated is indicated as "Changed"
 
-@orv2-938-9
+@orv2-938
   Scenario: Record reason for amendment
     Given they PPC Staff is at "Amend Permit"
      When they 
