@@ -140,20 +140,20 @@ Rule: PPC SA or PC can update or save new vehicles to inventory
 
 Scenario: Save new vehicle to "Vehicle Inventory"
     Given The PPC SA or PC manually inputted "Vehicle Information"
-    When the VIN + Company dosent match an existing VIN in "Vehicle Inventory"
+    When the VIN + Company doesn't match an existing VIN in "Vehicle Inventory"
     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
     Then the Vehicle will be added to "Vehicle Inventory" when they select "continue"
     And if they select NO the vehicle will not be saved to "Vehicle Inventory"
 
 
-  Scenario: Update exsiting vehicle to "Vehicle Inventory"
-    Given The PPC SA or PC manually inputed "Vehicle Information"
+  Scenario: Update existing vehicle to "Vehicle Inventory"
+    Given The PPC SA or PC manually inputted "Vehicle Information"
     When the VIN + Company does match an existing VIN in "Vehicle Inventory"
     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
     Then the Vehicle will update the previously existing Vehicle to "Vehicle Inventory" when they select "continue"
     And if they select NO the vehicle will not be updated in "Vehicle Inventory"
 
-Rule: PPC SA or PC can search for and recal vehicles in inventory
+Rule: PPC SA or PC can search for and recall vehicles in inventory
 
   Scenario: Find vehicle in inventory by Unit Number
     Given the PPC SA or PC has selected Unit Number in "Choose from"

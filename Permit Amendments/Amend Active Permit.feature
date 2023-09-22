@@ -3,7 +3,7 @@ Feature:  Amend an active permit
 
 Rule: PPC SA or PC can amend an issued or active permit
 
-@orv2-938
+
   Scenario: Found permit to amend
     Given the PPC SA has found a valid permit to amend
      When they choose to amend it
@@ -22,7 +22,7 @@ Rule: PPC SA or PC can amend an issued or active permit
 
 Rule: PPC SA or PC can view all permit details of the amending permit
 
-@orv2-938
+
 Scenario: PPC SA or PC choose to amend a valid permit
     Given the PPC SA or PC has chosen to amend a valid permit
      When they are at the amend permit page
@@ -37,7 +37,7 @@ Scenario: PPC SA or PC choose to amend a valid permit
 
 Rule: PPC SA and PC can add free text amendment Reason 
 
-@orv2-938
+
   Scenario: Save amendment reason
     Given the PPC Staff has inputted an amendment reason
      When they choose continue to review and confirm details
@@ -50,29 +50,36 @@ Rule: PPC SA and PC can add free text amendment Reason
      | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
 
-@orv2-938
+
   Scenario: Attempt to continue without updating amendment reason
     Given a PPC SA or PC has not inputted a reason for amendment 
      When they chose to continue to review and confirm details
      Then they see "This is a required field"
       And they cannot continue
 
-@orv2-938
+
   Scenario: Reason for amendment mandatory
     Given a PPC Staff is at the "Amend Permit" page 
      When they attempt to continue
       And they have not entered a reason for amendment
      Then they see "This is a required field"
 
-Rule: Show revision history
+Rule: PPC SA or PC can view the permit revision history
 
   Scenario: Previous permit revisions
-    Given 
-     When 
-     Then 
+    Given an amending permit has previous revisions
+     When a PPC SA or PC is amending a permit
+     Then they see previous <amendment reason>
+      And the <PPC Staff username> of the logged in user that saved the amendment
+      And the <timestamp> of when the amendment reason was saved
+
+   Examples:
+     | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
+     | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
+
 
   Scenario: No previous permit revisions
-    Given 
-     When 
-     Then 
+    Given an amending permit does not have previous revisions
+     When a PPC SA or PC is amending a permit
+     Then there is no information displayed under revision history
 
