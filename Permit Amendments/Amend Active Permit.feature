@@ -1,5 +1,5 @@
-Feature:  Amend an active TROS permit 
-   As PPC staff I need to be able to amend an active TROS permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
+Feature:  Amend an active permit 
+   As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
 Rule: PPC SA or PC can amend an issued or active permit
 
@@ -15,12 +15,12 @@ Rule: PPC SA or PC can amend an issued or active permit
          | permit type name      | of amending permit                              |
          | permit number         | of amending permit                              |
          | date created          | date the amending permit application is created |
-         | last updated          | of amending permit?                             |
+         | last updated          | date the amending permit application is created |
          | banner                | company name of amending permit                 |
          | banner                | company client number of amending permit        |
          | company information   | company mailing address of amending permit      |
 
-Rule: PPC SA or PC can change all permit details of the amending permit
+Rule: PPC SA or PC can view all permit details of the amending permit
 
 @orv2-938
 Scenario: PPC SA or PC choose to amend a valid permit
@@ -34,52 +34,13 @@ Scenario: PPC SA or PC choose to amend a valid permit
          | revision history     | past reason for amendment free text             |
          | reason for amendment | free text field to capture reason for amendment |
 
-Rule: PPC SA and PC can change a TROS permit vehicle plate 
-
-@orv2-938-1
-  Scenario: Change vehicle plate
-    Given a PPC SA or PC has chosen to change the plate number
-     When they update the vehicle plate number
-     Then the change is accepted
-
-Rule: PPC SA and PC can change a TROS permit's duration 
-
-# @orv2-938-2 (Deprecated for version 1 of this feature)
-#  Scenario: Extend term duration
-#    Given a PPC SA or PC has chosen to extend the permit duration
-#     When they extend <permit duration>
-#     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
-
-#     Examples:
-#       | permit expiry date | permit duration | amended permit expiry date |
-#       | March 30, 2023     | 30              | April 29, 2023             |
-#       | April 13, 2023     | 30              | May 13, 2023               |
-  
-@orv2-938
-  Scenario: Shorten term duration
-    Given a PPC SA or PC has chosen to shorten the permit duration
-     When they shorten <permit duration>
-     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
-     
-     Examples:
-       | permit expiry date | permit duration | amended permit expiry date |
-       | April 29, 2023     | 30              | March 30, 2023             |
-       | May 13, 2023       | 30              | April 13, 2023             |
-
-Rule: PPC SA and PC can change a TROS permit vehicle 
-
-@orv2-938
-  Scenario: Change vehicle
-    Given a PPC SA or PC has chosen to change the vehicle
-     When they update the vehicle
-     Then the change is accepted
 
 Rule: PPC SA and PC can add free text amendment Reason 
 
 @orv2-938
   Scenario: Save amendment reason
-    Given the PPC Staff has recorded an amenment reason
-     When they choose to save the permit application or continue to "Review and Confirm Details"
+    Given the PPC Staff has inputted an amendment reason
+     When they choose continue to review and confirm details
      Then the <amendment reason> is saved
       And the reason is <timestamped> 
       And the logged in <PPC Staff username> is saved
@@ -88,43 +49,30 @@ Rule: PPC SA and PC can add free text amendment Reason
      | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
      | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
-@orv2-938-7
-<<<<<<< HEAD
-  Scenario: Attempt to continue without updating amendment reason
-    Given a PPC SA or PC has not inputted a reason for amendment 
-=======
-  Scenario: Attempt to continue without updating amendment
-    Given a PPC SA or PC has not inputted a reason for amendment amendment 
->>>>>>> 5307463e07dc3d3cdfed67fe75b09fabaebad39a
-     When they chose to continue to review and confirm details
-     Then they see "This is a required field"
-
-Rule: The fee credit or debit is calculated if is is affected by the amendment 
 
 @orv2-938
-  Scenario: Calculate amendment fee
-    Given the  
+  Scenario: Attempt to continue without updating amendment reason
+    Given a PPC SA or PC has not inputted a reason for amendment 
+     When they chose to continue to review and confirm details
+     Then they see "This is a required field"
+      And they cannot continue
+
+@orv2-938
+  Scenario: Reason for amendment mandatory
+    Given a PPC Staff is at the "Amend Permit" page 
+     When they attempt to continue
+      And they have not entered a reason for amendment
+     Then they see "This is a required field"
+
+Rule: Show revision history
+
+  Scenario: Previous permit revisions
+    Given 
      When 
      Then 
 
-Rule: Amendment change is indicated 
-
-@orv2-938
-  Scenario: Indicate change made
-    Given a PPC staff is at the "Review and Confirm Details" page
-     When they review their updates made
-     Then the information updated is indicated as "Changed"
-
-@orv2-938
-  Scenario: Record reason for amendment
-    Given they PPC Staff is at "Amend Permit"
-     When they 
+  Scenario: No previous permit revisions
+    Given 
+     When 
      Then 
-
-@orv2-938-10
-  Scenario: Reason for amendment mandatory
-    Given a PPC Staff is at the "Amend Permit" page 
-     When they attempt to save or continue
-      And they have not entered a reason for amendment
-     Then they see "This is a required field"
 

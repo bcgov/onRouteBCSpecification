@@ -1,7 +1,14 @@
 Feature: Amend TROS permit details
-    As PPC staff I need to be able to amend an active TROS permit by changing the dates, so that I can assist PPC SA or PCs. 
+    As PPC staff I need to be able to amend an active TROS permit by changing the dates, so that I can assist clients. 
 
-Rule: PPC SA and PC can change a TROS permit's duration 
+Rule: PPC SA or PC cannot change the permit start date once the permit is active
+
+  Scenario: Attempt to change active permit start date
+    Given A permit is active 
+     When a PPC SA or PC chooses to change the start date
+     Then they are unable to change the start date
+
+Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments 
 
 # @orv2-938-2 (Deprecated for version 1 of this feature)
 #  Scenario: Extend term duration
@@ -14,9 +21,9 @@ Rule: PPC SA and PC can change a TROS permit's duration
 #       | March 30, 2023     | 30              | April 29, 2023             |
 #       | April 13, 2023     | 30              | May 13, 2023               |
   
-@orv2-938-3
+
   Scenario: Shorten term duration
-    Given a PPC SA or PC has chosen to shorten the permit duration
+    Given a PPC SA has chosen to shorten the permit duration
      When they shorten <permit duration>
      Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
      
@@ -54,15 +61,8 @@ Rule: PPC SA and PC can change a TROS permit's duration
        | 03/01/2023 | 30              | March 30, 2023     |
        | 03/15/2023 | 30              | April 13, 2023     |
 
-Rule: PPC SA and PC can change a non-active TROS permit's start date  
+Rule: Show commodity information 
 
-  Scenario: Permit start date
-    Given the PPC SA or PC is at amend permit
-      And they have chosen to amend a permit that is not active
-     When they enter a start date into the future or past of the current date 
-     Then their start date is accepted
-    
-Rule: Show  information    
   Scenario: Show information box
     Given the PPC SA or PC is at amend permit
     When they are about to select a commodities decription
