@@ -1,6 +1,30 @@
 Feature:  Amend an active permit 
    As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
+Rule: PPC and SA or PC can resend superseded permit documents
+
+Rule: PPC SA or PC can amend a permit
+
+  Scenario: Valid permit
+    Given the PPC SA or PC have found a valid permit to amend
+     When they choose to amend the permit
+     Then they are directed to the amend permit page
+ 
+ 
+Rule: An amending permit application is only saved when finished
+
+  Scenario: Close browser tab
+    Given a PPC SA or PC has started an amending permit application 
+     When they close the browser tab or window
+     Then the amending permit application is not saved
+
+  Scenario: Go back
+    Given a PPC SA or PC has started an amending permit application 
+     When they use the browser to navigate back
+     Then the amending permit application is not saved
+  
+  
+
 Rule: PPC SA or PC can amend an issued or active permit
 
 
@@ -23,16 +47,16 @@ Rule: PPC SA or PC can amend an issued or active permit
 Rule: PPC SA or PC can view all permit details of the amending permit
 
 
-Scenario: PPC SA or PC choose to amend a valid permit
-    Given the PPC SA or PC has chosen to amend a valid permit
-     When they are at the amend permit page
-     Then they see all permit application details of the amending permit:
-         | description          | information                                     |
-         | contact information  | of the amending permit                          |
-         | permit details       | of the amending permit                          |
-         | vehicle information  | of amending permit                              |
-         | revision history     | past reason for amendment free text             |
-         | reason for amendment | free text field to capture reason for amendment |
+ Scenario: PPC SA or PC choose to amend a valid permit
+     Given the PPC SA or PC has chosen to amend a valid permit
+      When they are at the amend permit page
+      Then they see all permit application details of the amending permit:
+          | description          | information                                     |
+          | contact information  | of the amending permit                          |
+          | permit details       | of the amending permit                          |
+          | vehicle information  | of amending permit                              |
+          | revision history     | past reason for amendment free text             |
+          | reason for amendment | free text field to capture reason for amendment |
 
 
 Rule: PPC SA and PC can add free text amendment Reason 
@@ -48,7 +72,6 @@ Rule: PPC SA and PC can add free text amendment Reason
    Examples:
      | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
      | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
-
 
 
   Scenario: Attempt to continue without updating amendment reason
@@ -83,3 +106,83 @@ Rule: PPC SA or PC can view the permit revision history
      When a PPC SA or PC is amending a permit
      Then there is no information displayed under revision history
 
+Rule: PPC SA or PC can cancel a permit amendment application
+
+  Scenario: Cancel permit amendment application
+    Given the PPC SA or PC has chosen to cancel a permit amendment application
+     When they cancel 
+     Then they are directed to the <search results> page
+      And they see the <previous search string> results
+      And active toggle is off
+
+     Examples:
+     | previous search string | search results                                            |
+     | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
+
+
+  Scenario Outline: Generate revoke permit
+    Given the PPC SA has inputted all mandatory information at revoke permit
+     When they choose to revoke the permit
+     Then the revoke permit is generated
+      And the <permit number> is suffixed with a <revision number> preceded by a "-"
+      And the revoke permit is labeled as revoked
+      And the revoke permit end date is updated to the date the revoke permit is generated
+
+      Examples:
+        | permit number   | revision number |
+        | P2-00408617-873 | -R2             |
+
+Rule: Amending permit is superseded by amended permit
+
+
+  Scenario: Supersede amending permit
+    Given the PPC SA or PC has inputted a valid refund method
+     When they finish the amending permit application
+     Then the amending permit is labeled as superseded
+     
+Rule: Return to previous search results when finished amending permit application
+
+  Scenario: Previous search string
+    Given the PPC SA or PC has finished the amending permit application
+     When they are directed to the <search results> page
+     Then they see the <previous search string> results
+      And they see "Permit Amended" notification
+      And active toggle is off
+
+     Examples:
+     | previous search string | search results                                            |
+     | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
+
+
+Rule: View previous financial transaction information for amending permit
+
+
+ Scenario: Previous financial transactions exist
+     Given the PPC SA is at the finish amendment page
+      When they view transaction history
+      Then they see the following details of all previous transactions for the amending permit:
+        | description                                    | information    |
+        | permit number for listed transaction           | Permit #       |
+        | payment method used for the listed transaction | Payment Method |
+        | transaction id for the listed transaction      | Transaction ID |
+        | total fee for the listed transaction           | Amount 
+
+
+Rule: Generate void permit pdf receipt
+
+  Scenario: Refund is calculated
+    Given the PPC SA has inputted all mandatory information at finish voiding
+     When they choose to finish voiding the permit
+     Then the void permit pdf receipt is generated 
+      And the total amount is represented as a negative number with a "-" preceding the "$"
+
+  Scenario: Refund by cheque
+    Given the PPC SA has chosen to refund by cheque
+     When the void permit receipt pdf is generated
+     Then the transaction id is the onRouteBC transaction number
+
+  Scenario: Refund to previous payment method
+    Given the PPC SA has chosen to refund to the previous payment method
+      And they input a transaction id
+     When the void permit receipt pdf is generated
+     Then the transaction id is the transaction id inputted at finish voiding

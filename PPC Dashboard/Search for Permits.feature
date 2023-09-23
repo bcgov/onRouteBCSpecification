@@ -1,5 +1,5 @@
 Feature: PPC Clerk search for permits
-   As a PPC Clerk I want to search for a CV Client permit so that I can amend it and reissue a revised legal permit.
+   As a PPC Clerk I want to search for a CV Client permit so that I can perform actions to permits to assist CV Clients.
 
 @orv2-937-1
   Scenario: Search by permit number
@@ -122,5 +122,6 @@ Feature: PPC Clerk search for permits
    Scenario: Resend active permit and receipt documents
     Given a PPC Clerk is at "Resend Permit and Receipt"
      When they chose to resend
-     Then they are directed to the "Search Results" page
+     Then the permit pdf and permit receipt pdf are sent to the contact details submitted at resend permit and receipt
+      And they are directed to the "Search Results" page
       And they see "Successfully Sent"

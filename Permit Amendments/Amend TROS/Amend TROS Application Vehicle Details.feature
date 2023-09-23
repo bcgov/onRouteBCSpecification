@@ -3,15 +3,15 @@ As PPC staff I need to be able to amend an active TROS permit by changing the ve
 
 Rule: PPC SA and PC can change a TROS permit vehicle plate 
 
-@orv2-938-1
-  Scenario: Change vehicle plate
-    Given a PPC SA or PC has chosen to change the plate number
-     When they update the vehicle plate number
-     Then the change is accepted
+ @orv2-938-1
+   Scenario: Change vehicle plate
+     Given a PPC SA or PC has chosen to change the plate number
+      When they update the vehicle plate number
+      Then the change is accepted
 
 Rule: PPC SA and PC can change a TROS permit vehicle 
 
-@orv2-938-4
+
   Scenario: Change vehicle
     Given a PPC SA or PC has chosen to change the vehicle
      When they update the vehicle
@@ -120,30 +120,30 @@ Rule: PPC SA and PC can change a TROS permit vehicle
        | Vehicle Sub-type    |
 
 
-Scenario: Show mandatory fields 
-    Given the PPC SA or PC is inputing their "Vehicle Information" 
-    When they do not enter valid data into a <mandatory field>
-    Then they see <mandatory field error message> (as presented in the Wireframe)  
-    And they wont be able to "continue" until resolved
- 
-    Examples:
-      | mandatory field  | mandatory field error message |
-      | VIN              | This is a required field      |
-      | Plate            | This is a required field      |
-      | Year             | This is a required field      |
-      | Make             | This is a required field      |
-      | Vehicle Type     | This is a required field      |
-      | Vehicle Sub-type | This is a required field      |
-      | Country          | This is a required field      |
+ Scenario: Show mandatory fields 
+     Given the PPC SA or PC is inputing their "Vehicle Information" 
+     When they do not enter valid data into a <mandatory field>
+     Then they see <mandatory field error message> (as presented in the Wireframe)  
+     And they wont be able to "continue" until resolved
+  
+     Examples:
+       | mandatory field  | mandatory field error message |
+       | VIN              | This is a required field      |
+       | Plate            | This is a required field      |
+       | Year             | This is a required field      |
+       | Make             | This is a required field      |
+       | Vehicle Type     | This is a required field      |
+       | Vehicle Sub-type | This is a required field      |
+       | Country          | This is a required field      |
 
 Rule: PPC SA or PC can update or save new vehicles to inventory
 
-Scenario: Save new vehicle to "Vehicle Inventory"
-    Given The PPC SA or PC manually inputted "Vehicle Information"
-    When the VIN + Company doesn't match an existing VIN in "Vehicle Inventory"
-    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-    Then the Vehicle will be added to "Vehicle Inventory" when they select "continue"
-    And if they select NO the vehicle will not be saved to "Vehicle Inventory"
+ Scenario: Save new vehicle to "Vehicle Inventory"
+     Given The PPC SA or PC manually inputted "Vehicle Information"
+     When the VIN + Company doesn't match an existing VIN in "Vehicle Inventory"
+     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
+     Then the Vehicle will be added to "Vehicle Inventory" when they select "continue"
+     And if they select NO the vehicle will not be saved to "Vehicle Inventory"
 
 
   Scenario: Update existing vehicle to "Vehicle Inventory"
