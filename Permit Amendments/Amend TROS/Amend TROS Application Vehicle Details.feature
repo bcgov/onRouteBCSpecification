@@ -1,22 +1,21 @@
 Feature: Amend TROS Application Vehicle Details
-As PPC staff I need to be able to amend an active TROS permit by changing the vehicle plate and vehicle so that I can assist PPC SA or PCs.
+   As PPC staff I need to be able to amend an active TROS permit by changing the vehicle plate and vehicle so that I can assist PPC SA or PCs.
 
+@orv2-938-1
 Rule: PPC SA and PC can change a TROS permit vehicle plate 
 
- @orv2-938-1
    Scenario: Change vehicle plate
      Given a PPC SA or PC has chosen to change the plate number
       When they update the vehicle plate number
       Then the change is accepted
 
+@orv2-938-2
 Rule: PPC SA and PC can change a TROS permit vehicle 
-
 
   Scenario: Change vehicle
     Given a PPC SA or PC has chosen to change the vehicle
      When they update the vehicle
      Then the change is accepted
-
 
   Scenario: TROS eligible "Power Unit"
     Given a PPC SA or PC is at "Vehicle Details" for a TROS permit application
@@ -104,7 +103,6 @@ Rule: PPC SA and PC can change a TROS permit vehicle
       | Steering Trailers - Manned                                                                          |
       | Steering Trailers - Self/Remote                                                                     |
 
-
   Scenario: Input Vehicle information
     Given the PPC SA or PC is at the "Permit Application" page
      When They are at the "Vehicle Information" section
@@ -118,7 +116,6 @@ Rule: PPC SA and PC can change a TROS permit vehicle
        | Province            |
        | Vehicle Type        |
        | Vehicle Sub-type    |
-
 
  Scenario: Show mandatory fields 
      Given the PPC SA or PC is inputing their "Vehicle Information" 
@@ -136,6 +133,7 @@ Rule: PPC SA and PC can change a TROS permit vehicle
        | Vehicle Sub-type | This is a required field      |
        | Country          | This is a required field      |
 
+@orv2-938-3
 Rule: PPC SA or PC can update or save new vehicles to inventory
 
  Scenario: Save new vehicle to "Vehicle Inventory"
@@ -153,6 +151,7 @@ Rule: PPC SA or PC can update or save new vehicles to inventory
     Then the Vehicle will update the previously existing Vehicle to "Vehicle Inventory" when they select "continue"
     And if they select NO the vehicle will not be updated in "Vehicle Inventory"
 
+@orv2-938-4
 Rule: PPC SA or PC can search for and recall vehicles in inventory
 
   Scenario: Find vehicle in inventory by Unit Number
@@ -171,18 +170,18 @@ Rule: PPC SA or PC can search for and recall vehicles in inventory
     | 1           | 12      | Trailer      |
     | 1           | 123     | Power Unit   |
 
-
   Scenario: Find vehicle in inventory by Plate Number
     Given the PPC SA or PC has selected Plate Number Number in "Choose from"
     When they enter <plate number> in "Select Vehicle"
     And they select their desired vehicle
     Then the <vehicle> is displayed
     And they are grouped by the <vehicle type> either "Power Unit" or "Trailer"
-  Example:
-    | unit number | vehicle | vehicle type |
-    | 123         | 1       | Power Unit   |
-    | 123         | 12      | Power Unit   |
-    | 123         | 123     | Power Unit   |
-    | 1           | 1       | Trailer      |
-    | 1           | 12      | Trailer      |
-    | 1           | 123     | Power Unit   |
+
+    Example:
+      | plate number | vehicle | vehicle type |
+      | 123          | 1       | Power Unit   |
+      | 123          | 12      | Power Unit   |
+      | 123          | 123     | Power Unit   |
+      | 1            | 1       | Trailer      |
+      | 1            | 12      | Trailer      |
+      | 1            | 123     | Power Unit   |

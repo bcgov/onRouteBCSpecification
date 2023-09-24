@@ -1,6 +1,7 @@
 Feature: Generate revised permit number
    As staff I need to ensure a permit application revision number is generated when an amended permit is completed so that each application can be identified individually.
 
+@orv2-941-0
 Rule: A revision suffix is added to a permit that has been amended
  
   Scenario Outline: Permit is amended

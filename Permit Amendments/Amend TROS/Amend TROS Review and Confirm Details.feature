@@ -2,6 +2,7 @@
 Feature: "Review and Confirm Details"
    As a PPC SA or PC I need to be able review the information I submitted in the amend permit application so that I can ensure it is accurate before completing.
 
+@orv2-938-25
 Rule: PPC SA and PC must complete all mandatory fields
 
  Scenario: Amending permit application form complete
@@ -9,7 +10,6 @@ Rule: PPC SA and PC must complete all mandatory fields
      When there are no error notifications in the amending permit application
       And they choose to proceed to review and confirm details
      Then they are directed to review and confirm details page
-
 
  Scenario: Amending permit application form incomplete
      Given PPC SA or PC has not filled all mandatory fields in the amending permit application
@@ -19,6 +19,7 @@ Rule: PPC SA and PC must complete all mandatory fields
        And they see "This is a required field"
        And incomplete mandatory fields indicated
 
+@orv2-938-26
 Rule: Show completed amending permit application information
 
  Scenario: Display amend permit application details summary
@@ -34,7 +35,6 @@ Rule: Show completed amending permit application information
        | Selected commodities listed with links to the source of truth |
        | Vehicle information of the amending permit application        |
 
-
   Scenario: Indicate change made
     Given a PPC staff is at the "Review and Confirm Details" page
      When they review their updates made
@@ -45,13 +45,13 @@ Rule: Show completed amending permit application information
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-
  Scenario: Save vehicle indication
      Given a PPC SA or PC has choosen to save a vehicle submitted in the permit application to inventory
      And they continued from the "Permit Application" page
      When they arrive at the "Review and Confirm Details" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
+@orv2-938-27
 Rule: Show amending permit application fee
 
  Scenario: Display fee summary
@@ -62,7 +62,6 @@ Rule: Show amending permit application fee
  Examples:
    | Description          | Price  |
    | Term Oversize Permit | -$30.00 |
-
 
  Scenario: Fee delta calculation
      Given a PPC SA or PC has shortened the duration of a TROS permit
@@ -75,7 +74,8 @@ Rule: Show amending permit application fee
    | 60          | 30                   | 30  |
    | 90          | 60                   | 30  |
    | 360         | 270                  | 90  |
-  
+
+@orv2-938-28  
 Rule: PPC SA or PC must complete attestations 
 
  Scenario: Attestations
@@ -86,13 +86,13 @@ Rule: PPC SA or PC must complete attestations
        | I confirm I am compliant with the appropriate policy for my selected commodity(s). |
        | I confirm I am the registered owner (or lessee) of the vehicle being permitted.    |
 
-
  Scenario: Attestations warning
      Given a PPC SA or PC is at the "Review and Confirm Details" page
      When they do not check one or more attestations
      Then they see "Checkbox selection is required"
      And any unselected checkbox is outlined in red
 
+@orv2-938-29
 Rule: PPC SA or PC can edit an active amending permit application
 
  Scenario: Edit Application
