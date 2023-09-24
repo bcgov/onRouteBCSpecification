@@ -1,9 +1,26 @@
 Feature: PPC Admin revoke permit
    As PPC staff I need to be able to revoke a permit so that I can ensure invalid permits are no longer active.
 
-Rule: Cannot revoke a revoked, voided, superseded or expired permit
+Rule: Can only revoke an issued or active permit
+
+
+  Scenario: Permit is voided
+    Given the PPC SA has found a void permit
+     When they choose to revoke it
+     Then they cannot revoke it
+
+
 Rule: PPC SA and PC can view revoke permit pdf and revoke permit receipt pdf  
+
+ @orv2-937-7
+ @orv2-937-11
+
+
 Rule: PPC SA or PC can resend revoke permit documents
+
+ @orv2-937-10
+ @orv2-937-12
+
 
 Rule: PPC SA can revoke a permit
 

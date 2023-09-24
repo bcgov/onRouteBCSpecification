@@ -62,19 +62,19 @@ Feature: PPC Clerk search for permits
 
 @orv2-937-6
   Scenario: Show only active permits
-    Given a PPC Clerk is at the search results
+    Given a PPC SA, PC or EO is at the search results
      When they choose to show only active permits
      Then only permits that have an end date and time on or before the current date and time are displayed
 
 @orv2-937-7
   Scenario: View Permit PDF
-    Given a PPC Clerk is at the search results
+    Given a PPC SA, PC or EO is at the search results
      When they chose to view the permit pdf
      Then the permit pdf is displayed in a new browser tab
 
 @orv2-937-11
   Scenario: View Receipt PDF
-    Given a PPC Clerk is at the search results
+    Given a PPC SA, PC or EO is at the search results
      When they chose to view the receipt pdf
      Then the receipt pdf is displayed in a new browser tab
 
@@ -111,16 +111,16 @@ Feature: PPC Clerk search for permits
 
 @orv2-937-10
   Scenario: View resend active permit and receipt documents contact details
-    Given a PPC Clerk is at search results
+    Given a PPC SA or PC is at search results
      When they chose to resend active permit and receipt documents
      Then they see the original permit application contact details:
         | email |
         | fax   |
-      And they can update 
+      And they can update contact details
 
 @orv2-937-12
    Scenario: Resend active permit and receipt documents
-    Given a PPC Clerk is at "Resend Permit and Receipt"
+    Given a PPC SA or PC is at "Resend Permit and Receipt"
      When they chose to resend
      Then the permit pdf and permit receipt pdf are sent to the contact details submitted at resend permit and receipt
       And they are directed to the "Search Results" page

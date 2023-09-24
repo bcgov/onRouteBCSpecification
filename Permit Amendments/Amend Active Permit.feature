@@ -1,7 +1,29 @@
 Feature:  Amend an active permit 
    As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
+Rule: Can only amend an issued or active permit
+
+
+  Scenario: Permit is voided
+    Given the PPC SA has found a void permit
+     When they choose to amend it
+     Then they cannot amend it
+
+  Scenario: Permit is issued
+    Given the PPC SA has found a issued permit
+     When they choose to amend it
+     Then they are directed to the amend permit 
+
+Rule: PPC SA and PC can view superseded permit pdf and superseded permit receipt pdf  
+
+ @orv2-937-7
+ @orv2-937-11
+
+
 Rule: PPC and SA or PC can resend superseded permit documents
+
+ @orv2-937-10
+ @orv2-937-12
 
 Rule: PPC SA or PC can amend a permit
 

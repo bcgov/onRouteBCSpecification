@@ -1,11 +1,33 @@
 Feature: Void a permit
    As PPC staff I need to be able to revoke an issued permit so that I can assist CV Clients.
 
-Rule: Cannot void a voided, revoked, superseded or expired permit
-Rule: Cannot void an active term permit
+Rule: Can only void an issued permit
+
+  Scenario: Permit is voided
+    Given the PPC SA has found a void permit
+     When they choose to void it
+     Then they cannot void it
+
+  Scenario: Permit is issued
+    Given the PPC SA has found a issued permit
+     When they choose to void it
+     Then they are directed to void permit 
+
+  Scenario: Permit is active
+    Given the PPC SA has found a active permit
+     When they choose to void it
+     Then they cannot void it
+
+# Rule: Cannot void an active term permit
 Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
+
+ @orv2-937-7
+ @orv2-937-11
+
 Rule: PPC and SA or PC can resend void permit documents
 
+ @orv2-937-10
+ @orv2-937-12
 Rule: A void permit application is only saved when finished
 
   Scenario: Close browser tab
