@@ -73,7 +73,7 @@ Feature: PPC Clerk search for permits
      Then the permit pdf is displayed in a new browser tab
 
 @orv2-937-11
-  Scenario: View Reciept PDF
+  Scenario: View Receipt PDF
     Given a PPC Clerk is at the search results
      When they chose to view the receipt pdf
      Then the receipt pdf is displayed in a new browser tab
@@ -93,7 +93,7 @@ Feature: PPC Clerk search for permits
     | Amend        | active permit                               |
     | View Receipt | active, superseded, void and expired permit |
     | Resend       | active, superseded, void and expired permit |
-    | Void         | issued but NOT active permit                |
+    | Void/Revoke  | issued and active permit                    |
      
 @orv2-937-9
   Scenario: Sort search results
@@ -125,3 +125,20 @@ Feature: PPC Clerk search for permits
      Then the permit pdf and permit receipt pdf are sent to the contact details submitted at resend permit and receipt
       And they are directed to the "Search Results" page
       And they see "Successfully Sent"
+
+Rule: permits results display status labels based on their current state
+
+
+  Scenario Outline: Display permit status labels
+    Given PPC SA, PC or EO 
+     When they search for a permit 
+     Then it shows the correct <permit status> based on the <permit state>
+
+     Examples:
+     | permit state | permit status |
+     | Voided       | Voided        |
+     | Expired      | Expired       |
+     | Superseded   | Superseded    |
+     | Issued       |               |
+     | Active       |               |
+

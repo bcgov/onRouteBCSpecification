@@ -6,12 +6,6 @@ Rule: Cannot void an active term permit
 Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
 Rule: PPC and SA or PC can resend void permit documents
 
-Rule: PPC SA can void a permit
-
-  Scenario: Valid permit
-    Given the PPC SA has found a valid permit to void
-     When they choose to void the permit
-     Then they are directed to the void permit page
 Rule: A void permit application is only saved when finished
 
   Scenario: Close browser tab
@@ -25,6 +19,12 @@ Rule: A void permit application is only saved when finished
      Then the void permit application is not saved
 
 Rule: PPC SA can void a permit
+
+
+  Scenario: Valid permit
+    Given the PPC SA has found a valid permit to void
+     When they choose to void the permit
+     Then they are directed to the void permit page
 
  @orv2-1057-0
    Scenario: Found permit to void
@@ -65,9 +65,9 @@ Rule: Reason for void is mandatory
       Then they see "This is a required field"
        And they cannot proceed to void the permit
 
-Rule: Input refund details of the total amount paid for the voiding permit
+Rule: Input refund transaction details of the total amount paid for the voiding permit
 
- @orv2-1057-3
+
    Scenario: Input refund details
      Given the PPC SA has inputted a reason for voiding
       When they choose to continue
@@ -105,14 +105,24 @@ Rule: View previous financial transaction information for permit being voided
         | transaction id for the listed transaction      | Transaction ID |
         | total fee for the listed transaction           | Amount (CAD)   |
 
+Rule: View void permit application submission details
+
+
+  Scenario: All contact details inputted
+    Given the PPC SA inputted all contact details at void permit
+     When they continue to finish voiding
+     Then all inputted contact details are shown
+      And inputted reason for void is shown
+
+
 Rule: Void is always a full refund of all purchases made for a permit
 
- @orv2-1057-6
+
    Scenario: 
      Given the PPC SA is at the finish voiding page
       When they view the fee summary
       Then they see the total amount of all previous transactions for the voiding permit
-       And refunds amounts are displayed as a negative number with a "-" preceding the "$"
+       And refund amounts are displayed as a negative number with a "-" preceding the "$"
 
 Rule: Default to previous payment method card type
 
@@ -121,7 +131,7 @@ Rule: Default to previous payment method card type
      Given the PPC SA has inputted a reason for voiding
       When they choose to continue
       Then they are directed to finish voiding
-       And the previous payment method <card type> is chosen with the <PPC prefix>
+       And the previous payment method <card type> is used and is prefixed with the <PPC prefix>
 
        Examples:
          | card type                | PPC prefix               |
@@ -142,13 +152,13 @@ Rule: Input mandatory transaction id
 
  @orv2-1057-9
    Scenario: Do not input transaction ID
-     Given the PPC SA has chosen to refund to previous payment method
+     Given the PPC SA has chosen to refund to the previous payment method
       When they do not input a transaction ID
        And they attempt to finish
       Then they see "This is a required field"
        And they cannot finish
 
-Rule: Finish void permit
+Rule: Return to previous search results when finished void permit
 
  @orv2-1057-10
    Scenario: Return to previous search results
@@ -182,9 +192,9 @@ Rule: Generate void permit
 
        Examples:
          | permit number   | revision number |
-         | P2-00408617-873 | -R2             |
+         | P2-00408617-873 | R2             |
 
-Rule: Supersede voided permit
+Rule: Voided permit is superseded by void permit
 
  @orv2-1057-13
    Scenario: Supersede voided permit
@@ -201,11 +211,11 @@ Rule: Generate void permit pdf
       When they choose to finish voiding the permit
       Then the void permit pdf is generated
        And the following information is updated on the generated void permit pdf:
-         | description      | information                                                         |
+         | description      | information                                                          |
          | revision history | reflects the date/time and free text comment inputted at void permit |
-         | revised on       | date/time updated to reflect the date the void pdf is generated     |
-         | expiry date      | date/time updated to reflect the date the void pdf is generated     |
-         | watermark        | a void watermark is displayed                                       |
+         | revised on       | date/time updated to reflect the date the void pdf is generated      |
+         | expiry date      | date/time updated to reflect the date the void pdf is generated      |
+         | watermark        | a void watermark is displayed                                        |
   
 Rule: Generate void permit pdf receipt
 

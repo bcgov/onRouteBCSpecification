@@ -59,7 +59,7 @@ Rule: PPC SA or PC can view all permit details of the amending permit
           | reason for amendment | free text field to capture reason for amendment |
 
 
-Rule: PPC SA and PC can add free text amendment Reason 
+Rule: PPC SA or PC can add free text amendment Reason 
 
 
   Scenario: Save amendment reason
@@ -104,7 +104,7 @@ Rule: PPC SA or PC can view the permit revision history
   Scenario: No previous permit revisions
     Given an amending permit does not have previous revisions
      When a PPC SA or PC is amending a permit
-     Then there is no information displayed under revision history
+     Then there is no revision history displayed
 
 Rule: PPC SA or PC can cancel a permit amendment application
 
@@ -132,26 +132,6 @@ Rule: PPC SA or PC can cancel a permit amendment application
         | permit number   | revision number |
         | P2-00408617-873 | -R2             |
 
-Rule: Amending permit is superseded by amended permit
-
-
-  Scenario: Supersede amending permit
-    Given the PPC SA or PC has inputted a valid refund method
-     When they finish the amending permit application
-     Then the amending permit is labeled as superseded
-     
-Rule: Return to previous search results when finished amending permit application
-
-  Scenario: Previous search string
-    Given the PPC SA or PC has finished the amending permit application
-     When they are directed to the <search results> page
-     Then they see the <previous search string> results
-      And they see "Permit Amended" notification
-      And active toggle is off
-
-     Examples:
-     | previous search string | search results                                            |
-     | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
 
 
 Rule: View previous financial transaction information for amending permit
@@ -168,21 +148,114 @@ Rule: View previous financial transaction information for amending permit
         | total fee for the listed transaction           | Amount 
 
 
-Rule: Generate void permit pdf receipt
+Rule: Default to previous payment method card type
+
+ @orv2-1057-7
+   Scenario: Choose a refund method
+     Given the PPC SA has completed mandatory field at review and confirm details
+      When they choose to continue
+      Then they are directed to finish amendment
+       And the previous payment method <card type> is used and is prefixed with the <PPC prefix>
+
+       Examples:
+         | card type                | PPC prefix               |
+         | Icepay - VISA            | PPC - VISA               |
+         | Icepay - Mastercard      | PPC - Mastercard         |
+         | Web - VISA               | PPC - VISA               |
+         | Web - Mastercard (Debit) | PPC - Mastercard (Debit) |
+
+
+Rule: Choose cheque payment method
+
+
+   Scenario: Refund by cheque
+     Given the PPC SA is at the finish amendment page
+      When they choose to refund by cheque
+      Then only refund by cheque is indicated as a refund method
+   
+Rule: Input mandatory transaction id
+
+
+   Scenario: Do not input transaction ID
+     Given the PPC SA has chosen to refund to the previous payment method
+      When they do not input a transaction ID
+       And they attempt to finish
+      Then they see "This is a required field"
+       And they cannot finish
+
+ 
+
+     
+Rule: Return to previous search results when finished amending permit application
+
+  Scenario: Previous search string
+    Given the PPC SA or PC has finished the amending permit application
+     When they are directed to the <search results> page
+     Then they see the <previous search string> results
+      And they see "Permit Amended" notification
+      And active toggle is off
+
+     Examples:
+     | previous search string | search results                                            |
+     | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
+
+
+Rule: Amending permit is superseded by amended permit
+
+
+  Scenario: Supersede amending permit
+    Given the PPC SA or PC has inputted a valid refund method
+     When they finish the amending permit application
+     Then the amending permit is labeled as superseded
+
+
+Rule: Generate amended permit pdf
+
+ @orv2-1057-14
+   Scenario: Generate amended permit pdf
+     Given the PPC SA has inputted all mandatory information at finish amendment
+      When they choose to finish amending the permit
+      Then the amended permit pdf is generated
+       And the following information is updated on the generated amended permit pdf:
+         | description      | information                                                                |
+         | permit details   | reflects amendments made                                                   |
+         | revision history | reflects the date/time and free text comment(s) inputted at amended permit |
+         | revised on       | date/time updated to reflect the date the amended pdf is generated         |
+         | permit number    | permit number reflects the revised number                                  |
+
+
+Rule: Generate amended permit pdf receipt
 
   Scenario: Refund is calculated
-    Given the PPC SA has inputted all mandatory information at finish voiding
-     When they choose to finish voiding the permit
-     Then the void permit pdf receipt is generated 
+    Given the PPC SA has inputted all mandatory information at finish amendment
+     When they choose to finish amending the permit
+     Then the amended permit pdf receipt is generated 
       And the total amount is represented as a negative number with a "-" preceding the "$"
 
   Scenario: Refund by cheque
     Given the PPC SA has chosen to refund by cheque
-     When the void permit receipt pdf is generated
+     When the amended permit receipt pdf is generated
      Then the transaction id is the onRouteBC transaction number
 
   Scenario: Refund to previous payment method
     Given the PPC SA has chosen to refund to the previous payment method
       And they input a transaction id
-     When the void permit receipt pdf is generated
-     Then the transaction id is the transaction id inputted at finish voiding
+     When the amended permit receipt pdf is generated
+     Then the transaction id is the transaction id inputted at finish amendment
+
+Rule: Send revoke permit documents to contact details from void permit page
+
+
+  Scenario: Send permit and receipt to email
+    Given the PPC SA has inputted all mandatory information at finish amendment
+     When they choose to finish amending the permit
+     Then the generated permit PDF and receipt PDF are emailed as attachments to:
+       | company contact email address |
+       | entered contact email address |
+      And the CV Client cannot reply to the email
+
+
+  Scenario: Send permit and receipt to fax number
+    Given the PPC SA has inputted all mandatory information at finish amendment
+     When they choose to finish amending the permit
+     Then the generated permit PDF and receipt PDF are faxed to the contact fax number

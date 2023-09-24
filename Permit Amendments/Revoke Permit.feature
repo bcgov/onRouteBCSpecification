@@ -104,9 +104,9 @@ Rule: Generate revoke permit
 
        Examples:
          | permit number   | revision number |
-         | P2-00408617-873 | -R2             |
+         | P2-00408617-873 | R2             |
 
-Rule: Supersede revoked permit
+Rule: Revoked permit is superseded by the revoke permit
 
  @orv2-1054-6
    Scenario: Supersede revoked permit

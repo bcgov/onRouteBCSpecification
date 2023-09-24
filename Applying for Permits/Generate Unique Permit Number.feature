@@ -16,7 +16,7 @@ Rule: A unique permit number is generated when a permit is saved in onRouteBC
   Scenario: Permit number meta-data source
     Given a permit number is generated
      When the permit number is generated
-     Then the it is fromed using the following rules:
+     Then the it is formed using the following rules:
        | element                                                | order | specification |
        | "P" for permit "A" for application                     | 1     | 1 character   |
        | "1" created by PPC or "2" created online by CV Client  | 2     | 1 digit       |
