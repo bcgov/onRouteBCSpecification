@@ -25,6 +25,7 @@ Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments
   
   Scenario: Shorten term duration
     Given a PPC SA has chosen to shorten the permit duration
+      And the remaining permit duration is =>60 
      When they shorten <permit duration>
      Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>  
      
