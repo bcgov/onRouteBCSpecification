@@ -20,7 +20,6 @@ Rule: Can only void an issued permit
      Then they cannot void it
 
 # Rule: Cannot void an active term permit
-
 @orv2-1057-0
 Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
 
@@ -265,7 +264,7 @@ Rule: Generate void permit pdf receipt
 @orv2-1057-20
 Rule: Send void permit documents to contact details from void permit page
 
- @orv2-1057-21-16
+ @orv2-1057-21
    Scenario: Send void permit and void receipt to email
      Given the PPC SA has inputted all mandatory information at finish voiding
       When they finish voiding a permit
@@ -286,7 +285,7 @@ Rule: Send void permit documents to contact details from void permit page
        | mandatory field | mandatory field error message | 
        | Email           | This is a required field      | 
 
- @orv2-1057-22-17
+ @orv2-1057-22
    Scenario: Send permit and receipt to fax number
      Given the PPC SA has inputted all mandatory information at finish voiding
       When they successfully completed payment
