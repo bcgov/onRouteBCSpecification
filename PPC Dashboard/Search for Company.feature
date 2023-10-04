@@ -1,5 +1,5 @@
-Feature: Staff search for permits
-   As a PPC SA or PC and EO I want to search for a CV Client permit so that I can review information about CV Clients and perform actions to permits to assist CV Clients.
+Feature: Staff search for company
+   As a PPC SA or PC and EO I want to search for a CV Client so that I can review contact information about CV Clients.
 
 @orv2-1362-1
 Rule: 
