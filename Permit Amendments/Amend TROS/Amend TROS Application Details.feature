@@ -75,4 +75,6 @@ Rule: Show commodity information
      When they select a commodities decription 
      Then the selected CVSE form will be attached to their permit after payment
      And they are able to select multiple commodities descriptions
-     And by default Gerneral Permit Conditions and Permit Scope and limitation are already selected for the user and cannot be unselected. 
+     And by default Gerneral Permit Conditions and Permit Scope and limitation are already selected for the user and cannot be unselected.
+
+
