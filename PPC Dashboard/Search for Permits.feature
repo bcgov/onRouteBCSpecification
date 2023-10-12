@@ -1,9 +1,9 @@
 Feature: PPC Clerk search for permits
-   As a PPC Clerk I want to search for a CV Client permit so that I can perform actions to permits to assist CV Clients.
+   As a PPC SA and PC I want to search for a CV Client permit so that I can perform actions to permits to assist CV Clients.
 
 @orv2-937-1
   Scenario: Search by permit number
-    Given a PPC Clerk has chosen to search by permit number
+    Given a PPC SA, PC or EO has chosen to search by permit number
      When they search by the <permit number> using the first 11 characters of the permit
      Then they see permit <results> with the first 11 characters used in the search
       And all permit <statuses> can be displayed if found
@@ -15,6 +15,13 @@ Feature: PPC Clerk search for permits
    | P1-37982658   | P1-37982658-946-A01 | Revoked  |
    | P1-37982658   | P1-37982658-946-A01 | Voided   |
   
+@orv2-937-13
+  Scenario: No results found
+    Given a PPC SA, PC or EO has chosen to search for a permit
+     When they initiate a search 
+      And there are no results found
+     Then they see "No results found"
+
 @orv2-937-2
   Scenario: Default to search by permit number
     Given the PPC Clerk is at the global search page
@@ -36,7 +43,7 @@ Feature: PPC Clerk search for permits
     | Permit Type       | The permit type name                                                  |
     | Plate             | The plate of the vehicle permitted                                    |
     | Company Name      | The company name the permit was issued to                             |
-    | Permit Start Date | The start date the permit submitted at application                    |
+    | Permit Start Date | The start date of the permit submitted at application                 |
     | Permit End Date   | The calculated expiry date based on the term submitted at application |
     | Issue Date        | The date the permit was issued                                        |
 
