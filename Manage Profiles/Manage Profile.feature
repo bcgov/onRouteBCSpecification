@@ -35,8 +35,9 @@ Scenario: Edit "Company Information"
   
     Examples: 
       | my company fields    | editable | 
-      | onRouteBC Client ID  | No       | 
-      | Company Legal Name   | No       | 
+      | onRouteBC Client No. | No       | 
+      | Company Legal Name   | No       |
+     | DBA                   |Yes       | 
       | Address Line 1       | Yes      | 
       | Address Line 2       | Yes      | 
       | City                 | Yes      | 
@@ -46,7 +47,7 @@ Scenario: Edit "Company Information"
       | Phone                | Yes      | 
       | Ext                  | Yes      | 
       | Fax                  | Yes      | 
-      | Email                | No      | 
+      | Email                | No       | 
       | First Name           | Yes      | 
       | Last Name            | Yes      | 
       | Phone                | Yes      | 

@@ -17,7 +17,7 @@ Rule: PPC SA and PC must complete all mandatory fields
        And they choose to proceed to review and confirm details
       Then they cannot continue 
        And they see "This is a required field"
-       And incomplete mandatory fields indicated
+       And incomplete mandatory fields are indicated
 
 @orv2-938-26
 Rule: Show completed amending permit application information
