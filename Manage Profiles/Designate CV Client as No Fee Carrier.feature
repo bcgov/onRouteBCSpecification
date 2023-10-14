@@ -27,7 +27,6 @@ Rule: CV Client can view only no fee permit designation
      When they choose to view "Special Authorizations"
      Then they do not see the no fee permits section
 
-
 @orv2-1050
 Rule: If a CV Client has no special authorizations then the special authorizations tab is not visible 
 

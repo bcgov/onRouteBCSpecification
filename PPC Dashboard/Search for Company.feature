@@ -5,7 +5,7 @@ Feature: Staff search for company
 Rule: 
 
   Scenario: Search by permit number
-    Given a PPC Clerk has chosen to search by permit number
+    Given a PPC SA, PC or EO has chosen to search by permit number
      When they search by the <permit number> using the first 11 characters of the permit
      Then they see permit <results> with the first 11 characters used in the search
       And all permit <statuses> can be displayed if found
@@ -19,13 +19,13 @@ Rule:
   
 @orv2-1362-2
   Scenario: Default to search by permit number
-    Given the PPC Clerk is at the global search page
+    Given the PPC SA, PC, EO is at the global search page
      When they choose to search 
      Then they see "Search By" defaulted to "Permit Number"
 
 @orv2-1362-3 
   Scenario: Permit search result data
-    Given a PPC Clerk has chosen to search by permit number
+    Given a PPC SA, PC, EO has chosen to search by permit number
      When they initiate the search
      Then they see the following <columns>
       And the they see data from the  <permit source>
@@ -44,13 +44,13 @@ Rule:
 
 @orv2-1362-4
   Scenario: Show truncated text on hover
-    Given a PPC Clerk is at the search results
+    Given a PPC SA, PC, EO is at the search results
      When they hover over truncated text
      Then they see the entire text line
 
 @orv2-1362-5
   Scenario: Search for permit by plate number
-    Given a PPC Clerk has chosen to search by plate number
+    Given a PPC SA, PC, EO has chosen to search by plate number
      When they search by the <plate number> using the exact plate number
      Then they see permit <results> with only the exact characters used in the search
       And all permit <statuses> can be displayed if found
@@ -82,7 +82,7 @@ Rule:
 
 @orv2-1362-8
   Scenario: Show Actions
-    Given a PPC Clerk is at the search results
+    Given a PPC SA or PC is at the search results
       And the <actions> are:
       | Amend |
       | View Receipt |
@@ -99,7 +99,7 @@ Rule:
      
 @orv2-1362-9
   Scenario: Sort search results
-    Given a PPC Clerk is at search results
+    Given a PPC SA, PC or EO is at search results
      When they select any of the following column headers:
       | Permit Type       |
       | Permit Number     |
@@ -128,8 +128,8 @@ Rule:
       And they are directed to the "Search Results" page
       And they see "Successfully Sent"
 
+@orv2-1362-13
 Rule: permits results display status labels based on their current state
-
 
   Scenario Outline: Display permit status labels
     Given PPC SA, PC or EO 
