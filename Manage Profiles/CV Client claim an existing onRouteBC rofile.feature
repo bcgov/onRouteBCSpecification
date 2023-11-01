@@ -1,7 +1,7 @@
 Feature: CV Client claim an existing onRouteBC Profile
-As a CV Client Business BCeID user I want to claim my profile information so that I can see all of my current permit data.
+ As a CV Client Business BCeID user I want to claim my profile information so that I can see all of my current permit data.
 
-@orv2-481-1
+ @orv2-481-1
 Rule: A CV Client is provided the option to claim a profile
 
  Scenario: Choose yes
@@ -13,7 +13,7 @@ Rule: A CV Client is provided the option to claim a profile
       | "Where can I find my Client No. and Permit No.?"|
       | "Enter any Permit No. issued to the above Client No. in the last 7 years" |
 
-@orv2-481-6
+ @orv2-481-6
 Rule: A CV Client can cancel or step backwards in the "Claim an existing profile" workflow
 
   Scenario: Cancel
@@ -27,7 +27,7 @@ Rule: A CV Client can cancel or step backwards in the "Claim an existing profile
      Then they are directed to the previous page in the workflow
       And they workflow step indication reflects the page they are on
 
-@orv2-481-2
+ @orv2-481-2
 Rule: If a "Client No." is associated to a "Permit No." then allow a CV Client to proceed to the next step in the workflow "Company Information"
 
  Scenario: Valid TPS "Client No." and "Permit No."
@@ -53,7 +53,7 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a CV Client t
        And "Permit No." is indicated
        And they cannot proceed to the next step in the workflow      
 
-@orv2-481-3
+ @orv2-481-3
 Rule: Both "Permit No." and "Client No." are mandatory fields
 
  Scenario: Only a "Permit No." inputted
@@ -80,7 +80,7 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
        And "Permit No." is indicated 
        And "Client No." is indicated
 
-@orv2-481-4
+ @orv2-481-4
 Rule: A CV Client can view and update their claimed TPS "Client No." profile information
 
   Scenario: 
@@ -88,7 +88,7 @@ Rule: A CV Client can view and update their claimed TPS "Client No." profile inf
      When 
      Then 
 
-@orv2-481-5
+ @orv2-481-5
 Rule: A CV Clients BCeID information replaces the "Company Name" and "Company Email" information in onRouteBC
 
   Scenario: 
@@ -98,16 +98,16 @@ Rule: A CV Clients BCeID information replaces the "Company Name" and "Company Em
 
 
 
-@orv2-481-6
+ @orv2-481-6
 Rule: A CV Client can update their "My Information"
 
-@orv2-481-7
+ @orv2-481-7
 Rule: A CV Client can view their assigned onRouteBC Client Number and 
 
-@orv2-481-8
+ @orv2-481-8
 
 
-@orv2-481-9
+ @orv2-481-9
 
 
-@orv2-481-10
+ @orv2-481-10

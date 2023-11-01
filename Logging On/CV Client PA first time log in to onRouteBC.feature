@@ -1,4 +1,5 @@
 Feature: CV Client PA log into onRoute
+  As a CV Client PA I need to be able to log into onRouteBC and complete "My Information" so that I can begin ordering permits.
 
 @orv2-907-1
 Scenario: CV Client PA first time log into onRouteBC

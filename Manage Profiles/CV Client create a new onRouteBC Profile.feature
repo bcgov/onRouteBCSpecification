@@ -1,9 +1,8 @@
-@e2e1
 Feature: CV Client create a New onRouteBC Profile
-    As a CV Client Business BCeID user I want to log in to onRouteBC using my BCeID credentials so that I can create my onRouteBC Profile.
+ As a CV Client Business BCeID user I want to log in to onRouteBC using my BCeID credentials so that I can create my onRouteBC Profile.
 
-@orv2-369-1
-Rule: Logs into onRouteBC if a BCeID user company GUID is not in onRouteBC I can choose to create a new onRoute profile or claim an existing profile
+ @orv2-369-1
+Rule: If a BCeID user company GUID is not in onRouteBC CV Client can choose to create a new onRoute profile or claim an existing profile
 
  Scenario: First log in BCeID company GUID is not in onRoute
    Given they have valid BCeID credentials
@@ -35,7 +34,7 @@ Rule: A CV Client can view and update their "Company Information" and "My Inform
        And they are directed to a success page
        And they get a unique onRouteBC Client Number
 
-@orv2-369-9
+ @orv2-369-9
 Rule: Workflow "Company Information" or "My Information" is not saved until the workflow is finished
 
  Scenario: CV Client Business BCeID navigates away from create new onRouteBC profile workflow
@@ -44,7 +43,7 @@ Rule: Workflow "Company Information" or "My Information" is not saved until the 
      Then the onRouteBC account is not created
       And no information is saved
 
-@orv2-369-12
+ @orv2-369-12
 Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
     Given the CV Client Business BCeID user is at the invitation welcome page
     When they accept the invitation
