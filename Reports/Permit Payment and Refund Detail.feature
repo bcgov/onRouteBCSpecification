@@ -2,7 +2,7 @@ Feature: PPC staff can generate a Permit Payment and Refund Detail Report that l
 
 Rule: PPC staff can filter report results to include desired tranasactions
 
-@orv2-556-1
+ @orv2-556-1
   Scenario: Filter report results
     Given PPC staff chooses to include transactions that match specific <parameter>:
      | issued by      |
@@ -30,14 +30,14 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
         | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM       |
 
-Rule: when only self issued is choosen PPC staff are unable to choose users
+Rule: When only self issued is choosen PPC staff are unable to choose users
 
   Scenario: Disable user selection
     Given PPC staff is at Permit Payment and Refund Detail Report parameters page
      When they choose to include only self issued
      Then they are unable to choose users
 
-Rule: when issued by is not choosen PPC staff are unable to view report and choose other parameters
+Rule: When issued by is not choosen PPC staff are unable to view report and choose other parameters
 
   Scenario: Issued by not choosen
     Given PPC staff have not choosen and issued by
@@ -48,7 +48,7 @@ Rule: when issued by is not choosen PPC staff are unable to view report and choo
 
 Rule: Payment and refund detail parameters have limited options
 
-@orv2-556-2
+ @orv2-556-2
    Scenario: PPC staff chooses to filter report results
    Given PPC staff chooses to filter report results 
     When they choose a <parameter> 
@@ -63,7 +63,7 @@ Rule: Payment and refund detail parameters have limited options
        
 Rule: Payment and refund detail has default parameters
 
-@orv2-556-3
+ @orv2-556-3
   Scenario: Default parameters
     Given PPC staff chooses to view a payment and refund report
      When they choose to view the payment and refund detail report
@@ -80,7 +80,7 @@ Rule: Payment and refund detail has default parameters
 
 Rule: Generate report with permit financial transaction data
 
-@orv2-556-4
+ @orv2-556-4
   Scenario: Display payment and refund transaction data
     Given PPC staff have choosen their desired parameter options 
      When they view the report
@@ -94,15 +94,15 @@ Rule: Generate report with permit financial transaction data
         | user           |
         | amount         |
 
-@orv2-556-5
-Scenario: User is not PPC staff
-  Given a transaction was completed by a CV Client
-   When the transaction is listed in the report
-   Then the user is "SELF_ISSUED"
+ @orv2-556-5
+ Scenario: User is not PPC staff
+   Given a transaction was completed by a CV Client
+    When the transaction is listed in the report
+    Then the user is "SELF_ISSUED"
 
 Rule: Display header information
 
-@orv2-556-6
+ @orv2-556-6
   Scenario: Display payment and refund detail header information
     Given PPC staff have choosen their desired parameter options 
      When they view the report
@@ -115,45 +115,45 @@ Rule: Display header information
         | time period    | choosen parameter options                 |
       And multiple parameter options are separated by a comma
 
-@orv2-556-7
+ @orv2-556-7
 Rule: Group by payments and refunds
 
-@orv2-556-8
+ @orv2-556-8
 Rule: Sort by payments and refunds groups 
 
-@orv2-556-9
+ @orv2-556-9
 Rule: Group by payment method
 
-@orv2-556-10
+ @orv2-556-10
 Rule: Sort by payment method then issued on in ascending order
 
-@orv2-556-11
+ @orv2-556-11
 Rule: Sub total payment method
 
-@orv2-556-12
+ @orv2-556-12
 Rule: Sub total payments and refunds
 
-@orv2-556-13
+ @orv2-556-13
 Rule: List sub totals of all payments, refunds and deposits by payment method in tabular format
 
-@orv2-556-14
+ @orv2-556-14
 Rule: Sub total deposit by payment method (payments less refunds)
 
-@orv2-556-15
+ @orv2-556-15
 Rule: Sub total all deposits by payment method
 
-@orv2-556-16
+ @orv2-556-16
 Rule: Total all deposits
 
-@orv2-556-17
+ @orv2-556-17
 Rule: List sub total of new permits sold by permit type 
 
-@orv2-556-18
-Rule Total all new permits sold
+ @orv2-556-18
+Rule: Total all new permits sold
 
-@orv2-556-19
+ @orv2-556-19
 Rule: Format pdf output to 8.5x11 letter size landscape layout
 
-@orv2-556-20
+ @orv2-556-20
 Rule: Number pages consecutively in footer
 

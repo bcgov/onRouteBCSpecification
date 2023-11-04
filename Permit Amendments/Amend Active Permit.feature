@@ -1,7 +1,7 @@
 Feature:  Amend an active permit 
    As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
-@orv2-938-8   
+ @orv2-938-8   
 Rule: Can only amend an issued or active permit
 
   Scenario: Permit is voided
@@ -14,19 +14,19 @@ Rule: Can only amend an issued or active permit
      When they choose to amend it
      Then they are directed to the amend permit 
 
-@orv2-938-30
+ @orv2-938-30
 Rule: PPC SA and PC can view superseded permit pdf and superseded permit receipt pdf  
 
  @orv2-937-7
  @orv2-937-11
 
-@orv2-938-9
+ @orv2-938-9
 Rule: PPC and SA or PC can resend superseded permit documents
 
  @orv2-937-10
  @orv2-937-12
 
-@orv2-938-31 
+ @orv2-938-31 
 Rule: PPC SA or PC can amend a permit
 
   Scenario: Valid permit
@@ -34,7 +34,7 @@ Rule: PPC SA or PC can amend a permit
      When they choose to amend the permit
      Then they are directed to the amend permit page
  
-@orv2-938-10
+ @orv2-938-10
 Rule: An amending permit application is only saved when finished
 
   Scenario: Close browser tab
@@ -47,7 +47,7 @@ Rule: An amending permit application is only saved when finished
      When they use the browser to navigate back
      Then the amending permit application is not saved
   
-@orv2-938-11
+ @orv2-938-11
 Rule: PPC SA or PC can amend an issued or active permit
 
   Scenario: Found permit to amend
@@ -66,7 +66,7 @@ Rule: PPC SA or PC can amend an issued or active permit
          | banner                | company client number of amending permit        |
          | company information   | company mailing address of amending permit      |
 
-@orv2-938-12
+ @orv2-938-12
 Rule: PPC SA or PC can view all permit details of the amending permit
 
  Scenario: PPC SA or PC choose to amend a valid permit
@@ -80,7 +80,7 @@ Rule: PPC SA or PC can view all permit details of the amending permit
           | revision history     | past reason for amendment free text             |
           | reason for amendment | free text field to capture reason for amendment |
 
-@orv2-938-13
+ @orv2-938-13
 Rule: PPC SA or PC can add free text amendment Reason 
 
   Scenario: Save amendment reason
@@ -106,7 +106,7 @@ Rule: PPC SA or PC can add free text amendment Reason
       And they have not entered a reason for amendment
      Then they see "This is a required field"
 
-@orv2-938-14
+ @orv2-938-14
 Rule: PPC SA or PC can view the permit revision history
 
   Scenario: Previous permit revisions
@@ -125,7 +125,7 @@ Rule: PPC SA or PC can view the permit revision history
      When a PPC SA or PC is amending a permit
      Then there is no revision history displayed
 
-@orv2-938-15
+ @orv2-938-15
 Rule: PPC SA or PC can cancel a permit amendment application
 
   Scenario: Cancel permit amendment application
@@ -151,7 +151,7 @@ Rule: PPC SA or PC can cancel a permit amendment application
         | permit number   | revision number |
         | P2-00408617-873 | -R2             |
 
-@orv2-938-16
+ @orv2-938-16
 Rule: View previous financial transaction information for amending permit
 
  Scenario: Previous financial transactions exist
@@ -164,7 +164,7 @@ Rule: View previous financial transaction information for amending permit
         | transaction id for the listed transaction      | Transaction ID |
         | total fee for the listed transaction           | Amount 
 
-@orv2-938-17
+ @orv2-938-17
 Rule: Default to previous payment method card type
 
    Scenario: Choose a refund method
@@ -180,7 +180,7 @@ Rule: Default to previous payment method card type
          | Web - VISA               | PPC - VISA               |
          | Web - Mastercard (Debit) | PPC - Mastercard (Debit) |
 
-@orv2-938-18
+ @orv2-938-18
 Rule: Choose cheque payment method
 
    Scenario: Refund by cheque
@@ -188,7 +188,7 @@ Rule: Choose cheque payment method
       When they choose to refund by cheque
       Then only refund by cheque is indicated as a refund method
 
-@orv2-938-19
+ @orv2-938-19
 Rule: Input mandatory transaction id
 
    Scenario: Do not input transaction ID
@@ -198,7 +198,7 @@ Rule: Input mandatory transaction id
       Then they see "This is a required field"
        And they cannot finish
 
-@orv2-938-20
+ @orv2-938-20
 Rule: Return to previous search results when finished amending permit application
 
   Scenario: Previous search string
@@ -212,7 +212,7 @@ Rule: Return to previous search results when finished amending permit applicatio
      | previous search string | search results                                            |
      | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
 
-@orv2-938-21
+ @orv2-938-21
 Rule: Amending permit is superseded by amended permit
 
   Scenario: Supersede amending permit
@@ -220,7 +220,7 @@ Rule: Amending permit is superseded by amended permit
      When they finish the amending permit application
      Then the amending permit is labeled as superseded
 
-@orv2-938-22
+ @orv2-938-22
 Rule: Generate amended permit pdf
 
    Scenario: Generate amended permit pdf
@@ -234,7 +234,7 @@ Rule: Generate amended permit pdf
          | revised on       | date/time updated to reflect the date the amended pdf is generated         |
          | permit number    | permit number reflects the revised number                                  |
 
-@orv2-938-23
+ @orv2-938-23
 Rule: Generate amended permit pdf receipt
 
   Scenario: Refund is calculated
@@ -254,7 +254,7 @@ Rule: Generate amended permit pdf receipt
      When the amended permit receipt pdf is generated
      Then the transaction id is the transaction id inputted at finish amendment
 
-@orv2-938-24
+ @orv2-938-24
 Rule: Send revoke permit documents to contact details from void permit page
 
   Scenario: Send permit and receipt to email
