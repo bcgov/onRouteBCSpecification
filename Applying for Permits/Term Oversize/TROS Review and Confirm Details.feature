@@ -88,7 +88,7 @@ Scenario: Clicking Continue in the "TROs Permit Application" form.
     Given The user has filled all mandartory fields in "Application Details", and "Vehicle Details"
     When there are no error notifcation in the application
     Then the user is brought to the "Permit Review" Screen
-    And the appliction is saved to "Applications in Progress"
+    And the application is saved to "Applications in Progress"
 
 @orv2-627-10
 Scenario: Clicking Continue in the "TROs Permit Application" form.
