@@ -18,6 +18,6 @@ Rule: View a list of permit applications
         | Vehicle Unit Number | the unit no. of the vehicle used in the application                                    |
         | Last Updated Date   | the date the permit application was last updated                                       |
         | Permit Start Date   | the start date inputted in the permit application                                      |
-        | Applicant           | the first name and last name of the logged in user that started the permit application |
+        | Applicant           | the idir username of the logged in user that started the permit application |
       And the default sort order is "Last Updated Date" newest at the top
       And they only see application they created
