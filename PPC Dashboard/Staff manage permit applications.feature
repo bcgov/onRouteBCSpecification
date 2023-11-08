@@ -1,6 +1,6 @@
 Feature Staff manage permit applications in progress
 
-Rule: 
+Rule: View a list of permit applications
  Scenario: View list applications do not exist
    Given the CV Client is at the "Applications in Progress" tab
     When they do not have applications in progress
