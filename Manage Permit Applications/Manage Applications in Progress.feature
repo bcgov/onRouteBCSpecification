@@ -12,13 +12,15 @@ Feature: View Applications in Progress
     Given the CV Client has applications in progress
      When they are viewing the "Applications in Progress" tab
      Then they see this data about their applications
-       | Application Number  |
-       | Permit Type         |
-       | VIN                 |
-       | Vehicle Plate       |
-       | Vehicle Unit Number |
-       | Last Updated Date   |
-       | Permit Start Date   |
+       | data                | description                                                                            |
+       | Application Number  | unique application no. generateed by onRouteBC                                         |
+       | Permit Type         | the name of the permit applied for                                                     |
+       | VIN                 | the first 6 digits of the ViN no. used in the application                              |
+       | Vehicle Plate       | the plate no. of the vehicle used in the application                                   |
+       | Vehicle Unit Number | the unit no. of the vehicle used in the application                                    |
+       | Last Updated Date   | the date the permit application was last updated                                       |
+       | Permit Start Date   | the start date inputted in the permit application                                      |
+       | Applicant           | the first name and last name of the logged in user that started the permit application |
      And the default sort order is "Last Updated Date" newest at the top
      And they only see application they created
 
