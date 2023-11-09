@@ -25,7 +25,7 @@ Rule: PPC SA or PC and EO can search for a company using a minimum 4 characters 
         | Band Inc.        |
       But the results do not include "Truck Band"
 
-@orv2-1362-15
+ @orv2-1362-15
 Rule: PPC SA or PC and EO search by company name also searches doing business as 
 
   Scenario: Company has a doing business as name
