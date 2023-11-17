@@ -18,24 +18,20 @@ Rule: username must be in onRouteBC and match company BCeID
      When they successfully log in using their BCeID credentials
      Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute member of company BCeID
+ Scenario: username is not in onRoute is a member of company
      Given the username is not in onRouteBC
        But they are a member a company BCeID
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute not a member of a company BCeID
+ Scenario: username is not in onRoute not a member of a company
      Given the username is not in onRouteBC
        And they are not a member of a company BCeID
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
 @orv2-907-2
-Rule: a username must be in onRouteBC
-
-
-
-
+Rule: a new user is assigned the role designated to their username
 
  Scenario: added CV Client PA username is not a member of the BCeID company
      Given the CV Client PA username is in onRoute 
@@ -44,30 +40,37 @@ Rule: a username must be in onRouteBC
       Then they are directed to the "Universal Unauthorized Access" page
 
 @orv2-907-3
-Scenario: Complete profile
-    Given they are at the "Welcome to onRouteBC" page
-      And they choose to finish completing their onRouteBC profile
-     When they input all required fields in "My Information"
-       | First Name       |
-       | Last Name        |
-       | Email            |
-       | Primary Phone    |
-       | Country          |
-       | Province / State |
-       | City             |
-    And choose to finish
-   Then their "My Information" details are saved
-    And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
-    And they are directed to a "Success" page
+Rule: a new user must complete their user details 
+
+ Scenario: Complete profile
+     Given they are at the "Welcome to onRouteBC" page
+       And they choose to finish completing their onRouteBC profile
+      When they input all required fields
+        | First Name       |
+        | Last Name        |
+        | Email            |
+        | Primary Phone    |
+        | Country          |
+        | Province / State |
+        | City             |
+     And choose to finish
+    Then their user details are saved
+     And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
+     And they are directed to a "Success" page
 
 @orv2-907-4
-Scenario: New CV Client Business BCeID user completed profile setup
-    Given the CV Client Business BCeID user has completed their profile
-     When they choose to view their profile
-     Then they are directed to company information
+Rule: a new PA user can only view company profile information
+
+ Scenario: New CV Client Business BCeID user completed profile setup
+     Given the CV Client Business BCeID user has completed their profile
+      When they choose to view their profile
+      Then they are directed to company information
+       But they cannot edit company information
 
 @orv2-907-5
-Scenario: New CV Client Business BCeID user completed profile setup
-    Given the CV Client Business BCeID user has completed their profile
-     When they choose to apply for a permit
-     Then they are directed to applications in progress
+Rule: a new user can apply for a permit
+
+ Scenario: New CV Client Business BCeID user completed profile setup
+     Given the CV Client Business BCeID user has completed their profile
+      When they choose to apply for a permit
+      Then they are directed to applications in progress
