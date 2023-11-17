@@ -156,14 +156,14 @@ Rule: Default to previous payment method card type
      Given the PPC SA has inputted a reason for voiding
       When they choose to continue
       Then they are directed to finish voiding
-       And the previous payment method <card type> is used and is prefixed with the <PPC prefix>
+       And the previous payment method <consolidated payment method> is used
 
        Examples:
          | card type                | PPC prefix               |
-         | Icepay - VISA            | PPC - VISA               |
-         | Icepay - Mastercard      | PPC - Mastercard         |
-         | Web - VISA               | PPC - VISA               |
-         | Web - Mastercard (Debit) | PPC - Mastercard (Debit) |
+         | ICEPAY - Visa            | ICEPAY - Visa            |
+         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
+         | Web - Visa               | Web - Visa               |
+         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
 
 @orv2-1057-13
 Rule: Choose cheque payment method
