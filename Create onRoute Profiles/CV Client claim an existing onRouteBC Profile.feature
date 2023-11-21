@@ -208,6 +208,3 @@ Rule: users that successfully claim or join an existing onRouteBC profile are de
 Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
 @orv2-481-15
 Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated their BCeID username
-
-
-
