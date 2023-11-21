@@ -2,31 +2,31 @@ Feature: added CV Client user first time log into onRoute
   As an newly added CV Client user I need to be able to log into onRouteBC for the first time and complete my onRouteBC profile so that I can begin ordering permits for the onRouteBC company I am a member of.
 
 @orv2-907-1
-Rule: username must be in onRouteBC and match company BCeID
+Rule: username must be in onRouteBC and match company BCeID in onRouteBC
 
-  Scenario: username in onRouteBC and matches
+  Scenario: username in onRouteBC and matches a company BCeID in onRouteBC
      Given the username is in onRouteBC
-       And they are a member of a company BCeID
+       And their BCeID matches a company BCeID
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Welcome to onRouteBC" page
        And they see the company name for the profile they are a member of
        And they see the option to finish creating their profile
 
-  Scenario: username in onRouteBC does not match
+  Scenario: username in onRouteBC does not match company in onRouteBC
     Given the username is in onRouteBC
-      But they are not a member of a company BCeID
+      But their BCeID does not match a company BCeID
      When they successfully log in using their BCeID credentials
      Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute is a member of company
+ Scenario: username is not in onRoute their BCeID matches a company in onRouteBC
      Given the username is not in onRouteBC
-       But they are a member a company BCeID
+       But their BCeID matches a company BCeID
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute not a member of a company
+ Scenario: username is not in onRoute their BCeID does not match a company in onRouteBC
      Given the username is not in onRouteBC
-       And they are not a member of a company BCeID
+       And their BCeID does not match a company BCeID
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
