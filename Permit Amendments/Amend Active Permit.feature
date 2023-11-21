@@ -212,7 +212,7 @@ Rule: Return to previous search results when finished amending permit applicatio
      | previous search string | search results                                            |
      | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
 
- @orv2-938-21
+@orv2-938-21
 Rule: Amending permit is superseded by amended permit
 
   Scenario: Supersede amending permit
@@ -220,7 +220,7 @@ Rule: Amending permit is superseded by amended permit
      When they finish the amending permit application
      Then the amending permit is labeled as superseded
 
- @orv2-938-22
+@orv2-938-22
 Rule: Generate amended permit pdf
 
    Scenario: Generate amended permit pdf
@@ -234,7 +234,7 @@ Rule: Generate amended permit pdf
          | revised on       | date/time updated to reflect the date the amended pdf is generated         |
          | permit number    | permit number reflects the revised number                                  |
 
- @orv2-938-23
+@orv2-938-23
 Rule: Generate amended permit pdf receipt
 
   Scenario: Refund is calculated
@@ -254,7 +254,7 @@ Rule: Generate amended permit pdf receipt
      When the amended permit receipt pdf is generated
      Then the transaction id is the transaction id inputted at finish amendment
 
- @orv2-938-24
+@orv2-938-24
 Rule: Send revoke permit documents to contact details from void permit page
 
   Scenario: Send permit and receipt to email
