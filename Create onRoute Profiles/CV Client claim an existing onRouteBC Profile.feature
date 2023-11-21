@@ -166,6 +166,7 @@ Rule: A CV Client can view their onRouteBC Client Number upon successful complet
     Given a CV Client has completed "My Information"
      When they choose to complete the workflow
      Then they are directed to a success page
+      And their Business BCeID GUID is stored with their onRouteBC Profile
       And they see their onRouteBC Client Number
       And they see options to apply for a permit and view their profile
 
@@ -183,11 +184,16 @@ Rule: If a user GUID matches a company BCeID GUID in onRouteBC a second user can
 @orv2-481-9
 Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can attempt to claim an existing profile
 
-  Scenario:  first user
+  Scenario: first user matches
      Given the users GUID matches a company BCeID GUID in onRouteBC
        And the company does not have any existing users
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Welcome to onRouteBC" page
+      Then they are directed to the "Claim an existing profile" page "Company information" in the workflow
+
+  Scenario: user does not match
+     Given the users GUID does not match a company BCeID GUID in onRouteBC
+      When they successfully log in using their BCeID credentials
+      Then they are directed to the "Welcome to onRoute" page
        And they see the following:
         | item                                                                        | description                                       |
         | BCeID Company Name                                                          | that matches their BCeID user credentials         |
@@ -196,7 +202,12 @@ Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can 
 
 @orv2-481-10
 Rule: upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
-
 @orv2-481-12
 Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+@ovr2-481-14
+Rule: Successfully claimed onRouteBC Profiles that were exclusively TPS Office clients are associated to the first users Business BCeID company GUID
+@orv2-481-15
+Rule: TPS Office users that have successfully joined an onRouteBC profile are associated their BCeID username
+
+
 
