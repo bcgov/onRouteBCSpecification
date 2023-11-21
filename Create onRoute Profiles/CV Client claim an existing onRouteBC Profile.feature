@@ -1,5 +1,5 @@
-Feature: CV Client claim an existing onRouteBC Profile
- As a CV Client Business BCeID user I want to claim my profile information so that I can see all of my current permit data.
+Feature: CV Client claim or join an existing onRouteBC Profile
+ As a CV Client Business BCeID user I want to claim or join an existing onRouteBC Profile so that I see my profile details and apply for permits.
 
 @orv2-481-1
 Rule: A CV Client is provided the option to claim a profile
@@ -18,7 +18,7 @@ Rule: A CV Client is provided the option to claim a profile
      When they choose not to claim an existing profile
      Then they are directed to the "Create a new onRouteBC Profile" page 
 
-@orv2-481-6
+@orv2-481-11
 Rule: A CV Client can cancel or step backwards in the "Claim an existing profile" workflow
 
   Scenario: Cancel
@@ -196,4 +196,7 @@ Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can 
 
 @orv2-481-10
 Rule: upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
+
+@orv2-481-12
+Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
 
