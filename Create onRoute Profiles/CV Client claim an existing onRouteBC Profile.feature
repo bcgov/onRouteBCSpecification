@@ -195,6 +195,5 @@ Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can 
        And they have the option to attempt to claim the profile or not claim it
 
 @orv2-481-10
-Rule: upon completing user can view their profile
-Rule: a user can apply for a permit
+Rule: upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
 
