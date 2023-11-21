@@ -205,9 +205,9 @@ Rule: upon completing claim a profile or joining an existing profile a user can 
 @orv2-481-12
 Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
 @ovr2-481-14
-Rule: Successfully claimed onRouteBC Profiles that were exclusively TPS Office clients are associated to the first users Business BCeID company GUID
+Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
 @orv2-481-15
-Rule: TPS Office users that have successfully joined an onRouteBC profile are associated their BCeID username
+Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated their BCeID username
 
 
 
