@@ -1,9 +1,19 @@
-Feature: CV Client claim or join an existing onRouteBC Profile
+Feature: CV Client challenge claim or join an existing onRouteBC Profile
  As a CV Client Business BCeID user I want to claim or join an existing onRouteBC Profile so that I see my profile details and apply for permits.
 
 @orv2-481-1
 Rule: A CV Client is provided the option to claim a profile
 
+  Scenario: user does not match
+     Given the users GUID does not match a company BCeID GUID in onRouteBC
+      When they successfully log in using their BCeID credentials
+      Then they are directed to the "Welcome to onRoute" page
+       And they see the following:
+        | item                                                                        | description                                       |
+        | BCeID Company Name                                                          | that matches their BCeID user credentials         |
+        | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
+       And they have the option to try to claim the profile or not claim it
+ 
  Scenario: choose yes
      Given the CV Client is at the "Welcome to onRouteBC" page
      When they choose to claim an existing profile
@@ -87,7 +97,7 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
        And they cannot proceed to the next step in the workflow
 
 @orv2-481-4
-Rule: A CV Client can view and update their claimed "Client No." profile information
+Rule: A CV Client must view and update their claimed "Client No." profile information
 
 
   Scenario: Info boxes
@@ -136,7 +146,7 @@ Rule: A CV Clients BCeID information replaces the "Company Name" and "Company Em
         | Company Email |
 
 @orv2-481-6
-Rule: A CV Client can update their "My Information"
+Rule: A CV Client must update their "My Information"
 
   Scenario: Info boxes
     Given a CV Client has completed "Company Information"
@@ -160,7 +170,7 @@ Rule: A CV Client can update their "My Information"
       And fields with invalid data are indicated
 
 @orv2-481-7
-Rule: A CV Client can view their onRouteBC Client Number upon successful completion of the claim profile workflow
+Rule: A CV Client must view their onRouteBC Client Number upon successful completion of the claim profile workflow
 
   Scenario: Successfully completed 
     Given a CV Client has completed "My Information"
@@ -170,41 +180,11 @@ Rule: A CV Client can view their onRouteBC Client Number upon successful complet
       And they see their onRouteBC Client Number
       And they see options to apply for a permit and view their profile
 
-@orv2-481-8
-Rule: If a user GUID matches a company BCeID GUID in onRouteBC a second user can join an existing company profile
-
-  Scenario: not the first user
-     Given the users GUID matches a company BCeID GUID in onRouteBC
-       And the company has existing users
-      When they successfully log in using their BCeID credentials
-      Then they are directed to the "Welcome to onRouteBC" page
-       And they see the company name for the company profile that matches their user GUID
-       And they see the option to finish creating their profile
-        
-@orv2-481-9
-Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can attempt to claim an existing profile
-
-  Scenario: first user matches
-     Given the users GUID matches a company BCeID GUID in onRouteBC
-       And the company does not have any existing users
-      When they successfully log in using their BCeID credentials
-      Then they are directed to the "Claim an existing profile" page "Company information" in the workflow
-
-  Scenario: user does not match
-     Given the users GUID does not match a company BCeID GUID in onRouteBC
-      When they successfully log in using their BCeID credentials
-      Then they are directed to the "Welcome to onRoute" page
-       And they see the following:
-        | item                                                                        | description                                       |
-        | BCeID Company Name                                                          | that matches their BCeID user credentials         |
-        | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
-       And they have the option to attempt to claim the profile or not claim it
-
 @orv2-481-10
-Rule: upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
+Rule: Upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
 @orv2-481-12
-Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+Rule: Users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
 @ovr2-481-14
 Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
 @orv2-481-15
-Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated their BCeID username
+Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated to their BCeID username
