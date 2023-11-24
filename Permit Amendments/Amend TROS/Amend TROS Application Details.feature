@@ -50,7 +50,7 @@ Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments
         | 300 |
         | 330 |
         | 1y  |
-      And 1y is equal to 365 days 
+      And 1y is equal to 1y 
 
   Scenario: Permit duration calculation
     Given the PPC SA or PC is at amend permit

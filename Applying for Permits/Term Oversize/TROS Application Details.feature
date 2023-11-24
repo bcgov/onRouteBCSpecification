@@ -32,7 +32,7 @@ Feature: Complete TROS permit details
         | 300 |
         | 330 |
         | 1y  |
-      And 1y is equal to 365 days 
+      And 1y is equal to 1y 
 
 @orv2-550-4 @orv2-555-7
   Scenario: Permit duration calculation

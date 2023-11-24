@@ -38,10 +38,10 @@ Scenario: User group not assigned
     Then they see "You must assign a user group" notification
 
 @orv2-363-6
-Scenario: Assign new pending user to one or more user groups
+Scenario: Assign new pending user to only one user group
     Given the CV Client admin is at the "Add User" page
-    When they assign one or more "User Groups"
-    Then they see indication of each assigned role
+    When they choose to assign a user group
+    Then they can only assign one role
 
 @orv2-363-7
 Scenario: View user group permissions
