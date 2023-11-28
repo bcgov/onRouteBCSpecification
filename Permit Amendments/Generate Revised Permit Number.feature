@@ -1,6 +1,12 @@
 Feature: Generate revised permit number
    As staff I need to ensure a permit application revision number is generated when an amended permit is completed so that each application can be identified individually.
 
+@orv2-941-1
+Rule: The revision suffix is followed by 2 digits from 01 to 99
+
+@orv2-941-2
+Rule: The revision suffix is preceded by a hyphen "-" and begins with the letter "A"
+
 @orv2-941-0
 Rule: A revision suffix is added to a permit that has been amended
  
@@ -12,7 +18,9 @@ Rule: A revision suffix is added to a permit that has been amended
 
      Examples:
        | revision        | permit number with suffix |
-       | first revision  | P2-00408617-873-R1        |
-       | second revision | P2-00408617-873-R2        |
-       | third revision  | P2-00408617-873-R3        |
+       | first revision  | P2-00408617-873-A01        |
+       | second revision | P2-00408617-873-A02        |
+       | third revision  | P2-00408617-873-A03        |
+
+
 
