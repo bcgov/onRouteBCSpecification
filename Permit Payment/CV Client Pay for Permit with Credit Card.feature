@@ -81,6 +81,15 @@ Rule: onRouteBC will wait XX time for a payment transaction to be completed by t
      Then they see card declined notification
       And they are redirected to the payment processor credit card entry page
 
+@orv2-1119-8
+Rule: A CV Client can pay for application that is not successful on the first attempt to pay
+
+  Scenario: No response from payment processor
+    Given the CV Client has submitted payment details
+     When the payment processor does not respond
+     Then the application remains in "Applications in Progress"
+
+
 What do we do with other processing issues (there are too many scenarios to cover them all here):
 55 - currently returns to onroute with notification
 158 - currently returns to onroute with notification

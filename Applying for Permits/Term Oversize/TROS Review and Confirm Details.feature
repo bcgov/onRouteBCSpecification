@@ -84,14 +84,14 @@ Scenario: Edit Application
     Then they are directed to the "Permit Application" page
 
 @orv2-627-9
-Scenario: Clicking Continue in the "TROs Permit Application" form.
-    Given The user has filled all mandartory fields in "Application Details", and "Vehicle Details"
-    When there are no error notifcation in the application
+Scenario: Application is saved to "Applications in Progress"
+    Given The user has filled all mandatory fields in "Application Details", and "Vehicle Details"
+    When there are no error notification in the application
     Then the user is brought to the "Permit Review" Screen
     And the application is saved to "Applications in Progress"
 
 @orv2-627-10
 Scenario: Clicking Continue in the "TROs Permit Application" form.
-    Given The user has not filled all mandartory fields in "Application Details", and "Vehicle Details"
-    And there are are error notifcations in the application
-    Then the user user cannont continue to the "Permit Review" screen and the error notifications for each field remain highlighted in Red until resolved.
+    Given The user has not filled all mandatory fields in "Application Details", and "Vehicle Details"
+    And there are are error notifications in the application
+    Then the user user cannot continue to the "Permit Review" screen and the error notifications for each field remain highlighted in Red until resolved.
