@@ -1,28 +1,9 @@
-@orv2-1119
 Feature: CV Client pay for permit with credit card
 
+@orv2-1119-3 
 Rule: A CV Client can pay for a permit with VISA, Master Card or American Express
 
-  @orv2-1119-1
-  Scenario: CV Client attempts to pay with valid credit card
-    Given the CV client chooses to pay for a permit
-     When they are directed to the payment processor
-     Then they see <payment details>
- 
-    Examples:
-        | source  | payment details |
-        | onRoute | invoice #       |
-        | onRoute | amount          |
-        | onRoute | card type       |
-
-  @orv2-1119-2
-  Scenario: CV Client cancels payment attempt
-    Given the CV client chooses not pay for the permit
-     When they cancel at the payment processor
-     Then they are redirected to the "Pay for Permit" page in onRouteBC
-
-  @orv2-1119-3   
-  Scenario: CV Client changes payment method at payment processor
+  Scenario: Choose payment method at payment processor
      Given the CV client chooses to use a different payment method
       When they choose from the list
          | VISA             |
@@ -32,31 +13,58 @@ Rule: A CV Client can pay for a permit with VISA, Master Card or American Expres
          | AMEX             |
       Then their choosen method is indicated
 
-  @orv2-1119-4  
-  Scenario: CV Client attempts to pay with an invalid credit card
+@orv2-1119-1
+Rule: Payment processor displays payment details from onRouteBC
+
+  Scenario: Valid credit card
+    Given the CV client chooses to pay for a permit
+     When they are directed to the payment processor
+     Then they see payment details:
+        | source  | payment details |
+        | onRoute | invoice #       |
+        | onRoute | amount          |
+
+@orv2-1119-2
+Rule: A CV Client can cancel a payment attempt
+
+  Scenario: Cancels payment attempt
+    Given the CV client chooses not pay for the permit
+     When they cancel at the payment processor
+     Then they are directed to the "Pay for Permit" page in onRouteBC
+
+@orv2-1119-4 
+Rule: A CV Client can attempt to pay again on a failed transaction
+
+  Scenario: Invalid credit card
     Given the CV Client uses an invalid credit card
      When they attempt to complete payment
-     Then they see card declined notification
-      And they are redirected to the payment processor credit card entry page
+     Then they are directed to the "Pay for Permit" page in onRouteBC
+      And they see a transaction failed message
 
-  @orv2-1119-5   
-  Scenario: CV Client attempts to pay with valid credit card
-    Given the CV client chooses uses a valid credit card
+@orv2-1119-5   
+Rule: Valid transaction completes permit application purchase
+
+  Scenario: Successful credit card purchase
+    Given the CV client uses a valid credit card
      When they attempt to complete payment
       And the payment is processed as approved
      Then they are redirected to the onRouteBC "Success" page
       And the permit pdf is generated 
       And the permit payment receipt pdf is generated
+  
+@orv2-1119-6   
+Rule: A CV Client must use a credit card number that is valid for the credit card type
 
-  @orv2-1119-6   
-  Scenario: CV Client attempts to pay card type mismatch
+  Scenario: Card type mismatch
     Given the CV client chooses uses a valid credit card
       And chooses an incorrect card type
      When they attempt to complete payment
      Then they see invalid card type notification
 
-  @orv2-1119-7  
-  Scenario: CV Client attempts to pay with valid credit card long processing
+@orv2-1119-7  
+Rule: onRouteBC will wait XX time for a payment transaction to be completed by the payment processor
+
+  Scenario: Valid credit card long processing
     Given the CV client chooses uses a valid credit card
      When they attempt to complete payment
       And the payment verification processing takes 45 or longer seconds
@@ -65,8 +73,7 @@ Rule: A CV Client can pay for a permit with VISA, Master Card or American Expres
       And the permit pdf is generated 
       And the permit payment receipt pdf is generated
 
-  @orv2-1119-8  
-  Scenario: CV Client attempts to pay with an invalid credit card long processing
+  Scenario: Invalid credit card long processing
     Given the CV client chooses uses a valid credit card
      When they attempt to complete payment
       And the payment verification processing takes 45 or longer seconds
