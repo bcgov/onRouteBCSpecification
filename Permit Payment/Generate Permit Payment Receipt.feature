@@ -20,14 +20,14 @@ Rule: Save permit payment receipt pdf using the generated permit payment receipt
 
 @orv2-1066-1
   Scenario: View permit payment receipt
-    Given the CV Client has successuly purchased a permit
+    Given the CV Client has successfully purchased a permit
       And they are at the "Success" page
      When they choose to view the permit payment receipt 
      Then the generated permit payment receipt pdf is displayed
-      And the file name is the <permit payment recipt number>
+      And the <file name> is the <receipt number>
 
       Examples:
-         | permit payment recipt number |
-         | 20230717-00000001            |
-         | 20230717-00000002            |
-         | 20230717-00000003            |
+         | receipt number     | file name              |
+         | 20230717-00000001  | 20230717-00000001.pdf  |
+         | 20230915-00001000  | 20230915-00001000.pdf  |
+         | 202301022-00001500 | 202301022-00001500.pdf |

@@ -15,12 +15,11 @@ Rule: Generate permit pdf after successful payment
   Scenario: Generation fails
     Given a user payment completes successfully
      When the documents fails to generate pdf files
-     Then they see an error that includes this information:
-       | information         | content                                               |
-       | past action message | payment successful                                    |
-       | error message       | the permit and receipt documents could not be created |
-       | help message        | contact us                                            |
-
+     Then they see the universal error page that includes this information:
+       | information   | content             |
+       | error message | unexpected error    |
+       | link          | return to onRouteBC |
+      And they can optionally navigate to the onRouteBC home page
 
 @orv2-1065-1   
 Rule: Save permit pdf using the generated permit payment receipt number as the filename
