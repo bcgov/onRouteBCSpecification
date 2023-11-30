@@ -15,7 +15,7 @@ Rule: Generate permit pdf after successful payment
   Scenario: Generation fails
     Given a user payment completes successfully
      When the documents fails to generate pdf files
-     Then they see the universal error page that includes this information:
+     Then they see the universal unexpected error page that includes this information:
        | information   | content             |
        | error message | unexpected error    |
        | link          | return to onRouteBC |

@@ -12,7 +12,7 @@ Feature: View generated permit payment receipt
   Scenario: Generation fails
     Given a user payment completes successfully
      When the documents fails to generate
-     Then they see the universal error page that includes this information:
+     Then they see the universal unexpected error page that includes this information:
        | information   | content             |
        | error message | unexpected error    |
        | link          | return to onRouteBC |
