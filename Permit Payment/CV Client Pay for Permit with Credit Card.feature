@@ -11,7 +11,7 @@ Rule: A CV Client can pay for a permit with VISA, Master Card or American Expres
          | Mastercard       |
          | Debit Mastercard |
          | AMEX             |
-      Then their choosen method is indicated
+      Then their chosen method is indicated
 
 @orv2-1119-1
 Rule: Payment processor displays payment details from onRouteBC
@@ -48,9 +48,13 @@ Rule: Valid transaction completes permit application purchase
     Given the CV client uses a valid credit card
      When they attempt to complete payment
       And the payment is processed as approved
-     Then they are redirected to the onRouteBC "Success" page
-      And the permit pdf is generated 
-      And the permit payment receipt pdf is generated
+     Then they are directed to the "Success" page
+      And they see options to:
+        | apply for a new permit     |
+        | view the generated permit  |
+        | view the generated receipt |
+      And the permit is issued
+      # see Issue Permit
   
 @orv2-1119-6   
 Rule: A CV Client must use a credit card number that is valid for the credit card type

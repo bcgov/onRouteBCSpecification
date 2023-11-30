@@ -181,6 +181,7 @@ Rule: Input mandatory transaction id
       When they do not input a transaction ID
        And they attempt to finish
       Then they see "This is a required field"
+       And "Transaction ID" is indicated
        And they cannot finish
 
 @orv2-1057-15

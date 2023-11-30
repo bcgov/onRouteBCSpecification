@@ -13,20 +13,21 @@ Scenario: Permit application purchase summary
     Given a CV Client is at the is at the "Pay for Permit" page
     When they review the permit application purchase summary
     Then they see the following:
-       | Permit Type and Permit Sub-Type Name |
-       | Application Number                   |
-       | Item Description                     |
-       | Item Fee                             |
-       | Total of All Items Fees              |
-       | "Have Questions" Information Content |
+       | information                          | description                                                 |
+       | Permit Type and Permit Sub-Type Name | the permit type and subtype applied for e.g. Oversize: Term |
+       | Application Number                   | the unique generated application #                          |
+       | Item Description                     | the description fo teh item(s) in the fee summary           |
+       | item fee amount                      | the fee for a single items(s) in the fee summary            |
+       | Total of All Items Fees              | the sum of all item fees in the fee summary                 |
+       | "Have Questions" Information Content | help text                                                   |
 
 @orv2-553-4
 Scenario: Fee calculation summary
-    Given A CV Client is at the "Pay for Permit" page
+    Given staff is at the "Pay for Permit" page
     When they choose to review the "Fee Summary"
-    Then they see <item1> total and a <total>
+    Then they see individual item <amount> and a <total>
     And <total> is the sum of all items
 
     Example:
-      | item1 | total |
-      | 30    | 30    |  
+      | amount | total |
+      | 30     | 30    |
