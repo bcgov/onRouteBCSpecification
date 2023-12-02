@@ -9,6 +9,11 @@ Rule: Can only revoke an issued or active permit
      When they choose to revoke it
      Then they cannot revoke it
 
+  Scenario: Permit is expired
+    Given the PPC SA has found a expired permit
+     When they choose to revoke it
+     Then they cannot revoke it
+
 @orv2-1054-1
 Rule: PPC SA and PC can view revoke permit pdf and revoke permit receipt pdf  
 

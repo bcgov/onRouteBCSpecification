@@ -1,25 +1,48 @@
 Feature: Void a permit
-   As PPC staff I need to be able to revoke an issued permit so that I can assist CV Clients.
+   As PPC SA I need to be able to void an issued permit so that I can assist CV Clients.
 
 @orv2-1057-1
 Rule: Can only void an issued permit
-
-  Scenario: Permit is voided
-    Given the PPC SA has found a void permit
-     When they choose to void it
-     Then they cannot void it
 
   Scenario: Permit is issued
     Given the PPC SA has found a issued permit
      When they choose to void it
      Then they are directed to void permit 
 
+  Scenario: Permit is voided
+    Given the PPC SA has found a void permit
+     When they choose to void it
+     Then they cannot void it
+
   Scenario: Permit is active
     Given the PPC SA has found a active permit
      When they choose to void it
      Then they cannot void it
 
-# Rule: Cannot void an active term permit
+  Scenario: Permit is expired
+    Given the PPC SA has found an expired permit
+     When they choose to void it
+     Then they cannot void it
+
+   Scenario: Found permit to void
+     Given the PPC SA has found a valid permit to void
+      When they choose to void it
+      Then they are directed to the void permit page
+       And they see:
+          | description           | information                              |
+          | page header           | Void Permit                              |
+          | cookie crumb location | Void Permit                              |
+          | permit type name      | of voiding permit                        |
+          | permit number         | of voiding permit                        |
+          | permit start date     | of voiding permit                        |
+          | permit end date       | of voiding permit                        |
+          | vehicle plate         | of voiding permit                        |
+          | banner                | company name of voiding permit           |
+          | banner                | company client number  of voiding permit |
+          | fee summary           | voiding permit description               |
+          | fee summary           | total refund amount                      |
+          | revoke permit option  | mechanism to revoke permit               |
+
 @orv2-1057-0
 Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
 
@@ -44,33 +67,6 @@ Rule: A void permit application is only saved when finished
     Given a PPC SA or PC has started a void permit application 
      When they use the browser to navigate back
      Then the void permit application is not saved
-
-@orv2-1057-4
-Rule: PPC SA can void a permit
-
-  Scenario: Valid permit
-    Given the PPC SA has found a valid permit to void
-     When they choose to void the permit
-     Then they are directed to the void permit page
-
-   Scenario: Found permit to void
-     Given the PPC SA has found a valid permit to void
-      When they choose to void it
-      Then they are directed to the void permit page
-       And they see:
-          | description           | information                              |
-          | page header           | Void Permit                              |
-          | cookie crumb location | Void Permit                              |
-          | permit type name      | of voiding permit                        |
-          | permit number         | of voiding permit                        |
-          | permit start date     | of voiding permit                        |
-          | permit end date       | of voiding permit                        |
-          | vehicle plate         | of voiding permit                        |
-          | banner                | company name of voiding permit           |
-          | banner                | company client number  of voiding permit |
-          | fee summary           | voiding permit description               |
-          | fee summary           | total refund amount                      |
-          | revoke permit option  | mechanism to revoke permit               |
 
 @orv2-1057-5
 Rule: Choose contact details to send void permit documents too
@@ -141,13 +137,24 @@ Rule: View void permit application submission details
       And inputted reason for void is shown
 
 @orv2-1057-11
-Rule: Void is always a full refund of all purchases made for a permit
+Rule: Void is always a full refund of all purchases made for a permit 
 
    Scenario: 
      Given the PPC SA is at the finish voiding page
       When they view the fee summary
       Then they see the total amount of all previous transactions for the voiding permit
        And refund amounts are displayed as a negative number with a "-" preceding the "$"
+
+  Scenario: refund increments 
+    Given 
+     When 
+     Then 
+
+
+
+# increments of $30 dollars for the refund
+
+# scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
 
 @orv2-1057-12
 Rule: Default to previous payment method card type
