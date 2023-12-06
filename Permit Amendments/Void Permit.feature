@@ -2,20 +2,20 @@ Feature: Void a permit
    As PPC SA I need to be able to void an issued permit so that I can assist CV Clients.
 
 @orv2-1057-1
-Rule: Can only void an issued permit
+Rule: Can only void an issued or active permit
 
   Scenario: Permit is issued
     Given the PPC SA has found a issued permit
      When they choose to void it
      Then they are directed to void permit 
 
-  Scenario: Permit is voided
-    Given the PPC SA has found a void permit
-     When they choose to void it
-     Then they cannot void it
-
   Scenario: Permit is active
     Given the PPC SA has found a active permit
+     When they choose to void it
+     Then they can void it
+
+  Scenario: Permit is voided
+    Given the PPC SA has found a void permit
      When they choose to void it
      Then they cannot void it
 
@@ -43,17 +43,6 @@ Rule: Can only void an issued permit
           | fee summary           | total refund amount                      |
           | revoke permit option  | mechanism to revoke permit               |
 
-@orv2-1057-0
-Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
-
- @orv2-937-7
- @orv2-937-11
-
-@orv2-1057-2
-Rule: PPC and SA or PC can resend void permit documents
-
- @orv2-937-10
- @orv2-937-12
 
 @orv2-1057-3
 Rule: A void permit application is only saved when finished
@@ -137,22 +126,43 @@ Rule: View void permit application submission details
       And inputted reason for void is shown
 
 @orv2-1057-11
-Rule: Void is always a full refund of all purchases made for a permit 
+Rule: If a permit has at least 30 days left, a void results in a full refund
 
-   Scenario: 
-     Given the PPC SA is at the finish voiding page
-      When they view the fee summary
-      Then they see the total amount of all previous transactions for the voiding permit
-       And refund amounts are displayed as a negative number with a "-" preceding the "$"
+  Scenario: view fee Summary
+    Given the PPC SA is at the finish voiding page
+     When they view the fee summary
+     Then they see the total amount of all previous transactions for the voiding permit
+      And refund amounts are displayed as a negative number with a "-" preceding the "$"
 
   Scenario: refund increments 
-    Given 
-     When 
-     Then 
+    Given a permit has 30 days or greater <term remaining>
+     When the <refund fee total> amount is calculated 
+     Then the refund fee total amount is an <increments> of 30 days
 
+     Examples:
+       | term remaining | refund fee total | increments |
+       | 30             | $30              | 1          |
+       | 60             | $60              | 2          |
 
+  Scenario: permit has amendments that incurred a debit(s)
+    Given the permit being voided has amendments that have debit(s)
+     When staff attempt to complete a refund
+     Then the <original purchase price> of the permit less all previous <debit(s)> is <refundable>
 
-# increments of $30 dollars for the refund
+     Examples:
+       | original purchase price | debit(s) | refundable | description        |
+       | $60                     | $30      | $30        | term was shortened |
+       | $90                     | $0       | $90        | plate change       |
+
+  Scenario: permit has amendments that incurred a credit(s)
+    Given the permit being voided has amendments that have credit(s)
+     When staff attempt to complete a refund
+     Then the <original purchase price> of the permit less all previous <credit(s)> is <refundable>
+
+     Examples:
+       | original purchase price | credit(s) | refundable | description         |
+       | $90                     | $0        | $90        | plate change        |
+       | $120                    | $90       | $30        | duration shortened  |
 
 # scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
 
@@ -299,3 +309,14 @@ Rule: Send void permit documents to contact details from void permit page
       When they successfully completed payment
       Then their generated permit PDF and receipt PDF are faxed to the contact fax number
 
+@orv2-1057-2
+Rule: PPC and SA or PC can resend void permit documents
+
+ @orv2-937-10
+ @orv2-937-12
+
+@orv2-1057-0
+Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf  
+
+ @orv2-937-7
+ @orv2-937-11

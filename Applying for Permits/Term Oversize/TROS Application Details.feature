@@ -19,7 +19,7 @@ Feature: Complete TROS permit details
   Scenario: Permit duration
     Given the CV Client is at "Permit Application"
      When they select "Permit Duration"
-     Then they see increments of 30 day as follows:
+     Then they see increments of 30 days as follows:
         | 30  |
         | 60  |
         | 90  |
