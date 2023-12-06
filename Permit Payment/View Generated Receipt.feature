@@ -1,4 +1,4 @@
-Feature: View generated receipt
+Feature: View generated financial transaction receipt
 
 @orv2-935-1 @orv2-1064-1
 Rule: A successful financial transaction initiates the generation of a permit receipt
