@@ -33,4 +33,5 @@ Rule: Save permit payment receipt pdf using the generated permit payment receipt
          | 20230915-00001000  | 20230915-00001000.pdf  |
          | 202301022-00001500 | 202301022-00001500.pdf |
 
-Rule: 
+
+
