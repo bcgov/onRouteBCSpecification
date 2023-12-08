@@ -13,7 +13,7 @@ Rule: When a user GUID matches a company BCeID GUID in onRouteBC and they are no
        And they see the option to finish creating their profile
         
 @orv2-1637-2
-Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can try to claim an existing profile
+Rule: If a user GUID matches a company BCeID GUID in onRouteBC and they are the first user, they can try to claim an existing profile
 
   Scenario: first user matches
      Given the users GUID matches a company BCeID GUID in onRouteBC
