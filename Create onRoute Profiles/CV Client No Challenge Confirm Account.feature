@@ -19,5 +19,7 @@ Rule: If a user GUID matches a company BCeID GUID in onRouteBC a first user can 
      Given the users GUID matches a company BCeID GUID in onRouteBC
        And the company does not have any existing users
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Claim an existing profile" page "Company information" in the workflow
+      Then they are directed to the "Welcome to onRouteBC" page
+       And they see the company name for the company profile that matches their user GUID
+       And they see the option to finish creating their profile
 
