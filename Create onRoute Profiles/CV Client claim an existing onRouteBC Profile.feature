@@ -113,11 +113,11 @@ Rule: A CV Client must view and update their claimed "Client No." profile inform
     Given a CV Client chooses to proceed to "My Information"
      When they do not input valid data into any of the following mandatory fields:
         | field             | type                    |
-        | Address (Line 1)  | User Details |
-        | Country           | User Details |
-        | Province / State  | User Details |
-        | City              | User Details |
-        | Postal / Zip Code | User Details |
+        | Address (Line 1)  | User Details            |
+        | Country           | User Details            |
+        | Province / State  | User Details            |
+        | City              | User Details            |
+        | Postal / Zip Code | User Details            |
         | Phone             | Company Contact Details |
         | First Name        | Company Primary Contact |
         | Last name         | Company Primary Contact |
