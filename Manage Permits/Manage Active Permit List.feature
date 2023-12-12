@@ -23,7 +23,7 @@ Rule: CV Clients PA and SA can view Active permits if any exist and see relevant
         | Permit Start Date |
         | Permit End Date   |
         | Applicant         |
-     And the default sort order is "Permit End Date" newest at the top
+     And the default sort order is "Permit Start Date" in reverse chronological order
      And CV Client PA only see permits they created
      And "Applicant" is the first name and last name of the CV Client user that submitted the permit application
      And they see "Refunds and amendments can be requested over the phone by calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."

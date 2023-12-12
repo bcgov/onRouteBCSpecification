@@ -21,6 +21,8 @@ Rule: Generate permit pdf after successful payment
        | link          | return to onRouteBC |
       And they can optionally navigate to the onRouteBC home page
 
+Rule: Navigating to onRouteBC opens in a new tab
+
 @orv2-1065-1   
 Rule: Save permit pdf using the generated permit payment receipt number as the filename
 
