@@ -2,6 +2,7 @@ Feature: Enforcement Officer search for permits
    As an Enforcement Officer I need to find and view issued permits so that I can verify information about CV Clients I engage with on a daily basis.
 
 @orv2-1086-1
+Rule: Staff can search for a permit using 
 Scenario: Search by permit number
     Given a EO has chosen to search by permit number
      When they search by the <permit number> using the first 11 characters of the permit
@@ -14,7 +15,7 @@ Scenario: Search by permit number
    | P1-37982658   | P1-37982658-946-A01 | Expired  |
    | P1-37982658   | P1-37982658-946-A01 | Revoked  |
    | P1-37982658   | P1-37982658-946-A01 | Voided   |
-  
+
 @orv2-1086-2
   Scenario: Default to search by permit number
     Given the EO is at the global search page
