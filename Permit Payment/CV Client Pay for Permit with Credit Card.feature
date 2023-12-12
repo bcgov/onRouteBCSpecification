@@ -86,13 +86,13 @@ Rule: onRouteBC will wait XX time for a payment transaction to be completed by t
       And they are redirected to the payment processor credit card entry page
 
 @orv2-1119-8
-Rule: A CV Client can pay for application that is not successful on the first attempt to pay
+Rule: Payment can be made by a CV Client for an application that is unsuccessful on the first try.
 
   Scenario: No response from payment processor
     Given the CV Client has submitted payment details
      When the payment processor does not respond
      Then the application remains in "Applications in Progress"
-
+# see applying for permits and manage permit applications in progress, a CV Client will open a permit application and step through the workflow to the payment page to attempt another payment
 
 What do we do with other processing issues (there are too many scenarios to cover them all here):
 55 - currently returns to onroute with notification
