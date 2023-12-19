@@ -3,7 +3,6 @@ Feature: Manage Active Permit List
 
 @orv2-950
 Rule: CV Clients PA and SA can view Active permits if any exist and see relevant information about them, CV Client PA can only view permits they created
-
 @orv2-950-1
   Scenario: Default Active permits listed
     Given the CV Client is at the "Permits" page
@@ -37,7 +36,6 @@ Rule: CV Clients PA and SA can view Active permits if any exist and see relevant
 
 @orv2-951
 Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf
-
 @orv2-951-1
   Scenario: View receipt pdf
     Given the CV Client is at the "Active Permits" tab
@@ -54,7 +52,6 @@ Scenario: View permit pdf
 
 @orv2-952
 Rule: CV Clients PA and SA can search for active permits by unit # and plate
-
 @orv2-952-1
   Scenario: Search by unit #
     Given the CV Client has active permits that have a vehicle with a unit number
@@ -87,19 +84,18 @@ Rule: CV Clients PA and SA can search for active permits by unit # and plate
 
 @orv2-953
 Rule: CV Clients PA and SA can sort the list of active permits
-
-Scenario: Sort list of active permits
-    Given the CV Client chooses to sort by a specific column
-    When they select any of the following column headers:
-        | Permit #          |
-        | Permit Type       |
-        | Unit #            |
-        | Plate             |
-        | Permit Start Date |
-        | Permit End Date   |
-        | Applicant         |
-    Then the list is sorted by the selected column header
-    And the sort order is the reverse of the previously selected order
+ Scenario: Sort list of active permits
+     Given the CV Client chooses to sort by a specific column
+     When they select any of the following column headers:
+         | Permit #          |
+         | Permit Type       |
+         | Unit #            |
+         | Plate             |
+         | Permit Start Date |
+         | Permit End Date   |
+         | Applicant         |
+     Then the list is sorted by the selected column header
+     And the sort order is the reverse of the previously selected order
         
 
 

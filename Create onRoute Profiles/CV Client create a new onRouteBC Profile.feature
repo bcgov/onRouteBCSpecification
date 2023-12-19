@@ -34,7 +34,7 @@ Rule: A CV Client can view and update their "Company Information" and "My Inform
        And they are directed to a success page
        And they get a unique onRouteBC Client Number
 
- @orv2-369-9
+@orv2-369-9
 Rule: Workflow "Company Information" or "My Information" is not saved until the workflow is finished
 
  Scenario: CV Client Business BCeID navigates away from create new onRouteBC profile workflow
@@ -43,13 +43,13 @@ Rule: Workflow "Company Information" or "My Information" is not saved until the 
      Then the onRouteBC account is not created
       And no information is saved
 
- @orv2-369-12
-Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
-    Given the CV Client Business BCeID user is at the invitation welcome page
-    When they accept the invitation
-    Then they are directed to the "My Information" page in the workflow
-    And they are removed from the "Pending User" list of the company that added them
-    And they are designated as an "Active User" 
+  @orv2-369-12
+ Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
+     Given the CV Client Business BCeID user is at the invitation welcome page
+     When they accept the invitation
+     Then they are directed to the "My Information" page in the workflow
+     And they are removed from the "Pending User" list of the company that added them
+     And they are designated as an "Active User" 
 
 @orv2-369-13
 Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working

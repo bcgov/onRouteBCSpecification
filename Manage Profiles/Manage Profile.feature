@@ -1,6 +1,6 @@
 
 Feature: View/Edit CV Client Company Information Details
-    As a CV Client Business BCeID user in the Admin Usleepser Group I want to manage "Company Information" so that I can maintain my company contact details.
+    As a CV Client Business BCeID user in the Admin User Group I want to manage "Company Information" so that I can maintain my company contact details.
 
 Background: The CV Client Business BCeID User Admin (CV Client Admin) has successfully logged into onRouteBC using their business BCeID and completed the creation of their onRouteBC Profile.
 
