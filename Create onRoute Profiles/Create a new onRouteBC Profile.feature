@@ -43,24 +43,24 @@ Rule: Workflow "Company Information" or "My Information" is not saved until the 
      Then the onRouteBC account is not created
       And no information is saved
 
-  @orv2-369-12
- Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
-     Given the CV Client Business BCeID user is at the invitation welcome page
-     When they accept the invitation
-     Then they are directed to the "My Information" page in the workflow
-     And they are removed from the "Pending User" list of the company that added them
-     And they are designated as an "Active User" 
+ @orv2-369-12
+  Scenario: CV Client Business BCeID user added to a company profile first time sign in accept add to onRouteBC profile
+      Given the CV Client Business BCeID user is at the invitation welcome page
+      When they accept the invitation
+      Then they are directed to the "My Information" page in the workflow
+      And they are removed from the "Pending User" list of the company that added them
+      And they are designated as an "Active User" 
 
- @orv2-369-13
- Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
-     Given the CV Client Admin or User has valid BCeID credentials 
-     When they attempt to sign in using their BCeID credentials
-     Then they are directed to a BCeID error page
+  @orv2-369-13
+  Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
+      Given the CV Client Admin or User has valid BCeID credentials 
+      When they attempt to sign in using their BCeID credentials
+      Then they are directed to a BCeID error page
 
- @orv2-369-14
- Scenario: CV Client Business BCeID admin OR user attempts to sign into onRouteBC using invalid BCeID credentials
-     Given the CV Client Admin or User has invalid BCeID credentials 
-     When they attempt to sign in to onRouteBC
-     Then they are directed to a BCeID error page
+  @orv2-369-14
+  Scenario: CV Client Business BCeID admin OR user attempts to sign into onRouteBC using invalid BCeID credentials
+      Given the CV Client Admin or User has invalid BCeID credentials 
+      When they attempt to sign in to onRouteBC
+      Then they are directed to a BCeID error page
 
 

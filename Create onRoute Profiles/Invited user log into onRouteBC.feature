@@ -1,34 +1,36 @@
-Feature: added CV Client user first time log into onRoute
+Feature: Invited user log into onRouteBC
   As an newly added CV Client user I need to be able to log into onRouteBC for the first time and complete my onRouteBC profile so that I can begin ordering permits for the onRouteBC company I am a member of.
 
 @orv2-907-1
-Rule: username must be in onRouteBC and match company BCeID in onRouteBC
+Rule: credential username must match invited username in onRouteBC
 
-  Scenario: username in onRouteBC and matches a company BCeID in onRouteBC
-     Given the username is in onRouteBC
-       And their BCeID matches a company BCeID
+  Scenario: username in onRouteBC and matches 
+     Given the credential username matches invited username in onRouteBC
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Welcome to onRouteBC" page
        And they see the company name for the profile they are a member of
        And they see the option to finish creating their profile
 
-  Scenario: username in onRouteBC does not match company in onRouteBC
-    Given the username is in onRouteBC
-      But their BCeID does not match a company BCeID
+  Scenario: username does not match one in onRouteBC
+    Given the credential username is not in onRouteBC
+      And their credential does not match an existing user in onRouteBC
      When they successfully log in using their BCeID credentials
      Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute their BCeID matches a company in onRouteBC
+ Scenario: username not in onRouteBC, credentials match a company in onRouteBC
      Given the username is not in onRouteBC
-       But their BCeID matches a company BCeID
+       And they are not the first user
+       But their credentials match a company in onRouteBC
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
- Scenario: username is not in onRoute their BCeID does not match a company in onRouteBC
+ Scenario: username not in onRoute, credentials do not match a company in onRouteBC
      Given the username is not in onRouteBC
-       And their BCeID does not match a company BCeID
+       And their credentials do not match a company in onRouteBC
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Universal Unauthorized Access" page
+      Then they are directed to the "Welcome to onRouteBC" page 
+       And they see their credential "Company Legal Name"
+       And they see the option to create a new profile or claim an existing profile
 
 @orv2-907-2
 Rule: a new user is assigned the role designated to their username
