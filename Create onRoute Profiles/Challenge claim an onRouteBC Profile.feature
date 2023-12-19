@@ -135,7 +135,7 @@ Rule: A CV Client must view and update their claimed "Client No." profile inform
       And they cannot edit it
 
 @orv2-481-5
-Rule: A CV Clients crdential information replaces the "Company Name" and "Company Email" information in onRouteBC
+Rule: A CV Clients credential information replaces the "Company Name" and "Company Email" information in onRouteBC
 
   Scenario: Information exists in onRouteBC
     Given a CV Client profile has information in "Company Information"
