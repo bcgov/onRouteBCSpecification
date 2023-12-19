@@ -2,7 +2,7 @@ Feature: CV Client create a New onRouteBC Profile
  As a CV Client Business BCeID user I want to log in to onRouteBC using my BCeID credentials so that I can create my onRouteBC Profile.
 
 @orv2-369-1
-Rule: A new logged in user can choose to create a new onRoute profile or claim an existing profile
+Rule: a user can choose to create a new onRoute profile or claim an existing profile
 
  Scenario: username not in onRoute, credentials do not match a company in onRouteBC
      Given the username is not in onRouteBC
@@ -13,7 +13,7 @@ Rule: A new logged in user can choose to create a new onRoute profile or claim a
        And they see the option to create a new profile or claim an existing profile
 
 @orv2-369-2
-Rule: A new user must update their "Company Information" and "My Information"
+Rule: a user must update their "Company Information" and "My Information"
 
  Scenario: Choose create new profile
      Given they are at the "Welcome to onRouteBC" Page
