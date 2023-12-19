@@ -1,4 +1,4 @@
-Feature: User challenge claim or join an existing onRouteBC Profile
+Feature: Challenge claim an existing onRouteBC Profile
  As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
 @orv2-481-1
@@ -30,7 +30,7 @@ Rule: A user is provided the option to claim a profile with a challenge
      Then they are directed to the "Create a new onRouteBC Profile" page 
 
 @orv2-481-11
-Rule: A CV Client can cancel or step backwards in the "Claim an existing profile" workflow
+Rule: A user can cancel or step backwards in the "Claim an existing profile" workflow
 
   Scenario: Cancel
     Given they have chosen to claim a TPS profile
@@ -100,7 +100,6 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
 @orv2-481-4
 Rule: A CV Client must view and update their claimed "Client No." profile information
 
-
   Scenario: Info boxes
     Given a CV Client passed "Verify Profile"
      When they choose to proceed to "Company Information"
@@ -108,7 +107,6 @@ Rule: A CV Client must view and update their claimed "Client No." profile inform
         | Please note, unless stated otherwise, all fields are mandatory.                         |
         | The Company Primary Contact will be contacted for all onRouteBC client profile queries. |
       And they see "Verify Profile" completed success indication
-
 
   Scenario: Mandatory fields
     Given a CV Client chooses to proceed to "My Information"
@@ -137,7 +135,7 @@ Rule: A CV Client must view and update their claimed "Client No." profile inform
       And they cannot edit it
 
 @orv2-481-5
-Rule: A CV Clients BCeID information replaces the "Company Name" and "Company Email" information in onRouteBC
+Rule: A CV Clients crdential information replaces the "Company Name" and "Company Email" information in onRouteBC
 
   Scenario: Information exists in onRouteBC
     Given a CV Client profile has information in "Company Information"

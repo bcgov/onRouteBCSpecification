@@ -1,5 +1,5 @@
-Feature: No challenge confirm TPS Account
-   As a CV Client with an existing onRouteBC profile and users I want to be able to log into onRouteBC and complete my onRouteBC profile.
+Feature: No challenge confirm existing onRouteBC profile
+   As a CV Client with an existing onRouteBC profile I want to be able to log into onRouteBC and complete my onRouteBC profile.
 
 @orv2-1637-1
 Rule: A user can join their matching onRouteBC company profile as an admin
