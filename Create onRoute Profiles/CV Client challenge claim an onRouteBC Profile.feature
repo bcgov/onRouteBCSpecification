@@ -1,8 +1,8 @@
-Feature: CV Client challenge claim or join an existing onRouteBC Profile
- As a CV Client Business BCeID user I want to claim or join an existing onRouteBC Profile so that I see my profile details and apply for permits.
+Feature: User challenge claim or join an existing onRouteBC Profile
+ As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
 @orv2-481-1
-Rule: A user is provided the option to claim a profile
+Rule: A user is provided the option to claim a profile with a challenge
 
   Scenario: user credentials do not match an existing onRouteBC profile
      Given the users credentials do not match a company in onRouteBC

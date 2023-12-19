@@ -1,7 +1,7 @@
 Feature: CV Client create a New onRouteBC Profile
  As a CV Client Business BCeID user I want to log in to onRouteBC using my BCeID credentials so that I can create my onRouteBC Profile.
 
- @orv2-369-1
+@orv2-369-1
 Rule: If a BCeID user company GUID is not in onRouteBC CV Client can choose to create a new onRoute profile or claim an existing profile
 
  Scenario: First log in BCeID company GUID is not in onRoute
@@ -11,7 +11,7 @@ Rule: If a BCeID user company GUID is not in onRouteBC CV Client can choose to c
      And they see their BCeID "Company Legal Name"
      And they see the option to create a new profile or claim an existing profile
 
- @orv2-369-2
+@orv2-369-2
 Rule: A CV Client can view and update their "Company Information" and "My Information"
 
  Scenario: Choose create new profile
@@ -51,17 +51,17 @@ Rule: Workflow "Company Information" or "My Information" is not saved until the 
      And they are removed from the "Pending User" list of the company that added them
      And they are designated as an "Active User" 
 
-@orv2-369-13
-Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
-    Given the CV Client Admin or User has valid BCeID credentials 
-    When they attempt to sign in using their BCeID credentials
-    Then they are directed to a BCeID error page
+ @orv2-369-13
+ Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
+     Given the CV Client Admin or User has valid BCeID credentials 
+     When they attempt to sign in using their BCeID credentials
+     Then they are directed to a BCeID error page
 
-@orv2-369-14
-Scenario: CV Client Business BCeID admin OR user attempts to sign into onRouteBC using invalid BCeID credentials
-    Given the CV Client Admin or User has invalid BCeID credentials 
-    When they attempt to sign in to onRouteBC
-    Then they are directed to a BCeID error page
+ @orv2-369-14
+ Scenario: CV Client Business BCeID admin OR user attempts to sign into onRouteBC using invalid BCeID credentials
+     Given the CV Client Admin or User has invalid BCeID credentials 
+     When they attempt to sign in to onRouteBC
+     Then they are directed to a BCeID error page
 
 Feature: Send onRouteBC profile creation confirmation email
 As as CV Client I want to receive a confirmation email after successfully completing the required steps and creating my onRouteBC profile so that I can have a reference of this activity.
