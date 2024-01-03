@@ -73,10 +73,10 @@ Rule: Generate report with permit financial transaction data
         | amount         |
 
  @orv2-1166-4
-Scenario: User is not PPC staff
-  Given a transaction was completed by a CV Client
-   When the transaction is listed in the report
-   Then the user is "SELF_ISSUED"
+ Scenario: User is not PPC staff
+   Given a transaction was completed by a CV Client
+    When the transaction is listed in the report
+    Then the user is "SELF_ISSUED"
 
 Rule: Display header information
 
