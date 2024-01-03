@@ -156,4 +156,3 @@ Rule: Format pdf output to 8.5x11 letter size landscape layout
 
  @orv2-556-20
 Rule: Number pages consecutively in footer
-
