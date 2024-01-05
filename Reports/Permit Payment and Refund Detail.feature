@@ -1,5 +1,7 @@
 Feature: PPC staff can generate a Permit Payment and Refund Detail Report that lists all payment and refund transactions completed in onRouteBC individually.
 
+# See Roles, Services and Permissions Matrix for details on user permissions
+
 Rule: PPC staff can filter report results to include desired tranasactions
 
  @orv2-556-1
@@ -30,14 +32,14 @@ Rule: PPC staff can filter report results to include desired tranasactions
         | from           | 2023/02/09 09:00 PM   | completed on or after 2023/02/09 09:00 PM           |
         | to             | 2023/02/10 09:00 PM   | completed on or before 2023/02/10 08:59.99 PM       |
 
-Rule: When only self issued is choosen PPC staff are unable to choose users
+Rule: When only self issued is chosen PPC staff are unable to choose users
 
   Scenario: Disable user selection
     Given PPC staff is at Permit Payment and Refund Detail Report parameters page
      When they choose to include only self issued
      Then they are unable to choose users
 
-Rule: When issued by is not choosen PPC staff are unable to view report and choose other parameters
+Rule: When issued by is not chosen PPC staff are unable to view report and choose other parameters
 
   Scenario: Issued by not choosen
     Given PPC staff have not choosen and issued by
