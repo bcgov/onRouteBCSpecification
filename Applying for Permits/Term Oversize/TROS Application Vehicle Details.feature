@@ -145,6 +145,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     And they select their desired vehicle
     Then the <vehicle> is displayed
     And they are grouped by the <vehicle type> either "Power Unit" or "Trailer"
+    And Vehicle Type is disabled
   
   Example:
     | unit number | vehicle | vehicle type |
@@ -162,6 +163,8 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     And they select their desired vehicle
     Then the <vehicle> is displayed
     And they are grouped by the <vehicle type> either "Power Unit" or "Trailer"
+    And Vehicle Type is disabled
+
   Example:
     | unit number | vehicle | vehicle type |
     | 123         | 1       | Power Unit   |
