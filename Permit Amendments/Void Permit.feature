@@ -126,7 +126,7 @@ Rule: View void permit application submission details
       And inputted reason for void is shown
 
 @orv2-1057-11
-Rule: If a permit has at least 30 days left, a void results in a full refund
+Rule: A void results in a full refund of current permit dollar value
 
   Scenario: view fee Summary
     Given the PPC SA is at the finish voiding page
@@ -134,7 +134,12 @@ Rule: If a permit has at least 30 days left, a void results in a full refund
      Then they see the total amount of all previous transactions for the voiding permit
       And refund amounts are displayed as a negative number with a "-" preceding the "$"
 
-  Scenario: refund increments 
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+  # Scenario: refund increments 
     Given a permit has 30 days or greater <term remaining>
      When the <refund fee total> amount is calculated 
      Then the refund fee total amount is an <increments> of 30 days
@@ -165,7 +170,6 @@ Rule: If a permit has at least 30 days left, a void results in a full refund
        | $120                    | $90       | $30        | duration shortened  |
 
 # scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
-
 @orv2-1057-12
 Rule: Default to previous payment method card type
 
