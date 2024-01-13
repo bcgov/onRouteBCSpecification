@@ -134,10 +134,25 @@ Rule: A void results in a full refund of current permit dollar value
      Then they see the total amount of all previous transactions for the voiding permit
       And refund amounts are displayed as a negative number with a "-" preceding the "$"
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: permit is active
+    Given the permit being voided is active
+     When staff attempt to complete a refund
+     Then the <original purchase price> of the permit is <refundable>
+
+     Examples:
+       | original purchase price | refundable |
+       | $60                     | $60        |
+       | $90                     | $90        |
+
+  Scenario: permit has no amendments
+    Given the permit being voided has no amendments
+     When staff attempt to complete a refund
+     Then the <original purchase price> of the permit is <refundable>
+
+     Examples:
+       | original purchase price | refundable |
+       | $60                     | $60        |
+       | $90                     | $90        |
 
   # Scenario: refund increments 
     Given a permit has 30 days or greater <term remaining>
