@@ -12,6 +12,18 @@ Rule: a user can choose to create a new onRoute profile or claim an existing pro
        And they see their credential "Company Legal Name"
        And they see the option to create a new profile or claim an existing profile
 
+# below is the same as above and describes a brand new user scenario
+  Scenario: user credentials do not match
+     Given the users credentials do not match a company in onRouteBC
+       And they have not been invited
+      When they successfully log in using their BCeID credentials
+      Then they are directed to the "Welcome to onRouteBC" page
+       And they see the following:
+         | item                                                                        | description                                       |
+         | BCeID Company Name                                                          | that matches their BCeID user credentials         |
+         | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
+       And they have the option to try to claim the profile or not claim it
+
 @orv2-369-2
 Rule: a user must update their "Company Information" and "My Information"
 

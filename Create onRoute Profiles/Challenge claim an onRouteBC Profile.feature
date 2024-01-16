@@ -13,7 +13,7 @@ Rule: A user is provided the option to claim a profile with a challenge
          | item                                                                        | description                                       |
          | BCeID Company Name                                                          | that matches their BCeID user credentials         |
          | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
-       And they have the option to try to claim the profile or not claim it
+       And they have the option to claim the profile or not
  
  Scenario: choose yes
      Given the CV Client is at the "Welcome to onRouteBC" page
@@ -182,10 +182,26 @@ Rule: A CV Client must view their onRouteBC Client Number upon successful comple
 @orv2-481-10
 Rule: Upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
 @orv2-481-12
-Rule: Users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+Rule: TPS migrated users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+
+  Scenario: first user
+    Given they successfully log in using their BCeID credentials
+     When they successfully complete the no challenge claim workflow
+     Then they are designated as an admin user
+
+  Scenario: not first user
+    Given they successfully log in using their BCeID credentials
+      And they are not the first user
+     When they successfully complete the no challenge "My Information" workflow
+     Then they are designated as an admin user
 @ovr2-481-14
 Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
 @orv2-481-15
 Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated to their BCeID username
 @0rv2-481-8
 Rule: The navigation bar is not visible until the profile has been successfully claimed
+
+# if no BCeID and company claimed by staff then a new user goes through the challenge workflow
+
+# staff needs to buy a permit on behalf of company, TPS migrated to onRouteBC, onRouteBC profile not claimed by client yet, when staff finds a company and selects the profile link they go to no challenge company information
+

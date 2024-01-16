@@ -13,7 +13,7 @@ Rule: HQ Finance, PPC Admin or PPC CTPO can turn on/off the suspend flag
 Rule: On successful login a suspended CV Client is directed to a profile suspended page
 
 @orv2-1856-3
-Rule: PPC PC staff are directed to a profile suspended page when attemtping to view a suspended CV Client profile
+Rule: PPC PC staff are directed to a profile suspended page when attempting to view a suspended CV Client profile
 
 @orv2-1856-4
 Rule: HQ Finance, PPC Admin or PPC CTPO see indication of the CV Client suspended status on all page headers
