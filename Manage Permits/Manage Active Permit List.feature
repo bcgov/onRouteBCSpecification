@@ -2,7 +2,7 @@ Feature: Manage Active Permit List
    As a CV Client I need to be able to view a list of my Active permits so that I can complete actions on them and keep track of my issued and Active permits.
 
 @orv2-950
-Rule: CV Clients PA and SA can view Active permits if any exist and see relevant information about them, CV Client PA can only view permits they createdview permit pdfs
+Rule: CV Clients PA and SA can view Active permits if any exist and see relevant information about them, CV Client PA can only view permits they created view permit pdfs
 @orv2-950-1
   Scenario: Default Active permits listed
     Given the CV Client is at the "Permits" page
