@@ -21,3 +21,16 @@ Rule: Send onRouteBC profile creation notification to CV Client
 Rule: Provide option at success age to apply for a permit
 @orv2-1521
 Rule: Provide option at success page to view the CV Client profile
+
+TPS migrated CV Client profile not yet claimed by CV Client or completed by staff need to suspend company
+
+Search for Company
+Choose company
+Directed to company information to complete information
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 Feature: Staff search for company
-   As a PPC SA or PC and EO I want to search for a CV Client so that I can access their profile.
+   As a PPC SA or PC and EO I want to search for a CV Client so that I can view details about their profile.
 
 @orv2-1362-1
 Rule: The entered search parameter is displayed after initiating a search
@@ -141,3 +141,8 @@ Rule: Sort multiple search results
         | Abacus Inc.         |
         | Bandstra Inc.       |
         | Johns Trucking Ltd. |
+
+@orv2-1362-10
+Rule: EO can not view a CV Client profile
+@orv2-1362-11
+Rule: Searching with no inputted parameter does not initiate search
