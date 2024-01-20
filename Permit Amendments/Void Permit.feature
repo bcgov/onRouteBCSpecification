@@ -309,9 +309,9 @@ Rule: Send void permit documents to contact details from void permit page
      Given the PPC SA has inputted all mandatory information at finish voiding
       When they finish voiding a permit
       Then the generated void permit PDF and void receipt PDF are emailed as attachments to:
-        | company contact email address         |
-        | email address inputted at void permit |
-        | fax number inputted at void permit    |
+        | company contact email address                       |
+        | additional email address if inputted at void permit |
+        | fax number if inputted at void permit               |
        And the CV Client cannot reply to the email
 
   Scenario: Indicate mandatory fields    
