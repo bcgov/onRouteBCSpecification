@@ -314,17 +314,6 @@ Rule: Send void permit documents to contact details from void permit page
         | fax number if inputted at void permit               |
        And the CV Client cannot reply to the email
 
-  Scenario: Indicate mandatory fields    
-     Given the PPC SA is voiding a permit
-     When they do not enter valid data into a <mandatory field>  
-     And they choose to continue  
-     Then they see <mandatory field error message>     
-     And they cannot save their changes
-
-     Examples:  
-       | mandatory field | mandatory field error message | 
-       | Email           | This is a required field      | 
-
  @orv2-1057-22
    Scenario: Send permit and receipt to fax number
      Given the PPC SA has inputted all mandatory information at finish voiding
