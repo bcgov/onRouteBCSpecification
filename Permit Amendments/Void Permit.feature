@@ -63,8 +63,11 @@ Rule: Choose contact details to send void permit documents too
    Scenario: Update contact details
      Given the PPC SA is voiding a permit
       When they are at the void permit page
-      Then they see the contact details populated with the same information submitted from the voiding permit
-       And they can update these details
+      Then they see:
+        | contact method   | description                         |
+        | company email    | source is the company email address |
+        | additional email | empty editable field                |
+        | fax              | empty editable field                |
 
 @orv2-1057-6
 Rule: Reason for void is mandatory
