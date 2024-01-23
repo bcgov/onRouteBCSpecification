@@ -34,28 +34,28 @@ Scenario: Edit "Company Information"
     And have <editable> restrictions 
   
     Examples: 
-      | my company fields    | editable | 
-      | onRouteBC Client No. | No       | 
-      | Company Legal Name   | No       |
-     | DBA                   |Yes       | 
-      | Address Line 1       | Yes      | 
-      | Address Line 2       | Yes      | 
-      | City                 | Yes      | 
-      | Province/State       | Yes      | 
-      | Postal Code/Zip Code | Yes      | 
-      | Country              | Yes      | 
-      | Phone                | Yes      | 
-      | Ext                  | Yes      | 
-      | Fax                  | Yes      | 
-      | Email                | No       | 
-      | First Name           | Yes      | 
-      | Last Name            | Yes      | 
-      | Phone                | Yes      | 
-      | Ext                  | Yes      | 
-      | Email                | Yes      | 
-      | Alternative Phone    | Yes      | 
-      | City                 | Yes      | 
-      | Province/State       | Yes      | 
+      | my company fields    | editable |
+      | onRouteBC Client No. | No       |
+      | Company Legal Name   | No       |
+      | DBA                  | Yes      |
+      | Address Line 1       | Yes      |
+      | Address Line 2       | Yes      |
+      | City                 | Yes      |
+      | Province/State       | Yes      |
+      | Postal Code/Zip Code | Yes      |
+      | Country              | Yes      |
+      | Phone                | Yes      |
+      | Ext                  | Yes      |
+      | Fax                  | Yes      |
+      | Email                | No       |
+      | First Name           | Yes      |
+      | Last Name            | Yes      |
+      | Phone                | Yes      |
+      | Ext                  | Yes      |
+      | Email                | Yes      |
+      | Alternative Phone    | Yes      |
+      | City                 | Yes      |
+      | Province/State       | Yes      | 
 
 @orv2-354-4
 Scenario: Save edits to "Company Information"
