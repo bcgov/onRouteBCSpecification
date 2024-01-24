@@ -25,7 +25,7 @@ Rule: BCeID company data is displayed
        | Company Legal Name | bceid_business_name | 
        | Email              | BCeID email         |
 
-@orv2-1587-2 
+@orv2-1587-2 @orv2-1521-2
 Rule: All fields are updatable
 
  Scenario: Edit "Company Information"
@@ -73,7 +73,7 @@ Rule: All fields are updatable
      And they navigate away from the "Company Information"
      Then the changes are not saved 
 
-@orv2-1587-3
+@orv2-1587-3 @orv2-1521-3
 Rule: There are mandatory fields
 
  Scenario: Indicate mandatory fields    
@@ -102,7 +102,7 @@ Rule: There are mandatory fields
        | Primary Contact City                   | This is a required field.     |
 
 @orv2-1587-4
-Rule: Staff can cancel create company
+Rule: Staff can cancel edit company
 
  Scenario: Cancel edit "Company Information"
      Given Staff is editing "Company Information"
