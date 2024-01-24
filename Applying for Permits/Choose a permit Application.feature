@@ -5,9 +5,7 @@ Feature: Choose a permit application
   Scenario: Permit List
     Given A CV Client is at the "Permits" page
      When They choose to select a permit to apply for
-     Then they see the following list of <permit types categories> and <permit types>
-
-     Examples:
+     Then they see the following list of permit types categories and permit types
        | permit type categories | permit types |
        | Oversize               | Term         |
 

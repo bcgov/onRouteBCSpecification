@@ -1,5 +1,3 @@
-Feature: Header
-
 Rule: A user can navigate to their unique home page 
 
   Scenario: CV Client
@@ -16,4 +14,3 @@ Rule: A user can navigate to their unique home page
     Given an EO is logged in
      When they choose to go home
      Then they are directed the staff home page Welcome to onRouteBC!
-

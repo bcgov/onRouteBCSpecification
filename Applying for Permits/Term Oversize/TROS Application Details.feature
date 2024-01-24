@@ -1,6 +1,6 @@
 @e2e4
 Feature: Complete TROS permit details
-    As a CV Client I need to enter the parameters of my desired TROS permit so that I can get approved and recieve my permit.
+    As a CV Client I need to enter the parameters of my desired TROS permit so that I can get approved and receive my permit.
 
 @orv2-550-1
   Scenario: Permit start date accepted

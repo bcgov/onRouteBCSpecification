@@ -1,6 +1,6 @@
 @e2e5
 Feature: TROS Application Vehicle Details
-   As a CV Client I need to be able to recall a vehicle from m vehicle inventory or add new vehicle informatin to my permit application so that I can receive a valid TROS permit for my vehicle.
+   As a CV Client I need to be able to recall a vehicle from m vehicle inventory or add new vehicle information to my permit application so that I can receive a valid TROS permit for my vehicle.
 
 @orv-551-1
   Scenario: TROS eligible "Power Unit"
