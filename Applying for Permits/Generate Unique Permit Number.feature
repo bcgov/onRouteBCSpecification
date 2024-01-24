@@ -4,7 +4,7 @@ Feature: Generate unique permit number
 Rule: A unique permit number is generated when a permit is saved in onRouteBC
 
   Scenario Outline: Generate permit number
-    Given the CV Client has attempted to complete payment
+    Given a user has attempted to complete payment
      When they successfully complete payment
      Then the permit number is generated that contains the <application source><application origin>-<sequence>-<random>
       And they see "Permit <application number> created." notification 
@@ -16,7 +16,7 @@ Rule: A unique permit number is generated when a permit is saved in onRouteBC
   Scenario: Permit number meta-data source
     Given a permit number is generated
      When the permit number is generated
-     Then the it is formed using the following rules:
+     Then it is formed using the following rules:
        | element                                                | order | specification |
        | "P" for permit "A" for application                     | 1     | 1 character   |
        | "1" created by PPC or "2" created online by CV Client  | 2     | 1 digit       |
