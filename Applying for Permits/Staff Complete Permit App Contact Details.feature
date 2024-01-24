@@ -1,7 +1,7 @@
 Feature: Staff Complete Contact Details
     As a PPC SA or PC I need to complete contact details input so that I can ensure valid contacts details form a part of the permit.
 
-@orv2-1384-
+@orv2-1384-21
 Rule: Staff see company profile contact details
 
   Scenario: View company information
@@ -24,7 +24,7 @@ Rule: Staff see company profile contact details
        | company email |
      And they see "The permit will be sent..." information box
 
-@orv-1384-
+@orv2-1384-22
 Rule: Staff can update application contact details
 
   Scenario: Update contact information 
@@ -41,7 +41,7 @@ Rule: Staff can update application contact details
      Then the "Contact Information" reflects their changes
      And these changes to "Contact Information" apply only to this permit
 
-@orv-1384-
+@orv2-1384-23
 Rule: Staff must complete mandatory contact details fields
 
 Scenario: Indicate mandatory "Contact Information" fields    

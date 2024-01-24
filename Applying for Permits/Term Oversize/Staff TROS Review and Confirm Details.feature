@@ -1,7 +1,7 @@
 Feature: Review and Confirm TROS Details
    As a PPC SA or PC I need to be able review the information I submitted in the permit application so that I can ensure it is accurate before purchase.
 
-@orv2-1384-
+@orv2-1384-0
 Rule: The application is saved when continuing to review
 
  Scenario: Continue to review
@@ -10,7 +10,7 @@ Rule: The application is saved when continuing to review
      Then they are directed to review and confirm details
      And the application is saved as an applications in progress
 
-@orv2-1384-
+@orv2-1384-1
 Rule: Staff can see permit application details summary
 
  Scenario: Display permit application details summary
@@ -54,7 +54,7 @@ Rule: Staff can see permit application details summary
        | Confirm compliance with the appropriate policy for the selected commodity(s).                          |
        | Confirm the information in this application is correct.                                                |
 
-@orv2-1384-
+@orv2-1384-2
 Rule: Attestations are mandatory
 
  Scenario: Attestations warning
@@ -63,7 +63,7 @@ Rule: Attestations are mandatory
      Then they see "Checkbox selection is required"
      And any unselected checkbox is outlined in red
 
-@orv2-1384-
+@orv2-1384-3
 Rule: TROS permit fee is calculated
 
  Scenario: Fee calculation
@@ -86,7 +86,7 @@ Rule: TROS permit fee is calculated
     | 330  | 330        |
     | 1y   | 360        |
 
-@orv2-1384-
+@orv2-1384-4
 Rule: Staff can edit the application
 
  Scenario: Edit Application
