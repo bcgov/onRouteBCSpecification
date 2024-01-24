@@ -1,7 +1,7 @@
 Feature: Manage Expired Permit List
    As a CV Client I need to be able to view a list of my Expired permits so that I can complete actions on them and keep track of my issued and Expired permits.
 
-@orv2-995-0 @orv2-1653-5
+@orv2-995-0 @orv2-1651-5
 Rule: CV Clients PA and SA can view Expired permits if any exist and see relevant information about them, CV Client PA can only view permits they created
 
   Scenario: Default Expired permits listed

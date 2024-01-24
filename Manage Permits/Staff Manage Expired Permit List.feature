@@ -1,7 +1,7 @@
 Feature: Staff Manage Expired Permit List
    As a PPC SA or PC I need to be able to view a list of Expired permits so that I can complete actions on them and keep track of issued and Expired permits on behalf of CV Clients.
 
-@orv2-1653-1
+@orv2-1651-1
 Rule: Staff can view all Expired permits
 
   Scenario: Default Expired permits listed
@@ -30,7 +30,7 @@ Rule: Staff can view all Expired permits
      When they choose to view "Expired Permits"
      Then they see "No records found."
 
-@orv2-1653-2
+@orv2-1651-2
 Rule: Staff can view the permit and permit payment receipt pdf
 
   Scenario: View receipt pdf

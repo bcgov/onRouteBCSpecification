@@ -1,6 +1,6 @@
 Feature: Search or Sort Expired Permits
 
-@orv2-1008-0 @orv2-1653-3
+@orv2-1008-0 @orv2-1651-3
 Rule: Users can search for Expired permits using unit # and plate
 
   Scenario: Search using unit #
@@ -34,7 +34,7 @@ Rule: Users can search for Expired permits using unit # and plate
      When they choose to search using plate
      Then they see "No records found" 
 
-@orv2-1009 @orv2-1653-4
+@orv2-1009 @orv2-1651-4
 Rule: Users can sort the list of expired permits
 
  Scenario: Sort list of Expired permits
