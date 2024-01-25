@@ -1,7 +1,7 @@
 Feature: Send onRouteBC profile creation confirmation email
-As as CV Client I want to receive a confirmation email after successfully completing the required steps and creating my onRouteBC profile so that I can have a reference of this activity.
+  As as CV Client I want to receive a confirmation email after successfully completing the required steps and creating my onRouteBC profile so that I can have a reference of this activity.
 
-@orv2-477-1
+@orv2-477-1 @orv2-1521-7
 Rule: Send confirmation email to CV Client upon successful profile creation
 
  Scenario: Send email when onRoute profile workflow is completed

@@ -1,5 +1,5 @@
 Feature: Staff view/edit company information
-   As a PPC SA or PC I need to manage "Company Information" so that I can maintain my company contact details for CV Clients.
+  As a PPC SA or PC I need to manage "Company Information" so that I can maintain my company contact details for CV Clients.
 
 Background: @orv2-354
 
