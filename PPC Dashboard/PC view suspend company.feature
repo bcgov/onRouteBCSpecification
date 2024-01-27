@@ -9,7 +9,7 @@ Rule: PC can view the suspension history table
      When they choose to view suspend details
      Then they see the suspend history table with the following columns:
        | IDIR   | the idir username of a suspend transaction record              |
-       | Date   | the date of a suspend transaction record                       |
+       | Date   | the date and time of a suspend transaction record in PT        |
        | Reason | the free text reason inputted for a suspend transaction record |
        | Status | the state change of a suspend transaction record               |
 
@@ -18,7 +18,7 @@ Rule: PC can view the suspension history table
      When they choose to view suspend details
      Then they see the suspend history table with the following columns:
        | IDIR   | the idir username of a suspend transaction record              |
-       | Date   | the date of a suspend transaction record                       |
+       | Date   | the date and time of a suspend transaction record in PT        |
        | Reason | the free text reason inputted for a suspend transaction record |
        | Status | the state change of a suspend transaction record               |
 
@@ -74,5 +74,3 @@ Rule: PC can not make changes to a suspended company profile
 
 @orv2-1880-4
 Rule: PC can view a suspended company's active and expired permits
-
-
