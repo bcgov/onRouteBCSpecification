@@ -1,36 +1,78 @@
-Feature: Staff suspend company
-As staff I need to be able to suspend a company in onRouteBC so that they cannot purchase permits.
+Feature: PC view suspend company
+As as PC I need to be able to view a suspended company profile in onRouteBC so that I can be informed of the companies status.
 
-As PC I need to be able to view 
+@orv2-1880-1
+Rule: PC can view the suspension history table
 
-Staff = FIN, SA, CTPO
+  Scenario: suspended company profile
+    Given at company profile
+     When they choose to view suspend details
+     Then they see the suspend history table with the following columns:
+       | IDIR   | the idir username of a suspend transaction record              |
+       | Date   | the date of a suspend transaction record                       |
+       | Reason | the free text reason inputted for a suspend transaction record |
+       | Status | the state change of a suspend transaction record               |
 
-@orv2-1856-1
-Rule: Staff can turn on/off the suspend flag
+  Scenario: currently active but previously suspended
+    Given at company profile
+     When they choose to view suspend details
+     Then they see the suspend history table with the following columns:
+       | IDIR   | the idir username of a suspend transaction record              |
+       | Date   | the date of a suspend transaction record                       |
+       | Reason | the free text reason inputted for a suspend transaction record |
+       | Status | the state change of a suspend transaction record               |
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: never suspended
+    Given at company profile
+     When they choose to view suspend details
+     Then they do not see the option to view suspend details
 
-@orv2-1856-2
-Rule: On successful login a suspended CV Client is directed to a profile suspended page
+@orv2-1880-2
+Rule: PC can not suspend a company
 
-@orv2-1856-3
-Rule: PC 
+  Scenario: active company
+    Given at company profile
+     When they choose to view suspension details
+     Then they do not see the option to view suspend details
 
-@orv2-1856-4
-Rule: Staff see indication of the CV Client suspended status on all page headers
 
-@orv2-1856-5
-Rule: Staff can input a reason for suspension
+@orv2-1880-3
+Rule: PC can not make changes to a suspended company profile
 
-@orv2-1856-6
-Rule: On successful save of reason for suspension the logged in user id and time and date are saved with the reason
+  Scenario: company information
+    Given at company information
+     When they attempt to make changes
+     Then they do not have the option to edit
 
-@orv2-1856-7
-Rule: On successfully turning the suspension on/off the CV Client is sent an email notification 
+  Scenario: user management
+    Given at user management
+     When they attempt to make changes
+     Then they do not have the following options available:
+       | add users    |
+       | edit users   |
+       | delete users |
 
-# When a Credit Account (CA) Holder is suspended any CA User of that account will not be able to use the CA Holders CA
+  Scenario: application in progress
+    Given at applications in progress
+     When they attempt to make changes
+     Then they do not have the following options available:
+       | start an application           |
+       | choose a permit type           |
+       | delete applications            |
+       | choose application in progress |
+       | edit application in progress   |
+       | view applications in progress  |
+
+  Scenario: vehicle inventory
+    Given at vehicle inventory
+     When they attempt to make changes
+     Then they do not have the following options available:
+       | edit power unit or trailer   |
+       | add power unit or trailer    |
+       | delete power unit or trailer |
+       | choose power unit or trailer |
+
+@orv2-1880-4
+Rule: PC can view a suspended company's active and expired permits
 
 
