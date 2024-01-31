@@ -63,3 +63,13 @@ Rule: On page not available via global navigation
      When they view the global navigation options
      Then all options are unindicated
 
+@orv2-1378-8
+Rule: Navigating using the global navigation bar when acting as a company will reset the context to no company
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
+
