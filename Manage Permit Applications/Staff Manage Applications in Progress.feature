@@ -2,7 +2,7 @@ Feature: Staff Manage Applications in Progress
    As a PPC SA or PC I want to view a list of my applications so that I can manage their submission, payment or deletion.
 
 @orv2-1575-3
-Rule: Staff can view a list of all applications in progress
+Rule: Staff can view a list of all applications in progress for a specific company
 
   Scenario: View list applications do not exist
     Given Staff is at the "Applications in Progress" tab

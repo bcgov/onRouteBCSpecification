@@ -1,6 +1,8 @@
 Feature: Manage Active Permit List
    As PPC SA or PC I need to be able to view a list of a CV Clients Active permits so that I can complete actions on them and keep track of issued and Active permits.
 
+Staff = PC and SA
+
 @orv2-1650-3
 Rule: Staff can view all Active permits if any exist and see relevant information about them
 
