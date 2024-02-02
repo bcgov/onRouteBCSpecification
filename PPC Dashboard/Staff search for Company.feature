@@ -64,17 +64,30 @@ Rule: PPC SA or PC and EO can search for a company using a minimum 9 characters 
    | onRouteBC client number | 818745927     | 81-874592-709 |
 
 @orv2-1362-14  
-Rule: PPC SA or PC and EO can search by client number also searches legacy number
+Rule: PPC SA, PC and EO can search using the first 9 characters of the client number
 
-  Scenario: Both onRouteBC client number and legacy client number exists
+  Scenario: onRouteBC client number exists
     Given a PPC SA, PC or EO has chosen to search by client number
      When they search by the using 9 characters of the <client number>
-     Then they see company <results> that have the first 9 characters matching in legacy number
+     Then they see company <results> that have the first 9 characters matching in legathe client number
 
   Examples:
-   | description                   | client number | results                      |
-   | using onRouteBC client number | 818745927     | 81-874592-765 and 2018-24432 |
-   | using legacy client number    | 201824432     | 81-874592-765 and 2018-24432 |
+   | description                   | client number | results       |
+   | using onRouteBC client number | 818745927     | 81-874592-765 |
+
+@orv2-1362-4
+Rule: PPC SA, PC and EO can search using the exact legacy number
+
+  Scenario: Legacy client number exists
+    Given a PPC SA, PC or EO has chosen to search by legacy number
+     When they search by the using all characters of the <legacy number>
+     Then they see company <results> that match the legacy number
+      But they do not see <results> that are not an exact match
+
+  Examples:
+   | description                     | legacy number | results |
+   | using exact legacy number       | 98046         | 98046   |
+   | using part of the legacy number | 980           |         |
 
 
 @orv2-1362-3 
