@@ -1,7 +1,7 @@
 Feature Staff Pay for Permit Using ICEPAY
    As a PPC SA or PC I can pay for a permit application on behalf of a CV Client so that I can complete the issuance of a valid permit.
 
-@orv2-1584-1
+@orv2-1583-1
 Rule: Staff can pay for a permit using ICEPAY
 
   Scenario: finish payment
@@ -15,7 +15,7 @@ Rule: Staff can pay for a permit using ICEPAY
       And the permit is issued
       # see Issue Permit
 
-@orv2-1584-2
+@orv2-1583-2
 Rule: Staff can input a credit card type
 
   Scenario: available card types
@@ -35,7 +35,7 @@ Rule: Staff can input a credit card type
       And "Card Type" is indicated
       And they cannot finish
 
-@orv2-1584-3
+@orv2-1583-3
 Rule: Staff can input a transaction ID (Provider Transaction ID) manually
 
   Scenario: transaction ID is mandatory
@@ -45,7 +45,7 @@ Rule: Staff can input a transaction ID (Provider Transaction ID) manually
       And "Transaction ID" is indicated
       And they cannot finish
 
-@orv2-1584-4
+@orv2-1583-4
 Rule: Staff can see the permit application payment details
 
  Scenario: Permit application purchase summary
