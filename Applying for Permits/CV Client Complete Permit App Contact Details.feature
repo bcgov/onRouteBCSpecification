@@ -16,20 +16,22 @@ Feature: Complete Contact Details
         | company mailing address                   |
 
   @orv2-549-2
-  Scenario: View contact information 
+  Scenario: View profile contact information 
     Given the CV Client is at the "Permit Application" page
      When they view "Contact Information"
-     Then they see contact details from their "My Information" page:
-       | First Name      |
-       | Last Name       |
-       | Primary Phone   |
-       | Ext             |
-       | Alternate Phone |
-       | Ext             |
-       | Email           |
-       | Fax             |
+     Then they see contact details from their company profile:
+       | First Name      | from my information      |
+       | Last Name       | from my information      |
+       | Primary Phone   | from my information      |
+       | Ext             | from my information      |
+       | Alternate Phone | from my information      |
+       | Ext             | from my information      |
+       | Email           | from my information      |
+       | Fax             | from my information      |
+       | company email   | from company information |
+     And company email is read only
      And they see "The permit will be sent..." information box
-
+ 
   @orv2-549-3
   Scenario: Update contact information 
     Given the CV Client is at the "Permit Application" page
