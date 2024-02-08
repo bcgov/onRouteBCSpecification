@@ -26,6 +26,7 @@ Rule: View list of applications in progress
        | Applicant           | the first name and last name of the logged in user that started the permit application or Provincial Permit Center if started by staff |
      And the default sort order is "Last Updated Date" newest at the top ascending
 
+
 @orv-548-2
 Rule: PA can only view applications they create
 
