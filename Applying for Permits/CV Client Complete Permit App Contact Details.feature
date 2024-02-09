@@ -20,15 +20,15 @@ Feature: Complete Contact Details
     Given the CV Client is at the "Permit Application" page
      When they view "Contact Information"
      Then they see contact details from their company profile:
-       | First Name      | from my information      |
-       | Last Name       | from my information      |
-       | Primary Phone   | from my information      |
-       | Ext             | from my information      |
-       | Alternate Phone | from my information      |
-       | Ext             | from my information      |
-       | Email           | from my information      |
-       | Fax             | from my information      |
-       | company email   | from company information |
+       | First Name       | from my information      |
+       | Last Name        | from my information      |
+       | Primary Phone    | from my information      |
+       | Ext              | from my information      |
+       | Alternate Phone  | from my information      |
+       | Ext              | from my information      |
+       | Additional Email | from my information      |
+       | Fax              | from my information      |
+       | company email    | from company information |
      And company email is read only
      And they see "The permit will be sent..." information box
  
