@@ -61,7 +61,7 @@ Rule: Delete Permit Application
      And remain visible only to staff users
 
 @orv2-685-1 @orv2-1575-2
-Rule: A CV Client can edit application in progress started by a CV Client Admin or PA 
+Rule: A CV Client CA can edit application in progress started by a CV Client CA or PA 
 
   Scenario: CV Client started application
     Given the CV Client is at the "Applications in Progress" tab 
