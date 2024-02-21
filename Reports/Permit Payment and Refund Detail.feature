@@ -2,7 +2,7 @@ Feature: PPC staff can generate a Permit Payment and Refund Detail Report that l
 
 # See Roles, Services and Permissions Matrix for details on user permissions
 
-Rule: PPC staff can filter report results to include desired tranasactions
+Rule: PPC staff can filter report results to include desired transactions
 
  @orv2-556-1
   Scenario: Filter report results
