@@ -3,9 +3,9 @@ Feature: CV Client complete TROW application vehicle details
 
 CV Client = PA, CA
 
-@orv2-1095-0
+@orv2-1095-15
 Rule: Show CV Client "Can't find a vehicle from your inventory?" information box
-@orv-1095-1
+@orv-1095-16
 Rule: Only power units and trailers eligible for TROW permits are available to permit
 
   Scenario: TROW eligible "Power Unit"
@@ -19,7 +19,7 @@ Rule: Only power units and trailers eligible for TROW permits are available to p
      Then they see only "Trailers" eligible for a TROW permit
 
  # See Data Discovery
-@orv-1095-3
+@orv-1095-17
 Rule: The CV Client must input a vehicle to permit
 
   Scenario: The Client inputs their Vehicle information
@@ -36,7 +36,7 @@ Rule: The CV Client must input a vehicle to permit
        | Vehicle Type        |
        | Vehicle Sub-type    |
 
-@orv-1095-4
+@orv-1095-18
 Rule: Mandatory vehicle fields are indicated
 
  Scenario: Mandatory fields 
@@ -56,7 +56,7 @@ Rule: Mandatory vehicle fields are indicated
        | Vehicle Sub-type | This is a required field      |
        | Country          | This is a required field      |
 
-@orv2-1095-5
+@orv2-1095-19
 Rule: Inputted vehicle details can be saved to a CV Client vehicle inventory
 
  Scenario: Save new vehicle to "Vehicle Inventory"
@@ -73,7 +73,7 @@ Rule: Inputted vehicle details can be saved to a CV Client vehicle inventory
      Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
      And if they select NO the vehicle will not be updated in their "Vehicle Inventory"
 
-@orv2-1095-6
+@orv2-1095-20
 Rule: The CV Client can recall a vehicle from their vehicle inventory
 
   Scenario: Find vehicle in inventory by Unit Number
