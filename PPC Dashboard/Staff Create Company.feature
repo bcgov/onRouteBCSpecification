@@ -49,7 +49,7 @@ Rule: Staff can create a new onRouteBC profile
      Then they are directed to "Create Company"
 
 @orv2-1521-11
-Rule: Staff must complete a TPS migrated company profile  that has not been claimed or completed by staff
+Rule: Staff must complete a TPS migrated company profile that has not been claimed or completed by staff
 
   Scenario: TPS migrated CV Client profile not yet claimed by CV Client or completed by staff
     Given staff find a company at search for company
