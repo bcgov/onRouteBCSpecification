@@ -40,6 +40,5 @@ Rule: Maximum date range is 30 days
       And they cannot continue
 
 
-
 Greyed out To date selection options based on the From date
 Warning message if they select a From date that is too far away from the To date
