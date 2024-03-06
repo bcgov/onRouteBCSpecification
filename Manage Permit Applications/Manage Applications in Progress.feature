@@ -4,7 +4,7 @@ Feature: CV Client Manage Applications in Progress
 CV Client = CA and PA
 
 @orv-548-1 @orv2-1575-1
-Rule: View list of applications in progress
+Rule: Show list of applications in progress
 
   Scenario: View list applications do not exist
     Given the CV Client is at the "Applications in Progress" tab
@@ -28,7 +28,7 @@ Rule: View list of applications in progress
 
 
 @orv-548-2
-Rule: A CV Client PA can only view or edit applications they create
+Rule: A CV Client PA can only view and edit applications they create
 
   Scenario: PA view list applications exist
     Given PA has applications in progress
@@ -36,7 +36,7 @@ Rule: A CV Client PA can only view or edit applications they create
      Then they see only their applications
 
 @orv-548-3
-Rule: A CV Client CA can view the list of all applications created by CV Client CA or PA
+Rule: A CV Client CA can view the list of all applications created
 
   Scenario: CA view applications in progress
     Given CV Client has applications in progress
@@ -44,7 +44,7 @@ Rule: A CV Client CA can view the list of all applications created by CV Client 
      Then they see all applications created by CV Client users 
    
 @orv-557-1
-Rule:  CV Client CA can delete and application in progress started by a CV Client CA or PA
+Rule: A CV Client CA can delete an application in progress started by a CV Client CA or PA
 
   Scenario: Bulk delete applications in progress
     Given the CV Client is at the "Applications in Progress" tab
