@@ -28,7 +28,7 @@ Rule: View list of applications in progress
 
 
 @orv-548-2
-Rule: PA can only view applications they create
+Rule: A CV Client PA can only view or edit applications they create
 
   Scenario: PA view list applications exist
     Given PA has applications in progress
@@ -36,7 +36,7 @@ Rule: PA can only view applications they create
      Then they see only their applications
 
 @orv-548-3
-Rule: CA can view all applications created by CV Client users
+Rule: A CV Client CA can view the list of all applications created by CV Client CA or PA
 
   Scenario: CA view applications in progress
     Given CV Client has applications in progress
@@ -44,7 +44,7 @@ Rule: CA can view all applications created by CV Client users
      Then they see all applications created by CV Client users 
    
 @orv-557-1
-Rule: Delete Permit Application
+Rule:  CV Client CA can delete and application in progress started by a CV Client CA or PA
 
   Scenario: Bulk delete applications in progress
     Given the CV Client is at the "Applications in Progress" tab
@@ -60,6 +60,11 @@ Rule: Delete Permit Application
     Then the applications are removed from the application in progress list
      And remain visible only to staff users
 
+  Scenario: Started by staff
+    Given application was started by staff
+     When a CV Client CA chooses to delete the application
+     Then they cannot delete the application
+
 @orv2-685-1 @orv2-1575-2
 Rule: A CV Client CA can edit application in progress started by a CV Client CA or PA 
 
@@ -72,7 +77,8 @@ Rule: A CV Client CA can edit application in progress started by a CV Client CA 
    Scenario: Application started by staff
      Given the CV Client is at the "Applications in Progress" tab 
        And staff have applications in progress
-      When they choose to view a staff application in progress
-      Then they cannot view the application
-  
+      When they choose to edit a staff application in progress
+      Then they cannot edit the application
+
+
   
