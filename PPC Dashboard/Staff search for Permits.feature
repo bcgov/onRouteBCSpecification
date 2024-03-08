@@ -38,14 +38,15 @@ Feature: Search for permits
       And the default sort order is "Issue Date" newest at the top
 
   Examples:
-    | Columns           | Permit source                                                         |
-    | Permit #          | The unique generated permit number at the time of issuance            |
-    | Permit Type       | The permit type name                                                  |
-    | Plate             | The plate of the vehicle permitted                                    |
-    | Company Name      | The company name the permit was issued to                             |
-    | Permit Start Date | The start date of the permit submitted at application                 |
-    | Permit End Date   | The calculated expiry date based on the term submitted at application |
-    | Issue Date        | The date the permit was issued                                        |
+    | Columns           | Permit source                                                                          |
+    | Permit #          | The unique generated permit number at the time of issuance                             |
+    | Permit Type       | The permit type name                                                                   |
+    | Commodity         | For Term permits this would be NA, will be used with known commodity permits e.g. STOS |
+    | Plate             | The plate of the vehicle permitted                                                     |
+    | Company Name      | The company name the permit was issued to                                              |
+    | Permit Start Date | The start date of the permit submitted at application                                  |
+    | Permit End Date   | The calculated expiry date based on the term submitted at application                  |
+    | Issue Date        | The date the permit was issued                                                         |
 
 @orv2-937-4
   Scenario: Show truncated text on hover
@@ -134,7 +135,6 @@ Feature: Search for permits
       And they see "Successfully Sent"
 
 Rule: permits results display status labels based on their current state
-
 
   Scenario Outline: Display permit status labels
     Given PPC SA, PC or EO 
