@@ -4,7 +4,7 @@ Feature: Manage Active Permit List
 CV Client = CA, PA
 
 @orv2-950-0 @orv2-1650-0
-Rule: CV Clients PA and CA can view Active permits if any exist and see relevant information about them, CV Client PA can only view permits they created view permit pdfs
+Rule: CV Clients can view the active permits list
 
   Scenario: Default Active permits listed
     Given the CV Client is at the "Permits" page
@@ -24,7 +24,6 @@ Rule: CV Clients PA and CA can view Active permits if any exist and see relevant
         | Permit End Date   |
         | Applicant         |
      And the default sort order is "Permit Start Date" in reverse chronological order
-     And CV Client PA only see permits they created
      And Applicant is the first name and last name of the CV Client user that issued the permit or Provincial Permit Center if issued by the PPC
      And they see "Refunds and amendments can be requested over the phone by calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."
 
