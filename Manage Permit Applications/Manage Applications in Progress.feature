@@ -51,14 +51,12 @@ Rule: A CV Client CA can delete an application in progress started by a CV Clien
      When they select one or more application
      And they choose to delete
      Then the applications are removed from the application in progress list
-     And remain visible only to staff users
-
+  
   Scenario: Delete application in progress
     Given the CV Client is at the "Applications in Progress" tab
      When they select a permit application
      And they choose to delete
     Then the applications are removed from the application in progress list
-     And remain visible only to staff users
 
   Scenario: Started by staff
     Given application was started by staff

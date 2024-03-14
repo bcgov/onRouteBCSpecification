@@ -30,7 +30,7 @@ Rule: Staff can delete any permit application
 
   Scenario: Bulk delete applications in progress
     Given Staff is at the "Applications in Progress" tab
-     When they select one or more application
+     When they select one or more applications
      And they choose to delete
      Then the applications are removed from the application in progress list
 
