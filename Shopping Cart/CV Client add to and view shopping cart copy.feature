@@ -129,6 +129,16 @@ Rule: Edit application in the cart
      When they choose to edit an application
      Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
 
+  Scenario: item already in editing warning
+    Given 
+     When 
+     Then 
+
+   Scenario: item already in editing continue
+    Given 
+     When 
+     Then 
+
   Scenario: continue edit action
     Given the CV Client is at edit warning 
      When they choose to continue the edit action
@@ -139,13 +149,36 @@ Rule: Edit application in the cart
 @orv2-1486
 Rule: Remove applications in the cart
 
-      And remove from cart is disabled
+  Scenario: no items in cart
+    Given CV Client has no items in the shopping cart
+     When they choose to view the cart
+     Then remove from cart is disabled
+
+  Scenario: item already removed warning
+    Given CV Client attempts to remove and item from the cart 
+     When they choose to remove an item
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: item already removed continue
+    Given CV Client is at update warning
+     When they choose to continue
+     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
+      And they see the <list of applications> removed from the cart
+
+   Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
 
 @orv2-1486
-Rule: CV Client can't see staff items in the cart
+Rule: Items in cart that are not in compliance with policy are removed
 
-@orv2-1486
-Rule: Check cart for policy compliance
+  Scenario: start date in the past
+    Given 
+     When 
+     Then 
+
 
 @orv2-1486
 Rule: Check cart for removed items
