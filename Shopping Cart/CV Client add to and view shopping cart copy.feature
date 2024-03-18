@@ -19,6 +19,10 @@ Rule: Cart contains relevant information about each item
        | item fee           | the fee of the permit application                        |
        | applicant          | the requested by of the permit application               |
 
+  Scenario: default cart item sort order
+    Given the CV Client chooses to view the cart
+     When they arrive at the cart
+     Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
 
 @orv2-1486
 Rule: Add permit application to shopping cart
@@ -30,21 +34,47 @@ Rule: Add permit application to shopping cart
       And they are directed to the applications in progress page
       And they see notification of the application added to the cart
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-
-
+  Scenario: checkout
+    Given the CV Client has completed a permit application
+     When they choose to checkout
+     Then the application is added to the cart
+      And they are directed to the shopping cart
+   
 @orv2-1486
 Rule: Show indication when nothing is in the cart
+
+  Scenario: CV Client has no items in cart
+    Given the CV Client chooses to view cart
+    When they arrive at the cart
+     Then they see "nothing found"
+
+  Scenario: other CA or PA have items in cart
+    Given the CV Client chooses to view cart
+    When they arrive at the cart
+     And they are at "my applications"
+     Then they see "nothing found"
 
 @orv2-1486
 Rule: CV Client can't see staff items in the cart
 
+  Scenario: Staff have items in cart
+    Given the CV Client does not have items in the cart
+    When they arrive at the cart          
+     Then they see "nothing found"
+
 @orv2-1486
 Rule: CA can see total company cart item count
+
+  Scenario: Staff have items in cart
+    Given the CV Client does not have items in the cart
+    When they arrive at the cart          
+     Then they see "nothing found"
+      And the number of items is 0 of 0
+
+   Scenario: Staff have items in cart
+    Given the CV Client does not have items in the cart
+    When they log into onRouteBC         
+     Then the shopping cart ticker is 0
 
 @orv2-1486
 Rule: PA can see only their cart item count
