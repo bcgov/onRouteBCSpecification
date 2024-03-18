@@ -2,6 +2,7 @@ Feature: CV Client shopping cart
   As a CV Client CA or PA I need to be able to purchase more than one permit at once, so that I can save time.
 
 CV Client = CA, PA
+
 @orv2-1486
 Rule: Cart contains relevant information about each item
 
@@ -42,7 +43,7 @@ Rule: Add permit application to shopping cart
       And the shopping cart count increases by 1
    
 @orv2-1486
-Rule: Show indication when nothing is in the cart
+Rule: Show indication in the shopping cart when nothing is in the cart
 
   Scenario: CV Client has no items in cart
     Given the CV Client chooses to view cart
