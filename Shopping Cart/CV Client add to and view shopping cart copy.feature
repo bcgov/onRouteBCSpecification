@@ -105,8 +105,35 @@ Rule: PA can see only their cart item count
 @orv2-1486
 Rule: CA can see all company CA and PA items in the cart
 
+  Scenario: CA and PA has items in the cart
+    Given the CA and other company CA and PA have items in the cart
+     When they view the shopping cart
+     Then they see all company items in the cart including theirs
+
+  Scenario: Logged in CA has no items in the cart
+    Given other company CA and PA have items in the cart
+     When the CA logs into onRouteBC
+     Then they see all company items in the cart
+
 @orv2-1486
 Rule: Edit application in the cart
+
+  Scenario: initiate edit from cart warning
+    Given the CV Client is at the shopping cart
+     When they choose to edit an application
+     Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
+
+  Scenario: initiate edit from applications in progress
+    Given the CV Client chooses to edit an application that is in the cart
+      And they are at the applications in progress page
+     When they choose to edit an application
+     Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
+
+  Scenario: continue edit action
+    Given the CV Client is at edit warning 
+     When they choose to continue the edit action
+     Then they are directed to the first page of the application workflow
+      And the permit application attestations are removed
 
 @orv2-1486
 Rule: Remove applications in the cart
