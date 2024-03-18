@@ -4,7 +4,31 @@ Feature: CV Client shopping cart
 CV Client = CA, PA
 
 @orv2-1486
+Rule: Cart contains relevant information about each item
+
+  Scenario: shopping cart items details
+    Given the CV Client chooses to view the cart
+     When they arrive at the cart
+     Then they see the following information about each item:
+       | field              | description                                              |
+       | application number | the onRouteBC generated application number               |
+       | permit type        | the chosen permit type name                              |
+       | plate              | the inputted plate number of the application vehicle     |
+       | start date         | the inputted started date date of the permit application |
+       | expiry date        | the calculated expiry date of the permit application     |
+       | item fee           | the fee of the permit application                        |
+       | applicant          | the requested by of the permit application               |
+
+
+@orv2-1486
 Rule: Add permit application to shopping cart
+
+  Scenario: continue shopping
+    Given the CV Client has completed a permit application
+     When they choose to add the application to the cart
+     Then the application is added to the cart
+      And they are directed to the applications in progress page
+      And they see notification of the application added to the cart
 
   Scenario: 
     Given 
@@ -14,7 +38,7 @@ Rule: Add permit application to shopping cart
 
 
 @orv2-1486
-Rule: Show indication when nothing is in th cart
+Rule: Show indication when nothing is in the cart
 
 @orv2-1486
 Rule: CV Client can't see staff items in the cart
