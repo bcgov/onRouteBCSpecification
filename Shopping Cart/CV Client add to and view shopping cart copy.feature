@@ -134,6 +134,7 @@ Rule: Edit application in the cart
      When they choose to continue the edit action
      Then they are directed to the first page of the application workflow
       And the permit application attestations are removed
+      And the item is removed from the shopping cart
 
 @orv2-1486
 Rule: Remove applications in the cart
