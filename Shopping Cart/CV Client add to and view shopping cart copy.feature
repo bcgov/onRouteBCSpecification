@@ -1,11 +1,17 @@
-Feature: CV Client add to and view shopping cart
-
-# Add, view from cart icon, stay in cart, static message, cart limit, select items
+Feature: CV Client shopping cart
+  As a CV Client CA or PA I need to be able to purchase more than one permit at once, so that I can save time.
 
 CV Client = CA, PA
 
 @orv2-1486
 Rule: Add permit application to shopping cart
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 
 @orv2-1486
 Rule: Show indication when nothing is in th cart
