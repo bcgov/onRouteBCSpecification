@@ -281,19 +281,27 @@ Rule: CA can filter cart by their items or all company CA and PA items
 @orv2-1486
 Rule: Changing cart item filter initiates selecting all items in the cart
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: in my apps 3 of 4 selected
+    Given the CA is at my applications
+     When they choose to view all applications
+     Then they see all items in the cart
+      And they are all selected
+
+  Scenario: in all apps 0 of 10 selected
+    Given the CA is at all applications
+     When they choose to view my applications
+     Then they see only my applications in the cart
+      And they are all selected
 
 
 @orv2-1486
 Rule: CA cart defaults to My Applications filter when first loading cart
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: view cart
+    Given the CV Client is not in the shopping cart
+     When they choose to view the cart
+     Then they are directed to the shopping cart
+      And they see my applications
 
 
 @orv2-1486
@@ -309,24 +317,29 @@ Rule: Fee summary total reflects the filtered list
      When the CA chooses to view all applications 
      Then the fee summary reflects the total of sum of all selected item fees in all applications
 
-
-
 @orv2-1486
 Rule: At least one items must be selected to purchase
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: no items selected
+    Given the CV Client has items in the cart
+      And none are selected
+     When they choose pay
+     Then they see "Select at least one item to pay"
 
 @orv2-1486
-Rule: Show success page when financial transaction has completed successfully
+Rule: Show success page when the financial transaction has completed successfully
 
-  Scenario: 
+  Scenario: successful payment 
+    Given the CV Client is at PayBC
+     When they successfully pay for the cart
+     Then they are directed to the success page 
+      And they see "The permit(s) and receipt have been sent to the email/fax provided."
+      And they can optionally apply for another permit
+
+  Scenario: successful payment issuance fails
     Given 
      When 
      Then 
-
 
 @orv2-1486
 Rule: Send one email per issued permit
