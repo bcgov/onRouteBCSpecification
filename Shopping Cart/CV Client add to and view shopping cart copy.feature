@@ -170,6 +170,13 @@ Rule: Remove applications in the cart
      When they choose to remove an item
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
+  Scenario: remove an item
+    Given the CV Client has items in the cart
+     When they select one of many items
+      And they choose to remove the selected item
+     Then the item is removed from the cart
+      And items remaining in the cart are unaffected 
+
   Scenario: item already removed continue
     Given CV Client is at update warning
      When they choose to continue
