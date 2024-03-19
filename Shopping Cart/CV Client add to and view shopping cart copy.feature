@@ -172,19 +172,32 @@ Rule: Remove applications in the cart
      | • A2-00408617-873    |
 
 @orv2-1486
-Rule: Items in cart that are not in compliance with policy are removed
+Rule: Remove items in cart that are not in compliance with policy
 
   Scenario: start date in the past
     Given 
      When 
      Then 
 
-
-@orv2-1486
-Rule: Check cart for removed items
-
 @orv2-1486
 Rule: Show items removed from cart 
+
+  Scenario: no items removed
+    Given the CV Client has not had any items removed from the cart
+     When they choose to view the shopping cart
+     Then they do not see an alert box
+
+  Scenario: items removed from cart
+    Given the CV Client has had items removed from the cart
+     When they choose to view the shopping cart
+     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
+      And they see the <list of applications> removed from the cart
+
+   Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
 
 @orv2-1486
 Rule: Cart can have an unlimited number of items
@@ -202,23 +215,71 @@ Rule: One or more items in cart may be purchased or removed
 @orv2-1486
 Rule: Fee summary total reflects cart item selection 
 
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 @orv2-1486
 Rule: CA can filter cart by their items or all company CA and PA items
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
 
 @orv2-1486
 Rule: Changing cart item filter initiates selecting all items in the cart
 
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 @orv2-1486
 Rule: CA cart defaults to My Applications filter when first loading cart
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
 
 @orv2-1486
 Rule: Fee summary total reflects the filtered list
 
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 @orv2-1486
 Rule: Show success page when financial transaction has completed successfully
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
 
 @orv2-1486
 Rule: Send one email per issued permit
 
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 @orv2-1486
 Rule: Send one receipt per cart in each permit email
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
