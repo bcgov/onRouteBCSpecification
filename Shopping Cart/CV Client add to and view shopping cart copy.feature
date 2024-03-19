@@ -75,14 +75,25 @@ Rule: Shopping cart shows number of items in the cart
   Scenario: CV Client has items in the cart
     Given the CV Client has choosen to view the shopping cart
      When they arrive at the shopping cart 
-     Then they see the <number> or items selected of the <total> number of items in the cart
+     Then they see the <number> of items selected of the <total> number of items in the cart
 
     Examples:
       | number | total |
       | 5      | 5     |
 
+  Scenario: some items are selected
+    Given the CV client has 5 items in the cart
+     When they deselect all items
+      And select 1 or more items
+     Then they see the <number> of items selected of the <total> number of items in the cart
+
+    Examples:
+      | number | total |
+      | 1      | 5     |
+      | 2      | 5     |
+
 @orv2-1486
-Rule: CA can see total company shopping cart item count
+Rule: CA can see total company shopping cart item count in the header
 
    Scenario: Staff have items in cart
     Given the CV Client does not have items in the cart
@@ -100,7 +111,7 @@ Rule: CA can see total company shopping cart item count
      Then the shopping cart count reflects all company items in the cart
 
 @orv2-1486
-Rule: PA can see only their cart item count
+Rule: PA can see only their cart item count in the header
 
 @orv2-1486
 Rule: CA can see all company CA and PA items in the cart
@@ -203,14 +214,42 @@ Rule: Show items removed from cart
 Rule: Cart can have an unlimited number of items
 
 @orv2-1486
-Rule: One or more items in cart may be purchased or removed
+Rule: One or more items in cart may selected for purchase or removal
+
+  Scenario: no items in cart
+    Given the CV Client chooses to view the cart
+     When there are no items in the cart
+     Then select all is disabled
 
   Scenario: default selection 
     Given CV Client choose to view the cart
      When they arrive at the cart
-     Then all items in filter are selected
+     Then all items are selected
 
-      And select all is unavailable
+  Scenario: select one or more items
+    Given the CV Client has items in the cart
+      And all or some items are deselected
+     When they choose to select an item
+     Then one or more items are selected
+
+  Scenario: select all items
+    Given the CV Client has items in the cart
+      And none are selected
+     When they choose to select all items
+     Then all items are selected
+
+  Scenario: deselect all items
+    Given the CV Client has items in the cart
+      And all are selected
+     When they choose to deselect all items
+     Then all items are deselected
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 
 @orv2-1486
 Rule: Fee summary total reflects cart item selection 
