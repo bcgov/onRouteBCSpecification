@@ -244,21 +244,18 @@ Rule: One or more items in cart may selected for purchase or removal
      When they choose to deselect all items
      Then all items are deselected
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-
-
 @orv2-1486
 Rule: Fee summary total reflects cart item selection 
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: no items selected
+    Given the CV Client has items in the cart
+     When no items are selected
+     Then the fee summary shows $0
 
+  Scenario: one or more items selected
+    Given the CV Client has items in the cart
+     When one or more items selected
+     Then the fee summary reflects the total of sum of all selected item fees
 
 @orv2-1486
 Rule: CA can filter cart by their items or all company CA and PA items
@@ -295,6 +292,13 @@ Rule: Fee summary total reflects the filtered list
      When 
      Then 
 
+@orv2-1486
+Rule: At least one items must be selected to purchase
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 @orv2-1486
 Rule: Show success page when financial transaction has completed successfully
