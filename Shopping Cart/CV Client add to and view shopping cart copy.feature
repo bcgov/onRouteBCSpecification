@@ -267,11 +267,16 @@ Rule: Fee summary total reflects cart item selection
 @orv2-1486
 Rule: CA can filter cart by their items or all company CA and PA items
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: filter by my applications
+    Given the logged in CA has items in the cart
+     When they choose to view my applications
+     Then they see only applications started by the logged in CA user
 
+  Scenario: filter by all applications
+    Given the CV Client has items in the cart
+     When the logged in CA user chooses to view all applications
+     Then they see all applications started by the logged in CA user 
+      And those started by other CA and PA users added to the cart
 
 @orv2-1486
 Rule: Changing cart item filter initiates selecting all items in the cart
@@ -294,10 +299,17 @@ Rule: CA cart defaults to My Applications filter when first loading cart
 @orv2-1486
 Rule: Fee summary total reflects the filtered list
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: items in my applications
+    Given the CA has items in the cart
+     When the CA chooses to view my applications
+     Then the fee summary reflects the total of sum of all selected item fees in my applications
+
+  Scenario: items in all applications
+    Given the CV Client has items in the cart
+     When the CA chooses to view all applications 
+     Then the fee summary reflects the total of sum of all selected item fees in all applications
+
+
 
 @orv2-1486
 Rule: At least one items must be selected to purchase
