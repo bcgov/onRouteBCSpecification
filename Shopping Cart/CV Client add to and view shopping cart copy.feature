@@ -358,3 +358,5 @@ Rule: Send one receipt per cart in each permit email
      When 
      Then 
 
+@orv2-1486
+Rule: View shopiing cart by
