@@ -4,6 +4,8 @@ Feature: CV Client shopping cart
 CV Client = CA, PA
 
 @orv2-1486
+Rule: Navigate to shopping cart from anywhere in onRouteBC
+@orv2-1486
 Rule: Cart contains relevant information about each item
 
   Scenario: shopping cart items details
@@ -125,6 +127,14 @@ Rule: CA can see all company CA and PA items in the cart
     Given other company CA and PA have items in the cart
      When the CA logs into onRouteBC
      Then they see all company items in the cart
+
+@orv2-1486
+Rule: PA can only see their items in the cart
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 @orv2-1486
 Rule: Edit application in the cart
@@ -307,7 +317,6 @@ Rule: CA cart defaults to All Applications filter when first loading cart
      Then they are directed to the shopping cart
       And they see all applications
 
-
 @orv2-1486
 Rule: Fee summary total reflects the filtered list
 
@@ -329,6 +338,12 @@ Rule: At least one items must be selected to purchase
       And none are selected
      When they choose pay
      Then they see "Select at least one item to pay"
+
+ # duplicate to selection defaults
+  Scenario: one or more items purchases but not the entire cart
+    Given the CV Client has unselected some items in the cart
+     When they pay for the cart
+     Then the unselected items are selected 
 
 @orv2-1486
 Rule: Show success page when the financial transaction has completed successfully
@@ -409,5 +424,4 @@ Rule: Send one receipt per cart in each permit email
      When 
      Then 
 
-@orv2-1486
-Rule: View shopiing cart by
+
