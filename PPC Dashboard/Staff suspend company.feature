@@ -93,5 +93,6 @@ Rule: Turning the suspension on/off the CV Client is sent an email notification
 
 
 # When a Credit Account (CA) Holder is suspended any CA User of that account will not be able to use the CA Holders CA
+# When a Credit Account (CA) User is suspended they will not be able to use the CA Holder CA and are removed from the CA Holder user table
 
 
