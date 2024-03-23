@@ -1,15 +1,16 @@
-Feature: CV Client shopping cart
-  As a CV Client CA or PA I need to be able to purchase more than one permit at once, so that I can save time.
+Feature: Shopping cart
+  As a User I need to be able to purchase more than one permit at once, so that I can save time.
 
-CV Client = CA, PA
+User = CA, PA, SA, PC, CTPO, Trainee
 
-@orv2-1486
+@ovr2-1486-9, @orv2-2048-5
 Rule: Navigate to shopping cart from anywhere in onRouteBC
-@orv2-1486
+
+@ovr2-1486-10, @orv2-2048-6
 Rule: Cart contains relevant information about each item
 
   Scenario: shopping cart items details
-    Given the CV Client chooses to view the cart
+    Given a user chooses to view the cart
      When they arrive at the cart
      Then they see the following information about each item:
        | field              | description                                              |
@@ -22,15 +23,15 @@ Rule: Cart contains relevant information about each item
        | applicant          | the requested by of the permit application               |
 
   Scenario: default cart item sort order
-    Given the CV Client chooses to view the cart
+    Given a user chooses to view the cart
      When they arrive at the cart
      Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
 
-@orv2-1486
+@ovr2-1486-11, @orv2-2048-7
 Rule: Add permit application to shopping cart
 
   Scenario: continue shopping
-    Given the CV Client has completed a permit application
+    Given the User has completed a permit application
      When they choose to add the application to the cart
      Then the application is added to the cart
       And they are directed to the applications in progress page
@@ -38,157 +39,69 @@ Rule: Add permit application to shopping cart
       And the shopping cart count increases by 1
 
   Scenario: checkout
-    Given the CV Client has completed a permit application
+    Given the User has completed a permit application
      When they choose to checkout
      Then the application is added to the cart
       And they are directed to the shopping cart
       And the shopping cart count increases by 1
    
-@orv2-1486
+@ovr2-1486-12, @orv2-2048-8
 Rule: Show indication in the shopping cart when nothing is in the cart
 
-  Scenario: CV Client has no items in cart
-    Given the CV Client chooses to view cart
+  Scenario: User has no items in cart
+    Given the User chooses to view cart
     When they arrive at the cart
      Then they see "nothing found"
 
-  Scenario: other CA or PA have items in cart
-    Given the CV Client chooses to view cart
+  Scenario: other Users have items in cart
+    Given the User chooses to view cart
     When they arrive at the cart
      And they are at "my applications"
      Then they see "nothing found"
 
-@orv2-1486
-Rule: CV Client can't see staff items in the shopping cart
-
-  Scenario: Staff have items in cart
-    Given the CV Client does not have items in the cart
-    When they arrive at the cart          
-     Then they see "nothing found"
-
-@orv2-1486
+@ovr2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
 
-  Scenario: Staff have items in cart
-    Given the CV Client does not have items in the cart
-    When they arrive at the cart          
-     Then the number of items is 0 of 0
+  Scenario: all applications all selected
+    Given there are 2 my application items in the cart
+      And 3 all application items in the cart
+     When a user chooses to view all applications
+     Then they see 5 of 5
 
-  Scenario: CV Client has items in the cart
-    Given the CV Client has choosen to view the shopping cart
-     When they arrive at the shopping cart 
-     Then they see the <number> of items selected of the <total> number of items in the cart
+  Scenario: all applications some selected
+    Given there are 2 my application items in the cart
+      And 3 all application items in the cart
+     When a user chooses to view all applications
+      And deselects 1 item
+     Then they see 4 of 5
 
-    Examples:
-      | number | total |
-      | 5      | 5     |
+  Scenario: my applications all selected
+    Given there are 2 my application items in the cart
+      And 3 all application items in the cart
+     When a user chooses to view my applications
+     Then they see 2 of 2
 
-  Scenario: some items are selected
-    Given the CV client has 5 items in the cart
-     When they deselect all items
-      And select 1 or more items
-     Then they see the <number> of items selected of the <total> number of items in the cart
-
-    Examples:
-      | number | total |
-      | 1      | 5     |
-      | 2      | 5     |
-
-@orv2-1486
-Rule: CA can see total company shopping cart item count in the header
-
-   Scenario: Staff have items in cart
-    Given the CV Client does not have items in the cart
-    When they log into onRouteBC         
-     Then the shopping cart count is 0
-
-  Scenario: CA and PA has items in the cart
-    Given the CA and other company CA and PA have items in the cart
-     When the CA logs into onRouteBC
-     Then they see the shopping cart count reflects all company items in the cart including theirs
-
-  Scenario: Logged in CA has no items in the cart
-    Given other company CA and PA have items in the cart
-     When the CA logs into onRouteBC
-     Then the shopping cart count reflects all company items in the cart
-
-@orv2-1486
-Rule: PA can see only their cart item count in the header
-
-@orv2-1486
-Rule: CA can see all company CA and PA items in the cart
-
-  Scenario: CA and PA has items in the cart
-    Given the CA and other company CA and PA have items in the cart
-     When they view the shopping cart
-     Then they see all company items in the cart including theirs
-
-  Scenario: Logged in CA has no items in the cart
-    Given other company CA and PA have items in the cart
-     When the CA logs into onRouteBC
-     Then they see all company items in the cart
-
-@orv2-1486
-Rule: PA can only see their items in the cart
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-@orv2-1486
+@ovr2-1486-14, @orv2-2048-10
 Rule: Edit application in the cart
 
   Scenario: initiate edit from cart warning
-    Given the CV Client is at the shopping cart
+    Given the user is at the shopping cart
      When they choose to edit an application
      Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
 
   Scenario: initiate edit from applications in progress
-    Given the CV Client chooses to edit an application that is in the cart
+    Given the user chooses to edit an application that is in the cart
       And they are at the applications in progress page
      When they choose to edit an application
      Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
 
   Scenario: item already in editing warning
-    Given 
-     When 
-     Then 
+    Given the user chooses to edit an application that is in the cart
+     When they choose to edit an application
+     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
    Scenario: item already in editing continue
-    Given 
-     When 
-     Then 
-
-  Scenario: continue edit action
-    Given the CV Client is at edit warning 
-     When they choose to continue the edit action
-     Then they are directed to the first page of the application workflow
-      And the permit application attestations are removed
-      And the item is removed from the shopping cart
-
-@orv2-1486
-Rule: Remove applications in the cart
-
-  Scenario: no items in cart
-    Given CV Client has no items in the shopping cart
-     When they choose to view the cart
-     Then remove from cart is disabled
-
-  Scenario: item already removed warning
-    Given CV Client attempts to remove and item from the cart 
-     When they choose to remove an item
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-
-  Scenario: remove an item
-    Given the CV Client has items in the cart
-     When they select one of many items
-      And they choose to remove the selected item
-     Then the item is removed from the cart
-      And items remaining in the cart are unaffected 
-
-  Scenario: item already removed continue
-    Given CV Client is at update warning
+    Given the user chooses to continue to edit an application that is in the cart
      When they choose to continue
      Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
       And they see the <list of applications> removed from the cart
@@ -199,28 +112,67 @@ Rule: Remove applications in the cart
      | • A2-00408617-873    |
      | • A2-00408617-873    |
 
-@orv2-1486
+  Scenario: continue edit action
+    Given the user is at edit warning 
+     When they choose to continue the edit action
+     Then they are directed to the first page of the application workflow
+      And the permit application attestations are removed
+      And the item is removed from the shopping cart
+
+@ovr2-1486-15, @orv2-2048-11
+Rule: Remove applications in the cart
+
+  Scenario: no items in cart
+    Given user has no items in the shopping cart
+     When they choose to view the cart
+     Then remove from cart is disabled
+
+  Scenario: remove an item
+    Given the user has items in the cart
+     When they select one of many items
+      And they choose to remove the selected item
+     Then the item is removed from the cart
+      And items remaining in the cart are unaffected 
+
+  Scenario: item already removed warning
+    Given user attempts to remove and item from the cart 
+     When they choose to remove an item
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: item already removed continue
+    Given user is at update warning
+     When they choose to continue
+     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
+      And they see the <list of applications> removed from the cart
+
+   Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+
+@ovr2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
 
   Scenario: start date in the past
     Given permit(s) have a <start date> before the <current date>
-     When a CV Client views the shopping cart
+     When a user views the shopping cart
      Then these permit(s) are removed from the cart
 
   Examples:
     | start date | current date |
     | 03/01/2023 | 03/02/2023   |
    
-@orv2-1486
+@ovr2-1486-17, @orv2-2048-13
 Rule: Show items removed from cart 
 
   Scenario: no items removed
-    Given the CV Client has not had any items removed from the cart
+    Given a user has not had any items removed from the cart
      When they choose to view the shopping cart
      Then they do not see an alert box
 
   Scenario: items removed from cart
-    Given the CV Client has had items removed from the cart
+    Given the user has had items removed from the cart
      When they choose to view the shopping cart
      Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
       And they see the <list of applications> removed from the cart
@@ -231,125 +183,110 @@ Rule: Show items removed from cart
      | • A2-00408617-873    |
      | • A2-00408617-873    |
 
-@orv2-1486
+@ovr2-1486-18, @orv2-2048-14
 Rule: Cart can have an unlimited number of items
 
-@orv2-1486
+@ovr2-1486-19, @orv2-2048-15
 Rule: One or more items in cart may selected for purchase or removal
 
   Scenario: no items in cart
-    Given the CV Client chooses to view the cart
+    Given a user chooses to view the cart
      When there are no items in the cart
      Then select all is disabled
 
   Scenario: default selection 
-    Given CV Client choose to view the cart
+    Given a user chooses to view the cart
      When they arrive at the cart
      Then all items are selected
 
   Scenario: select one or more items
-    Given the CV Client has items in the cart
+    Given a user has items in the cart
       And all or some items are deselected
      When they choose to select an item
      Then one or more items are selected
 
   Scenario: select all items
-    Given the CV Client has items in the cart
+    Given a user has items in the cart
       And none are selected
      When they choose to select all items
      Then all items are selected
 
   Scenario: deselect all items
-    Given the CV Client has items in the cart
+    Given a user has items in the cart
       And all are selected
      When they choose to deselect all items
      Then all items are deselected
 
-@orv2-1486
+@ovr2-1486-20, @orv2-2048-16
 Rule: Fee summary total reflects cart item selection 
 
   Scenario: no items selected
-    Given the CV Client has items in the cart
+    Givena user has items in the cart
      When no items are selected
      Then the fee summary shows $0
 
   Scenario: one or more items selected
-    Given the CV Client has items in the cart
+    Givena user has items in the cart
      When one or more items selected
      Then the fee summary reflects the total of sum of all selected item fees
 
-@orv2-1486
-Rule: CA can filter cart by their items or all company CA and PA items
-
-  Scenario: filter by my applications
-    Given the logged in CA has items in the cart
-     When they choose to view my applications
-     Then they see only applications started by the logged in CA user
-
-  Scenario: filter by all applications
-    Given the CV Client has items in the cart
-     When the logged in CA user chooses to view all applications
-     Then they see all applications started by the logged in CA user 
-      And those started by other CA and PA users added to the cart
-
-@orv2-1486
+@ovr2-1486-21, @orv2-2048-17
 Rule: Changing cart item filter initiates selecting all items in the cart
 
   Scenario: in my apps 3 of 4 selected
-    Given the CA is at my applications
+    Given a user is at my applications
      When they choose to view all applications
      Then they see all items in the cart
       And they are all selected
 
   Scenario: in all apps 0 of 10 selected
-    Given the CA is at all applications
+    Given a user is at all applications
      When they choose to view my applications
      Then they see only my applications in the cart
       And they are all selected
 
-
-@orv2-1486
-Rule: CA cart defaults to All Applications filter when first loading cart
+@ovr2-1486-22, @orv2-2048-18
+Rule: User cart defaults to All Applications filter when first loading cart
 
   Scenario: view cart
-    Given the CV Client is not in the shopping cart
+    Given a user is not in the shopping cart
      When they choose to view the cart
      Then they are directed to the shopping cart
       And they see all applications
 
-@orv2-1486
+@ovr2-1486-23, @orv2-2048-19
 Rule: Fee summary total reflects the filtered list
 
   Scenario: items in my applications
-    Given the CA has items in the cart
-     When the CA chooses to view my applications
+    Given user has items in the cart
+     When they choose to view my applications
      Then the fee summary reflects the total of sum of all selected item fees in my applications
 
   Scenario: items in all applications
-    Given the CV Client has items in the cart
-     When the CA chooses to view all applications 
+    Given user has items in the cart
+     When they chooses to view all applications 
      Then the fee summary reflects the total of sum of all selected item fees in all applications
 
-@orv2-1486
+@ovr2-1486-24, @orv2-2048-20
 Rule: At least one items must be selected to purchase
 
   Scenario: no items selected
-    Given the CV Client has items in the cart
+    Given user has items in the cart
       And none are selected
      When they choose pay
      Then they see "Select at least one item to pay"
 
  # duplicate to selection defaults
   Scenario: one or more items purchases but not the entire cart
-    Given the CV Client has unselected some items in the cart
+    Given user has unselected some items in the cart
      When they pay for the cart
      Then the unselected items are selected 
 
-@orv2-1486
+@ovr2-1486-25, @orv2-2048-21
 Rule: Show success page when the financial transaction has completed successfully
 
   Scenario: successful payment 
-    Given the CV Client is at PayBC
+    Given user is at PayBC
      When they successfully pay for the cart
      Then they are directed to the success page 
       And they see "The permit(s) and receipt have been sent to the email/fax provided."
@@ -358,12 +295,12 @@ Rule: Show success page when the financial transaction has completed successfull
   Scenario: successful payment but issuance fails
     Given onRouteBC is not able to issue the permits
       And onRoute has received successful payment
-     When the CV Client completes payment at PayBC
+     When the user completes payment at PayBC
      Then they are directed to the error page and they see:
        | Payment was successful. However, some of your applications weren't processed. Please go to applications in Progress to review your pending permits. |
       And they can optionally view application in progress
 
-@orv2-1486
+@ovr2-1486-26, @orv2-2048-22
 Rule: Show pending permits with successful payment received that have not been issued yet
 
   Scenario: viewing pending permits list
@@ -377,18 +314,18 @@ Rule: Show pending permits with successful payment received that have not been i
       And they see:
        | There was an unexpected error in issuing the following permits. No action from you is required. onRouteBC will keep trying to issue these permits once the error is resolved. If you need immediate assistance, please contact the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca. |
 
-@orv2-1486
+@ovr2-1486-27, @orv2-2048-23
 Rule: Show the number of pending permits
 
   Scenario: viewing pending permits list
-    Given the CV Client has pending permits
+    Given the user has pending permits
      When they choose to view the pending permits list
      Then they see the total number of pending permits
 
-@orv2-1486
+@ovr2-1486-28, @orv2-2048-24
 Rule: Show notification of pending permits with successful payment received that have not been issued yet
 
-  Scenario: CV Client has pending permits
+  Scenario: user has pending permits
     Given the CV Client has pending permits
      When they view the applications in progress list 
      Then they see "Some of your applications weren't processed. See your Pending Permits"
@@ -397,31 +334,30 @@ Rule: Show notification of pending permits with successful payment received that
   Scenario: CV Client does not have pending permits
     Given the CV Client does not have pending permits
      When they view the applications in progress list 
-     Then they do not see the the pedngin permits notification
+     Then they do not see the the pending permits notification
 
-@orv2-1486
+@orv2-1486-29, @orv2-2048-25
 Rule: Issue permits with successful payment received that have not been issued
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: permit not yet issued
+    Given there are pending permits
+     When issuance is possible
+     Then issue pending permits
 
-@orv2-1486
+@orv2-1486-30, @orv2-2048-26
 Rule: Send one email per issued permit
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: multiple permits issued
+    Given 10 permits were issued
+     When the CV Client receives the permit emails
+     Then they see 10 emails with one permit attached
 
-
-@orv2-1486
+@orv2-1486-31, @orv2-2048-27
 Rule: Send one receipt per cart in each permit email
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+ Scenario: multiple permits issued
+    Given 10 permits were issued
+     When the CV Client receives the permit emails
+     Then they see 10 emails with the same receipt attached to each
 
 
