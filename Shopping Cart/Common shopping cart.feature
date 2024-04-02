@@ -360,4 +360,5 @@ Rule: Send one receipt per cart in each permit email
      When the CV Client receives the permit emails
      Then they see 10 emails with the same receipt attached to each
 
-
+@orv2-1486-32, @orv2-2048-28
+Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
