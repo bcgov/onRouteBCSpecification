@@ -15,7 +15,7 @@ Rule: A suspended CV Client does not have access to the onRouteBC profile
 
   Scenario: Manual URL access (bookmarked or cached URL used to access onRouteBC)
     Given a CV Client is not logged into onRouteBC
-     When they attempts to access onRouteBC via a bookmarked or cached application URL
+     When they attempt to access onRouteBC via a bookmarked or cached application URL
       And they submit their valid credentials 
      Then they see "User Unauthorized"
 

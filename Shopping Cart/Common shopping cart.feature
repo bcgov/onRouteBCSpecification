@@ -347,18 +347,31 @@ Rule: Issue permits with successful payment received that have not been issued
 @orv2-1486-30, @orv2-2048-26
 Rule: Send one email per issued permit
 
+  Scenario: issuance fails for one or more but not all
+   Given permit payment is successful for all ten items in the cart
+    When permit issuance fails for two items
+    Then the permits that fail issuance are pending permits
+     And they are not emailed
+
   Scenario: multiple permits issued
-    Given 10 permits were issued
+    Given ten permits were issued
      When the CV Client receives the permit emails
-     Then they see 10 emails with one permit attached
+     Then they see ten emails with one permit attached
 
 @orv2-1486-31, @orv2-2048-27
-Rule: Send one receipt per cart in each permit email
+Rule: Send one email per receipt
 
  Scenario: multiple permits issued
-    Given 10 permits were issued
-     When the CV Client receives the permit emails
-     Then they see 10 emails with the same receipt attached to each
+    Given ten permits were issued
+     When the CV Client receives the permit receipt email
+     Then they see one email with the receipt attached
+      And the receipt contains purchase details for all ten permits purchased
+
+  Scenario: one of many permits purchased in cart does not issue
+    Given payment was successful for all permits in cart
+      But one or more permits of many in cart do not issue
+     When the CV Client completes the purchase successfully 
+     Then they do not receive the receipt email
 
 @orv2-1486-32, @orv2-2048-28
 Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
