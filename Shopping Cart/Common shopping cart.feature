@@ -380,3 +380,13 @@ Rule: Send one email per receipt
 
 @orv2-1486-32, @orv2-2048-28
 Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
+
+
+
+## Rule: Permits that fail issuance are pending permits
+
+## Rule: Permit that fail permit document generation are active permits???
+
+## Rule: Permits that fail permit payment receipt document generation are active permits
+
+
