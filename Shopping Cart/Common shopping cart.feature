@@ -349,9 +349,15 @@ Rule: Send one email per issued permit
 
   Scenario: issuance fails for one or more but not all
    Given permit payment is successful for all ten items in the cart
-    When permit issuance fails for two items
-    Then the permits that fail issuance are pending permits
-     And they are not emailed
+     But permit issuance fails for two items
+    When the CV Client receives the permit emails
+    Then they see eight emails with one permit attached to each
+
+  Scenario: issuance succeeds document generation fails
+   Given all ten items in the cart are issued
+     But permit issuance fails for two items
+    When the CV Client receives the permit emails
+    Then they see eight emails with one permit attached to each
 
   Scenario: multiple permits issued
     Given ten permits were issued
@@ -369,8 +375,7 @@ Rule: Send one email per receipt
 
   Scenario: one of many permits purchased in cart does not issue
     Given payment was successful for all permits in cart
-      But one or more permits of many in cart do not issue
-     When the CV Client completes the purchase successfully 
+     When one or more permits of many in cart do not issue
      Then they do not receive the receipt email
 
 @orv2-1486-32, @orv2-2048-28

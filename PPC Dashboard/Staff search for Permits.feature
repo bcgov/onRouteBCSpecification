@@ -118,15 +118,15 @@ Feature: Search for permits
       And the sort order is the reverse of the previously selected order
 
 @orv2-937-10
-  Scenario: View resend active permit and receipt documents contact details
-    Given a PPC SA or PC is at search results
-     When they chose to resend active permit and receipt documents
-     Then they see the original permit application contact details:
-        | email |
-        | fax   |
-      And they can update contact details
+Rule: show original permit contact details when resending permit and receipt pdf
+
+@orv2-937-14
+Rule: staff can update resend contact details
+
 
 @orv2-937-12
+Rule: staff can resend the permit and receipt pdfs
+
    Scenario: Resend active permit and receipt documents
     Given a PPC SA or PC is at "Resend Permit and Receipt"
      When they chose to resend
@@ -134,6 +134,7 @@ Feature: Search for permits
       And they are directed to the "Search Results" page
       And they see "Successfully Sent"
 
+@orv2-937-15
 Rule: permits results display status labels based on their current state
 
   Scenario Outline: Display permit status labels
