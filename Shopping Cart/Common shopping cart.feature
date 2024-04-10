@@ -221,7 +221,7 @@ Rule: One or more items in cart may selected for purchase or removal
 Rule: Fee summary total reflects cart item selection 
 
   Scenario: no items selected
-    Givena user has items in the cart
+    Given a user has items in the cart
      When no items are selected
      Then the fee summary shows $0
 
