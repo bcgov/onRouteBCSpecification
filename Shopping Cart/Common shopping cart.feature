@@ -226,7 +226,7 @@ Rule: Fee summary total reflects cart item selection
      Then the fee summary shows $0
 
   Scenario: one or more items selected
-    Givena user has items in the cart
+    Given a user has items in the cart
      When one or more items selected
      Then the fee summary reflects the total of sum of all selected item fees
 
