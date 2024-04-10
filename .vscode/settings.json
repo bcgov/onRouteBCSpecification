@@ -1,3 +1,7 @@
 {
- "autoHide.autoHideSideBar": false
+ "autoHide.autoHideSideBar": false,
+ "cSpell.words": [
+  "CTPO",
+  "STOS"
+ ]
 }

@@ -136,7 +136,7 @@ Rule: permits results display status labels based on their current state
      | Active       |               |
 
 @orv2-937-12
-Rule: SA, PC can resend the permit and receipt pdfs
+Rule: SA, PC can resend the permit and receipt pdf's
 
    Scenario: Resend active permit and receipt documents
     Given a SA or PC is at "Resend Permit and Receipt"
