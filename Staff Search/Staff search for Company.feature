@@ -115,7 +115,7 @@ Rule: PPC SA or PC and EO can view company profile summary information in result
   Scenario: Doing business as does not exist
     Given search results include companies that do not have a doing business as name
      When the results are shown
-     Then the "Dosing Business As (DBA)" header is not shown
+     Then the "Doing Business As (DBA)" header is not shown
 
   Scenario: Legacy client number does not exist
     Given search results include companies that do not have a legacy client number

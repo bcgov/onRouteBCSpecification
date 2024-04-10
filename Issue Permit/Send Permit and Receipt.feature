@@ -20,11 +20,6 @@ Rule: Email permit pdf and permit receipt
        | entered contact email address |
       And the CV Client cannot reply to the email 
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 
 @orv2-936-2
   Scenario: Send permit and receipt to fax number

@@ -381,12 +381,17 @@ Rule: Send one email per receipt
 @orv2-1486-32, @orv2-2048-28
 Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
 
+## Rule: A permit, void permit or revoked permit is issued when permit number is generated
 
+## Rule: A permit, void permit or revoked permit that fails issuance are pending permits
 
-## Rule: Permits that fail issuance are pending permits
+## Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
 
-## Rule: Permit that fail permit document generation are active permits???
+ ## A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
 
-## Rule: Permits that fail permit payment receipt document generation are active permits
+## Rule: Permits is issued but fails permit receipt document generation are active permits
 
+## Rule: Staff see the cart icon only when acting as a company
+
+## Rule: 
 
