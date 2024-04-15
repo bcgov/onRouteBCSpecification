@@ -184,6 +184,6 @@ Rule: SA, PC  can choose to send either the permit pdf or permit payment pdf or 
   Scenario: choose permit and receipt
     Given permit and receipt are chosen
      When SA, PC choose to resend
-     Then the permit pdf is sent in a unique email
-      And the receipt pdf is sent in a unique email
+     Then the permit pdf is sent attached to email 1
+      And the receipt pdf is sent attached to email 2
 
