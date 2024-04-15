@@ -162,25 +162,28 @@ Rule: SA, PC can update resend contact details
      Then they see "This is a required field"
       And and the required field is indicated
 
+@orv2-1925-1
 Rule: SA, PC  can choose to send either the permit pdf or permit payment pdf or both
 
   Scenario: choose none
-    Given 
-     When 
-     Then 
+    Given permit or receipt are not chosen
+     When SA, PC choose to resend
+     Then they see "Select at least one item"
+      And the both receipt and permit options are indicated
 
   Scenario: choose permit
-    Given 
-     When 
-     Then 
+    Given permit is chosen
+     When SA, PC choose to resend 
+     Then only the permit pdf is sent
 
   Scenario: choose receipt
-    Given 
-     When 
-     Then 
+    Given receipt is chosen
+     When SA, PC choose to resend
+     Then only the receipt pdf is sent
 
-  Scenario: choose permit and reciept
-    Given 
-     When 
-     Then 
+  Scenario: choose permit and receipt
+    Given permit and receipt are chosen
+     When SA, PC choose to resend
+     Then the permit pdf is sent in a unique email
+      And the receipt pdf is sent in a unique email
 

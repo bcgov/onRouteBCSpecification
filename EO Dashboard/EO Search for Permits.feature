@@ -72,13 +72,13 @@ Scenario: Search by permit number
      When they chose to view the permit pdf
      Then the permit pdf is displayed in a new browser tab
 
-@orv2-1086-11
+# @orv2-1086-11
   Scenario: View Reciept PDF
     Given a EO is at the search results
      When they choose to view the receipt pdf
      Then the receipt pdf is displayed in a new browser tab
 
-@orv2-1086-8
+# @orv2-1086-8
   Scenario: Show Actions
     Given a EO is at the search results
       And the <actions> are:
