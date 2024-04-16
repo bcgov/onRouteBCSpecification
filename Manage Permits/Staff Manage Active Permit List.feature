@@ -48,7 +48,7 @@ Rule: Staff can view the permit and permit payment receipt pdf
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
 
-@orv2-1650-5
+@orv2-1650-5, @orv2-2175
 Rule: PPC SA can see all actions
 
   Scenario: PPC SA actions
