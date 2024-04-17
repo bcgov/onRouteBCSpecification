@@ -92,18 +92,18 @@ Staff = SA, PC, EO
   Scenario: Show Actions
     Given a PC is at the search results
       And the <actions> are:
-      | Amend |
+      | Amend        |
       | View Receipt |
-      | Resend |
-     When they chose to perform an action on a permit
+      | Resend       |
+     When they choose to perform an action on a permit
      Then they see only valid <actions> for each permit <status>
 
   Examples:
-    | actions      | status                                      |
-    | Amend        | active permit                               |
-    | View Receipt | active, superseded, void and expired permit |
-    | Resend       | active, superseded, void and expired permit |
-    | Void/Revoke  | issued and active permit                    |
+    | actions      | status                                     |
+    | Amend        | issued or active permit                    |
+    | View Receipt | active, superseded, void or expired permit |
+    | Resend       | active, superseded, void or expired permit |
+    | Void/Revoke  | issued or active permit                    |
      
 @orv2-937-9
   Scenario: Sort search results
