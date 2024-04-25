@@ -167,8 +167,8 @@ Rule: Show items removed from cart
      Then they do not see an alert box
 
   Scenario: items removed from cart
-    Given the user has had items removed from the cart
-     When they choose to view the shopping cart
+    Given items have been removed from the company cart
+     When a user chooses to view the shopping cart
      Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
       And they see the <list of applications> removed from the cart
 
