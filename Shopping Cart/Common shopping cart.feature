@@ -96,21 +96,16 @@ Rule: Edit application in the cart
      Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
 
   Scenario: item is being edited by someone else warning
-    Given the user chooses to edit an application that is in the cart
-     When they choose to edit an application
+    Given a user chooses to edit an application that is in the cart
+     When a different user chooses to edit the same application
      Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-
-   Scenario: item is being edited by someone else continue
-    Given the user chooses to continue to edit an application that is in the cart
-     When they choose to continue
-     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
       And they see the <list of applications> removed from the cart
 
    Examples:
      | list of applications |
      | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
+     | • A2-00408617-876    |
+     | • A2-00408617-878    |
 
   Scenario: continue edit action
     Given the user is at edit warning 
@@ -148,8 +143,8 @@ Rule: Remove applications in the cart
    Examples:
      | list of applications |
      | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
+     | • A2-00408617-876    |
+     | • A2-00408617-878    |
 
 @orv2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
