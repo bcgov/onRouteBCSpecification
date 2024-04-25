@@ -127,6 +127,7 @@ Rule: Remove applications in the cart
      When they select one of many items
       And they choose to remove the selected item
      Then the item is removed from the cart
+      And remaining items are all selected in the current filter view
 
   Scenario: item already removed warning
     Given user attempts to remove and item from the cart 
