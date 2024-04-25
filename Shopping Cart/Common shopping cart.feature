@@ -3,10 +3,10 @@ Feature: Shopping cart
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-@ovr2-1486-9, @orv2-2048-5
+@orv2-1486-9, @orv2-2048-5
 Rule: Navigate to shopping cart from anywhere in onRouteBC
 
-@ovr2-1486-10, @orv2-2048-6
+@orv2-1486-10, @orv2-2048-6
 Rule: Cart contains relevant information about each item
 
   Scenario: shopping cart items details
@@ -27,7 +27,7 @@ Rule: Cart contains relevant information about each item
      When they arrive at the cart
      Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
 
-@ovr2-1486-11, @orv2-2048-7
+@orv2-1486-11, @orv2-2048-7
 Rule: Add permit application to shopping cart
 
   Scenario: continue shopping
@@ -45,7 +45,7 @@ Rule: Add permit application to shopping cart
       And they are directed to the shopping cart
       And the shopping cart count increases by 1
    
-@ovr2-1486-12, @orv2-2048-8
+@orv2-1486-12, @orv2-2048-8
 Rule: Show indication in the shopping cart when nothing is in the cart
 
   Scenario: User has no items in cart
@@ -59,7 +59,7 @@ Rule: Show indication in the shopping cart when nothing is in the cart
      And they are at "my applications"
      Then they see "nothing found"
 
-@ovr2-1486-13, @orv2-2048-9
+@orv2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
 
   Scenario: all applications all selected
@@ -81,7 +81,7 @@ Rule: Shopping cart shows number of items in the cart
      When a user chooses to view my applications
      Then they see 2 of 2
 
-@ovr2-1486-14, @orv2-2048-10
+@orv2-1486-14, @orv2-2048-10
 Rule: Edit application in the cart
 
   Scenario: initiate edit from cart warning
@@ -119,7 +119,7 @@ Rule: Edit application in the cart
       And the permit application attestations are removed
       And the item is removed from the shopping cart
 
-@ovr2-1486-15, @orv2-2048-11
+@orv2-1486-15, @orv2-2048-11
 Rule: Remove applications in the cart
 
   Scenario: no items in cart
@@ -151,7 +151,7 @@ Rule: Remove applications in the cart
      | • A2-00408617-873    |
      | • A2-00408617-873    |
 
-@ovr2-1486-16, @orv2-2048-12
+@orv2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
 
   Scenario: start date in the past
@@ -163,7 +163,7 @@ Rule: Remove items in cart that are not in compliance with policy
     | start date | current date |
     | 03/01/2023 | 03/02/2023   |
    
-@ovr2-1486-17, @orv2-2048-13
+@orv2-1486-17, @orv2-2048-13
 Rule: Show items removed from cart 
 
   Scenario: no items removed
@@ -183,10 +183,10 @@ Rule: Show items removed from cart
      | • A2-00408617-873    |
      | • A2-00408617-873    |
 
-@ovr2-1486-18, @orv2-2048-14
+@orv2-1486-18, @orv2-2048-14
 Rule: Cart can have an unlimited number of items
 
-@ovr2-1486-19, @orv2-2048-15
+@orv2-1486-19, @orv2-2048-15
 Rule: One or more items in cart may selected for purchase or removal
 
   Scenario: no items in cart
@@ -217,7 +217,7 @@ Rule: One or more items in cart may selected for purchase or removal
      When they choose to deselect all items
      Then all items are deselected
 
-@ovr2-1486-20, @orv2-2048-16
+@orv2-1486-20, @orv2-2048-16
 Rule: Fee summary total reflects cart item selection 
 
   Scenario: no items selected
@@ -230,7 +230,7 @@ Rule: Fee summary total reflects cart item selection
      When one or more items selected
      Then the fee summary reflects the total of sum of all selected item fees
 
-@ovr2-1486-21, @orv2-2048-17
+@orv2-1486-21, @orv2-2048-17
 Rule: Changing cart item filter initiates selecting all items in the cart
 
   Scenario: in my apps 3 of 4 selected
@@ -245,7 +245,7 @@ Rule: Changing cart item filter initiates selecting all items in the cart
      Then they see only my applications in the cart
       And they are all selected
 
-@ovr2-1486-22, @orv2-2048-18
+@orv2-1486-22, @orv2-2048-18
 Rule: User cart defaults to All Applications filter when first loading cart
 
   Scenario: view cart
@@ -254,7 +254,7 @@ Rule: User cart defaults to All Applications filter when first loading cart
      Then they are directed to the shopping cart
       And they see all applications
 
-@ovr2-1486-23, @orv2-2048-19
+@orv2-1486-23, @orv2-2048-19
 Rule: Fee summary total reflects the filtered list
 
   Scenario: items in my applications
@@ -267,7 +267,7 @@ Rule: Fee summary total reflects the filtered list
      When they chooses to view all applications 
      Then the fee summary reflects the total of sum of all selected item fees in all applications
 
-@ovr2-1486-24, @orv2-2048-20
+@orv2-1486-24, @orv2-2048-20
 Rule: At least one items must be selected to purchase
 
   Scenario: no items selected
@@ -282,7 +282,7 @@ Rule: At least one items must be selected to purchase
      When they pay for the cart
      Then the unselected items are selected 
 
-@ovr2-1486-25, @orv2-2048-21
+@orv2-1486-25, @orv2-2048-21
 Rule: Show success page when the financial transaction has completed successfully
 
   Scenario: successful payment 
@@ -300,7 +300,7 @@ Rule: Show success page when the financial transaction has completed successfull
        | Payment was successful. However, some of your applications weren't processed. Please go to applications in Progress to review your pending permits. |
       And they can optionally view application in progress
 
-@ovr2-1486-26, @orv2-2048-22
+@orv2-1486-26, @orv2-2048-22
 Rule: Show pending permits with successful payment received that have not been issued yet
 
   Scenario: viewing pending permits list
@@ -314,7 +314,7 @@ Rule: Show pending permits with successful payment received that have not been i
       And they see:
        | There was an unexpected error in issuing the following permits. No action from you is required. onRouteBC will keep trying to issue these permits once the error is resolved. If you need immediate assistance, please contact the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca. |
 
-@ovr2-1486-27, @orv2-2048-23
+@orv2-1486-27, @orv2-2048-23
 Rule: Show the number of pending permits
 
   Scenario: viewing pending permits list
@@ -322,7 +322,7 @@ Rule: Show the number of pending permits
      When they choose to view the pending permits list
      Then they see the total number of pending permits
 
-@ovr2-1486-28, @orv2-2048-24
+@orv2-1486-28, @orv2-2048-24
 Rule: Show notification of pending permits with successful payment received that have not been issued yet
 
   Scenario: user has pending permits
