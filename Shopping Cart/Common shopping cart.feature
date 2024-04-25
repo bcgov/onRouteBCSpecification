@@ -162,8 +162,8 @@ Rule: Remove items in cart that are not in compliance with policy
 Rule: Show items removed from cart 
 
   Scenario: no items removed
-    Given a user has not had any items removed from the cart
-     When they choose to view the shopping cart
+    Given no items have been removed from the company cart
+     When a user chooses to view the shopping cart
      Then they do not see an alert box
 
   Scenario: items removed from cart
