@@ -64,20 +64,20 @@ Rule: Shopping cart shows number of items in the cart
 
   Scenario: all applications all selected
     Given there are 2 my application items in the cart
-      And 3 all application items in the cart
+      And 3 other all application items in the cart
      When a user chooses to view all applications
      Then they see 5 of 5
 
   Scenario: all applications some selected
     Given there are 2 my application items in the cart
-      And 3 all application items in the cart
+      And 3 other all application items in the cart
      When a user chooses to view all applications
       And deselects 1 item
      Then they see 4 of 5
 
   Scenario: my applications all selected
     Given there are 2 my application items in the cart
-      And 3 all application items in the cart
+      And 3 other all application items in the cart
      When a user chooses to view my applications
      Then they see 2 of 2
 
