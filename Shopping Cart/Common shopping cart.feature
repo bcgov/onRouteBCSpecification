@@ -95,12 +95,12 @@ Rule: Edit application in the cart
      When they choose to edit an application
      Then they see "View/Edit Application Viewing or editing a permit application that's in the cart will remove it from your cart. You will have to re-add it to your cart."
 
-  Scenario: item already in editing warning
+  Scenario: item is being edited by someone else warning
     Given the user chooses to edit an application that is in the cart
      When they choose to edit an application
      Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
-   Scenario: item already in editing continue
+   Scenario: item is being edited by someone else continue
     Given the user chooses to continue to edit an application that is in the cart
      When they choose to continue
      Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
