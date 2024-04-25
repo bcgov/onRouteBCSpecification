@@ -6,7 +6,7 @@ Feature: TROS Application Vehicle Details
   Scenario: TROS eligible "Power Unit"
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
-     Then they see only "Power Units" eligible for a TROS permit:
+     Then they see only "Power Units" allowable for a TROS permit:
        | Concrete Pumper Trucks                                                                                                           |
        | Double Decker Buses                                                                                                              |
        | Fixed Equipment - Trucks/Graders etc.                                                                                            |
@@ -36,10 +36,10 @@ Feature: TROS Application Vehicle Details
        | Long Combination Vehicles (LCV) - Turnpike Doubles                                                                               |
 
   @orv-551-2
-  Scenario: TROS eligible "Trailer"
+  Scenario: TROS allowable "Trailer"
     Given a CV Client is at "Trailer" for a TROS permit application
      When they choose to recall a "Trailer" from their inventory 
-     Then they see only "Trailers" eligible for a TROS permit:
+     Then they see only "Trailers" allowable for a TROS permit:
        | Boosters                                                                                       |
        | Dollies                                                                                        |
        | Fixed Equipment - Conveyors                                                                    |
@@ -175,11 +175,11 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     | 1           | 123     | Power Unit   |
 
 @orv2-1015
-Scenario: TROS eligible "Power Unit"
+Scenario: TROS allowable "Power Unit"
     Given a CV Client is at "Vehicle Details" for a TROS permit application
       And they are designated as an LCV CV Client
      When they choose to recall a "Power Unit" from their inventory 
-     Then they see only "Power Units" eligible for a TROS permit:
+     Then they see only "Power Units" allowable for a TROS permit:
        | Concrete Pumper Trucks                                                                                                           |
        | Double Decker Buses                                                                                                              |
        | Fixed Equipment - Trucks/Graders etc.                                                                                            |
@@ -219,10 +219,10 @@ Feature: TROS to PPC Queue
 
  The following scenario describes the complete list of available power unnits that can receieve a TROS permit. Including those that are not auto-approvable and if selected must go to the PPC queue for manual approval. 
 
-  Scenario: TROS eligible "Power Unit"
+  Scenario: TROS allowable "Power Unit"
     Given a CV Client is at "Vehicle Details" for a TROS permit application
      When they choose to recall a "Power Unit" from their inventory 
-     Then they see only "Power Units" eligible for a TROS permit:
+     Then they see only "Power Units" allowable for a TROS permit:
        | Concrete Pumper Trucks                                                                                                                                                                                                                                     |
        | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain (TROS - NOT AUTO-APPROVABLE - this would need to go into a PPC Queue for manual review CTPO, ACTPO, PPC Admin)                                                                                      |
        | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile (TROS - NOT AUTO-APPROVABLE - this would need to go into a PPC Queue for manual review CTPO, ACTPO, PPC Admin)                                                                                           |
