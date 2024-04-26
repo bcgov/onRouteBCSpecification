@@ -272,10 +272,11 @@ Rule: At least one items must be selected to purchase
      Then they see "Select at least one item to pay"
 
   Scenario: one or more item selected
-    Given 
-     When 
-     Then 
-
+    Given items are valid
+      And a user has one or more items selected
+     When they choose to pay
+     Then they are directed to PayBC
+      And the cart fee summary is pending payment  
 
 @orv2-1486-25, @orv2-2048-21
 Rule: Show success page when the financial transaction has completed successfully
