@@ -271,11 +271,11 @@ Rule: At least one items must be selected to purchase
      When they choose pay
      Then they see "Select at least one item to pay"
 
- # duplicate to selection defaults
-  Scenario: one or more items purchases but not the entire cart
-    Given user has unselected some items in the cart
-     When they pay for the cart
-     Then the unselected items are selected 
+  Scenario: one or more item selected
+    Given 
+     When 
+     Then 
+
 
 @orv2-1486-25, @orv2-2048-21
 Rule: Show success page when the financial transaction has completed successfully
