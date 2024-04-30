@@ -3,6 +3,7 @@ Feature Staff manage credit account users
 
 Staff = FIN
 
+@orv2-1797-1
 Rule Staff find and add a credit account user to a holder credit account
 
   Scenario: cv client not found
@@ -26,6 +27,7 @@ Rule Staff find and add a credit account user to a holder credit account
       And they are shown in the credit account user list
       And they see "account user added" notification
 
+@orv2-1797-2
 Rule Staff can remove a credit account user from a holder credit account
 
   Scenario: indicate selection
@@ -45,5 +47,6 @@ Rule Staff can remove a credit account user from a holder credit account
      Then they see "Account Users) Removed" notification
       And the chosen user(s) are not shown in the credit account user list
 
+@orv2-1797-3
 Rule Staff cannot remove the credit account holder from their credit account
 
