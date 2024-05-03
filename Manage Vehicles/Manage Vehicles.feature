@@ -49,6 +49,7 @@ Scenario: Show mandatory fields
     | Plate            | This is a required field      |
     | Year             | This is a required field      |
     | Make             | This is a required field      |
+    | Licensed GVW     | This is a required field      |
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
@@ -98,7 +99,6 @@ Scenario: Show mandatory fields
     | Plate            | This is a required field      |
     | Year             | This is a required field      |
     | Make             | This is a required field      |
-    | Licensed GVW     | This is a required field      |
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 

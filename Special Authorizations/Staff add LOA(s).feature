@@ -1,4 +1,5 @@
-Feature: As staff I need to add a letter of authorization (LOA) to a CV Client profile so that these CV Clients can apply for permits using these specific vehicle types.
+Feature: Staff add LOA(s)
+  As staff I need to add a letter of authorization (LOA) to a CV Client profile so that these CV Clients can apply for permits using the special authorizations granted by their LOA(s)
 
 Staff = SA, HQA
 
@@ -58,8 +59,5 @@ Rule Staff are shown all data submitted in the workflow for review
 @orv2-1152
 Rule The LOA is active when the add LOA workflow is completed
 
-@orv2-1152
-Rule Active LOA(s) are shown on a list 
 
-@orv2-1152
-Rule  
+
