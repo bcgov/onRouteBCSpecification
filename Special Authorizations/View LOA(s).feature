@@ -4,7 +4,7 @@ Users = PC, CTPO, Trainee, CA, PA
 Staff = SA, HQA
 
 @orv2-2231-1, @orv2-2232-1
-Rule: Users or staff staff can see a list of active LOA(s)
+Rule: Users or staff can see a list of active LOA(s)
 
   Scenario: view LOA(s) list
     Given there are active LOA(s)
