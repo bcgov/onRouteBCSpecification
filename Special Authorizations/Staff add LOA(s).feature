@@ -201,5 +201,12 @@ Rule: The LOA is active when the add LOA workflow is completed
      Then the LOA is not saved
       And they are directed to special authorizations
 
+@orv2-1152-19
+Rule: Show LOA added notification
 
+  Scenario: workflow complete
+     When staff complete the LOA workflow
+     Then they are directed to special authorizations
+      And they see "LOA Added" notification
+      And the LOA is shown in the active LOA list
 

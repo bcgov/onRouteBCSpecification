@@ -17,7 +17,7 @@ Rule  Staff can view a list of expired LOA(s)
       | Download Letter | link to download the uploaded LOA               |
 
 @orv2-2230-2
-Rule Staff can  edit active or expired LOA(s)
+Rule Staff can edit active or expired LOA(s)
 
   Scenario: edit active or expired LOA
     Given active or expired LOA(s) exist
@@ -26,6 +26,16 @@ Rule Staff can  edit active or expired LOA(s)
       And all previously inputted information is shown
 
 @orv2-2230-3
+Rule Show LOA updated notification
+
+  Scenario: edit expired LOA
+    Given staff are activating an expired LOA
+     When staff complete edits
+     Then they are directed to special authorizations
+      And they see "LOA Updated" notification
+      And the LOA is shown in the active LOA list
+
+@orv2-2230-4
 Rule Staff can delete active LOA(s)
 
   Scenario: initiate delete
@@ -45,7 +55,7 @@ Rule Staff can delete active LOA(s)
      Then the LOA is removed from the list 
       But not deleted from onRouteBC
 
-@orv2-2230-4
+@orv2-2230-5
 Rule Staff can download expired LOA(s)
 
   Scenario: expired LOA(s)
