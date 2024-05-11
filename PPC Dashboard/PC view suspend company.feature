@@ -28,7 +28,7 @@ Rule: PC can view the suspension history table
      Then they do not see the option to view suspend details
 
 @orv2-1880-2
-Rule: PC can not suspend a company
+Rule: PC cannot suspend a company
 
   Scenario: active company
     Given at company profile
