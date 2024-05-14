@@ -78,6 +78,11 @@ Rule: A term permit application can have one or more LOA(s) chosen to apply with
 
 @orv2-2261-7
 Rule: Vehicle VIN must match the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
+ 
+  Scenario: LOA(s) vehicle chosen LOA(s) removed
+    Given the user has chosen an LOA(s)
+     When they remove the chosen LOA(s)
+     Then the chosen LOA(s) vehicle is removed
 
 @orv2-2261-8
 Rule: The chosen LOA vehicle cannot be edited or saved to the vehicle inventory
