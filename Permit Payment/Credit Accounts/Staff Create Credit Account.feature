@@ -13,6 +13,11 @@ Rule: Staff can create a credit account for a CV Client
 @orv2-1868-2
 Rule: Staff must choose from a list of credit account limits
 
+  Scenario: default list state
+    Given there is no credit account
+     When staff choose to create a credit account
+     Then they see "select"
+
   Scenario: limit not chosen
     Given a limit is not chosen
      When staff add the credit account
