@@ -4,8 +4,13 @@ Feature Staff manage credit account users
 Staff = FIN
 
 @orv2-1797-1
-Rule Staff find and add a credit account user to a holder credit account
+Rule Staff can find and add a credit account user to a holder credit account using the exact onRouteBC client number
 
+  Scenario: partial cv client number
+     When staff search for a cv client using an incomplete cv client number
+     Then they see "Client No. not found"
+      And client number is indicated
+  
   Scenario: cv client not found
     Given cv client does not exist in onRouteBC
      When staff search for a cv client
