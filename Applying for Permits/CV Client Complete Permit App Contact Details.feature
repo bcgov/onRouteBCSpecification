@@ -29,11 +29,12 @@ Feature: Complete Contact Details
        | Additional Email | from my information      |
        | Fax              | from my information      |
        | company email    | from company information |
+     And company email is read only
      And they see "The permit will be sent..." information box
  
   @orv2-549-3
   Rule: CA can edit company email
-
+  
   Scenario: Update contact information 
     Given the CV Client is at the "Permit Application" page
      When they update "Contact Information":
