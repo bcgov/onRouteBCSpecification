@@ -12,10 +12,10 @@ Rule: CV Client can't see staff items in the shopping cart
      Then they see "nothing found"
 
 @orv2-1486-2
-Rule: CA see total of number of all company CA, PA items in the cart
+Rule: CA can see the total of number of all company CA, PA items in the cart
 
 @orv2-1486-3
-Rule: PA see only their application number of items in the cart
+Rule: PA can see only their application number of items in the cart
 
 @orv2-1486-4
 Rule: CA can see total of all CA and PA shopping cart item count in the header
@@ -53,12 +53,6 @@ Rule: CA can see all company CA and PA items in the cart
 
 @orv2-1486-7
 Rule: PA can only see their items in the cart
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 
 @orv2-1486-8
 Rule: CA can filter cart by their items or all company CA and PA items

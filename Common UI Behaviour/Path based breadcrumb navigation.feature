@@ -1,5 +1,7 @@
 Feature Path based breadcrumb navigation
 
+#NOTE: Path based breadcrumb has not been adopted universally across the application
+
 Rule: Display the pages the user has visited before arriving on the current page
 
   Scenario: to pay for permit from AIP

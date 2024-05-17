@@ -99,9 +99,9 @@ Rule: Edit application in the cart
     Given a user chooses to edit an application that is in the cart
      When a different user chooses to edit the same application
      Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And they see the <list of applications> removed from the cart
+      ## And they see the <list of applications> removed from the cart
 
-   Examples:
+  ## Examples:
      | list of applications |
      | • A2-00408617-873    |
      | • A2-00408617-876    |
@@ -149,10 +149,26 @@ Rule: Remove applications in the cart
 @orv2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
 
-  Scenario: start date in the past
-    Given permit(s) have a <start date> before the <current date>
+  Scenario: continue update cart warning
+    Given permit application(s) in cart are not compliant with policy
+     When a user chooses to pay 
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And continuing removes the permit application(s) in cart are not compliant with policy
+
+
+  Scenario: start date in the past pay
+    Given permit application(s) have a <start date> before the <current date>
+     When a user chooses to pay
+     Then these permit application(s) are removed from the cart
+
+  Examples:
+    | start date | current date |
+    | 03/01/2023 | 03/02/2023   |
+
+  Scenario: start date in the past view cart
+    Given permit application(s) have a <start date> before the <current date>
      When a user views the shopping cart
-     Then these permit(s) are removed from the cart
+     Then these permit application(s) are removed from the cart
 
   Examples:
     | start date | current date |
@@ -166,13 +182,27 @@ Rule: Show items removed from cart
      When a user chooses to view the shopping cart
      Then they do not see an alert box
 
-  Scenario: items removed from cart
+# NOTE: This has not been implmented yet
+
+  # Scenario: view cart
     Given items have been removed from the company cart
      When a user chooses to view the shopping cart
      Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
       And they see the <list of applications> removed from the cart
 
-   Examples:
+   # Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+
+   # Scenario: pay
+    Given items have been removed from the company cart
+     When a user chooses to pay
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+   # Examples:
      | list of applications |
      | • A2-00408617-873    |
      | • A2-00408617-873    |
@@ -263,7 +293,7 @@ Rule: Fee summary total reflects the filtered list
      Then the fee summary reflects the total of sum of all selected item fees in all applications
 
 @orv2-1486-24, @orv2-2048-20
-Rule: At least one items must be selected to purchase
+Rule: At least one item must be selected to purchase
 
   Scenario: no items selected
     Given user has items in the cart
@@ -388,6 +418,3 @@ Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping
 ## Rule: Permits is issued but fails permit receipt document generation are active permits
 
 ## Rule: Staff see the cart icon only when acting as a company
-
-## Rule: 
-
