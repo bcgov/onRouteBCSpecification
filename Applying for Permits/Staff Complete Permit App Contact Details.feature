@@ -38,6 +38,7 @@ Rule: Staff can update application contact details
        | Ext              |
        | Additional Email |
        | Fax              |
+      And company email is read only
      Then the "Contact Information" reflects their changes
      And these changes to "Contact Information" apply only to this permit
 
