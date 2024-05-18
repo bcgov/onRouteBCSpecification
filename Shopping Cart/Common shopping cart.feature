@@ -149,12 +149,11 @@ Rule: Remove applications in the cart
 @orv2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
 
-  Scenario: continue update cart warning
+  Scenario: continue update cart warning from pay
     Given permit application(s) in cart are not compliant with policy
      When a user chooses to pay 
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
       And continuing removes the permit application(s) in cart are not compliant with policy
-
 
   Scenario: start date in the past pay
     Given permit application(s) have a <start date> before the <current date>
@@ -183,6 +182,20 @@ Rule: Show items removed from cart
      Then they do not see an alert box
 
 # NOTE: This has not been implmented yet
+
+      ## And they see the <list of applications> removed from the cart
+
+  Scenario: edit item already removed from cart
+    Given a user chooses to edit an application that is in the cart
+     When a different user chooses to edit the same application
+     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+  ## Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-876    |
+     | • A2-00408617-878    |
 
   # Scenario: view cart
     Given items have been removed from the company cart
