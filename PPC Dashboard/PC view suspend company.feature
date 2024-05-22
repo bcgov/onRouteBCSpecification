@@ -74,3 +74,6 @@ Rule: PC can not make changes to a suspended company profile
 
 @orv2-1880-4
 Rule: PC can view a suspended company's active and expired permits
+
+@orv2-1880-5
+Rule: PC can resend a suspended company's active and expired permits

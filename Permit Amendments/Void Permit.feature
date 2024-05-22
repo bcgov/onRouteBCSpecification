@@ -1,6 +1,8 @@
 Feature: Void a permit
    As PPC SA I need to be able to void an issued permit so that I can assist CV Clients.
 
+Staff = SA
+
 @orv2-1057-1
 Rule: Can only void an issued or active permit
 
