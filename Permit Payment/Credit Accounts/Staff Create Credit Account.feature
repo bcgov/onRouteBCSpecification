@@ -83,21 +83,22 @@ Rule: Show available credit
   Scenario: choose 500
     Given staff has chosen a $500.00 credit limit
      When they add the credit account
-     Then they see the credit limit $500.00
+     Then they see the available credit $500.00
 
   Scenario: prepaid
     Given staff has chosen prepaid
      When they add the credit account
-     Then they see the available credit as $0
+     Then they see the available credit limit $0
 
 @orv2-1868-9
 Rule: Show credit account users
 
   Scenario: new credit account
-     When staff ass the credit account
+     When staff add the credit account
      Then they see the credit account holder in the credit account users list as follows:
        | data                       | description                                           |
        | Company Name               | the legal company name of the credit account holder   |
+       | Doing Business As (DBA)    | the DBA of the credit account holder                  |
        | onRouteBC Client No.       | the onRouteBC Client No. of the credit account holder |
        | credit account designation | Account Holder                                        |
 
