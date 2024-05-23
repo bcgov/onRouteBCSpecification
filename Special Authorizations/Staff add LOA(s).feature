@@ -40,6 +40,11 @@ Rule: Staff must input an LOA start date
      When staff choose the start date 01/02/2024
      Then they cannot choose the date
 
+  Scenario: never expires
+    Given staff have chosen LOA never expires
+     When they choose to continue
+     Then they see "This is a required field"
+
 @orv2-1152-4
 Rule: Staff must input an LOA expiry date that is not before the LOA start date
 
