@@ -50,7 +50,7 @@ Rule: Show credit account on hold notification
      Then they are directed to credit account
       And they see "Credit Account On Hold" notification
 
-@orv2-2008-5
+@orv2-2008-5, @orv2-2035-9
 Rule: Show on hold label when the credit account is on hold
 
   Scenario: credit account on hold

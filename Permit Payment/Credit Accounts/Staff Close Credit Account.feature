@@ -50,7 +50,7 @@ Rule: Show credit account closed notification
      Then they are directed to credit account
       And they see "Credit Account Closed" notification
 
-@orv2-2007-5
+@orv2-2007-5, @orv2-2035-8
 Rule: Show closed label when the credit account is closed
 
   Scenario: credit account closed
