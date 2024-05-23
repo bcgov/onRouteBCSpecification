@@ -1,8 +1,8 @@
-Feature: Staff view credit account
+Feature: PC, CTPO, Trainee view credit account
 
-Staff = SA, HQA
+Staff = PC, CTPO, Trainee
 
-@orv2-2035-1
+@orv2-2005-1
 Rule: Show credit account information
 
   Scenario: credit account exists
@@ -18,10 +18,10 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-@orv2-2035-2
+@orv2-2005-2
 Rule: Show onRouteBC generated unique credit account number
 
-@orv2-2035-3
+@orv2-2005-3
 Rule: Show the credit account designation
 
   Scenario: user
@@ -32,46 +32,7 @@ Rule: Show the credit account designation
      When staff are viewing a holder of a credit account
      Then they see "Account Holder"
 
-@orv2-2035-4
-Rule: Show credit limit
-
-  Scenario: $500
-    Given staff has assigned a $500.00 credit limit
-     When staff views credit account
-     Then they see a credit limit $500.00
-
-  Scenario: prepaid
-    Given staff has assigned a prepaid limit
-     When staff views credit account
-     Then they see the credit limit "Prepaid"
-
-@orv2-2035-5
-Rule: Show credit balance
-
-  Scenario: $0 balance
-     When staff views credit account
-     Then they see the credit balance $0
-
-@orv2-2035-6
-Rule: Show available credit
-
-  Scenario: $0 balance
-     Wstaff views credit account
-     Then they see the credit balance $0
-
-# need to confirm this behaviour
-  Scenario: prepaid
-    Given staff has assigned a prepaid limit
-     When staff views credit account
-     Then they see the available credit $XXX
-
-  Scenario: $500 balance
-    Given staff has a $1,000 credit limit
-      And a $500 balance
-     When the view credit account
-     Then they see the available credit of $500 
-
-@orv2-2035-7
+@orv2-2005-4
  Rule: Show credit account users
 
   Scenario: credit account users exist
