@@ -32,6 +32,14 @@ Rule: A CV Client can cancel a payment attempt
      When they cancel at the payment processor
      Then they are directed to the "Pay for Permit" page in onRouteBC
 
+  Scenario: redirect to cart fails
+    Given the cv client cancels at payment processor
+     When they cancel
+      And the item cannot be returned to the shopping cart
+     Then they see the unexpected error page
+      And the item is in the applications in progress
+      And the item is waiting for payment
+
 @orv2-1119-4 
 Rule: A CV Client can attempt to pay again on a failed transaction
 
@@ -66,7 +74,7 @@ Rule: A CV Client must use a credit card number that is valid for the credit car
      Then they see invalid card type notification
 
 @orv2-1119-7  
-Rule: onRouteBC will wait XX time for a payment transaction to be completed by the payment processor
+Rule: onRouteBC will wait 30min for a payment transaction to be completed by the payment processor
 
   Scenario: Valid credit card long processing
     Given the CV client chooses uses a valid credit card

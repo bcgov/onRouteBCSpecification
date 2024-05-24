@@ -181,7 +181,7 @@ Rule: Show items removed from cart
      When a user chooses to view the shopping cart
      Then they do not see an alert box
 
-# NOTE: This has not been implmented yet
+ # NOTE: This has not been implmented yet
 
       ## And they see the <list of applications> removed from the cart
 
