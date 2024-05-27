@@ -5,15 +5,15 @@ Staff = SA, PC, CTPO
 @orv2-1802-1
 Rule: The credit account payment method is available when a cv client user or holder has a credit account
 
-  Scenario: user
-    Given the cv client is a user of a credit account
+  Scenario: user or holder
+    Given the cv client is a user or holder of a credit account
      When staff choose to pay
      Then they see option to pay using credit account
 
-  Scenario: holder
-    Given the cv client is a holder of a credit account
+  Scenario: not a user or holder
+    Given the cv client is not a user or holder of a credit account
      When staff choose to pay
-     Then they see option to pay using credit account
+     Then they do not see the option to pay using credit account
 
 @orv2-1802-2
 Rule: The credit account payment method is not available when the credit account is on hold
