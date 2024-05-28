@@ -32,6 +32,17 @@ Rule Staff can find and add a credit account user to a holder credit account usi
       And they are shown in the credit account user list
       And they see "account user added" notification
 
+  Scenario: cv client already has a credit account
+    Given fin is searching for company A to add to company Bs credit account
+      And company A has an active credit account
+     When fin finds company A
+     Then they cannot add them to company Bs credit account
+      And they see the warning "This company already is a holder or user of" and the following:
+        | data                 | description                       |
+        | Company Name         | legal name of company A           |
+        | onRouteBC Client No. | onRouteBC client no. of Company A |
+        | Credit Account No.   | credit account no. of company A   |
+
 @orv2-1797-2
 Rule Staff can remove a credit account user from a holder credit account
 
