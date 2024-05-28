@@ -27,7 +27,7 @@ Rule: a cv client is assigned a credit account permenantly
       And fin opens credit account WS0001
      Then credit account WS0001 is open
 
-Rule: Choosing credit account is indicated
+Rule: Choosing credit account as the payment method is indicated
 
 Rule: The credit account holder is sent copies of issued permit documents when purchased for a credit account user
 
