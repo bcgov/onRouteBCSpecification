@@ -45,8 +45,8 @@ Rule: The calculated total fee of the permit is shown
      Then they see permit applicaton fee for each permit application that includes a <description> and <price>
 
    Examples:
-     | Description          | Price  |
-     | Term Oversize Permit | $30.00 |
+     | Description          | Price   |
+     | Term Oversize Permit | $100.00 |
 
 
  Scenario: Fee calculation
