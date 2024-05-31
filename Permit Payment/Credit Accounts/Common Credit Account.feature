@@ -29,6 +29,8 @@ Rule: a cv client is assigned a credit account permenantly
 
 Rule: Choosing credit account as the payment method is indicated
 
+ #
+
 Rule: The credit account holder is sent copies of issued permit documents when purchased for a credit account user
 
   Scenario: cv client purchases
@@ -42,3 +44,11 @@ Rule: The credit account holder is sent copies of issued permit documents when p
      And cv client b is the user
      When staff purchase on behalf of cv client b using the credit account
      Then the permit issuance email and attached permit and receipt pdf are sent to cv client a company email address
+
+Rule: User permit payment receipt Payer Name is the credit account holder Company Legal Name
+
+ #
+
+Rule: Permit payment receipt payment method is Credit Account
+
+ #
