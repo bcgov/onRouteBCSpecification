@@ -430,4 +430,9 @@ Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping
 
 ## Rule: Permits is issued but fails permit receipt document generation are active permits
 
+  Scenario: pdfs not generated
+    Given permit financial transaction successful
+     When user chooses to view permit
+     Then they are directed to error page
+
 ## Rule: Staff see the cart icon only when acting as a company
