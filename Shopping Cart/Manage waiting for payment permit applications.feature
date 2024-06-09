@@ -25,7 +25,10 @@ Rule: Show information about WFP permit applications
        | Plate           | the vehicle plate no. in the permit application                 |
        | Applicant       | the BCeID username of the applicant OR Provincial Permit Centre |
 
- #default sort, pagination
+ #default sort
+- newest on top oldest on bottom descending order
+ # pagination
+ - paginate  as per our standard
 
 @orv2-2412-3
 Rule: Users can change one or more WFP permit applications to applications in progress (AIP)
