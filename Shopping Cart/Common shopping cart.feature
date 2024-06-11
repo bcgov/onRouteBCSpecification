@@ -164,7 +164,8 @@ Rule: Remove items in cart that are not in compliance with policy
     | start date | current date |
     | 03/01/2023 | 03/02/2023   |
 
-  Scenario: start date in the past view cart
+ # Deprecated - items are only checked at pay
+  # Scenario: start date in the past view cart
     Given permit application(s) have a <start date> before the <current date>
      When a user views the shopping cart
      Then these permit application(s) are removed from the cart
@@ -426,7 +427,7 @@ Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping
 
 ## Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
 
- ## A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
+## A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
 
 ## Rule: Permits is issued but fails permit receipt document generation are active permits
 

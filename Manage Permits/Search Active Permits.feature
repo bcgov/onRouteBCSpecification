@@ -45,3 +45,5 @@ Rule: Users can sort the list of active permits
          | Applicant         |
      Then the list is sorted by the selected column header
      And the sort order is the reverse of the previously selected order
+
+ 

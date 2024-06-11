@@ -17,7 +17,7 @@ Rule: A successful financial transaction initiates the generation of a permit re
      Then the generated receipt pdf is displayed
 
 @over2-935-2 @orv2-1064-2
-Rule: If receipt fails to generate then show the universal unexpected error page
+Rule: If receipt fails to generate then show the universal unexpected error page in a new tab
 
   Scenario: purchase transaction successful
     Given a user payment completes successfully

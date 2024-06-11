@@ -48,6 +48,10 @@ Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
 
+@orv2-2416-1
+Rule: If no permit pdf exists when attempting to view it show error page
+
+
 
         
 

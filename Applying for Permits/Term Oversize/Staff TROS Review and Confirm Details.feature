@@ -90,6 +90,6 @@ Rule: TROS permit fee is calculated
 Rule: Staff can edit the application
 
  Scenario: Edit Application
-     Given Staff is at the "Review abd Confirm Details" page
+     Given Staff is at the "Review and Confirm Details" page
      When they choose to edit the application
      Then they are directed to the "Permit Application" page 

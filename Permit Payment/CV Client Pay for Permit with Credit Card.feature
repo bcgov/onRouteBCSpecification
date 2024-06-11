@@ -36,7 +36,7 @@ Rule: A CV Client can cancel a payment attempt
     Given the cv client cancels at payment processor
      When they cancel
       And the item cannot be returned to the shopping cart
-     Then they see the unexpected error page
+     Then they see the unexpected error page in a new tab
       And the item is in the applications in progress
       And the item is waiting for payment
 
