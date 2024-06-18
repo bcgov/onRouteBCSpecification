@@ -82,7 +82,12 @@ Rule: Vehicle VIN must match the LOA(s) to be available in the permit applicatio
   Scenario: LOA(s) vehicle chosen LOA(s) removed
     Given the user has chosen an LOA(s)
      When they remove the chosen LOA(s)
-     Then the chosen LOA(s) vehicle is removed
+     Then the chosen LOA(s) vehicle is not available in the permit application
+
+  Scenario: vehicle removed from inventory
+    Given an active LOA(s) has vehicle A
+     When vehicle A is removed from inventory
+     Then vehicle A is not available in the permit application
 
 @orv2-2261-8
 Rule: The chosen LOA vehicle cannot be edited or saved to the vehicle inventory
