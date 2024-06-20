@@ -57,6 +57,13 @@ Scenario: Show mandatory fields
 Feature: Add edit and view trailers
     As a CV Client, I need to be able to add a new trailer to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
 
+@orv2-2381
+Rule: Choosing to edit a vehicle is the list edits the choosen vehicle
+
+  Scenario: multiple vehicle selected
+     When a user chooses to edit a vehicle
+     Then the row for which the edit action was selected is the vehicle chosen 
+
 @orv-325-1
 Scenario: Choose vehicle type to add to inventory  
     Given the CV Client is at the vehicle inventory page
@@ -131,7 +138,7 @@ Scenario: Delete a vehicle continue with delete
     And they see "Vehicle Deleted"
     And the deleted vehicle is not shown in their vehicle inventory
 
-@orv2-340-4
+@orv2-340-4 @orv2-2381
 Scenario: Bulk delete multiple vehicles
     Given the CV Client chooses more than one vehicle in either Power Units or Trailers
     And delete is available
