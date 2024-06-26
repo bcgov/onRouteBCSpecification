@@ -70,12 +70,30 @@ Rule: Show credit limit
      Then they see the credit limit "Prepaid"
 
 @orv2-1868-7
-Rule: Show credit balance
+Rule: Show current balance
 
+# TBD whether we enter payments into onRouteBC which will potentially change this behaviour
   Scenario: $0 balance
     Given this is a new credit account
      When staff add the credit account
-     Then they see the credit balance $0
+     Then they see the current balance $0
+
+  Scenario: prepaid
+    Given this is an existing account
+     When there is $500 credit
+     Then the current balance is -$500.00
+
+  Scenario: owe
+    Given this is an existing account
+      And the credit limit is $2000.00
+     When there is $500 owing
+     Then the current balance is $500.00
+
+  Scenario: overpaid
+    Given this is an existing account
+      And the credit limit is $2000.00
+     When there is $500.00 overpaid
+     Then the current balance is -$500.00
 
 @orv2-1868-8
 Rule: Show available credit
@@ -84,6 +102,18 @@ Rule: Show available credit
     Given staff has chosen a $500.00 credit limit
      When they add the credit account
      Then they see the available credit $500.00
+  
+  Scenario: owe
+    Given this is an existing account
+      And the credit limit is $2000.00
+     When there is $500 owing
+     Then the available credit is $1500.00
+
+  Scenario: overpaid
+    Given this is an existing account
+      And the credit limit is $2000.00
+     When there is $500.00 overpaid
+     Then the available credit is -$2500.00
 
   Scenario: prepaid
     Given staff has chosen prepaid
