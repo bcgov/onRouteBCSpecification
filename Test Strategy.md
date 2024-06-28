@@ -56,7 +56,7 @@ Assessing developed front end UX/UI against HiFi Design (Prototype)
 Verify:
 - Meets Government UI standards
 - Textual Content: Confirm static informational text, 
-- Functionality: Functional aspects of the UI, such as ensuring that buttons, links, forms, and other interactive elements work as intended, drop downs, cursor hover.
+- Functionality: Functional aspects of the UI, such as ensuring that buttons, links, forms, drop downs, cursor hover and other interactive elements work as intended.
 - Usability: Clarity, consistency, intuitiveness, and efficiency of user interactions.
 - Responsiveness: How the UI responds to different screen sizes and resolutions. Test the UI's adaptability and ensure that it remains usable across various platforms and browsers.
 - Accessibility: Testing with keyboard navigation, colour contrast, text resizing, and other accessibility standards, tab stops.
