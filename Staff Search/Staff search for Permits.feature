@@ -145,13 +145,28 @@ Rule: SA, PC can resend the permit and receipt pdf's
       And they are directed to the "Search Results" page
       And they see "Successfully Sent"
 
-@orv2-937-10
+@orv2-937-10 @orv2-1267-1
 Rule: SA, PC can see original permit application contact details when resending permit and receipt pdf
 
   Scenario: permit application email
     Given a permit applicant submitted abc@email.com in additional email
      When staff choose to resend a permit or permit payment receipt pdf 
      Then they see abc@email.com
+
+  Scenario: permit application fax
+    Given a permit applicant submitted +1 (604) 555-0196 in fax
+     When staff choose to resend a permit or permit payment receipt pdf 
+     Then they see +1 (604) 555-0196
+
+  Scenario: permit application email and fax
+    Given a permit applicant submitted abc@email.com in additional email
+      And +1 (604) 555-0196 in fax
+     When staff choose to resend a permit or permit payment receipt pdf 
+     Then they see abc@email.com
+      And +1 (604) 555-0196 in fax
+
+@orv2-1267-2
+Rule: SA, PC can optionally resend permit and receipt pdf to fax
 
 @orv2-937-14
 Rule: SA, PC can update resend contact details
@@ -161,15 +176,16 @@ Rule: SA, PC can update resend contact details
      When staff choose to resend
      Then they see "This is a required field"
       And and the required field is indicated
+      And they cannot resend
 
 @orv2-1925-1
-Rule: SA, PC  can choose to send either the permit pdf or permit payment pdf or both
+Rule: SA, PC can choose to send either the permit pdf or permit payment pdf or both
 
   Scenario: choose none
     Given permit or receipt are not chosen
      When SA, PC choose to resend
      Then they see "Select at least one item"
-      And the both receipt and permit options are indicated
+      And both receipt and permit options are indicated
 
   Scenario: choose permit
     Given permit is chosen
