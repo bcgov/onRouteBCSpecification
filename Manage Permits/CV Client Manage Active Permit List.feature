@@ -49,7 +49,7 @@ Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf
       Then they see the permit pdf in a new browser tab
 
 @orv2-2416-1
-Rule: If no permit pdf exists when attempting to view it show error page
+Rule: If there is no permit PDF available, display an error page.
 
   Scenario: no permit pdf
      When a user chooses to view the permit pdf 
