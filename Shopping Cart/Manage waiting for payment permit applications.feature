@@ -1,4 +1,4 @@
-Feature: Manage waiting for payment (WFP) permit applications
+# Feature: Manage waiting for payment (WFP) permit applications
 
 Users: CA, PA, SA, PC, CTPO, Trainnee
 
@@ -52,3 +52,4 @@ Rule: Users can change one or more WFP permit applications to applications in pr
      Then the 5 WFP permit application chosen are shown as AIP
       And the 5 WFP permit application chosen are not shown as a WFP permit applications
 
+Rule: WFP permit applications that are WFP permit applications for 30 minutes or less are not shown

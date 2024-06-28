@@ -83,3 +83,6 @@ Rule: Show available credit
        | Doing Business As (DBA)    | the DBA of the credit account holder                  |
        | onRouteBC Client No.       | the onRouteBC Client No. of the credit account holder |
        | credit account designation | Account Holder                                        |
+       
+@orv2-1999-8
+Rule: CV Client Holder PA cannot see the credit account tab.
