@@ -48,12 +48,7 @@ Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
 
-@orv2-2416-1
-Rule: If there is no permit PDF available, display an error page.
 
-  Scenario: no permit pdf
-     When a user chooses to view the permit pdf 
-     Then the see "Your permit is on the way Your permit document is being created. Please check again later."
 
 
 
