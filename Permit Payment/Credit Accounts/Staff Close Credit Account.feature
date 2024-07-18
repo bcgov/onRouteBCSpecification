@@ -115,6 +115,13 @@ Rule: Staff can reopen a credit account
      Then they are directed to credit account
       And they available credit is $10,000.00
 
+  Scenario: co a closed is user of co b
+    Given company A credit account is closed
+      And they are a user of company b account
+     When company a account is reopened
+     Then they see the reopen credit account warning
+      And they cannot reopen the account
+
 @orv2-2007-13
 Rule: Reopening a credit account creates a status record in the history list
 
