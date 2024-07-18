@@ -120,7 +120,7 @@ Rule: Staff can reopen a credit account
       And they are a user of company b account
      When company a account is reopened
      Then they see the reopen credit account warning
-      And they cannot reopen the account
+      And they cannot reopen the company a credit account
 
 @orv2-2007-13
 Rule: Reopening a credit account creates a status record in the history list
