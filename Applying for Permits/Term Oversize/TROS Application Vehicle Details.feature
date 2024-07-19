@@ -174,7 +174,7 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     | 1           | 12      | Trailer      |
     | 1           | 123     | Power Unit   |
 
-@orv2-1490-4
+@orv2-1490-5
 Rule: cv clients designated as LCV carriers see LCV power unit sub-types in addition to current allowable power unit or trailer sub-types
 
 Scenario: lcv designated
