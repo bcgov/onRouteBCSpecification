@@ -2,7 +2,7 @@ Feature: As CV Client I need to permit a Long Combination Vehicle (LCV) so that 
 
 CV Client = CA, PA
 
-@orv2-1532-1
+@orv2-1490-1
 Rule: LCV vehicles are shown in permit applications if the CV Client is designated as LCV capable
 
   Scenario: LCV capable CV Client
@@ -20,7 +20,7 @@ Rule: LCV vehicles are shown in permit applications if the CV Client is designat
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
 
-@orv2-1532-2
+@orv2-1490-2
 Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen as the permit vehicle type
 
   Scenario: LCV vehicle is chosen
@@ -30,7 +30,7 @@ Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen a
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
      Then the CVSE1014 is attached to the generated permit pdf
 
-@orv2-1532-3
+@orv2-1490-3
 Rule: LCV vehicles can be added to the CV Clients vehicle inventory
 
   Scenario: in permit applications
