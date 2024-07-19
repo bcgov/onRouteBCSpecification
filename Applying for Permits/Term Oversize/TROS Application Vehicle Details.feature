@@ -174,12 +174,13 @@ Scenario: Save new vehicle to "Vehicle Inventory"
     | 1           | 12      | Trailer      |
     | 1           | 123     | Power Unit   |
 
-@orv2-1015
-Scenario: TROS allowable "Power Unit"
-    Given a CV Client is at "Vehicle Details" for a TROS permit application
-      And they are designated as an LCV CV Client
-     When they choose to recall a "Power Unit" from their inventory 
-     Then they see only "Power Units" allowable for a TROS permit:
+@orv2-1490
+Rule: cv clients designated as LCV carriers see LCV power unit sub-types in addition to current allowable power unit or trailer sub-types
+
+Scenario: lcv designated
+    Given a cv client is designated as an LCV CV Client
+     When they choose to recall a power unit vehicle sub-type from their inventory 
+     Then they see the following allowable for a TROS permit:
        | Concrete Pumper Trucks                                                                                                           |
        | Double Decker Buses                                                                                                              |
        | Fixed Equipment - Trucks/Graders etc.                                                                                            |

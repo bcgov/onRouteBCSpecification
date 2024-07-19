@@ -226,7 +226,7 @@ Rule: Show items removed from cart
 Rule: Cart can have an unlimited number of items
 
 @orv2-1486-19, @orv2-2048-15
-Rule: One or more items in cart may selected for purchase or removal
+Rule: One or more items in cart may be selected for purchase or removal
 
   Scenario: no items in cart
     Given a user chooses to view the cart
