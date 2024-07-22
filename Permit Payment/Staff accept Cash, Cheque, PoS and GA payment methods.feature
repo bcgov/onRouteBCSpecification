@@ -50,10 +50,15 @@ Rule: Staff must choose from a list of in-person payment types
       And they cannot finish
 
 @orv2-2141-3
-Rule: Staff must input a transaction ID (Provider Transaction ID) manually
+Rule: Staff must input a transaction ID (Provider Transaction ID) manually for all transactions except cash or cheque
 
   Scenario: not inputted a transaction ID
      When they attempt to finish
      Then they see "This is a required field"
       And "Transaction ID" is indicated
       And they cannot finish
+
+  Scenario: cash or cheque
+     When staff have chosen cash or cheque
+     Then transactiona id is not available
+
