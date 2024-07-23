@@ -141,3 +141,6 @@ Rule: Show credit account reopened notification
      When Staff reopen the credit account
      Then they are directed to credit account
       And they see "Credit Account Reopened" notification
+
+
+
