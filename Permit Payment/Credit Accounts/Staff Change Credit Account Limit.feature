@@ -7,7 +7,7 @@ Rule:  Staff can change the credit limit of an active credit account
 
   Scenario: exiting credit account
      When staff choose to change the credit limit
-     Then they see the option to choose a credit limit
+     Then they see the option to choose a new credit limit
 
 @orv2-2579-2
 Rule: Staff can see the currently assigned credit limit when choosing a new credit limit
