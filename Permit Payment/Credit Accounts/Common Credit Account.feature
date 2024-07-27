@@ -14,7 +14,16 @@ Rule: A cv client can have only one active credit account
      Then fin does not have the option to add company A to company Cs credit account
      #see 1797-1   
 
-Rule: a cv client is assigned a credit account permenantly
+  Scenario: co A had credit account
+    Given co A 
+     When 
+     Then 
+
+Co A CA closed
+	- Co A user of Co B
+	- Fin sees Co A as user of Co B on Co A CA tab
+
+Rule: a cv client is assigned a credit account permanently
 
   Scenario: company A ceases activity  
     Given company A is active with credit account WS0001

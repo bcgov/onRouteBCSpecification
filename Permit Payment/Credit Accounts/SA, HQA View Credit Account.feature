@@ -18,6 +18,74 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
+ Scenario: credit account closed view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account closed view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account suspended view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account suspended view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | On Hold                       | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Credit Account details        | financial details of the credit account            |
+ 
+   Scenario: credit account on hold view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                                |
+       | On Hold                | label describing the credit account status |
+       | Credit Account details | financial details of the credit account    |
+       | Credit Account Users   | table listing users of the credit account  |
+
+  Scenario: credit account closed view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | Closed                        | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Credit Account details        | financial details of the credit account            |
+ 
+   Scenario: credit account closed view user
+     When staff chooses to view credit account
+     Then they see "For Credit Accounts, please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" info box
+
+  Scenario: credit account suspended view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                                |
+       | On Hold                | label describing the credit account status |
+       | Credit Account details | financial details of the credit account    |
+       | Credit Account Users   | table listing users of the credit account  |
+ 
+   Scenario: credit account suspended view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | On Hold                       | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Credit Account details        | financial details of the credit account            |
+
 @orv2-2035-2
 Rule: Show onRouteBC generated unique credit account number
 

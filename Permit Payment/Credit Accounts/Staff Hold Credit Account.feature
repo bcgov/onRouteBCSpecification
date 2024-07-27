@@ -132,3 +132,8 @@ Rule: Show credit account hold removed notification
      When Staff remove the credit account hold
      Then they are directed to credit account
       And they see "Hold Removed" notification
+
+@orv2-2008-15
+Rule: Suspended company credit accounts are put on hold
+
+# update hold / close history with idir, date/time, "suspended" OR notes from suspend reason

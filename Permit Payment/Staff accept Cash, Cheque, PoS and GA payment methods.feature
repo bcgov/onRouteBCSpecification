@@ -34,7 +34,7 @@ Rule: Staff must choose from a list of in-person payment types
      When they choose to input a payment type from te following list:
       | Amex               |
       | Cash               |
-      | Checque            |
+      | Cheque             |
       | Debit              |
       | Mastercard         |
       | Mastercard (Debit) |

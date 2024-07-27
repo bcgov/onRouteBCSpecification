@@ -66,3 +66,91 @@ Rule Staff can remove a credit account user from a holder credit account
 @orv2-1797-3
 Rule Staff cannot remove the credit account holder from their credit account
 
+@orv2-1797-4
+Rule: Show credit account information
+
+  Scenario: credit account exists
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account does not exist
+     When staff chooses to view credit account
+     Then they see the option to add credit account
+
+  Scenario: credit account closed view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account closed view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account suspended view holder
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account suspended view user
+     When staff chooses to view credit account
+     Then they see the option to view credit account
+
+  Scenario: credit account on hold view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | On Hold                       | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Hold / Close History          | list of credit account hold and close transactions |
+       | Credit Account details        | financial details of the credit account            |
+       | Add Credit Account User       | option to add a credit account user                |
+ 
+   Scenario: credit account on hold view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                                |
+       | On Hold                | label describing the credit account status |
+       | Credit Account details | financial details of the credit account    |
+       | Credit Account Users   | table listing users of the credit account  |
+
+  Scenario: credit account closed view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | Closed                        | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Hold / Close History          | list of credit account hold and close transactions |
+       | Credit Account details        | financial details of the credit account            |
+ 
+   Scenario: credit account closed view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                                |
+       | Closed                 | label describing the credit account status |
+       | Credit Account details | financial details of the credit account    |
+       | Credit Account Users   | table listing users of the credit account  |
+
+  Scenario: credit account suspended view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | On Hold                       | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Hold / Close History          | list of credit account hold and close transactions |
+       | Credit Account details        | financial details of the credit account            |
+       | Add Credit Account User       | option to add a credit account user                |
+ 
+   Scenario: credit account suspended view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                        |
+       | On Hold                       | label describing the credit account status         |
+       | Credit Account Users          | table listing users of the credit account          |
+       | Credit Account details        | financial details of the credit account            |
+
