@@ -121,9 +121,6 @@ Rule: Power unit province / state is not available when Mexico is chosen as the 
      Then Province state is not available
 
 @orv2-2574, @orv2-2388
-Rule: Users may optionally save or update a power unit to vehicle inventory
-
-@orv2-2574, @orv2-2388
 Rule: Details of the chosen power units are shown in the application form
 
   Scenario: Mexico as country
