@@ -7,4 +7,11 @@ Rule: The start date must not exceed 14 days from the application submission dat
 
 
 @orv2-2574
-Rule: CV Client must submit an STOS application for review
+Rule: CV Client can only submit an STOS application for review
+
+  Scenario: submit complete application
+    Given a cv client has completed a permit application
+     When they submit the application for review 
+     Then it is an application in review
+      And they are directed to "Applications in Review"
+
