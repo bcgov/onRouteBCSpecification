@@ -122,22 +122,6 @@ Scenario: Show mandatory fields
       | Vehicle Sub-type | This is a required field      |
       | Country          | This is a required field      |
 
-@orv2-551-5
-Scenario: Save new vehicle to "Vehicle Inventory"
-    Given The CV Client manually inputed their "Vehicle Information"
-    When the VIN + Company dosent match an existing VIN in their "Vehicle Inventory"
-    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-    Then the Vehicle will be added to their "Vehicle Inventory" when they select "continue"
-    And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
-
-@orv2-551-8
-  Scenario: Update exsiting vehicle to "Vehicle Inventory"
-    Given The CV Client manually inputed their "Vehicle Information"
-    When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
-    And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-    Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
-    And if they select NO the vehicle will not be updated in their "Vehicle Inventory"
-
 @orv2-551-6
   Scenario: Find vehicle in inventory by Unit Number
     Given the CV Client has selected Unit Number in "Choose from"
@@ -176,7 +160,6 @@ Scenario: Save new vehicle to "Vehicle Inventory"
 
 @orv2-1490-5
 Rule: cv clients designated as LCV carriers see LCV power unit sub-types in addition to current allowable power unit or trailer sub-types
-
 Scenario: lcv designated
     Given a cv client is designated as an LCV CV Client
      When they choose to recall a power unit vehicle sub-type from their inventory 

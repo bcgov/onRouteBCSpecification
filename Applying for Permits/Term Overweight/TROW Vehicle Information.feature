@@ -56,23 +56,6 @@ Rule: Mandatory vehicle fields are indicated
        | Vehicle Sub-type | This is a required field      |
        | Country          | This is a required field      |
 
-@orv2-1095-19
-Rule: Inputted vehicle details can be saved to a CV Client vehicle inventory
-
- Scenario: Save new vehicle to "Vehicle Inventory"
-     Given The CV Client manually inputted their "Vehicle Information"
-     When the VIN + Company doesn't match an existing VIN in their "Vehicle Inventory"
-     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-     Then the Vehicle will be added to their "Vehicle Inventory" when they select "continue"
-     And if they select NO the vehicle will not be saved to their "Vehicle Inventory"
-
-   Scenario: Update existing vehicle to "Vehicle Inventory"
-     Given The CV Client manually inputted their "Vehicle Information"
-     When the VIN + Company does match an existing VIN in their "Vehicle Inventory"
-     And if they select YES to "would you like to add/update this vehicle to your vehicle inventory?"
-     Then the Vehicle will update the previously existing Vehicle to their "Vehicle Inventory" when they select "continue"
-     And if they select NO the vehicle will not be updated in their "Vehicle Inventory"
-
 @orv2-1095-20
 Rule: The CV Client can recall a vehicle from their vehicle inventory
 
@@ -108,4 +91,4 @@ Rule: The CV Client can recall a vehicle from their vehicle inventory
     | D12         | D123456 |
     | D123        | D123456 |
     | D654        | D654321 |
-    | D6          | D654321 |                                                 
+    | D6          | D654321 |                     

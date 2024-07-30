@@ -8,6 +8,8 @@ Feature: Choose a permit application
      Then they see the following list of permit types categories and permit types
        | permit type categories | permit types |
        | Oversize               | Term         |
+       | Overweight             | Term         |
+       | Oversize               | Single-trip  |
 
   @orv2-823-2
   Scenario: Start Permit Application

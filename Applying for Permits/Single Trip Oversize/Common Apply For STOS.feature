@@ -30,7 +30,7 @@ Rule: CVSE Forms may be optionally chosen for attachement to the issued permit
 @orv2-2574, @orv2-2388
 Rule: Users must input a commodity allowable for an STOS permit
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
   Scenario: no commodity inputted
      When a users chooses to continue to review and confirm
@@ -41,7 +41,7 @@ Rule: Users must input a commodity allowable for an STOS permit
 @orv2-2574, @orv2-2388
 Rule: Users can search for a commodity allowable for an STOS permit
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
   Scenario: Hay Bales (Round) Peace River Only
     Given a user is searching for "Hay Bales (Round) Peace River Only"
@@ -60,7 +60,7 @@ Rule: Users can search for a commodity allowable for an STOS permit
 @orv2-2574, @orv2-2388
 Rule: Users can scroll the list of commodities allowable for an STOS permit
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
 @orv2-2574, @orv2-2388
 Rule: Users may change the chosen commodity
@@ -89,7 +89,7 @@ Rule: Users must input a load description
 @orv2-2574, @orv2-2388
 Rule: Users may only input one power unit allowable for an STOS permit manually or chosen from inventory 
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
   Scenario: pu exists
      When a user chooses to add a power unit
@@ -142,7 +142,7 @@ Rule: Users may remove a power unit from the application
 @orv2-2574, @orv2-2388
 Rule: Users may optionally choose from a list of allowable trailers
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
   Scenario: no allowable
      When the user has chosen a commodity and power unit with no allowable trailer
@@ -151,12 +151,12 @@ Rule: Users may optionally choose from a list of allowable trailers
 @orv2-2574, @orv2-2388
 Rule: The selection of trailers must adhere to an allowable order
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
 @orv2-2574, @orv2-2388
 Rule: The choice and order of allowable trailers is determined by the STOS permit type, chosen commodity, and selected power unit
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
 @orv2-2574, @orv2-2388
 Rule: Details of the chosen trailers are shown in the application form below previously added trailers
@@ -297,7 +297,7 @@ Rule: Users may optionally input application notes
 Rule: Show application notes info box
 
 @orv2-2574, @orv2-2388
-Rule: Show application details inputted by the user prior to submitting for review
+Rule: Show application details inputted by the user prior to submission or addting to cart
 
   Scenario: application notes entered
      When a user inputs application notes "These are my notes"

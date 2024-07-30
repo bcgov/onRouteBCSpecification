@@ -1,13 +1,13 @@
 Feature: Display permit application header information
     As a user I want to be able to view a header details so that I can refer to this application in progress 
  
-@orv2-552-1 @orv2-1384-11
+@orv2-552-1 @orv2-1384-11 @orv2-2574 @orv2-2388
   Scenario: Display application number
     Given a user is at the "Permit Application" page
      When they save the permit application
      Then they see a unique permit application number
 
-@orv2-552-2 @orv2-1384-12
+@orv2-552-2 @orv2-1384-12 @orv2-2574 @orv2-2388
   Scenario: Display date created
     Given a user is at the "Permit Application" page
      When they save the permit application
@@ -17,7 +17,7 @@ Feature: Display permit application header information
        | date and time                  |
        | Apr. 15, 2023, 8colon23 am PDT |
 
-@orv2-552-3 @orv2-1384-13
+@orv2-552-3 @orv2-1384-13 @orv2-2574 @orv2-2388
   Scenario: Display last updated
     Given a user is at the "Permit Application" page
      When they save the permit application
@@ -27,7 +27,7 @@ Feature: Display permit application header information
        | date and time                  |
        | Apr. 15, 2023, 8colon23 am PDT |
 
-@orv2-552-4 @orv2-1384-14
+@orv2-552-4 @orv2-1384-14 @orv2-2574 @orv2-2388
   Scenario: Display company information
     Given a user has started a permit application
      When they are at the "Permit Application" page
