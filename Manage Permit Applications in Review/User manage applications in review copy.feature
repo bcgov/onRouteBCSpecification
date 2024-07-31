@@ -2,12 +2,11 @@ Feature: Manage applications in review
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-Rule: Users see spermit application submitted notification
-
+@orv2-2394-1
 Rule: User see a list of application in review with information about each
 
   Scenario: no applications in review
-     When a user is chooses to view applications in review
+     When a user chooses to view applications in review
      Then they see "No records found"
 
   Scenario: application in review exist
@@ -22,46 +21,87 @@ Rule: User see a list of application in review with information about each
        | Permit Start Date | the start date inputted by the applicant                      |
        | Last Updated      | the date the application in review was last saved             |
 
+@orv2-2394-2
 Rule: The application in review list default sort is by last updated date, newest at the top in descending order
 
+  Scenario: application in review exist
+    Given the following last update dates exist in the application in review list:
+      | Sept. 14, 2023, 09:26 pm PDT |
+      | Sept. 14, 2023, 03:01 pm PDT |
+      | Sept. 16, 2023, 07:01 am PDT |
+     When a user chooses to view applications in review
+     Then they see applications in review in the following order:
+      | Sept. 16, 2023, 07:01 am PDT |
+      | Sept. 14, 2023, 09:26 pm PDT |
+      | Sept. 14, 2023, 03:01 pm PDT |
+
+@orv2-2394-3
 Rule: The application in review list default pagination is 10 items
 
+@orv2-2394-4
 Rule: Users see the reject applications info box
 
+@orv2-2394-5
 Rule: An application that is not claimed by staff is "Pending Review"
 
   Scenario: apps pending review exist 
+    Given the following application are pending review:
+      | A1-72303011-028 |
+      | A1-72503011-100 |
+      | A1-74013011-353 |
      When a user chooses to view applications in review
-     Then they see the label "Pending Review"
+     Then they see the label "Pending Review" next to:
+      | A1-72303011-028 |
+      | A1-72503011-100 |
+      | A1-74013011-353 |
 
   Scenario: application newly submitted
     Given application A1-72303011-028 is newly submitted for review
      When a user views the application in the list
      Then they see the label "Pending Review" next to A1-72303011-028
 
+@orv2-2394-6
 Rule: An application that is claimed by staff is "In Review"
 
   Scenario: apps in review exist 
+    Given the following application are in review:
+      | A1-72303011-028 |
+      | A1-72503011-100 |
+      | A1-74013011-353 |
      When a user chooses to view applications in review
-     Then they see the label "In Review"
+     Then they see the label "In Review" next to:
+     the following application are pending review:
+      | A1-72303011-028 |
+      | A1-72503011-100 |
+      | A1-74013011-353 |
 
   Scenario: application claimed
     Given application A1-72303011-028 is claimed by staff
      When a user views the application in the list
      Then they see the label "In Review" next to A1-72303011-028
 
+@orv2-2394-7
 Rule: A user can withdraw a submitted permit application in pending review
 
+  Scenario: pending review
+    Given A1-72303011-028 is pending review
+     When a user chooses to withdraw A1-72303011-028 
+     Then A1-72303011-028 becomes an application in progress
+      And A1-72303011-028 is removed from the application in review list
+      And they see "Withdrawn to Applications in Progress" 
 
+  Scenario: label is pending review app in review
+    Given A1-72303011-028 label is "Pending review"
+      And A1-72303011-028 is in review
+     When a user chooses to withdraw A1-72303011-028 
+     Then they see "Status Change Application(s) status has changed. Click update to continue." 
+      And A1-72303011-028 label is "In Review"
+
+  Scenario: in review
+    Given A1-72303011-028 is in review
+     When a user chooses to withdraw A1-72303011-028
+     Then they are unable to withdraw the application
+
+@orv2-2394-8
 Rule: A withdrawn submitted permit application is an application in progress
-
-
-Rule: 
-
-
-
-  Scenario: 
-    Given 
-     When 
-     Then 
 
