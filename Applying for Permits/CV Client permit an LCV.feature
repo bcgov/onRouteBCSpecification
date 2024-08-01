@@ -1,4 +1,4 @@
-Feature: As CV Client I need to permit a Long Combination Vehicle (LCV) so that I can legally move this vehicle.
+Feature: As CV Client I need to permit a Long Combination Vehicle (LCV) so that I can legally move this power unit vechile sub-type.
 
 CV Client = CA, PA
 
