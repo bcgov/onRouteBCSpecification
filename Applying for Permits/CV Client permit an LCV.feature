@@ -8,7 +8,7 @@ Rule: LCV vehicles are shown in permit applications if the CV Client is designat
   Scenario: LCV capable CV Client
     Given CV Client has the LCV designation
      When they apply for a permit
-     Then they see the following additional vehicle types:
+     Then they see the following additional power unit vehicle sub-types:
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
       And the vehicle can be saved to their vehicle inventory
@@ -16,7 +16,7 @@ Rule: LCV vehicles are shown in permit applications if the CV Client is designat
   Scenario: CV Client is not LCV capable
     Given CV Client does not have the LCV designation
      When they apply for a permit
-     Then they do not see the following additional vehicle types:
+     Then they do not see the following additional power unit vehicle sub-types:
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
 
@@ -25,13 +25,13 @@ Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen a
 
   Scenario: LCV vehicle is chosen
     Given CV Client is LCV capable
-     When they choose any LCV as the permit vehicle:
+     When they choose any LCV power unit vehicle sub-type at the permit application vehicle:
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
      Then the CVSE1014 is attached to the generated permit pdf
 
 @orv2-1490-3
-Rule: LCV vehicles can be added to the CV Clients vehicle inventory
+Rule: LCV vehicles can be added to the CV Clients vehicle inventory from the permit application
 
   Scenario: in permit applications
     Given CV Client is LCV capable
@@ -41,7 +41,7 @@ Rule: LCV vehicles can be added to the CV Clients vehicle inventory
   Scenario: in vehicle inventory
     Given CV Client is LCV capable
      When they choose to create a new vehicle
-     Then they see the following additional vehicle types:
+     Then they see the following additional power unit vehicle sub-types:
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
 
