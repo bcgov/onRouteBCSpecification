@@ -42,6 +42,20 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
+  Scenario: credit account active view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                               |
+       | Credit Account Users   | table listing users of the credit account |
+       | Credit Account details | financial details of the credit account   |
+
+  Scenario: credit account active view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                               |
+       | Credit Account Users   | table listing users of the credit account |
+       | Credit Account details | financial details of the credit account   |
+
   Scenario: credit account on hold view holder
      When staff chooses to view credit account
      Then they see the following information:

@@ -38,6 +38,18 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
+  Scenario: credit account active view user
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information            | description                               |
+       | Credit Account Users   | table listing users of the credit account |
+
+  Scenario: credit account active view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information          | description                               |
+       | Credit Account Users | table listing users of the credit account |
+
   Scenario: credit account on hold view holder
      When staff chooses to view credit account
      Then they see the following information:
@@ -45,7 +57,6 @@ Rule: Show credit account information
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
        | Contact CVSE Revenue info box | instructions                               |
-      And they do not see the credit account details 
  
    Scenario: credit account on hold view user
      When staff chooses to view credit account
@@ -53,7 +64,6 @@ Rule: Show credit account information
        | information          | description                                |
        | On Hold              | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
-      And they do not see the credit account details 
 
   Scenario: credit account closed view holder
      When staff chooses to view credit account
@@ -61,15 +71,12 @@ Rule: Show credit account information
        | information          | description                                |
        | Closed               | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
-      And they do not see the credit account details 
  
    Scenario: credit account closed view user
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description  |
        | Contact CVSE Revenue info box | instructions |
-      And they do not see the credit account details
-      And they do not see the Credit Account Users
 
   Scenario: credit account suspended view holder
      When staff chooses to view credit account
@@ -78,7 +85,6 @@ Rule: Show credit account information
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
        | Contact CVSE Revenue info box | instructions                               |
-      And they do not see the credit account details 
  
    Scenario: credit account suspended view user
      When staff chooses to view credit account
@@ -86,7 +92,6 @@ Rule: Show credit account information
        | information          | description                                |
        | On Hold              | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
-      And they do not see the credit account details 
 
 @orv2-2005-2
 Rule: Show onRouteBC generated unique credit account number

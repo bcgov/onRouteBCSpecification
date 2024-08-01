@@ -17,6 +17,14 @@ Rule: Show credit account information
      When a cv client chooses to view credit account
      Then they do not see the option to view credit account
 
+   Scenario: credit account closed
+     When a cv client chooses to view credit account
+     Then they see the following information:
+       | information                   | description                                |
+       | Closed                        | label describing the credit account status |
+       | Credit Account Users          | table listing users of the credit account  |
+       | Contact CVSE Revenue info box | instructions                               |
+
   Scenario: credit account on hold
      When a cv client chooses to view credit account
      Then they see the following information:
@@ -24,7 +32,6 @@ Rule: Show credit account information
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
        | Contact CVSE Revenue info box | instructions                               |
-      And they do not see the credit account details 
 
 @orv2-1999-2
 Rule: Show onRouteBC generated unique credit account number
