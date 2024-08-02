@@ -39,7 +39,7 @@ Rule: CV Client can view the set LCV designation if active
      Then they do not see an LCV status
 
 @orv2-1015-4
-Rule: No-auth staff can view the set LCV designation if active
+Rule: Non-auth staff can view the set LCV designation if active
 
   Scenario: LCV active
     Given ABC Co. has the LCV flag active
