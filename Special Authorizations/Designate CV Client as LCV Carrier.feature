@@ -24,3 +24,29 @@ Rule: Staff can designate a CV Client as an LCV capable company
 
 @orv2-1015-2
 Rule: LCV designation never expires
+
+@orv2-1015-3
+Rule: CV Client can view the set LCV designation if active
+
+  Scenario: LCV active
+    Given ABC Co. has the LCV flag active
+     When ABC Co. chooses to view special authorizations 
+     Then they see the LCV status
+
+  Scenario: LCV not active
+    Given XYZ Co. does not the LCV flag active
+     When XYZ Co. chooses to view special authorizations 
+     Then they do not see an LCV status
+
+@orv2-1015-4
+Rule: No-auth staff can view the set LCV designation if active
+
+  Scenario: LCV active
+    Given ABC Co. has the LCV flag active
+     When Non-auth staff chooses to view ABC Co. special authorizations 
+     Then they see the LCV status
+
+  Scenario: LCV not active
+    Given XYZ Co. does not the LCV flag active
+     When Non-auth staff chooses to view special authorizations 
+     Then they do not see an LCV status
