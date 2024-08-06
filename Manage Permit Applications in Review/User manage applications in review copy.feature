@@ -1,6 +1,7 @@
 Feature: Manage applications in review
 
 User = CA, PA, SA, PC, CTPO, Trainee
+Staff = SA, PC, CTPO, Trainee
 
 @orv2-2394-1
 Rule: User see a list of application in review with information about each
@@ -36,6 +37,28 @@ Rule: The application in review list default sort is by last updated date, newes
       | Sept. 14, 2023, 03:01 pm PDT |
 
 @orv2-2394-3
+Rule: Last updated date is the date an application in review was opened for edit and saved
+
+  Scenario: opened no changes made
+    Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
+     When a user opens the application to edit
+      But no chnages were made to the application
+      And the application is saved at Sept. 23, 2023, 07:15 am PDT
+     Then the last updated date is Sept. 23, 2023, 07:15 am PDT
+
+  Scenario: opened changes made
+    Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
+     When a user makes changes to application data
+      And the application is saved at Sept. 23, 2023, 07:15 am PDT
+     Then the last updated date is Sept. 23, 2023, 07:15 am PDT
+
+  Scenario: application claimed by ppc
+    Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
+     When staff claims an application at Sept. 23, 2023, 07:15 am PDT
+     Then the last updated date is Sept. 23, 2023, 07:15 am PDT
+
+
+@orv2-2394-9
 Rule: The application in review list default pagination is 10 items
 
 @orv2-2394-4
