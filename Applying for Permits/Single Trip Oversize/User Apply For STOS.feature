@@ -137,13 +137,30 @@ Rule: Users may remove a power unit from the application
      Then they have the option to remove the power unit
 
 @orv2-2574 @orv2-2388
-Rule: Users may optionally choose from a list of allowable trailers
+Rule: Users must choose from a list of allowable trailers
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
   Scenario: no allowable
      When the user has chosen a commodity and power unit with no allowable trailer
      Then there is no option to add a trailer
+
+   Scenario: none is an option
+     Given allowable trailers include "None"
+      When a users chooses to add a trailer
+      Then "None" is the first option
+
+  Scenario: choose "None"
+     Given allowable trailers include "None"
+      When a users chooses "None"
+      Then there is no option to add another trailer
+       And they see the option to reset the list
+
+  Scenario: trailer not inputted
+    Given a triler has not been chosen 
+     When a user chooses to continue to review and confirm
+     Then they see "This is a required field"
+      And add trailer is indicated
 
 @orv2-2574 @orv2-2388
 Rule: The selection of trailers must adhere to an allowable order
