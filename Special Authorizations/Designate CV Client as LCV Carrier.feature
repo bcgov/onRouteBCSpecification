@@ -1,7 +1,7 @@
 Feature: As HQ Admin I need to designate a CV Client as Long Combination Vehicle (LCV) capable so that these CV Clients can apply for permits using these vehicle types.
 
-Staff = HQA
-Non-auth Staff = SA, PC, CTPO, Trainee, EO
+Staff = SA, HQA
+Non-auth Staff = PC, CTPO, Trainee, EO
 CV Client = CA, PA
 
 @orv2-1015-1

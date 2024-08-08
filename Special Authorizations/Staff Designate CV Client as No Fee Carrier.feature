@@ -1,6 +1,6 @@
 Feature: As PPC SA or HQ Admin I need to designate a CV Client with the free permit flag so that these clients can purchase permits without being charged any fees.
 
-Staff = SA, HQA
+Staff = SA, HQA, FIN
 
 @orv2-1050-1
 Rule: Designate a CV Client for no fee permits

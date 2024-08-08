@@ -157,7 +157,7 @@ Rule: Users must choose from a list of allowable trailers
        And they see the option to reset the list
 
   Scenario: trailer not inputted
-    Given a triler has not been chosen 
+    Given a trailer has not been chosen 
      When a user chooses to continue to review and confirm
      Then they see "This is a required field"
       And add trailer is indicated
@@ -173,16 +173,16 @@ Rule: The choice and order of allowable trailers is determined by the STOS permi
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
 @orv2-2574 @orv2-2388
-Rule: Details of the chosen trailers are shown in the application form below previously added trailers
+Rule: The chosen trailers are shown in the application form in the order they were added
 
 @orv2-2574 @orv2-2388
 Rule: Users may remove all added trailers from the application
 
-  Scenario: trailers exist
+  Scenario: trailers added
      When a user chooses to reset trailer configuration
      Then all exsiting trailers are removed
 
-  Scenario: no trailers exist
+  Scenario: no trailers added
      When a user chooses to reset trailer configuration
      Then they do not have the option to reset trailer configuration
 

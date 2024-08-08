@@ -1,6 +1,6 @@
 Feature: As users or staff I need to view active letter of authorizations (LOA) for a CV Client profile so that I can reference the special authorizations granted by their LOA(s).
 
-Users = PC, CTPO, Trainee, CA, PA 
+Users = PC, CTPO, Trainee, CA, PA, EO
 Staff = SA, HQA
 
 @orv2-2231-1, @orv2-2232-1
