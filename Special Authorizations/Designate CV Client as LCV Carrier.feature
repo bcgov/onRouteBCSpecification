@@ -12,7 +12,7 @@ Rule: Staff can designate a CV Client as an LCV capable company
      When Staff choose to designate the LCV
      Then they see the option to designate the CV Client as LCV capable
 
-  Scenario: no lcv not authorized staff
+  Scenario: no lcv non authorized staff
     Given CV Client does not have a LCV designation
      When Non-auth Staff choose to designate the LCV
      Then they do not see the the option to designate the CV Client as LCV capable
@@ -26,7 +26,7 @@ Rule: Staff can designate a CV Client as an LCV capable company
 Rule: LCV designation never expires
 
 @orv2-1015-3
-Rule: CV Client can view the set LCV designation if active
+Rule: CV Client can view the LCV designation if active
 
   Scenario: LCV active
     Given ABC Co. has the LCV flag active
@@ -39,7 +39,7 @@ Rule: CV Client can view the set LCV designation if active
      Then they do not see an LCV status
 
 @orv2-1015-4
-Rule: Non-auth staff can view the set LCV designation if active
+Rule: Non-auth staff can view the LCV designation if active
 
   Scenario: LCV active
     Given ABC Co. has the LCV flag active
