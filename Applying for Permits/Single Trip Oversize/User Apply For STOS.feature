@@ -162,6 +162,12 @@ Rule: Users must choose from a list of allowable trailers
      Then they see "This is a required field"
       And add trailer is indicated
 
+  Scenario: reached limit of allowable trailers 
+      When a user adds trailers to the application
+       And there are no allowable additional trailers  
+      Then there is no option to add another trailer
+       And they see the option to reset the list
+
 @orv2-2574 @orv2-2388
 Rule: The selection of trailers must adhere to an allowable order
 

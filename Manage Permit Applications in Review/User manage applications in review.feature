@@ -42,7 +42,7 @@ Rule: Last updated date is the date an application in review was claimed or save
   Scenario: opened no changes made
     Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
      When a user opens the application to edit
-      But no chnages were made to the application
+      But no changes were made to the application
       And the application is saved at Sept. 23, 2023, 07:15 am PDT
      Then the last updated date is Sept. 23, 2023, 07:15 am PDT
 
@@ -56,7 +56,6 @@ Rule: Last updated date is the date an application in review was claimed or save
     Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
      When staff claims an application at Sept. 23, 2023, 07:15 am PDT
      Then the last updated date is Sept. 23, 2023, 07:15 am PDT
-
 
 @orv2-2394-9
 Rule: The application in review list default pagination is 10 items
