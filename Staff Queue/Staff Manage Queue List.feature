@@ -20,6 +20,12 @@ Rule: The list is updated every 30 seconds to reflect its current state
 @orv2-2398
 Rule: Staff may claim an application to review
 
+  Scenario: claim a non claimed
+    Given A1-72303011-028 is not claimed
+     When staff claim A1-72303011-028
+     Then they are directed to review and confirm details
+      And attestations are unavailable
+
 @orv2-2398
 Rule: Claimed applications are grouped together and shown at the bottom of the list
 
@@ -28,3 +34,9 @@ Rule: A claimed application is in review
 
 @orv2-2398
 Rule: Staff can claim a claimed application
+
+  Scenario: claim a claimed
+    Given 
+     When 
+     Then 
+
