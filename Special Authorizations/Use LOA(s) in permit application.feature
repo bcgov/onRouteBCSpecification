@@ -68,11 +68,6 @@ Rule: Permit start date and duration are limited by the chosen LOA(s) with the s
        | 30 |
        | 60 |
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 @orv2-2261-6
 Rule: A term permit application can have one or more LOA(s) chosen to apply with
 
