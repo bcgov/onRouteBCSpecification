@@ -219,7 +219,7 @@ Rule: Load dimensions are a decimal number rounded to 2 decimal places
      Then they see 35.00 in overall width
 
 @orv2-2254-23 @orv2-2387-23
-Rule: Users must input an origin
+Rule: Users must input an origin chosen from the resolved geocoder list
 
   Scenario: no origin is inputted
      When a user chooses to continue to review and confirm
@@ -243,13 +243,18 @@ Rule: The origin is resolved and replaces text inputted by the user
        | Blanshard St, Maple Ridge, BC  |
 
 @orv2-2254-25 @orv2-2387-25
-Rule: Users must input an destination
+Rule: Users must input a destination chosen from the resolved geocoder list
 
   Scenario: no destination is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
       And they see "This is a required field"
       And the mandatory field is indicated
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 @orv2-2254-26 @orv2-2387-26
 Rule: The destination is resolved and replaces text inputted by the user

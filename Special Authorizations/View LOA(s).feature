@@ -14,9 +14,9 @@ Rule: Users or staff can see a list of active LOA(s)
       | LOA Number      | onRouteBC generated unique ID                   |
       | Start Date      | inputted by staff when adding or editing an LOA |
       | Expiry Date     | inputted by staff when adding or editing an LOA |
-      | Download Letter | link to download the uploaded LOA               |
+      | Download Letter | link to download the uploaded LOA          
 
-  Scenario: no active LOA(s) users
+  Scenario: no active or expired LOA(s) users
     Given there are no active LOA(s)
      When users choose to view LOA(s)
      Then LOA(s) are not shown
@@ -49,3 +49,11 @@ Rule: A user or staff can download an LOA letter
     Given there are active LOA(s)
      When users choose to view an LOA letter
      Then the LOA is shown in a new browser tab
+
+
+Update:
+
+  Scenario: no active but there are expired LOA(s) users
+    Given there are no active LOA(s)
+     When users choose to view LOA(s)
+     Then they see the option to view expired LOA(S)
