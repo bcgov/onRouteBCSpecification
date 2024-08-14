@@ -8,6 +8,11 @@ Rule: Staff can see a list of applications submitted for review
 @orv2-2398
 Rule: Staff can see the elapsed time the submitted application has been in the queue
 
+  Scenario: newly submitted 
+    Given 
+     When 
+     Then 
+
 @orv2-2398
 Rule: The list of submitted applications is sorted by thr elapsed time in the queue oldest at the top in descending order
 
