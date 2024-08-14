@@ -224,11 +224,11 @@ Rule: Users must input an origin chosen from the resolved geocoder list
   Scenario: no origin is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
-      And they see "This is a required field"
+      And they see "You must enter a valid address."
       And the mandatory field is indicated
 
 @orv2-2254-24 @orv2-2387-24
-Rule: The origin is resolved and replaces text inputted by the user
+Rule: The origin is resolved and the chosen resolved address replaces text inputted by the user 
 
   Scenario: 940 blanshard
      When a user has inputted 940 Blanshard
@@ -248,7 +248,7 @@ Rule: Users must input a destination chosen from the resolved geocoder list
   Scenario: no destination is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
-      And they see "This is a required field"
+      And they see "You must enter a valid address."
       And the mandatory field is indicated
 
   Scenario: 
