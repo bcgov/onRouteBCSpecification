@@ -219,24 +219,24 @@ Rule: Load dimensions are a decimal number rounded to 2 decimal places
      Then they see 35.00 in overall width
 
 @orv2-2254-23 @orv2-2387-23
-Rule: Users must input an origin chosen from the resolved geocoder list
+Rule: Users must input an origin and destination chosen from the resolved geocoder list
 
-  Scenario: no origin is inputted
+  Scenario: no origin, destination and exit point is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
       And they see "You must enter a valid address."
       And the mandatory field is indicated
 
   Scenario: user inputted text
-    Given a user has inputted text
-      And has not chosen a resolved addressfrom the geocoder list 
+    Given a user has inputted text in origin, destination or exit point
+      And has not chosen a resolved address from the geocoder list 
      When they chose to continue
      Then they cannnot continue
       And they see "You must enter a valid address."
       And the mandatory field is indicated
 
 @orv2-2254-24 @orv2-2387-24
-Rule: The origin is resolved and the chosen resolved address replaces text inputted by the user 
+Rule: The origin and destination is resolved and the chosen resolved address replaces text inputted by the user 
 
   Scenario: 940 blanshard
      When a user has inputted 940 Blanshard
@@ -249,32 +249,6 @@ Rule: The origin is resolved and the chosen resolved address replaces text input
        | Blanshard Rd, Malahat, BC      |
        | Blanshard Rd, Vernon, BC       |
        | Blanshard St, Maple Ridge, BC  |
-
-@orv2-2254-25 @orv2-2387-25
-Rule: Users must input a destination chosen from the resolved geocoder list
-
-  Scenario: no destination is inputted
-     When a user chooses to continue to review and confirm
-     Then they cannnot continue
-      And they see "You must enter a valid address."
-      And the mandatory field is indicated
-
-
-
-@orv2-2254-26 @orv2-2387-26
-Rule: The destination is resolved and replaces text inputted by the user
-
-  Scenario: 1500 woolridge
-     When a user has inputted 1500 woolridge
-     Then they see the following list:
-       | BC Places                         |
-       | 1500 Woolridge St, Coquitlam, BC  |
-       | 1500 Woodridge Rd, Kelowna, BC    |
-       | 1500 Oakridge Rd, Kelowna, BC     |
-       | 1500 Hollyridge Terr, Saanich, BC |
-       | 1500 Snowridge Cir, Whistler, 3C  |
-       | 1500 Woodside PI, Agassiz, BC     |
-       | 1500 Woodside Blvd, Agassiz, BC   |
 
 @orv2-2254-27 @orv2-2387-27
 Rule: Users must input at least one trip three character sequence step
