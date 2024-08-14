@@ -227,6 +227,14 @@ Rule: Users must input an origin chosen from the resolved geocoder list
       And they see "You must enter a valid address."
       And the mandatory field is indicated
 
+  Scenario: user inputted text
+    Given a user has inputted text
+      And has not chosen a resolved addressfrom the geocoder list 
+     When they chose to continue
+     Then they cannnot continue
+      And they see "You must enter a valid address."
+      And the mandatory field is indicated
+
 @orv2-2254-24 @orv2-2387-24
 Rule: The origin is resolved and the chosen resolved address replaces text inputted by the user 
 
@@ -251,10 +259,7 @@ Rule: Users must input a destination chosen from the resolved geocoder list
       And they see "You must enter a valid address."
       And the mandatory field is indicated
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+
 
 @orv2-2254-26 @orv2-2387-26
 Rule: The destination is resolved and replaces text inputted by the user
