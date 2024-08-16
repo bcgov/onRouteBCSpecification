@@ -30,6 +30,9 @@ Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen a
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
      Then the CVSE1014 is attached to the generated permit pdf
 
+@orv2-1490-6
+Rule: CVSE1014 not available if an LCV vehicle is not chosen
+
 @orv2-1490-3
 Rule: LCV vehicles can be added to the CV Clients vehicle inventory from the permit application
 

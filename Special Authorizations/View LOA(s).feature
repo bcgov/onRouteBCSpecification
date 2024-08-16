@@ -42,6 +42,11 @@ Rule: Users or staff can see a list of active LOA(s)
      When users or staff view LOA(s)
      Then the list is sorted by start date newest at the top in descending order
 
+  Scenario: no active but there are expired LOA(s) users
+    Given there are no active LOA(s)
+     When users choose to view LOA(s)
+     Then they see the option to view expired LOA(S)
+
 @orv2-2231-2, @orv2-2232-2
 Rule: A user or staff can download an LOA letter
 
@@ -49,11 +54,3 @@ Rule: A user or staff can download an LOA letter
     Given there are active LOA(s)
      When users choose to view an LOA letter
      Then the LOA is shown in a new browser tab
-
-
-Update:
-
-  Scenario: no active but there are expired LOA(s) users
-    Given there are no active LOA(s)
-     When users choose to view LOA(s)
-     Then they see the option to view expired LOA(S)

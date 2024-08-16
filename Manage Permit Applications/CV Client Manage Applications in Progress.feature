@@ -77,6 +77,4 @@ Rule: A CV Client CA can edit application in progress started by a CV Client CA 
        And staff have applications in progress
       When they choose to edit a staff application in progress
       Then they cannot edit the application
-
-
   
