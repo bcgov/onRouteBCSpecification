@@ -92,7 +92,6 @@ Rule: An application that is claimed by staff is "In Review"
       | A1-74013011-353 |
      When a user chooses to view applications in review
      Then they see the label "In Review" next to:
-     the following application are pending review:
       | A1-72303011-028 |
       | A1-72503011-100 |
       | A1-74013011-353 |

@@ -26,10 +26,11 @@ Rule: Users or staff can see a list of active LOA(s)
      When staff choose to view LOA(s)
      Then they see the option to add an LOA
 
-  Scenario: active LOA(s) exist users
+  Scenario: active LOA(s) and expired exist users
     Given there are active LOA(s)
      When users choose to view LOA(s)
      Then they see a list of LOA(s)
+      And they see the option to view expired LOA(S)
       And instruction text
 
   Scenario: active LOA(s) exist staff
