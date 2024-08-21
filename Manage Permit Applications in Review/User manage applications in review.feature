@@ -52,10 +52,16 @@ Rule: Last updated date is the date an application in review was claimed or save
       And the application is saved at Sept. 23, 2023, 07:15 am PDT
      Then the last updated date is Sept. 23, 2023, 07:15 am PDT
 
-  Scenario: application claimed by ppc
+  # Scenario: application claimed by ppc
     Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
      When staff claims an application at Sept. 23, 2023, 07:15 am PDT
      Then the last updated date is Sept. 23, 2023, 07:15 am PDT
+
+  Scenario: closed browser before save
+    Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
+     When staff opens to edit an application at Sept. 23, 2023, 07:15 am PDT
+      And the browser tab is closed before the save action is initiated
+     Then the last updated date is Sept. 14, 2023, 09:26 pm PDT
 
 @orv2-2394-9
 Rule: The application in review list default pagination is 10 items
