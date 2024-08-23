@@ -117,7 +117,7 @@ Rule: Claimed applications are grouped together and shown at the bottom of the q
       | A1-72303011-028 | 01:22                 |
       | A2-00408617-873 | 01:07                 |
 
-  Scenario: all application claimed
+  Scenario: all Applications claimed
     Given the queue list has the following submitted applications:
       | Application #   | Time in Queue (hh:mm) |
       | A1-72303011-028 | 01:22                 |
