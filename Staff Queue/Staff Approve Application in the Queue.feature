@@ -11,6 +11,13 @@ Rule: Staff can approve an application
      Then they are directed to the queue
       And A1-72303011-028 is not in the queue
 
+  Scenario: approve claimed application
+    Given A1-72303011-028 is claimed by John
+     When Jane claims A1-72303011-028 
+      And John chooses to approve A1-72303011-028
+     Then John sees "Application no longer available This application is claimed by Jane"
+      And Jane is the idir username
+
 @orv2-2473-2
 Rule: Approved applications are added to the shopping cart
 

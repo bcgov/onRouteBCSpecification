@@ -85,14 +85,13 @@ Rule: Staff must upload a LOA pdf file
      Then they can choose a file from their local file system to upload
 
 @orv2-1152-7
-Rule: Staff are shown the uploaded LOA pdf filename and file size  
+Rule: Staff are shown the uploaded LOA pdf filename 
 
   Scenario: successful upload
      When staff upload a file
      Then they see the following:
        | filname             |
        | file type extension |
-       | filesize in MB      |
        | delete option       |
 
   Scenario: final step of LOA workflow

@@ -5,11 +5,12 @@ Staff = SA, PC, CTPO, Trainee
 @orv2-2472
 Rule: Staff can edit an application in the queue
 
-  Scenario: edit claimed application
+  Scenario: leave, save or continue claimed application
     Given A1-72303011-028 is claimed by John
-      And John is editing it
      When Jane claims A1-72303011-028 
-     Then ...
+      And John chooses to leave, save or continue A1-72303011-028
+     Then John sees "Application no longer available This application is claimed by Jane"
+      And Jane is the idir username
   
   Scenario: changes made save
     Given 
