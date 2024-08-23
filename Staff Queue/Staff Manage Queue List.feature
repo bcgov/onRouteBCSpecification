@@ -2,7 +2,7 @@ Feature: Staff Manage Queue queue List
 
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2398
+@orv2-2398-1
 Rule: Staff can see a queue list of applications submitted for review
 
   Scenario: applications are in queue
@@ -23,7 +23,7 @@ Rule: Staff can see a queue list of applications submitted for review
      When staff choose to view the queue list
      Then they see "No records found."
 
-@orv2-2398
+@orv2-2398-2
 Rule: Staff can see the elapsed time the submitted application has been in the queue
 
   Scenario: new 5 minute elapsed
@@ -36,10 +36,10 @@ Rule: Staff can see the elapsed time the submitted application has been in the q
      When staff choose to view the queue 5 minutes after A1-72303011-028 is submitted
      Then A1-72303011-028 time in queue is 00:05
 
-@orv2-2398
+@orv2-2398-3
 Rule: The time in queue is counted until the application approved or rejected
 
-@orv2-2398
+@orv2-2398-4
 Rule: The queue list is sorted by the elapsed time in the queue oldest at the top in descending order
 
   Scenario: applications are in queue
@@ -53,14 +53,14 @@ Rule: The queue list is sorted by the elapsed time in the queue oldest at the to
       | A2-00408617-873 | 2nd |
       | A8-30815429-164 | 3rd |
 
-@orv2-2398
+@orv2-2398-5
 Rule: Staff may update the queue list to show its current state manually
 
   Scenario: manual update
      When staff choose to update the queue list
      Then the queue list is updated
 
-@orv2-2398
+@orv2-2398-6
 Rule: The queue list is updated every 30 seconds to reflect its current state
 
   Scenario: viewing the queue list
@@ -77,7 +77,7 @@ Rule: The queue list is updated every 30 seconds to reflect its current state
       | A2-00408617-873 | 01:37                 |
       | A8-30815429-164 | 00:35                 |
 
-@orv2-2398
+@orv2-2398-7
 Rule: Staff may claim an application to review
 
   Scenario: claim a non claimed
@@ -99,7 +99,7 @@ Rule: Staff may claim an application to review
      Then they are directed to the queue list
       And A1-72303011-028 remains claimed by staff member B
 
-@orv2-2398
+@orv2-2398-8
 Rule: Claimed applications are grouped together and shown at the bottom of the queue list
 
   Scenario: some applications claimed

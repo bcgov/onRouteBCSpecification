@@ -2,7 +2,7 @@ Feature: Staff Reject Application in the Queue
 
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2474
+@orv2-2474-2
 Rule: Staff can reject an application
 
   Scenario: application rejected
@@ -18,7 +18,7 @@ Rule: Staff can reject an application
      Then John sees "Application no longer available This application is claimed by Jane"
       And Jane is the idir username      
 
-@orv2-2474
+@orv2-2474-3
 Rule: Staff must input a reason for rejection
 
   Scenario: initiate reject application action
@@ -31,7 +31,7 @@ Rule: Staff must input a reason for rejection
      When staff cancel rejecting A1-72303011-028 
      Then they are directed to review and confirm details for A1-72303011-028   
 
-@orv2-2474
+@orv2-2474-4
 Rule: The reason for rejection is date / time stamped when the action is initiated
 
   Scenario: application rejected
@@ -39,7 +39,7 @@ Rule: The reason for rejection is date / time stamped when the action is initiat
      When staff confirm rejecting A1-72303011-028 at Jun. 13, 2024, 8:23 am PDT
      Then the reason for rejection is date / time stamped as Jun. 13, 2024, 8:23 am PDT
 
-@orv2-2474
+@orv2-2474-5
 Rule: The reason for rejection is IDIR username stamped when the action is initiated
 
  Scenario: application rejected
@@ -48,7 +48,7 @@ Rule: The reason for rejection is IDIR username stamped when the action is initi
       And the staff IDIR username initiating the reject action is jdoe
      Then the reason for rejection is stamped with the IDIR username jdoe
 
-@orv2-2474
+@orv2-2474-6
 Rule: A rejected application becomes an application in progress
 
   Scenario: application rejected
@@ -56,7 +56,7 @@ Rule: A rejected application becomes an application in progress
      When staff reject A1-72303011-028 
      Then A1-72303011-028 is an application in progress
 
-@orv2-2474
+@orv2-2474-7
 Rule: The CV Client is notified via email when a application is rejected
 
   Scenario: application rejected
@@ -67,7 +67,7 @@ Rule: The CV Client is notified via email when a application is rejected
        | Company Email    | mandatory   |
        | Additional Email | if inputted |
 
-@orv2-2474
+@orv2-2474-8
 Rule: The elapsed time in queue stops counting when a application is rejected
 
   Scenario: application rejected

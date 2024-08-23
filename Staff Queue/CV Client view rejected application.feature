@@ -2,7 +2,7 @@ Feature: CV Client view rejected application
 
 CV Client = CA, PA
 
-@orv2-2474
+@orv2-2474-1
 Rule: CV Client cannot see the IDIR username stamp when viewing the reason(s) for rejection
 
   Scenario: rejected once
