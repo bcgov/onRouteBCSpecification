@@ -6,7 +6,7 @@ Users = CA, PA, SA, PC, CTPO, Trainee
 Rule: Single trip permits are issued to the power unit only
 
 @orv2-2254-2 @orv2-2387-2
-Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from the date they submit their application
+Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
 @orv2-2254-3 @orv2-2387-3
 Rule: CVSE Forms 1000 and 1070 are chosen by default and attached consecutively beginning after the final page of the issued permit
