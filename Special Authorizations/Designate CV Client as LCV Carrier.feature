@@ -37,16 +37,3 @@ Rule: CV Client can view the LCV designation if active
     Given XYZ Co. does not the LCV flag active
      When XYZ Co. chooses to view special authorizations 
      Then they do not see an LCV status
-
-@orv2-1015-4
-Rule: Non-auth staff can view the LCV designation if active
-
-  Scenario: LCV active
-    Given ABC Co. has the LCV flag active
-     When Non-auth staff chooses to view ABC Co. special authorizations 
-     Then they see the LCV status
-
-  Scenario: LCV not active
-    Given XYZ Co. does not the LCV flag active
-     When Non-auth staff chooses to view special authorizations 
-     Then they do not see an LCV status

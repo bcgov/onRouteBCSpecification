@@ -3,25 +3,11 @@ As staff I need to view update expired or active letter of authorizations (LOA) 
 
 Staff = SA, HQA
 
-@orv2-2230-1
-Rule  Staff can view a list of expired LOA(s)
-
-  Scenario: view expired LOA(s) list
-    Given there are expired LOA(s)
-     When staff view expired LOA(s)
-     Then they see the following information in the list:
-      | information     | description                                     |
-      | LOA Number      | onRouteBC generated unique ID                   |
-      | Start Date      | inputted by staff when adding or editing an LOA |
-      | Expiry Date     | inputted by staff when adding or editing an LOA |
-      | Download Letter | link to download the uploaded LOA               |
-
 @orv2-2230-2
 Rule Staff can edit active or expired LOA(s)
 
-  Scenario: edit active or expired LOA
-    Given active or expired LOA(s) exist
-     When staff choose to edit and active or expired LOA
+  Scenario: active or expired LOA(s) exist
+     When staff choose to edit an active or expired LOA
      Then they are directed to the start of the workflow 
       And all previously inputted information is shown
 
