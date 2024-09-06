@@ -377,3 +377,8 @@ Rule: A user can edit an application
      Given a user is at the "Review abd Confirm Details" page
      When they choose to edit the application
      Then they are directed to the "Permit Application" page
+
+
+
+
+# Add directed to Applications in Review on submission

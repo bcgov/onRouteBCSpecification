@@ -21,6 +21,7 @@ Rule: User see a list of application in review with information about each
        | Plate             | the plate of the power unit inputted in the application       |
        | Permit Start Date | the start date inputted by the applicant                      |
        | Last Updated      | the date the application in review was last saved             |
+       | Applicant         | the username at time of submission                            |
 
 @orv2-2394-2
 Rule: The application in review list default sort is by last updated date, newest at the top in descending order
@@ -124,10 +125,10 @@ Rule: A user can withdraw a submitted permit application in pending review
      Then they see "Application Status Application(s) have either been withdrawn or are in review by the Provincial Permit Centre." 
       And A1-72303011-028 label is "In Review"
 
-  Scenario: label is pending review app in review
+  Scenario: label is pending review app is withdrawn
     Given A1-72303011-028 label is "Pending review"
       And A1-72303011-028 has been withdrawn
-      And A1-72303011-028 label is an aaplication in progress
+      And A1-72303011-028 is an application in progress
      When a user chooses to withdraw A1-72303011-028 
      Then they see "Application Status Application(s) have either been withdrawn or are in review by the Provincial Permit Centre." 
       And A1-72303011-028 is removed from the application in review list
