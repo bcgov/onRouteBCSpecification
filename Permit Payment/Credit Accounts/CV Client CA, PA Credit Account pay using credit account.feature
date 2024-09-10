@@ -36,9 +36,8 @@ Rule: The credit account payment method is not available when the credit account
      When cv client user choose
      Then they do not see the option to pay using credit account
 
- # not sure if this is valid
   Scenario: holder
-    Given the cv client is a holder is suspended
+    Given the cv client holder is suspended
      When cv client holder choose to pay
      Then they do not see the option to pay using credit account
 
