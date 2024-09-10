@@ -333,3 +333,14 @@ Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf
 
  @orv2-937-7
  @orv2-937-11
+
+@orv2-1491-2
+Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when voided
+
+  Scenario: cv client issues under no fee flag changes to fee cv client
+    Given ABC Co. is a no fee cv client
+     And they issue permit A
+     And permit A is not expired
+     When staff remove ABC Co. no fee designation
+     Then permit A has a $0 fee
+

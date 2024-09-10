@@ -275,3 +275,13 @@ Rule: Send revoke permit documents to contact details from void permit page
     Given the PPC SA has inputted all mandatory information at finish amendment
      When they choose to finish amending the permit
      Then the generated permit PDF and receipt PDF are faxed to the contact fax number
+
+@orv2-1491-3
+Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
+
+  Scenario: cv client issues under no fee flag changes to fee cv client
+    Given ABC Co. is a no fee cv client
+     And they issue permit A
+     And permit A is not expired
+     When staff remove ABC Co. no fee designation
+     Then permit A has a $0 fee
