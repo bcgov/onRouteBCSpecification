@@ -301,7 +301,7 @@ Rule: Users may optionally input application notes
 Rule: Show application notes info box
 
 @orv2-2254-34 @orv2-2387-34
-Rule: Show application details inputted by the user prior to submission or addting to cart
+Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display permit application details summary
      Given a user has continued from the "Permit Application" page
