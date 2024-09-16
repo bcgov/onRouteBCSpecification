@@ -47,4 +47,21 @@ Rule: The CV Client is notified via email when a application is approved
        | Company Email    | mandatory   |
        | Additional Email | if inputted |
 
+@orv2-2473-5
+Rule: Start date and/or expiry date can not be in the past
 
+ Scenario: in queue past start date
+   When staff claim
+   Then staff see "Start Date and/or Permit Expiry Date is in the past."
+    And they cannot approve the application
+
+ Scenario: in queue start and expiry in the past
+   When staff claim
+   Then staff see "Start Date and/or Permit Expiry Date is in the past."
+    And they cannot approve the application
+
+ Scenario: in queue past start date edit
+   Given staff have claimed the application
+    When staff edit the application
+    Then staff see "Start Date is in the past."
+     And they can continue
