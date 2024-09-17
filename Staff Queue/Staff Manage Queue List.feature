@@ -37,7 +37,7 @@ Rule: Staff can see the elapsed time the submitted application has been in the q
      Then A1-72303011-028 time in queue is 00:05
 
 @orv2-2398-3
-Rule: The time in queue is counted until the application approved or rejected
+Rule: The time in queue is counted until the application is approved or rejected
 
 @orv2-2398-4
 Rule: The queue list is sorted by the elapsed time in the queue oldest at the top in descending order
@@ -100,7 +100,7 @@ Rule: Staff may claim an application to review
       And A1-72303011-028 remains claimed by staff member B
 
 @orv2-2398-8
-Rule: Claimed applications are grouped together and shown at the bottom of the queue list
+Rule: Claimed applications are shown in their own list
 
   Scenario: some applications claimed
     Given the queue list has the following submitted applications:
@@ -111,9 +111,8 @@ Rule: Claimed applications are grouped together and shown at the bottom of the q
      When the following applications are claimed:
       | A1-72303011-028 |
       | A2-00408617-873 |
-     Then staff see the queue list as follows:
+     Then staff see the claimed list as follows:
       | Application #   | Time in Queue (hh:mm) |
-      | A8-30815429-164 | 00:05                 |
       | A1-72303011-028 | 01:22                 |
       | A2-00408617-873 | 01:07                 |
 
@@ -127,11 +126,15 @@ Rule: Claimed applications are grouped together and shown at the bottom of the q
       | A1-72303011-028 |
       | A2-00408617-873 |
       | A8-30815429-164 |
-     Then staff see the queue list as follows:
+     Then staff see the claimed list as follows:
       | Application #   | Time in Queue (hh:mm) |
       | A1-72303011-028 | 01:22                 |
       | A2-00408617-873 | 01:07                 |
       | A8-30815429-164 | 00:05                 |
+
+@orv2-2398-9
+Rule: The staff queue lists (queued and claimed) are paginated at 25 items by default
+
 
 
 
