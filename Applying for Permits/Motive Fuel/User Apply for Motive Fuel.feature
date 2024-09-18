@@ -1,14 +1,30 @@
-@tagPlaceholder1 @tagPlaceholder2
 Feature: User Apply for a Motive Fuel Permit
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-Rule: Motive fuel permits are issued to the power unit only
-
+@orv2-2608 @orv2-2612
 Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
-Rule: CVSE Forms MV4001 are chosen by default and attached consecutively beginning after the final page of the issued permit
+@orv2-2608 @orv2-2612
+Rule: CVSE Form MV4001 is chosen by default and attached consecutively beginning after the final page of the issued permit
 
+@orv2-2608 @orv2-2612
+Rule: Motive fuel permits are issued to the power unit only
+
+  Scenario: choose vehicle type
+     When a user chooses to change vehicle type
+     Then they can not change vehicle type
+
+  Scenario: recall trailer
+     When a user chooses to recall a trailer
+     Then they can not recall the trailer
+
+@orv2-2608 @orv2-2612
+Rule: Users may only input one power unit allowable for a Motive Fuel Permit manually or chosen from inventory
+
+# see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+
+@orv2-2608 @orv2-2612
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
 
   Scenario: manually input 65,000 (kg)
@@ -22,13 +38,14 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
+@orv2-2608 @orv2-2612
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-
+@orv2-2608 @orv2-2612
 Rule: Users must input an origin, destination and exit point chosen from the resolved geocoder list
 
   Scenario: no origin, destination and exit point is inputted
@@ -45,6 +62,7 @@ Rule: Users must input an origin, destination and exit point chosen from the res
       And they see "You must enter a valid address."
       And the mandatory field is indicated
 
+@orv2-2608 @orv2-2612
 Rule: The origin, destination and exit point is resolved and the chosen resolved address replaces text inputted by the user 
 
   Scenario: 940 blanshard
@@ -59,6 +77,37 @@ Rule: The origin, destination and exit point is resolved and the chosen resolved
        | Blanshard Rd, Vernon, BC       |
        | Blanshard St, Maple Ridge, BC  |
 
+@orv2-2608 @orv2-2612
+Rule: Users must input a total distance in km
+
+  Scenario: no input
+     When a user chooses to continue to review and confirm
+     Then they cannnot continue
+      And they see "This is a required field."
+      And the mandatory field is indicated
+
+  Scenario: text input
+    Given 
+     When 
+     Then 
+
+
+@orv2-2608 @orv2-2612
+Rule: Users must input specific route details
+
+  Scenario: no input
+     When a user chooses to continue to review and confirm
+     Then they cannnot continue
+      And they see "This is a required field."
+      And the mandatory field is indicated
+
+
+  Scenario: greater than 500 characters
+    Given 
+     When 
+     Then 
+
+@orv2-2608 @orv2-2612
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display motive fuel permit application details summary
@@ -74,10 +123,9 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Selected commodities listed with links to the source of truth |
        | Commodity details submitted in Permit Application             |
        | Vehicle information submitted in Permit Application           |
-       | Loaded dimensions submitted in the permit application         |
        | Trip details submitted in the permit application              |
-       | Application notes if submitted in the permit application      |
 
+@orv2-2608 @orv2-2612
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -85,6 +133,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
+@orv2-2608 @orv2-2612
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -92,7 +141,8 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-Rule: A motive fuel permit fee is is calculated at $0.11 per km if greater than $20
+@orv2-2608 @orv2-2612
+Rule: A motive fuel permit fee is is calculated at $0.11 per km or a minimum of $20
 
  Scenario: Display fee summary
      Given a user has continued from the "Permit Application" page
@@ -108,6 +158,14 @@ Rule: A motive fuel permit fee is is calculated at $0.11 per km if greater than 
      When they continue to "Review and Confirm Details" page
      Then the permit fee is calculated as $15
 
+  Scenario: 100,000 km
+    Given 
+     When 
+     Then 
+
+
+
+@orv2-2608 @orv2-2612
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -124,6 +182,7 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
+@orv2-2608 @orv2-2612
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page

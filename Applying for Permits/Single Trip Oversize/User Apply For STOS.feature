@@ -5,6 +5,14 @@ Users = CA, PA, SA, PC, CTPO, Trainee
 @orv2-2254-1 @orv2-2387-1
 Rule: Single trip permits are issued to the power unit only
 
+  Scenario: choose vehicle type
+     When a user chooses to change vehicle type
+     Then they can not change vehicle type
+
+  Scenario: recall trailer
+     When a user chooses to recall a trailer
+     Then they can not recall the trailer
+     
 @orv2-2254-2 @orv2-2387-2
 Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 

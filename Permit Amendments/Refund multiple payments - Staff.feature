@@ -30,3 +30,9 @@ Rule: An invalid payment method must be refunded by cheque
        | 6 months added        | Web - MC              |
 
 Rule: A transaction ID must be recorded for each refund transaction
+
+Rule: 
+
+Same payment method multiple positive transaction
+
+If the refund amount were higher than the original transaction amount then it would have to be 
