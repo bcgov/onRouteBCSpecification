@@ -2,7 +2,7 @@ Feature: Staff Apply for a Motive Fuel Permit
 
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2612
+@orv2-2612-16
 Rule: Staff may choose any start date
 
   Scenario: Permit start date accepted
