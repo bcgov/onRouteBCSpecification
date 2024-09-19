@@ -5,7 +5,7 @@ User = CA, PA, SA, PC, CTPO, Trainee
 @orv2-2608 @orv2-2612
 Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
- # see common date calculation rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20duration%20calculation.feature#L16
+ # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
 @orv2-2608 @orv2-2612
 Rule: CVSE Form MV4001 is chosen by default and attached consecutively beginning after the final page of the issued permit
