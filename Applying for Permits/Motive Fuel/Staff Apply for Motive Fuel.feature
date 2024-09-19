@@ -1,8 +1,8 @@
-Feature: CV Client Apply for a Motive Fuel Permit
+Feature: Staff Apply for a Motive Fuel Permit
 
-CV Client = CA, PA
+Staff = SA, PC, CTPO, Trainee
 
-
+@orv2-2612
 Rule: Staff may choose any start date
 
   Scenario: Permit start date accepted

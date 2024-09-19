@@ -5,24 +5,55 @@ User = CA, PA, SA, PC, CTPO, Trainee
 @orv2-2608 @orv2-2612
 Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
+ # see common date calculation rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20duration%20calculation.feature#L16
+
 @orv2-2608 @orv2-2612
 Rule: CVSE Form MV4001 is chosen by default and attached consecutively beginning after the final page of the issued permit
 
 @orv2-2608 @orv2-2612
-Rule: Motive fuel permits are issued to the power unit only
+Rule: Users may only input a power unit allowable for a Motive Fuel Permit manually or chosen from inventory
 
-  Scenario: choose vehicle type
+ # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+
+  Scenario: change vehicle type
      When a user chooses to change vehicle type
      Then they can not change vehicle type
 
+ # see common recall rules here: https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Application%20Vehicle%20Details.feature#L20
+
   Scenario: recall trailer
-     When a user chooses to recall a trailer
-     Then they can not recall the trailer
+     When a user chooses to find a trailer from inventory
+     Then they can not find the trailer
 
-@orv2-2608 @orv2-2612
-Rule: Users may only input one power unit allowable for a Motive Fuel Permit manually or chosen from inventory
+  Scenario: manual input vehicle information
+    Given the CV Client is at the "Permit Application" page
+     When They are at the "Vehicle Information" section
+     And  Choose to input their Vehicle Information and not select a previously saved Power unit or Trailer
+     Then they fill in the following vehicle information:
+       | VIN (last 6 digits) |
+       | Plate               |
+       | Make                |
+       | Year                |
+       | Country             |
+       | Province            |
+       | Vehicle Sub-type    |
+       | Licensed GVW (kg)   |
 
-# see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+ Scenario: no input to mandatory fields 
+     When they do not enter valid data into a <mandatory field>
+     Then they see <mandatory field error message> 
+     And they wont be able to "continue" until resolved
+  
+     Examples:
+       | mandatory field   | mandatory field error message |
+       | VIN               | This is a required field      |
+       | Plate             | This is a required field      |
+       | Make              | This is a required field      |
+       | Year              | This is a required field      |
+       | Country           | This is a required field      |
+       | Province / State  | This is a required field      |
+       | Vehicle Sub-type  | This is a required field      |
+       | Licensed GVW (kg) | This is a required field      |
 
 @orv2-2608 @orv2-2612
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
@@ -31,7 +62,7 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
     Given a user has manually inputted a power unit
      When they input 65,000 (kg)
      Then they see "Can't Exceed 63,500"
-      And they cannot continue
+      And they can not continue
 
   Scenario: attempt to recall 65,000 (kg)
     Given a user chooses to recall a power unit with a licensed gvw of 65,000 (kg)
@@ -82,15 +113,16 @@ Rule: Users must input a total distance in km
 
   Scenario: no input
      When a user chooses to continue to review and confirm
-     Then they cannnot continue
+     Then they can not continue
       And they see "This is a required field."
       And the mandatory field is indicated
 
   Scenario: text input
-    Given 
-     When 
-     Then 
-
+    Given a user inputs "eight hundred" in total distance
+     When they choose to continue
+     Then they can not continue
+      And they see "invalid input"
+      And the mandatory field is indicated
 
 @orv2-2608 @orv2-2612
 Rule: Users must input specific route details
@@ -101,7 +133,7 @@ Rule: Users must input specific route details
       And they see "This is a required field."
       And the mandatory field is indicated
 
-
+ # currently seems to crash the page
   Scenario: greater than 500 characters
     Given 
      When 
@@ -144,26 +176,26 @@ Rule: A user can see the source of truth for CVSE forms
 @orv2-2608 @orv2-2612
 Rule: A motive fuel permit fee is is calculated at $0.11 per km or a minimum of $20
 
- Scenario: Display fee summary
+ Scenario: view fee summary
      Given a user has continued from the "Permit Application" page
      When they arrive at the "Review and Confirm Details" page
      Then they see permit applicaton fee for the permit application that includes a <description> and <price>
 
    Examples:
-     | Description          | Price   |
-     | Single Trip Oversize | $15.00 |
+     | Description             | Price  |
+     | Motive Fuel User Permit | $20.00 |
 
- Scenario: Fee calculation
-     Given a user has completed a Single Trip Permit Application
+ Scenario: 200 km
+     Given a users total distance is 200 km 
+       And the calculated fee is $22.00
      When they continue to "Review and Confirm Details" page
-     Then the permit fee is calculated as $15
+     Then their permit fee is $22.00
 
-  Scenario: 100,000 km
-    Given 
-     When 
-     Then 
-
-
+  Scenario: 180 km
+     Given a users total distance is 180 km 
+       And the calculated fee is $19.80
+     When they continue to "Review and Confirm Details" page
+     Then their permit fee is $20.00
 
 @orv2-2608 @orv2-2612
 Rule: The user must complete the attestations
