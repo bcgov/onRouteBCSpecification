@@ -1,7 +1,7 @@
 Feature: Generate documents on schedule
 
 @orv2-2416-1
-Rule: If there is no PDF available, display an error page.
+Rule: If there is no permit or receipt PDF available, display an error page.
 
   Scenario: view pdf
     Given the pdf does not exist
