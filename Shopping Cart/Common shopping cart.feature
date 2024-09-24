@@ -421,6 +421,10 @@ Rule: Send one email per receipt
 @orv2-1486-32, @orv2-2048-28
 Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
 
+@orv2-1486-33, @orv2-2048-29
+Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
+
+
 ## Rule: A permit, void permit or revoked permit is issued when permit number is generated
 
 ## Rule: A permit, void permit or revoked permit that fails issuance are pending permits
