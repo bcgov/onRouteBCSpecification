@@ -111,3 +111,11 @@ Rule: The user can review the chosen LOA(s) parameters before completing the per
 
 @orv2-2261-10
 Rule: The chosen LOA(s) are printed on the issued permit pdf
+
+@orv2-2261-11
+Rule: An issued or active permit are unaffected by changes to the LOA(s) used in their initial permit application submission
+
+@orv2-2261-12
+Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
+
+
