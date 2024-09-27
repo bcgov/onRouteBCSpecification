@@ -59,7 +59,7 @@ Rule: Permit start date and duration are limited by the chosen LOA(s) with the s
       | 02/01/2024 |
       And the application date is 01/01/2024
      When a user chooses a start date that is 01/11/2024
-     Then they cannot choose a valid duration
+     Then 02/01/2024 is unavailable
 
   Scenario: LOA(s) expires before maximum allowable term duration
     Given the chosen LOA(s) expires on 04/01/2024 |
@@ -113,9 +113,8 @@ Rule: The user can review the chosen LOA(s) parameters before completing the per
 Rule: The chosen LOA(s) numbers are printed on the issued permit pdf
 
 @orv2-2261-11
-Rule: An issued or active permit are unaffected by changes to the LOA(s) used in their initial permit application submission
+Rule: Issued or active permit(s) are unaffected by changes to the LOA(s) used in their initial permit application submission
 
 @orv2-2261-12
 Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
-
 
