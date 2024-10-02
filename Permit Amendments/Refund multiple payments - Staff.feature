@@ -2,27 +2,40 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
+@orv2-2816
 Rule: Total refund due is shown
 
+@orv2-2816
 Rule: Permit current value is shown
 
+@orv2-2816
 Rule: New permit value is shown
 
-Rule: Staff can choose one or more historical transactions to refund to
+@orv2-2816
+Rule: Staff can choose one or more historical transactions to refund 
 
-Rule: Refund amounts inpuuted by Staff must equal the total refund due
+@orv2-2816
+Rule: Refund amounts inpputed by Staff must equal the total refund due
 
+@orv2-2816
 Rule: Staff must input a refund amount for a chosen transaction
 
+@orv2-2816
 Rule: Staff must input a refund transaction id for a chosen transaction 
 
+@orv2-2816
 Rule: Refund transaction id is unavailable when cheque is the refund payment method
 
+@orv2-2816
 Rule: Staff may choose cheque as a refund method
 
+@orv2-2816
 Rule: Fee values are rounded to the nearest dollar
 
+@orv2-2816
 Rule: Only whole numbers can be inputted in refund amount
+
+
 
 
 
