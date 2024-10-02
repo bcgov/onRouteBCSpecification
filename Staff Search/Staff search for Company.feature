@@ -1,5 +1,7 @@
 Feature: Staff search for company
-   As a PPC SA or PC and EO I want to search for a CV Client so that I can view details about their profile.
+   As a staff I want to search for a CV Client so that I can view details about their profile.
+
+Staff = SA, PC, EO
 
 @orv2-1362-1
 Rule: The entered search parameter is displayed after initiating a search
@@ -12,7 +14,7 @@ Rule: Search by defaults to company name
      Then they see "Search By" defaulted to "Company Name"
 
 @orv2-1362-5
-Rule: PPC SA or PC and EO can search for a company using a minimum 4 characters in company name
+Rule: Staff can search for a company using a minimum 4 characters in company name
 
   Scenario: Company exists 
     Given a PPC SA, PC, EO has chosen to search by company name
@@ -26,7 +28,7 @@ Rule: PPC SA or PC and EO can search for a company using a minimum 4 characters 
       But the results do not include "Truck Band"
 
  @orv2-1362-15
-Rule: PPC SA or PC and EO search by company name also searches doing business as 
+Rule: Staff search by company name also searches doing business as 
 
   Scenario: Company has a doing business as name
     Given a PPC SA, PC, EO has chosen to search by company name
@@ -50,7 +52,7 @@ Rule: Indicate if no records are found and provide option to create company only
       And the option to create a company
 
 @orv2-1362-1
-Rule: PPC SA or PC and EO can search for a company using a minimum 9 characters in client number
+Rule: Staff can search for a company using a minimum 9 characters in client number
 
   Scenario: Only onRouteBC client number exists
     Given a PPC SA, PC or EO has chosen to search by client number
@@ -76,7 +78,7 @@ Rule: PPC SA, PC and EO can search using the first 9 characters of the client nu
    | using onRouteBC client number | 818745927     | 81-874592-765 |
 
 @orv2-1362-4
-Rule: PPC SA, PC and EO can search using the exact legacy number
+Rule: Staff can search using the exact legacy number
 
   Scenario: Legacy client number exists
     Given a PPC SA, PC or EO has chosen to search by legacy number
@@ -91,7 +93,7 @@ Rule: PPC SA, PC and EO can search using the exact legacy number
 
 
 @orv2-1362-3 
-Rule: PPC SA or PC and EO can view company profile summary information in results 
+Rule: Staff can view company profile summary information in results 
 
   Scenario: Company result includes all data elements possible to display in results
     Given a PPC SA, PC, EO has chosen to search for a company
@@ -157,5 +159,19 @@ Rule: Sort multiple search results
 
 @orv2-1362-10
 Rule: EO can not view a CV Client profile
+
 @orv2-1362-11
 Rule: Searching with no inputted parameter does not initiate search
+
+@orv2-1885-1
+Rule: Suspended companies are indicated in search results
+
+  Scenario: abc co. suspended
+     When staff search for abc co.
+     Then they see "Suspended" label on abc co. search results
+
+@orv2-1885-2
+  Scenario: abc co. unsuspended
+     When staff search for abc co.
+     Then they see abc co. search results
+      And there is no "Suspended" label on abc co.
