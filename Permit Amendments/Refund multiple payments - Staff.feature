@@ -6,19 +6,19 @@ Rule: Total refund due is shown
 
 Rule: Permit current value is shown
 
-Rule: New permit vlaus is calculated
+Rule: New permit value is shown
 
-Rule: Users can choose one or more historical transactions to refund to
+Rule: Staff can choose one or more historical transactions to refund to
 
-Rule: Refund amounts inpuuted by users must equal the total refund due
+Rule: Refund amounts inpuuted by Staff must equal the total refund due
 
-Rule: Users must input a refund amount for a chosen transaction
+Rule: Staff must input a refund amount for a chosen transaction
 
-Rule: Users must input a refund transaction id for a chosen transaction 
+Rule: Staff must input a refund transaction id for a chosen transaction 
 
 Rule: Refund transaction id is unavailable when cheque is the refund payment method
 
-Rule: Users may choose cheque as a refund method
+Rule: Staff may choose cheque as a refund method
 
 Rule: Fee values are rounded to the nearest dollar
 
