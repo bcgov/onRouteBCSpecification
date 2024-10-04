@@ -16,7 +16,7 @@ Rule: Can only amend an issued or active permit
      When they choose to amend it
      Then they are directed to the amend permit 
 
- @orv2-938-30
+@orv2-938-30
 Rule: Staff can view superseded permit pdf and superseded permit receipt pdf  
 
 @orv2-937-7
@@ -113,7 +113,7 @@ Rule: Staff can add free text amendment Reason
       And they have not entered a reason for amendment
      Then they see "This is a required field"
 
- @orv2-938-14
+@orv2-938-14
 Rule: Staff can view the permit revision history
 
   Scenario: Previous permit revisions
@@ -158,8 +158,8 @@ Rule: Staff can cancel a permit amendment application
         | permit number   | revision number |
         | P2-00408617-873 | -R2             |
 
- @orv2-938-16
-Rule: View previous financial transaction information for amending permit
+#@orv2-938-16
+#Rule: View previous financial transaction information for amending permit
 
  Scenario: Previous financial transactions exist
      Given the PPC SA is at the finish amendment page
@@ -169,10 +169,10 @@ Rule: View previous financial transaction information for amending permit
         | permit number for listed transaction           | Permit #       |
         | payment method used for the listed transaction | Payment Method |
         | transaction id for the listed transaction      | Transaction ID |
-        | total fee for the listed transaction           | Amount 
+        | total fee for the listed transaction           | Amount         |
 
-@orv2-938-17
-Rule: Default to previous payment method card type
+#@orv2-938-17
+#Rule: Default to previous payment method card type
 
    Scenario: Choose a refund method
      Given the PPC SA has completed mandatory field at review and confirm details
@@ -187,16 +187,16 @@ Rule: Default to previous payment method card type
          | Web - Visa               | Web - Visa               |
          | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
 
- @orv2-938-18
-Rule: Choose cheque payment method
+#@orv2-938-18
+#Rule: Choose cheque payment method
 
    Scenario: Refund by cheque
      Given the PPC SA is at the finish amendment page
       When they choose to refund by cheque
       Then only refund by cheque is indicated as a refund method
 
-@orv2-938-19
-Rule: Input mandatory transaction id
+#@orv2-938-19
+#Rule: Input mandatory transaction id
 
    Scenario: Do not input transaction ID
      Given the PPC SA has chosen to refund to the previous payment method
@@ -205,7 +205,7 @@ Rule: Input mandatory transaction id
       Then they see "This is a required field"
        And they cannot finish
 
- @orv2-938-20
+@orv2-938-20
 Rule: Return to previous search results when finished amending permit application
 
   Scenario: Previous search string

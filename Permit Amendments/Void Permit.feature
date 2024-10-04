@@ -343,4 +343,3 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      And permit A is not expired
      When staff remove ABC Co. no fee designation
      Then permit A has a $0 fee
-

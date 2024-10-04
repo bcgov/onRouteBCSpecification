@@ -2,95 +2,117 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
-NOTE: Only Single Trip OS, OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
+NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
+
+#We have no leave or cancel
 
 @orv2-2816
-Rule: Total refund due is shown
+Rule: Show total refund due
 
   Scenario: no fee permit reduce 
-    Given permit A  has a value of $100
-     When staff reduce 
-     Then 
+    Given permit A has a permit value of $0
+     When staff reduce permit A value
+     Then they see $0
 
   Scenario: fee permit
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff reduce permit A value by $50
+     Then they see $50
 
   Scenario: fee permit plate change
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a plate change
+     Then they see $0
 
   Scenario: void
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a void
+     Then they see $100
 
 @orv2-2816
-Rule: Permit current value is shown
+Rule: Show permit current value
 
   Scenario: no fee permit reduce 
-    Given permit A  has a value of $100
-     When staff reduce 
-     Then 
+    Given permit A has a permit value of $0
+     When staff reduce permit A value
+     Then they see $0
 
   Scenario: fee permit
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff reduce permit A value by $50
+     Then they see $100
 
   Scenario: fee permit plate change
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a plate change
+     Then they see $100
 
   Scenario: void
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a void
+     Then they see $100
 
 @orv2-2816
-Rule: New permit value is shown
+Rule: Show new permit value
 
   Scenario: no fee permit reduce 
-    Given permit A  has a value of $100
-     When staff reduce 
-     Then 
+    Given permit A has a permit value of $0
+     When staff reduce permit A value
+     Then they see $0
 
   Scenario: fee permit
-    Given 
-     When 
-     Then 
-
+    Given permit A has a permit value of $100
+     When staff reduce permit A value by $50
+     Then they see $50
+     
   Scenario: fee permit plate change
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a plate change
+     Then they see $100
+     #this gets recorded as a $0 transaction
 
   Scenario: void
-    Given 
-     When 
-     Then 
+    Given permit A has a permit value of $100
+     When staff complete a void
+     Then they see $100
 
 @orv2-2816
-Rule: Staff can choose one or more historical transactions to refund 
+Rule: Show historical financial transaction information for permit
 
-  Scenario: choose none
-    Given 
-     When 
-     Then 
+ Scenario: Previous financial transactions exist
+      When staff choose to finish
+      Then they see the following details of all previous transactions for the permit:
+        | information      | description                                                  |
+        | Permit #         | permit number generated for the listed transaction           |
+        | Payment Method   | payment method used for the listed transaction               |
+        | Provider Tran ID | provider transaction id for the listed transaction           |
+        | Amount (CAD)     | permit fee (positive or negative) for the listed transaction |
+
+@orv2-2816
+Rule: Staff can choose one or more positive historical transactions to refund 
+
+  Scenario: arrive
+     When staff arrive at finish
+     Then historical transactions are shown
+      And the following is true for historical transactions:
+        | information         | description      |
+        | Refund Amount (CAD) | is not available |
+        | Refund Tran ID      | is not available |
+        | Cheque Refund       | is not available |
+
+  Scenario: choose none finish
+     When staff choose to finish
+     Then they see "Refund Error Total refund amount does not match total refund due."
   
-  Scenario: choose 1
-    Given 
-     When 
-     Then 
-
-   Scenario: choose 2
-     Given 
-      When 
-      Then 
-
+  Scenario: choose one or more
+     When staff choose historcial transaction A
+     Then historical transaction A is indicated
+      And the following is true for historical transaction A:
+        | information         | description      |
+        | Refund Amount (CAD) | is available     |
+        | Refund Tran ID      | is not available |
+        | Cheque Refund       | is available     |
+        
 @orv2-2816
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
@@ -106,40 +128,55 @@ Rule: Refund amount(s) inputted by Staff must equal the total refund due
      Then they see "Refund Error Total refund amount does not match total refund due."
 
   Scenario: equal on 1 but 2 chosen lines
-    Given 
-     When 
-     Then line 2 is ignored
-
-
-
-@orv2-2816
-#Rule: Staff must input a refund amount for a chosen transaction
-
-Rule: Refund amount must have a value < 0 for refund tran id and cheque refund to be available
-
-Rule: If total refund due matches refund amounts and other rows are checked pass
+    Given total refund due is $100
+      And line 1 and line 2 are chosen
+     When staff input the following:
+       | Line | refund amount | refund tran id | cheque |
+       | 1    | $0            |                | No     |
+       | 2    | $100          | 12345678       | No     |
+      And choose to finish
+     Then line 1 is ignored
+      And they are directed to Active Permits or Staff Search for Permits
+      And they see "Permit Amended" notification
 
 @orv2-2816
-#Rule: Staff must input a refund transaction id for a chosen transaction 
+#Rule: Staff may input a refund amount for a chosen transaction
 
 @orv2-2816
-Rule: Refund transaction id is unavailable when cheque is the refund payment method
+Rule: Refund amount must have a value >$0 for refund tran id and cheque refund to be available
+
+  Scenario: refund is $50
+     When staff choose to input a transaction id
+     Then transaction id is availble
+
+  Scenario: refund is =<$0
+     When staff choose to input a transaction id
+     Then transaction id is unavailble
 
 @orv2-2816
-Rule: Staff may choose cheque as a refund method
+Rule: Staff must input a refund transaction id for a chosen transaction and Refund Amount (CAD)
+
+  Scenario: refund is $50 no tran id
+     When staff choose to finish
+     Then they see "Refund Error Total refund amount does not match total refund due."
 
 @orv2-2816
-Rule: Fee values are rounded to the nearest dollar
+Rule: Refund Tran ID is unavailable when cheque is the refund payment method
+
+@orv2-2816
+Rule: Calculated fee values are rounded to the nearest dollar
 
 @orv2-2816
 Rule: Only whole numbers can be inputted in refund amount
 
-@orv2-2816
-Rule: 
-
 
 @orv2-2816
-Rule: 
+Rule: Refund transactions are saved for each completed transaction 
+
+ ISSUED ON PROVIDER TRAN ID ORBC TRAN ID PAYMENT METHOD RECEIPT A PERMIT PERMIT TYPE USER AMOUNT
+ Jul. 18. 2023. 08:00 PM. PDT OR-678904512857 No Payment 98465778747 P1-96153480-957 TROS SELF ISSUED $0
+ Jul. 18, 2023, 08:32 PM, PDT OR-678904512857 No Payment 98465778747 P1-96153480-957 TROS ANPETRIC $0
+
 @orv2-2816
 Rule: 
 @orv2-2816
