@@ -1,6 +1,8 @@
 Feature:  Amend an active permit 
    As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
+Staff = SA, PC, CTPO, Trainee
+
 @orv2-938-8   
 Rule: Can only amend an issued or active permit
 
@@ -15,22 +17,22 @@ Rule: Can only amend an issued or active permit
      Then they are directed to the amend permit 
 
  @orv2-938-30
-Rule: PPC SA and PC can view superseded permit pdf and superseded permit receipt pdf  
+Rule: Staff can view superseded permit pdf and superseded permit receipt pdf  
 
 @orv2-937-7
 @orv2-937-11
 
 @orv2-938-9
-Rule: PPC and SA or PC can resend superseded permit documents
+Rule: Staff can resend superseded permit documents
 
 @orv2-937-10
 @orv2-937-12
 
 @orv2-938-31 
-Rule: PPC SA or PC can amend a permit
+Rule: Staff can amend a permit
 
   Scenario: Valid permit
-    Given the PPC SA or PC have found a valid permit to amend
+    Given the Staff have found a valid permit to amend
      When they choose to amend the permit
      Then they are directed to the amend permit page
  
@@ -38,22 +40,22 @@ Rule: PPC SA or PC can amend a permit
 Rule: A saved amending permit application is in application in progress
 
   Scenario: Close browser tab
-    Given a PPC SA or PC has started an amending permit application 
+    Given a Staff has started an amending permit application 
       And it is not saved
      When they close the browser tab or window
      Then the amending permit application is not saved
 
   Scenario: Go back
-    Given a PPC SA or PC has started an amending permit application 
+    Given a Staff has started an amending permit application 
       And it is not saved
      When they use the browser to navigate back
      Then the amending permit application is not saved
 
 @orv2-938-32
-Rule: PPC SA and PC can see saved amending permit applications in applications in progress
+Rule: Staff can see saved amending permit applications in applications in progress
 
 @orv2-938-11
-Rule: PPC SA or PC can amend an issued or active permit
+Rule: Staff can amend an issued or active permit
 
   Scenario: Found permit to amend
     Given the PPC SA has found a valid permit to amend
@@ -72,10 +74,10 @@ Rule: PPC SA or PC can amend an issued or active permit
          | company information   | company mailing address of amending permit      |
 
 @orv2-938-12
-Rule: PPC SA or PC can view all permit details of the amending permit
+Rule: Staff can view all permit details of the amending permit
 
- Scenario: PPC SA or PC choose to amend a valid permit
-     Given the PPC SA or PC has chosen to amend a valid permit
+ Scenario: Staff choose to amend a valid permit
+     Given the Staff has chosen to amend a valid permit
       When they are at the amend permit page
       Then they see all permit application details of the amending permit:
           | description          | information                                     |
@@ -86,7 +88,7 @@ Rule: PPC SA or PC can view all permit details of the amending permit
           | reason for amendment | free text field to capture reason for amendment |
 
 @orv2-938-13
-Rule: PPC SA or PC can add free text amendment Reason 
+Rule: Staff can add free text amendment Reason 
 
   Scenario: Save amendment reason
     Given the PPC Staff has inputted an amendment reason
@@ -100,7 +102,7 @@ Rule: PPC SA or PC can add free text amendment Reason
      | jdoe                 | Apr. 15, 2023, 8:23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
   Scenario: Attempt to continue without updating amendment reason
-    Given a PPC SA or PC has not inputted a reason for amendment 
+    Given a Staff has not inputted a reason for amendment 
      When they chose to continue to review and confirm details
      Then they see "This is a required field"
       And they cannot continue
@@ -112,11 +114,11 @@ Rule: PPC SA or PC can add free text amendment Reason
      Then they see "This is a required field"
 
  @orv2-938-14
-Rule: PPC SA or PC can view the permit revision history
+Rule: Staff can view the permit revision history
 
   Scenario: Previous permit revisions
     Given an amending permit has previous revisions
-     When a PPC SA or PC is amending a permit
+     When a Staff is amending a permit
      Then they see previous <amendment reason>
       And the <PPC Staff username> of the logged in user that saved the amendment
       And the <timestamp> of when the amendment reason was saved
@@ -127,14 +129,14 @@ Rule: PPC SA or PC can view the permit revision history
 
   Scenario: No previous permit revisions
     Given an amending permit does not have previous revisions
-     When a PPC SA or PC is amending a permit
+     When a Staff is amending a permit
      Then there is no revision history displayed
 
 @orv2-938-15
-Rule: PPC SA or PC can cancel a permit amendment application
+Rule: Staff can cancel a permit amendment application
 
   Scenario: Cancel permit amendment application
-    Given the PPC SA or PC has chosen to cancel a permit amendment application
+    Given the Staff has chosen to cancel a permit amendment application
      When they cancel 
      Then they are directed to the <search results> page
       And they see the <previous search string> results
@@ -207,7 +209,7 @@ Rule: Input mandatory transaction id
 Rule: Return to previous search results when finished amending permit application
 
   Scenario: Previous search string
-    Given the PPC SA or PC has finished the amending permit application
+    Given the Staff has finished the amending permit application
      When they are directed to the <search results> page
      Then they see the <previous search string> results
       And they see "Permit Amended" notification
@@ -221,7 +223,7 @@ Rule: Return to previous search results when finished amending permit applicatio
 Rule: Amending permit is superseded by amended permit
 
   Scenario: Supersede amending permit
-    Given the PPC SA or PC has inputted a valid refund method
+    Given the Staff has inputted a valid refund method
      When they finish the amending permit application
      Then the amending permit is labeled as superseded
 

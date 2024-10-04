@@ -2,26 +2,125 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
+NOTE: Only Single Trip OS, OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
+
 @orv2-2816
 Rule: Total refund due is shown
+
+  Scenario: no fee permit reduce 
+    Given permit A  has a value of $100
+     When staff reduce 
+     Then 
+
+  Scenario: fee permit
+    Given 
+     When 
+     Then 
+
+  Scenario: fee permit plate change
+    Given 
+     When 
+     Then 
+
+  Scenario: void
+    Given 
+     When 
+     Then 
 
 @orv2-2816
 Rule: Permit current value is shown
 
+  Scenario: no fee permit reduce 
+    Given permit A  has a value of $100
+     When staff reduce 
+     Then 
+
+  Scenario: fee permit
+    Given 
+     When 
+     Then 
+
+  Scenario: fee permit plate change
+    Given 
+     When 
+     Then 
+
+  Scenario: void
+    Given 
+     When 
+     Then 
+
 @orv2-2816
 Rule: New permit value is shown
+
+  Scenario: no fee permit reduce 
+    Given permit A  has a value of $100
+     When staff reduce 
+     Then 
+
+  Scenario: fee permit
+    Given 
+     When 
+     Then 
+
+  Scenario: fee permit plate change
+    Given 
+     When 
+     Then 
+
+  Scenario: void
+    Given 
+     When 
+     Then 
 
 @orv2-2816
 Rule: Staff can choose one or more historical transactions to refund 
 
-@orv2-2816
-Rule: Refund amounts inpputed by Staff must equal the total refund due
+  Scenario: choose none
+    Given 
+     When 
+     Then 
+  
+  Scenario: choose 1
+    Given 
+     When 
+     Then 
+
+   Scenario: choose 2
+     Given 
+      When 
+      Then 
 
 @orv2-2816
-Rule: Staff must input a refund amount for a chosen transaction
+Rule: Refund amount(s) inputted by Staff must equal the total refund due
+
+  Scenario: equal
+    Given 
+     When 
+     Then directed to Active Permits 
+      And they see "Permit Amended" notification
+
+  Scenario: not equal
+    Given 
+     When 
+     Then they see "Refund Error Total refund amount does not match total refund due."
+
+  Scenario: equal on 1 but 2 chosen lines
+    Given 
+     When 
+     Then line 2 is ignored
+
+
 
 @orv2-2816
-Rule: Staff must input a refund transaction id for a chosen transaction 
+#Rule: Staff must input a refund amount for a chosen transaction
+
+Rule: Refund amount must have a value < 0 for refund tran id and cheque refund to be available
+
+Rule: If total refund due matches refund amounts and other rows are checked pass
+
+@orv2-2816
+#Rule: Staff must input a refund transaction id for a chosen transaction 
 
 @orv2-2816
 Rule: Refund transaction id is unavailable when cheque is the refund payment method
@@ -35,8 +134,20 @@ Rule: Fee values are rounded to the nearest dollar
 @orv2-2816
 Rule: Only whole numbers can be inputted in refund amount
 
+@orv2-2816
+Rule: 
 
 
+@orv2-2816
+Rule: 
+@orv2-2816
+Rule: 
+@orv2-2816
+Rule: 
+@orv2-2816
+Rule: 
+@orv2-2816
+Rule: 
 
 
 
