@@ -116,18 +116,25 @@ Rule: Staff can choose one or more positive historical transactions to refund
 @orv2-2816
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
-  Scenario: equal
-    Given 
-     When 
-     Then directed to Active Permits 
+  Scenario: equal on 1 chosen historical transaction
+    Given total refund due is $100
+     When staff input the following:
+       | Line | refund amount | refund tran id | cheque |
+       | 2    | $100          | 12345678       | No     |
+      And choose to finish
+      And they are directed to Active Permits
       And they see "Permit Amended" notification
 
-  Scenario: not equal
-    Given 
-     When 
+  Scenario: not equal 1 or more chosen historical transactions
+    Given total refund due is $100
+      And line 1 and line 2 are chosen
+     When staff input the following:
+       | Line | refund amount | refund tran id | cheque |
+       | 1    | $0            |                | No     |
+       | 2    | $110          | 12345678       | No     |
      Then they see "Refund Error Total refund amount does not match total refund due."
 
-  Scenario: equal on 1 but 2 chosen lines
+  Scenario: equal on 1 2 chosen historcial transactions only 1 complete
     Given total refund due is $100
       And line 1 and line 2 are chosen
      When staff input the following:
@@ -136,11 +143,8 @@ Rule: Refund amount(s) inputted by Staff must equal the total refund due
        | 2    | $100          | 12345678       | No     |
       And choose to finish
      Then line 1 is ignored
-      And they are directed to Active Permits or Staff Search for Permits
+      And they are directed to Active Permits
       And they see "Permit Amended" notification
-
-@orv2-2816
-#Rule: Staff may input a refund amount for a chosen transaction
 
 @orv2-2816
 Rule: Refund amount must have a value >$0 for refund tran id and cheque refund to be available
@@ -154,11 +158,15 @@ Rule: Refund amount must have a value >$0 for refund tran id and cheque refund t
      Then transaction id is unavailble
 
 @orv2-2816
-Rule: Staff must input a refund transaction id for a chosen transaction and Refund Amount (CAD)
+Rule: Staff must input a refund transaction id for a chosen transaction and inputted Refund Amount (CAD)
 
   Scenario: refund is $50 no tran id
+    Given the Total Refund Due is $50
+      And the chosen transaction A has a refund amount of $50
+      And there is no Refund Tran ID
      When staff choose to finish
-     Then they see "Refund Error Total refund amount does not match total refund due."
+     Then they see "This is a required field"
+      And Refund Tran ID is indicated
 
 @orv2-2816
 Rule: Refund Tran ID is unavailable when cheque is the refund payment method
