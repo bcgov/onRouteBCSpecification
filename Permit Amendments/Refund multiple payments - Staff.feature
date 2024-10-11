@@ -4,8 +4,6 @@ Staff = SA
 
 NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
 
-#no fee amendments that reduce permit value OR are void are recorded as a $0 transaction refunds
-
 @orv2-2816
 Rule: Show total refund due
 
