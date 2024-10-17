@@ -279,7 +279,7 @@ Rule: Send revoke permit documents to contact details from void permit page
      Then the generated permit PDF and receipt PDF are faxed to the contact fax number
 
 @orv2-1491-3
-Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
+#Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
 
   Scenario: cv client issues under no fee flag changes to fee cv client
     Given ABC Co. is a no fee cv client

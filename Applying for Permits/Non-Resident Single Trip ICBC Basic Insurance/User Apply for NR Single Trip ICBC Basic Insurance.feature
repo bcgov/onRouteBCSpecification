@@ -9,7 +9,7 @@ Rule: Users are required to choose a permit length in increments of one day, wit
  # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
 @orv2-2693-2
-Rule: CVSE Form MV4001 Non Resident (May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
+Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
 
 @orv2-2693-3
 Rule: Users may only input a power unit allowable for a Motive Fuel Permit manually or chosen from inventory
