@@ -38,7 +38,7 @@ Rule: Add permit application to shopping cart
       And they see notification of the application added to the cart
       And the shopping cart count increases by 1
 
-  Scenario: checkout
+  # Scenario: checkout
     Given the User has completed a permit application
      When they choose to checkout
      Then the application is added to the cart

@@ -1,9 +1,7 @@
-Feature: Staff Apply for a Motive Fuel Permit
+Feature: Staff apply for permits
 
 Staff = SA, PC, CTPO, Trainee
 
-
-@orv2-2612-16
 Rule: Staff may choose any start date
 
   Scenario: Permit start date accepted
@@ -11,3 +9,7 @@ Rule: Staff may choose any start date
      When they enter a start date in the past
      Then their start date is accepted
       And the see "Start Date is in the past."
+
+Rule: Staff may add an STOS permit to the cart
+
+
