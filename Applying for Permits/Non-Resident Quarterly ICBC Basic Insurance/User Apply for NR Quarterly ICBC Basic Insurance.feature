@@ -4,13 +4,13 @@ Insurance
 User = CA, PA, SA, PC, CTPO, Trainee
 
 @orv2-2735
-Rule: Users are required to choose a permit length in increments of one calendar quarter that includes their chosen start date
-
- # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
+Rule: A quarterly permit end date fall on the last date of the calendar quarter that includes the start date 
 
   Scenario: choose 2024/05/10
      When a user chooses a start date of 2024/05/10
      Then their permit expiry date is June 30, 2024
+
+ # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
 @orv2-2735
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
