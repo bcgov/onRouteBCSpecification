@@ -12,7 +12,8 @@ Rule: Users are required to choose a permit length in increments of one day, wit
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
 
 @orv2-2693-3
-Rule: Users may only input a power unit allowable for a Motive Fuel Permit manually or chosen from inventory
+Rule: Users may only input a power unit allowable for a Non-Resident Single Trip ICBC Basic
+Insurance permit manually or chosen from inventory
 
  # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
 

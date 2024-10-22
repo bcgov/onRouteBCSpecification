@@ -1,18 +1,23 @@
-Feature: User Apply for Non-Resident Single Trip ICBC Basic
+Feature: User Apply for Non-Resident Quarterly Trip ICBC Basic
 Insurance
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-@orv2-2693-1
-Rule: Users are required to choose a permit length in increments of one day, with a maximum of 30 days from their chosen start date
+@orv2-2735
+Rule: Users are required to choose a permit length in increments of one calendar quarter that includes their chosen start date
 
  # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
-@orv2-2693-2
+  Scenario: choose 2024/05/10
+     When a user chooses a start date of 2024/05/10
+     Then their permit expiry date is June 30, 2024
+
+@orv2-2735
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
 
-@orv2-2693-3
-Rule: Users may only input a power unit allowable for a Motive Fuel Permit manually or chosen from inventory
+@orv2-2735
+Rule: Users may only input a power unit allowable for a Non-Resident Quarterly Trip ICBC Basic
+Insurance permit manually or chosen from inventory
 
  # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
 
@@ -63,7 +68,7 @@ Rule: Users may only input a power unit allowable for a Motive Fuel Permit manua
 
 # see common save vejicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
-@orv2-2693-4
+@orv2-2735
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
 
   Scenario: manually input 65,000 (kg)
@@ -77,14 +82,14 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
-@orv2-2693-5
+@orv2-2735
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2693-6
+@orv2-2735
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display motive fuel permit application details summary
@@ -101,7 +106,7 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Vehicle information submitted in Permit Application           |
        | Third Party Liability submitted in the permit application     |
 
-@orv2-2693-7
+@orv2-2735
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -109,7 +114,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
-@orv2-2693-8
+@orv2-2735
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -117,8 +122,8 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-2693-9
-Rule: A Non-Resident Single Trip ICBC Basic Insurance permit fee is a flate rate based on the chosen third party liability
+@orv2-2735
+Rule: A Non-Resident Quarterly ICBC Basic Insurance permit fee is a flate rate based on the chosen third party liability
 
  Scenario: view fee summary
      Given a user has continued from the "Permit Application" page
@@ -126,21 +131,21 @@ Rule: A Non-Resident Single Trip ICBC Basic Insurance permit fee is a flate rate
      Then they see permit applicaton fee for the permit application that includes a <description> and <price>
 
    Examples:
-     | Description                           | Price  |
-     | Single Trip ICBC Basic Insurance (FR) | $84.00 |
-     | Single Trip ICBC Basic Insurance (FR) | $89.00 |
+     | Description                         | Price    |
+     | Quarterly ICBC Basic Insurance (FR) | $843.00  |
+     | Quarterly ICBC Basic Insurance (FR) | $899.00 |
 
  Scenario: choose general goods
      When they continue to "Review and Confirm Details" page
-     Then their permit fee is $84.00
+     Then their permit fee is $843.00
 
   Scenario: choose dangerous goods
      When they continue to "Review and Confirm Details" page
-     Then their permit fee is $89.00
+     Then their permit fee is $899.00
 
 # below rules will soon be removed and saved as common in a single feature file
 
-@orv2-2693-10
+@orv2-2735
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -157,7 +162,7 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-2693-11
+@orv2-2735
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page
