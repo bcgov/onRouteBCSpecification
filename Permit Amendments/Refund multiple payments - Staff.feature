@@ -4,7 +4,7 @@ Staff = SA
 
 NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
 
-@orv2-2816
+@orv2-2816-1
 Rule: Show total refund due
 
   Scenario: no fee permit reduce 
@@ -27,7 +27,7 @@ Rule: Show total refund due
      When staff complete a void
      Then they see $100
 
-@orv2-2816
+@orv2-2816-2
 Rule: Show current permit value
 
   Scenario: no fee permit reduce 
@@ -50,7 +50,7 @@ Rule: Show current permit value
      When staff complete a void
      Then they see $100
 
-@orv2-2816
+@orv2-2816-3
 Rule: Show new permit value
 
   Scenario: no fee permit reduce 
@@ -73,7 +73,7 @@ Rule: Show new permit value
      When staff complete a void
      Then they see $100
 
-@orv2-2816
+@orv2-2816-4
 Rule: Show historical financial transaction information for the amending/void permit application
 
  Scenario: Previous financial transactions exist
@@ -85,7 +85,7 @@ Rule: Show historical financial transaction information for the amending/void pe
         | Provider Tran ID | provider transaction id for the listed transaction           |
         | Amount (CAD)     | permit fee (positive or negative) for the listed transaction |
 
-@orv2-2816
+@orv2-2816-5
 Rule: Staff can choose one or more credit (positive) historical transactions to refund 
 
   Scenario: arrive
@@ -128,7 +128,7 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
        | Refund Tran ID                        |
        | Cheque Refund                         |
 
-@orv2-2816
+@orv2-2816-6
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
   Scenario: equal on 1 chosen historical transaction
@@ -161,7 +161,7 @@ Rule: Refund amount(s) inputted by Staff must equal the total refund due
       And they are directed to Active Permits
       And they see "Permit Amended" notification
 
-@orv2-2816
+@orv2-2816-7
 Rule: Refund amount must have a value >$0 for Refund Tran ID and cheque refund to be available
 
   Scenario: refund is $50
@@ -179,7 +179,7 @@ Rule: Refund amount must have a value >$0 for Refund Tran ID and cheque refund t
      Then refund tran id is cleared 
       And refund tran id is unavailable
 
-@orv2-2816
+@orv2-2816-8
 Rule: Staff must input a refund tran id for a chosen transaction and inputted refund amount
 
   Scenario: refund is $50 no tran id
@@ -190,22 +190,22 @@ Rule: Staff must input a refund tran id for a chosen transaction and inputted re
      Then they see "This is a required field"
       And refund tran id is indicated
 
-@orv2-2816
+@orv2-2816-9
 Rule: Refund tran id is unavailable when cheque is the refund payment method
 
-@orv2-2816
+@orv2-2816-10
 Rule: Refund tran id is cleared when cheque refund is chosen
 
-@orv2-2816
+@orv2-2816-11
 Rule: Cheque refund is disabled when refund tran id has a value
 
-@orv2-2816
+@orv2-2816-12
 Rule: Calculated fee values are rounded to the nearest dollar
 
-@orv2-2816
+@orv2-2816-13
 Rule: Only whole numbers can be inputted in refund amount
 
-@orv2-2816
+@orv2-2816-14
 Rule: A refund transaction(s) is saved for each completed historical transaction 
 
   Scenario: no-fee amend no charge
