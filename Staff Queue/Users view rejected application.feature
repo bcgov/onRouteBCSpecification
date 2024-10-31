@@ -44,3 +44,5 @@ Rule: Users can review and confirm the rejection history
      When a user chooses to review and confirm A1-72303011-028
      Then they see the reason(s) for rejection
 
+@orv2-2474-14
+Rule: Reason for rejection sorted newest at top in descending order
