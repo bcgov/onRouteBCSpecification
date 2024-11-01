@@ -128,6 +128,31 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
        | Refund Tran ID                        |
        | Cheque Refund                         |
 
+@orv2-2816-15
+Rule: Deselecting a historical transaction(s) to refund clears any user input
+
+  Scenario: input in amount and refund tran ID
+    Given historical transaction A is chosen
+      And 90 is in Refund Amount
+      And 12345 is in Refund Tran ID 
+     When a user chooses not to use the histrorical transaction A
+     Then 12345 is deleted from Refund Tran ID 
+      And 90 is deleted from Refund Amount
+
+  Scenario: cheque chosen
+    Given historical transaction A is chosen
+      And 90 is in Refund Amount
+      And Cheque Refund is chosen
+     When a user chooses not to use the histrorical transaction A
+     Then 90 is deleted from Refund Amount
+      And Cheque Refund is deselected
+
+  Scenario: refund tran ID
+    Given historical transaction A is chosen
+      And 12345 is in Refund Tran ID
+     When a user chooses not to use the historical transaction A
+     Then 12345 is deleted from Refund Tran ID
+
 @orv2-2816-6
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
