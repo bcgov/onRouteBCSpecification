@@ -81,7 +81,6 @@ Rule: Users must input a loaded weight
 Rule: User can optionally choose a Conditional Licensing Fee
 
   Scenario: default selection
-    Given a user has not chosen a Conditional Licensing Fee option
      When they start the application process
      Then the default state is "none"
 
@@ -115,14 +114,15 @@ Rule: Show application details inputted by the user prior to submission or addin
      When they arrive at the "Review and Confirm Details" page
      Then they see permit applicaton header and footer information
      And they see:
-       | Please review and confirm warning                             |
-       | Company information edit message                              |
-       | Company mailing Address of permitee                           |
-       | Contact information submitted in Permit Application           |
-       | Permit details submitted in Permit Application                |
-       | Selected commodities listed with links to the source of truth |
-       | Vehicle information submitted in Permit Application           |
-       | Third Party Liability submitted in the permit application     |
+       | Please review and confirm warning                                     |
+       | Company information edit message                                      |
+       | Company mailing Address of permitee                                   |
+       | Contact information submitted in Permit Application                   |
+       | Permit details submitted in Permit Application                        |
+       | Selected commodities listed with links to the source of truth         |
+       | Vehicle information submitted in Permit Application                   |
+       | Loaded weight submitted in the permit application                     |
+       | Conditional licensing fees option submitted in the permit application |
 
 @orv2-2818-7
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
