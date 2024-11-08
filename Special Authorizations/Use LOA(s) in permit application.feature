@@ -50,6 +50,8 @@ Rule: LOA(s) must have valid term length to be available in the permit applicati
      Then the LOA(s) is shown
       But the LOA(s) cannot be chosen
 
+# Rule: LOA(s) must have a future start date within 14 days of the current date to be available in the permit application
+
 @orv2-2261-5
 Rule: Permit start date and duration are limited by the chosen LOA(s) with the shortest term length
 
