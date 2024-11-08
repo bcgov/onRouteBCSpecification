@@ -118,3 +118,13 @@ Rule: Issued or active permit(s) are unaffected by changes to the LOA(s) used in
 @orv2-2261-12
 Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
 
+  Scenario: application in cart pay now
+    Given 
+     When 
+     Then 
+
+  Scenario: edit saved application 
+    Given 
+     When 
+     Then 
+
