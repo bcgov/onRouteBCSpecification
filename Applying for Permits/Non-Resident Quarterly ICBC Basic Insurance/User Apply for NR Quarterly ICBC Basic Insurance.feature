@@ -3,7 +3,7 @@ Feature: User Apply for Non-Resident Quarterly Trip ICBC Basic Insurance
 User = CA, PA, SA, PC, CTPO, Trainee
 
 @orv2-2735
-Rule: A quarterly permit end date fall on the last date of the calendar quarter that includes the start date 
+Rule: A quarterly permit end date falls on the last date of the calendar quarter that includes the start date 
 
   Scenario: choose 2024/05/10
      When a user chooses a start date of 2024/05/10
