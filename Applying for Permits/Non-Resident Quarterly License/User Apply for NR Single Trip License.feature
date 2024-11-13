@@ -1,22 +1,17 @@
-Feature: User Apply for Non-Resident Quarterly Trip ICBC Basic Insurance
+Feature: User Apply for Non-Resident Single Trip License
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-@orv2-2735
-Rule: A quarterly permit end date fall on the last date of the calendar quarter that includes the start date 
-
-  Scenario: choose 2024/05/10
-     When a user chooses a start date of 2024/05/10
-     Then their permit expiry date is June 30, 2024
+@orv2-2818-1
+Rule: Users are required to choose a permit length in increments of one day, with a maximum of 30 days from their chosen start date
 
  # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
-@orv2-2735
+@orv2-2818-2
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
 
-@orv2-2735
-Rule: Users may only input a power unit allowable for a Non-Resident Quarterly Trip ICBC Basic
-Insurance permit manually or chosen from inventory
+@orv2-2818-3
+Rule: Users may only input a power unit allowable for a Non-Resident Single Trip License permit manually or chosen from inventory
 
  # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
 
@@ -65,30 +60,53 @@ Insurance permit manually or chosen from inventory
      When they choose to continue
      Then they see "BC plated vehicles don't require this permit."
 
-# see common save vejicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
+# see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
-@orv2-2735
-Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
-
-  Scenario: manually input 65,000 (kg)
-    Given a user has manually inputted a power unit
-     When they input 65,000 (kg)
-     Then they see "Can't Exceed 63,500"
-      And they can not continue
-
-  Scenario: attempt to recall 65,000 (kg)
-    Given a user chooses to recall a power unit with a licensed gvw of 65,000 (kg)
-     When they search for the power unit
-     Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
-
-@orv2-2735
+@orv2-2818-5
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2735
+@orv2-2818-4
+Rule: Users must input a loaded weight
+
+  Scenario: input 65,000 (kg)
+     When they input 65,000 (kg)
+     Then they see "Can't Exceed 63,500"
+      And they can not continue
+
+@orv2-2818-12
+Rule: User can optionally choose a Conditional Licensing Fee
+
+  Scenario: default selection
+     When they start the application process
+     Then the default state is "none"
+
+  Scenario: none
+    Given a user has not chosen a Conditional Licensing Fee option
+     When they continue to review and confirm
+     Then they see the fee calculated based on the annual license fee table for a commercial vehicle based on gross vehicle weight (loaded GVW)
+
+  Scenario: conditional
+    Given a user has chosen Conditional license fee rate in accordance with Commercial Transport Fees Regulation Item 3(b)
+     When they continue to review and confirm
+     Then they see the fee calculated based on the Conditional Licences fee table flat rate
+
+  Scenario: x-plated
+    Given a user has chosen a vehicle eligible for Industrial (X-Plate Type) fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
+      And they choose Industrial (X-Plate Type) fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
+     When they continue to review and confirm
+     Then they see the fee calculated based on the annual license fee table for a Industrial Machine based on gross vehicle weight (loaded GVW)
+
+  Scenario: farm
+    Given a user has chosen a vehicle eligible for Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
+      And they choose Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
+     When they continue to review and confirm
+     Then they see the fee calculated based on the annual license fee table for a Farm Vehicle based on gross vehicle weight (loaded GVW)
+
+@orv2-2818-6
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display motive fuel permit application details summary
@@ -96,16 +114,17 @@ Rule: Show application details inputted by the user prior to submission or addin
      When they arrive at the "Review and Confirm Details" page
      Then they see permit applicaton header and footer information
      And they see:
-       | Please review and confirm warning                             |
-       | Company information edit message                              |
-       | Company mailing Address of permitee                           |
-       | Contact information submitted in Permit Application           |
-       | Permit details submitted in Permit Application                |
-       | Selected commodities listed with links to the source of truth |
-       | Vehicle information submitted in Permit Application           |
-       | Third Party Liability submitted in the permit application     |
+       | Please review and confirm warning                                     |
+       | Company information edit message                                      |
+       | Company mailing Address of permitee                                   |
+       | Contact information submitted in Permit Application                   |
+       | Permit details submitted in Permit Application                        |
+       | Selected commodities listed with links to the source of truth         |
+       | Vehicle information submitted in Permit Application                   |
+       | Loaded weight submitted in the permit application                     |
+       | Conditional licensing fees option submitted in the permit application |
 
-@orv2-2735
+@orv2-2818-7
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -113,7 +132,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
-@orv2-2735
+@orv2-2818-8
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -121,30 +140,26 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-2735
-Rule: A Non-Resident Quarterly ICBC Basic Insurance permit fee is a flate rate based on the chosen third party liability
+@orv2-2818-9
+Rule: A Non-Resident Single Trip License permit fee rate is calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
 
- Scenario: view fee summary
-     Given a user has continued from the "Permit Application" page
+# see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
+
+ Scenario: calculate fee
+     Given a user has chosen a <vehicle sub-type>, inputted a <loaded gvw> and chosen a <conditional license fee option>
      When they arrive at the "Review and Confirm Details" page
-     Then they see permit applicaton fee for the permit application that includes a <description> and <price>
+     Then they see <permit applicaton fee> for the permit application
 
    Examples:
-     | Description                         | Price    |
-     | Quarterly ICBC Basic Insurance (FR) | $843.00  |
-     | Quarterly ICBC Basic Insurance (FR) | $899.00 |
-
- Scenario: choose general goods
-     When they continue to "Review and Confirm Details" page
-     Then their permit fee is $843.00
-
-  Scenario: choose dangerous goods
-     When they continue to "Review and Confirm Details" page
-     Then their permit fee is $899.00
+     | vehicle sub-type | loaded gvw | conditional license fee option     | permit application fee |
+     | Scraper          | 6000       | none                               | $18.00                 |
+     | Scraper          | 6000       | Industrial (X-Plate Type) fee rate | $9.00                  |
+     | Truck Tractors   | 25000      | Farm Vehicle fee rate              | $109.00                |
+     | Truck Tractors   | 25000      | none                               | $104.00                |
 
 # below rules will soon be removed and saved as common in a single feature file
 
-@orv2-2735
+@orv2-2818-10
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -161,7 +176,7 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-2735
+@orv2-2818-11
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page
