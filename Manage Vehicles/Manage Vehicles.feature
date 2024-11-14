@@ -196,14 +196,15 @@ Scenario: Vehicle list columns
      | Date Created |
    And it is sorted by Date Created in descending order
 
+# Rule: Sort vehicles list by a chosen column
+
 @orv2-145-4
- Scenario: Vehicle lists optional sort
+ Scenario: date created
   Given the CV Client is at Power Unit or Trailer tab
    When they choose to sort by Date Created
    Then the list is sorted in reverse order from the previously chosen sort order
 
-Feature: Search for Permit
-   As a CV Client I need to search my vehicle inventory so that I can find specific vehicles in my inventory.
+Rule: As a CV Client I need to search my vehicle inventory so that I can find specific vehicles in my inventory
 
 @orv2-292-1
   Scenario: Search vehicle inventory by 
@@ -222,7 +223,7 @@ Feature: Search for Permit
      | VIN          | 568       | all vehicles with VIN with the 3 characters 568          |
      | Date Created | 23        | all vehicles with Date Created with the 2 characters 23  |
 
-  
+ 
 
 
 
