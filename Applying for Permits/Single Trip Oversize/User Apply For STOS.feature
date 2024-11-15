@@ -283,7 +283,7 @@ Rule: Show one row of eight steps with an option to add additional rows of eight
     Given on 1 row of highway boxes exist
      When a user chooses to add highways
      Then they see 2 rows of higway boxes
-      And they are each numbered started at 1
+      And the second row starts at 9
 
 @orv2-2254-30 @orv2-2387-30
 Rule: Show sequence information box

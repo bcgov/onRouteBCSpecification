@@ -425,19 +425,34 @@ Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping
 Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
 
 
-## Rule: A permit, void permit or revoked permit is issued when permit number is generated
+# Rule: A permit, void permit or revoked permit is issued when permit number is generated
 
-## Rule: A permit, void permit or revoked permit that fails issuance are pending permits
+# Rule: A permit, void permit or revoked permit that fails issuance are pending permits
 
-## Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
+# Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
 
-## A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
+  Scenario: email not sent docs available on onRouteBC
+    Given 
+     When 
+     Then 
 
-## Rule: Permits is issued but fails permit receipt document generation are active permits
+  Scenario: email sent docs not available on onRouteBC
+    Given 
+     When 
+     Then 
+
+  Scenario: email not sent docs not available on onRouteBC
+    Given 
+     When 
+     Then 
+
+# A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
+
+# Rule: Permits is issued but fails permit receipt document generation are active permits
 
   Scenario: pdfs not generated
     Given permit financial transaction successful
      When user chooses to view permit
      Then they are directed to error page
 
-## Rule: Staff see the cart icon only when acting as a company
+# Rule: Staff see the cart icon only when acting as a company
