@@ -2,7 +2,7 @@ Feature: User Apply for Non-Resident Quarterly Trip ICBC Basic Insurance
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
-@orv2-2735
+@orv2-2735-1
 Rule: A quarterly permit end date falls on the last date of the calendar quarter that includes the start date 
 
   Scenario: choose 2024/05/10
@@ -11,10 +11,10 @@ Rule: A quarterly permit end date falls on the last date of the calendar quarter
 
  # see common date rules:  https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Permit%20start%20and%20duration.feature#L18
 
-@orv2-2735
+@orv2-2735-2
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
 
-@orv2-2735
+@orv2-2735-3
 Rule: Users may only input a power unit allowable for a Non-Resident Quarterly Trip ICBC Basic
 Insurance permit manually or chosen from inventory
 
@@ -67,7 +67,7 @@ Insurance permit manually or chosen from inventory
 
 # see common save vejicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
-@orv2-2735
+@orv2-2735-4
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
 
   Scenario: manually input 65,000 (kg)
@@ -81,17 +81,17 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
-@orv2-2735
+@orv2-2735-5
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2735
+@orv2-2735-6
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
- Scenario: Display motive fuel permit application details summary
+ Scenario: Display Non-Resident Quarterly Trip ICBC Basic Insurance fuel permit application details summary
      Given a user has continued from the "Permit Application" page
      When they arrive at the "Review and Confirm Details" page
      Then they see permit applicaton header and footer information
@@ -105,7 +105,7 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Vehicle information submitted in Permit Application           |
        | Third Party Liability submitted in the permit application     |
 
-@orv2-2735
+@orv2-2735-7
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -113,7 +113,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
-@orv2-2735
+@orv2-2735-8
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -121,8 +121,8 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-2735
-Rule: A Non-Resident Quarterly ICBC Basic Insurance permit fee is a flate rate based on the chosen third party liability
+@orv2-2735-9
+Rule: A Non-Resident Quarterly ICBC Basic Insurance permit fee is a flat rate based on the chosen third party liability
 
  Scenario: view fee summary
      Given a user has continued from the "Permit Application" page
@@ -144,7 +144,7 @@ Rule: A Non-Resident Quarterly ICBC Basic Insurance permit fee is a flate rate b
 
 # below rules will soon be removed and saved as common in a single feature file
 
-@orv2-2735
+@orv2-2735-10
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -161,7 +161,7 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-2735
+@orv2-2735-11
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page
