@@ -2,7 +2,7 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
-NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that would be amended to reduce a portion of the permit value and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
+NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g. transaction 1 uses VISA, transaction 2 uses MC) and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
 
 @orv2-2816-1
 Rule: Show total refund due
