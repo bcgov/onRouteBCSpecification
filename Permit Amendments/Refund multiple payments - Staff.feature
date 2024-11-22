@@ -100,6 +100,10 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
   Scenario: choose none finish
      When staff choose to finish
      Then they see "Refund Error Total refund amount does not match total refund due."
+
+  Scenario: choose one or more finish
+     When staff choose to finish
+     Then they see "Refund Error Total refund amount does not match total refund due."
   
   Scenario: choose one or more
      When staff choose historcial transaction A
