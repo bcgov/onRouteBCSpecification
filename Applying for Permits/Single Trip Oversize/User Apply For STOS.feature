@@ -134,7 +134,7 @@ Rule: Details of the chosen power units are shown in the application form
      Then they see "Mexico" as they Province / State
 
 @orv2-2254-14 @orv2-2387-14
-Rule: Users may remove a power unit from the application
+Rule: Users may remove and change the power unit from the application
 
   Scenario: no pu
      When a user chooses to remove the power unit
@@ -143,6 +143,12 @@ Rule: Users may remove a power unit from the application
   Scenario: pu exists
      When a user chooses to removed the power unit
      Then they have the option to remove the power unit
+
+  Scenario: pu exists removed
+     When a user chooses to remove a power unit
+     Then all inputted power unit information is removed
+      And all inputted loaded dimensions is removed
+      And all inputted trailer information is removed
 
 @orv2-2254-15 @orv2-2387-15
 Rule: Users must choose from a list of allowable trailers

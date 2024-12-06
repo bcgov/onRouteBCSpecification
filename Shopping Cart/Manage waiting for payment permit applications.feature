@@ -1,6 +1,6 @@
 # Feature: Manage waiting for payment (WFP) permit applications
 
-Users: CA, PA, SA, PC, CTPO, Trainnee
+Users: CA, PA, SA, PC, CTPO, Trainee
 
 @orv2-2412-1
 Rule: Permit applications that fail permit payment confirmation are WFP
@@ -53,3 +53,27 @@ Rule: Users can change one or more WFP permit applications to applications in pr
       And the 5 WFP permit application chosen are not shown as a WFP permit applications
 
 Rule: WFP permit applications that are WFP permit applications for 30 minutes or less are not shown
+
+
+Pay now
+Do not submit payment details
+system crashes
+Application goes to AIP
+choose application error page
+
+cv client or ppc will have to start a new application
+
+Pay now
+Payment sucessful
+system crashes
+obRouteBC does not get payment confirmaiton
+Application goes to AIP
+choose application error page
+
+PPC asks cv client for application number or date time (app number better)
+submit request for onRouteBC transaction id
+get the onroutebc tran id
+ppc does refund in PayBC
+
+Maybe we keep them in cart?
+Maybe we move back to AIP?

@@ -106,7 +106,7 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
      Then they see "Refund Error Total refund amount does not match total refund due."
   
   Scenario: choose one or more
-     When staff choose historcial transaction A
+     When staff choose historical transaction A
      Then historical transaction A is indicated
       And the following is true for historical transaction A refund inputs:
         | information         | description      |

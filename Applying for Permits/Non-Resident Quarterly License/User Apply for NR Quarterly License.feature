@@ -157,9 +157,9 @@ Rule: A Non-Resident Quarterly License permit fee is 1/4 of the fee rate calcula
    Examples:
      | vehicle sub-type | loaded gvw | conditional license fee option     | permit application fee |
      | Scraper          | 6000       | none                               | $53.00                 |
-     | Scraper          | 6000       | Industrial (X-Plate Type) fee rate | $17.00                  |
+     | Scraper          | 6000       | Industrial (X-Plate Type) fee rate | $28.00                 |
      | Truck Tractors   | 25000      | Farm Vehicle fee rate              | $327.00                |
-     | Truck Tractors   | 25000      | none                               | $1309.00                |
+     | Truck Tractors   | 25000      | none                               | $313.00                |
 
 # below rules will soon be removed and saved as common in a single feature file
 

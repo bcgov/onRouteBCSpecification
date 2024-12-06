@@ -19,3 +19,9 @@ Rule: A suspended CV Client does not have access to the onRouteBC profile
       And they submit their valid credentials 
      Then they see "User Unauthorized"
 
+  Scenario: logged in choose permits
+    Given cv client is logged in
+     When they choose to view permits
+     Then they see "User Unauthorized"
+      And they see "Company Suspended"
+

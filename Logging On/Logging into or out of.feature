@@ -1,5 +1,7 @@
 Feature: Log into or out of onRouteBC
 
+#needs roles and more detail for each roles "dashboard"
+
 @orv2-698
   Scenario: Logout
     Given a user chooses to logout of onRouteBC

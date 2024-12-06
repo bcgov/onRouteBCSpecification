@@ -86,6 +86,19 @@ Rule: Vehicle VIN must match the LOA(s) to be available in the permit applicatio
      When vehicle A is removed from inventory
      Then vehicle A is not available in the permit application
 
+#tag with amend
+  Scenario: 2 loas chosen only 1 has valid vehicle 
+    Given active LOA(s) 1 has vehicle A
+     When LOA(s) 1 and 2 are chosen
+      And vehicle A is not on LOA(s) 2
+     Then vehicle A is not available in the permit application
+
+#tag with amend
+  Scenario: no vehicle chosen
+     When no vehicle is chosen
+     Then a user cannot edit vehicle details
+
+
 @orv2-2261-8
 Rule: The chosen LOA vehicle cannot be edited or saved to the vehicle inventory
 
@@ -126,6 +139,16 @@ Rule: A permit application is unaffected by changes to the LOA(s) used during th
      Then 
 
   Scenario: edit saved application 
+    Given 
+     When 
+     Then 
+
+  Scenario: vehicle removed
+    Given 
+     When 
+     Then 
+
+  Scenario: 
     Given 
      When 
      Then 
