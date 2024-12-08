@@ -71,5 +71,10 @@ Rule: Navigating using the global navigation bar when acting as a company will r
      When 
      Then 
 
+@orv2-2916_1
+Rule: Navigate to the bridge calculation tool
 
-
+  Scenario: bridge calculation tool
+    Given PPC Admin or PPC Clerk are on any page
+     When they choose to navigate to the bridge calculation tool
+     Then they are directed to the bridge calculation tool
