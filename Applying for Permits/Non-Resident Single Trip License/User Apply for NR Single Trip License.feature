@@ -184,4 +184,4 @@ Rule: A user can edit an application
      When they choose to edit the application
      Then they are directed to the "Permit Application" page
 
-
+Rule: Conditional License Fees are available for specific 

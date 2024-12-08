@@ -1,16 +1,15 @@
-Rule: A user can navigate to their unique home page 
+Feature: Home Page
 
-  Scenario: CV Client
-    Given a CV Client is logged in
-     When they choose to go home
-     Then they are directed to their permits page applications in progress tab
+Staff = HQA
+User = All
 
-  Scenario: Staff
-    Given a staff user is logged in
-     When they choose to go home
-     Then they are directed the staff home page Welcome to onRouteBC!
+Rule: the onRouteBC home page is available when the onRouteBC web application is or is not available
 
-  Scenario: Enforcement Officer
-    Given an EO is logged in
-     When they choose to go home
-     Then they are directed the staff home page Welcome to onRouteBC!
+Rule: the onRouteBC home page is updatable by staff
+
+  Scenario: important notice 
+    Given 
+     When 
+     Then 
+
+Rule: 

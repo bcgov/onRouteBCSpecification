@@ -97,6 +97,10 @@ Rule: PA can see only their cart item count in the header
 @orv2-1486-11
 Rule: PA can only see their items in the cart
 
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 
 

@@ -455,3 +455,11 @@ Rule: Shopping cart item count is refreshed when choosing to view the shopping c
      Then they are directed to error page
 
 # Rule: Staff see the cart icon only when acting as a company
+
+  Scenario: CA and Staff at my applications
+    Given CA and Staff at my applications
+      And another user application in the cart has error
+     When they pay now
+     Then they see the error info box
+      But the they do not see "Application error. Please remove it from the cart."
+
