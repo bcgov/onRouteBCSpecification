@@ -1,6 +1,6 @@
 Feature: Staff apply for single trip oversize (STOS) permit 
 
-CV Client = CA, PA
+Staff = SA, PC, CTPO, Trainee
 
 @orv2-2387-40
 Rule: Staff may choose any start date
