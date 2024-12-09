@@ -24,7 +24,7 @@ Rule: CV Clients can view the active permits list
         | Permit End Date   |
         | Applicant         |
      And the default sort order is "Permit Start Date" in reverse chronological order
-     And Applicant is the first name and last name of the CV Client user that issued the permit or Provincial Permit Center if issued by the PPC
+     And applicant is the first name and last name of the logged in user that started the permit application or the Provincial Permit Center if started by staff
      And they see "Refunds and amendments can be requested over the phone by calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."
 
   Scenario: No active permits

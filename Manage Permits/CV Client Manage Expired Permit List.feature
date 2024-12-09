@@ -23,7 +23,7 @@ Rule: CV Clients PA and SA can view Expired permits if any exist and see relevan
         | Applicant         |
      And the default sort order is "Permit Start Date" newest at the top
      And CV Client PA only see permits they created
-     And Applicant is the first name and last name of the CV Client user that issued the permit or Provincial Permit Center if issued by the PPC
+     And Applicant is the user that started the permit application this can be either the first name and last name of the CV Client user or Provincial Permit Center if started by staff
 
   Scenario: No Expired permits
     Given the CV Client is at the "Permits" page

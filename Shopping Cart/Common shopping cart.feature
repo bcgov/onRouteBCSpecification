@@ -20,8 +20,9 @@ Rule: Cart contains relevant information about each item
        | start date         | the inputted started date date of the permit application |
        | expiry date        | the calculated expiry date of the permit application     |
        | item fee           | the fee of the permit application                        |
-       | applicant          | the requested by of the permit application               |
-
+       | applicant          | the first name and last name of the logged in user that started the permit application or the Provincial Permit Center if started by staff |
+       #Or the idir username if viewed by staff
+       
   Scenario: default cart item sort order
     Given a user chooses to view the cart
      When they arrive at the cart

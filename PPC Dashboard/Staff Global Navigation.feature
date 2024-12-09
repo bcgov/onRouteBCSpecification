@@ -71,7 +71,7 @@ Rule: Navigating using the global navigation bar when acting as a company will r
      When 
      Then 
 
-@orv2-2916_1
+@orv2-2916-1
 Rule: Navigate to the bridge calculation tool
 
   Scenario: bridge calculation tool

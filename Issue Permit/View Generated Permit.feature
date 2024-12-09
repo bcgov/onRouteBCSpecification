@@ -38,3 +38,6 @@ Rule: Save permit pdf using the generated permit payment receipt number as the f
          | P1-82364275-175 | P1-82364275-175.pdf |
          | P1-82364279-203 | P1-82364279-203.pdf |
          | P2-82364280-389 | P2-82364280-389.pdf |
+
+
+Rule: 

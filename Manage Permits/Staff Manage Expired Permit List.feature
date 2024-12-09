@@ -22,7 +22,7 @@ Rule: Staff can view all Expired permits
         | Permit End Date   |
         | Applicant         |
      And the default sort order is "Permit Start Date" newest at the top ascending
-     And Applicant is the first name and last name of the CV Client user that issued the permit or the IDIR username  if issued by the PPC
+     And Applicant is the first name and last name of the logged in user that started the permit application or the idir username if started by staff
 
   Scenario: No Expired permits
     Given Staff is at the "Permits" page

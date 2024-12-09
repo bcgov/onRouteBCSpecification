@@ -21,7 +21,7 @@ Rule: Staff can view a list of all applications in progress for a specific compa
        | Unit #             | the unit no. of the vehicle used in the application                                                                               |
        | Last Updated Date  | the date the permit application was last updated                                                                                  |
        | Permit Start Date  | the start date inputted in the permit application                                                                                 |
-       | Applicant          | the first name and last name of the logged in user that started the permit application or the idir username if completed by staff |
+       | Applicant          | the first name and last name of the logged in user that started the permit application or the idir username if started by staff |
      And only staff can see the idir username
      And the default sort order is "Last Updated Date" newest at the top ascending
 

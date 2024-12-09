@@ -1,4 +1,4 @@
-Feature: CV Client apply for single trip oversize (STOS) permit 
+Feature: Staff apply for single trip oversize (STOS) permit 
 
 CV Client = CA, PA
 
