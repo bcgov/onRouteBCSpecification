@@ -1,7 +1,7 @@
 Feature: Send permit and receipt documents
     As a CV Client I want to receive copies of my purchased permit(s) and receipts(s) to the email and fax(s) entered in the permit application as well as the associated onRouteBC profile company email.
 
-@orv2-936-1
+@orv2-936-1 @
 Rule: Email permit pdf and permit receipt
 
   Scenario: Email permit pdf successful
@@ -20,7 +20,7 @@ Rule: Email permit pdf and permit receipt
        | entered contact email address |
       And the CV Client cannot reply to the email 
 
-
+#to be deprecated
 @orv2-936-2
   Scenario: Send permit and receipt to fax number
     Given the CV Client has entered a fax number

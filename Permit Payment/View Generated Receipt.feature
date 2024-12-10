@@ -41,4 +41,24 @@ Rule: If receipt fails to generate then show the universal unexpected error page
 Rule: Receipt show variable data fields specific to the financial transaction
 # see the Payment Receipt Template (Data) V1.0 template and the data discovery sheet
       
-      
+@orv2-3071-7  
+Rule: Issued by is the user that adds the permit application to the cart
+    
+  Scenario: staff add to cart
+     When user view permit payment receipt pdf
+     Then issued by is Provincial Permit Center
+
+  Scenario: cv client add to cart
+     When user view permit payment receipt pdf
+     Then issued by is logged in user first name last name      
+
+@orv2-3071-9  
+Rule: Payer Name is the user that completes the purchase transaction
+    
+  Scenario: staff complete transaction
+     When user view permit payment receipt pdf
+     Then issued by is Provincial Permit Center
+
+  Scenario: cv client complete the transaction
+     When user view permit payment receipt pdf
+     Then issued by is logged in user first name last name  

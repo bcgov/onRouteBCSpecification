@@ -20,15 +20,25 @@ Rule: Staff can view all Expired permits
         | Plate             |
         | Permit Start Date |
         | Permit End Date   |
-        | Applicant         |
+        | Issued By         |
      And the default sort order is "Permit Start Date" newest at the top ascending
-     And Applicant is the first name and last name of the logged in user that started the permit application or the idir username if started by staff
 
   Scenario: No Expired permits
     Given Staff is at the "Permits" page
       And there are no Expired permits 
      When they choose to view "Expired Permits"
      Then they see "No records found."
+
+@orv2-3071-4
+Rule: Issued by is the user that adds the permit application to the cart
+
+  Scenario: staff add to cart
+     When staff view expired permits list
+     Then issued by is IDIR username
+
+  Scenario: cv client add to cart
+     When staff view expired permits list
+     Then issued by is logged in user first name last name
 
 @orv2-1651-2
 Rule: Staff can view the permit and permit payment receipt pdf

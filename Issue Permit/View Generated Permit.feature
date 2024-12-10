@@ -1,6 +1,9 @@
 Feature: View generated permit
    As a CV Client I want to be able to view the legal permit pdf that is generated based on my permit application submission after successful purchase, so that I can travel.
 
+User = CA, PA, SA, PC, CTPO, Trainee
+Staff = SA, PC, CTPO, Trainee
+
 @orv2-766-1
 Rule: Generate permit pdf after successful payment
  
@@ -11,6 +14,7 @@ Rule: Generate permit pdf after successful payment
      Then the generated permit pdf is displayed
       And the CVSE Forms chosen in the permit application are attached
 
+#deprecated
  @over2-757-1
   Scenario: Generation fails
     Given a user payment completes successfully
@@ -21,6 +25,7 @@ Rule: Generate permit pdf after successful payment
        | link          | return to onRouteBC |
       And they can optionally navigate to the onRouteBC home page
 
+#deprecated
 Rule: Navigating to onRouteBC opens in a new tab
 
 @orv2-1065-1   
@@ -39,5 +44,13 @@ Rule: Save permit pdf using the generated permit payment receipt number as the f
          | P1-82364279-203 | P1-82364279-203.pdf |
          | P2-82364280-389 | P2-82364280-389.pdf |
 
+@orv2-3072-2
+Rule: Issued by is the user that adds the permit application to the cart
 
-Rule: 
+  Scenario: staff add to cart permit pdf
+     When user view permit pdf
+     Then issued by is Provincial Permit Center
+
+  Scenario: cv client add to cart permit pdf
+     When user view permit pdf
+     Then issued by is logged in user first name last name

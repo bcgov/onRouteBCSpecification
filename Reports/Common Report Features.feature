@@ -39,6 +39,16 @@ Rule: Maximum date range is 30 days
       And they see a warning message
       And they cannot continue
 
+@orv2-3071-3
+Rule: Issued by is the user that adds the permit application to the cart
+
+  Scenario: staff add to cart
+     When staff view payment and refund reports
+     Then issued by is the IDIR username
+
+  Scenario: cv client add to cart
+     When user view payment and refund reports
+     Then issued by is Self Issued
 
 Greyed out To date selection options based on the From date
 Warning message if they select a From date that is too far away from the To date

@@ -25,6 +25,17 @@ Rule: Staff can view a list of all applications in progress for a specific compa
      And only staff can see the idir username
      And the default sort order is "Last Updated Date" newest at the top ascending
 
+@orv2-3071-2
+Rule: Applicant is the user that creates the permit application
+
+  Scenario: staff created permit application
+     When staff view applications in progress
+     Then applicant is IDIR username
+
+  Scenario: cv client created permit application
+     When staff view applications in progress
+     Then applicant is logged in user first name last name
+
 @orv2-1575-4
 Rule: Staff can delete any permit application
 

@@ -20,16 +20,26 @@ Rule: CV Clients PA and SA can view Expired permits if any exist and see relevan
         | Plate             |
         | Permit Start Date |
         | Permit End Date   |
-        | Applicant         |
+        | Issued By         |
      And the default sort order is "Permit Start Date" newest at the top
      And CV Client PA only see permits they created
-     And Applicant is the user that started the permit application this can be either the first name and last name of the CV Client user or Provincial Permit Center if started by staff
 
   Scenario: No Expired permits
     Given the CV Client is at the "Permits" page
       And there are no Expired permits 
      When they choose to view "Expired Permits"
      Then they see "No records found."
+
+@orv2-3071-3
+Rule: Issued by is the user that adds the permit application to the cart
+
+  Scenario: staff add to cart
+     When cv client view expired permits list
+     Then issued by is Provincial Permit Center
+
+  Scenario: cv client add to cart
+     When cv client view expired permits list
+     Then issued by is logged in user first name last name
 
 @orv2-1007-1
 Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf

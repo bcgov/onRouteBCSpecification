@@ -22,9 +22,8 @@ Rule: Staff can view all Active permits if any exist and see relevant informatio
        | Plate             |
        | Permit Start Date |
        | Permit End Date   |
-       | Applicant         |
+       | Issued By         |
     And the default sort order is "Permit Start Date" in reverse chronological order
-    And Applicant is the first name and last name of the logged in user that started the permit application or the idir username if started by staff
     And they see "Refunds and amendments can be requested over the phone by calling the Provincial Permit Centre at Toll-free: 1-800-559-9688. Please have your permit number ready."
 
  Scenario: No active permits
@@ -32,6 +31,17 @@ Rule: Staff can view all Active permits if any exist and see relevant informatio
      And there are no active permits 
     When they choose to view "Active Permits"
     Then they see "No records found."
+
+@orv2-3071-6
+Rule: Issued by is the user that adds the permit application to the cart
+
+  Scenario: staff add to cart
+     When staff view active permits
+     Then issued by is IDIR username
+
+  Scenario: cv client add to cart
+     When staff view active permits
+     Then issued by is logged in user first name last name
 
 @orv2-1650-4
 Rule: Staff can view the permit and permit payment receipt pdf

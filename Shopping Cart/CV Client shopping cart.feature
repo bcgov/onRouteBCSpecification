@@ -92,15 +92,11 @@ Rule: PA can see only their application number of items in the cart
 Rule: PA can pay for staff edited PA items in the shopping cart
 
 @orv2-1486-10
-Rule: PA can see only their cart item count in the header
+Rule: PA can see only see their cart item count in the header
 
 @orv2-1486-11
 Rule: PA can only see their items in the cart
 
-  Scenario: 
-    Given 
-     When 
-     Then 
 
 
 

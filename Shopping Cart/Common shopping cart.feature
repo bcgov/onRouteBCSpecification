@@ -28,6 +28,21 @@ Rule: Cart contains relevant information about each item
      When they arrive at the cart
      Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
 
+@orv2-3071-8
+Rule: Applicant is the user that creates the permit application
+
+  Scenario: staff created permit application
+     When staff view shopping cart
+     Then applicant is IDIR username
+
+  Scenario: staff created permit application
+     When cv client view shopping cart
+     Then applicant is Provincial Permit Center
+
+  Scenario: cv client created permit application
+     When staff view shopping cart
+     Then applicant is logged in user first name last name
+
 @orv2-1486-11, @orv2-2048-7
 Rule: Add permit application to shopping cart
 
