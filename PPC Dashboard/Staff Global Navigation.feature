@@ -66,11 +66,6 @@ Rule: On page not available via global navigation
 @orv2-1378-8
 Rule: Navigating using the global navigation bar when acting as a company will reset the context to no company
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 @orv2-2916-1
 Rule: Navigate to the bridge calculation tool
 
