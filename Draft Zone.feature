@@ -30,3 +30,82 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
      When 
      Then 
 
+  Scenario Remove from cart 1 of 10
+    Given 
+     Then they see "Remove Application You are removing XX items from your cart. Are you sure you want to continue?"
+
+  Scenario: remove continue
+    Given 
+     When 
+     Then 
+      And directed to cart
+      And warning info box is not visible
+      And all items in the cart are selected
+
+  Scenario: 1 or more app with error selected first validation
+    Given 
+     When 
+     Then they see "Application error. Please remove it from the cart." on each application in error
+      And they see the "Your shopping cart has application errors." warning info box
+
+  Scenario: 1 or more app with error selected second validation
+    Given 
+     When 
+     Then they see "Application Errors Applications in your shopping cart have errors. Please deselect or remove them to continue."
+
+NR Licensing 
+	- Farm tractor fee trip for quarterly or single trip
+		- in hindsight we could just omit farm tractor as eligible for one of these types
+	
+default state on vehicle weight Loaded GVW, net greyed greyed out
+	
+default state for conditional is all options shown but greyed out default to none
+		- show options based on scenarios below
+	
+ Rule: vehicle sub-type controls available options for conditional license fees and vehicle weight
+
+   Scenario: 
+     Given 
+      When 
+      Then 
+ 
+   Examples:
+     | vehicle sub-type | CLF | VW | Fee Table |
+     | scraper | Industrial (X-Plate Type) | Loaded GVW | Industrial |
+     | truck tractor | Conditional License | Loaded GVW | Conditional License |
+     | truck tractor | Farm Vehicle | Net Weight | Farm Vehicles |
+     | logging trucks | Conditional License | Loaded GVW | Conditional License |
+     | logging trucks | None | Loaded GVW | Commercial Vehicles |
+     | farm tractors | Farm Vehicles | Not Available | Farm Vehicles |
+
+ - scraper none
+		- None
+		- loaded gvw available
+  - commericla fee table
+	
+ - scraper x-plate
+		- x-plate
+		- loaded gvw
+  - x-plate fee table
+	
+ - truck tractor none
+		- none
+		- loaded gvw
+	
+ - truck tractor farm vehicle
+		- farm vehicle
+		- net weight
+	
+ - farm tractor
+		- Farm Tractor default selected by default
+		- both weight boxes greyed out
+	
+ - Farm Tractor will need to be added as a new vehicle sub-type
+	
+ - Fees
+		- Farm Tractor - flat rate 33
+
+	- NicoleH - propose allow it but make it feature flaggable or just hide the option
+
+- Farm vehicle max weight and other vehicle expected behaviour when over max
+	- charge the maximum weight charge of the table

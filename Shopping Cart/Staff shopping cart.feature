@@ -31,4 +31,4 @@ Rule: Staff can filter cart items by their items or all CA, PA and Staff items
      Then they see all applications started by the logged in staff user 
       And those started by other CA, PA and Staff users added to the cart
 
-## Rule: HQA, FIN and EO cannot see the shopping cart icon
+# Rule: HQA, FIN and EO cannot see the shopping cart icon

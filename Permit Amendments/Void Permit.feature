@@ -159,7 +159,7 @@ Rule: A void results in a full refund of current permit dollar value
        | $60                     | $60        |
        | $90                     | $90        |
 
-  # Scenario: refund increments 
+ #Scenario: refund increments 
     Given a permit has 30 days or greater <term remaining>
      When the <refund fee total> amount is calculated 
      Then the refund fee total amount is an <increments> of 30 days

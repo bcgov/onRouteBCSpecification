@@ -32,7 +32,7 @@ Rule: CV Clients can view the active permits list
      When they choose to view "Active Permits"
      Then they see "No records found."
 
-@orv2-3071-5
+@orv2-3072-5
 Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: staff add to cart

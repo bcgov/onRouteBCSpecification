@@ -162,6 +162,8 @@ Rule: Remove applications in the cart
      | • A2-00408617-876    |
      | • A2-00408617-878    |
 
+
+#deprecated
 @orv2-1486-16, @orv2-2048-12
 Rule: Remove items in cart that are not in compliance with policy
 
@@ -197,46 +199,6 @@ Rule: Show items removed from cart
     Given no items have been removed from the company cart
      When a user chooses to view the shopping cart
      Then they do not see an alert box
-
- # NOTE: This has not been implmented yet
-
-      ## And they see the <list of applications> removed from the cart
-
-  Scenario: edit item already removed from cart
-    Given a user chooses to edit an application that is in the cart
-     When a different user chooses to edit the same application
-     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And they see the <list of applications> removed from the cart
-
-  ## Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
-
-  # Scenario: view cart
-    Given items have been removed from the company cart
-     When a user chooses to view the shopping cart
-     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
-      And they see the <list of applications> removed from the cart
-
-   # Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-
-   # Scenario: pay
-    Given items have been removed from the company cart
-     When a user chooses to pay
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And they see the <list of applications> removed from the cart
-
-   # Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
 
 @orv2-1486-18, @orv2-2048-14
 Rule: Cart can have an unlimited number of items
@@ -479,3 +441,45 @@ Rule: Shopping cart item count is refreshed when choosing to view the shopping c
      Then they see the error info box
       But the they do not see "Application error. Please remove it from the cart."
 
+
+
+
+ # NOTE: This has not been implmented yet
+
+      ## And they see the <list of applications> removed from the cart
+
+  Scenario: edit item already removed from cart
+    Given a user chooses to edit an application that is in the cart
+     When a different user chooses to edit the same application
+     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+  ## Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-876    |
+     | • A2-00408617-878    |
+
+  # Scenario: view cart
+    Given items have been removed from the company cart
+     When a user chooses to view the shopping cart
+     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
+      And they see the <list of applications> removed from the cart
+
+   # Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+
+   # Scenario: pay
+    Given items have been removed from the company cart
+     When a user chooses to pay
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+   # Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |

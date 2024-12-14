@@ -9,17 +9,16 @@ Rule: Users are required to choose a permit length in increments of one day, wit
 
 @orv2-2818-2
 Rule: CVSE Form APV96 Insurance Certificate Conditions(May 2021) is chosen by default and attached consecutively beginning after the final page of the issued permit
-
 @orv2-2818-3
-Rule: Users may only input a power unit allowable for a Non-Resident Single Trip License permit manually or chosen from inventory
+Rule: Users may only input a power unit allowable for a Non-Resident Single Trip License permit manually or chosen from inventory  
 
- # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+  # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
 
   Scenario: change vehicle type
      When a user chooses to change vehicle type
      Then they can not change vehicle type
 
- # see common recall rules here: https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Application%20Vehicle%20Details.feature#L20
+  # see common recall rules here: https://vscode.dev/github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Application%20Vehicle%20Details.feature#L20
 
   Scenario: recall trailer
      When a user chooses to find a trailer from inventory
@@ -60,7 +59,7 @@ Rule: Users may only input a power unit allowable for a Non-Resident Single Trip
      When they choose to continue
      Then they see "BC plated vehicles don't require this permit."
 
-# see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
+ # see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
 @orv2-2818-5
 Rule: Power unit province / state is not available when Mexico is chosen as the country
@@ -69,13 +68,28 @@ Rule: Power unit province / state is not available when Mexico is chosen as the 
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2818-4
-Rule: Users must input a loaded weight
+@orv2-2818-4 @orv2-xx
+Rule: Users must input a vehicle weight
+
+  Scenario: no input
+    Given 
+     When 
+     Then they see "This is a required field"
+      And the field is indicated
+      And they can not continue
 
   Scenario: input 65,000 (kg)
      When they input 65,000 (kg)
      Then they see "Can't Exceed 63,500"
+      And the field is indicated
       And they can not continue
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
 
 @orv2-2818-12
 Rule: User can optionally choose a Conditional Licensing Fee
@@ -106,7 +120,7 @@ Rule: User can optionally choose a Conditional Licensing Fee
      When they continue to review and confirm
      Then they see the fee calculated based on the annual license fee table for a Farm Vehicle based on gross vehicle weight (loaded GVW)
 
-@orv2-2818-6
+@orv2-2818-6 @orv2-xx
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display motive fuel permit application details summary
@@ -121,7 +135,7 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Permit details submitted in Permit Application                        |
        | Selected commodities listed with links to the source of truth         |
        | Vehicle information submitted in Permit Application                   |
-       | Loaded weight submitted in the permit application                     |
+       | Vehicle weight submitted in the permit application                    |
        | Conditional licensing fees option submitted in the permit application |
 
 @orv2-2818-7
@@ -143,7 +157,7 @@ Rule: A user can see the source of truth for CVSE forms
 @orv2-2818-9
 Rule: A Non-Resident Single Trip License permit fee rate is calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
 
-# see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
+ # see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
 
  Scenario: calculate fee
      Given a user has chosen a <vehicle sub-type>, inputted a <loaded gvw> and chosen a <conditional license fee option>

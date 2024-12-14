@@ -32,7 +32,7 @@ Rule: Staff can view all Active permits if any exist and see relevant informatio
     When they choose to view "Active Permits"
     Then they see "No records found."
 
-@orv2-3071-6
+@orv2-3072-6
 Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: staff add to cart

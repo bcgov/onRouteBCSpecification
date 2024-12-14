@@ -30,7 +30,7 @@ Rule: CV Clients PA and SA can view Expired permits if any exist and see relevan
      When they choose to view "Expired Permits"
      Then they see "No records found."
 
-@orv2-3071-3
+@orv2-3072-3
 Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: staff add to cart

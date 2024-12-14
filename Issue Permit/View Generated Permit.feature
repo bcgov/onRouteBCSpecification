@@ -53,4 +53,4 @@ Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: cv client add to cart permit pdf
      When user view permit pdf
-     Then issued by is logged in user first name last name
+     Then issued by is Self Issued

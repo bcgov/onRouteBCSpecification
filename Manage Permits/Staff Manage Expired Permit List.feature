@@ -29,7 +29,7 @@ Rule: Staff can view all Expired permits
      When they choose to view "Expired Permits"
      Then they see "No records found."
 
-@orv2-3071-4
+@orv2-3072-4
 Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: staff add to cart

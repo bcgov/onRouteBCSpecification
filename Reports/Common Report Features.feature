@@ -39,7 +39,7 @@ Rule: Maximum date range is 30 days
       And they see a warning message
       And they cannot continue
 
-@orv2-3071-3
+@orv2-3072-3
 Rule: Issued by is the user that adds the permit application to the cart
 
   Scenario: staff add to cart
