@@ -53,6 +53,21 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
      When 
      Then they see "Application Errors Applications in your shopping cart have errors. Please deselect or remove them to continue."
 
+  Scenario
+    Given user 1 and 2 are at the cart
+      And app A and app B are in the cart
+      And app B has been removed by user 1
+     When user 2 pays for the cart
+     Then user 2 sees error at app B
+      And user 1 sees app A
+
+  Scenario
+    Given the cart was paid by user 2
+      And user 1 is at the cart
+      And app A is in the cart
+     When user 1 pays for the cart
+     Then user 1 sees error at app A
+
 NR Licensing 
 	- Farm tractor fee trip for quarterly or single trip
 		- in hindsight we could just omit farm tractor as eligible for one of these types
