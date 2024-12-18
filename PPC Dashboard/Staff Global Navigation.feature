@@ -66,10 +66,13 @@ Rule: On page not available via global navigation
 @orv2-1378-8
 Rule: Navigating using the global navigation bar when acting as a company will reset the context to no company
 
-@orv2-2916-1
+@orv2-2916-26
 Rule: Navigate to the bridge calculation tool
 
   Scenario: bridge calculation tool
-    Given PPC Admin or PPC Clerk are on any page
-     When they choose to navigate to the bridge calculation tool
+    Given HQA, SA, PC, Trainee, CTPO, CTA are on any page
+     When they choose to navigate to the bridge formula calculation tool
      Then they are directed to the bridge calculation tool
+
+@orv2-2916-27
+Rule: EO only see the bridge formula calculation tool option on the global navigation bar

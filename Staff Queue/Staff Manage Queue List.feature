@@ -100,6 +100,9 @@ Rule: Staff may claim an application to review
      Then they are directed to the queue list
       And A1-72303011-028 remains claimed by staff member B
 
+# former claimee gets redirected to universal error page
+# Approve, reject (on modal), edit
+
 @orv2-2398-8
 Rule: Claimed applications are shown in their own list
 
