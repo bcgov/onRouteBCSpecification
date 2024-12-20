@@ -4,8 +4,10 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
     Given user has permit A in cart
      And permit A uses LOA(s) B
      When permit A exceeds the LOA(s) B end date
-     Then they see ""
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
       And they see "Application error. Please remove it from the cart."
+
+remove from cart 
 
   Scenario: LOA(s) edited to remove permit type vehicles and date still valid
     Given user has permit A in cart
@@ -13,7 +15,7 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
       And LOA(s) B uses vehicle 1
       And vehicle 1 is removed from LOA(s) B
      When they pay now
-     Then they see ""
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
       And they see "Application error. Please remove it from the cart."
 
   Scenario: LOA(s) edited to remove permit type date still valid
@@ -61,6 +63,22 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
      Then user 2 sees error at app B
       And user 1 sees app A
 
+Zhong Yu - re the cart #nextaction
+
+- failed policy checked
+ - direct to cart with error screen
+
+- edit removed items
+ - see edit modal
+
+- Purchased or removed application will go away from cart. Rest of the invalid applications are at user's discretion, edit them, remove them, unselect them. do whatever please you.
+
+- edit purchased item
+ - see 
+
+- Can we refresh to the current version of the cart to 
+
+
   Scenario
     Given the cart was paid by user 2
       And user 1 is at the cart
@@ -68,59 +86,7 @@ Rule: All chosen LOA(s) used in a permit application must be valid on pay now
      When user 1 pays for the cart
      Then user 1 sees error at app A
 
-NR Licensing 
-	- Farm tractor fee trip for quarterly or single trip
-		- in hindsight we could just omit farm tractor as eligible for one of these types
-	
-default state on vehicle weight Loaded GVW, net greyed greyed out
-	
-default state for conditional is all options shown but greyed out default to none
-		- show options based on scenarios below
-	
- Rule: vehicle sub-type controls available options for conditional license fees and vehicle weight
+Queue Issues:
 
-   Scenario: 
-     Given 
-      When 
-      Then 
- 
-   Examples:
-     | vehicle sub-type | CLF | VW | Fee Table |
-     | scraper | Industrial (X-Plate Type) | Loaded GVW | Industrial |
-     | truck tractor | Conditional License | Loaded GVW | Conditional License |
-     | truck tractor | Farm Vehicle | Net Weight | Farm Vehicles |
-     | logging trucks | Conditional License | Loaded GVW | Conditional License |
-     | logging trucks | None | Loaded GVW | Commercial Vehicles |
-     | farm tractors | Farm Vehicles | Not Available | Farm Vehicles |
-
- - scraper none
-		- None
-		- loaded gvw available
-  - commericla fee table
-	
- - scraper x-plate
-		- x-plate
-		- loaded gvw
-  - x-plate fee table
-	
- - truck tractor none
-		- none
-		- loaded gvw
-	
- - truck tractor farm vehicle
-		- farm vehicle
-		- net weight
-	
- - farm tractor
-		- Farm Tractor default selected by default
-		- both weight boxes greyed out
-	
- - Farm Tractor will need to be added as a new vehicle sub-type
-	
- - Fees
-		- Farm Tractor - flat rate 33
-
-	- NicoleH - propose allow it but make it feature flaggable or just hide the option
-
-- Farm vehicle max weight and other vehicle expected behaviour when over max
-	- charge the maximum weight charge of the table
+- claim a claimed within 30 seconds
+-  Apply the is it claimed logic to the applications in queue need a scenario for this 

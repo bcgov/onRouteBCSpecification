@@ -11,10 +11,10 @@ Rule: Staff can reject an application
      Then they are directed to the queue
       And A1-72303011-028 is not in the queue
 
-  Scenario: reject claimed application
+  Scenario: reject claimed application continue rejection
     Given A1-72303011-028 is claimed by John
      When Jane claims A1-72303011-028 
-      And John chooses to reject A1-72303011-028
+      And John chooses to continue rejection A1-72303011-028
      Then John sees "Application no longer available This application is claimed by Jane"
       And Jane is the idir username      
 

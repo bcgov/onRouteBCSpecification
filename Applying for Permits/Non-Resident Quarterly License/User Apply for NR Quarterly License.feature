@@ -64,7 +64,7 @@ Rule: Users may only input a power unit allowable for a Non-Resident Quarterly L
      When they choose to continue
      Then they see "BC plated vehicles don't require this permit."
 
-# see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
+ # see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
 @orv2-2934-5
 Rule: Power unit province / state is not available when Mexico is chosen as the country
@@ -74,19 +74,37 @@ Rule: Power unit province / state is not available when Mexico is chosen as the 
      Then Province state is not available
 
 @orv2-2934-4
-Rule: Users must input a loaded weight
+Rule: Users must input a vehicle weight
+
+  Scenario: vehicle sub-type not chosen
+     When they have not chosen a vehicle sub-type
+     Then vehicle weight options are not available
+
+  Scenario: no input
+    Given a user does not input a vehicle weight
+     When they choose to continue
+     Then they see "This is a required field"
+      And the field is indicated
+      And they can not continue
 
   Scenario: input 65,000 (kg)
      When they input 65,000 (kg)
      Then they see "Can't Exceed 63,500"
+      And the field is indicated
       And they can not continue
+
+  Scenario: farm tractor
+     When a user chooses farm tractor
+     Then vehicle weight options are not available
 
 @orv2-2934-12
 Rule: User can optionally choose a Conditional Licensing Fee
 
   Scenario: default selection
      When they start the application process
-     Then the default state is "none"
+     Then all conditional license fee options are shown 
+      But unavailable
+      And the default state is "none"
 
   Scenario: none
     Given a user has not chosen a Conditional Licensing Fee option
@@ -104,11 +122,67 @@ Rule: User can optionally choose a Conditional Licensing Fee
      When they continue to review and confirm
      Then they see the fee calculated based on the annual license fee table for a Industrial Machine based on gross vehicle weight (loaded GVW)
 
-  Scenario: farm
-    Given a user has chosen a vehicle eligible for Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
-      And they choose Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(c)
+  Scenario: farm vehicle
+    Given a user has chosen a vehicle eligible for Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(d)
+      And they choose Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(d)
      When they continue to review and confirm
-     Then they see the fee calculated based on the annual license fee table for a Farm Vehicle based on gross vehicle weight (loaded GVW)
+     Then they see the fee calculated based on the annual license fee table for a Farm Vehicle based on net vehicle weight (loaded GVW)
+
+   Scenario: farm tractor
+    Given a user has chosen a vehicle eligible for Farm Tractor fee rate in accordance with Commercial Transport Fees Regulation Item 2(b)
+      And they choose Farm Vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(b)
+     When they continue to review and confirm
+     Then they see the fee calculated based on the annual license fee table table flat rate
+
+@orv2-2934-13
+Rule: Conditional license fee (CLF) choice determines available options for vehicle weight (VW)
+
+   Scenario: choosing CLF
+      When a user chooses a CLF option
+      Then the associated VW options are available:
+       | CLF                       | VW            |
+       | Industrial (X-Plate Type) | Loaded GVW    |
+       | Conditional License       | Loaded GVW    |
+       | Farm Vehicle              | Net Weight    |
+       | None                      | Loaded GVW    |
+       | Farm Tractor              | Not Available |
+
+@orv2-2934-14
+Rule: Vehicle sub-type choice determines available options for conditional license fees (CLF)
+
+ # see https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+ 
+   Scenario: choosing vehicle sub-types
+      When a user chooses a vehicle sub-type
+      Then the associated CLF options are available:
+        | Vehicle Sub-type                                                     | CLF Options                             |
+        | Buses/Crummies                                                       | None / Conditional ($12)                |
+        | Concrete Pumper Trucks                                               | None / Industrial (X-Plate type) Y/N    |
+        | Cranes, Rubber-Tired Loaders, Firetrucks - All Terrain               | None / Industrial (X-Plate type) Y/N    |
+        | Cranes, Rubber-Tired Loaders, Firetrucks - Mobile                    | None / Industrial (X-Plate type) Y/N    |
+        | Double Decker Buses                                                  | None / Conditional ($12)                |
+        | Fixed Equipment - Trucks/Graders etc.                                | None / Industrial (X-Plate type)        |
+        | Intercity Buses (Pulling Pony Trailers)                              | None / Conditional ($12)                |
+        | Logging Trucks                                                       | None / Conditional ($12)                |
+        | Logging Trucks - Off-Highway                                         | None / Conditional ($12)                |
+        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles             | None / Conditional ($12)                |
+        | Long Combination Vehicles (LCV) - Turnpike Doubles                   | None / Conditional ($12)                |
+        | Long Wheelbase Truck Tractors Exceeding 6.2 m up to 7.25 m           | None / Conditional ($12)                |
+        | Municipal Fire Trucks                                                | None / Conditional ($12)                |
+        | Oil and Gas - Bed Trucks                                             | None / Industrial (X-Plate type)        |
+        | Oil and Gas - Oilfield Sows, Oilfield Pumper Trucks & Snubber Trucks | None / Industrial (X-Plate type)        |
+        | Oil and Gas - Service Rigs                                           | None / Industrial (X-Plate type)        |
+        | Oil and Gas - Service Rigs and Rathole Augers Only ...               | None / Industrial (X-Plate type)        |
+        | Picker Truck Tractors                                                | None / Conditional ($12)                |
+        | Scrapers                                                             | None / Industrial (X-Plate type)        |
+        | Specially Authorized Vehicles                                        | None / Conditional ($12)                |
+        | Taxis                                                                | None / Conditional ($12)                |
+        | Tow Vehicles                                                         | None / Conditional ($12)                |
+        | Truck Tractors                                                       | None / Conditional ($12) / Farm Vehicle |
+        | Truck Tractors - Stinger Steered                                     | None / Conditional ($12)                |
+        | Trucks                                                               | None / Conditional ($12) / Farm Vehicle |
+        | Trucks Equipped with Front or Underbody Plow Blades                  | None / Conditional ($12)                |
+        | Farm Tractor                                                         | Farm Tractor default selected           |
 
 @orv2-2934-6
 Rule: Show application details inputted by the user prior to submission or adding to cart
@@ -147,7 +221,7 @@ Rule: A user can see the source of truth for CVSE forms
 @orv2-2934-9
 Rule: A Non-Resident Quarterly License permit fee is 1/4 of the fee rate calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
 
-# see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
+ # see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
 
  Scenario: calculate fee
      Given a user has chosen a <vehicle sub-type>, inputted a <loaded gvw> and chosen a <conditional license fee option>
@@ -161,8 +235,11 @@ Rule: A Non-Resident Quarterly License permit fee is 1/4 of the fee rate calcula
      | Truck Tractors   | 25000      | Farm Vehicle fee rate              | $327.00                |
      | Truck Tractors   | 25000      | none                               | $313.00                |
 
-# below rules will soon be removed and saved as common in a single feature file
+  Scenario: max fee
+     When the vehicle weight is equal to or higher then the maximum fee table rate
+     Then the maximum fee is charged
 
+# below rules will soon be removed and saved as common in a single feature file
 @orv2-2934-10
 Rule: The user must complete the attestations
 
