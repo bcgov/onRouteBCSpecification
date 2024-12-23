@@ -33,6 +33,16 @@ Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen a
 @orv2-1490-6
 Rule: CVSE1014 not available if an LCV vehicle is not chosen
 
+  Scenario: LCV vehicle chosen
+    Given 
+     When 
+     Then they see "LCV Operating Conditions & Routes" CVSE form
+
+  Scenario: LCV vehicle not chosen
+    Given 
+     When 
+     Then they do not see "LCV Operating Conditions & Routes" CVSE form
+
 @orv2-1490-3
 Rule: LCV vehicles can be added to the CV Clients vehicle inventory from the permit application
 

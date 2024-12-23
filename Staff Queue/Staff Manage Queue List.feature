@@ -87,9 +87,15 @@ Rule: Staff may claim an application to review
      Then they are directed to review and confirm details
       And attestations are unavailable
 
-  Scenario: claim a claimed
+  Scenario: claim a claimed at claimed applications
     Given A1-72303011-028 is claimed
      When staff claim A1-72303011-028
+     Then they see "Claimed Application This application is already claimed by IDIR username. Would you like to claim it instead?"
+      And IDIR username is the IDIR username of the staff member that is actively processing A1-72303011-028
+
+  Scenario: claim a claimed at applications in queue
+    Given A1-72303011-028 is claimed
+     When staff claim A1-72303011-028 within 30 seconds
      Then they see "Claimed Application This application is already claimed by IDIR username. Would you like to claim it instead?"
       And IDIR username is the IDIR username of the staff member that is actively processing A1-72303011-028
 
