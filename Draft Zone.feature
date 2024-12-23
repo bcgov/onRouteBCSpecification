@@ -1,3 +1,6 @@
+User = CA, PA, SA, PC, CTPO, Trainee
+
+
 Rule: All chosen LOA(s) used in a permit application must be valid on pay now
 
   Scenario: reduce LOA(s) term
