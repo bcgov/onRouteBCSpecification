@@ -3,6 +3,19 @@ Feature: Shopping cart
 
 User = CA, PA, SA, PC, CTPO, Trainee
 
+@orv2-3176-1
+Rule: Show persistent cart info box
+
+  Scenario: arrive at cart
+     When users arrive at the cart
+     Then they see the following info:
+       "Know your shopping cart.
+       The shopping cart is shared between all users authorized in the company profile for this onRouteBC client account. These
+       users can modify (edit, remove and purchase) any item in the cart.
+       Have any questions? 
+
+       Please contact the Provincial Permit Centre. Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca"
+
 @orv2-1486-9, @orv2-2048-5
 Rule: Navigate to shopping cart from anywhere in onRouteBC
 
@@ -67,13 +80,13 @@ Rule: Show indication in the shopping cart when nothing is in the cart
   Scenario: User has no items in cart
     Given the User chooses to view cart
     When they arrive at the cart
-     Then they see "nothing found"
+     Then they see "Cart is empty."
 
   Scenario: other Users have items in cart
     Given the User chooses to view cart
     When they arrive at the cart
      And they are at "my applications"
-     Then they see "nothing found"
+     Then they see "Cart is empty."
 
 @orv2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
@@ -130,8 +143,8 @@ Rule: Edit application in the cart
       And the permit application attestations are removed
       And the item is removed from the shopping cart
 
-@orv2-1486-15, @orv2-2048-11
-Rule: Remove applications in the cart
+@orv2-1486-15, @orv2-2048-11, @orv2-3176-2
+Rule: Optionally remove applications in the cart
 
   Scenario: no items in cart
     Given user has no items in the shopping cart
@@ -139,61 +152,126 @@ Rule: Remove applications in the cart
      Then remove from cart is disabled
 
   Scenario: remove an item
-    Given the user has items in the cart
-     When they select one of many items
-      And they choose to remove the selected item
-     Then the item is removed from the cart
+    Given the user has app A in the cart
+     When they select app A
+      And they choose to remove app A
+     Then they see:
+       "Remove Application
+       You are removing 1 items from your cart. Are you sure you want to continue?"
+
+  Scenario: continue on remove application warning
+    Given app A was selected to remove 
+     When they choose to remove
+     Then they are directed to the cart
+      And app A is not in the cart
       And remaining items are all selected in the current filter view
 
-  Scenario: item already removed warning
-    Given user attempts to remove and item from the cart 
-     When they choose to remove an item
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+  Scenario: item already removed update warning
+    Given app A has been removed from the cart
+     When user attempts to remove app A from the cart 
+     Then they see:
+       "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
-  Scenario: item already removed continue
-    Given user is at update warning
+  Scenario: continue on remove update warning
+    Given app A has been removed from the cart
+      And user is at update warning
      When they choose to continue
-     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
-      And they see the <list of applications> removed from the cart
+     Then they are directed to the cart all applications
+      And app A is not in the cart
+      And all applications in the cart are selected
 
-   Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
+@orv2-1486-16, @orv2-2048-12, @orv2-3176-3
+Rule: Remove purchased or optionally removed applications from the cart
 
-
-#deprecated
-@orv2-1486-16, @orv2-2048-12
-Rule: Remove items in cart that are not in compliance with policy
+  Scenario 2 users 1 removes 1 pays
+    Given user 1 and 2 are at the cart
+      And app A and app B are in the cart
+      And app B has been removed by user 1
+     When user 2 pays for the cart
+     Then user 2 sees "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And user 1 sees app A
 
   Scenario: continue update cart warning from pay
-    Given permit application(s) in cart are not compliant with policy
-     When a user chooses to pay 
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And continuing removes the permit application(s) in cart are not compliant with policy
+    Given app B was invalid
+     When a user chooses continue
+     Then they are directed to to the cart all applications
+      And app B is not in the cart
+      And all applications in the cart are selected
 
+  Scenario: 2 users 1 pays for the entire cart
+    Given user 1 and 2 are at the cart
+      And user 1 pays for the entire cart
+     When user 2 pays for the cart
+     Then user 2 sees "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: 2 users 1 pays for the entire cart continue
+    Given user 1 pays for the entire cart
+      And there are no applications in the cart
+     When a user 2 chooses continue
+     Then they are directed to to the cart all applications
+      And they see "Cart is empty"
+
+@orv2-3176-4
+Rule: Applications that fail policy validation will prevent a user from paying for the cart
+      
   Scenario: start date in the past pay
     Given permit application(s) have a <start date> before the <current date>
      When a user chooses to pay
-     Then these permit application(s) are removed from the cart
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
-  Examples:
-    | start date | current date |
-    | 03/01/2023 | 03/02/2023   |
+  Scenario: reduce LOA(s) term
+    Given user has permit A in cart
+     And permit A uses LOA(s) B
+     And permit A exceeds the LOA(s) B end date
+     When they choose to pay
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
- # Deprecated - items are only checked at pay
-  # Scenario: start date in the past view cart
-    Given permit application(s) have a <start date> before the <current date>
-     When a user views the shopping cart
-     Then these permit application(s) are removed from the cart
+  Scenario: LOA(s) edited to remove permit type vehicles and date still valid
+    Given user has permit A in cart
+      And permit A uses LOA(s) B
+      And LOA(s) B uses vehicle 1
+      And vehicle 1 is removed from LOA(s) B
+     When they pay now
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
-  Examples:
-    | start date | current date |
-    | 03/01/2023 | 03/02/2023   |
-   
-@orv2-1486-17, @orv2-2048-13
-Rule: Show items removed from cart 
+  Scenario: LOA(s) edited to remove permit type date still valid
+    Given user has permit A in cart
+      And permit A uses LOA(s) B
+      And LOA(s) B uses permit type 1
+      And permit type 1 is removed from LOA(s) B
+     When they pay now
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: update cart continue on warning
+     When a user chooses to update cart
+     Then they are directed to the cart all applications
+      And they see:
+       "Your shopping cart cannot be completed.
+       The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
+       the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
+       vehicle."
+      And they see "Invalid Application" at the invalid application in 
+
+  Scenario: pay again without removing invalid application(s)
+    Given invalid applications remain in the cart
+     When a user chooses to pay
+     Then they see:
+       "Application Errors 
+       Applications in your shopping cart has errors. Please deselect or remove them to continue."
+ 
+   Scenario: pay again close
+      When a user chooses to close the application errors warning
+      Then they are directed to the cart
+       And they see:
+       "Your shopping cart cannot be completed.
+       The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
+       the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
+       vehicle."
+      And they see "Invalid Application" at the invalid application in 
+
+# deprecated
+# @orv2-1486-17, @orv2-2048-13
+# Rule: Show items removed from cart 
 
   Scenario: no items removed
     Given no items have been removed from the company cart

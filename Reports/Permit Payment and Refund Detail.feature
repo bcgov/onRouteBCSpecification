@@ -158,3 +158,14 @@ Rule: Format pdf output to 8.5x11 letter size landscape layout
 
  @orv2-556-20
 Rule: Number pages consecutively in footer
+
+@orv2-3142-1
+Rule: "Pending" shown when receipt or permit number are not available
+
+  Scenario: 10 issued 3 pending
+    Given 10 permits issued
+      And 3 are pending
+     When staff run the detail report before the scheduler issues the 3 pending permits
+      Then they see "Pending" for permit number
+       And they see "Pending" for receipt number for all 10 items in the transaction
+
