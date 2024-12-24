@@ -220,25 +220,25 @@ Rule: Applications that fail policy validation will prevent a user from paying f
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
   Scenario: reduce LOA(s) term
-    Given user has permit A in cart
-     And permit A uses LOA(s) B
-     And permit A exceeds the LOA(s) B end date
+    Given user has app A in cart
+     And app A uses LOA(s) B
+     And app A exceeds the LOA(s) B end date
      When they choose to pay
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
   Scenario: LOA(s) edited to remove permit type vehicles and date still valid
-    Given user has permit A in cart
-      And permit A uses LOA(s) B
+    Given user has app A in cart
+      And app A uses LOA(s) B
       And LOA(s) B uses vehicle 1
       And vehicle 1 is removed from LOA(s) B
      When they pay now
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
   Scenario: LOA(s) edited to remove permit type date still valid
-    Given user has permit A in cart
-      And permit A uses LOA(s) B
-      And LOA(s) B uses permit type 1
-      And permit type 1 is removed from LOA(s) B
+    Given user has app A in cart
+      And app A uses LOA(s) B
+      And LOA(s) B uses app type 1
+      And app type 1 is removed from LOA(s) B
      When they pay now
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
