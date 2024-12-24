@@ -250,14 +250,14 @@ Rule: Applications that fail policy validation will prevent a user from paying f
        The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
        the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
        vehicle."
-      And they see "Invalid Application" at the invalid application in 
+      And they see "Invalid Application" at the invalid application
 
   Scenario: pay again without removing invalid application(s)
     Given invalid applications remain in the cart
      When a user chooses to pay
      Then they see:
        "Application Errors 
-       Applications in your shopping cart has errors. Please deselect or remove them to continue."
+       Applications in your shopping cart has errors. Please deselect or remove them to continue"
  
    Scenario: pay again close
       When a user chooses to close the application errors warning
@@ -267,7 +267,7 @@ Rule: Applications that fail policy validation will prevent a user from paying f
        The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
        the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
        vehicle."
-      And they see "Invalid Application" at the invalid application in 
+      And they see "Invalid Application" at the invalid application
 
 # deprecated
 # @orv2-1486-17, @orv2-2048-13
