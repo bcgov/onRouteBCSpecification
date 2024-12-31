@@ -1,4 +1,4 @@
-Feature: Common report parameters
+Feature: Common report features
 
 Rule: Default report type choosen on reports page
 
@@ -52,3 +52,26 @@ Rule: Issued by is the user that adds the permit application to the cart
 
 Greyed out To date selection options based on the From date
 Warning message if they select a From date that is too far away from the To date
+
+@orv2-2856-1
+Feature: Export reports to CSV
+
+Payment and Refund Detail Sample: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B972CCEC0-F4DA-4CCA-8DA4-C75D689964A0%7D&file=Payment%20and%20Refund%20Detail.csv&action=default&mobileredirect=true
+
+Payment and Refund Summary Sample: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B31B05184-528A-48A7-8694-1621576FE791%7D&file=Payment%20and%20Refund%20Summary.csv&action=default&mobileredirect=true
+
+@orv2-2856-2
+Rule: Users can choose to viw the report pdf or export to CSV field
+
+  Scenario: export
+    Given a user chooses to export as CSV
+     When they choose to generate the report
+     Then they see the option to save the report
+
+@orv2-2856-3
+Rule: View as PDF is the default 
+
+  Scenario: arrive at reports
+     When a user has been directed to reports
+     Then they see "View as PDF" chosen
+
