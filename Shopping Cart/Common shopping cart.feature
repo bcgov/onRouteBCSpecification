@@ -179,6 +179,7 @@ Rule: Optionally remove applications in the cart
      Then they are directed to the cart all applications
       And app A is not in the cart
       And all applications in the cart are selected
+      And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
 
 @orv2-1486-16, @orv2-2048-12, @orv2-3176-3
 Rule: Remove purchased or optionally removed applications from the cart
@@ -197,6 +198,7 @@ Rule: Remove purchased or optionally removed applications from the cart
      Then they are directed to to the cart all applications
       And app B is not in the cart
       And all applications in the cart are selected
+      And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
 
   Scenario: 2 users 1 pays for the entire cart
     Given user 1 and 2 are at the cart
@@ -221,8 +223,8 @@ Rule: Applications that fail policy validation will prevent a user from paying f
 
   Scenario: reduce LOA(s) term
     Given user has app A in cart
-     And app A uses LOA(s) B
-     And app A exceeds the LOA(s) B end date
+      And app A uses LOA(s) B
+      And app A exceeds the LOA(s) B end date
      When they choose to pay
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
@@ -268,6 +270,13 @@ Rule: Applications that fail policy validation will prevent a user from paying f
        the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
        vehicle."
       And they see "Invalid Application" at the invalid application
+
+  Scenario: my applications valid all application has invalid
+    Given there is an invalid application in all applications 
+      But not in my applications
+     When they choose My Applications
+     Then "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
+
 
 # deprecated
 # @orv2-1486-17, @orv2-2048-13

@@ -20,7 +20,7 @@ Scenario: Save changes to a Power Unit
     And they are directed to the vehicle inventory
     And the saved Power Unit is shown in the vehicle inventory with the saved data
  
-@orv2-14-3
+@orv2-141-3
 Scenario: Cancel create Power Unit
     Given the CV Client is editing a Power Unit
     When they cancel edit

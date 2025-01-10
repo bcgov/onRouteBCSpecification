@@ -1,8 +1,10 @@
 Feature: Manage Expired Permit List
    As a CV Client I need to be able to view a list of my Expired permits so that I can complete actions on them and keep track of my issued and Expired permits.
 
-@orv2-995-0 @orv2-1651-5
-Rule: CV Clients PA and SA can view Expired permits if any exist and see relevant information about them, CV Client PA can only view permits they created
+CV Client = CA, PA
+
+@orv2-995-0 @orv2-1651-5 @orv2-3282-1
+Rule: CV Client can view Expired permits if any exist and see relevant information about them
 
   Scenario: Default Expired permits listed
     Given the CV Client is at the "Permits" page
@@ -22,13 +24,15 @@ Rule: CV Clients PA and SA can view Expired permits if any exist and see relevan
         | Permit End Date   |
         | Issued By         |
      And the default sort order is "Permit Start Date" newest at the top
-     And CV Client PA only see permits they created
 
   Scenario: No Expired permits
     Given the CV Client is at the "Permits" page
       And there are no Expired permits 
      When they choose to view "Expired Permits"
      Then they see "No records found."
+
+@orv2-3282-3
+Rule: CV Client can see staff issued expired permits 
 
 @orv2-3072-3
 Rule: Issued by is the user that adds the permit application to the cart
@@ -42,7 +46,7 @@ Rule: Issued by is the user that adds the permit application to the cart
      Then issued by is logged in user first name last name
 
 @orv2-1007-1
-Rule: CV Clients PA and SA can view the permit and permit payment receipt pdf
+Rule: CV Client can view the permit and permit payment receipt pdf
 
   Scenario: View receipt pdf
     Given the CV Client is at the "Expired Permits" tab

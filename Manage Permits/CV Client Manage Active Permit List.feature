@@ -3,8 +3,8 @@ Feature: Manage Active Permit List
 
 CV Client = CA, PA
 
-@orv2-950-0 @orv2-1650-0
-Rule: CV Clients can view the active permits list
+@orv2-950-0 @orv2-1650-0 @orv2-3282-2
+Rule: CV Clients can view the active permits list if any exist and see relevant information about them
 
   Scenario: Default Active permits listed
     Given the CV Client is at the "Permits" page
@@ -31,6 +31,9 @@ Rule: CV Clients can view the active permits list
       And there are no active permits 
      When they choose to view "Active Permits"
      Then they see "No records found."
+
+@orv2-3282-4
+Rule: CV Client can see staff issued active permits 
 
 @orv2-3072-5
 Rule: Issued by is the user that adds the permit application to the cart
