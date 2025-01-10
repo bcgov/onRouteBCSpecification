@@ -128,13 +128,6 @@ Rule: Edit application in the cart
     Given a user chooses to edit an application that is in the cart
      When a different user chooses to edit the same application
      Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      ## And they see the <list of applications> removed from the cart
-
-  ## Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
 
   Scenario: continue edit action
     Given the user is at edit warning 

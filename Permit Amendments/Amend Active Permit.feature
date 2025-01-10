@@ -12,7 +12,7 @@ Rule: Can only amend an issued or active permit
      Then they cannot amend it
 
   Scenario: Permit is issued
-    Given the PPC SA has found a issued permit
+    Given the PPC SA has found an issued permit
      When they choose to amend it
      Then they are directed to the amend permit 
 

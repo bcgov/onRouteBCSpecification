@@ -31,4 +31,13 @@ Rule: Staff can filter cart items by their items or all CA, PA and Staff items
      Then they see all applications started by the logged in staff user 
       And those started by other CA, PA and Staff users added to the cart
 
+@orv2-3176-x
+# Staff can pay for an invalid permit application
+ - warn
+ - date in past
+ - LCV
+ - LOA
+
+
+
 # Rule: HQA, FIN and EO cannot see the shopping cart icon
