@@ -32,11 +32,45 @@ Rule: Staff can filter cart items by their items or all CA, PA and Staff items
       And those started by other CA, PA and Staff users added to the cart
 
 @orv2-3176-x
-# Staff can pay for an invalid permit application
+Rule: Staff can pay for a permit application with a start date in the past
+ 
+  Scenario: date in past
+    Given permit app A has a start date in the past
+     When staff choose to pay
+     Then they see 
+
+
+
  - warn
+ - 
  - date in past
+
  - LCV
  - LOA
+
+   Scenario: date extension
+     Given permit A 
+      When 
+      Then 
+ 
+   Scenario: km added
+     Given 
+      When 
+      Then 
+ 
+   Scenario: weight increased
+     Given 
+      When 
+      Then 
+ 
+  Scenario: dangerous goods
+    Given 
+     When 
+     Then 
+
+
+ 
+
 
 
 

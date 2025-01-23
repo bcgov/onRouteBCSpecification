@@ -194,7 +194,7 @@ Rule: Calculate bridge formula (BF) for each axle group as 30 x (BCW) (cm) + 18,
      When a user chooses to calculate
      Then BF is 37200
 
-# confirm other possible vehicle configs
+ # confirm other possible vehicle configs
   Scenario: 5 axle unit vehicle
     Given there are 5 axle units
      When a user chooses to calculate
@@ -259,4 +259,3 @@ Rule: A user can optionally reset all inputted data in the BFCT parameter table
      Then they are directed to the BFCT
       And all input is removed
       And the BFCT parameter table is at its default state
-

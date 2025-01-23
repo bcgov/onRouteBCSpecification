@@ -267,9 +267,9 @@ Rule: Applications that fail policy validation will prevent a user from paying f
   Scenario: my applications valid all application has invalid
     Given there is an invalid application in all applications 
       But not in my applications
-     When they choose My Applications
+     When a user chooses My Applications
      Then "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
-
+      And they can continue
 
 # deprecated
 # @orv2-1486-17, @orv2-2048-13
