@@ -259,3 +259,4 @@ Rule: A user can optionally reset all inputted data in the BFCT parameter table
      Then they are directed to the BFCT
       And all input is removed
       And the BFCT parameter table is at its default state
+
