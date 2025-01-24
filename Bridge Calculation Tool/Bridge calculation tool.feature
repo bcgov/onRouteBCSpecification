@@ -114,13 +114,13 @@ Rule: Remove axle unit option shows on hover tooltip "Remove"
 Rule: Axle unit columns following removed axle unit column are shifted left and renumbered
 
   Scenario: 4 axle units remove axle unit 3
-    Given Axle 4  has the the following parameters:
+    Given Axle Unit 4  has the the following parameters:
       | Number of Axles       | 2     |
       | Axle Spread (m)       | 1.60  |
       | Interaxle Spacing (m) | 5.00  |
       | Axle Unit Weight (kg) | 23000 |
-     When chooses to remove axle unit 3
-     Then axle unit 3 has the follwoing parameters:
+     When a user chooses to remove axle unit 3
+     Then axle unit 3 has the following parameters:
       | Number of Axles       | 2     |
       | Axle Spread (m)       | 1.60  |
       | Interaxle Spacing (m) | 5.00  |
