@@ -61,12 +61,12 @@ Rule: Show 1 interaxle spacing column for every 2 axle units
 @orv2-2916-8
 Rule: Axle spread is available when there are 2 or more axles in an axle unit
 
-  Scenario: axle unit is 1
+  Scenario: number of axles is 1
      When a user inputs 1 
      Then axle spread is not available
 
-  Scenario: axle unit is empty
-     When axle unit is empty
+  Scenario: number of axles is empty
+     When number of axles is empty
      Then axle spread is available
 
 @orv2-2916-9
