@@ -59,8 +59,12 @@ Rule: Show 1 interaxle spacing column for every 2 axle units
      Then they see an interaxle spacing column and input field preceding the newly added axle unit
 
 @orv2-2916-8
-Rule: Axle spread is available when there are 2 or more axles in an axle unit
+Rule: Axle spread is available when there are 2 or more axles in number of axles or number of axles is empty
 
+  Scenario: number of axles is 2
+     When a user inputs 2 
+     Then axle spread is available
+  
   Scenario: number of axles is 1
      When a user inputs 1 
      Then axle spread is not available
@@ -68,9 +72,6 @@ Rule: Axle spread is available when there are 2 or more axles in an axle unit
   Scenario: number of axles is empty
      When number of axles is empty
      Then axle spread is available
-
-@orv2-2916-9
-Rule: Axle spread is not available when there are 2 or more axles in an axle unit
 
 @orv2-2916-10
 Rule: Keyboard tab order is left to right per row
