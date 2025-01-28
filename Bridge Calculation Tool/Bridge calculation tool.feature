@@ -88,7 +88,7 @@ Rule: Keyboard tab order is left to right per row
      When they use keyboard tab once
      Then the cursor is at axle unit 4 row 2
 
-# whats the limit?
+ # whats the limit?
 @orv2-2916-11
 Rule: User can optionally add additional axle unit input columns following preceding axle unit columns
 
@@ -195,7 +195,7 @@ Rule: Calculate bridge formula (BF) for each axle group as 30 x (BCW) (cm) + 18,
       | axle spread       | null |
       | interaxle spacing | 4.90 |
       | axle unit weight  | 4200 |
-      And axle unit has 2 has the following parameters
+      And axle unit 2 has the following parameters
       | number of axles   | 2     |
       | axle spread       | 1.50  |
       | interaxle spacing | N/A   |
@@ -218,7 +218,7 @@ Rule: Axle groups fail BF when the sum of the axle unit weight for an axle group
       | axle spread       | 1.00  |
       | interaxle spacing | 3.00 |
       | axle unit weight  | 15600 |
-      And axle unit has 4 has the following parameters
+      And axle unit 4 has the following parameters
       | number of axles   | 2     |
       | axle spread       | 1.10  |
       | interaxle spacing | N/A   |
