@@ -69,6 +69,10 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
+  Scenario: -number
+     When a user inputs -100
+     Then they see "Invalid Input"
+
 @orv2-2608-5 @orv2-2612-5
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
@@ -109,7 +113,7 @@ Rule: The origin, destination and exit point is resolved and the chosen resolved
        | Blanshard St, Maple Ridge, BC  |
 
 @orv2-2608-8 @orv2-2612-8
-Rule: Users must input a total distance in km
+Rule: Users must input a total distance in km 
 
   Scenario: no input
      When a user chooses to continue to review and confirm
@@ -121,8 +125,20 @@ Rule: Users must input a total distance in km
     Given a user inputs "eight hundred" in total distance
      When they choose to continue
      Then they can not continue
-      And they see "invalid input"
+      And they see "Invalid Input"
       And the mandatory field is indicated
+
+  Scenario: -number
+     When a user inputs -100
+     Then they see "Invalid Input"
+
+@orv2-2608-16 @orv2-2612-16
+Rule: Total distance resolves to 2 decimal places
+
+  Scenario: input 100.555
+    Given a user input 100.555
+     When they leave the field
+     Then they see 100.55
 
 @orv2-2608-9 @orv2-2612-9
 Rule: Users must input specific route details
