@@ -39,7 +39,6 @@ Rule: Staff search by company name also searches doing business as
         | Juliette Transport |
         | Julily Trucking    |
         | Julies Inc.        |
-      But the results do not include "Truck Julie"
 
 @orv2-1362-16
 Rule: Indicate if no records are found and provide option to create company only to PPC SA or PC

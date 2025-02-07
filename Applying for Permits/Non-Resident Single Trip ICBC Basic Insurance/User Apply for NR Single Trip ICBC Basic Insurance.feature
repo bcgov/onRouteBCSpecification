@@ -61,6 +61,7 @@ Insurance permit manually or chosen from inventory
     Given a user chooses "British Columbia" as Province / State
      When they choose to continue
      Then they see "BC plated vehicles don't require this permit."
+      And they can not continue
 
 # see common save vejicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 

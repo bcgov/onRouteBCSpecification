@@ -2,6 +2,7 @@ Feature: Amend LOA Permit
 
 Staff = SA, PC, CTPO, Trainee
 
+@orv2-2860-1
 Rule: Vehicle details are removed from an amending LOA permit when the LOA vehicle used in the LOA Permit is removed
 
 # is this possible? Is this possible for dates as well?
@@ -12,6 +13,7 @@ Rule: Vehicle details are removed from an amending LOA permit when the LOA vehic
      When staff amend permit A
      Then vehicle D is removed
 
+@orv2-2860-2
 Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
   
   Scenario: available LOA(s)
@@ -23,12 +25,13 @@ Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
        | LOA B expiry date |
       And LOA B is unavailable
 
-Rule: LOA permits using expired LOA(s) have allowable permit duration availble for their permit type
+@orv2-2860-3
+Rule: LOA permits using expired LOA(s) have allowable permit duration available for their permit type
 
   Scenario: term permit
     Given LOA permit A is a term permit
       And it uses expired LOA B
-     When staff amend LOA permit a
+     When staff amend LOA permit A
      Then they see the following permit duration options:
        | term |
        | 30   |
