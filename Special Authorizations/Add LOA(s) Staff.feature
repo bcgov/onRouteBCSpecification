@@ -12,7 +12,7 @@ Rule: Staff can add an LOA to a CV Client profile
      Then they are directed to the first step of the add LOA workflow
 
 @orv2-1152-2
-Rule: Staff must designate at least one permit type to the LOA
+Rule: Staff must designate at least one permit type in the LOA
 
   Scenario: none chosen
     Given staff do not choose a permit type
@@ -41,9 +41,10 @@ Rule: Staff must input an LOA start date
      Then they cannot choose the date
 
   Scenario: never expires
-    Given staff have chosen LOA never expires
+    Given staff have not chosen LOA never expires
+      And have not chosen an end date
      When they choose to continue
-     Then they see "This is a required field"
+     Then they see "This is a required field" 
 
 @orv2-1152-4
 Rule: Staff must input an LOA expiry date that is not before the LOA start date
@@ -70,7 +71,7 @@ Rule: Staff can designate an LOA as non-expiring
   Scenario: viewing active LOA's list
     Given active LOA(s) exist
      When LOA is non expiring
-     Then Never expires is shown
+     Then "Never expires" is shown
 
 @orv2-1152-6
 Rule: Staff must upload a LOA pdf file
@@ -127,7 +128,7 @@ Rule: Staff can delete an uploaded LOA pdf file
   Scenario: delete file warning
     Given a file is uploaded
      When staff choose delete an uploaded pdf file
-     Then they see "Delete item (s)?, Are you sure you want to delete this?"
+     Then they see "Delete item(s)?, Are you sure you want to delete this?"
 
   Scenario: delete file
      When staff choose to delete file
@@ -183,6 +184,11 @@ Rule: Staff can search for a power unit or a trailer in the CV Client vehicle in
 
 @orv2-1152-15
 Rule: A VIN can be designated to one or more LOA(s) 
+# vehicle association to an LOA is NOT by VIN but by onRouteBC unique identifier
+# this allows a VIN to exist multiple times in onRouteBC should 2 companies have the same VIN onRouteBC will see them as unique vehicles
+# what happens when a CV Client updates a vehicle VIN? if VIN is the 
+# Rule: A PU or Trailer can be designated to one or more LOA(s)
+
 
 @orv2-1152-16
 Rule: The list of vehicles are paginated
