@@ -7,11 +7,12 @@ Users = All
 @ovr2-3280-1
 Rule: Update global notification content 
 
-# what is possible for the content
+# what is possible for the content?
 
 @ovr2-3280-2
 Rule: Display global notification only once when a user logs in
-
+ # on the website this would remain visible
+ 
   Scenario: new log in
     Given the user not currently logged in to onRouteBC
      When they log in
@@ -22,11 +23,11 @@ Rule: Display global notification only once when a user logs in
      When they open onRouteBC
      Then they see do not see the global notification
 
-# on the website this would remain visible
 
 @ovr2-3280-3
 Rule: Set start date/time and end date/time to display the global notification to users
 
+ 
   Scenario: start date/time
     Given staff have set a start date time of  Apr. 15, 2025, 8:23 am PDT 
      When a user logs into onRoute on or after Apr. 15, 2025, 8:23 am PDT

@@ -22,7 +22,7 @@ Rule: Staff see company profile contact details
      When they view "Contact Information"
      Then they see the following read-only contact information from the CV Client profile:
        | company email |
-     And they see "The permit will be sent..." information box
+      And they see "The permit will be sent..." information box
 
 @orv2-1384-22 @orv2-2388
 Rule: Staff can update application contact details

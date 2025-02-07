@@ -76,11 +76,13 @@ Rule: A term permit application can have one or more LOA(s) chosen to apply with
 @orv2-2261-7
 Rule: Vehicle VIN must match the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
+ #not valid
   Scenario: LOA(s) vehicle chosen LOA(s) removed
     Given the user has chosen an LOA(s)
      When they remove the chosen LOA(s)
      Then the chosen LOA(s) vehicle is not available in the permit application
 
+#not valid
   Scenario: vehicle removed from inventory
     Given an active LOA(s) has vehicle A
      When vehicle A is removed from inventory
@@ -153,3 +155,6 @@ Rule: A permit application is unaffected by changes to the LOA(s) used during th
      When 
      Then 
 
+# vehicle changes will not be reflected in the LOA 
+# VIN is not the link to an LOA it is a onRouteBC generated unique id
+    # If the VIN is updated for an vehicle on an LOA then it will be a valid LOA vehicle 

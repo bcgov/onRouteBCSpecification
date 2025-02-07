@@ -101,11 +101,16 @@ Rule: Staff are shown the uploaded LOA pdf filename
 @orv2-1152-8
 Rule: An LOA pdf file must be uploaded
 
+  # confirm
   Scenario: not pdf
     Given staff are choosing a file to upload
      When they choose a .txt file 
      Then they are directed to the first step of the LOA workflow
       And they see "File format not supported"
+
+  Scenario: not pdf
+     When staff are choosing a file to upload
+     Then they see only .pdf files available
 
 @orv2-1152-9
 Rule: The max file size for an LOA pdf file is 10MB
