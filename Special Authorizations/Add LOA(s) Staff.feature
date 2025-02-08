@@ -100,7 +100,7 @@ Rule: Staff are shown the uploaded LOA pdf filename
      Then they see only the filename and file type extension
 
 @orv2-1152-8
-Rule: An LOA pdf file must be uploaded
+Rule: An pdf file must be uploaded
 
   # confirm
   Scenario: not pdf
@@ -184,15 +184,14 @@ Rule: Staff can search for a power unit or a trailer in the CV Client vehicle in
 
 @orv2-1152-15
 Rule: A VIN can be designated to one or more LOA(s) 
-# vehicle association to an LOA is NOT by VIN but by onRouteBC unique identifier
-# this allows a VIN to exist multiple times in onRouteBC should 2 companies have the same VIN onRouteBC will see them as unique vehicles
-# what happens when a CV Client updates a vehicle VIN?
+ # vehicle association to an LOA is NOT by VIN but by onRouteBC unique identifier
+ # this allows a VIN to exist multiple times in onRouteBC should 2 companies have the same VIN onRouteBC will see them as unique vehicles
+ # what happens when a CV Client updates a vehicle VIN?
   Scenario: update VIN
     Given 
      When 
      Then 
- 
-# Rule: A PU or Trailer can be designated to one or more LOA(s)
+ # Rule: A PU or Trailer can be designated to one or more LOA(s)
 
 @orv2-1152-16
 Rule: The list of vehicles is paginated
