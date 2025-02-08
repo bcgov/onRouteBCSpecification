@@ -50,7 +50,11 @@ Rule: LOA(s) must have valid term length to be available in the permit applicati
      Then the LOA(s) is shown
       But the LOA(s) cannot be chosen
 
-# Rule: LOA(s) must have a future start date within 14 days of the current date to be available in the permit application
+  Scenario: LOA(s) has not started
+    Given a cv client has one LOA(s)
+     And the LOA(s) starts on 02/22/2025
+     When a user applies for a term permit on 02/07/2025
+     Then the LOA(s) cannot be chosen
 
 @orv2-2261-5
 Rule: Permit start date and duration are limited by the chosen LOA(s) with the shortest term length
@@ -74,18 +78,21 @@ Rule: Permit start date and duration are limited by the chosen LOA(s) with the s
 Rule: A term permit application can have one or more LOA(s) chosen to apply with
 
 @orv2-2261-7
-Rule: Vehicle VIN must match the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
+Rule: Vehicle #VIN# must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
  #not valid
   Scenario: LOA(s) vehicle chosen LOA(s) removed
-    Given the user has chosen an LOA(s)
-     When they remove the chosen LOA(s)
-     Then the chosen LOA(s) vehicle is not available in the permit application
+    Given the user has chosen LOA(s) 1
+      And LOA(s) 1 has vehicle A
+      And they have chosen vehicle A
+     When they remove LOA(s) 1
+     Then the vehicle A is not available in the permit application
 
 #not valid
   Scenario: vehicle removed from inventory
-    Given an active LOA(s) has vehicle A
+    Given active LOA(s) 1 has vehicle A
      When vehicle A is removed from inventory
+      And LOA(s) 1 is chosen
      Then vehicle A is not available in the permit application
 
 #tag with amend

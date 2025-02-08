@@ -186,12 +186,16 @@ Rule: Staff can search for a power unit or a trailer in the CV Client vehicle in
 Rule: A VIN can be designated to one or more LOA(s) 
 # vehicle association to an LOA is NOT by VIN but by onRouteBC unique identifier
 # this allows a VIN to exist multiple times in onRouteBC should 2 companies have the same VIN onRouteBC will see them as unique vehicles
-# what happens when a CV Client updates a vehicle VIN? if VIN is the 
+# what happens when a CV Client updates a vehicle VIN?
+  Scenario: update VIN
+    Given 
+     When 
+     Then 
+ 
 # Rule: A PU or Trailer can be designated to one or more LOA(s)
 
-
 @orv2-1152-16
-Rule: The list of vehicles are paginated
+Rule: The list of vehicles is paginated
 
 @orv2-1152-17
 Rule: Staff are shown all data submitted in the LOA workflow for review 
