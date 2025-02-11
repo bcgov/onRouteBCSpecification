@@ -2,7 +2,7 @@ Feature: As a user I need to use one or more active letter of authorization(s) (
 
 Users = SA, HQA, PC, CTPO, Trainee, CA, PA 
 
-@orv2-2261-1
+@orv2-2261-1 @orv2-2860-14
 Rule: The LOA(s) feature is hidden if there are no active or expired LOA(s)
 
   Scenario: no active LOA(s)
@@ -87,7 +87,7 @@ Rule: Permit start date and duration are limited by the chosen LOA(s) with the s
 Rule: A term permit application can have one or more LOA(s) chosen to apply with
 
 @orv2-2261-7 @orv2-2860-4
-Rule: Vehicle #VIN# must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
+Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
   Scenario: LOA(s) vehicle chosen LOA(s) removed
     Given the user has chosen LOA(s) 1
@@ -141,15 +141,7 @@ Rule: The user can review the chosen LOA(s) parameters before completing the per
 @orv2-2261-10 @orv2-2860-11
 Rule: The chosen LOA(s) numbers are printed on the issued permit pdf
 
-@orv2-2261-11 
-Rule: Issued or active permit(s) are unaffected by changes to the LOA(s) used in their initial permit application submission
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-@orv2-2261-12
+@orv2-2261-12 @orv2-2860-13
 Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
 
   Scenario: application in cart pay now
@@ -167,11 +159,22 @@ Rule: A permit application is unaffected by changes to the LOA(s) used during th
      When 
      Then 
 
-  Scenario: 
+  Scenario: 1 LOA expired
     Given 
      When 
      Then 
 
+  Scenario: 2 LOA expired
+    Given 
+     When 
+     Then 
+
+    Given permit A uses LOA B and LOA C
+      And permit A uses vehicle D from LOA B
+      And vehicle D has been removed from LOA B
+      And vehicle D is not allowed for the permit A permit type
+     When staff amend permit A
+     Then vehicle D is removed
 
 # vehicle changes will not be reflected in the LOA 
     # removal from inventory - test
@@ -180,3 +183,4 @@ Rule: A permit application is unaffected by changes to the LOA(s) used during th
     # If the VIN is updated for a vehicle on an LOA then it will be a valid LOA vehicle? - test
 
 # expired LOA before permit expiry will be handled manually 
+# Vehicle VIN deletion would be handled manually look up existing permits and amend or void, revoke.

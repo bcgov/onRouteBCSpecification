@@ -1,11 +1,31 @@
 User = CA, PA, SA, PC, CTPO, Trainee
 
-Zhong Yu - re the cart #nextaction
-
 Rule: Maximum 15 characters allowed in Transaction ID
 
 Enter 16 characters
 they see "Maximum 15 characters"
+
+In staff shooping cart:
+
+   Scenario: date extension
+     Given permit A 
+      When 
+      Then 
+ 
+   Scenario: km added
+     Given 
+      When 
+      Then 
+ 
+   Scenario: weight increased
+     Given 
+      When 
+      Then 
+ 
+  Scenario: dangerous goods
+    Given 
+     When 
+     Then 
 
   Scenario: fail 2.3 and 4.5 5 axle units
 [

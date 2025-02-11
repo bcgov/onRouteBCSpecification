@@ -2,6 +2,7 @@ Feature: Shopping cart
   As a User I need to be able to purchase more than one permit at once, so that I can save time.
 
 User = CA, PA, SA, PC, CTPO, Trainee
+CV Client = CA, PA
 
 @orv2-3176-1
 Rule: Show persistent cart info box
@@ -87,6 +88,14 @@ Rule: Show indication in the shopping cart when nothing is in the cart
     When they arrive at the cart
      And they are at "my applications"
      Then they see "Cart is empty."
+
+@orv2-3176-5
+Rule: Pay now is unavailable when no items are in the cart
+
+  Scenario: all applications
+    Given there are no items in all applications
+     When a user chooses to pay
+     Then pay is not available
 
 @orv2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
@@ -175,7 +184,7 @@ Rule: Optionally remove applications in the cart
       And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
 
 @orv2-1486-16, @orv2-2048-12, @orv2-3176-3
-Rule: Remove purchased or optionally removed applications from the cart
+Rule: Remove purchased or optionally removed applications by other logged in user from the cart 
 
   Scenario 2 users 1 removes 1 pays
     Given user 1 and 2 are at the cart
@@ -207,7 +216,7 @@ Rule: Remove purchased or optionally removed applications from the cart
       And they see "Cart is empty"
 
 @orv2-3176-4
-Rule: Applications that fail policy validation will prevent a user from paying for the cart
+Rule: Applications that fail policy validation will prevent a CV Client from paying for the cart
       
   Scenario: start date in the past pay
     Given permit application(s) have a <start date> before the <current date>
@@ -255,7 +264,7 @@ Rule: Applications that fail policy validation will prevent a user from paying f
        Applications in your shopping cart has errors. Please deselect or remove them to continue"
  
    Scenario: pay again close
-      When a user chooses to close the application errors warning
+      When a CV Client chooses to close the application errors warning
       Then they are directed to the cart
        And they see:
        "Your shopping cart cannot be completed.

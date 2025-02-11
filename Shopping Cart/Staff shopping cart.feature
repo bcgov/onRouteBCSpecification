@@ -31,47 +31,11 @@ Rule: Staff can filter cart items by their items or all CA, PA and Staff items
      Then they see all applications started by the logged in staff user 
       And those started by other CA, PA and Staff users added to the cart
 
-@orv2-3176-x
+@orv2-3176-6
 Rule: Staff can pay for a permit application with a start date in the past
  
-  Scenario: date in past
-    Given permit app A has a start date in the past
-     When staff choose to pay
-     Then they see 
-
-
-
- - warn
- - 
- - date in past
-
- - LCV
- - LOA
-
-   Scenario: date extension
-     Given permit A 
-      When 
-      Then 
- 
-   Scenario: km added
-     Given 
-      When 
-      Then 
- 
-   Scenario: weight increased
-     Given 
-      When 
-      Then 
- 
-  Scenario: dangerous goods
-    Given 
-     When 
-     Then 
-
-
- 
-
-
-
-
-# Rule: HQA, FIN and EO cannot see the shopping cart icon
+  Scenario: date in past pay 
+    Given staff see "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle."
+      And they see "Invalid Application" at the invalid application(s)
+     When they choose to pay
+     Then they can pay
