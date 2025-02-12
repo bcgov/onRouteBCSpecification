@@ -4,6 +4,8 @@ Feature: Search for permits
 Staff = SA, PC, EO
 
 @orv2-937-1
+#Rule: Staff can search for permit using 1 or more characters of the permit number #specmismatch
+
   Scenario: Search by permit number
     Given staff has chosen to search by permit number
      When they search by the <permit number> using the first 11 characters of the permit
@@ -17,20 +19,39 @@ Staff = SA, PC, EO
    | P1-37982658   | P1-37982658-946-A01 | Revoked  |
    | P1-37982658   | P1-37982658-946-A01 | Voided   |
   
-@orv2-937-13
+@orv2-3411
+Rule: Staff can search for permit using 1 to 6 characters of the VIN
+
+  Scenario: 1 character
+    Given 
+     When 
+     Then
+
+  Scenario: less than 6 characters
+    Given 
+     When 
+     Then 
+
+  Scenario: more than 6 characters
+     When staff input 1234567
+     Then they cannot input character 7
+
+  Scenario: search by plate
+    Given 
+     When 
+     Then 
+
   Scenario: No results found
     Given staff has chosen to search for a permit
      When they initiate a search 
       And there are no results found
      Then they see "No results found"
 
-@orv2-937-2
   Scenario: Default to search by permit number
     Given a PC is at the global search page
      When they choose to search 
      Then they see "Search By" defaulted to "Permit Number"
 
-@orv2-937-3 
   Scenario: Permit search result data
     Given a PC has chosen to search by permit number
      When they initiate the search
@@ -50,13 +71,6 @@ Staff = SA, PC, EO
     | Permit End Date   | The calculated expiry date based on the term submitted at application                  |
     | Issue Date        | The date the permit was issued                                                         |
 
-@orv2-937-4
-  Scenario: Show truncated text on hover
-    Given a PC is at the search results
-     When they hover over truncated text
-     Then they see the entire text line
-
-@orv2-937-5
   Scenario: Search for permit by plate number
     Given a PC has chosen to search by plate number
      When they search by the <plate number> using the exact plate number
@@ -70,25 +84,38 @@ Staff = SA, PC, EO
    | A-12345      | A-12345   | Revoked  | displayed     |
    | A-123-123    | A-123-123 | Voided   | displayed     |
 
+@orv2-937-4
+Rule: truncated text on search results can be optionally shown
+
+  Scenario: Show truncated text on hover
+    Given a PC is at the search results
+     When they hover over truncated text
+     Then they see the entire text line
+
 @orv2-937-6
+Rule only active permits can be optionally shown
+
   Scenario: Show only active permits
     Given staff is at the search results
      When they choose to show only active permits
      Then only permits that have an end date and time on or before the current date and time are displayed
 
 @orv2-937-7
+Rule the permit and permit payment receipt pdf can be optionally viewed
+
   Scenario: View Permit PDF
     Given staff is at the search results
      When they chose to view the permit pdf
      Then the permit pdf is displayed in a new browser tab
 
-@orv2-937-11
   Scenario: View Receipt PDF
     Given staff is at the search results
      When they chose to view the receipt pdf
      Then the receipt pdf is displayed in a new browser tab
 
 @orv2-937-8
+Rule: authorized staff can optionally perform actions on valid search result item(s)
+
   Scenario: Show Actions
     Given a PC is at the search results
       And the <actions> are:
@@ -106,6 +133,8 @@ Staff = SA, PC, EO
     | Void/Revoke  | issued or active permit                    |
      
 @orv2-937-9
+Rule: staff can sort by any column in the returned results table
+
   Scenario: Sort search results
     Given a PC is at search results
      When they select any of the following column headers:
@@ -116,11 +145,11 @@ Staff = SA, PC, EO
       | Permit Start Date |
       | Permit End Date   |
       | Issued Date       |
-     Then the list is sorted by the selected column header
-      And the sort order is the reverse of the previously selected order
+     Then the list is sorted by the selected column header
+      And the sort order is the reverse of the previously selected order
 
 @orv2-937-15
-Rule: permits results display status labels based on their current state
+Rule: permit results display status labels based on their current state
 
   Scenario Outline: Display permit status labels
     Given staff are as search for permit

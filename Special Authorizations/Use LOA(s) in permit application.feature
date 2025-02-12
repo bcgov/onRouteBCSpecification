@@ -89,6 +89,8 @@ Rule: A term permit application can have one or more LOA(s) chosen to apply with
 @orv2-2261-7 @orv2-2860-4
 Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
+#Available vehicles only from associated LOA are available ???
+
   Scenario: LOA(s) vehicle chosen LOA(s) removed
     Given the user has chosen LOA(s) 1
       And LOA(s) 1 has vehicle A
@@ -144,37 +146,73 @@ Rule: The chosen LOA(s) numbers are printed on the issued permit pdf
 @orv2-2261-12 @orv2-2860-13
 Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
 
-  Scenario: application in cart pay now
+  #Scenario: vehicle removed from inventory allowable with permit
+    Given permit A uses LOA X and LOA Y
+      And permit A uses vehicle 1 only on LOA Y
+      And vehicle 1 has been removed from LOA Y
+      And vehicle 1 is allowed for the permit A permit type
+     When staff amend permit A
+     Then vehicle 1 is shown
+     Then the the original vehicle is shown
+
+  Scenario: vehicle removed from inventory
+    Given permit A uses LOA X and LOA Y
+      And permit A uses vehicle 1 only on LOA Y
+      And vehicle 1 has been removed from inventory
+     When staff amend permit A
+     Then vehicle 1 is not shown
+  
+    Scenario: vehicle removed from LOA allowable with permit
+    Given permit A uses LOA B and LOA C
+      And permit A uses vehicle 1 only on LOA B
+      And vehicle 1 has been removed from LOA B
+      And vehicle 1 is allowed for the permit A permit type
+     When staff amend permit A
+     Then vehicle 1 is shown
+      
+
+  Scenario: vehicle removed from LOA not allowable with permit
+    Given permit A uses LOA B and LOA C
+      And permit A uses vehicle 1 only on LOA B
+      And vehicle 1 has been removed from LOA B
+      And vehicle 1 is not allowed for the permit A permit type
+     When staff amend permit A
+     Then vehicle 1 is not shown
+
+  Scenario: LOA deleted
     Given 
      When 
      Then 
 
-  Scenario: edit saved application 
+  Scenario: LOA term shortened
     Given 
      When 
      Then 
 
-  Scenario: vehicle removed
-    Given 
-     When 
-     Then 
+   Scenario: LOA term lengthened
+     Given 
+      When 
+      Then 
 
   Scenario: 1 LOA expired
     Given 
      When 
      Then 
 
-  Scenario: 2 LOA expired
+  Scenario: 2 LOA 1 expired
     Given 
      When 
      Then 
 
-    Given permit A uses LOA B and LOA C
-      And permit A uses vehicle D from LOA B
-      And vehicle D has been removed from LOA B
-      And vehicle D is not allowed for the permit A permit type
-     When staff amend permit A
-     Then vehicle D is removed
+#Current behaviour 
+ #can't delete a vehicle used in an expired, deleted or active LOA
+
+#Should force validation at the amending permit application or it will get caught at the cart anyways
+
+#Should we copy the vehicle to the LOA and separate from vehicle inventory ???
+ #Copy info out of inventory and into the LOA this LOA is for this VIN and this plate ???
+
+#Currently if the vehicle is attached to ANY LOA you can edit the vehicle in inventory but can't delete it
 
 # vehicle changes will not be reflected in the LOA 
     # removal from inventory - test

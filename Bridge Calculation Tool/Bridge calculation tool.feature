@@ -156,7 +156,7 @@ Rule: Weight parameters are whole numbers
      Then axle unit weight for axle unit 1 is 5001
 
   Scenario: input a decimal number round down
-    Given a user has inputted 5000.5 in axle unit weight for axle unit 1
+    Given a user has inputted 5000.4 in axle unit weight for axle unit 1
      When they leave the field
      Then axle unit weight for axle unit 1 is 5000
 
