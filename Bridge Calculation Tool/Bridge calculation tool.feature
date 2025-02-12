@@ -184,7 +184,7 @@ Rule: Calculate bridge calculation wheelbase (BCW) for each axle group
       And interaxle spacing is 4.90(m)
       And axle unit 2 axle spread is 1.50(m)
      When a user chooses to calculate
-     Then the BCW for axle group 1 is 650(cm)
+     Then the BCW for axle group 1 is 640(cm)
 
 @orv2-2916-21
 Rule: Calculate bridge formula (BF) for each axle group as 30 x (BCW) (cm) + 18,000 kg = x (Maximum weight allowed by permit)

@@ -33,7 +33,7 @@ Rule: Staff can search for permit using 1 to 6 characters of the VIN
      Then 
 
   Scenario: more than 6 characters
-     When staff input 1234567
+     When staff input a VIN of 1234567
      Then they cannot input character 7
 
   Scenario: search by plate
