@@ -70,7 +70,7 @@ Rule: Staff can search for permit using 1 to 6 characters of the VIN
    | 12         | 129054      | Revoked    |
    | 129065     | 129065      | Superseded |
 
-@orv2-937
+@orv2-937-16
 Rule: Staff can search for permit using 1 to 10 characters of the plate
 
   Scenario: Search for permit by plate number
