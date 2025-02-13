@@ -3,13 +3,43 @@ Feature: Search for permits
 
 Staff = SA, PC, EO
 
-@orv2-937-1
-#Rule: Staff can search for permit using 1 or more characters of the permit number #specmismatch
+@orv2-937-13 @orv2-3411-1
+Rule: Staff can search for a permit
 
-  Scenario: Search by permit number
-    Given staff has chosen to search by permit number
+  Scenario: No results found
+     When staff initiate a search 
+      And there are no results found
+     Then they see "No results found"
+
+  Scenario: Default to search by permit number
+     When staff choose to search 
+     Then they see "Search By" defaulted to "Permit Number"
+
+  Scenario: Permit search result data
+     When staff initiate the search
+     Then they see the following <columns>
+      And the they see data from the  <permit source>
+      And permits that are expired are indicated
+      And the default sort order is "Issue Date" newest at the top
+
+  Examples:
+    | Columns             | Permit source                                                                          |
+    | Permit #            | The unique generated permit number at the time of issuance                             |
+    | Permit Type         | The permit type name                                                                   |
+    | Commodity           | For Term permits this would be NA, will be used with known commodity permits e.g. STOS |
+    | VIN (last 6 digits) | The VIN of the vehicle permitted                                                       |
+    | Plate               | The plate of the vehicle permitted                                                     |
+    | Company Name        | The company name the permit was issued to                                              |
+    | Permit Start Date   | The start date of the permit submitted at application                                  |
+    | Permit End Date     | The calculated expiry date based on the term submitted at application                  |
+    | Issue Date          | The date the permit was issued                                                         |
+
+@orv2-937-1
+Rule: Staff can search for permit using 1 or more characters of the permit number
+
+  Scenario: search using 
      When they search by the <permit number> using the first 11 characters of the permit
-     Then they see permit <results> with the first 11 characters used in the search
+     Then they see permit <results> with the first 11 characters used in the search in the sequence inputted
       And all permit <statuses> can be displayed if found
 
   Examples:
@@ -19,57 +49,29 @@ Staff = SA, PC, EO
    | P1-37982658   | P1-37982658-946-A01 | Revoked  |
    | P1-37982658   | P1-37982658-946-A01 | Voided   |
   
-@orv2-3411
+@orv2-3411-2
 Rule: Staff can search for permit using 1 to 6 characters of the VIN
 
-  Scenario: 1 character
-    Given 
-     When 
-     Then
+ Scenario: more than 6 characters
+      When staff input a VIN search parameter of 1234567
+      Then they cannot input character 7
 
-  Scenario: less than 6 characters
-    Given 
-     When 
-     Then 
-
-  Scenario: more than 6 characters
-     When staff input a VIN of 1234567
-     Then they cannot input character 7
-
-  Scenario: search by plate
-    Given 
-     When 
-     Then 
-
-  Scenario: No results found
-    Given staff has chosen to search for a permit
-     When they initiate a search 
-      And there are no results found
-     Then they see "No results found"
-
-  Scenario: Default to search by permit number
-    Given a PC is at the global search page
-     When they choose to search 
-     Then they see "Search By" defaulted to "Permit Number"
-
-  Scenario: Permit search result data
-    Given a PC has chosen to search by permit number
-     When they initiate the search
-     Then they see the following <columns>
-      And the they see data from the  <permit source>
-      And permits that are expired are indicated
-      And the default sort order is "Issue Date" newest at the top
+  Scenario: 6 or less characters
+     When staff search by the <VIN number> using 
+     6 or less characters
+     Then they see permit <VIN results> with characters used in the search in the sequence inputted
+      And all permit <statuses> can be displayed
 
   Examples:
-    | Columns           | Permit source                                                                          |
-    | Permit #          | The unique generated permit number at the time of issuance                             |
-    | Permit Type       | The permit type name                                                                   |
-    | Commodity         | For Term permits this would be NA, will be used with known commodity permits e.g. STOS |
-    | Plate             | The plate of the vehicle permitted                                                     |
-    | Company Name      | The company name the permit was issued to                                              |
-    | Permit Start Date | The start date of the permit submitted at application                                  |
-    | Permit End Date   | The calculated expiry date based on the term submitted at application                  |
-    | Issue Date        | The date the permit was issued                                                         |
+   | VIN number | VIN results | statuses   |
+   | 12906      | 129065      | Void       |
+   | 1290       | L01290      | Issued     |
+   | 129        | B11290      | Expired    |
+   | 12         | 129054      | Revoked    |
+   | 129065     | 129065      | Superseded |
+
+@orv2-937
+Rule: Staff can search for permit using 1 to 10 characters of the plate
 
   Scenario: Search for permit by plate number
     Given a PC has chosen to search by plate number
@@ -132,7 +134,7 @@ Rule: authorized staff can optionally perform actions on valid search result ite
     | Resend       | active, superseded, void or expired permit |
     | Void/Revoke  | issued or active permit                    |
      
-@orv2-937-9
+@orv2-937-9 @orv2-3411-3
 Rule: staff can sort by any column in the returned results table
 
   Scenario: Sort search results
@@ -141,6 +143,7 @@ Rule: staff can sort by any column in the returned results table
       | Permit Type       |
       | Permit Number     |
       | Plate             |
+      | VIN               |
       | Company Name      |
       | Permit Start Date |
       | Permit End Date   |
