@@ -1,7 +1,7 @@
 Feature: Search for permits
    As a PPC SA and PC I want to search for a CV Client permit so that I can perform actions to permits to assist CV Clients.
 
-Staff = SA, PC, EO
+Staff = SA, PC, EO, CTPO, FIN HQA
 
 @orv2-937-13 @orv2-3411-1
 Rule: Staff can search for a permit
