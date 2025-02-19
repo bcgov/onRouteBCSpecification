@@ -17,4 +17,8 @@ Rule: Release staff user from current acting as company on initiation of new sea
      Then they are not acting as a company
       And the header does not display company ABC
 
+@orv2-3411-4
+Rule: The search value is cleared when the search entity is changed
 
+@orv2-3411-5
+Rule: The search value is cleared the search filter is changed
