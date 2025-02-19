@@ -75,4 +75,4 @@ Rule: Navigate to the bridge calculation tool
      Then they are directed to the bridge calculation tool
 
 @orv2-2916-27
-Rule: EO only see the bridge formula calculation tool option on the global navigation bar
+Rule: EO only see the home and bridge formula calculation tool option on the global navigation bar
