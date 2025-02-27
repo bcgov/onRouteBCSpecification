@@ -139,3 +139,25 @@ In staff shooping cart:
       }
     ]
 
+
+Feature: Basic BCeID CV Client Create a New onRouteBC Profile
+
+Feature: Basic BCeID CV Client Claim a onRouteBC Profile
+
+Feature: Basic BCeID CV Client Invited User Log Into onRouteBC
+
+User = CA, PA
+
+Rule: a user can choose to create a new onRouteBC Profile
+
+Rule: a user can choose to claim an onRouteBC profile
+
+Rule: a user must update mandatory contact details
+
+Rule: 
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+

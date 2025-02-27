@@ -245,9 +245,7 @@ Rule: Users must input an origin and destination chosen from the resolved geocod
     Given a user has inputted text in origin, destination or exit point
       And has not chosen a resolved address from the geocoder list 
      When they chose to continue
-     Then they cannnot continue
-      And they see "You must enter a valid address."
-      And the mandatory field is indicated
+     Then the inputted text is removed
 
 @orv2-2254-24 @orv2-2387-24
 Rule: The origin and destination is resolved and the chosen resolved address replaces text inputted by the user 

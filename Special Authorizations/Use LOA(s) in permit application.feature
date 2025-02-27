@@ -89,7 +89,7 @@ Rule: A term permit application can have one or more LOA(s) chosen to apply with
 @orv2-2261-7 @orv2-2860-4
 Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
-#Available vehicles only from associated LOA are available ???
+ #Available vehicles only from associated LOA are available ???
 
   Scenario: LOA(s) vehicle chosen LOA(s) removed
     Given the user has chosen LOA(s) 1
