@@ -74,17 +74,7 @@ Rule: a new invited user must complete their user contact details
      Then they see "This is a required field" at each field with invalid data
       And fields with invalid data are indicated
 
-# @orv2-907-4
-Rule: a new PA user can only view company profile information
 
- Scenario: New CV Client Business BCeID user completed profile setup
-     Given the CV Client Business BCeID user has completed their profile
-      When they choose to view their profile
-      Then they are directed to company information
-       But they cannot edit company information
-
-# @orv2-907-5
-Rule: a new user can apply for a permit
 
  Scenario: New CV Client Business BCeID user completed profile setup
      Given the CV Client Business BCeID user has completed their profile
