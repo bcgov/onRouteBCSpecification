@@ -1,53 +1,36 @@
 Feature: Invited user log into onRouteBC
   As an newly added CV Client user I need to be able to log into onRouteBC for the first time and complete my onRouteBC profile so that I can begin ordering permits for the onRouteBC company I am a member of.
 
-@orv2-907-1
+@orv2-907-1, @orv2-3322
 Rule: credential username must match invited username in onRouteBC
 
   Scenario: username in onRouteBC and matches 
      Given the credential username matches invited username in onRouteBC
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Welcome to onRouteBC" page
-       And they see the company name for the profile they are a member of
+      Then they are directed to the welcome page
+       And they see the client name for the profile they are invited to
        And they see the option to finish creating their profile
 
-  Scenario: username does not match one in onRouteBC
+  Scenario: basic username does not match one in onRouteBC
     Given the credential username is not in onRouteBC
       And their credential does not match an existing user in onRouteBC
      When they successfully log in using their BCeID credentials
-     Then they are directed to the "Universal Unauthorized Access" page
+     Then they are directed to the welcome to onRouteBC page 
 
- Scenario: username not in onRouteBC, credentials match a company in onRouteBC
+ Scenario: business username not in onRouteBC, credentials match a company in onRouteBC
      Given the username is not in onRouteBC
        And they are not the first user
        But their credentials match a company in onRouteBC
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Universal Unauthorized Access" page
+      Then they are directed to the universal unauthorized access page
 
- Scenario: username not in onRoute, credentials do not match a company in onRouteBC
+ Scenario: business username not in onRoute, credentials do not match a company in onRouteBC
      Given the username is not in onRouteBC
        And their credentials do not match a company in onRouteBC
       When they successfully log in using their BCeID credentials
-      Then they are directed to the "Welcome to onRouteBC" page 
-       And they see their credential "Company Legal Name"
+      Then they are directed to the welcome to onRouteBC page 
+       And they see their credential client name
        And they see the option to create a new profile or claim an existing profile
-
-@orv2-3322
-Rule: a new invited user must complete their "My Information"
-
-  Scenario: Mandatory fields
-    Given a CV Client chooses to proceed to "My Information"
-     When they do not input valid data into any of the following mandatory fields:
-        | field            | type         |
-        | First Name       | User Details |
-        | Last name        | User Details |
-        | Email            | User Details |
-        | Primary Phone    | User Details |
-        | Country          | User Details |
-        | Province / State | User Details |
-        | City             | User Details |
-     Then they see "This is a required field" at each field with invalid data
-      And fields with invalid data are indicated
 
 @orv2-907-2, @orv2-3322
 Rule: a new invited user is assigned the role designated to their username
@@ -58,8 +41,8 @@ Rule: a new invited user is assigned the role designated to their username
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
-# @orv2-907-3
-Rule: a new user must complete their user details 
+@orv2-907-3, @orv2-3322
+Rule: a new invited user must complete their user contact details 
 
  Scenario: Complete profile
      Given they are at the "Welcome to onRouteBC" page
@@ -75,7 +58,21 @@ Rule: a new user must complete their user details
      And choose to finish
     Then their user details are saved
      And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
-     And they are directed to a "Success" page
+     And they are directed to a success page
+  
+  Scenario: Mandatory fields
+    Given a CV Client chooses to proceed to "My Information"
+     When they do not input valid data into any of the following mandatory fields:
+        | field            | type         |
+        | First Name       | User Details |
+        | Last name        | User Details |
+        | Email            | User Details |
+        | Primary Phone    | User Details |
+        | Country          | User Details |
+        | Province / State | User Details |
+        | City             | User Details |
+     Then they see "This is a required field" at each field with invalid data
+      And fields with invalid data are indicated
 
 # @orv2-907-4
 Rule: a new PA user can only view company profile information

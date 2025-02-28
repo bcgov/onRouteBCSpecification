@@ -55,24 +55,7 @@ Rule: contact details are not saved until the workflow is finished
 
 
 
-@orv2-907-3, @orv2-3322
-Rule: a new invited user must complete their user details 
 
- Scenario: Complete profile
-     Given they are at the "Welcome to onRouteBC" page
-       And they choose to finish completing their onRouteBC profile
-      When they input all required fields
-        | First Name       |
-        | Last Name        |
-        | Email            |
-        | Primary Phone    |
-        | Country          |
-        | Province / State |
-        | City             |
-     And choose to finish
-    Then their user details are saved
-     And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
-     And they are directed to a "Success" page
 
 @orv2-907-4, @orv2-3322
 Rule: a new PA user can only view company profile information
