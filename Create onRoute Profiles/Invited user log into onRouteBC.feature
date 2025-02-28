@@ -32,8 +32,25 @@ Rule: credential username must match invited username in onRouteBC
        And they see their credential "Company Legal Name"
        And they see the option to create a new profile or claim an existing profile
 
-# @orv2-907-2
-Rule: a new user is assigned the role designated to their username
+@orv2-3322
+Rule: a new invited user must complete their "My Information"
+
+  Scenario: Mandatory fields
+    Given a CV Client chooses to proceed to "My Information"
+     When they do not input valid data into any of the following mandatory fields:
+        | field            | type         |
+        | First Name       | User Details |
+        | Last name        | User Details |
+        | Email            | User Details |
+        | Primary Phone    | User Details |
+        | Country          | User Details |
+        | Province / State | User Details |
+        | City             | User Details |
+     Then they see "This is a required field" at each field with invalid data
+      And fields with invalid data are indicated
+
+@orv2-907-2, @orv2-3322
+Rule: a new invited user is assigned the role designated to their username
 
  Scenario: added CV Client PA username is not a member of the BCeID company
      Given the CV Client PA username is in onRoute 
