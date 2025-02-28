@@ -32,7 +32,7 @@ Rule: credential username must match invited username in onRouteBC
        And they see their credential "Company Legal Name"
        And they see the option to create a new profile or claim an existing profile
 
-@orv2-907-2
+# @orv2-907-2
 Rule: a new user is assigned the role designated to their username
 
  Scenario: added CV Client PA username is not a member of the BCeID company
@@ -41,7 +41,7 @@ Rule: a new user is assigned the role designated to their username
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Universal Unauthorized Access" page
 
-@orv2-907-3
+# @orv2-907-3
 Rule: a new user must complete their user details 
 
  Scenario: Complete profile
@@ -60,7 +60,7 @@ Rule: a new user must complete their user details
      And they are assigned the role designated by the CV Client Admin for the CV Client onRoute Profile 
      And they are directed to a "Success" page
 
-@orv2-907-4
+# @orv2-907-4
 Rule: a new PA user can only view company profile information
 
  Scenario: New CV Client Business BCeID user completed profile setup
@@ -69,7 +69,7 @@ Rule: a new PA user can only view company profile information
       Then they are directed to company information
        But they cannot edit company information
 
-@orv2-907-5
+# @orv2-907-5
 Rule: a new user can apply for a permit
 
  Scenario: New CV Client Business BCeID user completed profile setup

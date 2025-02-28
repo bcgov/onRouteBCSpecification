@@ -148,6 +148,8 @@ Feature: Basic BCeID CV Client Invited User Log Into onRouteBC
 
 User = CA, PA
 
+# Rule: credential X must match invited username in onRouteBC
+
 Rule: a user can choose to create a new onRouteBC Profile
 
 Rule: a user can choose to claim an onRouteBC profile
