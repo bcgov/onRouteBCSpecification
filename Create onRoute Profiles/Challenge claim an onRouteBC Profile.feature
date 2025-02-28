@@ -1,47 +1,31 @@
 Feature: Challenge claim an existing onRouteBC Profile
  As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
-@orv2-481-1
+User = CV Client
+
+@orv2-481-1, @orv2-3322
 Rule: A user is provided the option to claim a profile with a challenge
 
-  Scenario: user credentials do not match an existing onRouteBC profile
-     Given the users credentials do not match a company in onRouteBC
-       And they have not been invited
+ Scenario: user credentials do not match an existing onRouteBC profile
+     Given user has not been invited
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Welcome to onRouteBC" page
        And they see the following:
-         | item                                                                        | description                                       |
-         | BCeID Company Name                                                          | that matches their BCeID user credentials         |
-         | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
+         | item                                                                        | description                                           |
+         | Client Name                                                                 | Basic = first name last name, Business = company name |
+         | Has this company purchased a commercial vehicle permit in the last 2 years? | call to action                                        |
        And they have the option to claim the profile or not
  
  Scenario: choose yes
-     Given the CV Client is at the "Welcome to onRouteBC" page
      When they choose to claim an existing profile
-     Then they are directed to the "Claim an existing profile" page "Verify Profile" in the workflow
-     And they see the workflow active step indication "Verify Profile"
+     Then they are directed to claim an existing profile
      And they see the information boxes:
-      | "Where can I find my Client No. and Permit No.?"|
-      | "Enter any Permit No. issued to the above Client No. in the last 7 years" |
+      | Where can I find my Client No. and Permit No.?                          |
+      | Enter any Permit No. issued to the above Client No. in the last 2 years |
 
-  Scenario: choose no
-     Given the CV Client is at the "Welcome to onRouteBC" page
+ Scenario: choose no
      When they choose not to claim an existing profile
-     Then they are directed to the "Create a new onRouteBC Profile" page 
-
-@orv2-481-11
-Rule: A user can cancel or step backwards in the "Claim an existing profile" workflow
-
-  Scenario: Cancel
-    Given they have chosen to claim a TPS profile
-     When they choose to cancel
-     Then they are directed to the "Welcome to onRouteBC" page
-
-  Scenario: Previous
-    Given they have completed "Verify Profile"
-     When they choose to return to a previous page
-     Then they are directed to the previous page in the workflow
-      And the workflow step indication reflects the page they are on
+     Then they are directed to  create a new onRouteBC profile
 
 @orv2-481-2
 Rule: If a "Client No." is associated to a "Permit No." then allow a CV Client to proceed to the next step in the workflow "Company Information"
