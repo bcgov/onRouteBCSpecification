@@ -44,7 +44,7 @@ Rule: LOA(s) must match the permit type to be available in the permit applicatio
      Then option to use LOA(s) is not shown
 
 @orv2-2261-4 @orv2-2860-8
-Rule: LOA(s) must have valid term length to be available in the permit application
+Rule: LOA(s) must not be expired to be available in the permit application
  
   Scenario: LOA(s) expired before application
     Given a cv client has one LOA(s)
@@ -59,7 +59,8 @@ Rule: LOA(s) must have valid term length to be available in the permit applicati
      Then the LOA(s) is shown
       But the LOA(s) cannot be chosen
 
-  Scenario: LOA(s) has not started
+  # deprecated
+  # Scenario: LOA(s) has not started
     Given a cv client has one LOA(s)
      And the LOA(s) starts on 02/22/2025
      When a user applies for a term permit on 02/07/2025
