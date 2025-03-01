@@ -1,5 +1,7 @@
-Feature: Staff create company
-   As a PPC SA or PC I need to create a new onRouteBC profile for a CV Client so that I can purchase permits on their behalf or they can claim their account and purchase on their own.
+Feature: Staff create profile
+   As staff I need to create a new onRouteBC profile for a CV Client so that I can purchase permits on their behalf or they can claim their account and purchase on their own.
+
+Staff = PA, SA
 
 Background: @orv2-1362-16
 

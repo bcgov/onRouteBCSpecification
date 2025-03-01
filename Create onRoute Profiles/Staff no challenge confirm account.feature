@@ -1,21 +1,19 @@
-Feature: Business no challenge confirm existing onRouteBC profile
- As a business user that has used TPS Online previously and with an existing migrated onRouteBC profile I want to be able to log into onRouteBC and complete my onRouteBC profile.
+Feature: Staff no challenge confirm existing onRouteBC profile
+ As staff I need to claim a migrated onRouteBC profile so that I can assist CV Clients with purchasing a 
 
-User = migrated business user
+User = staff
+
+# if no BCeID and company claimed by staff then a new user goes through the challenge workflow
+
+# staff needs to buy a permit on behalf of company, TPS migrated to onRouteBC, onRouteBC profile not claimed by client yet, when staff finds a company and selects the profile link they go to no challenge company information
 
 @orv2-1637-1, @orv2-3228
-Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+Rule: users can claim an existing onRouteBC profile on behalf of a CV Client
 
-  Scenario: first user
-    Given they successfully log in using their BCeID credentials
-     When they successfully complete the no challenge claim workflow
-     Then they are designated as an admin user
-
-  Scenario: not first user
-    Given they successfully log in using their BCeID credentials
-      And they are not the first user
-     When they successfully complete the no challenge "My Information" workflow
-     Then they are designated as an admin user
+  Scenario: unclaimed profile
+    Given staff find an unclaimed onRouteBC profile
+     When they choose to create the onRouteBC profile
+     Then they are directed to the ???
 
 @orv2-1637-2, @orv2-3228
 Rule: A first user can claim a matching existing onRouteBC profile without a challenge
@@ -43,14 +41,7 @@ Rule: A first user can claim a matching existing onRouteBC profile without a cha
       And they are sent a profile creation confirmation email
       #see orv2-477
 
-@orv2-1637-3, @orv2-3228
-Rule: A second+ user can join a matching existing onRouteBC profile
 
-  Scenario: not the first user, credentials match existing onRouteBC profile
-     Given the users credentials matches a company in onRouteBC
-       And the company does have existing users
-      When they successfully log in using their BCeID credentials
-      Then they are directed to the complete "My Information" workflow
 
 @orv2-1637-4, @orv2-3228
 Rule: A first user can view and update their claimed "Client No." profile contact details
@@ -69,26 +60,6 @@ Rule: A first user can view and update their claimed "Client No." profile contac
        | Postal / Zip Code           |
      Then they see "This is a required field" at each field with invalid data
       And fields with no data are indicated
-
-@orv2-1637-5, @orv2-3228
-Rule: A second+ user can update their user details
-
-  Scenario: mandatory fields
-    Given a user chooses to finish creating their onRouteBC profile
-     When they do not input valid data into any of the following mandatory fields:
-       | field                      |
-       | First Name                 |
-       | Last name                  |
-       | Email                      |
-       | Primary Phone              |
-       | Ext                        |
-       | Alternate Phone (optional) |
-       | Ext                        |
-       | Country                    |
-       | Province / State           |
-       | City                       |
-     Then they see "This is a required field" at each field with invalid data
-      And fields with no valid data are indicated
 
 @orv2-1637-6, @orv2-3228
 Rule: A first users credential information replaces the "Client Name" and "Email" information in onRouteBC

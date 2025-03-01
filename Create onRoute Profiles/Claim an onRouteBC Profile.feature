@@ -1,9 +1,9 @@
 Feature: Claim an existing onRouteBC Profile
  As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
-User = CV Client
+User = basic or business 
 
-@orv2-481-1, @orv2-3322
+@orv2-481-1, @orv2-3322, @orv2-3228
 Rule: A user is provided the option to claim a profile with a challenge
 
  Scenario: user credentials do not match an existing onRouteBC profile
@@ -27,7 +27,7 @@ Rule: A user is provided the option to claim a profile with a challenge
      When a user chooses not to claim an existing profile
      Then they are directed to  create a new onRouteBC profile
 
-@orv2-481-2, @orv2-3322
+@orv2-481-2, @orv2-3322, @orv2-3228
 Rule: If a "Client No." is associated to a "Permit No." then allow a user to proceed
 
  Scenario: Valid TPS "Client No." and "Permit No."
@@ -35,6 +35,13 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a user to pro
        And they input a "Permit No." that is associated to the "Client No." 
       When they choose to proceed
       Then they are directed to next step
+
+ Scenario: second+ not invited basic user valid TPS "Client No." and "Permit No."
+    Given they successfully log in using their basic BCeID credentials
+      And they are not the first user
+      And they are not invited
+     When they successfully complete the claim challenge
+     Then they are directed to the universal unauthorized access page
 
  Scenario: Invalid TPS "Client No."
      Given a user inputs a "Client No." that is not in onRouteBC
@@ -59,7 +66,7 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a user to pro
        And "Permit No." is indicated
        And they cannot proceed to the next step in the workflow      
 
-@orv2-481-3, @orv2-3322
+@orv2-481-3, @orv2-3322, @orv2-3228
 Rule: Both "Permit No." and "Client No." are mandatory fields
 
  Scenario: Only a "Permit No." inputted
@@ -87,7 +94,7 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
        And "Client No." is indicated
        And they cannot proceed to the next step in the workflow
 
-@orv2-481-4, @orv2-3322
+@orv2-481-4, @orv2-3322, @orv2-3228
 Rule: A user can view and update their claimed "Client No." profile contact details
 
   Scenario: success
@@ -125,15 +132,22 @@ Rule: A user can view and update their claimed "Client No." profile contact deta
      Then they see "This is a required field" at each field with invalid data
       And fields with no data are indicated
 
-@orv2-481-5
-Rule: A first users credential information replaces the "Client Name" and "Email" information in onRouteBC
+@orv2-481-5, @orv2-3322, @orv2-3228
+Rule: A first business users credential information replaces the "Client Name" and "Email" information in onRouteBC
 
-  Scenario: information exists in onRouteBC
-    Given a CV Client profile has information in "Company Information"
-     When they pass "Verify Profile"
-     Then the following fields are over written by information from their BCeID credential:
+  Scenario: information in business user onRouteBC profile
+    Given a business user profile has information in their onRouteBC profile
+     When they successfully complete the claim challenge
+     Then the following contact details are over written by information from their business BCeID credential:
         | Client Name |
         | Email       |
+
+  Scenario: information in basic user onRouteBC profile
+    Given a basic user profile has information in their onRouteBC profile
+     When they successfully complete the claim challenge
+     Then the following contact details have the information from their onRouteBC profile:
+       | Client Name |
+       | Email       |
 
 # @orv2-481-6
 # Rule: A CV Client must update their "My Information"
@@ -159,7 +173,7 @@ Rule: A first users credential information replaces the "Client Name" and "Email
      Then they see "This is a required field" at each field with invalid data
       And fields with invalid data are indicated
 
-@orv2-481-12, @orv2-3322
+@orv2-481-12, @orv2-3322, @orv2-3228
 Rule: first users that successfully claim an existing onRouteBC profile are designated as CV Client Administrators (CA)
 
   Scenario: first user
@@ -168,19 +182,15 @@ Rule: first users that successfully claim an existing onRouteBC profile are desi
       And finish updating their contact details
      Then they are designated as an admin user
 
-  Scenario: second+ basic user
+ Scenario: second+ not invited basic user valid TPS "Client No." and "Permit No."
     Given they successfully log in using their basic BCeID credentials
       And they are not the first user
       And they are not invited
      When they successfully complete the claim challenge
      Then they are directed to the universal unauthorized access page
 
-@ovr2-481-14
-Rule: TPS Office business users that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
-@orv2-481-15
-Rule: TPS Office business users that have successfully joined an onRouteBC Profile are associated to their BCeID username
 
-# if no BCeID and company claimed by staff then a new user goes through the challenge workflow
 
-# staff needs to buy a permit on behalf of company, TPS migrated to onRouteBC, onRouteBC profile not claimed by client yet, when staff finds a company and selects the profile link they go to no challenge company information
+
+
 

@@ -1,9 +1,9 @@
 Feature: Common features for profile creation workflows
  These rules apply to all onRouteBC account creation workflows.
 
-User = CV Client
+User = basic or business
 
-@orv2-481-8, @orv2-3322
+@orv2-481-8, @orv2-3322, @orv2-3228
 Rule: The navigation bar is not visible to users until the profile has been successfully created
 
   Scenario: profile setup not complete
@@ -16,7 +16,7 @@ Rule: The navigation bar is not visible to users until the profile has been succ
        | my information |
      Then the navigation bar is not visible
 
-@orv2-481-11, @orv2-3322
+@orv2-481-11, @orv2-3322, @orv2-3228
 Rule: A user can cancel or step backwards
 
   Scenario: Cancel
@@ -28,7 +28,7 @@ Rule: A user can cancel or step backwards
      When they choose to return to a previous page
      Then they are directed to the previous page in the workflow
 
-@orv2-369-9, @orv2-3322
+@orv2-369-9, @orv2-3322, @orv2-3228
 Rule: contact details are not saved until the workflow is finished
 
  Scenario: CV Client Business BCeID navigates away from create new onRouteBC profile workflow
@@ -58,7 +58,7 @@ Rule: contact details are not saved until the workflow is finished
 
 
 
-@orv2-907-4, @orv2-3322
+@orv2-907-4, @orv2-3322, @orv2-3228
 Rule: a new PA user can only view company profile information
 
  Scenario: New CV Client Business BCeID user completed profile setup
@@ -68,7 +68,7 @@ Rule: a new PA user can only view company profile information
        But they cannot edit company information
 
 
-@orv2-481-10, @orv2-3322
+@orv2-481-10, @orv2-3322, @orv2-3228
 Rule: upon creating a profile or joining an existing profile a user can view their profile or apply for a permit
 
  Scenario: choose to apply for permit
@@ -84,7 +84,7 @@ Rule: upon creating a profile or joining an existing profile a user can view the
      When a sa has chosen to view their profile
      Then they are directed to their company information
 
-@orv2-3322
+@orv2-3322, @orv2-3228
 Rule: contact details are replicated to company primary contact and user details
 
   Scenario: all contact details have data
@@ -120,7 +120,7 @@ Rule: contact details are replicated to company primary contact and user details
       | City                        | Vancouver                                         | Vancouver                | Vancouver      |
       | Postal / Zip Code           | V8L 13T                                           |                          |                |
 
-@orv2-481-7, @orv2-3322
+@orv2-481-7, @orv2-3322, @orv2-3228
 Rule: a user can view their onRouteBC Client Number upon successful completion of profile creation
 
   Scenario: Successfully completed 
@@ -129,8 +129,8 @@ Rule: a user can view their onRouteBC Client Number upon successful completion o
       And they see their onRouteBC Client Number
       And they see options to apply for a permit and view their profile
 
-@orv2-481, @orv2-3322, @orv2-1637-8
-Rule: A user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
+@orv2-481, @orv2-3322, @orv2-1637-8, @orv2-3228
+Rule: a user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
 
   Scenario: Successfully completed 
     Given a CV Client has completed "My Information"
