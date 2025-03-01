@@ -1,4 +1,5 @@
 Feature: Common features for profile creation workflows
+ These rules apply to all onRouteBC account creation workflows.
 
 User = CV Client
 
@@ -15,7 +16,7 @@ Rule: The navigation bar is not visible to users until the profile has been succ
        | my information |
      Then the navigation bar is not visible
 
-@orv2-481-11
+@orv2-481-11, @orv2-3322
 Rule: A user can cancel or step backwards
 
   Scenario: Cancel
@@ -119,14 +120,23 @@ Rule: contact details are replicated to company primary contact and user details
       | City                        | Vancouver                                         | Vancouver                | Vancouver      |
       | Postal / Zip Code           | V8L 13T                                           |                          |                |
 
-@orv2-907-5, @orv2-3322
-Rule: 
-
 @orv2-481-7, @orv2-3322
-Rule: a user can view their onRouteBC Client Number upon successful completion of account profile creation
+Rule: a user can view their onRouteBC Client Number upon successful completion of profile creation
 
   Scenario: Successfully completed 
      When a user chooses to complete the workflow
      Then they are directed to a success page
       And they see their onRouteBC Client Number
       And they see options to apply for a permit and view their profile
+
+@orv2-481, @orv2-3322, @orv2-1637-8
+Rule: A user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
+
+  Scenario: Successfully completed 
+    Given a CV Client has completed "My Information"
+     When they choose to complete the workflow
+     Then they are directed to a success page
+     And they see the following:
+        | their onRouteBC Client No.   |
+        | option to apply for a permit |
+        | option to view their profile |
