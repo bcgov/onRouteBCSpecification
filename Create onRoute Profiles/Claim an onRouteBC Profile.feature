@@ -164,7 +164,8 @@ Rule: first users that successfully claim an existing onRouteBC profile are desi
 
   Scenario: first user
     Given they successfully log in using their BCeID credentials
-     When they successfully complete the no challenge claim workflow
+     When they successfully complete the claim challenge
+      And finish updating their contact details
      Then they are designated as an admin user
 
   Scenario: second+ basic user
