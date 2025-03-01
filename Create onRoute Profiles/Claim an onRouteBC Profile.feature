@@ -1,4 +1,4 @@
-Feature: CAlaim an existing onRouteBC Profile
+Feature: Claim an existing onRouteBC Profile
  As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
 User = CV Client
@@ -128,8 +128,8 @@ Rule: A CV Clients credential information replaces the "Company Name" and "Compa
         | Company Name  |
         | Company Email |
 
-@orv2-481-6
-Rule: A CV Client must update their "My Information"
+# @orv2-481-6
+# Rule: A CV Client must update their "My Information"
 
   Scenario: Info boxes
     Given a CV Client has completed "Company Information"
@@ -152,21 +152,8 @@ Rule: A CV Client must update their "My Information"
      Then they see "This is a required field" at each field with invalid data
       And fields with invalid data are indicated
 
-@orv2-481-7
-Rule: A CV Client must view their onRouteBC Client Number upon successful completion of the claim profile workflow
-
-  Scenario: Successfully completed 
-    Given a CV Client has completed "My Information"
-     When they choose to complete the workflow
-     Then they are directed to a success page
-      And their Business BCeID GUID is stored with their onRouteBC Profile
-      And they see their onRouteBC Client Number
-      And they see options to apply for a permit and view their profile
-
-@orv2-481-10
-Rule: Upon completing claim a profile or joining an existing profile a user can view their profile or apply for a permit
 @orv2-481-12
-Rule: TPS migrated users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+Rule: TPS migrated business users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
 
   Scenario: first user
     Given they successfully log in using their BCeID credentials
@@ -178,12 +165,11 @@ Rule: TPS migrated users that successfully claim or join an existing onRouteBC p
       And they are not the first user
      When they successfully complete the no challenge "My Information" workflow
      Then they are designated as an admin user
-@ovr2-481-14
-Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
-@orv2-481-15
-Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated to their BCeID username
-@0rv2-481-8
-Rule: The navigation bar is not visible until the profile has been successfully claimed
+
+# @ovr2-481-14
+# Rule: TPS Office clients that have successfully claimed their onRouteBC Profiles are associated to the first users Business BCeID company GUID
+# @orv2-481-15
+# Rule: TPS Office users that have successfully joined an onRouteBC Profile are associated to their BCeID username
 
 # if no BCeID and company claimed by staff then a new user goes through the challenge workflow
 

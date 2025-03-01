@@ -2,8 +2,8 @@ Feature: Common features for profile creation workflows
 
 User = CV Client
 
-@orv2-3322
-Rule: The navigation bar is not visible to users until the profile has been successfully claimed
+@orv2-481-8, @orv2-3322
+Rule: The navigation bar is not visible to users until the profile has been successfully created
 
   Scenario: profile setup not complete
     Given a CV Client is in an create onRouteBC profile workflow
@@ -66,10 +66,67 @@ Rule: a new PA user can only view company profile information
       Then they are directed to company information
        But they cannot edit company information
 
-@orv2-907-5, @orv2-3322
-Rule: a new user can apply for a permit
+
+@orv2-481-10, @orv2-3322
+Rule: upon creating a profile or joining an existing profile a user can view their profile or apply for a permit
 
  Scenario: choose to apply for permit
      Given the user has completed their profile creation
       When they choose to apply for a permit
       Then they are directed to applications in progress
+
+  Scenario: pa choose to view profile
+     When a pa has chosen to view their profile
+     Then they are directed to their user details
+
+  Scenario: sa choose to view profile
+     When a sa has chosen to view their profile
+     Then they are directed to their company information
+
+@orv2-3322
+Rule: contact details are replicated to company primary contact and user details
+
+  Scenario: all contact details have data
+    Given the following contacts details have data:
+      | contact details             | data           |
+      | First Name                  | John           |
+      | Last Name                   | Doe            |
+      | Email                       | jdoe@email.com |
+      | Primary Phone               | 250-555-1234   |
+      | Ext                         | 123            |
+      | Alternate Phone             | 250-123-555    |
+      | Ext                         | 321            |
+      | Address (Line 1)            | 123 Nowhere St |
+      | Address (Line 2) (optional) | Suite 101      |
+      | Country                     | Canada         |
+      | Province / State            | BC             |
+      | City                        | Vancouver      |
+      | Postal / Zip Code           | V8L 13T        |
+     When a user finishes created their onRouteBC profile
+     Then data is replicated to primary contact and user details as follows:
+      | contact details             | company mailing address & company contact details | company primary contacts | user details   |
+      | First Name                  |                                                   | John                     | John           |
+      | Last Name                   |                                                   | Doe                      | Doe            |
+      | Email                       | jdoe@email.com                                    | jdoe@email.com           | jdoe@email.com |
+      | Primary Phone               | 250-555-1234                                      | 250-555-1234             | 250-555-1234   |
+      | Ext                         | 123                                               | 123                      | 123            |
+      | Alternate Phone             |                                                   | 250-123-555              | 250-123-555    |
+      | Ext                         |                                                   | 321                      | 321            |
+      | Address (Line 1)            | 123 Nowhere St                                    |                          |                |
+      | Address (Line 2) (optional) | Suite 101                                         |                          |                |
+      | Country                     | Canada                                            | Canada                   | Canada         |
+      | Province / State            | BC                                                | BC                       | BC             |
+      | City                        | Vancouver                                         | Vancouver                | Vancouver      |
+      | Postal / Zip Code           | V8L 13T                                           |                          |                |
+
+@orv2-907-5, @orv2-3322
+Rule: 
+
+@orv2-481-7, @orv2-3322
+Rule: a user can view their onRouteBC Client Number upon successful completion of account profile creation
+
+  Scenario: Successfully completed 
+     When a user chooses to complete the workflow
+     Then they are directed to a success page
+      And they see their onRouteBC Client Number
+      And they see options to apply for a permit and view their profile
