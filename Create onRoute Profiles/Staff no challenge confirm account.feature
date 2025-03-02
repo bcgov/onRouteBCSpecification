@@ -1,5 +1,5 @@
 Feature: Staff no challenge confirm existing onRouteBC profile
- As staff I need to claim a migrated onRouteBC profile so that I can assist CV Clients with purchasing a 
+ As staff I need to claim a migrated onRouteBC profile so that I can assist CV Clients with purchasing permits.
 
 User = staff
 
