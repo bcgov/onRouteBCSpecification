@@ -2,7 +2,9 @@ Feature: As a user I need to use one or more active letter of authorization(s) (
 
 Users = SA, HQA, PC, CTPO, Trainee, CA, PA 
 
-@orv2-2261-1 @orv2-2860-14
+# new app chosen LOA is none by default
+
+@orv2-2261-1, @orv2-2860-14
 Rule: The LOA(s) feature is hidden if there are no active or expired LOA(s)
 
   Scenario: no active LOA(s)
@@ -26,11 +28,17 @@ Rule: The LOA(s) feature is hidden if there are no active or expired LOA(s)
        | LOA B number      |
        | LOA B expiry date |
       And LOA B is unavailable
+.
+@orv2-2261-2, @orv2-2860-14
+Rule: Using an LOA in a permit application is optional
 
-@orv2-2261-2
-Rule: Using an LOA(s) in a permit application is optional
+@orv2-2261, @orv2-2860
+Rule: No LOA is chosen by default when creating a new permit application 
 
-@orv2-2261-3 @orv2-2860-9
+@orv2-2261, @orv2-2860
+Rule: A permit application can have only one LOA
+
+@orv2-2261-3, @orv2-2860-9
 Rule: LOA(s) must match the permit type to be available in the permit application
 
   Scenario: term LOA(s)
@@ -42,8 +50,8 @@ Rule: LOA(s) must match the permit type to be available in the permit applicatio
     Given the cv client has no LOA(s) for term permits
      When users apply for a term permit
      Then option to use LOA(s) is not shown
-
-@orv2-2261-4 @orv2-2860-8
+.
+@orv2-2261-4, @orv2-2860-8
 Rule: LOA(s) must not be expired to be available in the permit application
  
   Scenario: LOA(s) expired before application
@@ -65,11 +73,11 @@ Rule: LOA(s) must not be expired to be available in the permit application
      And the LOA(s) starts on 02/22/2025
      When a user applies for a term permit on 02/07/2025
      Then the LOA(s) cannot be chosen
+.
+@orv2-2261-5, @orv2-2860-7
+Rule: Permit start date and duration are limited by the chosen LOA
 
-@orv2-2261-5 @orv2-2860-7
-Rule: Permit start date and duration are limited by the chosen LOA(s) with the shortest term length
-
-  Scenario: two LOA(s) chosen one expires sooner
+  # Scenario: two LOA(s) chosen one expires sooner
     Given the chosen LOA(s) expiry dates are:
       | 03/01/2024 |
       | 02/01/2024 |
@@ -77,18 +85,18 @@ Rule: Permit start date and duration are limited by the chosen LOA(s) with the s
      When a user chooses a start date that is 01/11/2024
      Then LOA with an expiry of 02/01/2024 is unavailable
 
-  Scenario: LOA(s) expires before maximum allowable term duration
-    Given the chosen LOA(s) expires on 04/01/2024 |
+  Scenario: LOA expires before maximum allowable term duration
+    Given the chosen LOA expires on 04/01/2024 |
      When a user chooses a start date that is 01/11/2024
      Then they can choose only the following valid term durations:
        | 30 |
        | 60 |
+.
+# @orv2-2261-6 @orv2-2860-6
+# Rule: A term permit application can have one or more LOA(s) chosen to apply with
 
-@orv2-2261-6 @orv2-2860-6
-Rule: A term permit application can have one or more LOA(s) chosen to apply with
-
-@orv2-2261-7 @orv2-2860-4
-Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
+# @orv2-2261-7 @orv2-2860-4
+# Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit application (and therefore must be an inventory vehicle)
  
  #Available vehicles only from associated LOA are available ???
 
@@ -116,45 +124,63 @@ Rule: Vehicle VIN must be associated to the LOA(s) to be available in the permit
      When no vehicle is chosen
      Then a user cannot edit vehicle details
 
-@orv2-2261-8 @orv2-2860-5
-Rule: The chosen LOA vehicle cannot be edited or saved to the vehicle inventory
+# @orv2-2261-8 @orv2-2860-5
+# Rule: The chosen LOA vehicle cannot be edited or saved to the vehicle inventory
 
-  Scenario: no LOA(s) vehicle in inventory
+  # Scenario: no LOA(s) vehicle in inventory
     Given a valid LOA(s) is chosen
       But there are no valid LOA(s) vehicle(s) in inventory
      When a user looks for an LOA vehicle
      Then they cannot find the vehicle
 
-  Scenario: LOA(s) vehicle in inventory
+  # Scenario: LOA(s) vehicle in inventory
     Given a valid LOA(s) is chosen
       And a VIN for the chosen LOA(s) is in the vehicle inventory
      When a user looks for an LOA vehicle
      Then they can find the vehicle
+.
+@orv2-2261, @orv2-2860
+Rule: Only the vehicle type and sub-type in the LOA is available in the permit application
 
-@orv2-2261-9 @orv2-2860-10
-Rule: The user can review the chosen LOA(s) parameters before completing the permit application workflow
+  Scenario: no LOA vehicle type in inventory
+    Given a valid LOA is chosen
+      But there are is no valid LOA vehicle type in inventory
+     When a user looks for an LOA vehicle
+     Then they cannot find the vehicle
+.
+@orv2-2261, @orv2-2860
+Rule: Vehicle type and sub-type are chosen when an LOA is chosen and it is non editable
 
-  Scenario: LOA(s) chosen
-    Given the user has chosen one or more LOA(s) 
+  Scenario: LOA chosen
+     When a user choses a valid LOA
+     Then the vehicle type and sub-type designated in the LOA are chosen
+
+  Scenario: LOA not chosen manual
+    Given a user has not chosen an LOA
+     When they choose a vehicle type and sub-type 
+     Then all allowable vehicle types and sub-types are available
+
+  Scenario: LOA not chosen recall
+    Given a user has not chosen an LOA
+     When they attempt to recall a vehicle
+     Then all allowable vehicle types and sub-types are available from inventory
+.
+@orv2-2261-9, @orv2-2860-10
+Rule: The user can review the chosen LOA parameters before completing the permit application workflow
+
+  Scenario: LOA chosen
+    Given the user has chosen an LOA
      When they review the inputted permit application parameters
-     Then they see the following information about the LOA(s):
-      | data          | description                                                                  |
-      | LOA number(s) | the unique number generated by onRouteBC when the LOA(s) is created by staff |
+     Then they see the following information about the LOA:
+      | data       | description                                                                  |
+      | LOA number | the unique number generated by onRouteBC when the LOA(s) is created by staff |
+.
+@orv2-2261-10, @orv2-2860-11
+Rule: The chosen LOA number is printed on the issued permit pdf
 
-@orv2-2261-10 @orv2-2860-11
-Rule: The chosen LOA(s) numbers are printed on the issued permit pdf
+@orv2-2261-12, @orv2-2860-13
+Rule: 
 
-@orv2-2261-12 @orv2-2860-13
-Rule: A permit application is unaffected by changes to the LOA(s) used during the application submission process
-
-  #Scenario: vehicle removed from inventory allowable with permit
-    Given permit A uses LOA X and LOA Y
-      And permit A uses vehicle 1 only on LOA Y
-      And vehicle 1 has been removed from LOA Y
-      And vehicle 1 is allowed for the permit A permit type
-     When staff amend permit A
-     Then vehicle 1 is shown
-     Then the the original vehicle is shown
 
   Scenario: vehicle removed from inventory
     Given permit A uses LOA X and LOA Y

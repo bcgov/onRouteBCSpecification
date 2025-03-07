@@ -144,11 +144,38 @@ Rule: Staff can delete an uploaded LOA pdf file
 @orv2-1152-11
 Rule: Staff can input free text notes
 
-@orv2-1152-12
-Rule: Staff are shown the vehicle inventory information box
+@orv2-1152
+Rule: Staff must designate a power unit type and sub-type or trailer Type and sub-type
 
-@orv2-1152-13
-Rule: Staff must designate one or more vehicles to the LOA
+  Scenario: power unit
+    Given 
+     When 
+     Then 
+
+  Scenario: trailer
+    Given 
+     When 
+     Then 
+
+  Scenario: no vehicle type 
+    Given staff have not chosen a vehicle type
+     When they choose to continue
+     Then they see "This is a required field"
+      And the mandatory field is indicated
+
+  Scenario: no vehicle sub-type chosen
+    Given staff have not chosen a vehicle sub-type
+     When they choose to continue
+     Then they see "This is a required field"
+      And the mandatory field is indicated
+
+# all vehicle editing and lock down the vehcle type drop downs and recall behaviour
+
+# @orv2-1152-12
+# Rule: Staff are shown the vehicle inventory information box
+
+# @orv2-1152-13
+# Rule: Staff must designate one or more vehicles to the LOA
 
   Scenario: none chosen
     Given staff do not choose a vehicle
@@ -157,8 +184,8 @@ Rule: Staff must designate one or more vehicles to the LOA
       And they see "Select at least one item"
       And the mandatory field is indicated
 
-@orv2-1152-14
-Rule: Staff can search for a power unit or a trailer in the CV Client vehicle inventory
+# @orv2-1152-14
+#Rule: Staff can search for a power unit or a trailer in the CV Client vehicle inventory
 
   Scenario: search power units by VIN
     Given staff choose to search <power units>
@@ -193,8 +220,8 @@ Rule: A VIN can be designated to one or more LOA(s)
      Then 
  # Rule: A PU or Trailer can be designated to one or more LOA(s)
 
-@orv2-1152-16
-Rule: The list of vehicles is paginated
+# @orv2-1152-16
+#Rule: The list of vehicles is paginated
 
 @orv2-1152-17
 Rule: Staff are shown all data submitted in the LOA workflow for review 
@@ -208,7 +235,7 @@ Rule: Staff are shown all data submitted in the LOA workflow for review
        | expiry date           | the chosen expiry date or LOA never expires (if chosen)   |
        | LOA                   | the filename and file type extension of the uploaded file |
        | additional notes      | shown only if inputted free text notes exist              |
-       | designated vehicle(s) | list of chosen vehicles                                   |
+      #| designated vehicle(s) | list of chosen vehicles                                   |
 
 @orv2-1152-18
 Rule: The LOA is active when the add LOA workflow is completed

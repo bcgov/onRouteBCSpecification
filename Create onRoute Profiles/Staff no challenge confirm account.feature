@@ -4,16 +4,15 @@ Feature: Staff no challenge confirm existing onRouteBC profile
 User = staff
 
 # if no BCeID and company claimed by staff then a new user goes through the challenge workflow
-
-# staff needs to buy a permit on behalf of company, TPS migrated to onRouteBC, onRouteBC profile not claimed by client yet, when staff finds a company and selects the profile link they go to no challenge company information
+# can update company name and email address
 
 @orv2-1637-1, @orv2-3228
-Rule: users can claim an existing onRouteBC profile on behalf of a CV Client
+Rule: A user can claim an existing onRouteBC profile on behalf of a CV Client
 
   Scenario: unclaimed profile
     Given staff find an unclaimed onRouteBC profile
-     When they choose to create the onRouteBC profile
-     Then they are directed to the ???
+     When they choose to view the profile
+     Then they are directed to complete the profile contact details
 
 @orv2-1637-2, @orv2-3228
 Rule: A first user can claim a matching existing onRouteBC profile without a challenge
@@ -40,8 +39,6 @@ Rule: A first user can claim a matching existing onRouteBC profile without a cha
         | option to view their profile |
       And they are sent a profile creation confirmation email
       #see orv2-477
-
-
 
 @orv2-1637-4, @orv2-3228
 Rule: A first user can view and update their claimed "Client No." profile contact details
