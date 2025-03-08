@@ -3,7 +3,7 @@ As staff I need to be able to amend an issued or active permit that uses an LOA(
 
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2860
+@orv2-2860-1
 Rule: Vehicle details are removed from an amending LOA permit when the LOA is unchosen, deleted or expired and the vehicle type and sub-type is not allowed for the permit type
 
   Scenario: LOA unchosen
@@ -23,10 +23,10 @@ Rule: Vehicle details are removed from an amending LOA permit when the LOA is un
        When a user chooses to amend permit 1
        Then all vehicle details are removed
 |
-@orv2-2860
+@orv2-2860-2
 Rule: Vehicle details are removed from an amending LOA permit when the vehicle type and sub-type are changed on the designated LOA and the vehicle type and sub-type is not allowed for the permit type
 |
-@orv2-2860
+@orv2-2860-3
 Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
   
   Scenario: available LOA(s)
@@ -41,11 +41,10 @@ Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
  # we will need to figure out how to handle this over time do we keep showing expired LOAs forever or...
 |
 # expired LOA before permit expiry will be handled manually in conflict with:
- Rule: LOA(s) must match the permit type to be available in the permit application
  Rule: LOA(s) must not be expired to be available in the permit application
  Rule: Permit start date and duration are limited by the chosen LOA
-
- @orv2-2860
+|
+@orv2-2860-4
 Rule: LOA permits using expired LOA(s) have allowable permit duration available for their permit type
 
   Scenario: term permit
@@ -67,7 +66,7 @@ Rule: LOA permits using expired LOA(s) have allowable permit duration available 
        | 330  |
        | 1y   |
 |
-@orv2-2860
+@orv2-2860-5
 Rule: LOA permits are bound by the LOA term
 
   Scenario: LOA term shortened
