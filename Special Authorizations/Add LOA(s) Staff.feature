@@ -144,7 +144,7 @@ Rule: Staff can delete an uploaded LOA pdf file
 @orv2-1152-11
 Rule: Staff can input free text notes
 |
-@orv2-1152-12
+@orv2-2830-1
 Rule: Staff must designate a vehicle type and sub-type
 
   Scenario: power unit
@@ -173,7 +173,7 @@ Rule: Staff must designate a vehicle type and sub-type
      Then they see "This is a required field"
       And the mandatory field is indicated
 |
-@orv2-1152-17
+@orv2-1152-17 @orv2-2830-2
 Rule: Staff are shown all data submitted in the LOA workflow for review 
 
   Scenario: multiple per types designated

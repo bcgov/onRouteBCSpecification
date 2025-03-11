@@ -40,10 +40,6 @@ Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
 
  # we will need to figure out how to handle this over time do we keep showing expired LOAs forever or...
 |
-# expired LOA before permit expiry will be handled manually in conflict with:
- Rule: LOA(s) must not be expired to be available in the permit application
- Rule: Permit start date and duration are limited by the chosen LOA
-|
 @orv2-2860-4
 Rule: LOA permits using expired LOA(s) have allowable permit duration available for their permit type
 
@@ -67,7 +63,7 @@ Rule: LOA permits using expired LOA(s) have allowable permit duration available 
        | 1y   |
 |
 @orv2-2860-5
-Rule: LOA permits are bound by the LOA term
+Rule: LOA permits are limited by LOA term when the LOA is active
 
   Scenario: LOA term shortened
     Given 
@@ -84,3 +80,8 @@ Rule: LOA permits are bound by the LOA term
      When 
      Then 
 |
+  Scenario: LOA start date in future
+    Given 
+     When 
+     Then 
+

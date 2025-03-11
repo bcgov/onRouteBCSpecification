@@ -74,14 +74,33 @@ Rule: LOA(s) must not be expired to be available in the permit application
      Then the LOA(s) cannot be chosen
 |
 @orv2-2261-7, @orv2-2860-12
-Rule: Permit start date and duration are limited by the chosen LOA
+Rule: Permit duration is limited by the chosen LOA term
 
   Scenario: LOA expires before maximum allowable term duration
-    Given the chosen LOA expires on 04/01/2024 |
+    Given the chosen LOA expires on 04/01/2024
      When a user chooses a start date that is 01/11/2024
      Then they can choose only the following valid term durations:
        | 30 |
        | 60 |
+|
+@orv2-2860
+Rule: Available LOA(s) is limited by the chosen start date
+
+  Scenario: LOA exists non chosen
+    Given the CV Client has LOA A
+      And LOA A has a start date of 03/01/2025
+     When a user chooses a permit start date of 02/28/2025
+     Then LOA A is shown 
+      But not available in the permit application
+
+  Scenario: LOA exists and chosen
+   Given the CV Client has LOA A
+      And LOA A has a start date of 03/01/2025
+      And the user chooses LOA A
+     When they choose a permit start date of 02/28/2025
+     Then LOA A is unchosen 
+      But is shown
+      And not available in the permit application
 |
 @orv2-2261-8, @orv2-2860-13
 Rule: Only the vehicle type and sub-type in the chosen LOA is available in the permit application
@@ -131,5 +150,4 @@ Rule: The user can review the chosen LOA parameters before completing the permit
 @orv2-2261-11, @orv2-2860-16
 Rule: The chosen LOA number is printed on the issued permit pdf
 |
-
 See amend applications and shopping cart for additional specs
