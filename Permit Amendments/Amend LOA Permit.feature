@@ -71,7 +71,8 @@ Rule: LOA amending permits are limited by LOA term when the LOA is active
       And permit 1 expiry is 02/28/2025
       And staff change LOA A expiry to 01/30/2025
      When staff amend permit 1
-     Then 
+     Then permit 1 vehicle details are removed
+      And LOA A is not available
 
    Scenario: LOA term lengthened
     Given LOA A is used on permit 1
