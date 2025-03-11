@@ -4,7 +4,7 @@ As staff I need to be able to amend an issued or active permit that uses an LOA(
 Staff = SA, PC, CTPO, Trainee
 
 @orv2-2860-1
-Rule: Vehicle details are removed from an amending LOA permit when the LOA is unchosen, deleted or expired and the vehicle type and sub-type is not allowed for the permit type
+Rule: Vehicle details are removed from an LOA amending permit when the LOA is unchosen, deleted or expired and the vehicle type and sub-type is not allowed for the permit type
 
   Scenario: LOA unchosen
     Given a user has chosen an LOA A
@@ -24,7 +24,7 @@ Rule: Vehicle details are removed from an amending LOA permit when the LOA is un
        Then all vehicle details are removed
 |
 @orv2-2860-2
-Rule: Vehicle details are removed from an amending LOA permit when the vehicle type and sub-type are changed on the designated LOA and the vehicle type and sub-type is not allowed for the permit type
+Rule: Vehicle details are removed from an LOA amending permit when the vehicle type and sub-type are changed on the designated LOA and the vehicle type and sub-type is not allowed for the permit type
 |
 @orv2-2860-3
 Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
@@ -41,7 +41,7 @@ Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
  # we will need to figure out how to handle this over time do we keep showing expired LOAs forever or...
 |
 @orv2-2860-4
-Rule: LOA permits using expired LOA(s) have allowable permit duration available for their permit type
+Rule: LOA amending permits using expired LOA(s) have allowable permit duration available for their permit type
 
   Scenario: term permit
     Given LOA permit A is a term permit
@@ -63,25 +63,41 @@ Rule: LOA permits using expired LOA(s) have allowable permit duration available 
        | 1y   |
 |
 @orv2-2860-5
-Rule: LOA permits are limited by LOA term when the LOA is active
+Rule: LOA amending permits are limited by LOA term when the LOA is active
 
-  Scenario: LOA term shortened
-    Given 
-     When 
+  Scenario: LOA term shortened/expires before permit
+    Given LOA A is used on permit 1
+      And LOA A expiry date is 03/01/2025
+      And permit 1 expiry is 02/28/2025
+      And staff change LOA A expiry to 01/30/2025
+     When staff amend permit 1
      Then 
 
    Scenario: LOA term lengthened
-     Given 
-      When 
-      Then 
+    Given LOA A is used on permit 1
+      And LOA A expiry date is 03/01/2025
+      And permit 1 expiry is 03/01/2025
+      And staff change LOA A expiry to 04/30/2025
+     When staff amend permit 1
+     Then permit 1 expiry is 03/01/2025
+      And LOA A remains chosen
 
-  Scenario: LOA expired
-    Given 
-     When 
-     Then 
-|
   Scenario: LOA start date in future
-    Given 
-     When 
-     Then 
+    Given LOA A is used on permit 1
+      And LOA A start date is 02/01/2025
+      And LOA A is not expired
+      And permit 1 start date is 02/28/2025
+      And staff change LOA A start to 04/30/2025
+     When staff amend permit 1
+     Then permit 1 vehicle details are removed
+      And LOA A is not available
 
+  Scenario: LOA start date in past
+    Given LOA A is used on permit 1
+      And LOA A start date is 03/01/2025
+      And LOA A is not expired
+      And permit 1 start date is 03/01/2025
+      And staff change LOA A start to 02/01/2025
+     When staff amend permit 1
+     Then permit 1 start date is 03/01/2025
+      And LOA A remains chosen
