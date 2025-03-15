@@ -6,7 +6,7 @@ User = basic or business
 @orv2-481-1, @orv2-3322, @orv2-3228
 Rule: A user is provided the option to claim a profile with a challenge
 
- Scenario: user credentials do not match an existing onRouteBC profile
+ Scenario: user credentials do match an existing onRouteBC profile
      Given user has not been invited
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Welcome to onRouteBC" page
@@ -15,7 +15,13 @@ Rule: A user is provided the option to claim a profile with a challenge
          | Client Name                                                                 | Basic = first name last name, Business = company name |
          | Has this company purchased a commercial vehicle permit in the last 2 years? | call to action                                        |
        And they have the option to claim the profile or not
- 
+
+ Scenario: second+ not invited business user
+     Given they are not the first user
+      And they are not invited
+     When they successfully log in using their business BCeID credentials
+     Then they are directed to the universal unauthorized access page
+
  Scenario: choose yes
      When a user chooses to claim an existing profile
      Then they are directed to claim an existing profile
@@ -35,6 +41,14 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a user to pro
        And they input a "Permit No." that is associated to the "Client No." 
       When they choose to proceed
       Then they are directed to next step
+
+ # checking this one
+ Scenario: basic inputs valid TPS "Client No." and "Permit No." for business bceid
+     Given a user inputs a "Client No." that is in onRouteBC
+       And it matches an existing business bceid company
+       And they input a "Permit No." that is associated to the "Client No." 
+      When they choose to proceed
+      Then they are directed to the universal unauthorized access page
 
  Scenario: second+ not invited basic user valid TPS "Client No." and "Permit No."
     Given they successfully log in using their basic BCeID credentials
