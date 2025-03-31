@@ -13,10 +13,6 @@ Rule: Show credit account information
      When a cv client chooses to view credit account
      Then they do not see the option to view credit account
 
-  Scenario: credit account closed
-     When a cv client chooses to view credit account
-     Then they do not see the option to view credit account
-
    Scenario: credit account closed
      When a cv client chooses to view credit account
      Then they see the following information:
@@ -38,6 +34,10 @@ Rule: Show onRouteBC generated unique credit account number
 
 @orv2-1999-3
 Rule: Show the credit account holder designation
+
+  Scenario: holder
+     When cv client are viewing a holder of a credit account
+     Then they see "Account Holder"
 
 @orv2-1999-4
 Rule: Show credit limit
@@ -66,7 +66,7 @@ Rule: Show available credit
      When cv client views credit account
      Then they see the credit balance $0
 
-# need to confirm this behaviour
+ # need to confirm this behaviour
   Scenario: prepaid
     Given staff has assigned a prepaid limit
      When the cv client views credit account

@@ -94,7 +94,7 @@ Rule: Users must input a load description
 @orv2-2254-10 @orv2-2387-10
 Rule: Users may only input one power unit allowable for an STOS permit manually or chosen from inventory 
 
- # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set
 
   Scenario: pu added
      When a user chooses to add a power unit
@@ -103,6 +103,16 @@ Rule: Users may only input one power unit allowable for an STOS permit manually 
   Scenario: no pu added
      When a user chooses to add a power unit
      Then they have the option to add a power unit
+
+  Scenario: recall non allowable
+    Given power unit A is not allowed for a chosen commodity
+     When they choose to recall power unit A
+     Then they cannot choose the power unit A
+
+  Scenario: manually input new vehicle
+    Given vehicle sub-type 1 is not allowed for a chosen commodity
+     When they attempt to choose vehicle sub-type 1 
+     Then they cannot choose the power unit 1
 
 @orv2-2254-11 @orv2-2387-11
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory

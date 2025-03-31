@@ -30,14 +30,6 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account suspended view holder
-     When staff chooses to view credit account
-     Then they see the option to view credit account
-
-  Scenario: credit account suspended view user
-     When staff chooses to view credit account
-     Then they see the option to view credit account
-
   Scenario: credit account active view user
      When staff chooses to view credit account
      Then they see the following information:
@@ -56,7 +48,6 @@ Rule: Show credit account information
        | information                   | description                                |
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
-       | Contact CVSE Revenue info box | instructions                               |
  
    Scenario: credit account on hold view user
      When staff chooses to view credit account
@@ -78,15 +69,14 @@ Rule: Show credit account information
        | information                   | description  |
        | Contact CVSE Revenue info box | instructions |
 
-  Scenario: credit account suspended view holder
+  Scenario: company suspended view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description                                |
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
-       | Contact CVSE Revenue info box | instructions                               |
- 
-   Scenario: credit account suspended view user
+
+   Scenario: company suspended view user
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                                |
@@ -108,7 +98,7 @@ Rule: Show the credit account designation
      Then they see "Account Holder"
 
 @orv2-2005-4
- Rule: Show credit account users
+Rule: Show credit account users
 
   Scenario: credit account users exist
      When  staff chooses to view credit account

@@ -138,10 +138,10 @@ Rule: Show credit balance
 Rule: Show available credit
 
   Scenario: $0 balance
-     Wstaff views credit account
+     When staff views credit account
      Then they see the credit balance $0
 
-# need to confirm this behaviour
+ # need to confirm this behaviour
   Scenario: prepaid
     Given staff has assigned a prepaid limit
      When staff views credit account
@@ -154,7 +154,7 @@ Rule: Show available credit
      Then they see the available credit of $500 
 
 @orv2-2035-7
- Rule: Show credit account users
+Rule: Show credit account users
 
   Scenario: credit account users exist
      When  staff chooses to view credit account
