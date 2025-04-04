@@ -3,7 +3,7 @@ Feature: Send onRouteBC profile creation confirmation email
 
 User = new user or first claimant
 
-@orv2-477-1 @orv2-1521-7, @orv2-3322, @orv2-3228
+@orv2-477-1 @orv2-1521-7, @orv2-3322-21, @orv2-3228
 Rule: Send confirmation email to user upon successful profile creation
 
  Scenario: Send email when onRoute profile workflow is completed

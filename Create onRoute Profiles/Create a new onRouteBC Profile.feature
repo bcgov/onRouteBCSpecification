@@ -3,7 +3,7 @@ Feature: CV Client create a New onRouteBC Profile
 
 User = basic or business
 
-@orv2-369-1, @orv2-3322
+@orv2-369-1, @orv2-3322-7
 Rule: a user can choose to create a new onRouteBC profile or claim an existing profile
 
  Scenario: business username not in onRoute and credentials do not match a company in onRouteBC
@@ -32,7 +32,7 @@ Rule: a user can choose to create a new onRouteBC profile or claim an existing p
          | Has this company purchased a commercial vehicle permit in the last 7 years? | call to actions to claim or not claim the profile |
        And they have the option to try to claim the profile or not claim it
 
-@orv2-369-2, @orv2-3322
+@orv2-369-2, @orv2-3322-8
 Rule: a user can update their contact details
   
     Scenario: business mandatory fields
@@ -67,7 +67,7 @@ Rule: a user can update their contact details
      Then they see "This is a required field" at each field with invalid data
       And fields with no valid data are indicated
 
-@orv2-369-13, @orv2-3322
+@orv2-369-13, @orv2-3322-9
 Rule: BCeID manages credential and system issues separate of onRouteBC
 
   Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working

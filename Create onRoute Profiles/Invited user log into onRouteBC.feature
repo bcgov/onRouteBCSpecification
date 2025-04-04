@@ -3,7 +3,7 @@ Feature: Invited user log into onRouteBC
 
 User = invited
 
-@orv2-907-1, @orv2-3322, @orv2-3228
+@orv2-907-1, @orv2-3322-18, @orv2-3228
 Rule: credential username must match invited username in onRouteBC
 
   Scenario: username in onRouteBC and matches 
@@ -34,7 +34,7 @@ Rule: credential username must match invited username in onRouteBC
        And they see their credential client name
        And they see the option to create a new profile or claim an existing profile
 
-@orv2-907-2, @orv2-3322, @orv2-3228
+@orv2-907-2, @orv2-3322-19, @orv2-3228
 Rule: a user is assigned the role designated to their username
 
   Scenario: CA
@@ -60,7 +60,7 @@ Rule: a user is assigned the role designated to their username
       When they successfully log in using their BCeID credentials
       Then they are directed to the universal unauthorized access page
 
-@orv2-907-3, @orv2-3322, @orv2-3228
+@orv2-907-3, @orv2-3322-20, @orv2-3228
 Rule: a new invited user must complete their user contact details   
 
  Scenario: Complete profile
