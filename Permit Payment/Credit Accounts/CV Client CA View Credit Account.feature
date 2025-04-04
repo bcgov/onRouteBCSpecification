@@ -79,7 +79,7 @@ Rule: Show available credit
      Then they see the available credit of $500 
 
 @orv2-1999-7
- Rule: Show credit account users
+Rule: Show credit account users
 
   Scenario: credit account users exist
      When  the cv client chooses to view credit account

@@ -210,11 +210,16 @@ Rule: Users may remove all added trailers from the application
 
   Scenario: trailers added
      When a user chooses to reset trailer configuration
-     Then all exsiting trailers are removed
+     Then all existing trailers are removed
 
   Scenario: no trailers added
      When a user chooses to reset trailer configuration
      Then they do not have the option to reset trailer configuration
+
+# revise to include:
+	- Order = power unit, jeep(s), trailer, booster(s)
+	- multiple Jeeps and multiple Boosters add specs
+	- no jeeps and boosters
 
 @orv2-2254-20 @orv2-2387-20
 Rule: There is no limit to the number of trailers that can be added to the application

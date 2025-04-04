@@ -215,6 +215,9 @@ Rule: Remove purchased or optionally removed applications by other logged in use
      Then they are directed to to the cart all applications
       And they see "Cart is empty"
 |
+@
+Rule: 
+
 @orv2-3176-4
 Rule: Applications that fail policy validation will prevent a CV Client from paying for the cart
       
