@@ -91,6 +91,33 @@ Rule: Users must input a load description
       And they see "This is a required field"
       And the mandatory field is indicated
 
+@orv2-3902-1
+Rule: User can add a power unit only when a commodity is chosen
+
+  Scenario: arrive
+     When a user arrives at a new STOS permit application
+     Then the option to add a power unit is not available
+  
+  Scenario: commodity chosen
+    Given commodity is not chosen
+     When a user chooses a commodity
+     Then the option to add a power unit is available
+
+  Scenario: commodity not chosen
+     When a user does not choose a commodity
+     Then the option to add a power unit is available
+
+  Scenario: change commodity
+    Given commodity is chosen
+     When a user changes the commodity
+     Then all vehicle information is removed
+      And the option to add a power unit is available
+
+  Scenario: commodity not chosen continue
+     When a user chooses to continue
+     Then they see "A Power Unit must be added."
+      And they cannot continue
+
 @orv2-2254-10 @orv2-2387-10
 Rule: Users may only input one power unit allowable for an STOS permit manually or chosen from inventory 
 

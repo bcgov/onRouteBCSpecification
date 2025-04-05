@@ -154,8 +154,8 @@ Rule: staff can sort by any column in the returned results table
 @orv2-937-15
 Rule: permit results display status labels based on their current state
 
-  Scenario Outline: Display permit status labels
-    Given staff are as search for permit
+  Scenario: Display permit status labels
+    Given staff are at search for permit
      When they search for a permit 
      Then it shows the correct <permit status> based on the <permit state>
 
@@ -164,6 +164,7 @@ Rule: permit results display status labels based on their current state
      | Voided       | Voided        |
      | Expired      | Expired       |
      | Superseded   | Superseded    |
+     | Revoked      | Revoked       |
      | Issued       |               |
      | Active       |               |
 

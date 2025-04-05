@@ -117,20 +117,17 @@ Rule: Finish revoke permit
 @orv2-1054-14
 Rule: Generate revoke permit
  
-   Scenario Outline: Generate revoke permit
+   Scenario: Generate revoke permit
      Given the PPC SA has inputted all mandatory information at revoke permit
       When they choose to revoke the permit
       Then the revoke permit is generated
        And the <permit number> is suffixed with a <revision number> preceded by a "-"
-  15
-     And the revoke permit is labeled as revoked
+       And the revoke permit is labeled as revoked
        And the revoke permit end date is updated to the date the revoke permit is generated
 
        Examples:
-         | permit number   | revision number |
-         | P2-004016
-         17-873 17
-         R2             |
+         | permit number | revision number |
+         | P2-00401617-873 17 R2             |
 
 @orv2-1054-18
 Rule: Revoked permit is superseded by the revoke permit

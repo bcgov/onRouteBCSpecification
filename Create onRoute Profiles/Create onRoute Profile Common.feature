@@ -119,21 +119,11 @@ Rule: contact details are replicated to company primary contact and user details
       | Province / State            | BC                                                | BC                       | BC             |
       | City                        | Vancouver                                         | Vancouver                | Vancouver      |
       | Postal / Zip Code           | V8L 13T                                           |                          |                |
-
-@orv2-481-7, @orv2-3322-16, @orv2-3228
-Rule: a user can view their onRouteBC Client Number upon successful completion of profile creation
-
-  Scenario: Successfully completed 
-     When a user chooses to complete the workflow
-     Then they are directed to a success page
-      And they see their onRouteBC Client Number
-      And they see options to apply for a permit and view their profile
-
+|
 @orv2-481, @orv2-3322-17, @orv2-1637-8, @orv2-3228
 Rule: a user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
 
   Scenario: Successfully completed 
-    Given a CV Client has completed "My Information"
      When they choose to complete the workflow
      Then they are directed to a success page
      And they see the following:
