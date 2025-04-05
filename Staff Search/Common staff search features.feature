@@ -1,6 +1,6 @@
 Feature Common staff search features
 
-Staff = SA, PC
+Staff = SA, PC, EO, CTPO, Trainee, FIN, HQA
 
 @orv2-2216-1
 Rule: Release staff user from current acting as company on initiation of new search
@@ -22,3 +22,4 @@ Rule: The search value is cleared when the search entity is changed
 
 @orv2-3411-5
 Rule: The search value is cleared the search filter is changed
+

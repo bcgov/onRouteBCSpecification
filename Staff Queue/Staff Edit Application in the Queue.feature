@@ -1,6 +1,6 @@
 Feature: Staff Edit Application in the Queue
 
-Staff = SA, PC, CTPO, Trainee
+Staff = PC, SA, TRAIN, CTPO
 
 @orv2-2472-1
 Rule: Staff can edit an application in the queue

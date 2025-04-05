@@ -1,6 +1,6 @@
 Feature: Staff Approve Application in the Queue
 
-Staff = SA, PC, CTPO, Trainee
+Staff = PC, SA, TRAIN, CTPO
 
 @orv2-2473-1
 Rule: Staff can approve an application

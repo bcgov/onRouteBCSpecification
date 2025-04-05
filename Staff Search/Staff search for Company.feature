@@ -1,7 +1,7 @@
 Feature: Staff search for company
    As a staff I want to search for a CV Client so that I can view details about their profile.
 
-Staff = SA, PC, EO
+Staff = SA, PC, EO, CTPO, Trainee, FIN, HQA
 
 @orv2-1362-1
 Rule: The entered search parameter is displayed after initiating a search
@@ -17,7 +17,7 @@ Rule: Search by defaults to company name
 Rule: Staff can search for a company using a minimum 4 characters in company name
 
   Scenario: Company exists 
-    Given a PPC SA, PC, EO has chosen to search by company name
+    Given Staff has chosen to search by company name
      When they search by company name using 4 characters
       And they search for "Band"
      Then they see results that include "Band" in the first 4 characters of company name
@@ -27,7 +27,7 @@ Rule: Staff can search for a company using a minimum 4 characters in company nam
         | Band Inc.        |
       But the results do not include "Truck Band"
 
- @orv2-1362-15
+@orv2-1362-15
 Rule: Staff search by company name also searches doing business as 
 
   Scenario: Company has a doing business as name
@@ -40,15 +40,20 @@ Rule: Staff search by company name also searches doing business as
         | Julily Trucking    |
         | Julies Inc.        |
 
-@orv2-1362-16
+@orv2-1362-16, @orv2-3835
 Rule: Indicate if no records are found and provide option to create company only to PPC SA or PC
 
-  Scenario: Company does not exist 
-    Given a PPC SA, PC has chosen to search by company name
-     When they search by the company name using 4 characters
-      And they search for "Band"
+  Scenario: authorized staff
+    Given a PPC SA, PC has chosen to search for a company
+      And there are no matching records in onRouteBC
      Then they see "No records found"
       And the option to create a company
+
+  Scenario: not authorized
+    Given EO has chosen to search for a company
+      And there are no matching records in onRouteBC
+     Then they see "No records found"
+      And they do not have the option to create a company      
 
 @orv2-1362-1
 Rule: Staff can search for a company using a minimum 9 characters in client number
@@ -65,7 +70,7 @@ Rule: Staff can search for a company using a minimum 9 characters in client numb
    | onRouteBC client number | 818745927     | 81-874592-709 |
 
 @orv2-1362-14  
-Rule: PPC SA, PC and EO can search using the first 9 characters of the client number
+Rule: Staff can search using the first 9 characters of the client number
 
   Scenario: onRouteBC client number exists
     Given a PPC SA, PC or EO has chosen to search by client number
@@ -80,7 +85,7 @@ Rule: PPC SA, PC and EO can search using the first 9 characters of the client nu
 Rule: Staff can search using the exact legacy number
 
   Scenario: Legacy client number exists
-    Given a PPC SA, PC or EO has chosen to search by legacy number
+    Given Staff has chosen to search by legacy number
      When they search by the using all characters of the <legacy number>
      Then they see company <results> that match the legacy number
       But they do not see <results> that are not an exact match
@@ -95,7 +100,7 @@ Rule: Staff can search using the exact legacy number
 Rule: Staff can view company profile summary information in results 
 
   Scenario: Company result includes all data elements possible to display in results
-    Given a PPC SA, PC, EO has chosen to search for a company
+    Given Staff has chosen to search for a company
      When they initiate the search
      Then they see the following information about the company:
         | Company Name                   |
@@ -124,23 +129,17 @@ Rule: Staff can view company profile summary information in results
      Then the "Legacy" header is not shown
 
   Scenario: Show truncated text on hover
-    Given a PPC SA, PC, EO is at the search results
+    Given Staff is at the search results
      When they hover over truncated text
      Then they see the entire text line
 
-@orv2-1362-8
-Rule: Only PPC SA or PC can optionally view company profile
+@orv2-1362-8 @orv2-3835
+Rule: Staff can optionally view company profile
 
-  Scenario: PPC SA or PC choose to view company profile
-    Given a PPC SA or PC has found a company of interest
+  Scenario: Staff choose to view company profile
+    Given Staff has found a company
      When they choose to view the company profile
      Then they are directed to the company permits page applications in progress tab
-
-  Scenario: EO chooses to view company profile
-    Given an EO has found a company of interest
-     When they choose to view the company profile
-     Then they are unable to 
-      And the option is not available
 
 @orv2-1362-9
 Rule: Sort multiple search results
@@ -156,9 +155,6 @@ Rule: Sort multiple search results
         | Bandstra Inc.       |
         | Johns Trucking Ltd. |
 
-@orv2-1362-10
-Rule: EO can not view a CV Client profile
-
 @orv2-1362-11
 Rule: Searching with no inputted parameter does not initiate search
 
@@ -169,7 +165,6 @@ Rule: Suspended companies are indicated in search results
      When staff search for abc co.
      Then they see "Suspended" label on abc co. search results
 
-@orv2-1885-2
   Scenario: abc co. unsuspended
      When staff search for abc co.
      Then they see abc co. search results

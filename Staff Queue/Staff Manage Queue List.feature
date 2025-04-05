@@ -1,7 +1,7 @@
 Feature: Staff Manage Queue queue List
 As staff I need to be able to see a list of permit applications submitted for review by CV Clients, so that I can assist them with completing their permit applications and approving issuance.
 
-Staff = SA, PC, CTPO, Trainee
+Staff = PC, SA, TRAIN, CTPO
 
 @orv2-2398-1
 Rule: Staff can see a queue list of applications submitted for review

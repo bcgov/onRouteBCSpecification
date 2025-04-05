@@ -507,11 +507,22 @@ Rule: Send one email per receipt
      When one or more permits of many in cart do not issue
      Then they do not receive the receipt email
 |
-@orv2-1486-32, @orv2-2048-28
-Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
+@orv2-1486-32, @orv2-2048-28 @orv2-3835
+Rule: Only authorized users can see the option to navigate to the shopping cart
+
+  Scenario: authorized
+     When CA, PA, SA, PC, CTPO, Train are on any page
+     Then they see the option to navigate to the shopping cart
+
+  Scenario: not authorized
+     When FIN, EO, HQA are on any page
+     Then they do not see the option to navigate to the shopping cart
 |
 @orv2-1486-33, @orv2-2048-29
 Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
+
+
+
 
 # Rule: A permit, void permit or revoked permit is issued when permit number is generated
 

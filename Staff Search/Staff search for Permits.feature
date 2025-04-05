@@ -1,7 +1,7 @@
 Feature: Search for permits
    As a PPC SA and PC I want to search for a CV Client permit so that I can perform actions to permits to assist CV Clients.
 
-Staff = SA, PC, EO, CTPO, FIN HQA
+Staff = SA, PC, EO, CTPO, Trainee, FIN, HQA
 
 @orv2-937-13 @orv2-3411-1
 Rule: Staff can search for a permit
@@ -74,7 +74,7 @@ Rule: Staff can search for permit using 1 to 6 characters of the VIN
 Rule: Staff can search for permit using 1 to 10 characters of the plate
 
   Scenario: Search for permit by plate number
-    Given a PC has chosen to search by plate number
+    Given staff has chosen to search by plate number
      When they search by the <plate number> using the exact plate number
      Then they see permit <results> with only the exact characters used in the search
       And all permit <statuses> can be displayed if found
@@ -90,7 +90,7 @@ Rule: Staff can search for permit using 1 to 10 characters of the plate
 Rule: truncated text on search results can be optionally shown
 
   Scenario: Show truncated text on hover
-    Given a PC is at the search results
+    Given staff is at the search results
      When they hover over truncated text
      Then they see the entire text line
 
@@ -102,7 +102,7 @@ Rule only active permits can be optionally shown
      When they choose to show only active permits
      Then only permits that have an end date and time on or before the current date and time are displayed
 
-@orv2-937-7
+@orv2-937-7@orv2-3835
 Rule the permit and permit payment receipt pdf can be optionally viewed
 
   Scenario: View Permit PDF
@@ -116,15 +116,16 @@ Rule the permit and permit payment receipt pdf can be optionally viewed
      Then the receipt pdf is displayed in a new browser tab
 
 @orv2-937-8
-Rule: authorized staff can optionally perform actions on valid search result item(s)
+Rule: availability of optional actions that can be performed on permit search results depend on the permit status
 
-  Scenario: Show Actions
-    Given a PC is at the search results
-      And the <actions> are:
+  Scenario: Actions
+    Given search results have been returned
+      And the optional <actions> are:
       | Amend        |
       | View Receipt |
       | Resend       |
-     When they choose to perform an action on a permit
+      | Void/Revoke  |
+     When staff choose to perform an action on a permit
      Then they see only valid <actions> for each permit <status>
 
   Examples:
@@ -133,7 +134,33 @@ Rule: authorized staff can optionally perform actions on valid search result ite
     | View Receipt | active, superseded, void or expired permit |
     | Resend       | active, superseded, void or expired permit |
     | Void/Revoke  | issued or active permit                    |
-     
+
+@orv2-3835
+Rule: PC, SA, Trainee, CTPO can amend a valid permit from search results
+
+  Scenario: authorized
+    Given PC, SA, Trainee, CTPO have returned valid search results
+     When they choose to amend a permit
+     Then they see the option to amend
+
+  Scenario: unauthorized
+    Given EO have returned valid search results
+     When they choose to amend a permit 
+     Then they do not see the option to amend
+
+@orv2-3835
+Rule: only SA can void or revoke a valid permit from search results
+
+  Scenario: authorized
+    Given SA have returned valid search results
+     When they choose to void or revoke a permit
+     Then they see the option to void or revoke
+
+  Scenario: unauthorized
+    Given EO have returned valid search results
+     When they choose to void or revoke a permit
+     Then they do not see the option to void or revoke
+
 @orv2-937-9 @orv2-3411-3
 Rule: staff can sort by any column in the returned results table
 
@@ -161,7 +188,7 @@ Rule: permit results display status labels based on their current state
 
      Examples:
      | permit state | permit status |
-     | Voided       | Voided        |
+     | Voided       | Void          |
      | Expired      | Expired       |
      | Superseded   | Superseded    |
      | Revoked      | Revoked       |
@@ -169,7 +196,7 @@ Rule: permit results display status labels based on their current state
      | Active       |               |
 
 @orv2-937-12
-Rule: SA, PC can resend the permit and receipt pdf's
+Rule: staff can resend the permit and receipt pdf's
 
    Scenario: Resend active permit and receipt documents
     Given a SA or PC is at "Resend Permit and Receipt"
@@ -179,7 +206,7 @@ Rule: SA, PC can resend the permit and receipt pdf's
       And they see "Successfully Sent"
 
 @orv2-937-10 @orv2-1267-1
-Rule: SA, PC can see original permit application contact details when resending permit and receipt pdf
+Rule: staff can see original permit application contact details when resending permit and receipt pdf
 
   Scenario: permit application email
     Given a permit applicant submitted abc@email.com in additional email
@@ -198,11 +225,8 @@ Rule: SA, PC can see original permit application contact details when resending 
      Then they see abc@email.com
       And +1 (604) 555-0196 in fax
 
-@orv2-1267-2
-Rule: SA, PC can optionally resend permit and receipt pdf to fax
-
 @orv2-937-14
-Rule: SA, PC can update resend contact details
+Rule: staff can update resend contact details
 
   Scenario: no email 
     Given a valid email address is not entered
@@ -212,7 +236,7 @@ Rule: SA, PC can update resend contact details
       And they cannot resend
 
 @orv2-1925-1
-Rule: SA, PC can choose to send either the permit pdf or permit payment pdf or both
+Rule: staff can choose to send either the permit pdf or permit payment pdf or both
 
   Scenario: choose none
     Given permit or receipt are not chosen
@@ -236,3 +260,5 @@ Rule: SA, PC can choose to send either the permit pdf or permit payment pdf or b
      Then the permit pdf is sent attached to email 1
       And the receipt pdf is sent attached to email 2
 
+@orv2-3984-1
+Rule: staff can choose to view a company profile from permit search results
