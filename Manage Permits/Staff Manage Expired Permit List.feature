@@ -1,6 +1,8 @@
 Feature: Staff Manage Expired Permit List
    As a PPC SA or PC I need to be able to view a list of Expired permits so that I can complete actions on them and keep track of issued and Expired permits on behalf of CV Clients.
 
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
+
 @orv2-1651-1
 Rule: Staff can view all Expired permits
 
@@ -50,7 +52,8 @@ Rule: Staff can view the permit and permit payment receipt pdf
      Then they see the chosen permit payment receipt pdf in a new browser tab
 
  Scenario: View permit pdf
-     Given the CV Client is at the "Expired Permits" tab
+     Given staff is at the "Expired Permits" tab
        And there are Expired permits 
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
+

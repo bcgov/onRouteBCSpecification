@@ -223,7 +223,14 @@ Rule: As a CV Client I need to search my vehicle inventory so that I can find sp
      | VIN          | 568       | all vehicles with VIN with the 3 characters 568          |
      | Date Created | 23        | all vehicles with Date Created with the 2 characters 23  |
 
- 
+ @orv2-3835-10
+ Rule: only authorized staff can view a cv client's vehicle inventory
 
+  Scenario: authorized
+     When PC, SA, TRAIN, FIN, CTPO are at a cv client profile
+     Then they see the option to view vehicle inventory
 
+  Scenario: not authorized
+     When Fin, EO, HQA are at a cv client profile
+     Then they do not see the option to view vehicle inventory
 

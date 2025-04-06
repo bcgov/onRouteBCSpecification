@@ -3,11 +3,13 @@ Feature: Staff view/edit company information
 
 Background: @orv2-354
 
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
+
 @orv2-1587-0
 Rule: Staff can view "Company Information"
 
  Scenario: View "Company Information"
-     Given Staff have chosen a company to view from search fro company results
+     Given Staff have chosen a company to view from search for company results
      When they choose the "Profile" page
      Then they are directed to the "Company Information" tab
      And only fields that contain data are displayed
@@ -25,11 +27,19 @@ Rule: BCeID company data is displayed
        | Company Legal Name | bceid_business_name | 
        | Email              | BCeID email         |
 
-@orv2-1587-2 @orv2-1521-2
-Rule: All fields are updatable
+@orv2-1587-2 @orv2-1521-2 @orv2-3835-8
+Rule: only authorized staff can edit company profile contact details
 
- Scenario: Edit "Company Information"
-     Given Staff chooses to edit a "Company Information"
+  Scenario: authorized
+     When PC, SA, TRAIN, CTPO chooses to edit company information
+     Then they see the option to edit company information
+
+  Scenario: not authorized
+     When FIN, EO, HQA chooses to edit company information
+     Then they do not see the option to edit company information
+
+ Scenario: editable information
+     Given PC, SA, TRAIN, CTPO chooses to edit a "Company Information"
      And they are at the "Company Information" page
      When they select "Edit"
      Then they are directed to the "Company Information" edit page
@@ -61,14 +71,14 @@ Rule: All fields are updatable
        | Province/State       | Yes      | 
 
  Scenario: Save edits to "Company Information"
-     Given staff has saved 
+     Given PC, SA, TRAIN, CTPO has saved 
      Then the changes are saved 
      And they are directed to the "Company Information" page
      And their changes are displayed
      And they see "Changed Saved" notification
 
  Scenario: Edit company information navigate away from "Company Information" page
-     Given Staff is at "Company Information"
+     Given PC, SA, TRAIN, CTPO is at "Company Information"
      When they make changes to their "Company Information"
      And they navigate away from the "Company Information"
      Then the changes are not saved 
@@ -77,7 +87,7 @@ Rule: All fields are updatable
 Rule: There are mandatory fields
 
  Scenario: Indicate mandatory fields    
-     Given Staff is editing their "Company Information"
+     Given PC, SA, TRAIN, CTPO is editing their "Company Information"
      When they do not enter valid data into a <mandatory field>  
      And they choose to save changes    
      Then they see <mandatory field error message>     
@@ -101,11 +111,11 @@ Rule: There are mandatory fields
        | Primary Contact Primary Province/State | This is a required field.     |
        | Primary Contact City                   | This is a required field.     |
 
-@orv2-1587-4
-Rule: Staff can cancel edit company
+@orv2-1587-4 @orv2-3835-9
+Rule: only authorized staff can cancel edit company
 
  Scenario: Cancel edit "Company Information"
-     Given Staff is editing "Company Information"
+     Given PC, SA, TRAIN, CTPO is editing "Company Information"
      When they select "Cancel"
      Then the changes are not saved 
      And they are directed to the "Company Information" page

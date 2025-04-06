@@ -102,7 +102,7 @@ Rule only active permits can be optionally shown
      When they choose to show only active permits
      Then only permits that have an end date and time on or before the current date and time are displayed
 
-@orv2-937-7@orv2-3835
+@orv2-937-7@orv2-3835-26
 Rule the permit and permit payment receipt pdf can be optionally viewed
 
   Scenario: View Permit PDF
@@ -135,7 +135,7 @@ Rule: availability of optional actions that can be performed on permit search re
     | Resend       | active, superseded, void or expired permit |
     | Void/Revoke  | issued or active permit                    |
 
-@orv2-3835
+@orv2-3835-27
 Rule: PC, SA, Trainee, CTPO can amend a valid permit from search results
 
   Scenario: authorized
@@ -148,7 +148,7 @@ Rule: PC, SA, Trainee, CTPO can amend a valid permit from search results
      When they choose to amend a permit 
      Then they do not see the option to amend
 
-@orv2-3835
+@orv2-3835-28
 Rule: only SA can void or revoke a valid permit from search results
 
   Scenario: authorized

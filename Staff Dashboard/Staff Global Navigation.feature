@@ -19,7 +19,7 @@ Rule: Always in the same relative screen position
      When they scroll the page down or up
      Then the global navigation options remain visible in the same position
 
-@orv2-1378-3 @orv2-3835
+@orv2-1378-3 @orv2-3835-17
 Rule: Navigate to the staff home page based on their group permission
 
   Scenario: Navigate to home page
@@ -32,7 +32,7 @@ Rule: Navigate to the staff home page based on their group permission
      Then they see "Welcome to onRouteBC"
       And they do not see the staff queue
 
-@orv2-1378-4 @orv2-3835
+@orv2-1378-4 @orv2-3835-18
 Rule: only authorized staff can navigate to the reports page
 
   Scenario: authorized
@@ -79,7 +79,7 @@ Rule: On page not available via global navigation
 @orv2-1378-8
 Rule: Navigating using the global navigation bar when acting as a company will reset the context to no company
 
-@orv2-2916-26 @orv2-3835
+@orv2-2916-26 @orv2-3835-19
 Rule: only authorized staff can navigate to the bridge calculation tool
 
   Scenario: authorized

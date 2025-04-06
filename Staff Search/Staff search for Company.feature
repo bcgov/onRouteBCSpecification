@@ -40,7 +40,7 @@ Rule: Staff search by company name also searches doing business as
         | Julily Trucking    |
         | Julies Inc.        |
 
-@orv2-1362-16, @orv2-3835
+@orv2-1362-16, @orv2-3835-24
 Rule: Indicate if no records are found and provide option to create company only to PPC SA or PC
 
   Scenario: authorized staff
@@ -133,7 +133,7 @@ Rule: Staff can view company profile summary information in results
      When they hover over truncated text
      Then they see the entire text line
 
-@orv2-1362-8 @orv2-3835
+@orv2-1362-8 @orv2-3835-25
 Rule: Staff can optionally view company profile
 
   Scenario: Staff choose to view company profile

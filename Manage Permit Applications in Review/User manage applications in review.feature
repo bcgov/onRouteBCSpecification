@@ -1,10 +1,18 @@
 Feature: Manage applications in review
 
-User = CA, PA, SA, PC, CTPO, Trainee
+User = CA, PA, SA, PC, CTPO, Train
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2394-1
-Rule: User see a list of application in review with information about each
+@orv2-2394-1 @orv2-3835-3
+Rule: only authorized users see a list of application in review with information about each
+
+  Scenario: authorized
+     When CA, PA PC, SA, TRAIN, FIN, CTPO are at a cv client permits
+     Then they see the option to view applications in review
+
+  Scenario: not authorized
+     When Fin, EO, HQA are at a cv client permits
+     Then they do not see the option to view applications in review
 
   Scenario: no applications in review
      When a user chooses to view applications in review

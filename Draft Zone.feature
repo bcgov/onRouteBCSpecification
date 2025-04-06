@@ -1,11 +1,17 @@
-User = CA, PA, SA, PC, CTPO, Trainee
+User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
+CV Client = CA, PA
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
+Auth Staff = PC, SA, TRAIN, CTPO
+Non Auth Staff = FIN, EO, HQA
+
+@orv2-3835
 
 Rule: Maximum 15 characters allowed in Transaction ID
 
 Enter 16 characters
 they see "Maximum 15 characters"
 
-In staff shooping cart:
+In staff shopping cart:
 
    Scenario: date extension
      Given permit A 

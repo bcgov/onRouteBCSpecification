@@ -507,7 +507,7 @@ Rule: Send one email per receipt
      When one or more permits of many in cart do not issue
      Then they do not receive the receipt email
 |
-@orv2-1486-32, @orv2-2048-28 @orv2-3835
+@orv2-1486-32, @orv2-2048-28 @orv2-3835-11
 Rule: Only authorized users can see the option to navigate to the shopping cart
 
   Scenario: authorized

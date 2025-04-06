@@ -1,6 +1,6 @@
 Feature: CV Client is suspended
 
-CV Client = CA, PA, Agent
+CV Client = CA, PA
 
 @orv2-1881-1
 Rule: A suspended CV Client does not have access to the onRouteBC profile

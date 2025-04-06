@@ -1,9 +1,9 @@
 Feature: Manage Active Permit List
    As PPC SA or PC I need to be able to view a list of a CV Clients Active permits so that I can complete actions on them and keep track of issued and Active permits.
 
-Staff = PC and SA
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 
-@orv2-1650-3
+@orv2-1650-3 @orv2-3835-4
 Rule: Staff can view all Active permits if any exist and see relevant information about them
 
  Scenario: Default Active permits listed
@@ -43,36 +43,34 @@ Rule: Issued by is the user that adds the permit application to the cart
      When staff view active permits
      Then issued by is logged in user first name last name
 
-@orv2-1650-4
+@orv2-1650-4 @orv2-3835-5
 Rule: Staff can view the permit and permit payment receipt pdf
 
  Scenario: View receipt pdf
-   Given the CV Client is at the "Active Permits" tab
+   Given staff is at the "Active Permits" tab
      And there are active permits 
     When they choose to view a receipt
     Then they see the choosen permit payment receipt pdf in a new browser tab
 
  Scenario: View permit pdf
-     Given the CV Client is at the "Active Permits" tab
+     Given staff is at the "Active Permits" tab
        And there are active permits 
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
 
-@orv2-1650-5, @orv2-2175
-Rule: PPC SA can see all actions
+@orv2-1650-5, @orv2-2175 @orv2-3835-6
+Rule: only authorized staff can void or revoke a valid permit
 
-  Scenario: PPC SA actions
-    Given PPC SA chooses to complete an action on an active permit
-     When they choose an action
+  Scenario: authorized
+     When PC, SA, TRAIN, CTPO chooses to complete an action on an active permit
      Then they see the following actions:
        | Amend        |
        | View Receipt |
        | Resend       |
        | Void/Revoke  |
 
-  Scenario: PPC PC actions
-    Given PPC PC chooses to complete an action on an active permit
-     When they choose an action
+  Scenario: not authorized
+     When FIN, EO, HQA chooses to complete an action on an active permit
      Then they see the following actions:
        | View Receipt |
        | Resend       |
