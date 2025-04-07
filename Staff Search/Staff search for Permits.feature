@@ -260,5 +260,11 @@ Rule: staff can choose to send either the permit pdf or permit payment pdf or bo
      Then the permit pdf is sent attached to email 1
       And the receipt pdf is sent attached to email 2
 
-@orv2-3984-1
+@orv2-3984-1 @orv2-4002
 Rule: staff can choose to view a company profile from permit search results
+
+  Scenario: unclaimed company
+    Given 
+     When 
+     Then 
+

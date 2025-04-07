@@ -1,7 +1,7 @@
 Feature: Staff search for company
    As a staff I want to search for a CV Client so that I can view details about their profile.
 
-Staff = SA, PC, EO, CTPO, Trainee, FIN, HQA
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 
 @orv2-1362-1
 Rule: The entered search parameter is displayed after initiating a search
@@ -41,10 +41,10 @@ Rule: Staff search by company name also searches doing business as
         | Julies Inc.        |
 
 @orv2-1362-16, @orv2-3835-24
-Rule: Indicate if no records are found and provide option to create company only to PPC SA or PC
+Rule: Indicate if no records are found and provide option to create company only to PC, SA, TRAIN, CTPO
 
   Scenario: authorized staff
-    Given a PPC SA, PC has chosen to search for a company
+    Given a PC, SA, TRAIN, CTPO has chosen to search for a company
       And there are no matching records in onRouteBC
      Then they see "No records found"
       And the option to create a company
@@ -96,7 +96,7 @@ Rule: Staff can search using the exact legacy number
    | using part of the legacy number | 980           |         |
 
 
-@orv2-1362-3 
+@orv2-1362-3 @orv2-4002
 Rule: Staff can view company profile summary information in results 
 
   Scenario: Company result includes all data elements possible to display in results
@@ -118,6 +118,11 @@ Rule: Staff can view company profile summary information in results
         | Primary Contact Phone Number 1 |
         | Primary Contact Phone Number 2 |
   
+  Scenario: unclaimed company
+    Given 
+     When 
+     Then 
+
   Scenario: Doing business as does not exist
     Given search results include companies that do not have a doing business as name
      When the results are shown
@@ -136,10 +141,14 @@ Rule: Staff can view company profile summary information in results
 @orv2-1362-8 @orv2-3835-25
 Rule: Staff can optionally view company profile
 
-  Scenario: Staff choose to view company profile
-    Given Staff has found a company
+  Scenario: staff company claimed
+    Given PC, SA, TRAIN, FIN, CTPO, HQA has found a company
      When they choose to view the company profile
      Then they are directed to the company permits page applications in progress tab
+
+  Scenario: EO company claimed
+     When they choose to view the company profile
+     Then they are directed to the company permits page active permits tab
 
 @orv2-1362-9
 Rule: Sort multiple search results

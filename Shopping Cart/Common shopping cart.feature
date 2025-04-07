@@ -16,10 +16,9 @@ Rule: Show persistent cart info box
        Have any questions? 
 
        Please contact the Provincial Permit Centre. Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca"
-|
+
 @orv2-1486-9, @orv2-2048-5
 Rule: Navigate to shopping cart from anywhere in onRouteBC
-|
 @orv2-1486-10, @orv2-2048-6
 Rule: Cart contains relevant information about each item
 
@@ -41,7 +40,7 @@ Rule: Cart contains relevant information about each item
     Given a user chooses to view the cart
      When they arrive at the cart
      Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
-|
+
 @orv2-3071-8
 Rule: Applicant is the user that creates the permit application
 
@@ -56,7 +55,7 @@ Rule: Applicant is the user that creates the permit application
   Scenario: cv client created permit application
      When staff view shopping cart
      Then applicant is logged in user first name last name
-|
+
 @orv2-1486-11, @orv2-2048-7
 Rule: Add permit application to shopping cart
 
@@ -74,7 +73,7 @@ Rule: Add permit application to shopping cart
      Then the application is added to the cart
       And they are directed to the shopping cart
       And the shopping cart count increases by 1
-|   
+
 @orv2-1486-12, @orv2-2048-8
 Rule: Show indication in the shopping cart when nothing is in the cart
 
@@ -88,7 +87,7 @@ Rule: Show indication in the shopping cart when nothing is in the cart
     When they arrive at the cart
      And they are at "my applications"
      Then they see "Cart is empty."
-|
+
 @orv2-3176-5
 Rule: Pay now is unavailable when no items are in the cart
 
@@ -96,7 +95,7 @@ Rule: Pay now is unavailable when no items are in the cart
     Given there are no items in all applications
      When a user chooses to pay
      Then pay is not available
-|
+
 @orv2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
 
@@ -118,7 +117,7 @@ Rule: Shopping cart shows number of items in the cart
       And 3 other all application items in the cart
      When a user chooses to view my applications
      Then they see 2 of 2
-|
+
 @orv2-1486-14, @orv2-2048-10
 Rule: Edit application in the cart
 
@@ -144,7 +143,7 @@ Rule: Edit application in the cart
      Then they are directed to the first page of the application workflow
       And the permit application attestations are removed
       And the item is removed from the shopping cart
-|
+
 @orv2-1486-15, @orv2-2048-11, @orv2-3176-2
 Rule: Optionally remove applications in the cart
 
@@ -182,7 +181,7 @@ Rule: Optionally remove applications in the cart
       And app A is not in the cart
       And all applications in the cart are selected
       And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
-|
+
 @orv2-1486-16, @orv2-2048-12, @orv2-3176-3
 Rule: Remove purchased or optionally removed applications by other logged in user from the cart 
 
@@ -214,9 +213,6 @@ Rule: Remove purchased or optionally removed applications by other logged in use
      When a user 2 chooses continue
      Then they are directed to to the cart all applications
       And they see "Cart is empty"
-|
-@
-Rule: 
 
 @orv2-3176-4
 Rule: Applications that fail policy validation will prevent a CV Client from paying for the cart
@@ -310,10 +306,10 @@ Rule: Applications that fail policy validation will prevent a CV Client from pay
      When a user chooses My Applications
      Then "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
       And they can continue
-|
+
 @orv2-1486-18, @orv2-2048-14
 Rule: Cart can have an unlimited number of items
-|
+
 @orv2-1486-19, @orv2-2048-15
 Rule: One or more items in cart may be selected for purchase or removal
 
@@ -344,7 +340,7 @@ Rule: One or more items in cart may be selected for purchase or removal
       And all are selected
      When they choose to deselect all items
      Then all items are deselected
-|
+
 @orv2-1486-20, @orv2-2048-16
 Rule: Fee summary total reflects cart item selection 
 
@@ -357,7 +353,7 @@ Rule: Fee summary total reflects cart item selection
     Given a user has items in the cart
      When one or more items selected
      Then the fee summary reflects the total of sum of all selected item fees
-|
+
 @orv2-1486-21, @orv2-2048-17
 Rule: Changing cart item filter initiates selecting all items in the cart
 
@@ -372,7 +368,7 @@ Rule: Changing cart item filter initiates selecting all items in the cart
      When they choose to view my applications
      Then they see only my applications in the cart
       And they are all selected
-|
+
 @orv2-1486-22, @orv2-2048-18
 Rule: User cart defaults to All Applications filter when first loading cart
 
@@ -381,7 +377,7 @@ Rule: User cart defaults to All Applications filter when first loading cart
      When they choose to view the cart
      Then they are directed to the shopping cart
       And they see all applications
-|
+
 @orv2-1486-23, @orv2-2048-19
 Rule: Fee summary total reflects the filtered list
 
@@ -394,7 +390,7 @@ Rule: Fee summary total reflects the filtered list
     Given user has items in the cart
      When they chooses to view all applications 
      Then the fee summary reflects the total of sum of all selected item fees in all applications
-|
+
 @orv2-1486-24, @orv2-2048-20
 Rule: At least one item must be selected to purchase
 
@@ -410,7 +406,7 @@ Rule: At least one item must be selected to purchase
      When they choose to pay
      Then they are directed to PayBC
       And the cart fee summary is pending payment  
-|
+
 @orv2-1486-25, @orv2-2048-21
 Rule: Show success page when the financial transaction has completed successfully
 
@@ -428,7 +424,7 @@ Rule: Show success page when the financial transaction has completed successfull
      Then they are directed to the error page and they see:
        | Payment was successful. However, some of your applications weren't processed. Please go to applications in Progress to review your pending permits. |
       And they can optionally view application in progress
-|
+
 @orv2-1486-26, @orv2-2048-22
 Rule: Show pending permits with successful payment received that have not been issued yet
 
@@ -442,7 +438,7 @@ Rule: Show pending permits with successful payment received that have not been i
        | applicant          | the first name and last name of the logged in user that started the permit application or Provincial Permit Center if started by staff |
       And they see:
        | There was an unexpected error in issuing the following permits. No action from you is required. onRouteBC will keep trying to issue these permits once the error is resolved. If you need immediate assistance, please contact the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca. |
-|
+
 @orv2-1486-27, @orv2-2048-23
 Rule: Show the number of pending permits
 
@@ -450,7 +446,7 @@ Rule: Show the number of pending permits
     Given the user has pending permits
      When they choose to view the pending permits list
      Then they see the total number of pending permits
-|
+
 @orv2-1486-28, @orv2-2048-24
 Rule: Show notification of pending permits with successful payment received that have not been issued yet
 
@@ -464,7 +460,7 @@ Rule: Show notification of pending permits with successful payment received that
     Given the CV Client does not have pending permits
      When they view the applications in progress list 
      Then they do not see the the pending permits notification
-|
+
 @orv2-1486-29, @orv2-2048-25
 Rule: Issue permits with successful payment received that have not been issued
 
@@ -472,7 +468,7 @@ Rule: Issue permits with successful payment received that have not been issued
     Given there are pending permits
      When issuance is possible
      Then issue pending permits
-|
+
 @orv2-1486-30, @orv2-2048-26
 Rule: Send one email per issued permit
 
@@ -492,7 +488,7 @@ Rule: Send one email per issued permit
     Given ten permits were issued
      When the CV Client receives the permit emails
      Then they see ten emails with one permit attached
-|
+
 @orv2-1486-31, @orv2-2048-27
 Rule: Send one email per receipt
 
@@ -506,7 +502,7 @@ Rule: Send one email per receipt
     Given payment was successful for all permits in cart
      When one or more permits of many in cart do not issue
      Then they do not receive the receipt email
-|
+
 @orv2-1486-32, @orv2-2048-28 @orv2-3835-11
 Rule: Only authorized users can see the option to navigate to the shopping cart
 
@@ -517,7 +513,7 @@ Rule: Only authorized users can see the option to navigate to the shopping cart
   Scenario: not authorized
      When FIN, EO, HQA are on any page
      Then they do not see the option to navigate to the shopping cart
-|
+
 @orv2-1486-33, @orv2-2048-29
 Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
 

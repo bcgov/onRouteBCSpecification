@@ -29,12 +29,7 @@ Rule: users changes in TPS/GARMS updates credit account users in onRouteBC
         | DBA                  | doing business as from TPS/GARMS |
         | onRouteBC Client No. | ???                              |
 
-  Scenario: remove users ???
-    Given 
-     When 
-     Then 
-
-  Scenario: change user information ???
+  Scenario: remove users
     Given 
      When 
      Then 
@@ -42,15 +37,15 @@ Rule: users changes in TPS/GARMS updates credit account users in onRouteBC
 @ORV2-3495-3
 Rule: credit limit updates made in TPS/GARMS credit accounts update onRouteBC credit account limit
   
-  Scenario: onRouteBC credit account on hold ???
+  Scenario: onRouteBC credit account on hold
     Given 
      When 
-     Then 
+     Then they see the new credit limit
 
-  Scenario: onRouteBC credit account closed ???
+  Scenario: onRouteBC credit account closed
     Given 
      When 
-     Then 
+     Then they see the new credit limit
 
 @ORV2-3495-4
 Rule: hold update made in TPS/GARMS credit account holds onRouteBC credit account 

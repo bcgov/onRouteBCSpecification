@@ -5,14 +5,18 @@ Background: @orv2-354
 
 Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 
-@orv2-1587-0
+@orv2-1587-0 @orv2-4002-1 @orv2-3835-29
 Rule: Staff can view "Company Information"
 
  Scenario: View "Company Information"
-     Given Staff have chosen a company to view from search for company results
-     When they choose the "Profile" page
+     When staff choose the "Profile" page
      Then they are directed to the "Company Information" tab
-     And only fields that contain data are displayed
+      And they only see fields that contain data
+      But they always see section headers:
+        | Doing Business As (DBA) |
+        | Company Mailing Address |
+        | Company Contact Details |
+        | Company Primary Contact |
 
 @orv2-1587-1 
 Rule: BCeID company data is displayed
