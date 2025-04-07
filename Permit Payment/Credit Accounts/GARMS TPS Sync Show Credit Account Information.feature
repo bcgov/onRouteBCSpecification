@@ -15,7 +15,7 @@ Rule: credit account creation in TPS/GARMS creates a credit account in onRouteBC
     Given 
      When 
      Then 
-|
+
 @ORV2-3495-2
 Rule: users changes in TPS/GARMS updates credit account users in onRouteBC
 
@@ -38,7 +38,7 @@ Rule: users changes in TPS/GARMS updates credit account users in onRouteBC
     Given 
      When 
      Then 
-|
+
 @ORV2-3495-3
 Rule: credit limit updates made in TPS/GARMS credit accounts update onRouteBC credit account limit
   
@@ -51,7 +51,7 @@ Rule: credit limit updates made in TPS/GARMS credit accounts update onRouteBC cr
     Given 
      When 
      Then 
-|
+
 @ORV2-3495-4
 Rule: hold update made in TPS/GARMS credit account holds onRouteBC credit account 
   
@@ -59,7 +59,7 @@ Rule: hold update made in TPS/GARMS credit account holds onRouteBC credit accoun
      When staff place TPS/GARMS credit account on hold
      Then the onRouteBC credit account is on hold
       And the label "On Hold" is shown
-|
+
 @ORV2-3495-5
 Rule: remove hold update made in TPS/GARMS credit account removes hold from onRouteBC credit account 
 
@@ -67,7 +67,7 @@ Rule: remove hold update made in TPS/GARMS credit account removes hold from onRo
      When staff remove hold from TPS/GARMS credit account
      Then the onRouteBC credit account is not on hold
       And the label "On Hold" is removed
-|
+
 @ORV2-3495-6
 Rule: hold/remove hold updates made in TPS/GARMS credit accounts update onRouteBC credit account hold/close history
 
@@ -92,7 +92,7 @@ Rule: hold/remove hold updates made in TPS/GARMS credit accounts update onRouteB
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "Action initiated in TPS"                      |
         | Status | "Hold Removed"                                 |     
-|
+
 @ORV2-3495-7
 Rule: close update made in TPS/GARMS credit accounts closes onrouteBC credit account 
 
@@ -100,7 +100,7 @@ Rule: close update made in TPS/GARMS credit accounts closes onrouteBC credit acc
      When staff close TPS/GARMS credit account
      Then the onRouteBC credit account is closed
       And the label "Closed" is shown
-|
+
 @ORV2-3495-8
 Rule: reopen update made in TPS/GARMS credit account reopens onRouteBC credit account 
   
@@ -108,7 +108,7 @@ Rule: reopen update made in TPS/GARMS credit account reopens onRouteBC credit ac
      When staff reopen TPS/GARMS credit account
      Then the onRouteBC credit account reopened
       And the label "Closed" is removed
-|
+
 @ORV2-3495-9
 Rule: close/reopen update made in TPS/GARMS credit account updates onRouteBC credit account hold/close history
 
@@ -133,9 +133,11 @@ Rule: close/reopen update made in TPS/GARMS credit account updates onRouteBC cre
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "Action initiated in TPS"                      |
         | Status | "Account Reopened"                             |    
-|
+
 @ORV2-3495-10
 Rule: close/reopen update made in TPS/GARMS credit account does not update onRouteBC credit account users
+
+ # this means auth users will still see this not cv clients though
 
   Scenario: onRouteBC credit account not closed
     Given onRouteBC credit account has users
@@ -148,5 +150,5 @@ Rule: close/reopen update made in TPS/GARMS credit account does not update onRou
      Given 
       When 
       Then 
-|
+
 

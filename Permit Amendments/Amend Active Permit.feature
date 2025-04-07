@@ -15,21 +15,21 @@ Rule: Can only amend an issued or active permit
     Given the PPC SA has found an issued permit
      When they choose to amend it
      Then they are directed to the amend permit 
-|
+
 @orv2-938-30
 Rule: Staff can view superseded permit and superseded permit receipt pdf  
-|
+
 @orv2-937-7
-|
+
 @orv2-937-11
-|
+
 @orv2-938-9
 Rule: Staff can resend superseded permit documents
-|
+
 @orv2-937-10
-|
+
 @orv2-937-12
-|
+
 @orv2-938-31 
 Rule: Staff can amend a permit
 
@@ -52,10 +52,10 @@ Rule: Staff can amend a permit
       And it is not saved
      When they use the browser to navigate back
      Then the amending permit application is not saved
-|
+
 ## @orv2-938-32
 ## Rule: Staff can see saved amending permit applications in applications in progress
-|
+
 @orv2-938-11
 Rule: Staff can amend an issued or active permit
 
@@ -74,7 +74,7 @@ Rule: Staff can amend an issued or active permit
          | banner                | company name of amending permit                 |
          | banner                | company client number of amending permit        |
          | company information   | company mailing address of amending permit      |
-|
+
 @orv2-938-12
 Rule: Staff can view all permit details of the amending permit
 
@@ -88,7 +88,7 @@ Rule: Staff can view all permit details of the amending permit
           | vehicle information  | of amending permit                              |
           | revision history     | past reason for amendment free text             |
           | reason for amendment | free text field to capture reason for amendment |
-|
+
 @orv2-938-13
 Rule: Staff can add free text amendment Reason 
 
@@ -114,7 +114,7 @@ Rule: Staff can add free text amendment Reason
      When they attempt to continue
       And they have not entered a reason for amendment
      Then they see "This is a required field"
-|
+
 @orv2-938-14
 Rule: Staff can view the permit revision history
 
@@ -133,7 +133,7 @@ Rule: Staff can view the permit revision history
     Given an amending permit does not have previous revisions
      When a Staff is amending a permit
      Then there is no revision history displayed 
-|
+
 @orv2-938-15
 Rule: Staff can cancel a permit amendment application
 
@@ -159,7 +159,7 @@ Rule: Staff can cancel a permit amendment application
       Examples:
         | permit number   | revision number |
         | P2-00408617-873 | -R2             |
-|
+
 #@orv2-938-16
 #Rule: Staff can view previous financial transaction information for amending permit
 
@@ -172,7 +172,7 @@ Rule: Staff can cancel a permit amendment application
         | payment method used for the listed transaction | Payment Method |
         | transaction id for the listed transaction      | Transaction ID |
         | total fee for the listed transaction           | Amount         |
-|
+
 #@orv2-938-17
 #Rule: Amemndment with refurn default to previous payment method card type
 
@@ -188,7 +188,7 @@ Rule: Staff can cancel a permit amendment application
          | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
          | Web - Visa               | Web - Visa               |
          | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
-|
+
 #@orv2-938-18
 #Rule: Choose cheque payment method
 
@@ -196,7 +196,7 @@ Rule: Staff can cancel a permit amendment application
      Given the PPC SA is at the finish amendment page
       When they choose to refund by cheque
       Then only refund by cheque is indicated as a refund method
-|
+
 @orv2-938-19
 Rule: Input mandatory transaction id
 
@@ -206,7 +206,7 @@ Rule: Input mandatory transaction id
        And they attempt to finish
       Then they see "This is a required field"
        And they cannot finish
-|
+
 @orv2-938-20
 Rule: If amend permit action is initiated at search results then return to previous search results when finished amending permit application
 
@@ -220,14 +220,14 @@ Rule: If amend permit action is initiated at search results then return to previ
      Examples:
      | previous search string | search results                                            |
      | P2-00408617            | all permits with matching first 11 characters P2-00408617 |
-|
+
 @orv2-938-21
 Rule: Amending permit is superseded by amended permit
 
   Scenario: Supersede amending permit
      When they finish the amending permit application
      Then the amending permit is labeled as superseded
-|
+
 @orv2-938-22
 Rule: Generate amended permit pdf
 
