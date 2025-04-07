@@ -314,3 +314,19 @@ Rule: A refund transaction(s) is saved for each completed historical transaction
        | PERMIT TYPE      | the acronym for the amended permit type                   |
        | USER             | PPC                                                       |
        | AMOUNT           | calculated by onRouteBC based on the amend change         |
+
+
+   Scenario: Refund by cheque
+     Given the PPC SA is at the finish amendment page
+      When they choose to refund by cheque
+      Then only refund by cheque is indicated as a refund method
+
+@orv2-938-19
+Rule: Input mandatory transaction id
+
+   Scenario: Do not input transaction ID
+     Given the PPC SA has chosen to refund to the previous payment method
+      When they do not input a transaction ID
+       And they attempt to finish
+      Then they see "This is a required field"
+       And they cannot finish

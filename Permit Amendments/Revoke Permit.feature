@@ -179,3 +179,33 @@ Rule: Send revoke permit documents to contact details from void permit page
      Given the PPC SA has inputted all mandatory information at revoke permit
       When they revoke the permit
       Then the generated revoke permit PDF and revoke receipt PDF are faxed to the fax number inputted at void permit
+
+
+  Scenario: Generate revoke permit
+    Given the PPC SA has inputted all mandatory information at revoke permit
+     When they choose to revoke the permit
+     Then the revoke permit is generated
+      And the <permit number> is suffixed with a <revision number> preceded by a "-"
+      And the revoke permit is labeled as revoked
+      And the revoke permit end date is updated to the date the revoke permit is generated
+
+      Examples:
+        | permit number   | revision number |
+        | P2-00408617-873 | -R2             |
+
+
+@orv2-938-24 @orv2-4015
+Rule: Send revoke permit documents to contact details from void permit page
+
+  Scenario: Send permit and receipt to email
+    Given the PPC SA has inputted all mandatory information at finish amendment
+     When they choose to finish amending the permit
+     Then the generated permit PDF and receipt PDF are emailed as attachments to:
+       | company contact email address |
+       | entered contact email address |
+      And the CV Client cannot reply to the email
+
+  Scenario: Send permit and receipt to fax number
+    Given the PPC SA has inputted all mandatory information at finish amendment
+     When they choose to finish amending the permit
+     Then the generated permit PDF and receipt PDF are faxed to the contact fax number
