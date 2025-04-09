@@ -559,9 +559,6 @@ Rule: Shopping cart item count is refreshed when choosing to view the shopping c
      Then they see the error info box
       But the they do not see "Application error. Please remove it from the cart."
 
-
-
-
  # NOTE: This has not been implmented yet
 
       ## And they see the <list of applications> removed from the cart

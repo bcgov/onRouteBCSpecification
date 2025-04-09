@@ -11,9 +11,9 @@ Rule: A user is provided the option to claim a profile with a challenge
       When they successfully log in using their BCeID credentials
       Then they are directed to the "Welcome to onRouteBC" page
        And they see the following:
-         | item                                                                        | description                                           |
-         | Client Name                                                                 | Basic = first name last name, Business = company name |
-         | Has this company purchased a commercial vehicle permit in the last 2 years? | call to action                                        |
+         | item                                                                        | description                                 |
+         | Client Name                                                                 | Basic = given name, Business = company name |
+         | Has this company purchased a commercial vehicle permit in the last 2 years? | call to action                              |
        And they have the option to claim the profile or not
 
  Scenario: second+ not invited business user
@@ -42,7 +42,6 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a user to pro
       When they choose to proceed
       Then they are directed to next step
 
- # checking this one
  Scenario: basic inputs valid TPS "Client No." and "Permit No." for business bceid
      Given a user inputs a "Client No." that is in onRouteBC
        And it matches an existing business bceid company

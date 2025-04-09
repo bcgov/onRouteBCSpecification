@@ -27,7 +27,7 @@ Rule: users changes in TPS/GARMS updates credit account users in onRouteBC
         | data                 | description                      |
         | Company Name         | company name from TPS/GARMS      |
         | DBA                  | doing business as from TPS/GARMS |
-        | onRouteBC Client No. | ???                              |
+        | onRouteBC Client No. |                              |
 
   Scenario: remove users
     Given 
