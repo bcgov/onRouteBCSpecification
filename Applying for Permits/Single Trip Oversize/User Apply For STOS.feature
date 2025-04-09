@@ -224,7 +224,7 @@ Rule: The selection of trailers must adhere to an allowable order of jeep first,
 
 # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
 
-
+@orv2-2254-40 @orv2-2387-40
 Rule: chosen trailer(s) determines allowable trailers shown 
 
   Scenario Outline: brush cutters
