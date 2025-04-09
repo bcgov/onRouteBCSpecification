@@ -20,7 +20,7 @@ Rule: Users are required to choose a permit length in increments of one day, wit
 Rule: CVSE Forms 1000 and 1070 are chosen by default and attached consecutively beginning after the final page of the issued permit
 
 @orv2-2254-4 @orv2-2387-4
-Rule: CVSE Forms may be optionally chosen for attachement to the issued permit
+Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
 
   Scenario: choose an option cvse form
      When a user choose to attach a cvse form the following list:
@@ -190,7 +190,7 @@ Rule: Users may remove and change the power unit from the application
 @orv2-2254-15 @orv2-2387-15
 Rule: Users must choose from a list of allowable trailers
 
- # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true 
 
   Scenario: no allowable
      When the user has chosen a commodity and power unit with no allowable trailer
@@ -220,14 +220,29 @@ Rule: Users must choose from a list of allowable trailers
        And they see the option to reset the list
 
 @orv2-2254-16 @orv2-2387-16
-Rule: The selection of trailers must adhere to an allowable order
+Rule: The selection of trailers must adhere to an allowable order of jeep first, trailer second, then booster last
 
- # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
+
+
+Rule: chosen trailer(s) determines allowable trailers shown 
+
+  Scenario Outline: brush cutters
+    Given a user has chosen the <commodity> 
+      And a <power unit> is chosen
+     When a user adds <trailer 1>
+     Then the allowable <trailer 2> is shown
+
+  Examples:
+    | commodity                 | power unit             | trailer 1     | trailer 2                                                                    |
+    | Brushcutters (Peace Only) | Truck Tractors         | Jeep          | Semi-Trailers - Single Drop, Double Drop, Step Decks, Lowbed, Expandos, etc. |
+    | Brushcutters (Peace Only) | Truck Tractors         | Semi-Trailers |
+    | None                      | Concrete Pumper Trucks | None          | Booster                                                                      |                                                                        |
 
 @orv2-2254-17 @orv2-2387-17
 Rule: The choice and order of allowable trailers is determined by the STOS permit type, chosen commodity, and selected power unit
 
- # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
+# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
 
 @orv2-2254-18 @orv2-2387-18
 Rule: The chosen trailers are shown in the application form in the order they were added
