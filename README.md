@@ -9,4 +9,4 @@ Roles and Permissions Matrix: https://moti-imb.atlassian.net/wiki/spaces/ORV2/pa
 
 UX/UI Designs are linked to the UX: ticket for the story:![alt text](image.png)
 
-If Required Diagrams and Flows are in Confluence: https://moti-imb.atlassian.net/wiki/spaces/ORV2/folder/281247998?atlOrigin=eyJpIjoiNjk2ZGU4MGE0ZDgyNDJkYTkwZWNhMDk1ODY4ZjY2OGQiLCJwIjoiYyJ9
+If Required Diagrams and Flows are in Confluence under Story Discovery Boards: https://moti-imb.atlassian.net/wiki/spaces/ORV2/folder/281247997?atlOrigin=eyJpIjoiMmRiOTM2NTk1NWQxNDAyYjg4N2UyZWUzMjFiM2JkNDQiLCJwIjoiYyJ9
