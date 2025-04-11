@@ -46,6 +46,6 @@ Rule: Users can sort the list of expired permits
          | Plate             |
          | Permit Start Date |
          | Permit End Date   |
-         | Applicant         |
+         | Issued By       |
      Then the list is sorted using the selected column header
      And the sort order is the reverse of the previously selected order
