@@ -9,4 +9,4 @@ Roles and Permissions Matrix: https://moti-imb.atlassian.net/wiki/spaces/ORV2/pa
 
 UX/UI Designs are linked to the UX: ticket for the story:![alt text](image.png)
 
-If Required Diagrams and Flows are in MURAL: https://app.mural.co/t/transimb3838/r/1654727829784?folderUuid=6a5484ba-71ec-498c-adcd-d552d3e415da
+If Required Diagrams and Flows are in Confluence: https://moti-imb.atlassian.net/wiki/spaces/ORV2/folder/281247998?atlOrigin=eyJpIjoiNjk2ZGU4MGE0ZDgyNDJkYTkwZWNhMDk1ODY4ZjY2OGQiLCJwIjoiYyJ9
