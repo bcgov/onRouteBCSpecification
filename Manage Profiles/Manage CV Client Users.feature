@@ -14,6 +14,29 @@ Rule: only authorized users can view, add or remove cv client users
      When PA, FIN, EO, HQA  are viewing a cv client profile
      Then they do not see the option to add / manage user
 
+Rule: the first cv client user must be an administrator
+
+  Scenario: not admin
+    Given no users exist for company A
+     When a user adds a user as as permit applicant
+      And chooses to add the user
+     Then they see "First user must be an administrator"
+
+Rule: a BCeID username must be unique
+
+  Scenario: pending username already exists
+    Given the username jdoe exists in onRouteBC
+      And it is pending
+     When a user inputs jdoe 
+      And chooses to add the user
+     Then they see "Cannot add user; Check if the user already has been added"
+
+  Scenario: completed username already exists
+    Given the username jdoe exists in onRouteBC
+     When a user inputs jdoe
+      And chooses to add the user
+     Then they see "Cannot add user; Check if the user already has been added"
+
 @orv2-363-1
 Scenario: Navigate to Add User page
     Given the user is at the "User Management" page

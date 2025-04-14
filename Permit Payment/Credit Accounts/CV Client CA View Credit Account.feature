@@ -101,4 +101,17 @@ Rule: Show credit account users
        | credit account designation | Account Holder                                        |
        
 @orv2-1999-8
-Rule: CV Client Holder PA cannot see the credit account tab.
+Rule: CV Client Holder PA cannot see the credit account tab
+
+
+  Scenario: company A closed becomes user of company B
+    Given company A has a closed credit account
+      And company A closes their credit account
+     When company A becomes a user of company B credit account
+     Then company A CA see company B's credit account user page
+
+  Scenario: company A removed as user of company B
+    Given company A is a user of company B credit account
+     When company A is removed from company B credit account
+     Then company A CA sees company A's credit account holder page
+      And it is closed
