@@ -2,7 +2,7 @@ Feature: CV Client CA view their credit account
 
 CV Client = CA
 
-@orv2-1999-1
+@orv2-1999-1 @orv2-4049-1
 Rule: Show credit account information
 
   Scenario: credit account exists
