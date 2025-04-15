@@ -67,13 +67,13 @@ Rule: Users can scroll the list of commodities allowable for an STOS permit
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
-@orv2-2254-8 @orv2-2387-8
+@orv2-2254-8 @orv2-2387-8 @orv2-3902-2
 Rule: Users may change the chosen commodity
 
   Scenario: vehicles exist warning
     Given vehicles have been added to the permit application
      When a user chooses to chnage the commodity
-     Then they see "Changing your commodity will require you to reenter your vehicle information."
+     Then they see "Change Commodity Type Changing your commodity will require you to re-enter your vehicle information and loaded dimensions."
 
   Scenario: vehicles exist confirm change
     Given a user initiated a commodity change
