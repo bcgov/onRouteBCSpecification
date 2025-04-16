@@ -146,7 +146,7 @@ Rule: A user can view and update their claimed "Client No." profile contact deta
       And fields with no data are indicated
 
 @orv2-481-5, @orv2-3322-5, @orv2-3228
-Rule: A first business users credential information replaces the "Client Name" and "Email" information in onRouteBC
+Rule: A first users credential information replaces the "Client Name" and "Email" information in onRouteBC
 
   Scenario: information in business user onRouteBC profile
     Given a business user profile has information in their onRouteBC profile
@@ -158,7 +158,7 @@ Rule: A first business users credential information replaces the "Client Name" a
   Scenario: information in basic user onRouteBC profile
     Given a basic user profile has information in their onRouteBC profile
      When they successfully complete the claim challenge
-     Then the following contact details have the information from their onRouteBC profile:
+     Then the following contact details have the information from their basic BCeID credential:
        | Client Name |
        | Email       |
 
