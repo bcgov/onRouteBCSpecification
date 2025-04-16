@@ -57,7 +57,7 @@ Scenario: Edit "Company Information"
       | Phone                | Yes      |
       | Ext                  | Yes      |
       | Fax                  | Yes      |
-      | Email                | Yes       |
+      | Email                | Yes      |
       | First Name           | Yes      |
       | Last Name            | Yes      |
       | Phone                | Yes      |
