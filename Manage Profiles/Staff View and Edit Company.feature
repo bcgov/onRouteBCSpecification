@@ -31,7 +31,7 @@ Rule: BCeID company data is displayed
        | Company Legal Name | bceid_business_name | 
        | Email              | BCeID email         |
 
-@orv2-1587-2 @orv2-1521-2 @orv2-3835-8
+@orv2-1587-2 @orv2-1521-2 @orv2-3835-8 @orv2-2315-1
 Rule: only authorized staff can edit company profile contact details
 
   Scenario: authorized

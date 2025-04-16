@@ -2,11 +2,11 @@
 Feature: View/Edit CV Client Company Information Details
     As a CV Client Business BCeID user in the Admin User Group I want to manage "Company Information" so that I can maintain my company contact details.
 
-Background: The CV Client Business BCeID User Admin (CV Client Admin) has successfully logged into onRouteBC using their business BCeID and completed the creation of their onRouteBC Profile.
+Background: The CV Client Business BCeID User Admin (CA) has successfully logged into onRouteBC using their business BCeID and completed the creation of their onRouteBC Profile.
 
 @orv2-354-1
 Scenario: View "Company Information"
-    Given the CV Client Admin is at the onRouteBC home page
+    Given the CA is at the onRouteBC home page
     When they select "Profile"
     And they select "Company Information"
     Then they are directed to the "Company Information" page
@@ -14,7 +14,7 @@ Scenario: View "Company Information"
     
 @orv2-354-2
 Scenario: View BCeID company data
-    Given the CV Client Admin is at their "Company Information"
+    Given the CA is at their "Company Information"
     When they are viewing the "Company Information" page <BCeID data fields>
     Then they see <BCeID Data>
     And they cannot edit these fields
@@ -24,9 +24,19 @@ Scenario: View BCeID company data
       | Company Legal Name | bceid_business_name | 
       | Email              | BCeID email         |
 
-@orv2-354-3
+@orv2-354-3 @orv2-2315-2
+Rule: only authorized users can edit company profile contact details
+
+  Scenario: authorized
+     When CA chooses to edit company information
+     Then they see the option to edit company information
+
+  Scenario: not authorized
+     When PA chooses to edit company information
+     Then they do not see the option to edit company information
+
 Scenario: Edit "Company Information"
-    Given the CV Client Admin chooses to edit their "Company Information"
+    Given the CA chooses to edit their "Company Information"
     And they are at the "Company Information" page
     When they select "Edit"
     Then they are directed to the "Company Information" edit page
@@ -47,7 +57,7 @@ Scenario: Edit "Company Information"
       | Phone                | Yes      |
       | Ext                  | Yes      |
       | Fax                  | Yes      |
-      | Email                | No       |
+      | Email                | Yes       |
       | First Name           | Yes      |
       | Last Name            | Yes      |
       | Phone                | Yes      |
@@ -59,7 +69,7 @@ Scenario: Edit "Company Information"
 
 @orv2-354-4
 Scenario: Save edits to "Company Information"
-    Given the CV Client Admin is at their "Company Information" edit page
+    Given the CA is at their "Company Information" edit page
     And they save changes 
     Then the changes are saved 
     And they are directed to the "Company Information" page
@@ -67,21 +77,21 @@ Scenario: Save edits to "Company Information"
 
 @orv2-354-5
 Scenario: Cancel edit "Company Information"
-    Given the CV Client Admin editing their "Company Information" page
+    Given the CA editing their "Company Information" page
     When they select "Cancel"
     Then the changes are not saved 
     And they are directed to the "Company Information" page
 
 @orv2-354-6
 Scenario: Edit company information navigate away from "Company Information" page
-    Given the CV Client Admin is at their "Company Information" page
+    Given the CA is at their "Company Information" page
     When they make changes to their "Company Information"
     And they navigate away from the "Company Information" page 
     Then the changes are not saved 
 
 @orv2-354-7
 Scenario: Indicate mandatory fields    
-    Given the CV Client Admin is editing their "Company Information"
+    Given the CA is editing their "Company Information"
     When they do not enter valid data into a <mandatory field>  
     And they choose to save changes    
     Then they see <mandatory field error message>     
@@ -103,13 +113,13 @@ Scenario: Indicate mandatory fields    
       | Primary Contact City       | This is a required field.      | 
 
 Feature: View/Edit CV Client user information
-    As a CV Client Admin or User I want to manage "My Information" so that I can maintain my contact details.
+    As a CA or User I want to manage "My Information" so that I can maintain my contact details.
 
 Background: 
 
 @orv2-353-1
 Scenario: View "My Information"
-    Given the CV Client Admin or User is at the onRouteBC home page
+    Given the CA or User is at the onRouteBC home page
     When they select "Profile"
     And they select "My Information" 
     Then they are directed to "My Information" page
@@ -117,7 +127,7 @@ Scenario: View "My Information"
 
 @orv2-353-2
 Scenario: Edit "My Information"
-    Given the CV Client Admin or User chooses to edit their "My Information"
+    Given the CA or User chooses to edit their "My Information"
     When they select "Edit"
     Then they are directed to the "My Information" edit page
     And all <my info fields> are displayed
@@ -139,7 +149,7 @@ Scenario: Edit "My Information"
     
 @orv2-353-3
 Scenario: Save edits to "My Information"
-    Given the CV Client Admin or User is at their "My Information" edit page
+    Given the CA or User is at their "My Information" edit page
     When they make changes to their "My Information"
     And they save changes 
     Then the changes are saved 
@@ -148,7 +158,7 @@ Scenario: Save edits to "My Information"
 
 @orv2-353-4
 Scenario: Indicate mandatory "My Information" fields    
-    Given the CV Client Admin or User is editing their "My Information"
+    Given the CA or User is editing their "My Information"
     When they do not enter valid data into a <mandatory field>  
     And they choose to save changes    
     Then they see <mandatory field error message>     
@@ -166,7 +176,7 @@ Scenario: Indicate mandatory "My Information" fields    
 
 @orv2-353-5
 Scenario: Cancel edit "My Information"
-    Given the CV Client Admin is editing their "My Information" page
+    Given the CA is editing their "My Information" page
     When they make changes to their user information
     And they select "Cancel"
     Then the changes are not saved 
@@ -174,14 +184,14 @@ Scenario: Cancel edit "My Information"
 
 @orv2-353-6
 Scenario: Edit "My Information" navigate away from page
-    Given the CV Client Admin or User is at their "My Information" page
+    Given the CA or User is at their "My Information" page
     When they make changes to their user information
     And they navigate away from the My Information page 
     Then the changes are not saved 
 
 @orv2-353-7
 Scenario: One time populate "My Information" with BCeID user data at first login
-    Given the CV Client Admin or User has logged into onRouteBC for the first time
+    Given the CA or User has logged into onRouteBC for the first time
     And they are at the "My Information" page
     When they are viewing the "My Information" page <BCeID data fields>
     Then they see <BCeID Data>
