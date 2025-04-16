@@ -1,7 +1,7 @@
-Feature: Invited user log into onRouteBC
+Feature: CV Client invited user log into onRouteBC
   As an invited user I need to be able to log into onRouteBC for the first time and complete my onRouteBC profile so that I can begin ordering permits for the onRouteBC company I am a member of.
 
-User = invited
+User = invited cv client basic or business
 
 @orv2-907-1, @orv2-3322-18, @orv2-3228
 Rule: credential username must match invited username in onRouteBC
@@ -39,7 +39,7 @@ Rule: a user is assigned the role designated to their username
 
   Scenario: CA
     Given a user is designated as a company administrator (CA)
-     When they successuly complete their profile
+     When they successfully complete their profile
      Then they are a CA
 
   Scenario: PA

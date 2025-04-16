@@ -1,4 +1,4 @@
-Feature: Common features for profile creation workflows
+Feature: CV Client common features for profile creation workflows
  These rules apply to all onRouteBC account creation workflows.
 
 User = basic or business
@@ -20,12 +20,12 @@ Rule: The navigation bar is not visible to users until the profile has been succ
 Rule: A user can cancel or step backwards
 
   Scenario: Cancel
-    Given they have chosen to claim a onRouteBC profile
+    Given a user chosen to claim a onRouteBC profile
      When they choose to cancel
      Then they are directed to welcome to onRouteBC
 
   Scenario: Previous
-     When they choose to return to a previous page
+     When a user chooses to return to a previous page
      Then they are directed to the previous page in the workflow
 
 @orv2-369-9, @orv2-3322-12, @orv2-3228
@@ -54,10 +54,6 @@ Rule: contact details are not saved until the workflow is finished
       When they attempt to sign in to onRouteBC
       Then they are directed to a BCeID error page
 
-
-
-
-
 @orv2-907-4, @orv2-3322-13, @orv2-3228
 Rule: a new PA user can only view company profile information
 
@@ -66,7 +62,6 @@ Rule: a new PA user can only view company profile information
       When they choose to view their profile
       Then they are directed to company information
        But they cannot edit company information
-
 
 @orv2-481-10, @orv2-3322-14, @orv2-3228
 Rule: upon creating a profile or joining an existing profile a user can view their profile or apply for a permit
@@ -119,7 +114,7 @@ Rule: contact details are replicated to company primary contact and user details
       | Province / State            | BC                                                | BC                       | BC             |
       | City                        | Vancouver                                         | Vancouver                | Vancouver      |
       | Postal / Zip Code           | V8L 13T                                           |                          |                |
-|
+
 @orv2-481, @orv2-3322-17, @orv2-1637-8, @orv2-3228
 Rule: a user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
 

@@ -1,9 +1,9 @@
 Feature: Staff no challenge confirm existing onRouteBC profile
  As staff I need to claim a migrated onRouteBC profile so that I can assist CV Clients with purchasing permits.
 
-User = staff
+User = PC, SA, Train, CTPO
 
-# if no BCeID and company claimed by staff then a new user goes through the challenge workflow
+# if no BCeID and company claimed by staff then a new cv client user goes through the challenge workflow
 # can update company name and email address
 
 @orv2-1637-1, @orv2-3228

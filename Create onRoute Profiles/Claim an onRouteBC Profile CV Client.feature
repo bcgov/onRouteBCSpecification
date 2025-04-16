@@ -1,5 +1,5 @@
-Feature: Claim an existing onRouteBC Profile
- As a user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
+Feature: CV Client an existing onRouteBC Profile
+ As a CV Client user I want to claim an existing onRouteBC profile by proving I am the legitimate owner or join an existing one so that I can see my profile details and apply for permits.
 
 User = basic or business 
 
