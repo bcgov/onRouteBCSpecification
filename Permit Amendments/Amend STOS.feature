@@ -19,10 +19,14 @@ shorten duration creates an expired permit?? Treat like Term?
 can't change start date
 
 can change commodity details
- remove vehicle details and loaded dimensions
+ remove vehicle details and loaded dimensions - no! Warning modal
 
 change vehicle details 
  change power unit
+  change power unit individual information
+   edit everything by the vehicle sub-type
+  change power unit
+  
   trailers get reset
  change trailers
   reset removes all trailers

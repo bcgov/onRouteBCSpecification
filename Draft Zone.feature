@@ -4,6 +4,16 @@ Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 Auth Staff = PC, SA, TRAIN, CTPO
 Non Auth Staff = FIN, EO, HQA
 
+
+  Scenario: authorized
+     When CA, PA PC, SA, TRAIN, FIN, CTPO are at a cv client permits
+     Then they see the option to view applications in review
+
+  Scenario: not authorized
+     When Fin, EO, HQA are at a cv client permits
+     Then they do not see the option to view applications in review
+
+     
 @orv2-3835
 
 Rule: Maximum 15 characters allowed in Transaction ID
