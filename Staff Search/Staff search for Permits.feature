@@ -263,8 +263,15 @@ Rule: staff can choose to send either the permit pdf or permit payment pdf or bo
 @orv2-3984-1 @orv2-4002
 Rule: staff can choose to view a company profile from permit search results
 
-  Scenario: unclaimed company
-    Given 
-     When 
-     Then 
+  Scenario: unclaimed company non-authorized
+    Given EO, FIN, HQA find company A
+     And company A is unclaimed
+     When they choose to view company A profile
+     Then they are directed to company information
+
+  Scenario: unclaimed authorized
+    Given SA, PC, CTPO, Trainee, find company A
+     And company A is unclaimed
+     When they choose to view company A profile
+     Then they are directed to complete company A contact details
 

@@ -96,7 +96,7 @@ Rule: Staff can search using the exact legacy number
    | using part of the legacy number | 980           |         |
 
 
-@orv2-1362-3 @orv2-4002
+@orv2-1362-3 @orv2-3984-2 @orv2-4002
 Rule: Staff can view company profile summary information in results 
 
   Scenario: Company result includes all data elements possible to display in results
@@ -118,10 +118,17 @@ Rule: Staff can view company profile summary information in results
         | Primary Contact Phone Number 1 |
         | Primary Contact Phone Number 2 |
   
-  Scenario: unclaimed company
-    Given 
-     When 
-     Then 
+  Scenario: unclaimed company non-authorized
+    Given EO, FIN, HQA find company A
+     And company A is unclaimed
+     When they choose to view company A profile
+     Then they are directed to company information
+
+  Scenario: unclaimed authorized
+    Given SA, PC, CTPO, Trainee, find company A
+     And company A is unclaimed
+     When they choose to view company A profile
+     Then they are directed to complete company A contact details 
 
   Scenario: Doing business as does not exist
     Given search results include companies that do not have a doing business as name
