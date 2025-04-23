@@ -3,7 +3,7 @@ Feature: Staff verify credit account
 Staff = FIN
 Users = CA, PA, PC, SA, TRAIN, CTPO
 
-@ovr2-3821
+@ovr2-3821-1
 Rule: a closed, on hold or suspended company credit account can be verified
 
 Rule: an unverified credit account can be closed or on hold
@@ -20,6 +20,7 @@ Rule: an unverified credit account can be closed or on hold
       And the label "Closed" is shown
       And the label "Unverified" is shown 
 
+@ovr2-3821-2
 Rule: a verified account can be closed or on hold
 
   Scenario: verified on hold 
@@ -32,12 +33,14 @@ Rule: a verified account can be closed or on hold
      Then it is verified and closed
       And the label "Closed" is shown
 
+@ovr2-3821-3
 Rule: only authorized staff can verify an onRouteBC credit account
 
   Scenario: authorized
      When FIN are at a cv client holder credit account
      Then they see the option to verify account
 
+@ovr2-3821-4
 Rule: only the holder of the credit account can be verified
 
   Scenario: user profile
@@ -45,6 +48,7 @@ Rule: only the holder of the credit account can be verified
      When staff choose to verify user 1
      Then the option to verifiy credit account A is not available
 
+@ovr2-3821-5
 Rule: credit account users are verified when an account holder is verified
 
   Scenario: credit account A has users
@@ -56,6 +60,7 @@ Rule: credit account users are verified when an account holder is verified
       | company suspended |
      Then user 1 can user credit account A as a payment method
 
+@ovr2-3821-7
 Rule: staff must input a reason for credit account verification
 
   Scenario: reason inputted
@@ -69,6 +74,7 @@ Rule: staff must input a reason for credit account verification
      Then they see "This is a required field."
       And they cannot verify the credit account
 
+@ovr2-3821-8
 Rule: the account history is updated to when the account is verified
 
   Scenario: unverified account
@@ -81,6 +87,7 @@ Rule: the account history is updated to when the account is verified
         | Reason | freetext inputted by FIN staff           |
         | Status | "Account Verified"                       |
 
+@ovr2-3821-9
 Rule: a verified credit account can be used as a payment method by users
 
   Scenario: credit account unverified
@@ -99,6 +106,7 @@ Rule: a verified credit account can be used as a payment method by users
       And the cart is a holder or user of credit account A
      Then they see credit account as a payment method
 
+@ovr2-3821-10
 Rule: a verified credit account cannot be unverified
 
   Scenario: verified 
@@ -111,8 +119,11 @@ Rule: a verified credit account cannot be unverified
      When staff attempt to verify credit account A
      Then the option to verify is available
 
+@ovr2-3821-11
 Rule: verifying a credit account does not change the status of a credit account (hold, closed) or modify associated credit account users
-Rule CA can see the unverified credit account page
+
+@ovr2-3821-12
+Rule CA can see the unverified credit account page with limited information
 
   Scenario: credit account unverified
     Given company A credit account is unverified
