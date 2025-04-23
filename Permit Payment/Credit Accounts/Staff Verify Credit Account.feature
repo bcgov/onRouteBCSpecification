@@ -114,7 +114,25 @@ Rule: a verified credit account cannot be unverified
 Rule: verifying a credit account does not change the status of a credit account (hold, closed) or modify associated credit account users
 Rule CA can see the unverified credit account page
 
-  Scenario: CA viewing credit account
+  Scenario: credit account unverified
+    Given company A credit account is unverified
+     When company A CA is viewing credit account
+     Then they see:
+       | description         | data                                                                               |
+       | status label        | "Unverified"                                                                       |
+       | account designation | "Account Holder"                                                                   |
+       | info box            | "Please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" |
+
+  Scenario: credit account unverified and on hold
+    Given company A credit account is unverified
+     When company A CA is viewing credit account
+     Then they see:
+       | description         | data                                                                               |
+       | status label        | "Unverified"                                                                       |
+       | account designation | "Account Holder"                                                                   |
+       | info box            | "Please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" |
+
+  Scenario: credit account unverified closed
     Given company A credit account is unverified
      When company A CA is viewing credit account
      Then they see:

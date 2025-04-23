@@ -166,12 +166,6 @@ Rule: Staff must designate a vehicle type and sub-type
      When they choose to continue
      Then they see "This is a required field"
       And the mandatory field is indicated
-
-  Scenario: no vehicle sub-type chosen
-    Given staff have not chosen a vehicle sub-type
-     When they choose to continue
-     Then they see "This is a required field"
-      And the mandatory field is indicated
 |
 @orv2-1152-17 @orv2-2830-2
 Rule: Staff are shown all data submitted in the LOA workflow for review 
