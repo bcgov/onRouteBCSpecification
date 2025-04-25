@@ -80,22 +80,20 @@ Rule: Power unit province / state is not available when Mexico is chosen as the 
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2608-6 @orv2-2612-6
-Rule: Users must input an origin and destination chosen from the resolved geocoder list
+@orv2-2608-6 @orv2-2612-6 @ovr2-3975-1
+Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
   Scenario: no origin or destination is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
-      And they see "You must enter a valid address."
+      And they see "This is a required field."
       And the mandatory field is indicated
 
   Scenario: user inputted text
     Given a user has inputted text in origin, destination or exit point
       And has not chosen a resolved address from the geocoder list 
      When they chose to continue
-     Then they cannnot continue
-      And they see "You must enter a valid address."
-      And the mandatory field is indicated
+     Then they can continue
 
 @orv2-2608-7 @orv2-2612-7
 Rule: The origin, destination and exit point is resolved and the chosen resolved address replaces text inputted by the user 

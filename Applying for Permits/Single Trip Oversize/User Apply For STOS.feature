@@ -289,20 +289,20 @@ Rule: Load dimensions are a decimal number rounded to 2 decimal places
      When they tab to the next field
      Then they see 35.00 in overall width
 
-@orv2-2254-23 @orv2-2387-23
-Rule: Users must input an origin and destination chosen from the resolved geocoder list
+@orv2-2254-23 @orv2-2387-23 @orv2-3966-1
+Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
-  Scenario: no origin, destination and exit point is inputted
+  Scenario: no origin or destination is inputted
      When a user chooses to continue to review and confirm
      Then they cannnot continue
-      And they see "You must enter a valid address."
+      And they see "This is a required field."
       And the mandatory field is indicated
 
   Scenario: user inputted text
     Given a user has inputted text in origin, destination or exit point
       And has not chosen a resolved address from the geocoder list 
      When they chose to continue
-     Then the inputted text is removed
+     Then they can continue
 
 @orv2-2254-24 @orv2-2387-24
 Rule: The origin and destination is resolved and the chosen resolved address replaces text inputted by the user 
