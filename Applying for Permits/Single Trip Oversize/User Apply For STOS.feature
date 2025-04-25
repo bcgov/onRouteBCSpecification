@@ -281,6 +281,9 @@ Rule: Users must input load dimensions as numbers
      Then "five" is not accepted 
       And overall width is empty
 
+@orv2-4064-1
+Rule: Accept the numeral 0 in front and rear projection loaded dimensions
+
 @orv2-2254-22 @orv2-2387-22
 Rule: Load dimensions are a decimal number rounded to 2 decimal places
 
