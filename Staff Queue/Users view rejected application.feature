@@ -19,7 +19,7 @@ Rule: Users can view current and past reason(s) for rejection information on the
        | IDIR username        | Only visible to staff. The staff member that inputted the reason for rejection saved with the reason for rejection |
        | Date / Time          | the date and time the staff member that inputted the reason for rejection saved                                    |
 
-@orv2-2474-11
+@orv2-2474-11 @orv2-2560-2
 Rule: Users can see the application rejected warning on rejected applications
 
 Scenario: rejected one or more
@@ -27,7 +27,7 @@ Scenario: rejected one or more
      When a user chooses to view A1-72303011-028
      Then they see the application rejected warning
 
-@orv2-2474-12
+@orv2-2474-12 @orv2-2560-3
 Rule: Users can choose to be directed to the reason for rejection history
 
 Scenario: rejected one or more
