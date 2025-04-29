@@ -3,7 +3,7 @@ Feature: CV Client common features for profile creation workflows
 
 User = basic or business
 
-@orv2-481-8, @orv2-3322-10, @orv2-3228
+@orv2-481-8, @orv2-3322-10, @orv2-3228-15
 Rule: The navigation bar is not visible to users until the profile has been successfully created
 
   Scenario: profile setup not complete
@@ -15,7 +15,7 @@ Rule: The navigation bar is not visible to users until the profile has been succ
        | contact details                                    |
      Then the navigation bar is not visible
 
-@orv2-369-9, @orv2-3322-12, @orv2-3228
+@orv2-369-9, @orv2-3322-12, @orv2-3228-16
 Rule: a cv client must have valid BCeID credentials
 
   Scenario: CV Client Business BCeID attempts to login onRouteBC and BCeID is not working
@@ -28,7 +28,7 @@ Rule: a cv client must have valid BCeID credentials
       When they attempt to sign in to onRouteBC
       Then they are directed to a BCeID error page
 
-@orv2-907-4, @orv2-3322-13, @orv2-3228
+@orv2-907-4, @orv2-3322-13, @orv2-3228-17
 Rule: a new PA user can only view company profile information
 
  Scenario: New CV Client Business BCeID user completed profile setup
@@ -37,7 +37,7 @@ Rule: a new PA user can only view company profile information
       Then they are directed to company information
        But they cannot edit company information
 
-@orv2-481-10, @orv2-3322-14, @orv2-3228
+@orv2-481-10, @orv2-3322-14, @orv2-3228-18
 Rule: upon creating a profile or joining an existing profile a user can view their profile or apply for a permit
 
  Scenario: choose to apply for permit

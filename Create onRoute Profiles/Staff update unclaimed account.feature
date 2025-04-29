@@ -6,7 +6,7 @@ User = PC, SA, Train, CTPO
 # if no BCeID and company claimed by staff then a new cv client user goes through the challenge workflow
 # can update company name and email address
 
-@orv2-1637-1, @orv2-3228
+@orv2-1637-1, @orv2-3228-27
 Rule: A user can update existing onRouteBC profile on behalf of a CV Client
 
   Scenario: unclaimed profile
@@ -35,7 +35,7 @@ Rule: A user can update existing onRouteBC profile on behalf of a CV Client
      When they choose to finish
      Then they are directed to the the profile successfully set up page
 
-@orv2-481-10, @orv2-3322-14, @orv2-3228
+@orv2-481-10, @orv2-3322-14, @orv2-3228-28
 Rule: users have the option to view the profile or apply for a permit after successful profile completion
 
  Scenario: choose to apply

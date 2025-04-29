@@ -1,4 +1,4 @@
-Feature: Universal Unexpected Error Page
+Feature: Universal Unexpected Error Handling
 
 # see individual features for scenarios that a user may encounter to arrive at the universal unexpected error page
 

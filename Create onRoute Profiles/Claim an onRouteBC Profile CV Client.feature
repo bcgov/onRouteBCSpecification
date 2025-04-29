@@ -3,7 +3,7 @@ Feature: CV Client an existing onRouteBC Profile
 
 User = basic or business 
 
-@orv2-481-1, @orv2-3322-1, @orv2-3228
+@orv2-481-1, @orv2-3322-1, @orv2-3228-9
 Rule: A user is provided the option to claim a profile with a challenge
 
  Scenario: user credentials do match an existing onRouteBC profile
@@ -33,7 +33,7 @@ Rule: A user is provided the option to claim a profile with a challenge
      When a user chooses not to claim an existing profile
      Then they are directed to  create a new onRouteBC profile
 
-@orv2-481-2, @orv2-3322-2, @orv2-3228
+@orv2-481-2, @orv2-3322-2, @orv2-3228-10
 Rule: If a "Client No." is associated to a "Permit No." then allow a user to proceed
 
  Scenario: Valid TPS "Client No." and "Permit No."
@@ -79,7 +79,7 @@ Rule: If a "Client No." is associated to a "Permit No." then allow a user to pro
        And "Permit No." is indicated
        And they cannot proceed to the next step in the workflow      
 
-@orv2-481-3, @orv2-3322-3, @orv2-3228
+@orv2-481-3, @orv2-3322-3, @orv2-3228-11
 Rule: Both "Permit No." and "Client No." are mandatory fields
 
  Scenario: Only a "Permit No." inputted
@@ -107,7 +107,7 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
        And "Client No." is indicated
        And they cannot proceed to the next step in the workflow
 
-@orv2-481-4, @orv2-3322-4, @orv2-3228
+@orv2-481-4, @orv2-3322-4, @orv2-3228-12
 Rule: A user can view and update their claimed "Client No." profile contact details
 
   Scenario: success
@@ -145,7 +145,7 @@ Rule: A user can view and update their claimed "Client No." profile contact deta
      Then they see "This is a required field" at each field with invalid data
       And fields with no data are indicated
 
-@orv2-481-5, @orv2-3322-5, @orv2-3228
+@orv2-481-5, @orv2-3322-5, @orv2-3228-13
 Rule: A first users credential information replaces the "Client Name" and "Email" information in onRouteBC
 
   Scenario: information in business user onRouteBC profile
@@ -186,7 +186,7 @@ Rule: A first users credential information replaces the "Client Name" and "Email
      Then they see "This is a required field" at each field with invalid data
       And fields with invalid data are indicated
 
-@orv2-481-12, @orv2-3322-6, @orv2-3228
+@orv2-481-12, @orv2-3322-6, @orv2-3228-14
 Rule: first users that successfully claim an existing onRouteBC profile are designated as CV Client Administrators (CA)
 
   Scenario: first user

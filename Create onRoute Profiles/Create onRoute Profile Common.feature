@@ -3,7 +3,7 @@ Feature: CV Client common features for profile creation workflows
 
 User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
 
-@orv2-481-11, @orv2-3322-11, @orv2-3228
+@orv2-481-11, @orv2-3322-11, @orv2-3228-19
 Rule: A user can cancel or return to a previous page
 
   Scenario: Cancel
@@ -14,7 +14,7 @@ Rule: A user can cancel or return to a previous page
      When a user chooses to return to a previous page
      Then they are directed to the previous page in the workflow
 
-@orv2-369-9, @orv2-3322-12, @orv2-3228
+@orv2-369-9, @orv2-3322-12, @orv2-3228-20
 Rule: contact details are not saved until the workflow is finished
 
  Scenario: user navigates away from create new onRouteBC profile workflow
@@ -23,7 +23,7 @@ Rule: contact details are not saved until the workflow is finished
      Then the onRouteBC account is not created
       And no information is saved
 
-@orv2-3322-15, @orv2-3228
+@orv2-3322-15, @orv2-3228-21
 Rule: contact details are replicated to company primary contact and user details
 
   Scenario: all contact details have data
@@ -59,7 +59,7 @@ Rule: contact details are replicated to company primary contact and user details
       | City                        | Vancouver                                         | Vancouver                | Vancouver      |
       | Postal / Zip Code           | V8L 13T                                           |                          |                |
 
-@orv2-481, @orv2-3322-17, @orv2-1637-8, @orv2-3228
+@orv2-481, @orv2-3322-17, @orv2-1637-8, @orv2-3228-22
 Rule: a user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
 
   Scenario: Successfully completed 

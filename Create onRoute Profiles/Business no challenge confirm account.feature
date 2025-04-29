@@ -3,7 +3,7 @@ Feature: Business no challenge confirm existing onRouteBC profile
 
 User = migrated business user
 
-@orv2-1637-1, @orv2-3228
+@orv2-1637-1, @orv2-3228-1
 Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
 
   Scenario: first user
@@ -17,7 +17,7 @@ Rule: users that successfully claim or join an existing onRouteBC profile are de
      When they successfully complete the no challenge "My Information" workflow
      Then they are designated as an admin user
 
-@orv2-1637-2, @orv2-3228
+@orv2-1637-2, @orv2-3228-2
 Rule: A first user can claim a matching existing onRouteBC profile without a challenge
 
   Scenario: first user, credentials match existing onRouteBC profile
@@ -43,7 +43,7 @@ Rule: A first user can claim a matching existing onRouteBC profile without a cha
       And they are sent a profile creation confirmation email
       #see orv2-477
 
-@orv2-1637-3, @orv2-3228
+@orv2-1637-3, @orv2-3228-3
 Rule: A second+ user can join a matching existing onRouteBC profile
 
   Scenario: not the first user, credentials match existing onRouteBC profile
@@ -52,7 +52,7 @@ Rule: A second+ user can join a matching existing onRouteBC profile
       When they successfully log in using their BCeID credentials
       Then they are directed to the complete "My Information" workflow
 
-@orv2-1637-4, @orv2-3228
+@orv2-1637-4, @orv2-3228-4
 Rule: A first user can view and update their claimed "Client No." profile contact details
 
   Scenario: business mandatory fields
@@ -70,7 +70,7 @@ Rule: A first user can view and update their claimed "Client No." profile contac
      Then they see "This is a required field" at each field with invalid data
       And fields with no data are indicated
 
-@orv2-1637-5, @orv2-3228
+@orv2-1637-5, @orv2-3228-5
 Rule: A second+ user can update their user details
 
   Scenario: mandatory fields
@@ -90,7 +90,7 @@ Rule: A second+ user can update their user details
      Then they see "This is a required field" at each field with invalid data
       And fields with no valid data are indicated
 
-@orv2-1637-6, @orv2-3228
+@orv2-1637-6, @orv2-3228-6
 Rule: A first users credential information replaces the "Client Name" and "Email" information in onRouteBC
 
   Scenario: information exists in onRouteBC
@@ -100,7 +100,7 @@ Rule: A first users credential information replaces the "Client Name" and "Email
         | Client Name |
         | Email       |
 
-@orv2-1637-7, @orv2-3228
+@orv2-1637-7, @orv2-3228-7
 Rule: A first business user is sent a profile creation confirmation email
-@orv2-481-15, @orv2-3228
+@orv2-481-15, @orv2-3228-8
 Rule: users that have successfully joined an onRouteBC Profile are associated to their BCeID username
