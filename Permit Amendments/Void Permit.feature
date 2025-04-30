@@ -258,7 +258,7 @@ Rule: Generate void permit
 
        Examples:
          | permit number   | revision number |
-         | P2-00408617-873 | R2             |
+         | P2-00408617-873 | R2              |
 
 @orv2-1057-17
 Rule: Voided permit is superseded by void permit

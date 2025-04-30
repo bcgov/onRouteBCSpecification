@@ -7,14 +7,14 @@ Rule:
      When 
      Then 
 
-extend duration up to 30 days $0
+Rule: extend duration up to 30 days $0
 
   Scenario: active permit 
     Given 
      When 
      Then 
 
-shorten duration can create an expired permit $0
+Rule: shorten duration can create an expired permit $0
 
   Scenario: shorten active term expired
     Given the permit duration is 3 days
@@ -47,7 +47,7 @@ shorten duration can create an expired permit $0
 
 
 
-duration to up to 30 days
+Rule: duration to up to 30 days
 
   Scenario: 20 days chosen 
     Given 
@@ -59,9 +59,7 @@ duration to up to 30 days
      When they choose to change duration
      Then they cannot add additional days can only reduce duration
 
-
-
-back date start date
+Rule: back date start date
 
   Scenario: expire permit
     Given 
@@ -73,7 +71,7 @@ back date start date
      When 
      Then 
 
-forward date start date
+Rule: forward date start date
 
   Scenario: changing form an active to an issued permit
     Given 
@@ -85,9 +83,7 @@ forward date start date
      When 
      Then 
 
-
-
-can change commodity details
+Rule: can change commodity details
  remove vehicle details and loaded dimensions - no! Warning modal
 
 change vehicle details 

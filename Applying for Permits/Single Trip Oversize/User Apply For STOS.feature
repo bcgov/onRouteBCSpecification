@@ -190,7 +190,7 @@ Rule: Users may remove and change the power unit from the application
 @orv2-2254-15 @orv2-2387-15
 Rule: Users must choose from a list of allowable trailers
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true 
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true 
 
   Scenario: no allowable
      When the user has chosen a commodity and power unit with no allowable trailer
@@ -210,7 +210,7 @@ Rule: Users must choose from a list of allowable trailers
   Scenario: trailer not inputted
     Given a trailer has not been chosen 
      When a user chooses to continue to review and confirm
-     Then they see "This is a required field"
+     Then they see "Vehicle configuration is not permittable for this commodity"
       And add trailer is indicated
 
   Scenario: reached limit of allowable trailers 
