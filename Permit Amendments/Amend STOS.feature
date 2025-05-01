@@ -1,18 +1,21 @@
 Feature: Amend Single Trip Oversize Permit
 
-Rule: 
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 Rule: extend duration up to 30 days $0
 
   Scenario: active permit 
     Given 
      When 
      Then 
+
+  Scenario: 20 days chosen 
+    Given 
+     When when they choose 30 days
+     Then end date is 10 days later
+
+  Scenario: 30 days chosen
+    Given 
+     When they choose to change duration
+     Then they cannot add additional days can only reduce duration
 
 Rule: shorten duration can create an expired permit $0
 
@@ -45,20 +48,6 @@ Rule: shorten duration can create an expired permit $0
      When 
      Then 
 
-
-
-Rule: duration to up to 30 days
-
-  Scenario: 20 days chosen 
-    Given 
-     When when they choose 30 days
-     Then end date is 10 days later
-
-  Scenario: 30 days chosen
-    Given 
-     When they choose to change duration
-     Then they cannot add additional days can only reduce duration
-
 Rule: back date start date
 
   Scenario: expire permit
@@ -70,6 +59,9 @@ Rule: back date start date
     Given 
      When 
      Then 
+
+start date is in the past at application form
+start date and/or expiry date is in the past on review and confirm
 
 Rule: forward date start date
 
@@ -84,26 +76,30 @@ Rule: forward date start date
      Then 
 
 Rule: can change commodity details
- remove vehicle details and loaded dimensions - no! Warning modal
+ remove vehicle details and loaded dimensions - no! new application Warning modal
 
-change vehicle details 
- change power unit
+Rule: staff can change any vehicle detail except vehicle sub-type without impacting other application data
+
+  Scenario: recall vehicle
+    Given 
+     When 
+     Then only allowable vehicle sub-type is available
+
+Rule: change power unit
   change power unit individual information
    edit everything by the vehicle sub-type
   change power unit
   
-  trailers get reset
+Rule: staff trailers get reset
  change trailers
   reset removes all trailers
 
-change loaded dimensions
+Rule: change loaded dimensions
  subject to mandatory field behaviour and data behaviour
 
-change trip details
+Rule: change trip details
  subject to mandatory field behaviour
 
 all changes will be $0 and continue to finish
-
-start date needs to be 14 days in advance 
 
 
