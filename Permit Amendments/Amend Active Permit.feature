@@ -5,8 +5,31 @@ staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
 @orv2-4140
-Rule: an unfinished amending permit applications (APA) is created when staff continue to review and confirm
+Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
+  Scenario: no existing APA(s)
+    Given permit A has no unfinishes APA(s)
+     When staff choose to amend permit A
+      And continue to review and confirm
+     Then permit A has the first unfinished APA(s) iteration
+
+  Scenario: 1 or more unfinished APA(s) exist
+    Given permit A has existing unfinished APA(s)
+     When staff choose to amend permit A
+      And continue to review and confirm
+     Then they see their changes 
+      And previous iteration changes that have not been overwritten
+
+@orv2-4140
+Rule: previous unfinished APA(s) iteration changes can be overwritten by staff
+
+  Scenario: 1 or more APA(s) exist
+    Given permit A has latest unfinished APA(s) X
+      And plate was changed to ABC123 in unfinished APA(s) X
+     When staff choose to amend permit A
+      And change plate to XYZ123
+     Then XYZ123 is the current iteration of plate for the unfinished APA for permit A
+   
 @orv2-4140
 Rule: unfinished APA(s) are not shown in applications in progress (AIP)
 
@@ -36,8 +59,8 @@ Rule: unfinished APA(s) are not shown in applications in progress (AIP)
      When 
      Then 
 
-@orv2-4140
-Rule: editing an APA in the shopping cart are unfinished APA's
+# @orv2-4140
+# Rule: editing an APA in the shopping cart are unfinished APA's
 
   Scenario: 
     Given 
@@ -45,33 +68,41 @@ Rule: editing an APA in the shopping cart are unfinished APA's
      Then 
 
 @orv2-4140
-Rule: staff must confirm options when initiating an amend action when the issued or active permit has an unfinished APA 
+Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA 
 
-  Scenario: no unfinished APA's
-    Given 
-     When 
-     Then 
+  Scenario: no unfinished APA(s)
+    Given permit A has no unfinished APA(s)
+     When staff initiate an amend action on permit A
+     Then they are directed to the APA form
 
-  Scenario: unfinished APA's
-    Given 
-     When 
-     Then 
+  Scenario: unfinished APA(s)
+    Given permit A has unfinished APA(s)
+     When staff initiate an amend action on permit A
+     Then they see the the following:
+       | data               | description                                                                                                         |
+       | Amending Permit #  | the permit number of the permit they initiated and amend action on                                                  |
+       | IDIR               | the username of the last staff member to create an unfinished APA                                                   |
+       | Cancel             | option to cancel the amend permit action                                                                            |
+       | New Amendment      | option to discard existing unfinished amendments and start a new one with only current issued or active permit data |
+       | Continue Amendment | option to continue the unfinished amendments with all previous APA changes                                          |
 
 @orv2-4140
 Rule: staff can optionally choose to cancel the amend permit action
 
-  Scenario: 
-    Given 
-     When 
-     Then  
+  Scenario: cancel
+     When staff choose to cancel the amend action
+     Then they are directed to the page they initiated the amend action on
+      And an new iteration of the APA is not created
 
 @orv2-4140
 Rule: staff can optionally choose to create a new APA
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: 1 or more APA(s) exist
+    Given permit A has existing APA(s)
+     When staff choose to create a new amendment
+     Then existing APA(s) changes are discarded 
+      And they are directed to the APA form
+      And they see only the current issued or active permit data
 
 @orv2-4140
 Rule: choosing to create a new APA directs the user to a new APA that contains only the current issued or active permit data
