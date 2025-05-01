@@ -7,31 +7,31 @@ CV Client = CA, PA
 @orv2-4140
 Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
-  Scenario: no iterationsing APA(s)
-    Given permit A has no unfinished APA(s)
+  Scenario: no APA
+    Given permit A has no unfinished APA
      When staff choose to amend permit A
       And continue to review and confirm
-     Then permit A has the first unfinished APA(s) iteration
+     Then permit A has the first unfinished APA iteration
 
-  Scenario: 1 or more unfinished APA(s) iterations
-    Given permit A has unfinished APA(s) iterations
+  Scenario: 1 or more unfinished APA changes
+    Given permit A has unfinished APA changes
      When staff choose to amend permit A
       And continue to review and confirm
      Then they see their changes 
-      And previous iteration changes that have not been overwritten
+      And previous iteration changes that have not been overwritten by them
 
 @orv2-4140
-Rule: previous unfinished APA(s) iteration changes can be overwritten by staff
+Rule: previous unfinished APA iteration changes can be overwritten by staff
 
-  Scenario: 1 or more APA(s) iterations
-    Given permit A has latest unfinished APA(s) X
-      And plate was changed to ABC123 in unfinished APA(s) X
+  Scenario: 1 or more APA changes
+    Given permit A has latest unfinished APA X
+      And plate was changed to ABC123 in unfinished APA X
      When staff choose to amend permit A
       And change plate to XYZ123
      Then XYZ123 is the current iteration of plate for the unfinished APA for permit A
    
 @orv2-4140
-Rule: unfinished APA(s) are not shown in applications in progress (AIP)
+Rule: unfinished APA are not shown in applications in progress (AIP)
 
   Scenario: APA created continue
     Given staff initiate an amend on permit A
@@ -68,22 +68,22 @@ Rule: unfinished APA(s) are not shown in applications in progress (AIP)
      Then 
 
 @orv2-4140
-Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA(s) 
+Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA 
 
-  Scenario: no unfinished APA(s)
-    Given permit A has no unfinished APA(s)
+  Scenario: no unfinished APA
+    Given permit A has no unfinished APA
      When staff initiate an amend action on permit A
      Then they are directed to the APA form
 
-  Scenario: unfinished APA(s)
-    Given permit A has unfinished APA(s)
+  Scenario: unfinished APA
+    Given permit A has unfinished APA
      When staff initiate an amend action on permit A
      Then they see the the following:
        | data               | description                                                                                                         |
        | Amending Permit #  | the permit number of the permit they initiated and amend action on                                                  |
        | IDIR               | the username of the last staff member to create an unfinished APA                                                   |
        | Cancel             | option to cancel the amend permit action                                                                            |
-       | New Amendment      | option to discard iterationsing unfinished amendments and start a new one with only current issued or active permit data |
+       | New Amendment      | option to discard unfinished amendments and start a new one with only current issued or active permit data |
        | Continue Amendment | option to continue the unfinished amendments with all previous APA changes                                          |
 
 @orv2-4140
@@ -97,24 +97,24 @@ Rule: staff can optionally choose to cancel the amend permit action
 @orv2-4140
 Rule: staff can optionally choose to create a new APA which directs them to a new APA that contains only the current issued or active permit data
 
-  Scenario: 1 or more APA(s) iterations
-    Given permit A has iteration APA(s)
+  Scenario: unfinished APA exists
+    Given permit A has unfinished APA
      When staff choose to create a new amendment
-     Then iterationsing APA(s) changes are discarded 
+     Then previous APA changes are discarded 
       And they are directed to the APA form
       And they see only the current issued or active permit data
 
 @orv2-4140
 Rule: staff can optionally choose to continue to amend an unfinished APA which directs them to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
-  Scenario: 1 or more APA(s) iterations
+  Scenario: 1 or more APA iterations
     Given permit A has the following unfinished APA changes:
       | APA iteration | data     | changed to |
       | 1             | plate    | ABC123     |
       | 2             | duration | 30         |
       | 3             | VIN      | 987654     |
      When staff change model to Ford
-     Then they see the following changes on review and confirm:
+     Then they see the following changes indicated on review and confirm:
       | data     | changed to |
       | plate    | ABC123     |
       | duration | 30         |
