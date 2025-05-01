@@ -4,15 +4,32 @@ Feature:  Amend an issued or active permit
 staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
-Rule: unfinished amending permit applications (APA) are not shown in applications in progress (AIP)
-
-  Scenario: 
-    Given 
-     When 
-     Then 
+@orv2-4140
+Rule: an unfinished amending permit applications (APA) is created when staff continue to review and confirm
 
 @orv2-4140
-Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+Rule: unfinished APA(s) are not shown in applications in progress (AIP)
+
+  Scenario: APA created continue
+    Given staff initiate an amend on permit A
+     When staff continue to review and confirm
+     Then there is an APA for permit A
+
+  Scenario: APA fails finish
+    Given staff initiate an amend on permit A
+      And they are at finish
+     When staff choose to finish the APA
+      And it fails to finish
+     Then there is an APA for permit A
+
+  Scenario: APA canceled
+    Given staff initiate an amend on permit A
+      And they are at the application form
+     When staff choose to cancel 
+     Then there is no APA for permit A
+
+# @orv2-4140
+# Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
   Scenario: 
     Given 
@@ -72,6 +89,7 @@ Rule: staff can optionally choose to continue amending an unfinished APA
      When 
      Then 
 
+
 @orv2-4140
 Rule: continuing to amend an unfinished APA directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
@@ -90,8 +108,8 @@ Rule: continuing to amend an unfinished APA directs the user to the unfinished A
      When 
      Then 
 
-@orv2-4140
-Rule: APA in the shopping cart
+# @orv2-4140
+# Rule: APA in the shopping cart
 
   Scenario: staff view
     Given 
@@ -128,21 +146,7 @@ Rule: APA in the shopping cart
      When 
      Then 
 
-@orv2-4140
-Rule:
 
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-@orv2-4140
-Rule:
-
-  Scenario: 
-    Given 
-     When 
-     Then 
 
 @orv2-938-8 @orv2-4015
 Rule: staff can only amend an issued or active permit
