@@ -68,7 +68,7 @@ Rule: unfinished APA(s) are not shown in applications in progress (AIP)
      Then 
 
 @orv2-4140
-Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA 
+Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA(s) 
 
   Scenario: no unfinished APA(s)
     Given permit A has no unfinished APA(s)
@@ -95,7 +95,7 @@ Rule: staff can optionally choose to cancel the amend permit action
       And an new iteration of the APA is not created
 
 @orv2-4140
-Rule: staff can optionally choose to create a new APA
+Rule: staff can optionally choose to create a new APA thats directs them to a new APA that contains only the current issued or active permit data
 
   Scenario: 1 or more APA(s) exist
     Given permit A has existing APA(s)
@@ -105,24 +105,7 @@ Rule: staff can optionally choose to create a new APA
       And they see only the current issued or active permit data
 
 @orv2-4140
-Rule: choosing to create a new APA directs the user to a new APA that contains only the current issued or active permit data
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-@orv2-4140
-Rule: staff can optionally choose to continue amending an unfinished APA
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-
-@orv2-4140
-Rule: continuing to amend an unfinished APA directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+Rule: staff can optionally choose to continue to amend an unfinished APA directs them to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
   Scenario: no unfinished APA's
     Given 
