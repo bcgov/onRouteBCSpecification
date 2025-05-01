@@ -41,7 +41,7 @@ Rule: Staff can see the elapsed time the submitted application has been in the q
 Rule: The time in queue is counted until the application is approved or rejected
 
 @orv2-2398-4
-Rule: The queue list is sorted by the elapsed time in the queue oldest at the top in descending order
+Rule: default sort for queue list is sorted by the elapsed time in the queue oldest at the top in descending order
 
   Scenario: applications are in queue
     Given applications submitted in the following order:
@@ -53,6 +53,22 @@ Rule: The queue list is sorted by the elapsed time in the queue oldest at the to
       | A1-72303011-028 | 1st |
       | A2-00408617-873 | 2nd |
       | A8-30815429-164 | 3rd |
+
+@orv2-4164
+Rule: staff can optionally sort the queue or claim list by permit start date
+
+  Scenario: sorted by elapsed time in queue
+    Given 
+     When 
+     Then
+
+  Scenario: sorted by permit started date
+    Given 
+     When 
+     Then 
+
+ 
+
 
 @orv2-2398-5
 Rule: Staff may update the queue list to show its current state manually

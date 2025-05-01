@@ -51,22 +51,6 @@ Rule: unfinished APA are not shown in applications in progress (AIP)
      When staff choose to cancel 
      Then there is no APA for permit A
 
-# @orv2-4140
-# Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
-# @orv2-4140
-# Rule: editing an APA in the shopping cart are unfinished APA's
-
-  Scenario: 
-    Given 
-     When 
-     Then 
-
 @orv2-4140
 Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA 
 
@@ -120,46 +104,6 @@ Rule: staff can optionally choose to continue to amend an unfinished APA which d
       | duration | 30         |
       | VIN      | 987654     |
       | model    | Ford       |
-
-# @orv2-4140
-# Rule: APA in the shopping cart
-
-  Scenario: staff view
-    Given 
-     When 
-     Then 
-
-  Scenario: staff pay
-    Given 
-     When 
-     Then 
-
-  Scenario: staff remove
-    Given 
-     When 
-     Then 
-
-  Scenario: staff edit
-    Given 
-     When 
-     Then           
-
-  Scenario: cv client view
-    Given 
-     When 
-     Then 
-
-  Scenario: cv client pay
-    Given 
-     When 
-     Then 
-
-  Scenario: cv client remove
-    Given 
-     When 
-     Then 
-
-
 
 @orv2-938-8 @orv2-4015
 Rule: staff can only amend an issued or active permit
@@ -325,8 +269,59 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
 @orv2-4015
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
 
+# @orv2-4140
+# Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
+  Scenario: 
+    Given 
+     When 
+     Then 
 
+# @orv2-4140
+# Rule: editing an APA in the shopping cart are unfinished APA's
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+# @orv2-4140
+# Rule: APA in the shopping cart
+
+  Scenario: staff view
+    Given 
+     When 
+     Then 
+
+  Scenario: staff pay
+    Given 
+     When 
+     Then 
+
+  Scenario: staff remove
+    Given 
+     When 
+     Then 
+
+  Scenario: staff edit
+    Given 
+     When 
+     Then           
+
+  Scenario: cv client view
+    Given 
+     When 
+     Then 
+
+  Scenario: cv client pay
+    Given 
+     When 
+     Then 
+
+  Scenario: cv client remove
+    Given 
+     When 
+     Then 
 
 ## OLD
 
