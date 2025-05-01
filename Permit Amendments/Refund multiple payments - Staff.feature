@@ -82,7 +82,7 @@ Rule: Show historical financial transaction information for the amending/void pe
         | information      | description                                                  |
         | Permit #         | permit number generated for the listed transaction           |
         | Payment Method   | payment method used for the listed transaction               |
-        | Provider Tran ID | provider transaction id for the listed transaction           |
+        | Provider Tran ID | provider transaction id for the listed transaction if exists |
         | Amount (CAD)     | permit fee (positive or negative) for the listed transaction |
 
 @orv2-2816-5
@@ -211,6 +211,8 @@ Rule: Refund amount must have a value >$0 for Refund Tran ID and cheque refund t
 @orv2-2816-8
 Rule: Staff must input a refund tran id for a chosen transaction and inputted refund amount
 
+ # not true for credit account
+
   Scenario: refund is $50 no tran id
     Given the total refund due is $50
       And the chosen transaction A has a refund amount of $50
@@ -321,6 +323,7 @@ Rule: A refund transaction(s) is saved for each completed historical transaction
       When they choose to refund by cheque
       Then only refund by cheque is indicated as a refund method
 
+# dupe?
 @orv2-938-19
 Rule: Input mandatory transaction id
 

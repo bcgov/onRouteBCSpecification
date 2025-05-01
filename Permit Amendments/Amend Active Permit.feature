@@ -1,10 +1,151 @@
-Feature:  Amend an active permit 
-   As PPC staff I need to be able to amend an active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
+Feature:  Amend an issued or active permit 
+   As staff I need to be able to amend an issued or active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
-Staff = SA, PC, CTPO, Trainee
+staff = PC, SA, TRAIN, CTPO
+CV Client = CA, PA
+
+Rule: unfinished amending permit applications (APA) are not shown in applications in progress (AIP)
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: editing an APA in the shopping cart are unfinished APA's
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: staff must confirm options when initiating an amend action when the issued or active permit has an unfinished APA 
+
+  Scenario: no unfinished APA's
+    Given 
+     When 
+     Then 
+
+  Scenario: unfinished APA's
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: staff can optionally choose to cancel the amend permit action
+
+  Scenario: 
+    Given 
+     When 
+     Then  
+
+@orv2-4140
+Rule: staff can optionally choose to create a new APA
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: choosing to create a new APA directs the user to a new APA that contains only the current issued or active permit data
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: staff can optionally choose to continue amending an unfinished APA
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: continuing to amend an unfinished APA directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+
+  Scenario: no unfinished APA's
+    Given 
+     When 
+     Then 
+
+  Scenario: 1 previous unfinished APA
+    Given 
+     When 
+     Then 
+
+  Scenario: 2 unfinished APA's
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule: APA in the shopping cart
+
+  Scenario: staff view
+    Given 
+     When 
+     Then 
+
+  Scenario: staff pay
+    Given 
+     When 
+     Then 
+
+  Scenario: staff remove
+    Given 
+     When 
+     Then 
+
+  Scenario: staff edit
+    Given 
+     When 
+     Then           
+
+  Scenario: cv client view
+    Given 
+     When 
+     Then 
+
+  Scenario: cv client pay
+    Given 
+     When 
+     Then 
+
+  Scenario: cv client remove
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule:
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+@orv2-4140
+Rule:
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 @orv2-938-8 @orv2-4015
-Rule: Can only amend an issued or active permit
+Rule: staff can only amend an issued or active permit
 
   Scenario: Permit is voided
     Given the PPC SA has found a void permit
@@ -17,7 +158,7 @@ Rule: Can only amend an issued or active permit
      Then they are directed to the amend permit 
 
   Scenario: Valid permit
-    Given the Staff have found a valid permit to amend
+    Given the staff have found a valid permit to amend
      When they choose to amend the permit
      Then they are directed to the amend permit page
 
@@ -38,74 +179,65 @@ Rule: Can only amend an issued or active permit
          | company information   | company mailing address of amending permit and DBA if applicable |
 
 @orv2-938-30 @orv2-4015
-Rule: Staff can view superseded permit and superseded permit receipt pdf  
-
-@orv2-937-7
-
-@orv2-937-11
+Rule: staff can view superseded permit and superseded permit receipt pdf  
 
 @orv2-938-9 @orv2-4015
-Rule: Staff can resend superseded permit documents
-
-@orv2-937-10
-
-@orv2-937-12
+Rule: staff can resend superseded permit documents
 
 @orv2-938-12 @orv2-4015
-Rule: Staff can view all permit details of the amending permit
+Rule: staff can see the current issued or active permit data of the permit being amended
 
- Scenario: Staff choose to amend a valid permit
-     Given the Staff has chosen to amend a valid permit
+ Scenario: staff choose to amend a valid permit
       When they are at the amend permit page
       Then they see all original permit application details of the amending permit
 
 @orv2-938-13 @orv2-4015
-Rule: Staff must add free text amendment Reason 
+Rule: staff must add free text amendment Reason 
 
   Scenario: Save amendment reason
-    Given the PPC Staff has inputted an amendment reason
+    Given the PPC staff has inputted an amendment reason
      When they choose continue to review and confirm details
      Then the <amendment reason> is saved
       And the reason is <timestamped> 
-      And the logged in <PPC Staff username> is saved
+      And the logged in <PPC staff username> is saved
 
    Examples:
-     | <PPC Staff username> | <timestamped>                  | <amendment reason>                                |
+     | <PPC staff username> | <timestamped>                  | <amendment reason>                                |
      | jdoe                 | Apr. 15, 2023, 8colon23 am PDT | Swapped a Droid Gunship for the Millennium Falcon |
 
   Scenario: Attempt to continue without updating amendment reason
-    Given a Staff has not inputted a reason for amendment 
+    Given a staff has not inputted a reason for amendment 
      When they chose to continue to review and confirm details
      Then they see "This is a required field"
       And they cannot continue
 
   Scenario: Reason for amendment mandatory
-    Given a PPC Staff is at the "Amend Permit" page 
+    Given a PPC staff is at the "Amend Permit" page 
      When they attempt to continue
       And they have not entered a reason for amendment
      Then they see "This is a required field"
 
 @orv2-938-14 @orv2-4015
-Rule: Staff can view the permit revision history
+Rule: staff can view the permit revision history
 
   Scenario: Previous permit revisions
     Given an amending permit has previous revisions
-     When a Staff is amending a permit
+     When a staff is amending a permit
      Then they see previous <amendment reason>
-      And the <PPC Staff username> of the logged in user that saved the amendment
+      And the <PPC staff username> of the logged in user that saved the amendment
       And the <timestamp> of when the amendment reason was saved
 
    Examples:
-     | <PPC Staff username> | <timestamped>              | <amendment reason>                                |
+     | <PPC staff username> | <timestamped>              | <amendment reason>                                |
      | jdoe                 | Apr. 15, 2023, 8colon23 am PDT | Swapped a Droid Gunship for the Millennium Falcon | 
 
   Scenario: No previous permit revisions
     Given an amending permit does not have previous revisions
-     When a Staff is amending a permit
+     When a staff is amending a permit
      Then there is no revision history displayed 
 
-@orv2-938-15 @orv2-4015
-Rule: Staff can leave a permit amendment application
+@orv2-938-15 @orv2-4015 
+Rule: cancelling an amend permit action returns a user to the screen the amend action was initiated 
 
   Scenario: cancel permit amendment application search results
     Given staff initiated permit amendment from search results
@@ -127,7 +259,7 @@ Rule: Staff can leave a permit amendment application
 Rule: upon finishing $0 permit amendment staff return to page where amend permit was initiated
 
   Scenario: initiated from search results
-    Given the Staff has finished the amending permit application
+    Given the staff has finished the amending permit application
      When they are directed to the <search results> page
      Then they see the <previous search string> results
       And they see "Permit Amended" notification
@@ -174,7 +306,10 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      Then permit A has a $0 fee
 
 @orv2-4015
-Rule: Staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
+Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
+
+
+
 
 ## OLD
 
@@ -182,22 +317,22 @@ Rule: Staff can choose to amend a permit from staff search for permit results an
 ## Rule: A saved amending permit application is in application in progress
 
   Scenario: Close browser tab
-    Given a Staff has started an amending permit application 
+    Given a staff has started an amending permit application 
       And it is not saved
      When they close the browser tab or window
      Then the amending permit application is not saved
 
   Scenario: Go back
-    Given a Staff has started an amending permit application 
+    Given a staff has started an amending permit application 
       And it is not saved
      When they use the browser to navigate back
      Then the amending permit application is not saved
 
 ## @orv2-938-32
-## Rule: Staff can see saved amending permit applications in applications in progress
+## Rule: staff can see saved amending permit applications in applications in progress
 
 #@orv2-938-16
-#Rule: Staff can view previous financial transaction information for amending permit
+#Rule: staff can view previous financial transaction information for amending permit
 
  Scenario: Previous financial transactions exist
      Given the PPC SA is at the finish amendment page
