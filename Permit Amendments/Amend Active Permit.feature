@@ -4,7 +4,7 @@ Feature:  Amend an issued or active permit
 staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
-@orv2-4140
+@orv2-4140-1
 Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
   Scenario: no APA
@@ -20,7 +20,7 @@ Rule: an unfinished amending permit application (APA) is created or iterated on 
      Then they see their changes 
       And previous iteration changes that have not been overwritten by them
 
-@orv2-4140
+@orv2-4140-2
 Rule: previous unfinished APA iteration changes can be overwritten by staff
 
   Scenario: 1 or more APA changes
@@ -30,7 +30,7 @@ Rule: previous unfinished APA iteration changes can be overwritten by staff
       And change plate to XYZ123
      Then XYZ123 is the current iteration of plate for the unfinished APA for permit A
    
-@orv2-4140
+@orv2-4140-3
 Rule: unfinished APA are not shown in applications in progress (AIP)
 
   Scenario: APA created continue
@@ -51,7 +51,7 @@ Rule: unfinished APA are not shown in applications in progress (AIP)
      When staff choose to cancel 
      Then there is no APA for permit A
 
-@orv2-4140
+@orv2-4140-4
 Rule: staff must confirm how to proceed when initiating an amend action when the issued or active permit has an unfinished APA 
 
   Scenario: no unfinished APA
@@ -70,15 +70,32 @@ Rule: staff must confirm how to proceed when initiating an amend action when the
        | New Amendment      | option to discard unfinished amendments and start a new one with only current issued or active permit data |
        | Continue Amendment | option to continue the unfinished amendments with all previous APA changes                                          |
 
-@orv2-4140
+@orv2-4140-5
 Rule: staff can optionally choose to cancel the amend permit action
 
-  Scenario: cancel
+  Scenario: cancel at amend permit action confirmation
      When staff choose to cancel the amend action
      Then they are directed to the page they initiated the amend action on
       And an new iteration of the APA is not created
+      And the only iteration is the previous one
 
-@orv2-4140
+  Scenario: cancel after starting new amendment
+    Given staff start a new Amendment
+     And have not continued to review and comfirm
+     When staff choose to cancel 
+     Then they are directed to the page they initiated the amend action on
+      And an new iteration of the APA is not created
+      And the only iteration is the previous one
+
+  Scenario: cancel after continuing amendment
+    Given staff continue Amendment
+     And have not continued to review and comfirm
+     When staff choose to cancel 
+     Then they are directed to the page they initiated the amend action on
+      And an new iteration of the APA is not created
+      And the only iteration is the previous one
+
+@orv2-4140-6
 Rule: staff can optionally choose to create a new APA which directs them to a new APA that contains only the current issued or active permit data
 
   Scenario: unfinished APA exists
@@ -88,7 +105,7 @@ Rule: staff can optionally choose to create a new APA which directs them to a ne
       And they are directed to the APA form
       And they see only the current issued or active permit data
 
-@orv2-4140
+@orv2-4140-7
 Rule: staff can optionally choose to continue to amend an unfinished APA which directs them to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
   Scenario: 1 or more APA iterations
@@ -269,7 +286,7 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
 @orv2-4015
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
 
-# @orv2-4140
+# @orv2-
 # Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
   Scenario: 
@@ -277,7 +294,7 @@ Rule: staff can choose to amend a permit from staff search for permit results an
      When 
      Then 
 
-# @orv2-4140
+# @orv2-
 # Rule: editing an APA in the shopping cart are unfinished APA's
 
   Scenario: 
@@ -285,7 +302,7 @@ Rule: staff can choose to amend a permit from staff search for permit results an
      When 
      Then 
 
-# @orv2-4140
+# @orv2-
 # Rule: APA in the shopping cart
 
   Scenario: staff view
@@ -323,9 +340,9 @@ Rule: staff can choose to amend a permit from staff search for permit results an
      When 
      Then 
 
-## OLD
 
-## @orv2-938-10
+## OLD
+## @orv2-
 ## Rule: A saved amending permit application is in application in progress
 
   Scenario: Close browser tab
@@ -340,10 +357,10 @@ Rule: staff can choose to amend a permit from staff search for permit results an
      When they use the browser to navigate back
      Then the amending permit application is not saved
 
-## @orv2-938-32
+## @orv2-
 ## Rule: staff can see saved amending permit applications in applications in progress
 
-#@orv2-938-16
+#@orv2-
 #Rule: staff can view previous financial transaction information for amending permit
 
  Scenario: Previous financial transactions iterations
@@ -356,8 +373,8 @@ Rule: staff can choose to amend a permit from staff search for permit results an
         | transaction id for the listed transaction      | Transaction ID |
         | total fee for the listed transaction           | Amount         |
 
-#@orv2-938-17
-#Rule: Amemndment with refurn default to previous payment method card type
+#@orv2-
+#Rule: Amendment with refurn default to previous payment method card type
 
    Scenario: Choose a refund method
      Given the PPC SA has completed mandatory field at review and confirm details
@@ -372,5 +389,5 @@ Rule: staff can choose to amend a permit from staff search for permit results an
          | Web - Visa               | Web - Visa               |
          | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
 
-#@orv2-938-18
+#@orv2-
 #Rule: Choose cheque payment method
