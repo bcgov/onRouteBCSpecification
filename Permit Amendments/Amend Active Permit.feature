@@ -7,14 +7,14 @@ CV Client = CA, PA
 @orv2-4140
 Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
-  Scenario: no existing APA(s)
-    Given permit A has no unfinishes APA(s)
+  Scenario: no iterationsing APA(s)
+    Given permit A has no unfinished APA(s)
      When staff choose to amend permit A
       And continue to review and confirm
      Then permit A has the first unfinished APA(s) iteration
 
-  Scenario: 1 or more unfinished APA(s) exist
-    Given permit A has existing unfinished APA(s)
+  Scenario: 1 or more unfinished APA(s) iterations
+    Given permit A has unfinished APA(s) iterations
      When staff choose to amend permit A
       And continue to review and confirm
      Then they see their changes 
@@ -23,7 +23,7 @@ Rule: an unfinished amending permit application (APA) is created or iterated on 
 @orv2-4140
 Rule: previous unfinished APA(s) iteration changes can be overwritten by staff
 
-  Scenario: 1 or more APA(s) exist
+  Scenario: 1 or more APA(s) iterations
     Given permit A has latest unfinished APA(s) X
       And plate was changed to ABC123 in unfinished APA(s) X
      When staff choose to amend permit A
@@ -83,7 +83,7 @@ Rule: staff must confirm how to proceed when initiating an amend action when the
        | Amending Permit #  | the permit number of the permit they initiated and amend action on                                                  |
        | IDIR               | the username of the last staff member to create an unfinished APA                                                   |
        | Cancel             | option to cancel the amend permit action                                                                            |
-       | New Amendment      | option to discard existing unfinished amendments and start a new one with only current issued or active permit data |
+       | New Amendment      | option to discard iterationsing unfinished amendments and start a new one with only current issued or active permit data |
        | Continue Amendment | option to continue the unfinished amendments with all previous APA changes                                          |
 
 @orv2-4140
@@ -95,32 +95,31 @@ Rule: staff can optionally choose to cancel the amend permit action
       And an new iteration of the APA is not created
 
 @orv2-4140
-Rule: staff can optionally choose to create a new APA thats directs them to a new APA that contains only the current issued or active permit data
+Rule: staff can optionally choose to create a new APA which directs them to a new APA that contains only the current issued or active permit data
 
-  Scenario: 1 or more APA(s) exist
-    Given permit A has existing APA(s)
+  Scenario: 1 or more APA(s) iterations
+    Given permit A has iteration APA(s)
      When staff choose to create a new amendment
-     Then existing APA(s) changes are discarded 
+     Then iterationsing APA(s) changes are discarded 
       And they are directed to the APA form
       And they see only the current issued or active permit data
 
 @orv2-4140
-Rule: staff can optionally choose to continue to amend an unfinished APA directs them to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+Rule: staff can optionally choose to continue to amend an unfinished APA which directs them to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
-  Scenario: no unfinished APA's
-    Given 
-     When 
-     Then 
-
-  Scenario: 1 previous unfinished APA
-    Given 
-     When 
-     Then 
-
-  Scenario: 2 unfinished APA's
-    Given 
-     When 
-     Then 
+  Scenario: 1 or more APA(s) iterations
+    Given permit A has the following unfinished APA changes:
+      | APA iteration | data     | changed to |
+      | 1             | plate    | ABC123     |
+      | 2             | duration | 30         |
+      | 3             | VIN      | 987654     |
+     When staff change model to Ford
+     Then they see the following changes on review and confirm:
+      | data     | changed to |
+      | plate    | ABC123     |
+      | duration | 30         |
+      | VIN      | 987654     |
+      | model    | Ford       |
 
 # @orv2-4140
 # Rule: APA in the shopping cart
@@ -352,7 +351,7 @@ Rule: staff can choose to amend a permit from staff search for permit results an
 #@orv2-938-16
 #Rule: staff can view previous financial transaction information for amending permit
 
- Scenario: Previous financial transactions exist
+ Scenario: Previous financial transactions iterations
      Given the PPC SA is at the finish amendment page
       When they view transaction history
       Then they see the following details of all previous transactions for the amending permit:
