@@ -23,35 +23,29 @@ Rule: staff can extend duration up to 30 days
       But they can reduce duration
 
 @orv2-4015
-Rule: staff can shorten duration and  create an expired permit
+Rule: staff can reduce duration of an issued or active permit
 
-  Scenario: shorten active term expired
-    Given the permit duration is 3 days
-      And it is day 2 before 11:59:99 pm of the 3 days
-     When staff choose to shorten the duration they cannot shorten the duration
+  Scenario: reduce issued duration expired
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+      And the date of amendment is 05/05/2025 before 11:59:59 pm
+     When staff choose to reduce the duration to 2 days
+      Then the Permit Expiry Date is 05/04/2025
+       And the permit is expired
 
-  Scenario: shorten issued term expired
-    Given the start date 1 day in the future 
-      And the permit duration is 3 days
-      And it is day 2 before 11:59:99 pm of the 3 days
-     When staff choose to shorten the duration they cannot shorten the duration
-
-  Scenario: shorten issued term not expired
-    Given 
-     When 
-     Then 
-     directed to global search results
-     they 
-
-  Scenario: shorten active term not expired
-    Given 
-     When 
-     Then 
-
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: reduce issued duration not expired
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+      And the date of amendment is 05/04/2025 before 11:59:59 pm
+     When staff choose to reduce the duration to 2 days
+      Then the Permit Expiry Date is 05/04/2025
+       And the permit remains active
 
 @orv2-4015
 Rule: staff can back date start date
