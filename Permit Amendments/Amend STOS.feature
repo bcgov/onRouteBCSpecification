@@ -18,7 +18,7 @@ Rule: staff can extend duration up to 30 days
 
   Scenario: issued with 30 days
     Given permit A have a 30 day duration
-     When staff choose to change duration
+     When staff amend duration
      Then they cannot add additional days
       But they can reduce duration
 
@@ -31,8 +31,7 @@ Rule: staff can reduce duration of an issued or active permit
       | Start Date         | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
-      And the date of amendment is 05/05/2025 before 11:59:59 pm
-     When staff choose to reduce the duration to 2 days
+     When staff reduce the duration to 2 days
       Then the Permit Expiry Date is 05/04/2025
        And the permit is expired
 
@@ -42,39 +41,74 @@ Rule: staff can reduce duration of an issued or active permit
       | Start Date         | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
-      And the date of amendment is 05/04/2025 before 11:59:59 pm
-     When staff choose to reduce the duration to 2 days
+     When staff reduce the duration to 2 days
       Then the Permit Expiry Date is 05/04/2025
        And the permit remains active
 
 @orv2-4015
-Rule: staff can back date start date
+Rule: staff can amend the start date of an issued or active permit
 
-  Scenario: expire permit
-    Given 
-     When 
-     Then 
+  Scenario: backdate causes expiry
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 04/25/2025
+      Then the Permit Expiry Date is 04/30/2025
+       And the permit is expired       
 
-  Scenario: not expire permit
-    Given 
-     When 
-     Then 
+  Scenario: backdate remains active
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff choose to amend the start date to 05/03/2025
+      Then the Permit Expiry Date is 05/08/2025
+       And the permit is expired     
 
+  Scenario: forward date remains active
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff choose to amend the start date to 05/05/2025
+      Then the Permit Expiry Date is 05/10/2025
+
+  Scenario: forward date beyond expiry
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff choose to amend the start date to 05/05/2025
+      Then the Permit Expiry Date is 05/10/2025
+
+  Scenario: forward date and reduce duration
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      And staff 
+      Then the Permit Expiry Date is 05/10/2025 
+
+  Scenario: forward date and extend duration
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      And staff 
+      Then the Permit Expiry Date is 05/10/2025 
+
+Rule: 
  start date is in the past at application form
  start date and/or expiry date is in the past on review and confirm
-
-@orv2-4015
-Rule: staff can forward date start date
-
-  Scenario: changing form an active to an issued permit
-    Given 
-     When 
-     Then 
-
-  Scenario: 
-    Given 
-     When 
-     Then 
 
 @orv2-4015
 Rule: amendments to commodity information are subject to policy restrictions
