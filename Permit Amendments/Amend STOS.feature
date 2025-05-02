@@ -3,23 +3,24 @@ Feature: Amend Single Trip Oversize Permit
 Staff = PC, SA, TRAIN, CTPO
 
 all changes will be $0 and continue to finish
+
+@orv2-4015
+Rule: staff can amend all contact information except company email
+
 @orv2-4015
 Rule: staff can extend duration up to 30 days
 
-  Scenario: active permit 
-    Given 
-     When 
-     Then 
+  Scenario: issued with 7 days
+    Given permit A has a start date of 05/02/2025
+      And a duration of 7 days
+     When staff amend permit A duration to 20 days
+     Then the end date is 05/22/2025
 
-  Scenario: 20 days chosen 
-    Given 
-     When when they choose 30 days
-     Then end date is 10 days later
-
-  Scenario: 30 days chosen
-    Given 
-     When they choose to change duration
-     Then they cannot add additional days can only reduce duration
+  Scenario: issued with 30 days
+    Given permit A have a 30 day duration
+     When staff choose to change duration
+     Then they cannot add additional days
+      But they can reduce duration
 
 @orv2-4015
 Rule: staff can shorten duration and  create an expired permit
@@ -82,15 +83,19 @@ Rule: staff can forward date start date
      Then 
 
 @orv2-4015
-Rule: changing commodity details are bound by policy 
+Rule: amendments to commodity information are subject to policy restrictions
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: vehicles exist warning
+    Given vehicles have been added to the permit application
+     When a user chooses to chnage the commodity
+     Then they see "Change Commodity Type Changing your commodity will require you to re-enter your vehicle information and loaded dimensions."
 
-
- remove vehicle details and loaded dimensions - no! new application Warning modal
+  Scenario: vehicles exist confirm change
+    Given a user initiated a commodity change
+     When a user chooses to continue
+     Then the commodity type is removed 
+      And all inputted vehicle information is removed
+      And all inputted loaded dimensions is removed
 
 @orv2-4015
 Rule: staff can change any vehicle detail except vehicle sub-type without impacting other application data
