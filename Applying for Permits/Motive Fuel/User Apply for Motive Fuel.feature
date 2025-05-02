@@ -187,8 +187,8 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-2608-13 @orv2-2612-13
-Rule: A motive fuel permit fee is is calculated at $0.11 per km or a minimum of $20
+@orv2-2608-13 @orv2-2612-13 @orv2-4117-1
+Rule: A motive fuel permit fee is is calculated at $0.07 per km or a minimum of $10 and up to a maximum of $140
 
  Scenario: view fee summary
      Given a user has continued from the "Permit Application" page
@@ -201,15 +201,15 @@ Rule: A motive fuel permit fee is is calculated at $0.11 per km or a minimum of 
 
  Scenario: 200 km
      Given a users total distance is 200 km 
-       And the calculated fee is $22.00
+       And the calculated fee is $14.00
      When they continue to "Review and Confirm Details" page
-     Then their permit fee is $22.00
+     Then their permit fee is $14.00
 
   Scenario: 180 km
-     Given a users total distance is 180 km 
-       And the calculated fee is $19.80
+     Given a users total distance is 140 km 
+       And the calculated fee is $9.80
      When they continue to "Review and Confirm Details" page
-     Then their permit fee is $20.00
+     Then their permit fee is $10.00
 
 @orv2-2608-14 @orv2-2612-14
 Rule: The user must complete the attestations
