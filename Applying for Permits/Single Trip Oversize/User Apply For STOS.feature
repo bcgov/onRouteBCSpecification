@@ -2,7 +2,7 @@ Feature: Apply for Single Trip Oversize Permit
 
 Users = CA, PA, SA, PC, CTPO, Trainee
 
-@orv2-2254-1 @orv2-2387-1
+@orv2-2254-1 @orv2-2387-1 @orv2-4015
 Rule: Single trip permits are issued to the power unit only
 
   Scenario: choose vehicle type
@@ -16,10 +16,10 @@ Rule: Single trip permits are issued to the power unit only
 @orv2-2254-2 @orv2-2387-2
 Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
-@orv2-2254-3 @orv2-2387-3
+@orv2-2254-3 @orv2-2387-3 @orv2-4015
 Rule: CVSE Forms 1000 and 1070 are chosen by default and attached consecutively beginning after the final page of the issued permit
 
-@orv2-2254-4 @orv2-2387-4
+@orv2-2254-4 @orv2-2387-4 @orv2-4015
 Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
 
   Scenario: choose an option cvse form
@@ -32,7 +32,7 @@ Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
       | LCV Operating Conditions & Routes CVSE-1014                          |
      Then the chosen cvse form is attached consecutively beginning after the final page of the issued permit
 
-@orv2-2254-5 @orv2-2387-5
+@orv2-2254-5 @orv2-2387-5 @orv2-4015
 Rule: Users must input a commodity allowable for an STOS permit
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
@@ -43,7 +43,7 @@ Rule: Users must input a commodity allowable for an STOS permit
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-2254-6 @orv2-2387-6
+@orv2-2254-6 @orv2-2387-6 @orv2-4015
 Rule: Users can search for a commodity allowable for an STOS permit
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
@@ -62,12 +62,12 @@ Rule: Users can search for a commodity allowable for an STOS permit
        | Pea       | Hay Bales (Round) Peace River Only |
        | La        | Hay Bales Large Rectangular        |
        
-@orv2-2254-7 @orv2-2387-7
+@orv2-2254-7 @orv2-2387-7 @orv2-4015
 Rule: Users can scroll the list of commodities allowable for an STOS permit
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
-@orv2-2254-8 @orv2-2387-8 @orv2-3902-2
+@orv2-2254-8 @orv2-2387-8 @orv2-3902-2 @orv2-4015
 Rule: Users may change the chosen commodity
 
   Scenario: vehicles exist warning
@@ -82,7 +82,7 @@ Rule: Users may change the chosen commodity
       And all inputted vehicle information is removed
       And all inputted loaded dimensions is removed
 
-@orv2-2254-9 @orv2-2387-9
+@orv2-2254-9 @orv2-2387-9 @orv2-4015
 Rule: Users must input a load description
 
   Scenario: no load description inputted
@@ -91,7 +91,7 @@ Rule: Users must input a load description
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-3902-1
+@orv2-3902-1 @orv2-4015
 Rule: User can add a power unit only when a commodity is chosen
 
   Scenario: arrive
@@ -118,7 +118,7 @@ Rule: User can add a power unit only when a commodity is chosen
      Then they see "A Power Unit must be added."
       And they cannot continue
 
-@orv2-2254-10 @orv2-2387-10
+@orv2-2254-10 @orv2-2387-10 @orv2-4015
 Rule: Users may only input one power unit allowable for an STOS permit manually or chosen from inventory 
 
  # see STOS dimension set
@@ -141,7 +141,7 @@ Rule: Users may only input one power unit allowable for an STOS permit manually 
      When they attempt to choose vehicle sub-type 1 
      Then they cannot choose the power unit 1
 
-@orv2-2254-11 @orv2-2387-11
+@orv2-2254-11 @orv2-2387-11 @orv2-4015
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
 
   Scenario: manually input 65,000 (kg)
@@ -155,14 +155,14 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
-@orv2-2254-12 @orv2-2387-12
+@orv2-2254-12 @orv2-2387-12 @orv2-4015
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-2254-13 @orv2-2387-13
+@orv2-2254-13 @orv2-2387-13 @orv2-4015
 Rule: Details of the chosen power units are shown in the application form
 
   Scenario: Mexico as country
@@ -170,7 +170,7 @@ Rule: Details of the chosen power units are shown in the application form
      When they add the power unit
      Then they see "Mexico" as they Province / State
 
-@orv2-2254-14 @orv2-2387-14
+@orv2-2254-14 @orv2-2387-14 @orv2-4015
 Rule: Users may remove and change the power unit from the application
 
   Scenario: no pu
@@ -187,7 +187,7 @@ Rule: Users may remove and change the power unit from the application
       And all inputted loaded dimensions is removed
       And all inputted trailer information is removed
 
-@orv2-2254-15 @orv2-2387-15
+@orv2-2254-15 @orv2-2387-15 @orv2-4015
 Rule: Users must choose from a list of allowable trailers
 
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true 
@@ -219,12 +219,12 @@ Rule: Users must choose from a list of allowable trailers
       Then there is no option to add another trailer
        And they see the option to reset the list
 
-@orv2-2254-16 @orv2-2387-16
+@orv2-2254-16 @orv2-2387-16 @orv2-4015
 Rule: The selection of trailers must adhere to an allowable order of jeep first, trailer second, then booster last
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
 
-@orv2-2254-40 @orv2-2387-40
+@orv2-2254-40 @orv2-2387-40 @orv2-4015
 Rule: chosen trailer(s) determines allowable trailers shown 
 
   Scenario Outline: brush cutters
@@ -239,15 +239,15 @@ Rule: chosen trailer(s) determines allowable trailers shown
     | Brushcutters (Peace Only) | Truck Tractors         | Semi-Trailers |
     | None                      | Concrete Pumper Trucks | None          | Booster                                                                      |                                                                        |
 
-@orv2-2254-17 @orv2-2387-17
+@orv2-2254-17 @orv2-2387-17 @orv2-4015
 Rule: The choice and order of allowable trailers is determined by the STOS permit type, chosen commodity, and selected power unit
 
-# see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
+ # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B316994BE-0B19-4F0B-8569-0E74D6F9E719%7D&file=Single%20Trip%20Oversize%20Dimension%20Set.xlsx&action=default&mobileredirect=true
 
-@orv2-2254-18 @orv2-2387-18
+@orv2-2254-18 @orv2-2387-18 @orv2-4015
 Rule: The chosen trailers are shown in the application form in the order they were added
 
-@orv2-2254-19 @orv2-2387-19
+@orv2-2254-19 @orv2-2387-19 @orv2-4015
 Rule: Users may remove all added trailers from the application
 
   Scenario: trailers added
@@ -263,10 +263,10 @@ Rule: Users may remove all added trailers from the application
 	- multiple Jeeps and multiple Boosters add specs
 	- no jeeps and boosters
 
-@orv2-2254-20 @orv2-2387-20
+@orv2-2254-20 @orv2-2387-20 @orv2-4015
 Rule: There is no limit to the number of trailers that can be added to the application
 
-@orv2-2254-21 @orv2-2387-21
+@orv2-2254-21 @orv2-2387-21 @orv2-4015
 Rule: Users must input load dimensions as numbers
 
   Scenario: no loaded dimensions inputted
@@ -281,10 +281,10 @@ Rule: Users must input load dimensions as numbers
      Then "five" is not accepted 
       And overall width is empty
 
-@orv2-4064-1
+@orv2-4064-1 @orv2-4015
 Rule: Accept the numeral 0 in front and rear projection loaded dimensions
 
-@orv2-2254-22 @orv2-2387-22
+@orv2-2254-22 @orv2-2387-22 @orv2-4015
 Rule: Load dimensions are a decimal number rounded to 2 decimal places
 
   Scenario: 35
@@ -292,7 +292,7 @@ Rule: Load dimensions are a decimal number rounded to 2 decimal places
      When they tab to the next field
      Then they see 35.00 in overall width
 
-@orv2-2254-23 @orv2-2387-23 @orv2-3966-1
+@orv2-2254-23 @orv2-2387-23 @orv2-3966-1 @orv2-4015
 Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
   Scenario: no origin or destination is inputted
@@ -307,7 +307,7 @@ Rule: Origin and destination may be entered manually or selected from the provid
      When they chose to continue
      Then they can continue
 
-@orv2-2254-24 @orv2-2387-24
+@orv2-2254-24 @orv2-2387-24 @orv2-4015
 Rule: The origin and destination is resolved and the chosen resolved address replaces text inputted by the user 
 
   Scenario: 940 blanshard
@@ -322,8 +322,8 @@ Rule: The origin and destination is resolved and the chosen resolved address rep
        | Blanshard Rd, Vernon, BC       |
        | Blanshard St, Maple Ridge, BC  |
 
-@orv2-2254-27 @orv2-2387-27
-Rule: Users must input at least one trip three character sequence step
+@orv2-2254-27 @orv2-2387-27 @orv2-4015
+Rule: Users must input at least one trip sequence step
 
   Scenario: no sequence is inputted
      When a user chooses to continue to review and confirm
@@ -331,10 +331,10 @@ Rule: Users must input at least one trip three character sequence step
       And they see "You must enter at least one highway."
       And the mandatory field is indicated
 
-@orv2-2254-28 @orv2-2387-28
+@orv2-2254-28 @orv2-2387-28 @orv2-4015
 Rule: A maximum of 32 sequence steps may be inputted
 
-@orv2-2254-29 @orv2-2387-29
+@orv2-2254-29 @orv2-2387-29 @orv2-4015
 Rule: Show one row of eight steps with an option to add additional rows of eight steps
 
   Scenario: add highways not chosen
@@ -349,10 +349,10 @@ Rule: Show one row of eight steps with an option to add additional rows of eight
      Then they see 2 rows of higway boxes
       And the second row starts at 9
 
-@orv2-2254-30 @orv2-2387-30
+@orv2-2254-30 @orv2-2387-30 @orv2-4015
 Rule: Show sequence information box
 
-@orv2-2254-31 @orv2-2387-31
+@orv2-2254-31 @orv2-2387-31 @orv2-4015
 Rule: Users must input specific route details
 
   Scenario: no specific route details is inputted
@@ -361,7 +361,7 @@ Rule: Users must input specific route details
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-2254-32 @orv2-2387-32
+@orv2-2254-32 @orv2-2387-32 @orv2-4015
 Rule: Users may optionally input application notes
 
   Scenario: notes inputted
@@ -369,10 +369,10 @@ Rule: Users may optionally input application notes
       And continues
      Then the  application note "These are my notes" are saved with the application
 
-@orv2-2254-33 @orv2-2387-33
+@orv2-2254-33 @orv2-2387-33 @orv2-4015
 Rule: Show application notes info box
 
-@orv2-2254-34 @orv2-2387-34
+@orv2-2254-34 @orv2-2387-34 @orv2-4015
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display permit application details summary
@@ -392,7 +392,7 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Trip details submitted in the permit application              |
        | Application notes if submitted in the permit application      |
 
-@orv2-2254-35 @orv2-2387-35
+@orv2-2254-35 @orv2-2387-35 @orv2-4015
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -400,7 +400,7 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-2254-36 @orv2-2387-36
+@orv2-2254-36 @orv2-2387-36 @orv2-4015
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -408,7 +408,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
-@orv2-2254-37 @orv2-2387-37
+@orv2-2254-37 @orv2-2387-37 @orv2-4015
 Rule: A single trip permit fee is $15 per permit 
 
  Scenario: Display fee summary
@@ -425,7 +425,7 @@ Rule: A single trip permit fee is $15 per permit
      When they continue to "Review and Confirm Details" page
      Then the permit fee is calculated as $15
 
-@orv2-2254-38 @orv2-2387-38
+@orv2-2254-38 @orv2-2387-38 @orv2-4015
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -442,15 +442,12 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-2254-39 @orv2-2387-39
+@orv2-2254-39 @orv2-2387-39 
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page
      Given a user is at the "Review abd Confirm Details" page
      When they choose to edit the application
      Then they are directed to the "Permit Application" page
-
-
-
 
 # Add directed to Applications in Review on submission

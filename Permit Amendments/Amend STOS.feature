@@ -1,6 +1,7 @@
 Feature: Amend Single Trip Oversize Permit
 
-Rule: extend duration up to 30 days $0
+@orv2-4015
+Rule: staff can extend duration up to 30 days
 
   Scenario: active permit 
     Given 
@@ -17,7 +18,7 @@ Rule: extend duration up to 30 days $0
      When they choose to change duration
      Then they cannot add additional days can only reduce duration
 
-Rule: shorten duration can create an expired permit $0
+Rule: staff can shorten duration and  create an expired permit
 
   Scenario: shorten active term expired
     Given the permit duration is 3 days
@@ -48,7 +49,7 @@ Rule: shorten duration can create an expired permit $0
      When 
      Then 
 
-Rule: back date start date
+Rule: staff can back date start date
 
   Scenario: expire permit
     Given 
@@ -63,7 +64,7 @@ Rule: back date start date
 start date is in the past at application form
 start date and/or expiry date is in the past on review and confirm
 
-Rule: forward date start date
+Rule: staff can forward date start date
 
   Scenario: changing form an active to an issued permit
     Given 
@@ -75,7 +76,14 @@ Rule: forward date start date
      When 
      Then 
 
-Rule: can change commodity details
+Rule: changing commodity details are bound by policy 
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+
  remove vehicle details and loaded dimensions - no! new application Warning modal
 
 Rule: staff can change any vehicle detail except vehicle sub-type without impacting other application data
