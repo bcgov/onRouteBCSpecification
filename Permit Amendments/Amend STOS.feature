@@ -1,5 +1,8 @@
 Feature: Amend Single Trip Oversize Permit
 
+Staff = PC, SA, TRAIN, CTPO
+
+all changes will be $0 and continue to finish
 @orv2-4015
 Rule: staff can extend duration up to 30 days
 
@@ -18,6 +21,7 @@ Rule: staff can extend duration up to 30 days
      When they choose to change duration
      Then they cannot add additional days can only reduce duration
 
+@orv2-4015
 Rule: staff can shorten duration and  create an expired permit
 
   Scenario: shorten active term expired
@@ -38,7 +42,6 @@ Rule: staff can shorten duration and  create an expired permit
      directed to global search results
      they 
 
-
   Scenario: shorten active term not expired
     Given 
      When 
@@ -49,6 +52,7 @@ Rule: staff can shorten duration and  create an expired permit
      When 
      Then 
 
+@orv2-4015
 Rule: staff can back date start date
 
   Scenario: expire permit
@@ -61,9 +65,10 @@ Rule: staff can back date start date
      When 
      Then 
 
-start date is in the past at application form
-start date and/or expiry date is in the past on review and confirm
+ start date is in the past at application form
+ start date and/or expiry date is in the past on review and confirm
 
+@orv2-4015
 Rule: staff can forward date start date
 
   Scenario: changing form an active to an issued permit
@@ -76,6 +81,7 @@ Rule: staff can forward date start date
      When 
      Then 
 
+@orv2-4015
 Rule: changing commodity details are bound by policy 
 
   Scenario: 
@@ -86,6 +92,7 @@ Rule: changing commodity details are bound by policy
 
  remove vehicle details and loaded dimensions - no! new application Warning modal
 
+@orv2-4015
 Rule: staff can change any vehicle detail except vehicle sub-type without impacting other application data
 
   Scenario: recall vehicle
@@ -93,21 +100,34 @@ Rule: staff can change any vehicle detail except vehicle sub-type without impact
      When 
      Then only allowable vehicle sub-type is available
 
-Rule: change power unit
+@orv2-4015
+Rule: staff update the existing power unit or recall a new power unit
+
   change power unit individual information
-   edit everything by the vehicle sub-type
-  change power unit
+   edit everything but the vehicle sub-type
   
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+  Scenario: recall
+    Given 
+     When 
+     Then 
+
+@orv2-4015
 Rule: staff trailers get reset
  change trailers
   reset removes all trailers
 
-Rule: change loaded dimensions
+@orv2-4015
+Rule: staff can change loaded dimensions
  subject to mandatory field behaviour and data behaviour
 
-Rule: change trip details
- subject to mandatory field behaviour
+@orv2-4015
+Rule: staff can change change trip details
 
-all changes will be $0 and continue to finish
+
 
 
