@@ -31,7 +31,7 @@ Rule: previous unfinished APA iteration changes can be overwritten by staff
      Then XYZ123 is the current iteration of plate for the unfinished APA for permit A
    
 @orv2-4140-3
-Rule: unfinished APA are not shown in applications in progress (AIP)
+Rule: an unfinished APA is not shown in applications in progress (AIP)
 
   Scenario: APA created continue
     Given staff initiate an amend on permit A
@@ -122,7 +122,7 @@ Rule: staff can optionally choose to continue to amend an unfinished APA which d
       | VIN      | 987654     |
       | model    | Ford       |
 
-@orv2-938-8 @orv2-4015
+@orv2-938-8 @orv2-4015-12 
 Rule: staff can only amend an issued or active permit
 
   Scenario: Permit is voided
@@ -156,20 +156,20 @@ Rule: staff can only amend an issued or active permit
          | banner                | company client number of amending permit                         |
          | company information   | company mailing address of amending permit and DBA if applicable |
 
-@orv2-938-30 @orv2-4015
+@orv2-938-30 @orv2-4015-13
 Rule: staff can view superseded permit and superseded permit receipt pdf  
 
-@orv2-938-9 @orv2-4015
+@orv2-938-9 @orv2-4015-14
 Rule: staff can resend superseded permit documents
 
-@orv2-938-12 @orv2-4015
+@orv2-938-12 @orv2-4015-15
 Rule: staff can see the current issued or active permit data of the permit being amended
 
  Scenario: staff choose to amend a valid permit
       When they are at the amend permit page
       Then they see all original permit application details of the amending permit
 
-@orv2-938-13 @orv2-4015
+@orv2-938-13 @orv2-4015-16
 Rule: staff must add free text amendment Reason 
 
   Scenario: Save amendment reason
@@ -195,7 +195,7 @@ Rule: staff must add free text amendment Reason
       And they have not entered a reason for amendment
      Then they see "This is a required field"
 
-@orv2-938-14 @orv2-4015
+@orv2-938-14 @orv2-4015-17
 Rule: staff can view the permit revision history
 
   Scenario: Previous permit revisions
@@ -214,7 +214,7 @@ Rule: staff can view the permit revision history
      When a staff is amending a permit
      Then there is no revision history displayed 
 
-@orv2-938-15 @orv2-4015 
+@orv2-938-15 @orv2-4015-18 
 Rule: cancelling an amend permit action returns a user to the screen the amend action was initiated 
 
   Scenario: cancel permit amendment application search results
@@ -233,8 +233,8 @@ Rule: cancelling an amend permit action returns a user to the screen the amend a
      When they cancel 
      Then they are directed to the active permits page
 
-@orv2-938-20 @orv2-4015
-Rule: upon finishing $0 permit amendment staff return to page where amend permit was initiated
+@orv2-938-20 @orv2-4015-19
+Rule: upon finishing $0 or refund permit amendment staff return to page where amend permit was initiated
 
   Scenario: initiated from search results
     Given the staff has finished the amending permit application
@@ -252,14 +252,14 @@ Rule: upon finishing $0 permit amendment staff return to page where amend permit
      When they leave 
      Then they are directed to the active permits page
 
-@orv2-938-21 @orv2-4015
+@orv2-938-21 @orv2-4015-20
 Rule: Amending permit is superseded by amended permit
 
   Scenario: Supersede amending permit
      When they finish the amending permit application
      Then the amending permit is labeled as superseded
 
-@orv2-938-22 @orv2-4015
+@orv2-938-22 @orv2-4015-21
 Rule: Generate amended permit pdf
 
    Scenario: Generate amended permit pdf
@@ -273,7 +273,7 @@ Rule: Generate amended permit pdf
          | revised on       | date/time updated to reflect the date the amended pdf is generated         |
          | permit number    | permit number reflects the revised number                                  |
 
-@orv2-1491-3 @orv2-4015
+@orv2-1491-3 @orv2-4015-22
 Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
 
   Scenario: cv client issues under no fee flag changes to fee cv client
@@ -283,8 +283,11 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      When staff remove ABC Co. no fee designation
      Then permit A has a $0 fee
 
-@orv2-4015
+@orv2-4015-23
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
+
+
+
 
 # @orv2-
 # Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's

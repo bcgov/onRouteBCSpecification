@@ -194,7 +194,7 @@ Rule: Send revoke permit documents to contact details from void permit page
         | P2-00408617-873 | -R2             |
 
 
-@orv2-938-24 @orv2-4015
+@orv2-938-24
 Rule: Send revoke permit documents to contact details from void permit page
 
   Scenario: Send permit and receipt to email

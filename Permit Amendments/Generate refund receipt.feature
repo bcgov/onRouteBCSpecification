@@ -9,7 +9,7 @@ Rule: The void receipt contains void refund details
      Then it contains all required variable data fields from the voided permit application:
       | 
 
-@orv2-938-23 @orv2-4015
+@orv2-938-23
 Rule: Generate amended permit pdf receipt
 
   Scenario: Refund is calculated
