@@ -6,7 +6,7 @@ CV Client = CA, PA
 Rule: The start date must not exceed 14 days from the application submission date
 
 
-@orv2-2254-41
+@orv2-2254-41 @orv2-2560-7
 Rule: CV Client can only submit an STOS application for review
 
   Scenario: submit complete application

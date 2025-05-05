@@ -11,7 +11,7 @@ Rule: Staff may choose any start date
      Then their start date is accepted
       And the see "Start Date is in the past."
 
-@orv2-2387-41
+@orv2-2387-41 @orv2-2561-47
 Rule: Staff may add an STOS permit to the cart
 
 

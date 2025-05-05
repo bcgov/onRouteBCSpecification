@@ -1,8 +1,8 @@
-Feature: Staff view rejected application.
+Feature: Staff edit rejected application.
 
 Staff = SA, PC, CTPO, Trainee
 
-@orv2-2474-9, @orv2-2472-6, @orv2-2564-1
+@orv2-2474-9, @orv2-2472-6, @orv2-2564-1 @orv2-2561-1
 Rule: Staff can see the IDIR username stamp when viewing the reason(s) for rejection
 
   Scenario: rejected once
