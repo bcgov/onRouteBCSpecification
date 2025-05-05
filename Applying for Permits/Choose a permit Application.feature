@@ -4,7 +4,7 @@ Feature: Choose a permit application
 User = CA, PA, SA, PC, CTPO, Trainee
 
 @orv2-823-1 @orv2-2574 @orv2-2388 @orv2-2459
-Rule: A user can choose from a list of available permits to apply for of available permits is organized in a hierachy
+Rule: A user can choose from a list of available permits to apply for of available permits is organized in a hierarchy
 
   Scenario: first level
      When a user choose to view the permit list
