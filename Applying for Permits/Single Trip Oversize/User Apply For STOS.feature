@@ -12,9 +12,6 @@ Rule: Single trip permits are issued to the power unit only
   Scenario: recall trailer
      When a user chooses to recall a trailer
      Then they can not recall the trailer
-     
-@orv2-2254-2 @orv2-2387-2 @orv2-2560-48
-Rule: Users are required to choose a permit length in increments of one day, with a maximum of 7 days from their chosen start date
 
 @orv2-2254-3 @orv2-2387-3 @orv2-4015-25 @orv2-2560-9 @orv2-2561-8
 Rule: CVSE Forms 1000 and 1070 are chosen by default and attached consecutively beginning after the final page of the issued permit
