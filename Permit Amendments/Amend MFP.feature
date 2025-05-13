@@ -1,6 +1,6 @@
 Feature: Amend Motive Fuel Permit
 
-Are we going to allow reduction and increases in km
+Are we going to allow reduction and increases in km - Yes
  - reduction refund
   - =< the minimum charge
   - > minimum charge
@@ -26,7 +26,7 @@ Are we going to allow reduction and increases in km
 - duration 7 days for new and amend
 - start date matches STOS
 
-Rule: 
+Rule: stass can 
 
   Scenario: 
     Given 

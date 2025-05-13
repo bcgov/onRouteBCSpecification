@@ -20,12 +20,12 @@ Rule: LCV vehicles are shown in permit applications if the CV Client is designat
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
 
-@orv2-1490-2
-Rule: CVSE1014 is attached to the issued permit document when an LCV is chosen as the permit vehicle type
+@orv2-1490-2 @orv2-4323-1
+Rule: CVSE1014 is attached to the issued TROS ans STOS permit document when an LCV is chosen as the permit vehicle type
 
   Scenario: LCV vehicle is chosen
     Given CV Client is LCV capable
-     When a user chooses aany LCV power unit vehicle sub-type at the permit application vehicle:
+     When a user chooses any LCV power unit vehicle sub-type at the permit application vehicle:
        | Long Combination Vehicles (LCV) - Rocky Mountain Doubles |
        | Long Combination Vehicles (LCV) - Turnpike Doubles       |
      Then the CVSE1014 is attached to the generated permit pdf
