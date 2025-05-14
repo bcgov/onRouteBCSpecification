@@ -90,8 +90,6 @@ Rule: Users must input a vehicle weight
      When a user chooses farm tractor
      Then vehicle weight options are not available
 
-
-
 @orv2-2818-12
 Rule: User can optionally choose a Conditional Licensing Fee
 
