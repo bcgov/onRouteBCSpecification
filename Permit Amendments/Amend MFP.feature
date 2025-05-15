@@ -1,10 +1,7 @@
 Feature: Amend Motive Fuel Permit
 Amend Motive Fuel Permit (MFP) feature contains rules and scenarios specific to amending a MFP. Related features amend active permit, staff apply for motive fuel and user apply for motive fuel features will also apply to this feature.
 
-staff = 
- 
-	- distance reduced
-- start date matches STOS
+staff = PC, SA, TRAIN, CTPO
 
 Rule: staff can amend all contact information except company email
 Rule: staff can change the start date 
@@ -129,6 +126,7 @@ Rule: if staff amend results in a debit (New Permit Value is greater than Curren
 
 Rule: if staff amend results in a credit (NPV is less than CPV) they can continue to refund to multiple payment methods
 
+	- distance reduced
   Scenario: < CPV
     Given 
      When 
