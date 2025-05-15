@@ -275,3 +275,14 @@ Rule: staff can choose to view a company profile from permit search results
      When they choose to view company A profile
      Then they are directed to complete company A contact details
 
+  Scenario: claimed authorized
+    Given SA, PC, CTPO, Trainee, find company A
+     And company A is claimed
+     When they choose to view company A profile
+     Then they are directed to the companies applications in progress
+
+  Scenario: claimed company non-authorized
+    Given EO, FIN, HQA find company A
+     And company A is claimed
+     When they choose to view company A profile
+     Then they are directed to the companies applications in progress

@@ -167,8 +167,8 @@ Rule: Details of the chosen power units are shown in the application form
      When they add the power unit
      Then they see "Mexico" as they Province / State
 
-@orv2-2254-14 @orv2-2387-14 @orv2-4015-37 @orv2-2560-21 @orv2-2561-20
-Rule: Users may remove and change the power unit from the application
+@orv2-2254-14 @orv2-2387-14 @orv2-4015-37 @orv2-2560-21 @orv2-2561-20 
+Rule: Users may remove the power unit from the application
 
   Scenario: no pu
      When a user chooses to remove the power unit
@@ -183,6 +183,27 @@ Rule: Users may remove and change the power unit from the application
      Then all inputted power unit information is removed
       And all inputted loaded dimensions is removed
       And all inputted trailer information is removed
+
+@orv2-4253-1      
+Rule: a user can edit any power unit detail except vehicle sub-type or recall a new power unit with allowable vehicle sub-type without impacting other application data
+
+  Scenario: edit power unit
+    Given there is a power unit
+     When a user chooses to edit
+     Then they are directed to the edit power unit screen
+      And vehicle sub-type is not available
+
+  Scenario: edit plate
+    Given a user has chosen to edit the power unit
+     When they amend the plate to ABC123
+      And choose done
+     Then they are directed to the application form
+      And the plate is ABC123
+
+  Scenario: recall new vehicle
+    Given a commodity is chosen
+     When a user chooses to recall a new vehicle
+     Then only allowable vehicle sub-types are available
 
 @orv2-2254-15 @orv2-2387-15 @orv2-4015-38 @orv2-2560-22 @orv2-2561-21
 Rule: Users must choose from a list of allowable trailers
