@@ -1,13 +1,27 @@
 Feature: Amend Motive Fuel Permit
-Amend Motive Fuel Permit (MFP) feature contains rules and scenarios specific to amending a MFP. Related features amend active permit, staff apply for motive fuel and user apply for motive fuel features will also apply to this feature.
+Amend Motive Fuel Permit (MFP) feature contains rules and scenarios specific to amending a MFP. 
 
 staff = PC, SA, TRAIN, CTPO
 
+@orv2-4202-1
 Rule: staff can amend all contact information except company email
-Rule: staff can change the start date 
+
+@orv2-4202-2
 Rule: staff can extend the duration up to 7 days
-Rule: staff can reduce the duration of an issued or active permit
-@orv2-
+
+  Scenario: issued with 3 days
+    Given permit A has a start date of 05/02/2025
+      And a duration of 3 days
+     When staff amend permit A duration to 7 days
+     Then the end date is 05/09/2025
+
+  Scenario: issued with 7 days
+    Given permit A have a 7 day duration
+     When staff amend duration
+     Then they cannot add additional days
+      But they can reduce duration
+
+@orv2-4202-3
 Rule: staff can amend the start date of an issued or active permit
 
   Scenario: backdate causes expiry
@@ -68,7 +82,7 @@ Rule: staff can amend the start date of an issued or active permit
       And staff extend duration to 20 days
       Then the Permit Expiry Date is 05/25/2025 
 
-
+@orv2-4202-4
 Rule: staff are notified when start date an/or expiry date are in the past
 
    Scenario: on application form
@@ -82,58 +96,202 @@ Rule: staff are notified when start date an/or expiry date are in the past
        And continue to review and confirm
       Then they see "Start date and/or expiry date is in the past"
 
-Rule: staff can change all vehicle information except vehicle type
-Rule: staff can change all trip details
-Rule: staff can change the number of km(S) in total distance
+@orv2-4202-5
+Rule: staff can reduce the duration of an issued or active permit
 
-  - reduction refund
-   - =< the minimum charge
-   - > minimum charge
-   _ < than the rounding amount e.g., .7 km added .49
+  Scenario: reduce issued duration expired
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff reduce the duration to 2 days
+      Then the Permit Expiry Date is 05/04/2025
+       And the permit is expired
 
-  - add the the additional km to the existing total km e.g., 1617km add 500km = 2117km or $35 more, BUT if this hits the max limit so we would charge the max = $27
+  Scenario: reduce issued duration not expired
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff reduce the duration to 2 days
+      Then the Permit Expiry Date is 05/04/2025
+       And the permit remains active
 
- - addition will be new purchase
-   - =< the maximum charge
-   _ < than the rounding amount e.g., .7 km added .49
-    - New Permit Value would be the same as Current Permit Value
-   - > the maximum charge
-   - at maximum value before amend
+@orv2-4202-6
+Rule: staff can amend the start date of an issued or active permit
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: backdate causes expiry
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 04/25/2025
+      Then the Permit Expiry Date is 04/30/2025
+       And the permit is expired       
 
-Rule: staff are shown the Current Permit Value (CPV) and New Permit Value (NPV) at review and confirm fee summary
-Rule: if staff amend results in a debit (New Permit Value is greater than Current Permit Value) they can add the APA to the shopping cart
+  Scenario: backdate remains active
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/03/2025
+      Then the Permit Expiry Date is 05/08/2025
+       And the permit is expired     
 
-  Scenario: > current permit value
-    Given 
-     When 
-     Then 
+  Scenario: forward date remains active
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      Then the Permit Expiry Date is 05/10/2025
 
-  Scenario: = current permit value
-    Given 
-     When 
-     Then 
+  Scenario: forward date forward expiry
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      Then the Permit Expiry Date is 05/10/2025
 
-  Scenario: maximum permit value
-    Given MFP permit A has a CPV of $140
+  Scenario: forward date and reduce duration
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      And staff reduce duration to 2 days
+      Then the Permit Expiry Date is 05/07/2025 
+
+  Scenario: forward date and extend duration
+    Given permit A has the following issued date details:
+      | data               | issued data |
+      | Start Date         | 05/02/2025  |
+      | Permit Duration    | 5           |
+      | Permit Expiry Date | 05/07/2025  |
+     When staff amend the start date to 05/05/2025
+      And staff extend duration to 20 days
+      Then the Permit Expiry Date is 05/25/2025 
+
+@orv2-4202-7
+Rule: staff are notified when start date an/or expiry date are in the past
+
+   Scenario: on application form
+     Given the current date is 05/02/2025
+      When staff amend the start date to 05/01/25
+      Then they see "Start date is in the past"
+ 
+   Scenario: on review and confirm
+     Given the current date is 05/02/2025
+      When staff amend the start date to 05/01/25
+       And continue to review and confirm
+      Then they see "Start date and/or expiry date is in the past"
+
+@orv2-4202-8
+Rule: staff can amend all vehicle information except vehicle type
+
+@orv2-4202-9
+Rule: staff can amend all trip details
+
+@orv2-4202-10
+Rule: staff can amend the number of km(s) in total distance
+
+  Scenario: < rounding amount
+    Given the CPV is $113
+      And the total km is 1617 km
+     When staff increase total distance to 1624 km
+     Then the NPV is $113
+      And the total is $0
+
+  Scenario: < rounding amount
+    Given the CPV is $113
+      And the total km is 1617 km
+     When staff decrease total distance to 1610 km
+     Then the NPV is $113
+      And the total is $0
+
+  Scenario: maximum permit value reached
+    Given the CPV is $113
+      And the total km is 1617 km
+     When staff increase total distance to 2117 km
+     Then the NPV is $140 (max MFP fee)
+      And the total is $27
+
+@orv2-4202-11
+Rule: if staff amend results in a debit (NPV is greater than CPV) they can add the APA to the shopping cart
+
+  Scenario: not at maximum permit value
+    Given MFP permit A has a CPV of $100
+     When staff add 200 km to total distance
+     Then permit A NPV is $114
+     And they can add the APA to the shopping cart
+
+  Scenario: at maximum permit value ($0 amend)
+    Given MFP permit A has a CPV of $140 (max MFP fee)
      When staff add km to total distance
      Then permit A NPV remains at the maximum allowable fee of $140
+     And they can continue to refund to multiple payment methods
 
-
+@orv2-4202-12
 Rule: if staff amend results in a credit (NPV is less than CPV) they can continue to refund to multiple payment methods
 
-	- distance reduced
-  Scenario: < CPV
-    Given 
-     When 
-     Then the APA is 
+  Scenario: total distance reduced above max
+    Given the CPV is $140 (max MFP fee)
+      And the total km is 2800 km
+     When staff reduce total distance to 2500 km
+     Then the NPV is $140 ($0 amend)
+      And they can continue to refund to multiple payment methods
 
+  Scenario: total distance reduced above min
+    Given the CPV is $100
+      And the total km is 1429
+     When staff reduce total distance to 1200 km
+     Then the NPV is $84
+      And they can continue to refund to multiple payment methods
 
+  Scenario: total distance reduced below min
+  Given the CPV is $100
+      And the total km is 1429
+     When staff reduce total distance to 130 km
+     Then the NPV is $10 (min MFP fee)
+      And they can continue to refund to multiple payment methods
 
+@orv2-4202-13
 Rule: if staff amend results in the NPV being equal to the CPV they can continue to refund to multiple payment methods
+@orv2-4202-14
+Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 
-Rule: a change...
+  Scenario: > CPV
+    Given the CPV is $100
+     When staff add 200 km to total distance
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $100 |
+       | New Permit Value     | $114 |
+       | Total                | $14  |
+
+  Scenario: < CPV
+    Given the CPV is $100
+      And the total km is 1429
+     When staff reduce total distance to 1200 km
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $100 |
+       | New Permit Value     | $84  |
+       | Total                | -$16 |
+
+  Scenario: = CPV ($0 amend)
+    Given the CPV is $100
+     When staff amend the vehicle plate
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $100 |
+       | New Permit Value     | $100 |
+       | Total                | $0   |
