@@ -109,7 +109,7 @@ Rule: staff can change the number of km(S) in total distance
      Then 
 
 Rule: staff are shown the Current Permit Value (CPV) and New Permit Value (NPV) at review and confirm fee summary
-Rule: if staff amend that results in a debit (New Permit Value is greater than Current Permit Value) they can add the APA to the shopping cart
+Rule: if staff amend results in a debit (New Permit Value is greater than Current Permit Value) they can add the APA to the shopping cart
 
   Scenario: > current permit value
     Given 
@@ -127,7 +127,7 @@ Rule: if staff amend that results in a debit (New Permit Value is greater than C
      Then permit A NPV remains at the maximum allowable fee of $140
 
 
-Rule: if staff amend that results in a credit (NPV is less than CPV) they can continue to refund to multiple payment methods
+Rule: if staff amend results in a credit (NPV is less than CPV) they can continue to refund to multiple payment methods
 
   Scenario: < CPV
     Given 
@@ -136,6 +136,6 @@ Rule: if staff amend that results in a credit (NPV is less than CPV) they can co
 
 
 
-Rule: a change that results in the NPV being equal to the CPV is directed to refund to multiple payment methods
+Rule: if staff amend results in the NPV being equal to the CPV they can continue to refund to multiple payment methods
 
 Rule: a change...
