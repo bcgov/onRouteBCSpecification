@@ -2,7 +2,7 @@ Feature: CV Client CA, PA Credit Account pay using credit account
 
 CV Client = CA, PA
 
-@orv2-1801-1
+@orv2-1996-1 @orv2
 Rule: The credit account payment method is available when a cv client user or holder has a credit account
 
   Scenario: user or holder
@@ -15,7 +15,7 @@ Rule: The credit account payment method is available when a cv client user or ho
      When cv client choose to pay
      Then they do not see the option to pay using credit account
 
-@orv2-1801-2
+@orv2-1996-2
 Rule: The credit account payment method is not available when the credit account is on hold
 
   Scenario: user
@@ -28,7 +28,7 @@ Rule: The credit account payment method is not available when the credit account
      When cv client holder choose to pay
      Then they do not see the option to pay using credit account
 
-@orv2-1801-3
+@orv2-1996-3
 Rule: The credit account payment method is not available when the credit account holder is suspended
 
   Scenario: user
@@ -41,7 +41,7 @@ Rule: The credit account payment method is not available when the credit account
      When cv client holder choose to pay
      Then they do not see the option to pay using credit account
 
-@orv2-1801-4
+@orv2-1996-4
 Rule: The credit account payment method is not available when the credit account is closed
 
   Scenario: user
@@ -54,7 +54,7 @@ Rule: The credit account payment method is not available when the credit account
      When cv client holder choose to pay
      Then they do not see the option to pay using credit account
 
-@orv2-1801-5
+@orv2-1996-5
 Rule: There must be sufficient credit available to purchase the total transaction amount
 
   Scenario: insufficient credit

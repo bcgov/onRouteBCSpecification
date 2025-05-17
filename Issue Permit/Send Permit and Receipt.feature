@@ -7,7 +7,7 @@ Rule: Email issued permit pdf and permit receipt
   Scenario: Email permit pdf successful
     Given the CV Client has initiated payment
      When they have successfully completed payment 
-     Then their generated permit PDF ia emailed as an attachment to:
+     Then their  permit PDF ia emailed as an attachment to:
        | company contact email address |
        | entered contact email address |
       And the CV Client cannot reply to the email
@@ -15,7 +15,7 @@ Rule: Email issued permit pdf and permit receipt
   Scenario: Email permit payment receipt successful
     Given the CV Client has initiated payment
      When they have successfully completed payment 
-     Then their generated permit payment receipt PDF is emailed as an attachment to:
+     Then their  permit payment receipt PDF is emailed as an attachment to:
        | company contact email address |
        | entered contact email address |
       And the CV Client cannot reply to the email 
