@@ -1,3 +1,5 @@
+NOTE: This file is not a specification!
+
 User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
 CV Client = CA, PA
 Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
@@ -12,7 +14,6 @@ Non Auth Staff = FIN, EO, HQA
      When Fin, EO, HQA are at a cv client permits
      Then they do not see the option to view applications in review
 
-@orv2-3835
 Rule: Maximum 15 characters allowed in Transaction ID
 
 Enter 16 characters

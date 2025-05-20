@@ -333,3 +333,12 @@ Rule: Input mandatory transaction id
        And they attempt to finish
       Then they see "This is a required field"
        And they cannot finish
+
+@orv2-2816-16
+Rule: Maximum 15 characters allowed in Transaction ID
+
+  Scenario: Enter 16 characters
+    Given Transaction ID is required
+     When staff enter 16 characters
+      And choose to finish
+     Then they see "Maximum 15 characters"
