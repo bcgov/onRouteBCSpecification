@@ -1,5 +1,9 @@
 NOTE: This file is not a specification!
 
+User Groups: https://moti-imb.atlassian.net/wiki/spaces/ORV2/pages/102498349/Roles+Services+and+Permissions+Matrix
+
+Data Discovery: 
+
 User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
 CV Client = CA, PA
 Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA

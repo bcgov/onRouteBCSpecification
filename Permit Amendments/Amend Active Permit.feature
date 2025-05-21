@@ -288,7 +288,6 @@ Rule: staff can choose to amend a permit from staff search for permit results an
 
 
 
-
 # @orv2-
 # Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
