@@ -1,6 +1,8 @@
 # onRouteBC_Specs
 // Specifications for stories written in Gherkin format
 
+Use VS Code the best experience: https://github.dev/bcgov/onRouteBCSpecification/blob/main/README.md
+
 ## Additional Resources:
 
 Data Discovery: 
