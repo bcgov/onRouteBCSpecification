@@ -190,21 +190,6 @@ Rule: A void results in a full refund of current permit dollar value
        | $120                    | $90       | $30        | duration shortened  |
 
 # scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
-@orv2-1057-12
-Rule: Default to previous payment method card type
-
-   Scenario: Choose a refund method
-     Given the PPC SA has inputted a reason for voiding
-      When they choose to continue
-      Then they are directed to finish voiding
-       And the previous payment method <consolidated payment method> is used
-
-       Examples:
-         | card type                | PPC prefix               |
-         | ICEPAY - Visa            | ICEPAY - Visa            |
-         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
-         | Web - Visa               | Web - Visa               |
-         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
 
 @orv2-1057-13
 Rule: Choose cheque payment method
@@ -343,3 +328,22 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      And permit A is not expired
      When staff remove ABC Co. no fee designation
      Then permit A has a $0 fee
+
+
+# Deprecated
+
+@orv2-1057-12
+Rule: Default to previous payment method card type
+
+   Scenario: Choose a refund method
+     Given the PPC SA has inputted a reason for voiding
+      When they choose to continue
+      Then they are directed to finish voiding
+       And the previous payment method <consolidated payment method> is used
+
+       Examples:
+         | card type                | PPC prefix               |
+         | ICEPAY - Visa            | ICEPAY - Visa            |
+         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
+         | Web - Visa               | Web - Visa               |
+         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |

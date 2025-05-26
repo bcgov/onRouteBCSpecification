@@ -66,7 +66,7 @@ Insurance permit manually or chosen from inventory
      Then they see "BC plated vehicles don't require this permit."
       And they can not continue
 
-# see common save vejicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
+# see common save vehicle to inventory rules here: https://github.com/bcgov/onRouteBCSpecification/blob/main/Applying%20for%20Permits/Save%20or%20update%20a%20vehicle%20to%20inventory.feature
 
 @orv2-2735-4
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
