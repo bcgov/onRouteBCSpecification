@@ -155,6 +155,7 @@ Rule: staff can amend any power unit detail except vehicle sub-type or recall a 
      Then only allowable vehicle sub-types are available
 
 
+
 @orv2-4015-8
 Rule: amendments to trailers are subject to policy restrictions that exist in the new STOS application form
 
