@@ -4,7 +4,7 @@ Staff = SA
 
 NOTE: Only Single Trip OS/OW and Motive Fuel User Permits can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g. transaction 1 uses VISA, transaction 2 uses MC) and potentially require splitting the refund amounts across multiple payment methods. We would still be able to void other types of permits BUT if a user wishes to extend a term permit they would be asked to get a new one.
 
-@orv2-2816-1
+@orv2-2816-1 @orv2-2004
 Rule: Show total refund due
 
   Scenario: no fee permit reduce 
@@ -27,7 +27,7 @@ Rule: Show total refund due
      When staff complete a void
      Then they see $100
 
-@orv2-2816-2
+@orv2-2816-2 @orv2-2004
 Rule: Show current permit value
 
   Scenario: no fee permit reduce 
@@ -50,7 +50,7 @@ Rule: Show current permit value
      When staff complete a void
      Then they see $100
 
-@orv2-2816-3
+@orv2-2816-3 @orv2-2004
 Rule: Show new permit value
 
   Scenario: no fee permit reduce 
@@ -73,7 +73,7 @@ Rule: Show new permit value
      When staff complete a void
      Then they see $100
 
-@orv2-2816-4
+@orv2-2816-4 @orv2-2004
 Rule: Show historical financial transaction information for the amending/void permit application
 
  Scenario: Previous financial transactions exist
@@ -85,7 +85,7 @@ Rule: Show historical financial transaction information for the amending/void pe
         | Provider Tran ID | provider transaction id for the listed transaction if exists |
         | Amount (CAD)     | permit fee (positive or negative) for the listed transaction |
 
-@orv2-2816-5
+@orv2-2816-5 @orv2-2004
 Rule: Staff can choose one or more credit (positive) historical transactions to refund 
 
   Scenario: arrive
@@ -132,7 +132,7 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
        | Refund Tran ID                        |
        | Cheque Refund                         |
 
-@orv2-2816-15
+@orv2-2816-15 @orv2-2004
 Rule: Deselecting a historical transaction(s) to refund clears any user input
 
   Scenario: input in amount and refund tran ID
@@ -157,7 +157,7 @@ Rule: Deselecting a historical transaction(s) to refund clears any user input
      When a user chooses not to use the historical transaction A
      Then 12345 is deleted from Refund Tran ID
 
-@orv2-2816-6
+@orv2-2816-6 @orv2-2004
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
   Scenario: equal on 1 chosen historical transaction
@@ -190,8 +190,8 @@ Rule: Refund amount(s) inputted by Staff must equal the total refund due
       And they are directed to Active Permits
       And they see "Permit Amended" notification
 
-@orv2-2816-7
-Rule: Refund amount must have a value >$0 for Refund Tran ID and cheque refund to be available
+@orv2-2816-7 
+Rule: Refund amount must have a value >$0 for Refund Tran ID (if required) and cheque refund to be available
 
   Scenario: refund is $50
      When staff choose to input a Refund Tran ID
@@ -209,9 +209,7 @@ Rule: Refund amount must have a value >$0 for Refund Tran ID and cheque refund t
       And refund tran id is unavailable
 
 @orv2-2816-8
-Rule: Staff must input a refund tran id for a chosen transaction and inputted refund amount
-
- # not true for credit account
+Rule: Staff must input a refund tran id (if required) for a chosen transaction and inputted refund amount
 
   Scenario: refund is $50 no tran id
     Given the total refund due is $50
@@ -221,8 +219,17 @@ Rule: Staff must input a refund tran id for a chosen transaction and inputted re
      Then they see "This is a required field"
       And refund tran id is indicated
 
-@orv2-2816-9
+@orv2-2816-9 
 Rule: Refund tran id is unavailable when cheque is the refund payment method
+
+@orv2-2004
+Rule: Refund tran id is unavailable for credit account historical transactions
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
 
 @orv2-2816-10
 Rule: Refund tran id is cleared when cheque refund is chosen
@@ -324,8 +331,8 @@ Rule: A refund transaction(s) is saved for each completed historical transaction
       Then only refund by cheque is indicated as a refund method
 
 # dupe?
-@orv2-938-19
-Rule: Input mandatory transaction id
+@orv2-938-19 @orv2-2004
+Rule: Input mandatory transaction id if required
 
    Scenario: Do not input transaction ID
      Given the PPC SA has chosen to refund to the previous payment method
@@ -342,3 +349,30 @@ Rule: Maximum 15 characters allowed in Transaction ID
      When staff enter 16 characters
       And choose to finish
      Then they see "Maximum 15 characters"
+
+Rule: transaction history items are deselected by default when staff are directed to finish
+
+Rule: a user cannot input anything at finish until a historical transaction is chosen
+
+@orv2-4535
+Rule: for cheque, cash and GA historical transactions cheque is chosen by default when staff are directed to finish
+
+Rule: total refund due is shown on fee summarys on pdfs
+
+Rule: credit account void and amend with refund permit pdf and receipt are always sent to the credit account holder
+
+  Scenario: credit account holder
+    Given 
+     When 
+     Then they only get one email
+
+  Scenario: credit account user
+    Given 
+     When 
+     Then 
+
+GA payment will always show a provider tran id
+
+cancel finish refund directs staff to page they initiated the action from
+
+free flag change scenario

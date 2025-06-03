@@ -29,14 +29,22 @@ Rule: Vehicle details are removed from an LOA amending permit when the vehicle t
 @orv2-2860-3
 Rule: Expired LOA(s) are shown but unavailable in LOA amending permits
   
-  Scenario: available LOA(s)
+  Scenario: expired LOA(s) after start date
     Given permit A uses LOA 1
      When LOA 1 expires
+      And the LOA 1 expiry is after permit A start date
       And staff amend permit A
      Then they see:
        | LOA 1 number      |
        | LOA 1 expiry date |
       And LOA 1 is unavailable
+
+  Scenario: expired LOA(s) before start date
+    Given permit A uses LOA 1
+     When LOA 1 expires
+      And the LOA 1 expiry is before permit A start date
+      And staff amend permit A
+     Then they do not see LOA 1
 
  # we will need to figure out how to handle this over time do we keep showing expired LOAs forever or...
 |

@@ -134,7 +134,7 @@ Rule: amendments to commodity information are subject to policy restrictions tha
       And all inputted loaded dimensions is removed
 
 @orv2-4015-7
-Rule: staff can amend any power unit detail except vehicle sub-type or recall a new power unit with allowable vehicle sub-type without impacting other application data
+Rule: staff can amend any power unit detail except vehicle sub-type and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
   Scenario: edit power unit
     Given there is a power unit
@@ -153,8 +153,6 @@ Rule: staff can amend any power unit detail except vehicle sub-type or recall a 
     Given a commodity is chosen
      When staff choose to recall a new vehicle
      Then only allowable vehicle sub-types are available
-
-
 
 @orv2-4015-8
 Rule: amendments to trailers are subject to policy restrictions that exist in the new STOS application form

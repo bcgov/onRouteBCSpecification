@@ -60,6 +60,6 @@ Rule: Staff must input a transaction ID (Provider Transaction ID) manually for a
 
   Scenario: cash or cheque
      When staff have chosen cash or cheque
-     Then transactiona id is not available
+     Then transaction id is not available
 
 # service bc and ppc in person are both available for refund and amend

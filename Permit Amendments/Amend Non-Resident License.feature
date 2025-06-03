@@ -2,13 +2,15 @@ Feature: Amend Non-Resident Single Trip License
 
 Staff = SA, PC, CTPO, Trainee
 
+
 - do staff need to be able to change the vehicle sub-type?
 - do we retain the information in the weight fields when one is disabled due to a conditional license change?
  - it is possible but very complex to implement
+ - staff is OK with not keeping the vehicle weights when swapping conditional license fees
 
-Rule: staff can change the vehicle sub-type?
 
-Rule staff can't change the vehicle sub-type?
+
+Rule: staff can change the vehicle sub-type
 
   Scenario: recall different vehicle sub-type
     Given 
@@ -22,8 +24,12 @@ Rule staff can't change the vehicle sub-type?
 
 Rule: staff can amend the permit duration up to 30 days
 
-Rule: staff can forward date to any date?
-- 5 years into The future?
+Rule: staff can forward date 60 days from the current calendar date
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 Rule: staff can backdate the start date for a single trip - same as STOS amend
 
@@ -45,6 +51,11 @@ Rule: staff can backdate the start date for a qrtly within the calendar quarter
      Then 
 
 Rule: staff can change the vehicle weight
+
+  Scenario: 
+    Given 
+     When 
+     Then 
 
 Rule: staff can change conditional licensing fees
 

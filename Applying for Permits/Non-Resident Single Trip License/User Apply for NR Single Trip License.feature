@@ -212,7 +212,7 @@ Rule: A user can see the source of truth for CVSE forms
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
 @orv2-2818-9
-Rule: A Non-Resident Single Trip License permit fee rate is calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
+Rule: A Non-Resident Single Trip License permit is the fee rate is calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
 
  # see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
 

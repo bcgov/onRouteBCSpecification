@@ -191,27 +191,8 @@ Rule: A void results in a full refund of current permit dollar value
 
 # scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
 
-@orv2-1057-13
-Rule: Choose cheque payment method
-
-   Scenario: Refund by cheque
-     Given the PPC SA is at the finish voiding page
-      When they choose to refund by cheque
-      Then only refund by cheque is indicated as a refund method
-
-@orv2-1057-14  
-Rule: Input mandatory transaction id
-
-   Scenario: Do not input transaction ID
-     Given the PPC SA has chosen to refund to the previous payment method
-      When they do not input a transaction ID
-       And they attempt to finish
-      Then they see "This is a required field"
-       And "Transaction ID" is indicated
-       And they cannot finish
-
 @orv2-1057-15
-Rule: Return to previous search results when finished void permit
+Rule: If void action was initiated at staff search return to previous search results when finished void permit
 
    Scenario: Return to previous search results
      Given the PPC SA has inputted all mandatory information at finish voiding
@@ -329,9 +310,37 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      When staff remove ABC Co. no fee designation
      Then permit A has a $0 fee
 
+@orv2-2004
+Rule: show permit and receipt recpient email addressed on finish voiding
+
+Send Permit and Receipt to
+Company Email: info@bandstratransport.com/
+Additional Email: craig@bandstratransport.com
+
+@orv2-2004
+Rule: show reason for voiding on finish voiding
+
+Reason for Voiding
+This is the weapon of a Jedi Knight. Not as clumsy or random as a blaster, an elegant weapon for a more civilized age.
 
 # Deprecated
+@orv2-1057-14  
+Rule: Input mandatory transaction id
 
+   Scenario: Do not input transaction ID
+     Given the PPC SA has chosen to refund to the previous payment method
+      When they do not input a transaction ID
+       And they attempt to finish
+      Then they see "This is a required field"
+       And "Transaction ID" is indicated
+       And they cannot finish
+@orv2-1057-13
+Rule: Choose cheque payment method
+
+   Scenario: Refund by cheque
+     Given the PPC SA is at the finish voiding page
+      When they choose to refund by cheque
+      Then only refund by cheque is indicated as a refund method
 @orv2-1057-12
 Rule: Default to previous payment method card type
 
