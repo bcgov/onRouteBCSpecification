@@ -55,13 +55,25 @@ Rule: Indicate if no records are found and provide option to create company only
      Then they see "No records found"
       And they do not have the option to create a company      
 
-@orv2-1362-1
-Rule: Staff can search for a company using a minimum 9 characters in client number
+@orv2-1362-1 @orv2-4544-1
+Rule: staff can search for a company using client number with or without spaces or hyphens
 
-  Scenario: Only onRouteBC client number exists
+  Scenario: hyphens used
     Given a PPC SA, PC or EO has chosen to search by client number
-     When they search by <client number> using 9 characters
-     Then they see company <results> that have the first 9 characters matching in <client number>
+     When they search by <client number>
+     Then they see company <results> that have the characters matching in <client number> in the order entered
+
+  Examples:
+   | description             | client number   | results       |
+   | onRouteBC client number | 81874592-7      | 81-874592-765 |
+   | onRouteBC client number | 81-874592-71    | 81-874592-712 |
+   | onRouteBC client number | 81-874592-71    | 81-874592-719 |   
+   | onRouteBC client number | 81-81874592-709 | 81-874592-709 |
+
+  Scenario: hyphens and spaces not used
+    Given a PPC SA, PC or EO has chosen to search by client number
+     When they search by <client number>
+     Then they see company <results> that have the characters matching in <client number> in the order entered
 
   Examples:
    | description             | client number | results       |
@@ -69,17 +81,16 @@ Rule: Staff can search for a company using a minimum 9 characters in client numb
    | onRouteBC client number | 818745927     | 81-874592-712 |
    | onRouteBC client number | 818745927     | 81-874592-709 |
 
-@orv2-1362-14  
-Rule: Staff can search using the first 9 characters of the client number
-
-  Scenario: onRouteBC client number exists
+  Scenario: spaces used
     Given a PPC SA, PC or EO has chosen to search by client number
-     When they search by the using 9 characters of the <client number>
-     Then they see company <results> that have the first 9 characters matching in legathe client number
+     When they search by <client number>
+     Then they see company <results> that have the characters matching in <client number> in the order entered
 
   Examples:
-   | description                   | client number | results       |
-   | using onRouteBC client number | 818745927     | 81-874592-765 |
+   | description             | client number | results       |
+   | onRouteBC client number | 81874 5927    | 81-874592-765 |
+   | onRouteBC client number | 81874592 7    | 81-874592-712 |
+   | onRouteBC client number | 818 745927    | 81-874592-709 |
 
 @orv2-1362-4
 Rule: Staff can search using the exact legacy number

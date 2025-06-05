@@ -88,9 +88,8 @@ Rule: Keyboard tab order is left to right per row
      When they use keyboard tab once
      Then the cursor is at axle unit 4 row 2
 
- # whats the limit?
 @orv2-2916-11
-Rule: User can optionally add additional axle unit input columns following preceding axle unit columns
+Rule: User can optionally add additional axle unit input columns following preceding axle unit columns up to a maximum of 100
 
 @orv2-2916-12
 Rule: Added axle unit columns are empty

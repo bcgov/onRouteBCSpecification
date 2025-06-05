@@ -67,9 +67,6 @@ Rule: staff can optionally sort the queue or claim list by permit start date
      When 
      Then 
 
- 
-
-
 @orv2-2398-5
 Rule: Staff may update the queue list to show its current state manually
 

@@ -230,7 +230,6 @@ Rule: Refund tran id is unavailable for credit account historical transactions
      When 
      Then 
 
-
 @orv2-2816-10
 Rule: Refund tran id is cleared when cheque refund is chosen
 
