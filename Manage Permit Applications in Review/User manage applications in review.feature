@@ -7,7 +7,7 @@ Staff = SA, PC, CTPO, Trainee
 Rule: only authorized users see a list of application in review with information about each
 
   Scenario: authorized
-     When CA, PA PC, SA, TRAIN, FIN, CTPO are at a cv client permits
+     When CA, PA PC, SA, TRAIN, CTPO are at a cv client permits
      Then they see the option to view applications in review
 
   Scenario: not authorized
