@@ -34,12 +34,12 @@ Rule: Staff can search for a permit
     | Permit End Date     | The calculated expiry date based on the term submitted at application                  |
     | Issue Date          | The date the permit was issued                                                         |
 
-@orv2-937-1
-Rule: Staff can search for permit using 1 or more characters of the permit number
+@orv2-937-1 @orv2-4544-2
+Rule: Staff can search for permit using 1 or more characters of the permit number with or without spaces or hyphens
 
-  Scenario: search using 
-     When they search by the <permit number> using the first 11 characters of the permit
-     Then they see permit <results> with the first 11 characters used in the search in the sequence inputted
+  Scenario: hyphens used 
+     When they search by the <permit number>
+     Then they see permit <results> with the characters used in the search in the order entered
       And all permit <statuses> can be displayed if found
 
   Examples:
@@ -49,6 +49,30 @@ Rule: Staff can search for permit using 1 or more characters of the permit numbe
    | P1-37982658   | P1-37982658-946-A01 | Revoked  |
    | P1-37982658   | P1-37982658-946-A01 | Voided   |
   
+  Scenario: hyphens and spaces not used 
+     When they search by the <permit number>
+     Then they see permit <results> with the characters used in the search in the order entered
+      And all permit <statuses> can be displayed if found
+
+  Examples:
+   | Permit number | Results             | statuses |
+   | P182364275    | P1-82364275-175-A01 | Issued   |
+   | P137982658    | P1-37982658-946-A01 | Expired  |
+   | P137982658    | P1-37982658-946-A01 | Revoked  |
+   | P137982658    | P1-37982658-946-A01 | Voided   |
+
+  Scenario: spaces used 
+     When they search by the <permit number> using the characters of the permit
+     Then they see permit <results> with the characters used in the search in the order entered
+      And all permit <statuses> can be displayed if found
+
+  Examples:
+   | Permit number | Results             | statuses |
+   | P18 2364275   | P1-82364275-175-A01 | Issued   |
+   | P1 37982658   | P1-37982658-946-A01 | Expired  |
+   | P137982658 9  | P1-37982658-946-A01 | Revoked  |
+   | P137982658 94 | P1-37982658-946-A01 | Voided   |
+
 @orv2-3411-2
 Rule: Staff can search for permit using 1 to 6 characters of the VIN
 
@@ -59,7 +83,7 @@ Rule: Staff can search for permit using 1 to 6 characters of the VIN
   Scenario: 6 or less characters
      When staff search by the <VIN number> using 
      6 or less characters
-     Then they see permit <VIN results> with characters used in the search in the sequence inputted
+     Then they see permit <VIN results> with characters used in the search in the order entered
       And all permit <statuses> can be displayed
 
   Examples:
@@ -70,21 +94,47 @@ Rule: Staff can search for permit using 1 to 6 characters of the VIN
    | 12         | 129054      | Revoked    |
    | 129065     | 129065      | Superseded |
 
-@orv2-937-16
-Rule: Staff can search for permit using 1 to 10 characters of the plate
+@orv2-937-16 @orv2-4544-3
+Rule: Staff can search for permit using 1 or more characters of the plate with or without spaces or hyphens
 
-  Scenario: Search for permit by plate number
+  Scenario: hyphens used
+    Given staff has chosen to search by plate number
+     When they search by the <plate number>
+     Then they see permit <results> with only the characters used in the search in the order entered
+      And all permit <statuses> can be displayed if found
+
+  Examples:
+   | plate number | Results   | statuses | label details |
+   | Bob-24       | Bob24     | Issued   | not displayed |
+   | Bob-234567   | Bob234567 | Expired  | displayed     |
+   | A-12345      | A-12345   | Revoked  | displayed     |
+   | A-123-123    | A-123-123 | Voided   | displayed     |
+
+  Scenario: hyphens and spaces not used
     Given staff has chosen to search by plate number
      When they search by the <plate number> using the exact plate number
-     Then they see permit <results> with only the exact characters used in the search
+     Then they see permit <results> with only the characters used in the search in the order entered
       And all permit <statuses> can be displayed if found
 
   Examples:
    | plate number | Results   | statuses | label details |
    | Bob24        | Bob24     | Issued   | not displayed |
    | Bob234567    | Bob234567 | Expired  | displayed     |
-   | A-12345      | A-12345   | Revoked  | displayed     |
-   | A-123-123    | A-123-123 | Voided   | displayed     |
+   | A12345       | A-12345   | Revoked  | displayed     |
+   | A123123      | A-123-123 | Voided   | displayed     |
+
+  Scenario: spaces used
+    Given staff has chosen to search by plate number
+     When they search by the <plate number> using the exact plate number
+     Then they see permit <results> with only the characters used in the search in the order entered
+      And all permit <statuses> can be displayed if found
+
+  Examples:
+   | plate number | Results   | statuses | label details |
+   | Bo b24       | Bob24     | Issued   | not displayed |
+   | Bob 234567   | Bob234567 | Expired  | displayed     |
+   | A 12345      | A-12345   | Revoked  | displayed     |
+   | A 123 123    | A-123-123 | Voided   | displayed     |
 
 @orv2-937-4
 Rule: truncated text on search results can be optionally shown

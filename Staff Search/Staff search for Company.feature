@@ -56,7 +56,7 @@ Rule: Indicate if no records are found and provide option to create company only
       And they do not have the option to create a company      
 
 @orv2-1362-1 @orv2-4544-1
-Rule: staff can search for a company using client number with or without spaces or hyphens
+Rule: staff can search for a company using 1 or more characters of the client number with or without spaces or hyphens
 
   Scenario: hyphens used
     Given a PPC SA, PC or EO has chosen to search by client number
