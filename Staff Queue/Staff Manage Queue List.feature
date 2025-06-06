@@ -37,7 +37,7 @@ Rule: Staff can see the elapsed time the submitted application has been in the q
      When staff choose to view the queue 5 minutes after A1-72303011-028 is submitted
      Then A1-72303011-028 time in queue is 00:05
 
-@orv2-2398-3
+@orv2-2398-3 @orv2-2472-6 @orv2-4554-1
 Rule: The time in queue is counted until the application is approved or rejected
 
 @orv2-2398-4
