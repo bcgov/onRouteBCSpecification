@@ -85,7 +85,7 @@ Rule: staff can optionally choose to cancel the amend permit action
      When staff choose to cancel 
      Then they are directed to the page they initiated the amend action on
       And an new iteration of the APA is not created
-      And the only iteration is the previous one
+      And the previous iteration is discarded
 
   Scenario: cancel after continuing amendment
     Given staff continue Amendment
