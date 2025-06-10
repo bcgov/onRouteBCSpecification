@@ -1,5 +1,5 @@
 Feature: Staff search for company
-   As a staff I want to search for a CV Client so that I can view details about their profile.
+As a staff I want to search for a CV Client so that I can view details about their profile.
 
 Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 

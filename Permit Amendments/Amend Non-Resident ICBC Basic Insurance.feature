@@ -23,7 +23,7 @@ Rule: staff can extend duration up to the maximum 30 days for a single trip perm
       But they can reduce duration
 
 @orv2-4211-3
-Rule: staff can reduce duration for a single trip permit
+Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit
 
   Scenario: reduce issued duration expired
     Given permit A has the following issued date details:
