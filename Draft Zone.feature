@@ -10,13 +10,22 @@ Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 Auth Staff = PC, SA, TRAIN, CTPO
 Non Auth Staff = FIN, EO, HQA
 
-  Scenario: authorized
-     When CA, PA PC, SA, TRAIN, FIN, CTPO are at a cv client permits
-     Then they see the option to view applications in review
 
-  Scenario: not authorized
-     When Fin, EO, HQA are at a cv client permits
-     Then they do not see the option to view applications in review
+Feature: Refund to multiple payment methods credit account
+
+Rule: credit account void and amend with refund permit pdf and receipt are always sent to the credit account holder
+
+  Scenario: credit account holder
+    Given 
+     When 
+     Then they only get one email
+
+  Scenario: credit account user
+    Given 
+     When 
+     Then 
+
+
 
 Rule: Maximum 15 characters allowed in Transaction ID
 
@@ -44,118 +53,6 @@ In staff shopping cart:
     Given 
      When 
      Then 
-
-  Scenario: fail 2.3 and 4.5 5 axle units
-[
-      {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 6100
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.88,
-        "axleUnitWeight": 21000,
-        "interaxleSpacing": 5
-      },
-      {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 8000,
-        "interaxleSpacing": 1.9
-      },
-      {
-        "numberOfAxles": 3,
-        "axleSpread": 3.28,
-        "axleUnitWeight": 29000,
-        "interaxleSpacing": 10
-      },
-      {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 8000,
-        "interaxleSpacing": 3.6
-      }
-    ]
-
-  Scenario: fail 1.4, 1.5, 2.4, 2.5, 3.4, 3.5 and 4.5 5 axle units
-[
-      {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 6000
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 14000,
-        "interaxleSpacing": 1
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 19000,
-        "interaxleSpacing": 3
-      },
-      {
-        "numberOfAxles": 3,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 24000,
-        "interaxleSpacing": 5
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1,
-        "axleUnitWeight": 16000,
-        "interaxleSpacing": 1.5
-      }
-    ]
-
-
-  Scenario: fail all wheelbase combinations 7 axle units
-[
-      {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 8000
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 18000,
-        "interaxleSpacing": 1
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 19000,
-        "interaxleSpacing": 3
-      },
-      {
-        "numberOfAxles": 3,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 24000,
-        "interaxleSpacing": 5
-      },
-      {
-        "numberOfAxles": 2,
-        "axleSpread": 1.5,
-        "axleUnitWeight": 16000,
-        "interaxleSpacing": 5
-      }
-            {
-        "numberOfAxles": 2,
-        "axleSpread": 1,
-        "axleUnitWeight": 20000,
-        "interaxleSpacing": 1.5
-      }
-            {
-        "numberOfAxles": 1,
-        "axleSpread": null,
-        "axleUnitWeight": 20000,
-        "interaxleSpacing": 3
-      }
-    ]
 
 
 Feature: Basic BCeID CV Client Create a New onRouteBC Profile

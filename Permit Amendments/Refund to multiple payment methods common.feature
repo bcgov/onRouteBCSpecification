@@ -2,7 +2,7 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
-NOTE: Only some permits (e.g., MFP, STOW, NR License) can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g., transaction 1 uses Web - VISA, transaction 2 uses Web - Mastercard) and potentially require splitting the refund amounts across multiple payment methods. Users are directed to refund to multiple payment methods in the following scenarios:
+NOTE: Only some permits (e.g., MFP, STOW, NR License) can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g., transaction 1 uses Web - VISA, transaction 2 uses Web - Mastercard) and potentially require splitting the refund amounts across multiple payment methods. Users are directed to refund to multiple payment methods in the following ame scenarios:
  - $0 amends
  - void
  - amend with refund
@@ -356,19 +356,17 @@ Rule: Maximum 15 characters allowed in Transaction ID
 
 Rule: transaction history items are deselected by default when staff are directed to finish
 
+@orv2-4535-5
+Rule: total refund due = $<permit fee> on generated permit PDF
+
+@orv2-4535-6
+Rule: total refund due = Amount on onRouteBC Payments and Refunds Summary and onRouteBC Payment and Refund Detail reports
+
+@orv2-4535-7
+Rule: refund amount = $<permit item amount> on generated permit payment receipt PDF
+
+@orv2-4535-8
+Rule: total refund due = $<payment total> on generated permit payment receipt PDF
 
 Rule: cancel finish refund directs staff to page they initiated the action from
 
-free flag change scenario
-
-Rule: credit account void and amend with refund permit pdf and receipt are always sent to the credit account holder
-
-  Scenario: credit account holder
-    Given 
-     When 
-     Then they only get one email
-
-  Scenario: credit account user
-    Given 
-     When 
-     Then 

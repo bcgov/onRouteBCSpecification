@@ -30,15 +30,3 @@ Rule: cheque refund cannot be unchosen for cheque, cash or GA historical transac
 
 @orv2-4535-4
 Rule GA payment historical transactions will always show a provider tran id that was inputted manually by staff at the time of purchase
-
-@orv2-4535-5
-Rule: total refund due = $<permit fee> on generated permit PDF
-
-@orv2-4535-6
-Rule: total refund due = Amount on onRouteBC Payments and Refunds Summary and onRouteBC Payment and Refund Detail reports
-
-@orv2-4535-7
-Rule: refund amount = $<permit item amount> on generated permit payment receipt PDF
-
-@orv2-4535-8
-Rule: total refund due = $<payment total> on generated permit payment receipt PDF
