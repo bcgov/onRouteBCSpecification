@@ -311,17 +311,17 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      Then permit A has a $0 fee
 
 @orv2-2004
-Rule: show permit and receipt recpient email addressed on finish voiding
+Rule: show permit and receipt recipient email addressed on finish voiding
 
-Send Permit and Receipt to
-Company Email: info@bandstratransport.com/
-Additional Email: craig@bandstratransport.com
+ Send Permit and Receipt to
+ Company Email: info@bandstratransport.com/
+ Additional Email: craig@bandstratransport.com
 
 @orv2-2004
 Rule: show reason for voiding on finish voiding
 
-Reason for Voiding
-This is the weapon of a Jedi Knight. Not as clumsy or random as a blaster, an elegant weapon for a more civilized age.
+ Reason for Voiding
+ This is the weapon of a Jedi Knight. Not as clumsy or random as a blaster, an elegant weapon for a more civilized age.
 
 # Deprecated
 @orv2-1057-14  

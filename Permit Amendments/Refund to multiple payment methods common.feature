@@ -2,10 +2,11 @@ Feature: Refund to Multiple Payment Methods
 
 Staff = SA
 
-NOTE: Only some permits (e.g., MFP, STOW, NR License) can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g., transaction 1 uses Web - VISA, transaction 2 uses Web - Mastercard) and potentially require splitting the refund amounts across multiple payment methods. Users are directed to refund to multiple payment methods in the following ame scenarios:
- - $0 amends
- - void
- - amend with refund
+NOTE: Only some permits (e.g., MFP, STOW, NR License) can be amended such that it increases the permit value and therefore are the only type of permits that could incur multiple payment methods (e.g., transaction 1 uses Web - VISA, transaction 2 uses Web - Mastercard) and potentially require splitting the refund amounts across multiple payment methods. Users are directed to refund to multiple payment methods in the following scenarios:
+    - $0 amends
+    - void
+    - amend with refund
+ Where users are directed to refund to multiple payment methods from the void workflow refer to void permit feature for related rules and behaviour.
 
 @orv2-2816-1 @orv2-2004
 Rule: Show total refund due (TRD)
@@ -94,10 +95,11 @@ Rule: Show historical financial transaction information for the amending/void pe
      Then they see the <permit #>, <payment method>, <provider tran id>, and <amount> for each transaction
       
       Examples:
-       | permit #            | payment method | provider tran id | amount |
-       | P2-00408617-873     | Cheque         |                  | $30.00 |
-       | P2-00408617-873-A01 | Web - VISA           | 12345678         | $50.00 |
-       | P2-00408617-873-A02 | Cash           |                  | $20.00 |                           
+       | permit #            | payment method   | provider tran id | amount |
+       | P2-00408617-873     | Cheque           |                  | $30.00 |
+       | P2-00408617-873-A01 | Web - VISA       | 12345678         | $50.00 |
+       | P2-00408617-873-A02 | Cash             |                  | $20.00 |
+       | P2-00408617-873-A03 | PoS - Mastercard | 87654321         | $10.00 |               
 
 @orv2-2816-5 @orv2-2004
 Rule: Staff can choose one or more credit (positive) historical transactions to refund 

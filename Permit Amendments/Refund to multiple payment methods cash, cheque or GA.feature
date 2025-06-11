@@ -2,7 +2,7 @@ Feature: Refund to multiple payment methods cash, cheque or GA
 
 Staff = SA
 
-Note: See common refund to multiple payment methods features that apply to this feature.
+Note: See common refund to multiple payment methods features that apply to this feature. Where users are directed to refund to multiple payment methods from the void workflow refer to void permit feature for related rules and behaviour.
 
 @orv2-4535-1
 Rule: cheque, cash and GA historical transactions have cheque chosen by default when staff are directed to finish amendment or void
