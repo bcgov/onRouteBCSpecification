@@ -1,0 +1,62 @@
+# GARMs Return Codes
+- suggests testing #nextaction 
+	- test in TPS test and use the account maintenance screen in GARMS
+		- can we get a member of the FIN team that has access to the GARMS test env?
+			- may need to engage the GARMS re URL's - Garima will confirm the JIRA ticket
+				- Anyone who wants to checkout the wsdl, this is the url: [https://test.egarms.gov.bc.ca/SecuredWS/wsadetail.asmx?wsdl](https://test.egarms.gov.bc.ca/SecuredWS/wsadetail.asmx?wsdl "https://test.egarms.gov.bc.ca/securedws/wsadetail.asmx?wsdl") use it in browser with username as IDIR\TROREGD I can share password privately with whosoever needs it
+				- Here is the ticket that has GARM connectivity information: [https://moti-imb.atlassian.net/browse/ORV2-4011](https://moti-imb.atlassian.net/browse/ORV2-4011 "https://moti-imb.atlassian.net/browse/orv2-4011")
+			- do you do these in prod GARMS
+			- access to test GARMS and TPS Office test, correct roles?
+		- Live session
+	- need to plan the tests #nextaction 
+	- using TPS tests
+	- Tests:
+		- does it give us the data with the code?
+			- Leif believes it does
+		- closed account with balance
+			- what is returned?
+		- over limit using the 9-11 trick
+			- send file to GARMs with large transaction
+		- does it give back multiple errors at once?
+			- inactive account that is also over the limit
+				- likely just one code
+			- looks like we only get one code at a time but which would we get if there are more than one issue?
+- from GARMS list of known accounts to use for testing
+	- may be possible to set them up in certain ways 
+	- need to confirm if this is in test or dev
+	- suggested not to use their dev environment
+
+- E0001 Sample:
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<soap:Body>
+<SendResponse xmlns="http://tempuri.org/">
+<SendResult>
+<return_code>E0001</return_code>
+<account_balance>0</account_balance>
+<negative_limit>0</negative_limit>
+<account_balance_timestamp/>
+<message>Weigh scale account not found</message>
+</SendResult>
+</SendResponse>
+</soap:Body>
+</soap:Envelope>
+ 
+
+# Refunds
+- Need to figure out the eGARMs and TPS sync issues with regards to refunds
+	- is eGARMS the source of truth for status or TPS?
+		- if we need to go to eGARMs to do refund screens need to handle eGARMS return codes
+	- account status
+		- process refund on hold
+		- process refund on closed
+		- process refund on serious error
+	- can we still send a transaction from onRoute to eGARMS?
+
+# JulieW - eGARMS and TPS Testing
+- TPS Test
+	- Julie has the same role as in TPS Office (Revenue Supervisor)
+	- Possible tech support for admin roles
+		- Leif
+		- Barry Jin - eGARMS test access?
+- eGARMS Test
+	- TrishaB equivalent role in TPS Test (Revenue Supervisor) and eGARMS
