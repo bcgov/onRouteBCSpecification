@@ -46,7 +46,7 @@ Rule: The application in review list default sort is by last updated date, newes
       | Sept. 14, 2023, 03:01 pm PDT |
 
 @orv2-2394-3
-Rule: Last updated date is the date an application in review was claimed or saved
+Rule: Last updated date is the date an application in review was saved
 
   Scenario: opened no changes made
     Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
@@ -59,11 +59,6 @@ Rule: Last updated date is the date an application in review was claimed or save
     Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
      When a user makes changes to application data
       And the application is saved at Sept. 23, 2023, 07:15 am PDT
-     Then the last updated date is Sept. 23, 2023, 07:15 am PDT
-
-  # Scenario: application claimed by ppc
-    Given an application has a last updated date of Sept. 14, 2023, 09:26 pm PDT
-     When staff claims an application at Sept. 23, 2023, 07:15 am PDT
      Then the last updated date is Sept. 23, 2023, 07:15 am PDT
 
   Scenario: closed browser before save

@@ -36,12 +36,12 @@ Rule: draw variable spacing interaxle spacing dimension lines after user inputs 
 @orv2-4412
 Rule: draw variable spacing interaxle spacing dimension line based on the user inputted interaxle spacing 
 
-SPC (0) 0m 44px
-Horizontal line Spc (small) .1-2.00m 84px
-Horizontal line Spc (med) 2.10-5.00m 124px
-Horizontal line Spc (large) 5.10+m 208px
+SPC (0) 0-3.5m 44px
+Horizontal line Spc (small) 3.51-4.20m 84px
+Horizontal line Spc (med) 4.21-6.99m 124px
+Horizontal line Spc (large) 7+m 208px
 
-@waitingfor - NicoleH re spacing ranges
+
 Horizontal line issue and spacing between fonts how do we handle the gaps between fonts?
 
 
