@@ -19,7 +19,7 @@
 ## Tests
 1. Does eGARMS send credit limit and account balance data with a return code?
    1. Return data with all return codes?
-      1. get the credit limit and balance are returned with a return code
+      1. Yes we get the credit limit and balance are returned with a return code
 2. Inactive account with a balance
    1. What is returned?
 3. Over limit using the 9-11 trick?

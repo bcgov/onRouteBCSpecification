@@ -109,7 +109,7 @@ Rule: Staff can search using the exact legacy number
 
 @orv2-1362-3 @orv2-3984-2 @orv2-4002
 Rule: Staff can view company profile summary information in results 
-
+  
   Scenario: Company result includes all data elements possible to display in results
     Given Staff has chosen to search for a company
      When they initiate the search
