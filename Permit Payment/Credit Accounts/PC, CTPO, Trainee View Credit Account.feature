@@ -3,80 +3,83 @@ Feature: PC, CTPO, Trainee view credit account
 Staff = PC, CTPO, Trainee
 
 @orv2-2005-1
-Rule: Show credit account information
+Rule: Show option to view credit account information
 
-  Scenario: credit account exists
+  Scenario: exists
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account does not exist
+  Scenario: does not exist
      When staff chooses to view credit account
      Then they see the option to view credit account
       And they see "For Credit Accounts, please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" info box
 
-  Scenario: credit account closed view holder
+  Scenario: closed view holder
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account on hold view holder
+  Scenario: on hold view holder
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account closed view user
+  Scenario: closed view user
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account on hold view user
+  Scenario: on hold view user
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account active view user
+@orv2-2005-1a
+Rule: Show credit account information
+
+  Scenario: active view user
      When staff chooses to view credit account
      Then they see the following information:
        | information            | description                               |
        | Credit Account Users   | table listing users of the credit account |
 
-  Scenario: credit account active view holder
+  Scenario: active view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                               |
        | Credit Account Users | table listing users of the credit account |
 
-  Scenario: credit account on hold view holder
+  Scenario: on hold view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description                                |
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
  
-   Scenario: credit account on hold view user
+   Scenario: on hold view user
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                                |
        | On Hold              | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
 
-  Scenario: credit account closed view holder
+  Scenario: closed view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                                |
        | Closed               | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
  
-   Scenario: credit account closed view user
+   Scenario: closed view user
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description  |
        | Contact CVSE Revenue info box | instructions |
 
-  Scenario: company suspended view holder
+  Scenario: suspended view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description                                |
        | On Hold                       | label describing the credit account status |
        | Credit Account Users          | table listing users of the credit account  |
 
-   Scenario: company suspended view user
+   Scenario: suspended view user
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                                |
