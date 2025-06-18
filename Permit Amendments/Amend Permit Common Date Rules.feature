@@ -7,4 +7,6 @@ Staff = SA, PC, CTPO, Trainee
  - new application start date any future date
  - amend backdate only with calendar qtr future any date
 
-Rule: 
+Rule: Forward date to a maximum of 60 days from the current date
+
+
