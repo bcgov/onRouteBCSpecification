@@ -5,6 +5,14 @@ O       O     O             O  O  O
 |--Spc--|-Spd-|-----Spc-----|-Spd-|
 1          2                   3  
 
+- show full spacing and spread words when possible
+- remove variable spacing rules 
+- add standard spacing rule by vehicle sub-type
+- show vehicle configuration picture if it exists and wheels only if not
+- add rule for showing diagram based on vehicle sub-type
+- update rule for number of axle unit
+- if diagrams extends beyond the width of the form horizontal scroll on diagram
+
 @orv2-4412-1 
 Rule: the axle unit number is drawn per axle unit 
 
@@ -24,9 +32,9 @@ Rule: a power unit (PU) has 2 axle units drawn by default
     Given the user has added a power unit (PU)
      When the user views the WSSD
      Then they see:
-     OO
-     ||
-     12
+     O       O
+     |--Spc--|
+     1       2
 
 @orv2-4412-3
 Rule: trailers have a 1 axle unit drawn by default
@@ -36,9 +44,9 @@ Rule: trailers have a 1 axle unit drawn by default
       And the user has added a trailer
      When the user views the WSSD
      Then they see:
-     OOO
-     |||
-     123
+       O       O         O
+       |--Spc--|---Spc---|
+       1       2         3  
 
 @orv2-4412-4
 Rule: draw individual axle units after number of axle units is inputted and user tabs to another field
@@ -96,7 +104,7 @@ Rule: draw individual axle unit types based on the user inputted number of axles
       And tabs to another field
      Then they see:
      OO     O
-     ||-Spd-|
+     ||-Spc-|
      12     3
 
 @orv2-4412-6
@@ -132,7 +140,6 @@ Rule: draw variable spacing interaxle spacing dimension line based on the user i
      12
       And the pixel spacing is 4px between outside wheel diameter
 
-  @orv2-4412-8
   Scenario: (extra-small) spacing
      Given the user has inputted the interaxle spacing for the PU
       And the interaxle spacing for the PU is 0.01-3.5m
@@ -143,7 +150,6 @@ Rule: draw variable spacing interaxle spacing dimension line based on the user i
      1   2
       And the pixel spacing is 44px between axle unit centres
 
-  @orv2-4412-9
   Scenario: (small) spacing
      Given the user has inputted the interaxle spacing for the PU
       And the interaxle spacing for the PU is 3.51-4.20m
@@ -154,7 +160,6 @@ Rule: draw variable spacing interaxle spacing dimension line based on the user i
      1     2
       And the pixel spacing is 84px between axle unit centres
 
-  @orv2-4412-10
   Scenario: (medium) spacing
      Given the user has inputted the interaxle spacing for the PU
       And the interaxle spacing for the PU is 4.21-6.99m
