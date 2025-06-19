@@ -2,8 +2,6 @@ Feature: Permit Date Rules
 
 Staff = SA, PC, CTPO, Trainee
 
-- are we allowing any start date? This will change the calendar qtr - update ticket #nextaction
-
 Rule: Forward date to a maximum of 60 days from the date and time the amend is initiated
 
 Rule: Backdate the permit start date to any date from the current date time the amend is initiated except quarterly permits
