@@ -46,7 +46,17 @@ Rule: staff can reduce duration for a single trip permit up to a maximum of 30 d
        And the permit remains active
 
 @orv2-4211-4
-Rule: staff can amend the start date to any date for a single trip permit
+Rule: staff can forward date to a maximum of 60 days from the date and time the amend is initiated
+
+  Scenario: forward greater than 60 days
+    Given permit A has a start date of 05/01/2025
+     When staff choose to amend the start date to 07/05/2025
+     Then 07/05/2025 is not available
+
+  Scenario: forward within 60 days
+    Given permit A has a start date of 05/01/2025
+     When staff choose to amend the start date to 06/01/2025
+     Then 06/01/2025 is available
 
   Scenario: backdate causes expiry
     Given permit A has the following issued date details:
@@ -107,17 +117,12 @@ Rule: staff can amend the start date to any date for a single trip permit
       Then the Permit Expiry Date is 05/25/2025 
 
 @orv2-4211-5     
-Rule: staff can amend the start date within the calendar quarter for a qrtly permit
+Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
 
-  Scenario: forward within quarter
-    Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date
-     Then they can chose a maximum future start date of 06/30/2025
-
-  Scenario: forward outside quarter
-    Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date to 07/05/2025
-     Then 07/05/2025 is not available
+  Scenario: backdate greater than quarter
+   Given permit A has a start date of 05/01/2025
+     When staff choose to amend the start date to 04/01/2025
+     Then 04/01/2025 is not available
 
   Scenario: back within quarter
    Given permit A has a start date of 05/01/2025
