@@ -12,16 +12,16 @@ Rule: PPC SA or PC cannot change the permit start date once the permit is active
 @orv2-938-6
 Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments 
 
- # (Deprecated for version 1 of this feature)
- #  Scenario: Extend term duration
- #    Given a PPC SA or PC has chosen to extend the permit duration
- #     When they extend <permit duration>
- #     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
+  # (Deprecated for version 1 of this feature)
+   #  Scenario: Extend term duration
+   #    Given a PPC SA or PC has chosen to extend the permit duration
+   #     When they extend <permit duration>
+   #     Then the <amended permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <permit expiry date>
 
- #     Examples:
- #       | permit expiry date | permit duration | amended permit expiry date |
- #       | March 30, 2023     | 30              | April 29, 2023             |
- #       | April 13, 2023     | 30              | May 13, 2023               |
+   #     Examples:
+   #       | permit expiry date | permit duration | amended permit expiry date |
+   #       | March 30, 2023     | 30              | April 29, 2023             |
+   #       | April 13, 2023     | 30              | May 13, 2023               |
   
   Scenario: Shorten term duration
     Given a PPC SA has chosen to shorten the permit duration
