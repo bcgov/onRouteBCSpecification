@@ -254,7 +254,10 @@ Rule: upon finishing $0 or refund permit amendment staff return to page where am
 
 @orv2-4202-15
 # will be applicable to STOW, STWS and ICBC as well
-Rule: choosing add to cart directs staff to the shopping cart
+Rule: choosing add to cart directs staff to active permits if the action was initiated from active permits
+
+@orv2-4202-16
+Rule: choosing add to cart directs staff to search results if the action was initiated from search results
 
 @orv2-938-21 @orv2-4015-20
 Rule: Amending permit is superseded by amended permit

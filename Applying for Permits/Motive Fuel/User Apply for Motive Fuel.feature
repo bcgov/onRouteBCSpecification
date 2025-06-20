@@ -211,6 +211,8 @@ Rule: A motive fuel permit fee is is calculated at $0.07 per km or a minimum of 
      When they continue to "Review and Confirm Details" page
      Then their permit fee is $10.00
 
+Rule: Calculated fee values are rounded to the nearest dollar
+
 @orv2-2608-14 @orv2-2612-14
 Rule: The user must complete the attestations
 

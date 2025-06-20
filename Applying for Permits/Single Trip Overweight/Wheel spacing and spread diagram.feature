@@ -2,15 +2,15 @@ Feature: Wheel Spacing and Spread Diagram (WSSD)
 The wheel spacing and spread diagram (WSSD) is a visual representation of the axle units and their spacing on a vehicle. It is used to illustrate compliance with regulations regarding axle loads and spacing.
 
 O       O     O             O  O  O
-|--Spc--|-Spd-|-----Spc-----|-Spd-|
+|--SPC--|-SPD-|-----SPC-----|-SPD-|
 1          2                   3  
 
 - show full spacing and spread words when possible
 - remove variable spacing rules 
-- add standard spacing rule by vehicle sub-type
-- show vehicle configuration picture if it exists and wheels only if not
+- add rule for interaxle spacing by vehicle sub-type
+- show vehicle configuration picture if it exists and wheels only if not but only if the entire vehicle configuration exists
 - add rule for showing diagram based on vehicle sub-type
-- update rule for number of axle unit
+- update rule for number of axle units
 - if diagrams extends beyond the width of the form horizontal scroll on diagram
 
 @orv2-4412-1 
