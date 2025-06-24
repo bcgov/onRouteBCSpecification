@@ -23,32 +23,32 @@
 2. Inactive account with a balance
    1. What is returned?
 3. Over limit using the 9-11 trick?
-   1. Send file to GARMs with large transaction
+   1. Send file to eGARMs with large transaction
 4. Does eGARMS return multiple errors at once?
    1. Only get one code at a time
-   2. WS0001 Reduce negative limit
-      1. 10000 - not accepted by eGARMS
-      2. 11217 - accepted by eGARMS
-      3. SoapUI receives immediate
-      4. Negative account limit reached not sent
-   3. WS0001 Change to Inactive
-      1. Not accepted E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
-   4. WS0360 Inactive + over limit
-      1. Set account in eGARMS to inactive - E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
-   5. WS0017 Inactive + over limit
-      1. Set account in eGARMS to inactive
-      2. Soap receives 
-         1. Inactive
-         2. Negative Limit 0.00
-   6. Hold + over limit
-5. How does eGARMS prioritize return codes if there are more than one?
+5. WS0001 Reduce negative limit
+   1. 10000 - not accepted by eGARMS
+   2. 11217 - accepted by eGARMS
+   3. SoapUI receives immediate
+   4. Negative account limit reached not sent
+6. WS0001 Change to Inactive
+   1. Not accepted E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
+7. WS0360 Inactive + over limit
+   1. Set account in eGARMS to inactive - E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
+8. WS0017 Inactive + over limit
+   1. Set account in eGARMS to inactive
+   2. Soap receives 
+      1. Inactive
+      2. Negative Limit 0.00
+9. Hold + over limit
+10. How does eGARMS prioritize return codes if there are more than one?
    1. Get what we get and show what is received
-6. Is eGARMS the source of truth for credit account status or is it TPS?
+11. Is eGARMS the source of truth for credit account status or is it TPS?
    1. Is inactive E0002 - Weigh scale account is inactive - Closed in TPS?
       1. Staff update both eGARMS and TPS with close account
    2. Is hold E0003 - Weigh scale account on Hold - Hold in TPS?
    3. Is E1739 - Weigh scale account has exceeded negative allowed amount - over credit limit?
-7. Can we still send a transaction from onRoute to eGARMS when a return code is received?
+12. Can we still send a transaction from onRoute to eGARMS when a return code is received?
    1. Post Transaction to eGARMS accounts
       1. likely won't accept until a payment is made
       2. WS0360 - exceeded limit

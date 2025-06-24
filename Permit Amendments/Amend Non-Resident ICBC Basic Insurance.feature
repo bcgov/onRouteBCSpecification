@@ -121,8 +121,8 @@ Rule: staff can backdate the start date within the calendar quarter for a qrtly 
 
   Scenario: backdate greater than quarter
    Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date to 04/01/2025
-     Then 04/01/2025 is not available
+     When staff choose to amend the start date to 03/29/2025
+     Then 03/29/2025 is not available
 
   Scenario: back within quarter
    Given permit A has a start date of 05/01/2025
