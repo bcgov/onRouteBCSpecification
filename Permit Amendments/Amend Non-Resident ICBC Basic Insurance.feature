@@ -129,6 +129,9 @@ Rule: staff can backdate the start date within the calendar quarter for a qrtly 
      When staff choose to amend the start date 
      Then they can chose a maximum past start date of 04/01/2025
 
+@orv2-4211-11
+Rule: staff can backdate the start date of a single trip permit 
+
 @orv2-4211-6
 Rule: staff are notified when start date an/or expiry date are in the past
 

@@ -1,4 +1,4 @@
-Feature: Permit Date Rules 
+Feature: Amend Permit Date Rules 
 
 Staff = SA, PC, CTPO, Trainee
 

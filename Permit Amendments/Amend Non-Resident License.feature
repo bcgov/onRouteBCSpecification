@@ -163,10 +163,7 @@ Rule: staff can amend all vehicle information except vehicle type and recall an 
 @orv2-4220-8
 Rule: staff can forward date 60 days from the current calendar date
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+
 
 @orv2-4220-9
 Rule: staff can amend the start date within the calendar quarter for a qrtly permit
