@@ -212,7 +212,7 @@ Rule: A user can see the source of truth for CVSE forms
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
 @orv2-2818-9
-Rule: A Non-Resident Single Trip License permit is the fee rate is calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
+Rule: A Non-Resident Single Trip License permit is 1/12th the fee rate rounded to the nearest dollar calculated using COMMERCIAL TRANSPORT FEES REGULATION tables based on the vehicle type, loaded GVW and conditional license fee if chosen
 
  # see current fee tables here: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
 
@@ -225,7 +225,7 @@ Rule: A Non-Resident Single Trip License permit is the fee rate is calculated us
      | vehicle sub-type | loaded gvw | conditional license fee option     | permit application fee |
      | Scraper          | 6000       | none                               | $18.00                 |
      | Scraper          | 6000       | Industrial (X-Plate Type) fee rate | $9.00                  |
-     | Truck Tractors   | 25000      | Farm Vehicle fee rate              | $109.00                |
+     | Truck Tractors   | 24400      | Farm Vehicle fee rate              | $109.00                |
      | Truck Tractors   | 25000      | none                               | $104.00                |
 
   Scenario: max fee
