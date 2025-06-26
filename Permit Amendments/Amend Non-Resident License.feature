@@ -49,12 +49,12 @@ Rule: staff can reduce duration for a single trip permit up to a maximum of 30 d
 Rule: staff can forward date to a maximum of 60 days from the date and time the amend is initiated
 
   Scenario: forward greater than 60 days
-    Given permit A has a start date of 05/01/2025
+    Given the current date is 05/01/2025
      When staff choose to amend the start date to 07/05/2025
      Then 07/05/2025 is not available
 
   Scenario: forward within 60 days
-    Given permit A has a start date of 05/01/2025
+    Given the current date is 05/01/2025
      When staff choose to amend the start date to 06/01/2025
      Then 06/01/2025 is available
 
@@ -79,27 +79,27 @@ Rule: staff can forward date to a maximum of 60 days from the date and time the 
        And the permit is expired     
 
   Scenario: forward date remains active
-    Given permit A has the following issued date details:
+    Given the following date details:
       | data               | issued data |
-      | Start Date         | 05/02/2025  |
+      | Current Date       | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
      When staff amend the start date to 05/05/2025
       Then the Permit Expiry Date is 05/10/2025
 
   Scenario: forward date forward expiry
-    Given permit A has the following issued date details:
+    Given the following date details:
       | data               | issued data |
-      | Start Date         | 05/02/2025  |
+      | Current Date       | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
      When staff amend the start date to 05/05/2025
       Then the Permit Expiry Date is 05/10/2025
 
   Scenario: forward date and reduce duration
-    Given permit A has the following issued date details:
+    Given the following date details:
       | data               | issued data |
-      | Start Date         | 05/02/2025  |
+      | Current Date       | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
      When staff amend the start date to 05/05/2025
@@ -107,9 +107,9 @@ Rule: staff can forward date to a maximum of 60 days from the date and time the 
       Then the Permit Expiry Date is 05/07/2025 
 
   Scenario: forward date and extend duration
-    Given permit A has the following issued date details:
+    Given the following date details:
       | data               | issued data |
-      | Start Date         | 05/02/2025  |
+      | Current Date       | 05/02/2025  |
       | Permit Duration    | 5           |
       | Permit Expiry Date | 05/07/2025  |
      When staff amend the start date to 05/05/2025

@@ -11,6 +11,24 @@ Auth Staff = PC, SA, TRAIN, CTPO
 Non Auth Staff = FIN, EO, HQA
 
 
+| Permit Type | New Application CV Client                   | Amend Application Staff                                 |
+| TROS        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| TROS        | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| TROW        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| TROW        | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| STOS        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| STOS        | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| MFP         | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| MFP         | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| STFR        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| STFR        | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| QRFR        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| QRFR        | Any-60 days from now (Editable - Staff)     | Same quarter as Start date-60 days from now (Editable - Staff)  |
+| NRSCV       | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| NRSCV       | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |
+| NRQCV       | Now-14 days from now (Editable - CV Client) | N/A                                                             |
+| NRQCV       | Any-60 days from now (Editable - Staff)     | Same quarter as Start date- 60 days from now (Editable - Staff) |
+
 Feature: Refund to multiple payment methods credit account
 
 Rule: credit account void and amend with refund permit pdf and receipt are always sent to the credit account holder

@@ -237,9 +237,9 @@ Rule: maximimum weight for farm vehicle is 24,400kg
   Scenario: 25,000 kg vehicle weight
      Given a user has chosen a vehicle sub-type of Truck Tractors
      And they have chosend farm vehicle fee rate in accordance with Commercial Transport Fees Regulation Item 2(d)
-     When they arrive at the "Review and Confirm Details" pa     Then they see "The maximum fee for a farm vehicle is Net weight may not exceed 24,400 kg for a farm vehicle"
+     When they arrive at the "Review and Confirm Details" pa     
+     Then they see "The maximum fee for a farm vehicle is Net weight may not exceed 24,400 kg for a farm vehicle"
       And the fee is calculated based on the maximum weight of 24,400 kg
-
 
 # below rules will soon be removed and saved as common in a single feature file
 @orv2-2818-10

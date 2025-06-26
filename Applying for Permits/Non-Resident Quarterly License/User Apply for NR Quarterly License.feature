@@ -41,7 +41,6 @@ Rule: Users may only input a power unit allowable for a Non-Resident Quarterly L
        | Country             |
        | Province / State    |
        | Vehicle Sub-type    |
-       | Licensed GVW (kg)   |
 
  Scenario: no input to mandatory fields 
      When they do not enter valid data into a <mandatory field>
