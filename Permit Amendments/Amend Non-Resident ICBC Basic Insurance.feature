@@ -44,107 +44,6 @@ Rule: staff can reduce duration for a single trip permit up to a maximum of 30 d
      When staff reduce the duration to 2 days
       Then the Permit Expiry Date is 05/04/2025
        And the permit remains active
-
-@orv2-4211-4
-Rule: staff can forward date to a maximum of 60 days from the date and time the amend is initiated
-
-  Scenario: forward greater than 60 days
-    Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date to 07/05/2025
-     Then 07/05/2025 is not available
-
-  Scenario: forward within 60 days
-    Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date to 06/01/2025
-     Then 06/01/2025 is available
-
-  Scenario: backdate causes expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 04/25/2025
-      Then the Permit Expiry Date is 04/30/2025
-       And the permit is expired       
-
-  Scenario: backdate remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/03/2025
-      Then the Permit Expiry Date is 05/08/2025
-       And the permit is expired     
-
-  Scenario: forward date remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date forward expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date and reduce duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff reduce duration to 2 days
-      Then the Permit Expiry Date is 05/07/2025 
-
-  Scenario: forward date and extend duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff extend duration to 20 days
-      Then the Permit Expiry Date is 05/25/2025 
-
-@orv2-4211-5     
-Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
-
-  Scenario: backdate greater than quarter
-   Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date to 03/29/2025
-     Then 03/29/2025 is not available
-
-  Scenario: back within quarter
-   Given permit A has a start date of 05/01/2025
-     When staff choose to amend the start date 
-     Then they can chose a maximum past start date of 04/01/2025
-
-@orv2-4211-11
-Rule: staff can backdate the start date of a single trip permit 
-
-@orv2-4211-6
-Rule: staff are notified when start date an/or expiry date are in the past
-
-   Scenario: on application form
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-      Then they see "Start date is in the past"
- 
-   Scenario: on review and confirm
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-       And continue to review and confirm
-      Then they see "Start date and/or expiry date is in the past"
      
 @orv2-4211-7
 Rule: staff can amend all vehicle information except vehicle type and recall an allowable vehicle from inventory
@@ -180,3 +79,16 @@ Rule: staff can change the third party liability
 Rule: if staff amend results in the NPV being equal to the CPV ($0 amend) they can continue to refund to multiple payment methods
 @orv2-4211-10
 Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
+
+# See Amend Permit Date Rules Staff:
+@orv2-4211-4
+Rule: staff can forward start date to a maximum of 60 days from the date and time the amend is initiated
+
+@orv2-4211-5     
+Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
+
+@orv2-4211-11
+Rule: staff can backdate the start date of a single trip permit 
+
+@orv2-4211-6
+Rule: staff are notified when start date an/or expiry date are in the past

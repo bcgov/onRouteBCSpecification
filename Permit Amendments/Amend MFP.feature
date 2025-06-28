@@ -6,194 +6,6 @@ staff = PC, SA, TRAIN, CTPO
 @orv2-4202-1
 Rule: staff can amend all contact information except company email
 
-@orv2-4202-2
-Rule: staff can extend the duration up to 7 days
-
-  Scenario: issued with 3 days
-    Given permit A has a start date of 05/02/2025
-      And a duration of 3 days
-     When staff amend permit A duration to 7 days
-     Then the end date is 05/09/2025
-
-  Scenario: issued with 7 days
-    Given permit A have a 7 day duration
-     When staff amend duration
-     Then they cannot add additional days
-      But they can reduce duration
-
-@orv2-4202-3
-Rule: staff can amend the start date of an issued or active permit
-
-  Scenario: backdate causes expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 04/25/2025
-      Then the Permit Expiry Date is 04/30/2025
-       And the permit is expired       
-
-  Scenario: backdate remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/03/2025
-      Then the Permit Expiry Date is 05/08/2025
-       And the permit is expired     
-
-  Scenario: forward date remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date forward expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date and reduce duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff reduce duration to 2 days
-      Then the Permit Expiry Date is 05/07/2025 
-
-  Scenario: forward date and extend duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff extend duration to 20 days
-      Then the Permit Expiry Date is 05/25/2025 
-
-@orv2-4202-4
-Rule: staff are notified when start date an/or expiry date are in the past
-
-   Scenario: on application form
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-      Then they see "Start date is in the past"
- 
-   Scenario: on review and confirm
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-       And continue to review and confirm
-      Then they see "Start date and/or expiry date is in the past"
-
-@orv2-4202-5
-Rule: staff can reduce the duration of an issued or active permit
-
-  Scenario: reduce issued duration expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit is expired
-
-  Scenario: reduce issued duration not expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit remains active
-
-@orv2-4202-6
-Rule: staff can amend the start date of an issued or active permit
-
-  Scenario: backdate causes expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 04/25/2025
-      Then the Permit Expiry Date is 04/30/2025
-       And the permit is expired       
-
-  Scenario: backdate remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/03/2025
-      Then the Permit Expiry Date is 05/08/2025
-       And the permit is expired     
-
-  Scenario: forward date remains active
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date forward expiry
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      Then the Permit Expiry Date is 05/10/2025
-
-  Scenario: forward date and reduce duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff reduce duration to 2 days
-      Then the Permit Expiry Date is 05/07/2025 
-
-  Scenario: forward date and extend duration
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff amend the start date to 05/05/2025
-      And staff extend duration to 20 days
-      Then the Permit Expiry Date is 05/25/2025 
-
-@orv2-4202-7
-Rule: staff are notified when start date an/or expiry date are in the past
-
-   Scenario: on application form
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-      Then they see "Start date is in the past"
- 
-   Scenario: on review and confirm
-     Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
-       And continue to review and confirm
-      Then they see "Start date and/or expiry date is in the past"
-
 @orv2-4202-8
 Rule: staff can amend all vehicle information except vehicle type
 
@@ -295,3 +107,32 @@ Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and
        | Current Permit Value | $100 |
        | New Permit Value     | $100 |
        | Total                | $0   |
+
+# See Amend Permit Date Rules Staff:
+@orv2-4202-5
+Rule: staff can reduce the duration of an issued or active permit
+@orv2-4202-6 
+Rule: staff can forward start date to a maximum of 60 days from today (current date and time the amend is initiated)
+@orv2-4202-7
+Rule: staff are notified when start date an/or expiry date are in the past
+@orv2-4202-4
+Rule: staff are notified when start date an/or expiry date are in the past
+@orv2-4202-3
+Rule: staff can amend the start date of an issued or active permit
+
+# Deprecated:
+
+# @orv2-4202-2
+# Rule: staff can extend the duration up to 7 days
+
+  Scenario: issued with 3 days
+    Given permit A has a start date of 05/02/2025
+      And a duration of 3 days
+     When staff amend permit A duration to 7 days
+     Then the end date is 05/09/2025
+
+  Scenario: issued with 7 days
+    Given permit A have a 7 day duration
+     When staff amend duration
+     Then they cannot add additional days
+      But they can reduce duration
