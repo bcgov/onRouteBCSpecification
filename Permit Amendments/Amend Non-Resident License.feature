@@ -7,45 +7,6 @@ Note: Non-resident License (Single Trip and QTRLY) amending permit applications 
 @orv2-4220-1
 Rule: staff can amend all contact information except company email
 
-@orv2-4220-2
-Rule: staff can extend duration up to the maximum 30 days for a single trip permit
-
-  Scenario: issued with 7 days
-    Given permit A has a start date of 05/02/2025
-      And a duration of 7 days
-     When staff amend permit A duration to 20 days
-     Then the end date is 05/22/2025
-
-  Scenario: issued with 30 days
-    Given permit A have a 30 day duration
-     When staff amend duration
-     Then they cannot add additional days
-      But they can reduce duration
-
-@orv2-4220-3
-Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit
-
-  Scenario: reduce issued duration expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit is expired
-
-  Scenario: reduce issued duration not expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit remains active
-
-
 @orv2-4220-7
 Rule: staff can amend all vehicle information except vehicle type and recall an allowable vehicle from inventory
 
@@ -201,7 +162,7 @@ Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and
        | New Permit Value     | $100 |
        | Total                | $0   |
 
-# See Amend Permit Date Rules Staff:
+# See Amend Permit Date and Duration Rules Staff:
 @orv2-4220-8
 Rule: staff can forward start date to a maximum of 60 days from today (current date and time the amend is initiated)
 @orv2-4220-9
@@ -210,3 +171,7 @@ Rule: staff can amend the start date within the calendar quarter for a qrtly per
 Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
 @orv2-4220-6
 Rule: staff are notified when start date an/or expiry date are in the past
+@orv2-4220-2
+Rule: staff can extend duration up to the maximum 30 days for a single trip permit
+@orv2-4220-3
+Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit

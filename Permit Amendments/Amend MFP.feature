@@ -108,7 +108,7 @@ Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and
        | New Permit Value     | $100 |
        | Total                | $0   |
 
-# See Amend Permit Date Rules Staff:
+# See Amend Permit Date and Duration Rules Staff:
 @orv2-4202-5
 Rule: staff can reduce the duration of an issued or active permit
 @orv2-4202-6 

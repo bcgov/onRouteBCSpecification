@@ -137,14 +137,17 @@ Rule: staff can reduce the duration of an issued or active STOS, STFR, NRSCV per
 
 Rule: staff can extend the duration of an issued or active STOS, STFR, NRSCV permit by Up to 30 days forward
 
-  Scenario: extend issued duration valid
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff extend the duration to 10 days
-      Then the Permit Expiry Date is 05/12/2025
+  Scenario: issued with 7 days
+    Given permit A has a start date of 05/02/2025
+      And a duration of 7 days
+     When staff amend permit A duration to 20 days
+     Then the end date is 05/22/2025
+
+  Scenario: issued with 30 days
+    Given permit A have a 30 day duration
+     When staff amend duration
+     Then they cannot add additional days
+      But they can reduce duration
 
 Rule: staff can extend the duration of an issued or active MFP permit by Up to 7 days forward
 

@@ -6,44 +6,6 @@ Note: Non-resident ICBC Basic Insurance (Single Trip and QTRLY) amending permit 
 
 @orv2-4211-1
 Rule: staff can amend all contact information except company email
-
-@orv2-4211-2
-Rule: staff can extend duration up to the maximum 30 days for a single trip permit
-
-  Scenario: issued with 7 days
-    Given permit A has a start date of 05/02/2025
-      And a duration of 7 days
-     When staff amend permit A duration to 20 days
-     Then the end date is 05/22/2025
-
-  Scenario: issued with 30 days
-    Given permit A have a 30 day duration
-     When staff amend duration
-     Then they cannot add additional days
-      But they can reduce duration
-
-@orv2-4211-3
-Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit
-
-  Scenario: reduce issued duration expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit is expired
-
-  Scenario: reduce issued duration not expired
-    Given permit A has the following issued date details:
-      | data               | issued data |
-      | Start Date         | 05/02/2025  |
-      | Permit Duration    | 5           |
-      | Permit Expiry Date | 05/07/2025  |
-     When staff reduce the duration to 2 days
-      Then the Permit Expiry Date is 05/04/2025
-       And the permit remains active
      
 @orv2-4211-7
 Rule: staff can amend all vehicle information except vehicle type and recall an allowable vehicle from inventory
@@ -77,18 +39,20 @@ Rule: staff can change the third party liability
 
 @orv2-4211-9
 Rule: if staff amend results in the NPV being equal to the CPV ($0 amend) they can continue to refund to multiple payment methods
+
 @orv2-4211-10
 Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 
 # See Amend Permit Date Rules Staff:
 @orv2-4211-4
 Rule: staff can forward start date to a maximum of 60 days from the date and time the amend is initiated
-
 @orv2-4211-5     
 Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
-
 @orv2-4211-11
 Rule: staff can backdate the start date of a single trip permit 
-
 @orv2-4211-6
 Rule: staff are notified when start date an/or expiry date are in the past
+@orv2-4211-2
+Rule: staff can extend duration up to the maximum 30 days for a single trip permit
+@orv2-4211-3
+Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit
