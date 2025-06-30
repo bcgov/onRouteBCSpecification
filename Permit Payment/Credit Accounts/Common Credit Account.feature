@@ -65,3 +65,12 @@ Rule: User permit payment receipt Payer Name is the credit account holder Compan
 @orv2-1801-3
 Rule: Permit payment receipt payment method is Credit Account
 
+
+Shopping Cart Module
+Credit limit - 1000
+Current Balance - 970
+Available Balance - 30
+Let’s say we have 2 TROS permits $30 each in the shopping cart
+We display the Credit Account option because it’s valid in both EGarms and TPS.
+When client tries to pay for both applications, it shouldn’t succeed as it will go above the credit limit. What error message must be displayed at the time to user?
+A generic payment error?

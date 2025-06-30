@@ -115,8 +115,6 @@ Rule: staff can reduce the duration of an issued or active permit
 Rule: staff can forward start date to a maximum of 60 days from today (current date and time the amend is initiated)
 @orv2-4202-7
 Rule: staff are notified when start date an/or expiry date are in the past
-@orv2-4202-4
-Rule: staff are notified when start date an/or expiry date are in the past
 @orv2-4202-3
 Rule: staff can amend the start date of an issued or active permit
 

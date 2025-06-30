@@ -2,22 +2,14 @@
 Feature: "Review and Confirm Details"
    As a PPC SA or PC I need to be able review the information I submitted in the amend permit application so that I can ensure it is accurate before completing.
 
+staff = PC, SA, TRAIN, CTPO
+CV Client = CA, PA
+
+Note: Term Oversize (TROS) amending permit applications share rules and scenarios with new applications (e.g., mandatory fields, province/sate error) and have common amend permit application features (e.g., reason for amendment, revision history). Only unique amending TROS 
+permit application rules are included in this feature file.
+
 @orv2-938-25
-Rule: PPC SA and PC must complete all mandatory fields
-
- Scenario: Amending permit application form complete
-     Given PPC Sa or PC has filled all mandatory fields in the amending permit application
-     When there are no error notifications in the amending permit application
-      And they choose to proceed to review and confirm details
-     Then they are directed to review and confirm details page
-
- Scenario: Amending permit application form incomplete
-     Given PPC SA or PC has not filled all mandatory fields in the amending permit application
-       And there are are error notifications in the amending permit application
-       And they choose to proceed to review and confirm details
-      Then they cannot continue 
-       And they see "This is a required field"
-       And incomplete mandatory fields are indicated
+Rule: staff must complete all mandatory fields
 
 @orv2-938-26
 Rule: Show completed amending permit application information
@@ -76,28 +68,10 @@ Rule: Show amending permit application fee
    | 360         | 270                  | 90  |
 
 @orv2-938-28  
-Rule: PPC SA or PC must complete attestations 
-
- Scenario: Attestations
-     Given a PPC SA or PC has continued from the "Permit Application" page
-     When they arrive at the "Review and Confirm Details" page
-     Then they see a list of attestations they are required to check in order to proceed to pay
-       | I confirm the information in this application is correct.                          |
-       | I confirm I am compliant with the appropriate policy for my selected commodity(s). |
-       | I confirm I am the registered owner (or lessee) of the vehicle being permitted.    |
-
- Scenario: Attestations warning
-     Given a PPC SA or PC is at the "Review and Confirm Details" page
-     When they do not check one or more attestations
-     Then they see "Checkbox selection is required"
-     And any unselected checkbox is outlined in red
+Rule: staffC must complete attestations 
 
 @orv2-938-29
-Rule: PPC SA or PC can edit an active amending permit application
+Rule: staffC can edit an active amending permit application
 
- Scenario: Edit Application
-     Given a PPC SA or PC is at the "Review abd Confirm Details" page
-     When they choose to edit the amending permit application
-     Then they are directed to the amending permit application page
 
 

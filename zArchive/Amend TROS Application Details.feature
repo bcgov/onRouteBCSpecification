@@ -1,14 +1,6 @@
 Feature: Amend TROS permit details
     As PPC staff I need to be able to amend an active TROS permit by changing the dates, so that I can assist clients. 
 
-@orv2-938-5
-Rule: PPC SA or PC cannot change the permit start date once the permit is active
-
-  Scenario: Attempt to change active permit start date
-    Given A permit is active 
-     When a PPC SA or PC chooses to change the start date
-     Then they are unable to change the start date
-
 @orv2-938-6
 Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments 
 
@@ -52,15 +44,7 @@ Rule: PPC SA and PC can change a TROS permit's duration in 30 day increments
         | 1y  |
       And 1y is equal to 1y 
 
-  Scenario: Permit duration calculation
-    Given the PPC SA or PC is at amend permit
-     When they select a <permit duration>
-     Then the <permit expiry date> displays a future date that is the <permit duration> minus 1 plus the <start date>
 
-     Examples:
-       | start date | permit duration | permit expiry date |
-       | 03/01/2023 | 30              | March 30, 2023     |
-       | 03/15/2023 | 30              | April 13, 2023     |
 
 @orv2-938-7
 Rule: Show commodity information 
@@ -77,4 +61,12 @@ Rule: Show commodity information
      And they are able to select multiple commodities descriptions
      And by default Gerneral Permit Conditions and Permit Scope and limitation are already selected for the user and cannot be unselected.
 
+# Deprecated:
 
+# @orv2-938-5
+# Rule: PPC SA or PC cannot change the permit start date once the permit is active
+
+  # Scenario: Attempt to change active permit start date
+    Given A permit is active 
+     When a PPC SA or PC chooses to change the start date
+     Then they are unable to change the start date

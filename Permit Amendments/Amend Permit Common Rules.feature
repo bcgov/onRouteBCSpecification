@@ -4,6 +4,24 @@ Feature:  Amend an issued or active permit
 staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
+Rule: staff must complete all mandatory fields
+
+ Scenario: Amending permit application form complete
+     Given staff has filled all mandatory fields in the amending permit application
+     When there are no error notifications in the amending permit application
+      And they choose to proceed to review and confirm details
+     Then they are directed to review and confirm details page
+
+ Scenario: Amending permit application form incomplete
+     Given staff has not filled all mandatory fields in the amending permit application
+       And there are are error notifications in the amending permit application
+       And they choose to proceed to review and confirm details
+      Then they cannot continue 
+       And they see "This is a required field"
+       And incomplete mandatory fields are indicated
+       
+Rule: staff can amend all contact information except company email
+
 @orv2-4140-1
 Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
@@ -293,7 +311,28 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
 @orv2-4015-23
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
 
+Rule: staff must complete attestations 
 
+ Scenario: Attestations
+     Given a staff has continued from the "Permit Application" page
+     When they arrive at the "Review and Confirm Details" page
+     Then they see a list of attestations they are required to check in order to proceed to pay
+       | I confirm the information in this application is correct.                          |
+       | I confirm I am compliant with the appropriate policy for my selected commodity(s). |
+       | I confirm I am the registered owner (or lessee) of the vehicle being permitted.    |
+
+ Scenario: Attestations warning
+     Given a staff is at the "Review and Confirm Details" page
+     When they do not check one or more attestations
+     Then they see "Checkbox selection is required"
+     And any unselected checkbox is outlined in red
+
+Rule: staff can edit an active amending permit application
+
+ Scenario: Edit Application
+     Given a PPC SA or PC is at the "Review abd Confirm Details" page
+     When they choose to edit the amending permit application
+     Then they are directed to the amending permit application page
 
 # @orv2-
 # Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
