@@ -1,4 +1,3 @@
-@e2e2
 Feature: Add edit and view Power Unit
     As a CV Client, I need to be able to add a new Power Unit to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
  
@@ -53,6 +52,21 @@ Scenario: Show mandatory fields
     | Vehicle Sub-type | This is a required field      |
     | Country          | This is a required field      |
 
+@orv2-3144-1
+Rule: Licensed GVW(kg) cannot exceed 63,500 for power units in vehicle inventory
+
+  Scenario: input 63,000 (kg)
+     When they input 63,000 (kg)
+     Then they can continue
+
+  Scenario: input 65,000 (kg)
+     When they input 65,000 (kg)
+     Then they see "Can't Exceed 63,500"
+      And they can not continue
+
+  Scenario: -number
+     When a user inputs -100
+     Then they see "Invalid Input"
     
 Feature: Add edit and view trailers
     As a CV Client, I need to be able to add a new trailer to my vehicle inventory, edit it and view its details so that I can use this vehicle in a permit application.
