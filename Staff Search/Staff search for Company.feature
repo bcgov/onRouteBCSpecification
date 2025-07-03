@@ -141,11 +141,6 @@ Rule: Staff can view company profile summary information in results
      When they choose to view company A profile
      Then they are directed to complete company A contact details 
 
-  Scenario: Doing business as does not exist
-    Given search results include companies that do not have a doing business as name
-     When the results are shown
-     Then the "Doing Business As (DBA)" header is not shown
-
   Scenario: Legacy client number does not exist
     Given search results include companies that do not have a legacy client number
      When the results are shown
@@ -196,3 +191,9 @@ Rule: Suspended companies are indicated in search results
      When staff search for abc co.
      Then they see abc co. search results
       And there is no "Suspended" label on abc co.
+
+# Deprecated scenarios:
+  Scenario: Doing business as does not exist
+    Given search results include companies that do not have a doing business as name
+     When the results are shown
+     Then the "Doing Business As (DBA)" header is not shown
