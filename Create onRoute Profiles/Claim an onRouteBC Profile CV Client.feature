@@ -4,7 +4,7 @@ Feature: CV Client an existing onRouteBC Profile
 User = basic or business 
 
 @orv2-481-1, @orv2-3322-1, @orv2-3228-9
-Rule: A user is provided the option to claim a profile with a challenge
+Rule: a user can claim a profile with a challenge
 
  Scenario: user credentials do match an existing onRouteBC profile
      Given user has not been invited
@@ -32,7 +32,7 @@ Rule: A user is provided the option to claim a profile with a challenge
         | option to view their profile |
       And they are sent a profile creation confirmation email
       #see orv2-477
-      
+
  Scenario: choose yes
      When a user chooses to claim an existing profile
      Then they are directed to claim an existing profile
@@ -118,7 +118,7 @@ Rule: Both "Permit No." and "Client No." are mandatory fields
        And "Client No." is indicated
        And they cannot proceed to the next step in the workflow
 
-@orv2-481-4, @orv2-3322-4, @orv2-3228-12 @orv2-4312
+@orv2-481-4, @orv2-3322-4, @orv2-3228-12 @orv2-4312-4
 Rule: A user can view and update their claimed "Client No." profile contact details
 
   Scenario: success info box
@@ -148,7 +148,7 @@ Rule: A user can view and update their claimed "Client No." profile contact deta
          | City                 | Yes      |
          | Postal Code/Zip Code | Yes      |
 
-@orv2-4312
+@orv2-4312-5
 Rule: Validate mandatory fields in the onRouteBC profile creation form
 
   Scenario: basic mandatory fields
@@ -180,7 +180,7 @@ Rule: Validate mandatory fields in the onRouteBC profile creation form
      Then they see "This is a required field" at each field with invalid data
       And fields without data are indicated
 
-@orv2-3228-12 @orv2-4312
+@orv2-3228-12 @orv2-4312-6
 Rule: email is address is not editable for business users
 
   Scenario: business user email not editable

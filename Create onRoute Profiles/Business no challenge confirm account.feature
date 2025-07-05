@@ -4,20 +4,6 @@ Feature: Business no challenge confirm existing onRouteBC profile
 first user = migrated business user that is the first user of the onRouteBC profile
 second+ user = migrated business user that is not the first user of the onRouteBC profile
 
-@orv2-1637-1, @orv2-3228-1
-Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
-
-  Scenario: first user
-    Given they successfully log in using their BCeID credentials
-     When they successfully complete the no challenge claim workflow
-     Then they are designated as an admin user
-
-  Scenario: second+ user
-    Given they successfully log in using their BCeID credentials
-      And they are not the first user
-     When they successfully complete the no challenge "My Information" workflow
-     Then they are designated as an admin user
-
 @orv2-1637-2, @orv2-3228-2
 Rule: A first user can claim a matching existing onRouteBC profile without a challenge
 
@@ -53,7 +39,7 @@ Rule: A second+ user can join a matching existing onRouteBC profile
       When they successfully log in using their BCeID credentials
       Then they are directed to the complete "My Information" workflow
 
-@orv2-1637-4, @orv2-3228-4 @orv2-4312
+@orv2-1637-4, @orv2-3228-4 @orv2-4312-7
 Rule: A first user can view and edit their claimed "Client No." profile contact details
 
   Scenario: choose finish creating profile info box
@@ -83,7 +69,7 @@ Rule: A first user can view and edit their claimed "Client No." profile contact 
          | City                 | Yes      |
          | Postal Code/Zip Code | Yes      |
 
-@ovr2-4312
+@ovr2-4312-8
 Rule: Validate mandatory fields in the onRouteBC profile creation form
 
   Scenario: business mandatory fields
@@ -100,7 +86,7 @@ Rule: Validate mandatory fields in the onRouteBC profile creation form
      Then they see "This is a required field" at each field with invalid data
       And fields without data are indicated
 
-@orv2-3228-12 @orv2-4312
+@orv2-3228-12 @orv2-4312-9
 Rule: email is address is not editable for business users
 
   Scenario: business user email not editable
@@ -142,6 +128,19 @@ Rule: A first users credential information replaces the "Client Name" and "Email
 Rule: A first business user is sent a profile creation confirmation email
 @orv2-481-15, @orv2-3228-8
 Rule: users that have successfully joined an onRouteBC Profile are associated to their BCeID username
+@orv2-1637-1, @orv2-3228-1
+Rule: users that successfully claim or join an existing onRouteBC profile are designated as CV Client Administrators (CA)
+
+  Scenario: first user
+    Given they successfully log in using their BCeID credentials
+     When they successfully complete the no challenge claim workflow
+     Then they are designated as an admin user
+
+  Scenario: second+ user
+    Given they successfully log in using their BCeID credentials
+      And they are not the first user
+     When they successfully complete the no challenge "My Information" workflow
+     Then they are designated as an admin user
 
 Rule: BCeID manages credential and system issues separate of onRouteBC
 

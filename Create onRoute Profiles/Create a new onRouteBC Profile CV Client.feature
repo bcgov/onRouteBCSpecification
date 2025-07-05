@@ -4,7 +4,7 @@ Feature: CV Client create a New onRouteBC Profile
 User = basic or business
 
 @orv2-369-1, @orv2-3322-7
-Rule: a user can choose to create a new onRouteBC profile or claim an existing profile
+Rule: a user can create a new onRouteBC profile
 
  Scenario: business username not in onRoute and credentials do not match a company in onRouteBC
      Given the username is not in onRouteBC
@@ -43,7 +43,7 @@ Rule: a user can choose to create a new onRouteBC profile or claim an existing p
       And they are sent a profile creation confirmation email
       #see orv2-477
 
-@orv2-4312
+@orv2-4312-1
 Rule: a user can view and edit their onRouteBC profile contact information
 
   Scenario: choose not to claim a profile info box
@@ -73,7 +73,7 @@ Rule: a user can view and edit their onRouteBC profile contact information
          | City                 | Yes      |
          | Postal Code/Zip Code | Yes      |
 
-@orv2-369-2, @orv2-3322-8 @orv2-4312
+@orv2-369-2, @orv2-3322-8 @orv2-4312-2
 Rule: Validate mandatory fields in the onRouteBC profile creation form
   
     Scenario: business mandatory fields
@@ -107,7 +107,7 @@ Rule: Validate mandatory fields in the onRouteBC profile creation form
      Then they see "This is a required field" at each field with invalid data
       And fields without valid data are indicated
 
-@orv2-3228-12 @orv2-4312
+@orv2-3228-12 @orv2-4312-3
 Rule: email is address is not editable for business users
 
   Scenario: business user email not editable
