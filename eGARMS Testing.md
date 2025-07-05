@@ -34,7 +34,8 @@
 6. WS0001 Change to Inactive
    1. Not accepted E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
 7. WS0360 Inactive + over limit
-   1. Set account in eGARMS to inactive - E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
+   1. Set account in eGARMS to inactive
+      1. E0624 CANNOT UPDATE THE ACTIVE INDICATOR WHEN BALANCE NOT EQUAL TO ZERO
 8. WS0017 Inactive + over limit
    1. Set account in eGARMS to inactive
    2. Soap receives 
@@ -47,7 +48,9 @@
    1. Is inactive E0002 - Weigh scale account is inactive - Closed in TPS?
       1. Staff update both eGARMS and TPS with close account
    2. Is hold E0003 - Weigh scale account on Hold - Hold in TPS?
+      1. Hold in TPS is not hold in eGARMS
    3. Is E1739 - Weigh scale account has exceeded negative allowed amount - over credit limit?
+      1. 
 12. Can we still send a transaction from onRoute to eGARMS when a return code is received?
    1. Post Transaction to eGARMS accounts
       1. likely won't accept until a payment is made
@@ -87,8 +90,28 @@
 - GARM connectivity information: [https://moti-imb.atlassian.net/browse/ORV2-4011](https://moti-imb.atlassian.net/browse/ORV2-4011 "https://moti-imb.atlassian.net/browse/orv2-4011")
 
 
-
 - TPS Test
 	- Julie has the same role as in TPS Office (Revenue Supervisor)
 - eGARMS Test
 	- TrishaB equivalent role in TPS Test (Revenue Supervisor) and eGARMS
+
+- we honour both systems and reflect the status either
+
+eGARMS Active>TPS Hold
+ onRouteBC Credit Account Hold
+eGARMS Hold>TPS Active
+ onRouteBC Credit Account Hold
+eGARMS Closed>TPS Active
+ onRouteBC Credit Account Closed
+eGARMS Active>TPS Closed
+ onRouteBC Credit Account Closed
+
+TPS Active>eGARMS I0001
+ onRouteBC Credit Account Active
+
+Any eGARMS error code trumps any other status
+
+eGARMS CL and CB $0>TPS CB $442>onRouteBC CB $442 and AC -$442
+onRouteBC CB $442> 
+
+CL - (CB from TPS) 
