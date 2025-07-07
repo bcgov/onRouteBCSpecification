@@ -162,12 +162,7 @@ Rule: Show credit account information
  
    Scenario: credit account closed view user
      When staff chooses to view credit account
-     Then they see the following information:
-       | information            | description                                |
-       | Closed                 | label describing the credit account status |
-       | Credit Account details | financial details of the credit account    |
-       | Credit Account Users   | table listing users of the credit account  |
-     And they cannot manage the account 
+     Then they have the option to create a credit account
 
   Scenario: credit account suspended view holder
      When staff chooses to view credit account
