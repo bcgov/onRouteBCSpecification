@@ -19,9 +19,9 @@ Rule: A cv client can have only one active credit account
      When 
      Then 
 
-Co A CA closed
-	- Co A user of Co B
-	- Fin sees Co A as user of Co B on Co A CA tab
+ Co A CA closed
+  - Co A user of Co B
+  - Fin sees Co A as user of Co B on Co A CA tab
 
 Rule: a cv client is assigned a credit account permanently
 

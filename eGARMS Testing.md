@@ -115,3 +115,14 @@ eGARMS CL and CB $0>TPS CB $442>onRouteBC CB $442 and AC -$442
 onRouteBC CB $442> 
 
 CL - (CB from TPS) 
+
+WS0001
+
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<PPABalance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tempuri.org/">
+<return_code>I0001</return_code>
+<account_balance>-11217</account_balance>
+<negative_limit>11217</negative_limit>
+<account_balance_timestamp>2017-03-08-12.02.03.878086</account_balance_timestamp>
+<message>Weigh scale account found </message>
+</PPABalance>

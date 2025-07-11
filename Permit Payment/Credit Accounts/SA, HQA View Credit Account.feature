@@ -62,7 +62,7 @@ Rule: Show credit account information
        | information                   | description                                        |
        | On Hold                       | label describing the credit account status         |
        | Credit Account Users          | table listing users of the credit account          |
-       | Credit Account details        | financial details of the credit account            |
+       | Credit Account details         | financial details of the credit account            |
  
    Scenario: credit account on hold view user
      When staff chooses to view credit account

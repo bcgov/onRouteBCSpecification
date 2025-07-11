@@ -124,7 +124,7 @@ Rule: hold/remove hold updates made in TPS/GARMS credit accounts update onRouteB
         | Status | "Hold Removed"                                 |     
 
 @ORV2-3495-7
-Rule: close update made in TPS/GARMS credit accounts closes onRouteBC credit account 
+Rule: close update made in TPS credit accounts closes onRouteBC credit account 
 
   Scenario: not closed verified
      When staff close TPS/GARMS credit account
@@ -203,3 +203,60 @@ Rule: close/reopen update made in TPS/GARMS credit account updates onRouteBC cre
 
 @orv2-3495-12
 Rule: PC, CTPO can see available credit on credit account holder and credit account user profiles
+
+Rule: hide credit account details when eGARMS is unavailable
+
+  Scenario: 
+    Given 
+     When 
+     Then 
+
+Rule: hide credit account details when eGARMS return code is E0001 (credit account not found)
+
+  Scenario: tps active
+     When FIN and users view credit account details
+      And eGARMS return code is E0001
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E0001 Credit Account Not Found"
+
+  Scenario: tps hold
+     When FIN and users view credit account details
+      And eGARMS return code is E0001
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E0001 Credit Account Not Found"
+
+  Scenario: tps closed
+    Given 
+     When 
+     Then 
+
+Rule: hide credit account details when eGARMS returns code is E0002 (credit account is inactive)
+
+  Scenario: tps active
+    Given 
+     When 
+     Then 
+
+  Scenario: tps hold
+    Given 
+     When 
+     Then 
+
+  Scenario: tps closed
+    Given 
+     When
+     Then
+
+Rule: show credit account details when eGARMS returns code is E1739 or E0004 (credit account has exceeded negative allowed amount)
+
+  Scenario: tps active
+     When FIN and users view credit account details
+      And eGARMS return code is E1739 or E0004
+     Then the credit account details are shown
+      And they see the following information:
+        | data             | description                                              |
+        | Credit Limit     | credit limit from eGARMS                                 |
+        | Credit Balance   | sum of the onRouteBC, eGARMS and TPS credit balance      |
+        | Available Credit | calculated by onRouteBC as credit balance - credit limit |
+
+Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit balance

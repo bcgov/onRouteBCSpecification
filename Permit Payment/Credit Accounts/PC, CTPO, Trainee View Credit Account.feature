@@ -121,3 +121,5 @@ Rule: Show credit account users
        | Doing Business As (DBA)    | the DBA of the credit account holder                  |
        | onRouteBC Client No.       | the onRouteBC Client No. of the credit account holder |
        | credit account designation | Account Holder                                        |
+
+Rule: PC, CTPO can see available credit on credit account holder and credit account user profiles
