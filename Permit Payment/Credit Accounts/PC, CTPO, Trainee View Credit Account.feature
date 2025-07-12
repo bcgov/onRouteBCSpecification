@@ -2,10 +2,10 @@ Feature: PC, CTPO, Trainee view credit account
 
 Staff = PC, CTPO, Trainee
 
-@orv2-2005-1
-Rule: Show option to view credit account information
+@orv2-2005-2 @orv2-3495-12
+Rule: staff can view credit account information for holders and users
 
-  Scenario: exists
+  Scenario: exists view holder or user
      When staff chooses to view credit account
      Then they see the option to view credit account
 
@@ -14,82 +14,79 @@ Rule: Show option to view credit account information
      Then they see the option to view credit account
       And they see "For Credit Accounts, please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" info box
 
-  Scenario: closed view holder
+  Scenario: holder closed view holder
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: on hold view holder
+  Scenario: holder on hold view holder
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: closed view user
+  Scenario: holder closed view user
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: on hold view user
+  Scenario: holder on hold view user
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-@orv2-2005-1a
-Rule: Show credit account information
-
-  Scenario: active view user
-     When staff chooses to view credit account
-     Then they see the following information:
-       | information            | description                               |
-       | Credit Account Users   | table listing users of the credit account |
-
-  Scenario: active view holder
+  Scenario: holder active view user
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                               |
+       | Available Credit     | credit account limit                      |
        | Credit Account Users | table listing users of the credit account |
 
-  Scenario: on hold view holder
+  Scenario: holder active view holder
      When staff chooses to view credit account
      Then they see the following information:
-       | information                   | description                                |
-       | On Hold                       | label describing the credit account status |
-       | Credit Account Users          | table listing users of the credit account  |
+       | information          | description                               |
+       | Available Credit     | credit account limit                      |
+       | Credit Account Users | table listing users of the credit account |
+
+  Scenario: holder on hold view holder
+     When staff chooses to view credit account
+     Then they see the following information:
+       | information          | description                               |
+       | Available Credit     | credit account limit                      |
+       | Credit Account Users | table listing users of the credit account |
  
-   Scenario: on hold view user
+   Scenario: holder on hold view user
      When staff chooses to view credit account
      Then they see the following information:
-       | information          | description                                |
-       | On Hold              | label describing the credit account status |
-       | Credit Account Users | table listing users of the credit account  |
+       | information          | description                               |
+       | Available Credit     | credit account limit                      |
+       | Credit Account Users | table listing users of the credit account |
 
   Scenario: closed view holder
      When staff chooses to view credit account
      Then they see the following information:
-       | information          | description                                |
-       | Closed               | label describing the credit account status |
-       | Credit Account Users | table listing users of the credit account  |
+       | information          | description                               |
+       | Available Credit     | credit account limit                      |
+       | Credit Account Users | table listing users of the credit account |
  
-   Scenario: closed view user
+   Scenario: holder closed view user
+     When staff chooses to view credit account
+     Then they see they see "For Credit Accounts, please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" info box
+
+  Scenario: holder suspended view holder
      When staff chooses to view credit account
      Then they see the following information:
-       | information                   | description  |
-       | Contact CVSE Revenue info box | instructions |
+       | information          | description                               |
+       | Available Credit     | credit account limit                      |
+       | Credit Account Users | table listing users of the credit account |
 
-  Scenario: suspended view holder
-     When staff chooses to view credit account
-     Then they see the following information:
-       | information                   | description                                |
-       | On Hold                       | label describing the credit account status |
-       | Credit Account Users          | table listing users of the credit account  |
-
-   Scenario: suspended view user
+   Scenario: holder suspended view user
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                                |
        | On Hold              | label describing the credit account status |
        | Credit Account Users | table listing users of the credit account  |
 
-@orv2-2005-2
+@orv2-2005-3
 Rule: Show onRouteBC generated unique credit account number
 
-@orv2-2005-3
+@orv2-2005-4
 Rule: Show the credit account designation
 
   Scenario: user
@@ -100,7 +97,7 @@ Rule: Show the credit account designation
      When staff are viewing a holder of a credit account
      Then they see "Account Holder"
 
-@orv2-2005-4
+@orv2-2005-5
 Rule: Show credit account users
 
   Scenario: credit account users exist
@@ -122,4 +119,5 @@ Rule: Show credit account users
        | onRouteBC Client No.       | the onRouteBC Client No. of the credit account holder |
        | credit account designation | Account Holder                                        |
 
+@orv2-3495-12
 Rule: PC, CTPO can see available credit on credit account holder and credit account user profiles

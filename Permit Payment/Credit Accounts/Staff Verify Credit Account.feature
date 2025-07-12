@@ -75,7 +75,7 @@ Rule: staff must input a reason for credit account verification
       And they cannot verify the credit account
 
 @ovr2-3821-8
-Rule: the account history is updated to when the account is verified
+Rule: the account history is updated when the account is verified
 
   Scenario: unverified account
     Given credit account A is not verified

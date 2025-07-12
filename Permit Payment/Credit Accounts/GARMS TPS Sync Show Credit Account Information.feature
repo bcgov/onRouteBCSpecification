@@ -1,4 +1,4 @@
-Feature: GARMS TPS Sync Show Credit Account Information
+Feature: GARMS TPS Sync Credit Account
 
 Staff = FIN
 User = CA, PC, SA, CTPO, HQA
@@ -201,16 +201,18 @@ Rule: close/reopen update made in TPS/GARMS credit account updates onRouteBC cre
       When 
       Then 
 
-@orv2-3495-12
-Rule: PC, CTPO can see available credit on credit account holder and credit account user profiles
 
-Rule: hide credit account details when eGARMS is unavailable
+@ovr2-4364-1
+Rule: hide credit account details for holders or users when eGARMS is unavailable
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+  Scenario: active view holder
+     Given cv client A is active
+     When FIN and users view cv client A holder or users
+      And eGARMS is unavailable
+     Then the credit account details are not shown
+      And they see the "eGARMS is unavailable Credit account is unavailble"
 
+@orv2-4364-2
 Rule: hide credit account details when eGARMS return code is E0001 (credit account not found)
 
   Scenario: tps active
@@ -226,10 +228,12 @@ Rule: hide credit account details when eGARMS return code is E0001 (credit accou
       And the they see the "eGARMS return code E0001 Credit Account Not Found"
 
   Scenario: tps closed
-    Given 
-     When 
-     Then 
+     When FIN and users view credit account details
+      And eGARMS return code is E0001
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E0001 Credit Account Not Found"
 
+@orv2-4364-3
 Rule: hide credit account details when eGARMS returns code is E0002 (credit account is inactive)
 
   Scenario: tps active
@@ -247,6 +251,7 @@ Rule: hide credit account details when eGARMS returns code is E0002 (credit acco
      When
      Then
 
+@orv2-4364-4
 Rule: show credit account details when eGARMS returns code is E1739 or E0004 (credit account has exceeded negative allowed amount)
 
   Scenario: tps active
@@ -259,4 +264,8 @@ Rule: show credit account details when eGARMS returns code is E1739 or E0004 (cr
         | Credit Balance   | sum of the onRouteBC, eGARMS and TPS credit balance      |
         | Available Credit | calculated by onRouteBC as credit balance - credit limit |
 
+@orv2-4364-5
 Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit balance
+
+@orv2-4364-6
+Rule: the credit account cannot be used as a payment method when eGARMS return code is E0001, E0002, E0003, E1739 or E0004, E9999

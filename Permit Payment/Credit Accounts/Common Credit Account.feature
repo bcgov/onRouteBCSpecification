@@ -3,7 +3,7 @@ Feature: Common credit account features
 cv client = CA, PA
 staff = SA, CTPO, PC, Trainee
 
-Rule: A cv client can have only one active credit account
+Rule: a cv client can have only one active credit account
 
   Scenario: company A credit account closed
      When fin chooses to add company A to company Bs credit account as a user
@@ -60,7 +60,7 @@ Rule: The credit account holder is sent copies of issued permit documents when p
       But they are not sent duplicate permit issuance email with attached permit and permit purchase receipt email with attached receipt pdf
 
 @orv2-1801-2
-Rule: User permit payment receipt Payer Name is the credit account holder Company Legal Name
+Rule: User permit payment receipt Payer Name is the credit account holder Client Name
 
 @orv2-1801-3
 Rule: Permit payment receipt payment method is Credit Account

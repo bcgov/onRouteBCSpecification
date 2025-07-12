@@ -3,17 +3,17 @@ Feature: CV Client CA view their credit account
 CV Client = CA
 
 @orv2-1999-1 @orv2-4049-1
-Rule: Show credit account information
+Rule: cv client can view their credit account information
 
-  Scenario: credit account exists
+  Scenario: exists
      When a cv client chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account does not exist
+  Scenario: does not exist
      When a cv client chooses to view credit account
      Then they do not see the option to view credit account
 
-   Scenario: credit account closed
+   Scenario: closed
      When a cv client chooses to view credit account
      Then they see the following information:
        | information                   | description                                |
@@ -21,7 +21,7 @@ Rule: Show credit account information
        | Credit Account Users          | table listing users of the credit account  |
        | Contact CVSE Revenue info box | instructions                               |
 
-  Scenario: credit account on hold
+  Scenario: on hold
      When a cv client chooses to view credit account
      Then they see the following information:
        | information                   | description                                |
