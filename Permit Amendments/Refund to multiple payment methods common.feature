@@ -238,9 +238,6 @@ Rule: Staff must input a refund tran id (if required) for a chosen transaction a
 @orv2-2816-9 
 Rule: Refund tran id is unavailable when cheque is the refund payment method
 
-@orv2-2004
-Rule: Refund tran id is unavailable for credit account historical transactions
-
 @orv2-2816-10
 Rule: Refund tran id is cleared when cheque refund is chosen
 
@@ -372,3 +369,8 @@ Rule: total refund due = $<payment total> on generated permit payment receipt PD
 
 Rule: cancel finish refund directs staff to page they initiated the action from
 
+Rule: transaction history items are deselected by default when staff are directed to finish
+
+Rule: staff cannot input anything into transaction history table at finish until a historical transaction is chosen
+
+free flag change scenario

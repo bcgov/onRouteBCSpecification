@@ -29,4 +29,6 @@ Rule: cheque refund cannot be unchosen for cheque, cash or GA historical transac
      Then cheque cannot be unchosen for GA historical transaction 1
 
 @orv2-4535-4
-Rule GA payment historical transactions will always show a provider tran id that was inputted manually by staff at the time of purchase
+Rule: GA payment historical transactions will always show a provider tran id that was inputted manually by staff at the time of purchase
+
+Rule: GA payment will always show a provider tran id
