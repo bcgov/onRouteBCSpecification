@@ -267,8 +267,8 @@ Rule: show credit account details when eGARMS returns code is E1739 or E0004 (cr
         | Credit Balance   | sum of the onRouteBC, eGARMS and TPS credit balance      |
         | Available Credit | calculated by onRouteBC as credit balance - credit limit |
 
-  Scenario: tps hold
-     When FIN and users view credit account details
+  Scenario: tps hold FIN, SA and HQA
+     When FIN, SA and HQA view credit account details
       And eGARMS return code is E1739 or E0004
      Then the credit account details are shown
       And they see the following information:
@@ -277,8 +277,16 @@ Rule: show credit account details when eGARMS returns code is E1739 or E0004 (cr
         | Credit Balance   | sum of the onRouteBC, eGARMS and TPS credit balance      |
         | Available Credit | calculated by onRouteBC as credit balance - credit limit |
 
-  Scenario: tps closed
-     When FIN and users view credit account details                   
+  Scenario: tps hold PC, CTPO
+     When PC, CTPO view credit account details
+      And eGARMS return code is E1739 or E0004
+     Then the credit account details are shown
+      And they see the following information:
+        | data             | description                                              |
+        | Available Credit | calculated by onRouteBC as credit balance - credit limit |
+
+  Scenario: tps closed FIN, SA and HQA
+     When FIN, SA and HQA view credit account details                   
       And eGARMS return code is E1739 or E0004
      Then the credit account details are shown
       And they see the following information:
@@ -287,6 +295,27 @@ Rule: show credit account details when eGARMS returns code is E1739 or E0004 (cr
         | Credit Balance   | sum of the onRouteBC, eGARMS and TPS credit balance      |
         | Available Credit | calculated by onRouteBC as credit balance - credit limit |
 
+  Scenario: tps closed PC, CTPO
+     When PC, CTPO view credit account details                   
+      And eGARMS return code is E1739 or E0004
+     Then the credit account details are shown
+      And they see the following information:
+        | data             | description                                              |
+        | Available Credit | calculated by onRouteBC as credit balance - credit limit |
+
+@orv2-4364-7
+Rule: CA cannot see credit account details when eGARMS returns code is E1739 or E0004 (credit account has exceeded negative allowed amount)
+
+  Scenario: tps hold CA
+     When CA view credit account details
+      And eGARMS return code is E1739 or E0004
+     Then the credit account details are not shown
+
+  Scenario: tps closed CA
+     When CA view credit account details                   
+      And eGARMS return code is E1739 or E0004
+     Then the credit account details are not shown
+     
 @orv2-4364-5
 Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit balance
 

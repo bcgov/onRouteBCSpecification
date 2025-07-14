@@ -46,8 +46,12 @@ Rule: credit account void and amend ($0 or refund) generated permit pdf and rece
       | credit account user - additional email (if used) | amend permit pdf, receipt pdf |
       | credit account holder - company email            | amend permit pdf, receipt pdf |     
 
-we send copies of permit and receipt pdf to the credit account holder for:
-new purchase
-void
+@orv2-2004-3
+Rule: refunds reduce credit account current balance immediately
+
+# Notes:
+# we send copies of permit and receipt pdf to the credit account holder for:
+# new purchase
+# void
 # amend with refund
 # $0 amend

@@ -75,12 +75,13 @@ Rule: User permit payment receipt Payer Name is the credit account holder Client
 @orv2-1801-3
 Rule: Permit payment receipt payment method is Credit Account
 
+Rule: purchase total fee that is greater than the available credit are not allowed
 
-Shopping Cart Module
-Credit limit - 1000
-Current Balance - 970
-Available Balance - 30
-Let’s say we have 2 TROS permits $30 each in the shopping cart
-We display the Credit Account option because it’s valid in both EGarms and TPS.
-When client tries to pay for both applications, it shouldn’t succeed as it will go above the credit limit. What error message must be displayed at the time to user?
-A generic payment error?
+  Scenario: credit account payment exceeds available credit
+    Given the credit account holder has a credit limit of $1000
+     And the current balance is $970
+     And the available balance is $30
+     And there are 2 TROS permits of $30 each in the shopping cart
+     When the client tries to pay for both applications using the credit account
+     Then the payment should not succeed
+      And they see "Transaction failed. Credit Account unavailable."
