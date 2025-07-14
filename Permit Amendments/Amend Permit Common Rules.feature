@@ -1,6 +1,7 @@
 Feature:  Amend an issued or active permit 
    As staff I need to be able to amend an issued or active permit by changing the vehicle plate, vehicle and dates, so that I can assist CV Clients.
 
+auth staff = SA
 staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
@@ -310,6 +311,19 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
 
 @orv2-4015-23
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
+
+@orv2-4845-1
+Rule: if amend results in a credit (NPV is less than CPV) then only SA can continue to refund to multiple payment methods
+
+  Scenario: NPV less than CPV PC, Train, CTPO
+    Given the NPV is less than CPV
+     When PC, Train, CTPO choose to continue at review and confirm
+     Then they see "Authorization Required Your changes have been saved Amending Permit #: P2-00011018-750 This amendment results in a refund. Note the Amending Permit # and inform authorized staff to process the refund. Exit"
+
+  Scenario: NPV less than CPV PC, Train, CTPO warning continue
+    Given PC, Train, CTPO are at authorization required warning modal
+     When they choose to exit
+     Then they are directed to the location they initiated the amendment action from
 
 Rule: staff must complete attestations 
 

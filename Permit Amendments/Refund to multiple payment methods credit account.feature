@@ -1,12 +1,13 @@
-Feature: Refund to multiple payment methods cash, cheque or GA
+Feature: Refund to multiple payment credit accounts
 
 Staff = SA
 
 Note: See common refund to multiple payment methods features that apply to this feature. Where users are directed to refund to multiple payment methods from the void workflow refer to void permit feature for related rules and behaviour.
 
-@orv2-2004
+@orv2-2004-1
 Rule: Refund tran id is unavailable for credit account historical transactions
 
+@orv2-2004-2
 Rule: credit account void and amend with refund generated permit pdf and receipt are always sent to the credit account holder
 
   Scenario: credit account holder
@@ -18,3 +19,4 @@ Rule: credit account void and amend with refund generated permit pdf and receipt
     Given 
      When 
      Then 
+

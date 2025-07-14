@@ -8,7 +8,7 @@ NOTE: Only some permits (e.g., MFP, STOW, NR License) can be amended such that i
     - amend with refund
  Where users are directed to refund to multiple payment methods from the void workflow refer to void permit feature for related rules and behaviour.
 
-@orv2-2816-1 @orv2-2004
+@orv2-2816-1
 Rule: Show total refund due (TRD)
 
   Scenario: no fee permit reduce 
@@ -31,7 +31,7 @@ Rule: Show total refund due (TRD)
      When staff complete a void
      Then they see $100
 
-@orv2-2816-2 @orv2-2004
+@orv2-2816-2
 Rule: Show current permit value (CPV)
 
   Scenario: no fee permit reduce 
@@ -54,7 +54,7 @@ Rule: Show current permit value (CPV)
      When staff complete a void
      Then they see $100
 
-@orv2-2816-3 @orv2-2004
+@orv2-2816-3
 Rule: Show new permit value (NPV)
 
   Scenario: no fee permit reduce 
@@ -77,7 +77,7 @@ Rule: Show new permit value (NPV)
      When staff complete a void
      Then they see $100
 
-@orv2-2816-4 @orv2-2004
+@orv2-2816-4
 Rule: Show historical financial transaction information for the amending/void permit application
 
  Scenario: Previous financial transactions exist
@@ -99,9 +99,10 @@ Rule: Show historical financial transaction information for the amending/void pe
        | P2-00408617-873     | Cheque           |                  | $30.00 |
        | P2-00408617-873-A01 | Web - VISA       | 12345678         | $50.00 |
        | P2-00408617-873-A02 | Cash             |                  | $20.00 |
-       | P2-00408617-873-A03 | PoS - Mastercard | 87654321         | $10.00 |               
+       | P2-00408617-873-A03 | PoS - Mastercard | 87654321         | $10.00 |   
+       | P2-00408617-873-A04 | Credit Account   |                  | $5.00  |            
 
-@orv2-2816-5 @orv2-2004
+@orv2-2816-5
 Rule: Staff can choose one or more credit (positive) historical transactions to refund 
 
   Scenario: arrive
@@ -148,7 +149,7 @@ Rule: Staff can choose one or more credit (positive) historical transactions to 
        | Refund Tran ID                        |
        | Cheque Refund                         |
 
-@orv2-2816-15 @orv2-2004
+@orv2-2816-15
 Rule: Deselecting a historical transaction(s) to refund clears any user input
 
   Scenario: input in amount and refund tran ID
@@ -173,7 +174,7 @@ Rule: Deselecting a historical transaction(s) to refund clears any user input
      When a user chooses not to use the historical transaction A
      Then 12345 is deleted from Refund Tran ID
 
-@orv2-2816-6 @orv2-2004
+@orv2-2816-6
 Rule: Refund amount(s) inputted by Staff must equal the total refund due
 
   Scenario: equal on 1 chosen historical transaction
@@ -333,17 +334,6 @@ Rule: A refund transaction(s) is saved for each completed historical transaction
       When they choose to refund by cheque
       Then only refund by cheque is indicated as a refund method
 
-# dupe?
-@orv2-938-19 @orv2-2004
-Rule: Input mandatory transaction id if required
-
-   Scenario: Do not input transaction ID
-     Given the PPC SA has chosen to refund to the previous payment method
-      When they do not input a transaction ID
-       And they attempt to finish
-      Then they see "This is a required field"
-       And they cannot finish
-
 @orv2-2816-16
 Rule: Maximum 15 characters allowed in Transaction ID
 
@@ -373,4 +363,4 @@ Rule: transaction history items are deselected by default when staff are directe
 
 Rule: staff cannot input anything into transaction history table at finish until a historical transaction is chosen
 
-free flag change scenario
+# free flag change scenarios

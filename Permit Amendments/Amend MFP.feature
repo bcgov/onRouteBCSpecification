@@ -1,6 +1,7 @@
 Feature: Amend Motive Fuel Permit
 Amend Motive Fuel Permit (MFP) feature contains rules and scenarios specific to amending a MFP. 
 
+Auth staff = SA
 staff = PC, SA, TRAIN, CTPO
 
 @orv2-4202-1
@@ -52,7 +53,7 @@ Rule: if staff amend results in a debit (NPV is greater than CPV) they can add t
      And they can continue to refund to multiple payment methods
 
 @orv2-4202-12
-Rule: if staff amend results in a credit (NPV is less than CPV) they can continue to refund to multiple payment methods
+Rule: if amend results in a credit (NPV is less than CPV) then only SA can continue to refund to multiple payment methods
 
   Scenario: total distance reduced above max
     Given the CPV is $140 (max MFP fee)
@@ -61,19 +62,29 @@ Rule: if staff amend results in a credit (NPV is less than CPV) they can continu
      Then the NPV is $140 ($0 amend)
       And they can continue to refund to multiple payment methods
 
-  Scenario: total distance reduced above min
+  Scenario: NPV less than CPV PC, Train, CTPO
+    Given the NPV is less than CPV
+     When PC, Train, CTPO choose to continue
+     Then they see "Authorization Required Your changes have been saved Amending Permit #: P2-00011018-750 This amendment results in a refund. Note the Amending Permit # and inform authorized staff to process the refund. Exit"
+
+  Scenario: NPV less than CPV PC, Train, CTPO warning continue
+    Given PC, Train, CTPO are at authorization required warning modal
+     When they choose to exit
+     Then they are directed to the location they initiated the amendment action from
+
+  Scenario: total distance reduced above min SA
     Given the CPV is $100
       And the total km is 1429
      When staff reduce total distance to 1200 km
      Then the NPV is $84
-      And they can continue to refund to multiple payment methods
+      And SA can continue to refund to multiple payment methods
 
-  Scenario: total distance reduced below min
+  Scenario: total distance reduced below min SA
   Given the CPV is $100
       And the total km is 1429
      When staff reduce total distance to 130 km
      Then the NPV is $10 (min MFP fee)
-      And they can continue to refund to multiple payment methods
+      And SA can continue to refund to multiple payment methods
 
 @orv2-4202-13
 Rule: if staff amend results in the NPV being equal to the CPV they can continue to refund to multiple payment methods

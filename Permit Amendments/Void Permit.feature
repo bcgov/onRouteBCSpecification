@@ -310,14 +310,14 @@ Rule: An issued or active permit issued under a no fee designation maintains a $
      When staff remove ABC Co. no fee designation
      Then permit A has a $0 fee
 
-@orv2-2004
+
 Rule: show permit and receipt recipient email addressed on finish voiding
 
  Send Permit and Receipt to
  Company Email: info@bandstratransport.com/
  Additional Email: craig@bandstratransport.com
 
-@orv2-2004
+
 Rule: show reason for voiding on finish voiding
 
  Reason for Voiding
