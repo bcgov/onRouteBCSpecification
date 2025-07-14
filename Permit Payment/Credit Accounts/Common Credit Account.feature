@@ -42,22 +42,32 @@ Rule: Choosing credit account as the payment method is indicated
 Rule: The credit account holder is sent copies of issued permit documents when purchased by a credit account user
 
   Scenario: cv client purchases
-    Given cv client a is the holder
-     And cv client b is the user
-     When cv client b purchases using the credit account
-     Then the permit issuance email with attached permit and permit purchase receipt email with attached receipt pdf are sent to cv client a company email address
+    Given cv client A is the holder
+     And cv client B is the user
+     When cv client B purchases using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client B and cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client B - company email              | amend permit pdf, receipt pdf |
+      | cv client B - additional email (if used) | amend permit pdf, receipt pdf |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
 
-  Scenario: staff purchases for user
-    Given cv client a is the holder
-     And cv client b is the user
-     When staff purchase on behalf of cv client b using the credit account
-     Then the permit issuance email with attached permit and permit purchase receipt email with attached receipt pdf are sent to cv client a company email address
+  Scenario: staff purchase user
+    Given cv client A is the holder
+     And cv client B is the user
+     When staff purchase on behalf of cv client B using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client B and cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client B - company email              | amend permit pdf, receipt pdf |
+      | cv client B - additional email (if used) | amend permit pdf, receipt pdf |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
 
-  Scenario: staff purchases for holder
-    Given cv client a is the holder
-     When staff purchase on behalf of cv client a using the credit account
-     Then the permit issuance email with attached permit and permit purchase receipt email with attached receipt pdf are sent to cv client a company email address
-      But they are not sent duplicate permit issuance email with attached permit and permit purchase receipt email with attached receipt pdf
+  Scenario: staff purchase holder
+    Given cv client A is the holder
+     When staff purchase on behalf of cv client A using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
+      | cv client A - additional email (if used) | amend permit pdf, receipt pdf |
 
 @orv2-1801-2
 Rule: User permit payment receipt Payer Name is the credit account holder Client Name
