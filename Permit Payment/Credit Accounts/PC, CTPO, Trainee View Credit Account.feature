@@ -58,7 +58,7 @@ Rule: staff can view credit account information for holders and users
        | Available Credit     | credit account limit                      |
        | Credit Account Users | table listing users of the credit account |
 
-  Scenario: closed view holder
+  Scenario: holder closed view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information          | description                               |

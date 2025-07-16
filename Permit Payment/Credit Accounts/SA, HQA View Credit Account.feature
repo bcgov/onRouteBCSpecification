@@ -42,29 +42,29 @@ Rule: Show credit account information
      When staff chooses to view credit account
      Then they see the option to view credit account
 
-  Scenario: credit account active view user
+  Scenario: holder active view user
      When staff chooses to view credit account
      Then they see the following information:
        | information            | description                               |
        | Credit Account Users   | table listing users of the credit account |
        | Credit Account details | financial details of the credit account   |
 
-  Scenario: credit account active view holder
+  Scenario: holder active view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information            | description                               |
        | Credit Account Users   | table listing users of the credit account |
        | Credit Account details | financial details of the credit account   |
 
-  Scenario: credit account on hold view holder
+  Scenario: holder on hold view holder
      When staff chooses to view credit account
      Then they see the following information:
-       | information                   | description                                        |
-       | On Hold                       | label describing the credit account status         |
-       | Credit Account Users          | table listing users of the credit account          |
-       | Credit Account details         | financial details of the credit account            |
+       | information            | description                                |
+       | On Hold                | label describing the credit account status |
+       | Credit Account Users   | table listing users of the credit account  |
+       | Credit Account details | financial details of the credit account    |
  
-   Scenario: credit account on hold view user
+   Scenario: holder on hold view user
      When staff chooses to view credit account
      Then they see the following information:
        | information            | description                                |
@@ -72,7 +72,7 @@ Rule: Show credit account information
        | Credit Account details | financial details of the credit account    |
        | Credit Account Users   | table listing users of the credit account  |
 
-  Scenario: credit account closed view holder
+  Scenario: holder closed view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description                                        |
@@ -80,11 +80,11 @@ Rule: Show credit account information
        | Credit Account Users          | table listing users of the credit account          |
        | Credit Account details        | financial details of the credit account            |
  
-   Scenario: credit account closed view user
+   Scenario: holder closed view user
      When staff chooses to view credit account
      Then they see "For Credit Accounts, please contact CVSE Revenue. Phone: (250) 952-0422 or Email: isfinance@gov.bc.ca" info box
 
-  Scenario: credit account suspended view holder
+  Scenario: holder suspended view holder
      When staff chooses to view credit account
      Then they see the following information:
        | information            | description                                |
@@ -92,7 +92,7 @@ Rule: Show credit account information
        | Credit Account details | financial details of the credit account    |
        | Credit Account Users   | table listing users of the credit account  |
  
-   Scenario: credit account suspended view user
+   Scenario: holder suspended view user
      When staff chooses to view credit account
      Then they see the following information:
        | information                   | description                                        |
