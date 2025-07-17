@@ -210,7 +210,7 @@ Rule: hide credit account details for holders or users when eGARMS is unavailabl
      When FIN and users view cv client A holder or users
       And eGARMS is unavailable
      Then the credit account details are not shown
-      And they see the "eGARMS is unavailable Credit account is unavailble"
+      And they see "eGARMS is unavailable Credit account is unavailble"
 
 @orv2-4364-2
 Rule: hide credit account details when eGARMS return code is E0001 (credit account not found)
@@ -308,3 +308,25 @@ Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit bala
 
 @orv2-4364-6
 Rule: the credit account cannot be used as a payment method when eGARMS return code is E0001, E0002, E0003, E1739 or E0004, E9999
+
+Rule: credit account transactions are sent to eGARMS
+
+  Scenario: payment transaction
+    Given the TPS/GARMS credit account A is active
+     When staff make a payment transaction in onRouteBC
+     Then the transaction is sent to eGARMS
+      And the transaction is recorded in the TPS/GARMS credit account A
+
+  Scenario: refund transaction
+    Given the TPS/GARMS credit account A is active
+     When staff make a refund transaction in onRouteBC
+     Then the transaction is sent to eGARMS
+      And the transaction is recorded in the TPS/GARMS credit account A
+
+Rule: refunds to closed credit accounts are sent to eGARMS as Cash
+
+  Scenario: refund to closed credit account
+    Given the TPS/GARMS credit account A is closed
+     When staff make a refund transaction in onRouteBC
+     Then the transaction is sent to eGARMS as Cash
+      And the transaction is not recorded in the TPS/GARMS credit account A
