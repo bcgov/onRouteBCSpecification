@@ -19,6 +19,14 @@ Rule: credit account void and amend ($0 or refund) generated permit pdf and rece
       | credit account holder - company email              | amend permit pdf, receipt pdf |
       | credit account holder - additional email (if used) | amend permit pdf, receipt pdf |
 
+  Scenario: credit account holder closed
+    Given permit A is being amended
+     When staff finish refund to multiple payment methods for permit A
+     Then the amend permit pdf and receipt pdf are sent to the credit account holder as follows:
+      | email address                                      | pdfs sent to email address    |
+      | credit account holder - company email              | amend permit pdf, receipt pdf |
+      | credit account holder - additional email (if used) | amend permit pdf, receipt pdf |
+
   Scenario: credit account holder refund amend
     Given permit A is being amended
       And it has a refund 
@@ -46,8 +54,6 @@ Rule: credit account void and amend ($0 or refund) generated permit pdf and rece
       | credit account user - additional email (if used) | amend permit pdf, receipt pdf |
       | credit account holder - company email            | amend permit pdf, receipt pdf |     
 
-# permit uses multiple credit accounts?
-
 @orv2-2004-3
 Rule: completed refunds reduce credit account current balance immediately
 
@@ -59,9 +65,6 @@ Rule: cheque refund is the only option available for refunding to a credit accou
 
 @orv2-2004-6
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
-
-
-
 
 
 # Notes:
