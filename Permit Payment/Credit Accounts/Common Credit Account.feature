@@ -2,6 +2,7 @@ Feature: Common credit account features
 
 cv client = CA, PA
 staff = SA, CTPO, PC, Trainee
+user = CA, PA, PC, SA, TRAIN, FIN, CTPO
 
 Rule: a cv client can have only one active credit account
 
@@ -75,7 +76,7 @@ Rule: User permit payment receipt Payer Name is the credit account holder Client
 @orv2-1801-3
 Rule: Permit payment receipt payment method is Credit Account
 
-Rule: purchase total fee that is greater than the available credit are not allowed
+Rule: purchase total fee that is greater than the available credit is not allowed
 
   Scenario: credit account payment exceeds available credit
     Given the credit account holder has a credit limit of $1000
@@ -85,3 +86,44 @@ Rule: purchase total fee that is greater than the available credit are not allow
      When the client tries to pay for both applications using the credit account
      Then the payment should not succeed
       And they see "Transaction failed. Credit Account unavailable."
+
+@orv2-4912-1
+Rule: credit account payment is not allowed when the credit account is different than the one used for the first issuance of the permit
+
+  Scenario: 2 items in cart
+    Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user tries to pay for both applications using the credit account
+     Then the payment should not succeed
+      And they see "Credit Account mismatch. One or more of the selected items use a different credit account from the currently active credit account."
+
+  Scenario: 1 item in cart
+     Given a user is at the cart with 1 item selected
+     And their current credit account is WS0001
+     And the item is permit A issued with credit account WS0002
+     When the user tries to pay for the application using the credit account
+     Then the payment should not succeed
+      And they see "Credit Account mismatch. One or more of the selected items use a different credit account from the currently active credit account."
+
+  Scenario: 2 items in cart invalid deslected
+     Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user deselects permit B
+      And tries to pay for permit A only using the credit account
+     Then the payment should succeed
+
+  Scenario: 2 items in cart pay using credit card
+     Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user chooses credit card as the payment method
+      And tries to pay for both applications using the credit card
+     Then the payment should succeed
+  
+
+

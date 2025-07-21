@@ -60,6 +60,16 @@ Rule: completed refunds reduce credit account current balance immediately
 @orv2-2004-4
 Rule: show credit account status label on historical transactions if applicable
 
+  Scenario: closed
+    Given 
+     When 
+     Then 
+
+  Scenario: on hold
+    Given 
+     When 
+     Then 
+
 @orv2-2004-5
 Rule: cheque refund is the only option available for refunding to a credit account historical transaction when the credit account is closed
 
