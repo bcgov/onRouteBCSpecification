@@ -309,6 +309,7 @@ Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit bala
 @orv2-4364-6
 Rule: the credit account cannot be used as a payment method when eGARMS return code is E0001, E0002, E0003, E1739 or E0004, E9999
 
+@orv2-2004-6
 Rule: credit account transactions are sent to eGARMS
 
   Scenario: payment transaction
@@ -323,6 +324,7 @@ Rule: credit account transactions are sent to eGARMS
      Then the transaction is sent to eGARMS
       And the transaction is recorded in the TPS/GARMS credit account A
 
+@orv2-2004-7
 Rule: refunds to closed credit accounts are sent to eGARMS as Cash
 
   Scenario: refund to closed credit account
