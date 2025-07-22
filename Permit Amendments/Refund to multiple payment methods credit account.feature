@@ -61,21 +61,42 @@ Rule: completed refunds reduce credit account current balance immediately
 Rule: show credit account status label on historical transactions if applicable
 
   Scenario: closed
-    Given 
-     When 
-     Then 
+    Given permit A has a credit account historical transaction
+     And the credit account is closed
+     When staff view permit A historical transactions
+     Then the credit account status label is shown as "Closed" for permit A
 
   Scenario: on hold
-    Given 
-     When 
-     Then 
+    Given permit A has an on hold credit account historical transaction
+     And the credit account is on hold
+     When staff view permit A historical transactions
+     Then the credit account status label is shown as "On Hold" for permit A
+
+  Scenario: active
+    Given permit A has an active credit account historical transaction
+     And the credit account is active
+     When staff view permit A historical transactions
+     Then the credit account status label is not shown for permit A
 
 @orv2-2004-5
-Rule: cheque refund is the only option available for refunding to a credit account historical transaction when the credit account is closed
-
-@orv2-2004-6
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
 
+  Scenario: closed credit account historical transaction
+    Given permit A has a closed credit account historical transaction
+     When staff select permit A historical transactions
+     Then cheque refund is selected by default and cannot be deselected
+
+  Scenario: active credit account historical transaction
+    Given permit A has an active credit account historical transaction
+     When staff select permit A historical transaction
+     Then cheque refund is not selected by default
+      But cheque refund can be optionally selected
+
+  Scenario: on hold credit account historical transaction
+    Given permit A has an on hold credit account historical transaction
+     When staff select permit A historical transaction
+     Then cheque refund is not selected by default
+      But cheque refund can be optionally selected
 
 # Notes:
 # we send copies of permit and receipt pdf to the credit account holder for:
