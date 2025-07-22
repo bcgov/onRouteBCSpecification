@@ -347,6 +347,34 @@ Rule: Users must input at least one trip sequence step
       And they see "You must enter at least one highway."
       And the mandatory field is indicated
 
+@orv2-4802-1
+Rule: hwy sequence is limited to a maximum of 3 characters per sequence step input field
+
+  Scenario: sequence step inputted
+     When a user inputs "1" into the first sequence step
+      And continues
+     Then the sequence step "1" is saved with the application
+
+ Scenario: 4 characters inputted
+     When a user inputs "1234" into the first sequence step
+      And continues
+     Then they "123" is saved with the application
+
+  Scenario: sequence step inputted with a space
+     When a user inputs "1 " into the first sequence step
+      And continues
+     Then the sequence step "1" is saved with the application
+
+  Scenario: sequence step inputted with a space and a letter
+     When a user inputs "1 A" into the first sequence step
+      And continues
+     Then the sequence step "1 A" is saved with the application
+
+  Scenario: sequence step inputted with a letter
+     When a user inputs "A" into the first sequence step
+      And continues
+     Then the sequence step "A" is saved with the application
+
 @orv2-2254-28 @orv2-2387-28 @orv2-4015-52 @orv2-2560-36 @orv2-2561-35
 Rule: A maximum of 32 sequence steps may be inputted
 
