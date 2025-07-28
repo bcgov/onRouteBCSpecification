@@ -344,7 +344,7 @@ Rule: staff must complete attestations
 Rule: staff can edit an active amending permit application
 
  Scenario: Edit Application
-     Given a PPC SA or PC is at the "Review abd Confirm Details" page
+     Given a PPC SA or PC is at the "Review and Confirm Details" page
      When they choose to edit the amending permit application
      Then they are directed to the amending permit application page
 
@@ -402,7 +402,6 @@ Rule: staff can edit an active amending permit application
      When 
      Then 
 
-
 ## OLD
 ## @orv2-
 ## Rule: A saved amending permit application is in application in progress
@@ -436,7 +435,7 @@ Rule: staff can edit an active amending permit application
         | total fee for the listed transaction           | Amount         |
 
 #@orv2-
-#Rule: Amendment with refurn default to previous payment method card type
+#Rule: Amendment with return default to previous payment method card type
 
    Scenario: Choose a refund method
      Given the PPC SA has completed mandatory field at review and confirm details
