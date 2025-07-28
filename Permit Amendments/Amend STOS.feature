@@ -165,3 +165,71 @@ Rule: amendments to trip details are subject to mandatory field behaviour that e
 
 @orv2-4015-11
 Rule: all STOS amendments are $0 and continue to finish amendment screen
+
+@orv2-4099-6
+Rule: staff can amend the return trip designation
+
+@orv2-4099-7
+Rule: if staff amend results in a debit (NPV is greater than CPV) they can add the APA to the shopping cart
+
+  Scenario: one way to return trip
+    Given the APA is a one way trip
+     When staff amend the return trip designation to return trip
+      And continue to review and confirm
+     Then they see the trip type as "Return Trip"
+      And they see "Permitted for return trip along the same route."
+      And the NPV is $30
+      And they can add the APA to the shopping cart
+
+@orv2-4099-8
+Rule: if amend results in a credit (NPV is less than CPV) then only SA can continue to refund to multiple payment methods
+
+  Scenario: NPV less than CPV
+    Given the CPV is $30
+     When staff amend the return trip designation to one way
+      And continue to review and confirm
+     Then they see the trip type as "One Way Trip"
+      And the NPV is $15
+      And SA can continue to refund to multiple payment methods
+
+  Scenario: NPV less than CPV PC, Train, CTPO
+    Given the NPV is less than CPV
+     When PC, Train, CTPO choose to continue
+     Then they see "Authorization Required Your changes have been saved Amending Permit #: P2-00011018-750 This amendment results in a refund. Note the Amending Permit # and inform authorized staff to process the refund. Exit"
+
+  Scenario: NPV less than CPV PC, Train, CTPO warning continue
+    Given PC, Train, CTPO are at authorization required warning modal
+     When they choose to exit
+     Then they are directed to the location they initiated the amendment action from
+
+@orv2-4099-9
+Rule: if staff amend results in the NPV being equal to the CPV they can continue to refund to multiple payment methods
+@orv2-4099-10
+Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
+
+  Scenario: > CPV
+    Given the CPV is $15
+     When staff amend the return trip designation to return trip
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $15 |
+       | New Permit Value     | $30 |
+       | Total                | $15 |
+
+  Scenario: < CPV
+    Given the CPV is $30
+     When staff amend the return trip designation to one way
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $30  |
+       | New Permit Value     | $15  |
+       | Total                | -$15 |
+
+  Scenario: = CPV ($0 amend)
+    Given the CPV is $30
+     When staff amend the vehicle plate
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $30 |
+       | New Permit Value     | $30 |
+       | Total                | $0   |

@@ -530,12 +530,12 @@ Rule: if chosen a return trip is indicated on the generated permit pdf
   Scenario: return trip pdf
      Given a user has designated the application as a return trip
      When they successfully purchase their permit
-     Then the generated permit pdf indicates "Permitted for return trip along same route." in the trip details section
+     Then the generated permit pdf indicates "Permitted for return trip along the same route." in the trip details section
 
   Scenario: one way trip pdf
      Given a user has designated the application as a one way trip
      When they successfully purchase their permit
-     Then the generated permit pdf does not indicate "Permitted for return trip along same route." in the trip details section
+     Then the generated permit pdf does not indicate "Permitted for return trip along the same route." in the trip details section
 
 @orv2-4099-5
 Rule: the trip type is shown on review and confirm details
@@ -544,13 +544,13 @@ Rule: the trip type is shown on review and confirm details
      Given a user has chosen to designate the application as a return trip
      When they continue to "Review and Confirm Details" page
      Then they see the return trip designation
-      And they see "Permitted for return trip along same route."
+      And they see "Permitted for return trip along the same route."
 
   Scenario: one way trip
      Given a user has chosen to designate the application as a one way trip
      When they continue to "Review and Confirm Details" page
      Then they see the one way trip designation
-      And they do not see "Permitted for return trip along same route."
+      And they do not see "Permitted for return trip along the same route."
 
 
 
