@@ -165,13 +165,13 @@ Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and
 # See Amend Permit Date and Duration Rules Staff:
 @orv2-4220-8
 Rule: staff can forward start date to a maximum of 60 days from today (current date and time the amend is initiated)
-@orv2-4220-9
-Rule: staff can amend the start date within the calendar quarter for a qrtly permit
 @orv2-4220-5
 Rule: staff can backdate the start date within the calendar quarter for a qrtly permit
-@orv2-4220-6
-Rule: staff are notified when start date an/or expiry date are in the past
+@orv2-4220-4
+Rule: staff can backdate the start date to any past date for a single trip permit
 @orv2-4220-2
 Rule: staff can extend duration up to the maximum 30 days for a single trip permit
 @orv2-4220-3
-Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days for a single trip permit
+Rule: staff can reduce duration for a single trip permit up to a maximum of 30 days
+@orv2-4220-6
+Rule: staff are notified when start date and/or expiry date are in the past

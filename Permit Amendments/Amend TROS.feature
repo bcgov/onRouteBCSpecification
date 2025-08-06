@@ -68,10 +68,10 @@ Rule: Show amending permit application fee
    | 360         | 270                  | 90  |
 
 @orv2-938-28  
-Rule: staffC must complete attestations 
+Rule: staff must complete attestations 
 
 @orv2-938-29
-Rule: staffC can edit an active amending permit application
+Rule: staff can edit an active amending permit application
 
 
 

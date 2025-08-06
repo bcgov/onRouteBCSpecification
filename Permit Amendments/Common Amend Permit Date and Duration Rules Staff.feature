@@ -4,15 +4,15 @@ Feature: Amend Permit Date and Duration Rules Staff
 Staff = SA, PC, CTPO, Trainee
 
 Start Date Overview:
-| Permit | Rule                                             |
-| TROS   | Any past date to 60 days from today              |
-| TROW   | Any past date to 60 days from today              |
-| STOS   | Any past date to 60 days from today              |
-| MFP    | Any past date to 60 days from today              |
-| STFR   | Any past date to 60 days from today              |
-| QRFR   | Same quarter as Start date to 60 days from today |
-| NRSCV  | Any past date to 60 days from today              |
-| NRQCV  | Same quarter as Start date to 60 days from today |
+| Permit | Rule                                                                           |
+| TROS   | Any past date to 60 days from today                                            |
+| TROW   | Any past date to 60 days from today                                            |
+| STOS   | Any past date to 60 days from today                                            |
+| MFP    | Any past date to 60 days from today                                            |
+| STFR   | Any past date to 60 days from today                                            |
+| QRFR   | Any past date in the same quarter as original start date to 60 days from today |
+| NRSCV  | Any past date to 60 days from today                                            |
+| NRQCV  | Any past date in the same quarter as original start date to 60 days from today |
 
 Rule: staff can forward start date to a maximum of 60 days from today (current date and time the amend is initiated)
 
@@ -104,15 +104,15 @@ Rule: staff are notified when start date an/or expiry date are in the past
       Then they see "Start date and/or expiry date is in the past"
 
 Duration Overview:
-| Permit | Amend Duration                              |
-| TROS   | Up to 330 days back in 30 day increments    |
-| TROW   | Up to 330 days back in 30 day increments    |
-| STOS   | Up to 30 days back to up to 30 days forward |
-| MFP    | Up to 7 days back to up to 7 days forward   |
-| STFR   | Up to 30 days back to up to 30 days forward |
-| QRFR   | N/A                                         |
-| NRSCV  | Up to 30 days back to up to 30 days forward |
-| NRQCV  | N/A                                         |
+| Permit | Amend Duration                                         |
+| TROS   | Up to 330 days back in 30 day increments               |
+| TROW   | Up to 330 days back in 30 day increments               |
+| STOS   | Up to 30 days back to up to 30 days forward from today |
+| MFP    | Up to 7 days back to up to 7 days forward from today   |
+| STFR   | Up to 30 days back to up to 30 days forward            |
+| QRFR   | N/A                                                    |
+| NRSCV  | Up to 30 days back to up to 30 days forward            |
+| NRQCV  | N/A                                                    |
 
 Rule: staff can reduce the duration of an issued or active STOS, STFR, NRSCV permit by Up to 30 days back
 
