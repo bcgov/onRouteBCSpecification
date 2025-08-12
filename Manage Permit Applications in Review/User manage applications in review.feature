@@ -74,7 +74,7 @@ Rule: The application in review list default pagination is 10 items
 Rule: Users see the reject applications info box
 
 @orv2-2394-5
-Rule: An application that is not claimed by staff is "Pending Review"
+Rule: An application that is not claimed by staff is pending review
 
   Scenario: apps pending review exist 
     Given the following application are pending review:
@@ -82,7 +82,7 @@ Rule: An application that is not claimed by staff is "Pending Review"
       | A1-72503011-100 |
       | A1-74013011-353 |
      When a user chooses to view applications in review
-     Then they see the label "Pending Review" next to:
+     Then they see the label "PR" next to:
       | A1-72303011-028 |
       | A1-72503011-100 |
       | A1-74013011-353 |
@@ -90,10 +90,10 @@ Rule: An application that is not claimed by staff is "Pending Review"
   Scenario: application newly submitted
     Given application A1-72303011-028 is newly submitted for review
      When a user views the application in the list
-     Then they see the label "Pending Review" next to A1-72303011-028
+     Then they see the label "PR" next to A1-72303011-028
 
 @orv2-2394-6
-Rule: An application that is claimed by staff is "In Review"
+Rule: An application that is claimed by staff is in review
 
   Scenario: apps in review exist 
     Given the following application are in review:
@@ -101,7 +101,7 @@ Rule: An application that is claimed by staff is "In Review"
       | A1-72503011-100 |
       | A1-74013011-353 |
      When a user chooses to view applications in review
-     Then they see the label "In Review" next to:
+     Then they see the label "IR" next to:
       | A1-72303011-028 |
       | A1-72503011-100 |
       | A1-74013011-353 |
@@ -109,7 +109,7 @@ Rule: An application that is claimed by staff is "In Review"
   Scenario: application claimed
     Given application A1-72303011-028 is claimed by staff
      When a user views the application in the list
-     Then they see the label "In Review" next to A1-72303011-028
+     Then they see the label "IR" next to A1-72303011-028
 
 @orv2-2394-7
 Rule: A user can withdraw a submitted permit application in pending review
@@ -122,14 +122,14 @@ Rule: A user can withdraw a submitted permit application in pending review
       And they see "Withdrawn to Applications in Progress" 
 
   Scenario: label is pending review app in review
-    Given A1-72303011-028 label is "Pending review"
+    Given A1-72303011-028 label is "PR"
       And A1-72303011-028 is in review
      When a user chooses to withdraw A1-72303011-028 
      Then they see "Application Status Application(s) have either been withdrawn or are in review by the Provincial Permit Centre." 
       And A1-72303011-028 label is "In Review"
 
   Scenario: label is pending review app is withdrawn
-    Given A1-72303011-028 label is "Pending review"
+    Given A1-72303011-028 label is "PR"
       And A1-72303011-028 has been withdrawn
       And A1-72303011-028 is an application in progress
      When a user chooses to withdraw A1-72303011-028 

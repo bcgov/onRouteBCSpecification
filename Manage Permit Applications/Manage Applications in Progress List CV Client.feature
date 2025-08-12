@@ -88,3 +88,11 @@ Rule: A CV Client CA can edit application in progress started by a CV Client CA 
       When they choose to edit a staff application in progress
       Then they cannot edit the application
   
+@orv2-4992-1  
+Rule: a rejected application in progress shows a rejected label
+
+  Scenario: Rejected application in progress
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+     Then they see "R" (Rejected) label on the application

@@ -40,8 +40,38 @@ Rule: Staff search by company name also searches doing business as
         | Julily Trucking    |
         | Julies Inc.        |
 
+@orv2-5007-1
+Rule: staff can create a new client profile at client search results after initiating a search
+
+  Scenario: client found, authorized
+    Given a PC, SA, TRAIN, CTPO has chosen to search for a company
+      And there are matching records in onRouteBC
+     When they see the search results
+      And they see the option to create a new client profile
+
+  Scenario: no records, authorized
+    Given a PC, SA, TRAIN, CTPO has chosen to search for a company
+      And there are no matching records in onRouteBC
+     When they see the search results
+     Then they see "No records found"     
+      And they see the option to create a new client profile
+
+  Scenario: client found, not authorized
+    Given EO has chosen to search for a company
+      And there are matching records in onRouteBC
+     When they see the search results
+     Then they see the option to view the company profile
+      And they do not see the option to create a new client profile
+
+  Scenario: no records, not authorized
+    Given EO has chosen to search for a company
+      And there are no matching records in onRouteBC
+     When they see the search results
+     Then they see "No records found"    
+      And they do not see the option to create a new client profile
+ 
 @orv2-1362-16, @orv2-3835-24
-Rule: Indicate if no records are found and provide option to create company only to PC, SA, TRAIN, CTPO
+Rule: Indicate if no records are found
 
   Scenario: authorized staff
     Given a PC, SA, TRAIN, CTPO has chosen to search for a company
@@ -49,11 +79,6 @@ Rule: Indicate if no records are found and provide option to create company only
      Then they see "No records found"
       And the option to create a company
 
-  Scenario: not authorized
-    Given EO has chosen to search for a company
-      And there are no matching records in onRouteBC
-     Then they see "No records found"
-      And they do not have the option to create a company      
 
 @orv2-1362-1 @orv2-4544-1
 Rule: staff can search for a company using 1 or more characters of the client number with or without spaces or hyphens
@@ -185,12 +210,12 @@ Rule: Suspended companies are indicated in search results
 
   Scenario: abc co. suspended
      When staff search for abc co.
-     Then they see "Suspended" label on abc co. search results
+     Then they see "S" (Suspended) label on abc co. search results
 
   Scenario: abc co. unsuspended
      When staff search for abc co.
      Then they see abc co. search results
-      And there is no "Suspended" label on abc co.
+      And there is no "S" (Suspended) label on abc co.
 
 # Deprecated scenarios:
   Scenario: Doing business as does not exist

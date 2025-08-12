@@ -59,3 +59,21 @@ Rule: CV Client can view the permit and permit payment receipt pdf
        And there are Expired permits 
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
+
+@orv2-4992-2  
+Rule: a void permit shows a void label
+
+  Scenario: View void permit
+    Given CV Client is at the "Expired Permits" tab
+      And there are void permits 
+     When they choose to view a void permit
+     Then they see "V" (Void) label on the permit
+
+@orv2-4992-3
+Rule: a revoked permit shows a revoked label
+
+  Scenario: View revoked permit
+    Given CV Client is at the "Expired Permits" tab
+      And there are revoked permits 
+     When they choose to view a revoked permit
+     Then they see "R" (Revoked) label on the permit

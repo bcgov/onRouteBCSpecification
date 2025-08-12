@@ -219,7 +219,7 @@ Rule: Generate void permit
       When they choose to finish voiding the permit
       Then the void permit is generated
        And the <permit number> is suffixed with a <revision number> preceded by a "-"
-       And the void permit is labeled as void
+       And the void permit is labeled as "V" (Void)
        And the void permit end date is updated to the date the void permit is generated
 
        Examples:

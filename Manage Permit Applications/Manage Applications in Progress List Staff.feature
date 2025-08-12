@@ -68,3 +68,11 @@ Rule: Staff can edit any application in progress
      When they choose to view an application in progress
      Then they are directed to the selected "Permit Application" page 
 
+@orv2-4992-1  
+Rule: a rejected application in progress shows a rejected label
+
+  Scenario: Rejected application in progress
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+     Then they see "R" (Rejected) label on the application

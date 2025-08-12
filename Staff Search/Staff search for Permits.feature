@@ -237,13 +237,13 @@ Rule: permit results display status labels based on their current state
      Then it shows the correct <permit status> based on the <permit state>
 
      Examples:
-     | permit state | permit status |
-     | Voided       | Void          |
-     | Expired      | Expired       |
-     | Superseded   | Superseded    |
-     | Revoked      | Revoked       |
-     | Issued       |               |
-     | Active       |               |
+     | permit state | permit status  |
+     | Voided       | V (Void)       |
+     | Expired      | E (Expired)    |
+     | Superseded   | S (Superseded) |
+     | Revoked      | R (Revoked)    |
+     | Issued       |                |
+     | Active       |                |
 
 @orv2-937-12
 Rule: staff can resend the permit and receipt pdf's

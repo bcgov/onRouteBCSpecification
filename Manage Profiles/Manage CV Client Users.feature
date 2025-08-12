@@ -51,7 +51,7 @@ Scenario: Input new pending user BCeID username
     And they select "Add"
     And they are directed to the "User Management" page
     Then they see "User Added" notification
-    And the newly added user is displayed as pending
+    And the newly added user is displayed as "P" (Pending) in the "User Management" list
 
 @orv2-363-8
 Scenario: Attempt add without inputting username
