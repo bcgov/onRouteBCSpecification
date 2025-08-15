@@ -102,12 +102,10 @@ Rule: upon choosing a credit account historical transaction for a closed credit 
 Rule: a refund can only be made to the credit account used in the original purchase 
 
   Scenario: user changes credit account
-    Given 
-     When 
-     Then 
-
-
-
+    Given user x purchases permit A using credit account 1
+      And user x changes to credit account 2
+     When staff refund to multiple payment methods for permit A
+     Then cheque refund is selected by default and cannot be deselected
 
 # Notes:
 # we send copies of permit and receipt pdf to the credit account holder for:
