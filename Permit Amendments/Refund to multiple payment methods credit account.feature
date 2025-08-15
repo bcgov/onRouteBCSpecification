@@ -98,6 +98,17 @@ Rule: upon choosing a credit account historical transaction for a closed credit 
      Then cheque refund is not selected by default
       But cheque refund can be optionally selected
 
+@orv2-4912-2
+Rule: a refund can only be made to the credit account used in the original purchase 
+
+  Scenario: user changes credit account
+    Given 
+     When 
+     Then 
+
+
+
+
 # Notes:
 # we send copies of permit and receipt pdf to the credit account holder for:
 # new purchase
