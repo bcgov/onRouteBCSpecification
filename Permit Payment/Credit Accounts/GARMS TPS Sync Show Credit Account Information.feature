@@ -210,7 +210,14 @@ Rule: hide credit account details for holders or users when eGARMS is unavailabl
      When FIN and users view cv client A holder or users
       And eGARMS is unavailable
      Then the credit account details are not shown
-      And they see "eGARMS is unavailable Credit account is unavailble"
+      And they see "eGARMS is unavailable Credit account is unavailable"
+
+  Scenario: 9998
+     Given cv client A is active
+     When FIN and users view cv client A holder or users
+      And eGARMS return 9998 There was a problem accessing IMSCONNECT - *REQUESTS*
+     Then the credit account details are not shown
+      And they see "eGARMS is unavailable Credit account is unavailable"
 
 @orv2-4364-2
 Rule: hide credit account details when eGARMS return code is E0001 (credit account not found)
@@ -302,7 +309,28 @@ Rule: show credit account details when eGARMS returns code is E1739 or E0004 (cr
       And they see the following information:
         | data             | description                                              |
         | Available Credit | calculated by onRouteBC as credit balance - credit limit |
-     
+
+@orv2-4364-7
+Rule: hide credit account details when eGARMS return code is E9999 (serious error)
+
+  Scenario: tps active
+     When FIN and users view credit account details
+      And eGARMS return code is E9999
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E9999 Serious error"
+
+  Scenario: tps hold
+     When FIN and users view credit account details
+      And eGARMS return code is E9999
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E9999 Serious error"
+
+  Scenario: tps closed
+     When FIN and users view credit account details
+      And eGARMS return code is E9999
+     Then the credit account details are not shown
+      And the they see the "eGARMS return code E9999 Serious error"
+
 @orv2-4364-5
 Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit balance
 
