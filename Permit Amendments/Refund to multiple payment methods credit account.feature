@@ -78,6 +78,14 @@ Rule: show credit account status label on historical transactions if applicable
      When staff view permit A historical transactions
      Then the credit account status label is not shown for permit A
 
+  Scenario: old account
+    Given permit A has a credit account historical transaction
+     And the credit account was closed at the time of the transaction
+     When staff view permit A historical transactions
+     Then 
+
+
+
 @orv2-2004-5
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
 
@@ -99,13 +107,38 @@ Rule: upon choosing a credit account historical transaction for a closed credit 
       But cheque refund can be optionally selected
 
 @orv2-4912-2
-Rule: a refund can only be made to the credit account used in the original purchase 
+Rule: a refund can only be made to the credit account used in the original purchase if the cv client is still a user/holder
 
   Scenario: user changes credit account
     Given user x purchases permit A using credit account 1
       And user x changes to credit account 2
      When staff refund to multiple payment methods for permit A
      Then cheque refund is selected by default and cannot be deselected
+
+  Scenario: cv client no longer user/holder 
+    Given permit A is purchased by cv client 1 using credit account Y
+      And cv client A is no longer a user/holder of credit account Y
+     When staff attempt to refund to multiple payment methods for permit A
+     Then cheque refund is selected by default and cannot be deselected
+
+@ovr2-5081-1
+Rule: show warning notification if transaction cannot be completed
+
+  Scenario Outline: transaction cannot be completed
+    Given staff are processing a refund to multiple payment methods for permit A
+     When staff choose to finish the transaction
+      And the transaction cannot be completed due to <reason>
+     Then a warning notification is shown with the message "Refund cannot be processed due to an unexpected error. Please try again later."
+
+    Examples:
+      | reason                  |
+      | database write error    |
+      | API communication issue |
+
+  Scenario: continue after warning notification
+    Given staff see a warning notification with the message "Refund cannot be processed due to an unexpected error. Please try again later."
+     When staff choose to continue
+     Then staff return to the refund to multiple payment methods screen for permit A
 
 # Notes:
 # we send copies of permit and receipt pdf to the credit account holder for:
