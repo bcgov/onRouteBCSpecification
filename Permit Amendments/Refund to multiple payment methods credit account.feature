@@ -84,8 +84,6 @@ Rule: show credit account status label on historical transactions if applicable
      When staff view permit A historical transactions
      Then 
 
-
-
 @orv2-2004-5
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
 
