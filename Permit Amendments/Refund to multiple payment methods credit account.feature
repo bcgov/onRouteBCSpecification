@@ -62,27 +62,35 @@ Rule: show credit account status label on historical transactions if applicable
 
   Scenario: closed
     Given permit A has a credit account historical transaction
-     And the credit account is closed
+      And the credit account is closed
      When staff view permit A historical transactions
      Then the credit account status label is shown as "Closed" for permit A
 
   Scenario: on hold
     Given permit A has an on hold credit account historical transaction
-     And the credit account is on hold
+      And the credit account is on hold
      When staff view permit A historical transactions
      Then the credit account status label is shown as "On Hold" for permit A
 
   Scenario: active
     Given permit A has an active credit account historical transaction
-     And the credit account is active
+      And the credit account is active
      When staff view permit A historical transactions
      Then the credit account status label is not shown for permit A
 
-  Scenario: old account
-    Given permit A has a credit account historical transaction
-     And the credit account was closed at the time of the transaction
+  Scenario: credit account user old account closed
+    Given permit A has credit account historical transaction using credit account X
+      And credit account X is closed
+      And the credit account user has changed to credit account Y
      When staff view permit A historical transactions
-     Then 
+     Then the credit account status label is shown as "Closed" for permit A
+
+  Scenario: credit account user old account on hold
+    Given permit A has credit account historical transaction using credit account X
+      And credit account X is on hold
+      And the credit account user has changed to credit account Y
+     When staff view permit A historical transactions
+     Then the credit account status label is shown as "On Hold" for permit A 
 
 @orv2-2004-5
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
