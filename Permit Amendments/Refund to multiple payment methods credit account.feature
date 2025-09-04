@@ -127,25 +127,6 @@ Rule: a refund can only be made to the credit account used in the original purch
      When staff attempt to refund to multiple payment methods for permit A
      Then cheque refund is selected by default and cannot be deselected
 
-@ovr2-5081-1
-Rule: show warning notification if transaction cannot be completed
-
-  Scenario Outline: transaction cannot be completed
-    Given staff are processing a refund to multiple payment methods for permit A
-     When staff choose to finish the transaction
-      And the transaction cannot be completed due to <reason>
-     Then a warning notification is shown with the message "Refund cannot be processed due to an unexpected error. Please try again later."
-
-    Examples:
-      | reason                  |
-      | database write error    |
-      | API communication issue |
-
-  Scenario: continue after warning notification
-    Given staff see a warning notification with the message "Refund cannot be processed due to an unexpected error. Please try again later."
-     When staff choose to continue
-     Then staff return to the refund to multiple payment methods screen for permit A
-
 # Notes:
 # we send copies of permit and receipt pdf to the credit account holder for:
 # new purchase
