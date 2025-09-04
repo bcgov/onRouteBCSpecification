@@ -363,4 +363,12 @@ Rule: transaction history items are deselected by default when staff are directe
 
 Rule: staff cannot input anything into transaction history table at finish until a historical transaction is chosen
 
+@orv2-5081-1
+Rule: staff see a refund error if a system error occurs when they choose to finish
+  
+  Scenario: system error occurs
+    Given a system error occurs when staff choose to finish
+     When staff choose to finish
+     Then they see "Refund Error Refund can't be processed due to an unexpected error. Please try again later.""
+
 # free flag change scenarios
