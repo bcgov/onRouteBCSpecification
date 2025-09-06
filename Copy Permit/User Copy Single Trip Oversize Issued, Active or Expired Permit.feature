@@ -83,7 +83,7 @@ Rule: Contact Information is from the cv client profile for cv clients only
       | Client Email  | client@cvclient.com |
 
 @orv2-4715
-Rule: Start date is current date
+Rule: Start date of the copied permit is the current date
 
 @orv2-4715
 Rule: Replicate permit duration from original permit to copied permit
