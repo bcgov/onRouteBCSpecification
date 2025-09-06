@@ -5,6 +5,9 @@ staff = PC, SA, TRAIN, CTPO
 cv client = CA, PA
 
 @orv2-4715
+Rule: There is no association between the copied permit and the original permit
+
+@orv2-4715
 Rule: Client Information is from the cv client profile
 
   Scenario: profile client information unchanged
@@ -150,23 +153,88 @@ Rule: Replicate commodity type from original permit to copied permit
 Rule: Replicate load description from original permit to copied permit
 
 @orv2-4715
-Rule: Replicate Loaded Dimensions from original permit to copied permit
+Rule: There is no association between the vehicle information on the copied permit and the cv client vehicle inventory
+
+  Scenario: power unit removed from cv client inventory
+    Given permit A has power unit 1
+      And the cv client has removed that power unit 1 from their vehicle inventory
+     When a user copies permit A to create permit B
+     Then permit B has power unit 1
+
+  Scenario: power unit plate changed
+    Given permit A has power unit with plate ABC123
+      And the cv client has changed the plate for that power unit to XYZ789 in their vehicle inventory
+     When a user copies permit A to create permit B
+     Then permit B has power unit with plate ABC123
 
 @orv2-4715
 Rule: Replicate power unit from original permit to copied permit
 
-  Scenario: original permit has power unti from inventory
-    Given 
-     When 
-     Then 
+  Scenario: no longer LCV cv client
+    Given permit A has power unit type LCV
+      And the cv client in no longer LCV carrier
+     When a user copies permit A to create permit B
+     Then permit B has no vehicle information 
+      And permit B has no loaded dimensions
 
+  Scenario: power unit type name changed
+    Given permit A has power unit type 1
+      And power unit type 1 name has changed to power unit type X
+     When a user copies permit A to create permit B
+     Then permit B has power unit type X
 
+  Scenario: new power unit type added  
+    Given power unit type 2 now exists as a new type
+     When a user copies permit A to create permit B
+     Then permit B has power unit type 2 available to select
 
+  Scenario: power unit type removed
+    Given permit A has power unit type 1
+      And power unit type 1 no longer exists
+     When a user copies permit A to create permit B
+     Then permit B has no vehicle information 
+      And permit B has no loaded dimensions
 
+@orv2-4715
+Rule: Replicate trailers from original permit to copied permit
 
+  Scenario: jeep allowance changed
+    Given permit A has trailer type jeep
+      And permit type application is no longer allowed to use jeep trailers
+     When a user copies permit A to create permit B
+     Then permit B has no trailers
+
+  Scenario: trailer type name changed
+    Given permit A has trailer type 1
+      And trailer type 1 name has changed to trailer type X
+     When a user copies permit A to create permit B
+     Then permit B has trailer type X
+    
+  Scenario: booster allowance changed
+    Given permit A has trailer type booster
+      And permit type application is no longer allowed to use booster trailers
+     When a user copies permit A to create permit B
+     Then permit B has no trailers
+
+  Scenario: new trailer type added  
+    Given trailer type 2 now exists as a new type
+     When a user copies permit A to create permit B
+     Then permit B has trailer type 2 available to select
+
+  Scenario: trailer type removed
+    Given permit A has trailer type 1
+      And trailer type 1 no longer exists
+     When a user copies permit A to create permit B
+     Then permit B has no trailers
+
+@orv2-4715
+Rule: Replicate Loaded Dimensions from original permit to copied permit
 
 @orv2-4715
 Rule: Replicate Trip Details from original permit to copied permit
 
 @orv2-4715
 Rule: Replicate Application Notes from original permit to copied permit
+
+@orv2-4715
+Rule: Replicating a previously amended permit creates a new permit without any amendment history
