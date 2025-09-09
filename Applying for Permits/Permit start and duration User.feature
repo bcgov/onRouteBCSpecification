@@ -12,7 +12,7 @@ Rule: The permit duration begins on the chosen start date and ends at 23:59:59 o
      When a user chooses a permit duration of 3 days
      Then the permit expiry is May 12, 2024 at 23:59:59
 
-Rule: A quarterly permit end date fall on the last date of the calendar quarter that includes the start date 
+Rule: A quarterly permit end date falls on the last date of the calendar quarter that includes the start date 
 
   Scenario: choose 2024/05/10
      When a user chooses a start date of 2024/05/10
