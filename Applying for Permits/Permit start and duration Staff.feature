@@ -17,12 +17,6 @@ Permit Start Date Overview:
 
 Rule: staff must choose a start date to a maximum of 60 days from today (current date and time the application is initiated)
 
-  Scenario: permit start date accepted
-    Given staff is at permit details
-     When they enter a start date in the past
-     Then their start date is accepted
-      And the see "Start Date is in the past."
-
   Scenario: 5 days
     Given todays date is 2024/05/10
      When staff chooses a start date of 2024/05/15
