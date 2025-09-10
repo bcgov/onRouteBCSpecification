@@ -1,9 +1,15 @@
 Feature: Staff Edit Application in the Queue
+As staff I need to be able to edit a permit application in the queue, so that I can assist CV Clients with completing their permit applications and approving issuance.
 
-Staff = PC, SA, TRAIN, CTPO
+staff = PC, SA, TRAIN, CTPO
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
+Staff edit application in queue share the same rules as Staff Apply for STOS.feature and Staff Apply for STOW.feature
 
 @orv2-2472-1 @orv2-4449-6
-Rule: Staff can edit an application in the queue
+Rule: staff can edit an application in the queue
 
   Scenario: leave, save or continue claimed application
     Given A1-72303011-028 is claimed by John
@@ -38,7 +44,7 @@ Rule: Staff can edit an application in the queue
       And A1-72303011-028 attestations are unselected
 
 @orv2-2472-2 @orv2-4449-7
-Rule: Staff can save edits made to an application
+Rule: staff can save edits made to an application
 
   Scenario: changes made save
     Given A1-72303011-028 is opened for edit
@@ -71,7 +77,7 @@ Rule: Attestations are unselected when a application is saved
       And A1-72303011-028 attestations are unselected
 
 @orv2-2472-4 @orv2-4449-9
-Rule: Staff can leave an application being edited 
+Rule: staff can leave an application being edited 
 
   Scenario: at review and confirm
     Given A1-72303011-028 is at review and confirm

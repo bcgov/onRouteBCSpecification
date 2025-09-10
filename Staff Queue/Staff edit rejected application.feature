@@ -1,9 +1,14 @@
 Feature: Staff edit rejected application.
+As staff I need to be able to view the reason(s) for rejection history of a rejected permit application, so that I can assist CV Clients with completing their permit applications and approving issuance.
 
-Staff = SA, PC, CTPO, Trainee
+staff = SA, PC, CTPO, Trainee
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2474-9, @orv2-2472-6, @orv2-2564-1 @orv2-2561-1 @orv2-4449-11
-Rule: Staff can see the IDIR username stamp when viewing the reason(s) for rejection
+Rule: staff can see the IDIR username stamp when viewing the reason(s) for rejection
 
   Scenario: rejected once
     Given A1-72303011-028 is rejected

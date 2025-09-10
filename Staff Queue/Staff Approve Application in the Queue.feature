@@ -1,6 +1,11 @@
 Feature: Staff Approve Application in the Queue
+As staff I need to be able to approve a permit application in the queue, so that I can assist CV Clients with completing their permit applications and approving issuance.
 
 Staff = PC, SA, TRAIN, CTPO
+
+Note: The following rules apply to the following permit application types
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2473-1 @orv2-4449-1
 Rule: Staff can approve an application

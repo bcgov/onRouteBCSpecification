@@ -1,10 +1,14 @@
 Feature: Staff Manage Queue queue List
 As staff I need to be able to see a list of permit applications submitted for review by CV Clients, so that I can assist them with completing their permit applications and approving issuance.
 
-Staff = PC, SA, TRAIN, CTPO
+staff = PC, SA, TRAIN, CTPO
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2398-1
-Rule: Staff can see a queue list of applications submitted for review
+Rule: staff can see a queue list of applications submitted for review
 
   Scenario: applications are in queue
     Given applications are in the queue
@@ -25,7 +29,7 @@ Rule: Staff can see a queue list of applications submitted for review
      Then they see "No records found."
 
 @orv2-2398-2
-Rule: Staff can see the elapsed time the submitted application has been in the queue
+Rule: staff can see the elapsed time the submitted application has been in the queue
 
   Scenario: new 5 minute elapsed
     Given application A1-72303011-028 is submitted at 13:30
@@ -68,7 +72,7 @@ Rule: staff can optionally sort the queue or claim list by permit start date
      Then 
 
 @orv2-2398-5
-Rule: Staff may update the queue list to show its current state manually
+Rule: staff may update the queue list to show its current state manually
 
   Scenario: manual update
      When staff choose to update the queue list
@@ -92,7 +96,7 @@ Rule: The queue list is updated every 30 seconds to reflect its current state
       | A8-30815429-164 | 00:35                 |
 
 @orv2-2398-7
-Rule: Staff may claim an application to review
+Rule: staff may claim an application to review
 
   Scenario: claim a non claimed
     Given A1-72303011-028 is not claimed

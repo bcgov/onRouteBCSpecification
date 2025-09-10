@@ -1,9 +1,14 @@
 Feature: Staff Reject Application in the Queue
+As staff I need to be able to reject a permit application in the queue, so that I ensure non valid permits are not approved for issuance.
 
-Staff = SA, PC, CTPO, Trainee
+staff = SA, PC, CTPO, Trainee
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2474-2 @orv2-4449-12
-Rule: Staff can reject an application
+Rule: staff can reject an application
 
   Scenario: application rejected
     Given A1-72303011-028 is claimed
@@ -19,7 +24,7 @@ Rule: Staff can reject an application
       And Jane is the idir username      
 
 @orv2-2474-3 @orv2-4449-13
-Rule: Staff must input a reason for rejection
+Rule: staff must input a reason for rejection
 
   Scenario: initiate reject application action
     Given A1-72303011-028 is claimed

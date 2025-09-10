@@ -1,6 +1,11 @@
 Feature: Users edit rejected application(s)
+As a user I need to be able to view the reason(s) for rejection history of a rejected permit application, so that I can make corrections and resubmit my permit application for approval and issuance.
 
-User = CA, PA, SA, PC, CTPO, Trainee
+user = CA, PA, SA, PC, CTPO, Trainee
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2474-10 @orv2-2560-2 @orv2-2561-2 @orv2-4449-19
 Rule: Users can view current and past reason(s) for rejection information on the rejected application
