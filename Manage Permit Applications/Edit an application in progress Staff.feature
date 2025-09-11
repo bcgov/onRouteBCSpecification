@@ -3,10 +3,12 @@ As staff I need to be able to edit an application in progress, so that I can ass
 
 staff = PC, SA, TRAIN, CTPO
 
-Note: The following rules apply to all permit application types. There are currently no unique staff rules for editing a permit application with the exception of rejected applications and amending permit applications. See related feature files:
+Note: The following rules apply to all permit application types. For unique staff rules for editing a permit application see related feature files:
 
-- Staff Edit Application in the Queue.feature
+- All Staff apply for permit feature files
+- Common Amend Permit Date and Duration Rules Staff.feature
 - Common Amend Permit Rules.feature
+- Staff Edit Application in the Queue.feature
 - Staff edit rejected application.feature
 
 

@@ -1,7 +1,12 @@
 Feature: Users edit an application in progress
+As a user I need to be able to edit an application in progress, so that I can complete my permit application for approval and issuance.
 
 user = CA, PA, PC, SA, TRAIN, CTPO
 staff = PC, SA, TRAIN, CTPO
+
+Note: The following rules apply to all permit application types. For rules specific to editing application in progress see related feature files:
+
+- All User apply for permit feature files
 
 Rule: users see information last inputted and saved when editing an application in progress 
 
