@@ -7,7 +7,11 @@ staff = PC, SA, TRAIN, CTPO
 Note: The following rules apply to all permit application types. For rules specific to editing application in progress see related feature files:
 
 - All User apply for permit feature files
+- CV Client edit rejected application.feature
+- Users edit rejected application.feature
 
+
+@orv2-4458-2, @orv2-4485-1
 Rule: users see information last inputted and saved when editing an application in progress 
 
   Scenario: edited by a another cv client user
