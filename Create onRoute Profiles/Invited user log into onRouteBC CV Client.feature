@@ -91,3 +91,12 @@ Rule: a new invited user must complete their user contact details
        | City             |
      Then they see "This is a required field" at each field with invalid data
       And fields with invalid data are indicated
+
+Rule: basic users cannot be added to business BCeID client profiles
+
+  Scenario: basic user tries to join business profile
+    Given a user with a basic BCeID is added to cv client A
+      And they are not the first user
+      And their credentials do not match a company in onRouteBC
+     When they successfully log in using their basic credentials
+     Then they are directed to the universal unauthorized access page
