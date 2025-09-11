@@ -348,107 +348,106 @@ Rule: staff can edit an active amending permit application
      When they choose to edit the amending permit application
      Then they are directed to the amending permit application page
 
-# @orv2-
-# Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
+## Deprecated:
+ # @orv2-
+ # Rule: initiating an edit action on an APA in the shopping cart directs the user to the unfinished APA that contains the current issued or active permit data and any changes made on previous unfinished APA's
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+   Scenario: 
+     Given 
+      When 
+      Then 
 
-# @orv2-
-# Rule: editing an APA in the shopping cart are unfinished APA's
+ # @orv2-
+ # Rule: editing an APA in the shopping cart are unfinished APA's
 
-  Scenario: 
-    Given 
-     When 
-     Then 
+   Scenario: 
+     Given 
+      When 
+      Then 
 
-# @orv2-
-# Rule: APA in the shopping cart
+ # @orv2-
+ # Rule: APA in the shopping cart
 
-  Scenario: staff view
-    Given 
-     When 
-     Then 
+   Scenario: staff view
+     Given 
+      When 
+      Then 
 
-  Scenario: staff pay
-    Given 
-     When 
-     Then 
+   Scenario: staff pay
+     Given 
+      When 
+      Then 
 
-  Scenario: staff remove
-    Given 
-     When 
-     Then 
+   Scenario: staff remove
+     Given 
+      When 
+      Then 
 
-  Scenario: staff edit
-    Given 
-     When 
-     Then           
+   Scenario: staff edit
+     Given 
+      When 
+      Then           
 
-  Scenario: cv client view
-    Given 
-     When 
-     Then 
+   Scenario: cv client view
+     Given 
+      When 
+      Then 
 
-  Scenario: cv client pay
-    Given 
-     When 
-     Then 
+   Scenario: cv client pay
+     Given 
+      When 
+      Then 
 
-  Scenario: cv client remove
-    Given 
-     When 
-     Then 
+   Scenario: cv client remove
+     Given 
+      When 
+      Then 
+ ## @orv2-
+ ## Rule: A saved amending permit application is in application in progress
 
-## OLD
-## @orv2-
-## Rule: A saved amending permit application is in application in progress
+   Scenario: Close browser tab
+     Given a staff has started an amending permit application 
+       And it is not saved
+      When they close the browser tab or window
+      Then the amending permit application is not saved
 
-  Scenario: Close browser tab
-    Given a staff has started an amending permit application 
-      And it is not saved
-     When they close the browser tab or window
-     Then the amending permit application is not saved
+   Scenario: Go back
+     Given a staff has started an amending permit application 
+       And it is not saved
+      When they use the browser to navigate back
+      Then the amending permit application is not saved
 
-  Scenario: Go back
-    Given a staff has started an amending permit application 
-      And it is not saved
-     When they use the browser to navigate back
-     Then the amending permit application is not saved
+ ## @orv2-
+ ## Rule: staff can see saved amending permit applications in applications in progress
 
-## @orv2-
-## Rule: staff can see saved amending permit applications in applications in progress
+ #@orv2-
+ #Rule: staff can view previous financial transaction information for amending permit
 
-#@orv2-
-#Rule: staff can view previous financial transaction information for amending permit
+  Scenario: Previous financial transactions iterations
+      Given the PPC SA is at the finish amendment page
+       When they view transaction history
+       Then they see the following details of all previous transactions for the amending permit:
+         | description                                    | information    |
+         | permit number for listed transaction           | Permit #       |
+         | payment method used for the listed transaction | Payment Method |
+         | transaction id for the listed transaction      | Transaction ID |
+         | total fee for the listed transaction           | Amount         |
 
- Scenario: Previous financial transactions iterations
-     Given the PPC SA is at the finish amendment page
-      When they view transaction history
-      Then they see the following details of all previous transactions for the amending permit:
-        | description                                    | information    |
-        | permit number for listed transaction           | Permit #       |
-        | payment method used for the listed transaction | Payment Method |
-        | transaction id for the listed transaction      | Transaction ID |
-        | total fee for the listed transaction           | Amount         |
+ #@orv2-
+ #Rule: Amendment with return default to previous payment method card type
 
-#@orv2-
-#Rule: Amendment with return default to previous payment method card type
+    Scenario: Choose a refund method
+      Given the PPC SA has completed mandatory field at review and confirm details
+       When they choose to continue
+       Then they are directed to finish amendment
+        And the previous payment method <consolidated payment method> is used
 
-   Scenario: Choose a refund method
-     Given the PPC SA has completed mandatory field at review and confirm details
-      When they choose to continue
-      Then they are directed to finish amendment
-       And the previous payment method <consolidated payment method> is used
+        Examples:
+          | card type                | PPC prefix               |
+          | ICEPAY - Visa            | ICEPAY - Visa            |
+          | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
+          | Web - Visa               | Web - Visa               |
+          | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
 
-       Examples:
-         | card type                | PPC prefix               |
-         | ICEPAY - Visa            | ICEPAY - Visa            |
-         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
-         | Web - Visa               | Web - Visa               |
-         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
-
-#@orv2-
-#Rule: Choose cheque payment method
+ #@orv2-
+ #Rule: Choose cheque payment method
