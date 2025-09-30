@@ -4,6 +4,7 @@ Feature: Permit start and duration CV Client
 | TROS   | Today to 14 days from today |
 | TROW   | Today to 14 days from today |
 | STOS   | Today to 14 days from today |
+| STOW   | Today to 14 days from today |
 | MFP    | Today to 14 days from today |
 | STFR   | Today to 14 days from today |
 | QRFR   | Today to 14 days from today |
