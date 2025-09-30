@@ -12,9 +12,3 @@ Note: The following rules apply to all permit application types. For unique staf
 - Staff Edit Application in the Queue.feature
 - Staff edit rejected application.feature
 - Users edit rejected application.feature
-
-
-
-
-
-

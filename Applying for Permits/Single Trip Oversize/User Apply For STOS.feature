@@ -19,7 +19,7 @@ Rule: CVSE Forms 1000 and 1070 are chosen by default and attached consecutively 
 @orv2-2254-4 @orv2-2387-4 @orv2-4015-26 @orv2-2560-10 @orv2-2561-9
 Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
 
-  Scenario: choose an option cvse form
+  Scenario: choose an optional cvse form
      When a user choose to attach a cvse form the following list:
       | Routes Pre-Approved for 5.0 m OAW CVSE-1001                          |
       | General Permit Conditions to 6.1 m in the Peace River Area CVSE-1002 |
@@ -65,7 +65,7 @@ Rule: Users can scroll the list of commodities allowable for an STOS permit
  # see STOS dimension set: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B39CC3A68-857D-404F-A5BA-B874BCD38907%7D&file=Single%20Trip%20Oversize%20Dimension%20Set%2020170825.xlsx&action=default&mobileredirect=true 
 
 @orv2-2254-8 @orv2-2387-8 @orv2-3902-2 @orv2-4015-30 @orv2-2560-14 @orv2-2561-13 
-Rule: Users may change the chosen commodity
+Rule: Users can change the chosen commodity
 
   Scenario: vehicles exist warning
     Given vehicles have been added to the permit application
