@@ -150,23 +150,109 @@ Rule: Details of the chosen power units are shown in the application form
   Scenario: pu details shown
     Given a user has added a power unit
      When they view the application form
-     Then they see the details of the chosen power unit
-     
+     Then they see the details of the chosen power unit including:
+      | Unit #
+      | Vehicle Sub-type  |
+      | Year              |
+      | Make              |
+      | VIN               |
+      | Licensed GVW (kg) |
+      | Plate             |
+      | Province/State    |
+
 Rule: Users may remove the power unit from the application
+
+  Scenario: no pu
+     When a user chooses to remove the power unit
+     Then they do not have the option to remove the power unit
+
+  Scenario: pu exists
+     When a user chooses to removed the power unit
+     Then they have the option to remove the power unit
+
+  Scenario: pu exists removed
+     When a user chooses to remove a power unit
+     Then all inputted power unit information is removed
+      And all inputted loaded dimensions is removed
+      And all inputted trailer information is removed
 
 Rule: a user can edit any power unit detail except vehicle sub-type or recall a new power unit with allowable vehicle sub-type without impacting other application data
 
+  Scenario: edit power unit
+    Given there is a power unit
+     When a user chooses to edit
+     Then they are directed to the edit power unit screen
+      And vehicle sub-type is not available
+
+  Scenario: edit plate
+    Given a user has chosen to edit the power unit
+     When they amend the plate to ABC123
+      And choose done
+     Then they are directed to the application form
+      And the plate is ABC123
+
+  Scenario: recall new vehicle
+    Given a commodity is chosen
+     When a user chooses to recall a new vehicle
+     Then only allowable vehicle sub-types are available
+
 Rule: Users must choose from a list of allowable trailers
 
+ # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true
+
+  Scenario: no allowable
+     When the user has chosen a commodity and power unit with no allowable trailer
+     Then there is no option to add a trailer
+
+   Scenario: none is an option
+     Given allowable trailers include "None"
+      When a users chooses to add a trailer
+      Then "None" is the first option
+
+  Scenario: choose "None"
+     Given allowable trailers include "None"
+      When a users chooses "None"
+      Then there is no option to add another trailer
+       And they see the option to reset the list
+
+  Scenario: trailer not inputted
+    Given a trailer has not been chosen 
+     When a user chooses to continue to review and confirm
+     Then they see "Vehicle configuration is not permittable for this commodity"
+      And add trailer is indicated
+
+  Scenario: reached limit of allowable trailers 
+      When a user adds trailers to the application
+       And there are no allowable additional trailers  
+      Then there is no option to add another trailer
+       And they see the option to reset the list
+
 Rule: The choice and order of allowable trailers is determined by the chosen commodity, and selected power unit
+
+ # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true
 
 Rule: The chosen trailers are shown in the application form in the order they were added
 
 Rule: The selection of trailers must adhere to an allowable order of jeep first, trailer second, then booster last
 
+ # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true 
+
+ 
 Rule: If jeep(s) and or booster(s) are allowable one or more jeep(s) or booster(s) may be added to the trailer list
 
 Rule: A chosen trailer(s) determines the remaining allowable trailers shown
+
+  Scenario Outline: brush cutters
+    Given a user has chosen the <commodity> 
+      And a <power unit> is chosen
+     When a user adds <trailer 1>
+     Then the allowable <trailer 2> is shown
+
+  Examples:
+    | commodity                 | power unit            | trailer 1                | trailer 2     |
+    | Brushcutters (Peace Only) | Truck Tractors        | Jeep                     | Semi-Trailers |
+    | Fixed Equipment           | Truck Tractors        | Semi-Trailers            |
+    | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
 Rule: Don't show the the change commodity warning modal if there are no vehicle details inputted
 
