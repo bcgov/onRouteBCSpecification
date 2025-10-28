@@ -5,9 +5,9 @@ staff = PC, SA, TRAIN, CTPO
 
 Note: These rules cover the user experience for applying for a Single Trip Overweight (STOW) permit application form behaviour specific to a STOW permit application. Other rules (e.g., contact details, date or duration) that are common to more than one permit application type can be found in the Applying for Permits folder.
 
-@orv2-3276-1
+@orv2-3276
 Rule: CVSE Form 1070 is chosen by default and attached to the STOW permit application consecutively beginning after the final page of the issued permit
-@orv2-3276-2
+@orv2-3276
 Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
 
   Scenario: choose an optional cvse form
@@ -18,7 +18,7 @@ Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
      Then they see "Highways with Restrictive Load Limits CVSE-1011" is attached to the issued permit after the final page of the issued permit 
       And they see "Permit Scope and Limitation CVSE-1070" is attached to the issued permit before "Highways with Restrictive Load Limits CVSE-1011"
 
-@orv2-3276-3
+@orv2-3276
 Rule: A user can see the source of truth for CVSE forms
 
  Scenario: Display permit application details summary
@@ -26,7 +26,7 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
-@orv2-3276-4
+@orv2-3276
 Rule: Users must input a commodity allowable for an STOW permit
 
  # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
@@ -38,7 +38,7 @@ Rule: Users must input a commodity allowable for an STOW permit
       And the mandatory field is indicated
 
 
-@orv2-3276-5
+@orv2-3276
 Rule: Users can search for a commodity allowable for an STOW permit
 
  # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
@@ -54,12 +54,12 @@ Rule: Users can search for a commodity allowable for an STOW permit
        | Red       | 1 Non-Reducible Loads |
        | Red       | Reducible Loads       |
 
-@orv2-3276-6
+@orv2-3276
 Rule: Users can scroll the list of commodities allowable for an STOW permit
 
  # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
 
-@orv2-3276-7
+@orv2-3276
 Rule: Users can change the chosen commodity
 
   Scenario: vehicles exist warning
@@ -79,8 +79,7 @@ Rule: Users can change the chosen commodity
      When a user chooses to change the commodity
      Then the commodity changes without warning
       
-@orv2-3276-8
-Rule: Users must input a load description
+@orv2-3276Rule: Users must input a load description
 
   Scenario: no load description inputted
      When a user chooses to continue to review and confirm
@@ -88,8 +87,7 @@ Rule: Users must input a load description
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-3276-9
-Rule: Users can add a power unit only when a commodity is chosen
+@orv2-3276Rule: Users can add a power unit only when a commodity is chosen
 
   Scenario: arrive
      When a user arrives at a new STOW permit application
@@ -115,7 +113,7 @@ Rule: Users can add a power unit only when a commodity is chosen
      Then they see "A Power Unit must be added."
       And they cannot continue
 
-@orv2-3276-10
+@orv2-3276
 Rule: Users may only input one power unit allowable for an STOW permit manually or chosen from inventory 
 
  # see STOW vehicle list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B8C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Vehicle%20List%2020170825.xlsx&action=default&mobileredirect=true
@@ -138,7 +136,7 @@ Rule: Users may only input one power unit allowable for an STOW permit manually 
      When they attempt to choose vehicle sub-type 1 
      Then they cannot choose vehicle sub-type 1 
 
-@orv2-3276-11
+@orv2-3276
 Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or chosen from inventory
 
   Scenario: manually input 65,000 (kg)
@@ -152,14 +150,14 @@ Rule: Only vehicles with a licensed GVW of 63,500 (kg) or lower may be added or 
      When they search for the power unit
      Then they do not see power units with a licensed gvw greater than 63,500 (kg) in search results
 
-@orv2-3276-12
+@orv2-3276
 Rule: Power unit province / state is not available when Mexico is chosen as the country
 
   Scenario: Mexico chosen
      When a user chooses the country "Mexico"
      Then Province state is not available
 
-@orv2-3276-13
+@orv2-3276
 Rule: Details of the chosen power units are shown in the application form
 
   Scenario: pu details shown
@@ -175,7 +173,7 @@ Rule: Details of the chosen power units are shown in the application form
       | Plate             |
       | Province/State    |
 
-@orv2-3276-14
+@orv2-3276
 Rule: Users may remove the power unit from the application
 
   Scenario: no pu
@@ -186,13 +184,19 @@ Rule: Users may remove the power unit from the application
      When a user chooses to removed the power unit
      Then they have the option to remove the power unit
 
+  Scenario: confirm remove power unit
+    Given a power unit exists
+     When a user chooses to remove the power unit
+     Then they see "Remove Power Unit Confirming will require you to re-enter your trailer configuration and Axle Spacing and Weights." 
+      And they have the option to cancel or continue 
+
   Scenario: pu exists removed
      When a user chooses to remove a power unit
      Then all inputted power unit information is removed
-      And all inputted loaded dimensions are removed
+      And all inputted axle spacings and weights (ASW) information is removed
       And all inputted trailer information is removed
 
-@orv2-3276-15
+@orv2-3276
 Rule: a user can edit any power unit detail except vehicle sub-type or recall a new power unit with allowable vehicle sub-type without impacting other application data
 
   Scenario: edit power unit
@@ -213,7 +217,7 @@ Rule: a user can edit any power unit detail except vehicle sub-type or recall a 
      When a user chooses to recall a new vehicle
      Then only allowable vehicle sub-types are available
 
-@orv2-3276-16
+@orv2-3276
 Rule: Users must choose from a list of allowable trailers
 
  # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true
@@ -245,23 +249,42 @@ Rule: Users must choose from a list of allowable trailers
       Then there is no option to add another trailer
        And they see the option to reset the list
 
-@orv2-3276-17
+@orv2-3276
+Rule: Users may reset the trailer list to start adding trailers again from the beginning of the allowable trailer list
+
+  Scenario: reset trailer list no calculation
+    Given a user has added one or more trailers to the application
+     When they choose to reset the trailer list
+     Then all inputted trailers are removed
+      And the ASW table trailers are removed
+      And the option to add a trailers is available
+
+  Scenario: reset trailer list with calculation
+    Given a user has added one or more trailers to the application
+      And they have calculated the ASW
+     When they choose to reset the trailer list
+     Then all inputted trailers are removed
+      And the ASW table trailers are removed
+      And Any calculation results are removed
+      And the option to add a trailers is available
+
+@orv2-3276
 Rule: The choice and order of allowable trailers is determined by the chosen commodity, and selected power unit
 
  # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true
 
-@orv2-3276-18
+@orv2-3276
 Rule: The chosen trailers are shown in the application form in the order they were added
 
-@orv2-3276-19
+@orv2-3276
 Rule: The selection of trailers must adhere to an allowable order of jeep first, trailer second, then booster last
 
  # see STOW trailer list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B9C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Trailer%20List%2020170825.xlsx&action=default&mobileredirect=true 
 
-@orv2-3276-20
+@orv2-3276
 Rule: If jeep(s) and or booster(s) are allowable one or more jeep(s) or booster(s) may be added to the trailer list
 
-@orv2-3276-21
+@orv2-3276
 Rule: A chosen trailer(s) determines the remaining allowable trailers shown
 
   Scenario Outline: brush cutters
@@ -276,9 +299,39 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
     | Fixed Equipment           | Truck Tractors        | Semi-Trailers            | Booster       |
     | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
-ASW
+@orv2-3276
+Rule: The ASW table is not visible until a power unit has been added to the application
 
-@orv2-3276-22
+@orv2-3276
+Rule: Indicate result error(s) on ASW
+
+@orv2-3276
+Rule: Users must input all mandatory ASW fields before calculation is possible
+
+@orv2-3276
+Rule: Users may optionally initiate manual calculation of the ASW
+
+
+
+@orv2-3276
+Rule:
+
+@orv2-3276
+Rule:
+
+@orv2-3276
+Rule:
+
+@orv2-3276
+Rule:
+
+@orv2-3276
+Rule:
+
+@orv2-3276
+Rule:
+
+@orv2-3276
 Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
   Scenario: no origin or destination is inputted
@@ -293,7 +346,7 @@ Rule: Origin and destination may be entered manually or selected from the provid
      When they chose to continue
      Then they can continue
 
-@orv2-3276-23
+@orv2-3276
 Rule: The origin and destination is resolved and the chosen resolved address replaces text inputted by the user
 
  Scenario: 940 blanshard
@@ -308,7 +361,7 @@ Rule: The origin and destination is resolved and the chosen resolved address rep
        | Blanshard Rd, Vernon, BC       |
        | Blanshard St, Maple Ridge, BC  |
 
-@orv2-3276-24
+@orv2-3276
 Rule: Users must input total distance (km)
 
   Scenario: no input
@@ -328,7 +381,7 @@ Rule: Users must input total distance (km)
      When a user inputs -100
      Then they see "Invalid Input"
 
-@orv2-3276-25
+@orv2-3276
 Rule: Total distance resolves to 2 decimal places
 
   Scenario: input 100.555
@@ -336,7 +389,7 @@ Rule: Total distance resolves to 2 decimal places
      When they leave the field
      Then they see 100.55
 
-@orv2-3276-26
+@orv2-3276
 Rule: Users must input at least one trip sequence step
 
   Scenario: no sequence is inputted
@@ -345,7 +398,7 @@ Rule: Users must input at least one trip sequence step
       And they see "You must enter at least one highway."
       And the mandatory field is indicated
 
-@orv2-3276-27
+@orv2-3276
 Rule: hwy sequence is limited to a maximum of 3 characters per sequence step input field
 
   Scenario: sequence step inputted
@@ -373,10 +426,10 @@ Rule: hwy sequence is limited to a maximum of 3 characters per sequence step inp
       And continues
      Then the sequence step "A" is saved with the application
 
-@orv2-3276-28
+@orv2-3276
 Rule: A maximum of 32 sequence steps may be inputted
 
-@orv2-3276-29
+@orv2-3276
 Rule: Show one row of eight steps with an option to add additional rows of eight steps
 
   Scenario: add highways not chosen
@@ -391,10 +444,10 @@ Rule: Show one row of eight steps with an option to add additional rows of eight
      Then they see 2 rows of higway boxes
       And the second row starts at 9
 
-@orv2-3276-30
+@orv2-3276
 Rule: Show sequence information box
 
-@orv2-3276-31
+@orv2-3276
 Rule: Users must input specific route details
 
   Scenario: no specific route details is inputted
@@ -403,7 +456,7 @@ Rule: Users must input specific route details
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-3276-32
+@orv2-3276
 Rule: Users may optionally input application notes
 
   Scenario: notes inputted
@@ -411,10 +464,10 @@ Rule: Users may optionally input application notes
       And continues
      Then the  application note "These are my notes" are saved with the application
 
-@orv2-3276-33
+@orv2-3276
 Rule: Show application notes info box
 
-@orv2-3276-34
+@orv2-3276
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
  Scenario: Display permit application details summary
@@ -437,7 +490,7 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Application notes if submitted in the permit application      |
        | Permit fee summary                                            |
 
-@orv2-3276-35
+@orv2-3276
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
 
  Scenario: Save vehicle indication
@@ -445,7 +498,7 @@ Rule: Indication of vehicle saved to inventory is shown if save was chosen
      When they continued from the "Permit Application" page
      Then they see "This vehicle has been added/updated to your Vehicle Inventory."
 
-@orv2-3276-36
+@orv2-3276
 Rule: A user can edit an application 
 
  Scenario: At "Review abd Confirm Details" page
@@ -455,7 +508,7 @@ Rule: A user can edit an application
 
 Fee Calculation
 
-@orv2-3276-37
+@orv2-3276
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -472,10 +525,10 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-3276-38
+@orv2-3276
 Rule: Users are directed to applications in review after submitting the application for review
 
-@orv2-3276-39
+@orv2-3276
 Rule: Users can pay for a STOW permit application in the shopping cart that has policy validation warnings
 
 # confirm
