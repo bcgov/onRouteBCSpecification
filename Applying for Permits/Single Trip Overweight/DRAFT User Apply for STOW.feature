@@ -64,8 +64,9 @@ Rule: Users can change the chosen commodity
 
   Scenario: vehicles exist warning
     Given vehicles have been added to the permit application
-     When a user chooses to chnage the commodity
-     Then they see "Change Commodity Type Changing your commodity will require you to re-enter your vehicle information and loaded dimensions."
+     When a user chooses to change the commodity
+     Then they see "Change Commodity Type Changing your commodity will require you to re-enter your Vehicle Information and Axle Spacing and Weights."
+      And they have the option to cancel or continue
 
   Scenario: vehicles exist confirm change
     Given a user initiated a commodity change
@@ -79,7 +80,8 @@ Rule: Users can change the chosen commodity
      When a user chooses to change the commodity
      Then the commodity changes without warning
       
-@orv2-3276Rule: Users must input a load description
+@orv2-3276
+Rule: Users must input a load description
 
   Scenario: no load description inputted
      When a user chooses to continue to review and confirm
@@ -87,7 +89,8 @@ Rule: Users can change the chosen commodity
       And they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-3276Rule: Users can add a power unit only when a commodity is chosen
+@orv2-3276
+Rule: Users can add a power unit only when a commodity is chosen
 
   Scenario: arrive
      When a user arrives at a new STOW permit application
@@ -299,6 +302,10 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
     | Fixed Equipment           | Truck Tractors        | Semi-Trailers            | Booster       |
     | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
+# Axle Spacings and Weights (ASW) Table
+
+ # See: Applying for Permits/Single Trip Overweight/Wheel spacing and spread diagram.feature for details on the wheel spacing and spread diagram (WSPD) shown with the ASW table.
+
 @orv2-3276
 Rule: The ASW table section is not visible until a power unit has been added to the application
 
@@ -347,6 +354,89 @@ Rule: Users can see a legend for the ASW table when ASW table is shown
 @orv2-3276
 Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
 
+  Scenario: axle unit description
+     When the ASW table is shown
+     Then users can choose to see a description of the difference between axle unit and no. of axles
+
+# ASW Initiate Calculation
+@orv2-3276
+Rule: Calculate button is enabled when all mandatory ASW fields are inputted
+
+  Scenario: all mandatory fields inputted
+     When a user has inputted all mandatory ASW fields
+     Then the Calculate button is available
+
+@orv2-3276
+Rule: Users must input all mandatory ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
+
+  Scenario: new vehicle added
+    Given a user has completed a calculation
+     When they add a new vehicle
+     Then the ASW is updated to include the new axle units
+      And the Calculate button is not available
+
+@orv2-3276
+Rule: Users may optionally initiate manual calculation of the ASW
+
+  Scenario: manual calculation partial input
+    Given a user has inputted some mandatory ASW fields
+     When they choose to calculate
+     Then they see "All fields in Axle Spacing and Weights are required to calculate results."
+      And they cannot continue
+
+  Scenario: manual calculation all inputted
+    Given a user has inputted all mandatory ASW fields
+     When they choose to calculate
+     Then they see the calculation results are shown 
+      And they can continue
+  
+@orv2-3276
+Rule: The ASW is automatically calculated when a user attempts to continue to review and confirm if all mandatory ASW fields are inputted
+
+  Scenario: continue to review and confirm partial input
+    Given a user has inputted some mandatory ASW fields
+     When they choose to continue to review and confirm
+     Then they see "All fields in Axle Spacing and Weights are required to calculate results."
+      And they cannot continue
+
+  Scenario: continue to review and confirm all inputted no errors
+    Given a user has inputted all mandatory ASW fields
+      And there are no calculation errors
+     When they choose to continue to review and confirm
+     Then they are directed to the "Review and Confirm Details" page
+      And the calculation results are shown 
+
+  Scenario: continue to review and confirm all inputted with errors
+    Given a user has inputted all mandatory ASW fields
+      And there are calculation errors
+     When they choose to continue to review and confirm
+     Then the calculation results shown
+      And they cannot continue
+
+@orv2-3276
+Rule: User stay on the application form when calculation on continue has errors 
+
+  Scenario: calculation errors on continue
+    Given a user has inputted all mandatory ASW fields
+     When they choose to continue to review and confirm
+      And there are calculation errors
+     Then they stay on the application form
+      And the calculation results shown
+      And they are directed to the first calculation error
+      And the first calculation error is indicated
+      And they cannot continue
+
+  Scenario: only PU needs trailer
+    Given a user has inputted all mandatory ASW fields for power unit only
+      And there are calculation errors because trailers are missing
+     When they choose to continue to review and confirm
+     Then they stay on the application form
+      And the calculation results shown
+      And they are directed to the trailer section
+      And the trailer section is indicated
+      And they cannot continue
+
+# ASW Table Updates
 @orv2-3276
 Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
   
@@ -354,7 +444,7 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, removed 
      When a user adds a truck tractor power unit
      Then axle units 1 and 2 are shown in the ASW table
       And they see the axle unit section header "Truck Tractor"
-      And they see the vehicle diagram 
+      And they see the wheel spacing and spread diagram (WSPD) 
 
   Scenario: trailer added
     Given a user has added a power unit
@@ -362,16 +452,29 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, removed 
      Then they see the ASW table is shown with the power unit and trailer
 
 @orv2-3276
+Rule: Users may optionally reset the ASW table to remove all inputted ASW data and calculation results
+
+  Scenario: reset asw no calculation
+    Given a user has inputted ASW data
+     When they choose to reset the ASW table
+     Then all inputted ASW data is removed
+      And any calculation results are removed
+      But the inputted power unit and trailer(s) axle unit rows remain
+
+  Scenario: reset asw with calculation
+    Given a user has inputted ASW data
+      And they have calculated the ASW
+     When they choose to reset the ASW table
+     Then all inputted ASW data is removed
+      And any calculation results are removed
+      But the inputted power unit and trailer(s) axle unit rows remain
+
+# ASW Calculation Results
+@orv2-3276
 Rule: Indicate result error(s) on ASW
 
 @orv2-3276
-Rule: Users must input all mandatory ASW fields before calculation is possible
-
-@orv2-3276
-Rule: Users may optionally initiate manual calculation of the ASW
-
-@orv2-3276
-Rule:
+Rule: Calculation results are shown on review and confirm details page
 
 @orv2-3276
 Rule:
@@ -526,20 +629,20 @@ Rule: Show application details inputted by the user prior to submission or addin
      When they arrive at the "Review and Confirm Details" page
      Then they see permit applicaton header and footer information
      And they see:
-       | Please review and confirm warning                             |
-       | Company information edit message                              |
-       | Company mailing Address of permitee                           |
-       | Contact information submitted in Permit Application           |
-       | Permit details submitted in Permit Application                |
-       | Selected CVSE Forms listed with links to the source of truth  |
-       | Commodity details submitted in Permit Application             |
-       | Vehicle information submitted in Permit Application           |
-       | Axle Spacings and Weights submitted in the permit application | 
-       | Vehicle configuration diagram                                 |  
-       | Calculation results                                           |
-       | Trip details submitted in the permit application              |
-       | Application notes if submitted in the permit application      |
-       | Permit fee summary                                            |
+       | Please review and confirm warning                                   |
+       | Company information edit message                                    |
+       | Company mailing Address of permitee                                 |
+       | Contact information submitted in Permit Application                 |
+       | Permit details submitted in Permit Application                      |
+       | Selected CVSE Forms listed with links to the source of truth        |
+       | Commodity details submitted in Permit Application                   |
+       | Vehicle information submitted in Permit Application                 |
+       | Axle Spacings and Weights table submitted in the permit application |
+       | Vehicle configuration diagram                                       |
+       | Calculation results                                                 |
+       | Trip details submitted in the permit application                    |
+       | Application notes if submitted in the permit application            |
+       | Permit fee summary                                                  |
 
 @orv2-3276
 Rule: Indication of vehicle saved to inventory is shown if save was chosen
