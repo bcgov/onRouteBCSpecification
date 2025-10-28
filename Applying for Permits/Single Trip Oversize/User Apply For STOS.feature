@@ -429,12 +429,13 @@ Rule: Show application details inputted by the user prior to submission or addin
        | Company mailing Address of permitee                           |
        | Contact information submitted in Permit Application           |
        | Permit details submitted in Permit Application                |
-       | Selected commodities listed with links to the source of truth |
+       | Selected CVSE Forms listed with links to the source of truth |
        | Commodity details submitted in Permit Application             |
        | Vehicle information submitted in Permit Application           |
        | Loaded dimensions submitted in the permit application         |
        | Trip details submitted in the permit application              |
        | Application notes if submitted in the permit application      |
+       | Permit fee summary                                         |
 
 @orv2-2254-35 @orv2-2387-35 @orv2-4015-59 @orv2-2560-43 @orv2-2561-42
 Rule: A user can see the source of truth for CVSE forms
