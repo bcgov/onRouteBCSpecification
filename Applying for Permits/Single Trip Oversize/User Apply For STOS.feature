@@ -553,6 +553,4 @@ Rule: the trip type is shown on review and confirm details
      Then they see the one way trip designation
       And they do not see "Permitted for return trip along the same route."
 
-
-
 # Add directed to Applications in Review on submission
