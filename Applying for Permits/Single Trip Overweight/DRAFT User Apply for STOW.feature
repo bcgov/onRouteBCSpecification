@@ -325,7 +325,7 @@ Rule: The ASW table section is not visible until a power unit has been added to 
         | Axle Unit 2                                           |
       And the ASW table includes a power unit section header
       And the ASW table includes the following buttons:
-        | Calculate |
+        | Calculate | is not available |
         | Reset     |
       And the ASW table shows "Calculation Results"
       And calculation results are "All fields in Axle Spacing and Weights are required to calculate results."
