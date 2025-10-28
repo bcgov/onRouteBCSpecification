@@ -310,6 +310,7 @@ Rule: The ASW table section is not visible until a power unit has been added to 
     Given a user has added a power unit
      When they view the application form
      Then the ASW table section is visible 
+      And the section name is "Axle Spacings and Weights" 
       And the ASW table includes the following columns:
         | Axle Unit             |
         | No. of Axles          |
