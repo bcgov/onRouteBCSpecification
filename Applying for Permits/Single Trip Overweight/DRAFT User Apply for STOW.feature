@@ -300,7 +300,63 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
     | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
 @orv2-3276
-Rule: The ASW table is not visible until a power unit has been added to the application
+Rule: The ASW table section is not visible until a power unit has been added to the application
+
+  Scenario: no pu added
+     When a user arrives at a new STOW permit application
+     Then the ASW table section is not visible
+
+  Scenario: pu added
+    Given a user has added a power unit
+     When they view the application form
+     Then the ASW table section is visible 
+      And the ASW table includes the following columns:
+        | Axle Unit             |
+        | No. of Axles          |
+        | No. of Wheels         |
+        | Tire Size (mm)        |
+        | Interaxle Spacing (m) |
+        | Axle Spread (m)       |
+        | Axle Unit Weight (kg) |
+      And the ASW table includes the following rows:
+        | Axle Unit 1                                           |
+        | Interaxle Spacing Between Axle Unit 1 and Axle Unit 2 |
+        | Axle Unit 2                                           |
+      And the ASW table includes a power unit section header
+      And the ASW table includes the following buttons:
+        | Calculate |
+        | Reset     |
+
+@orv2-3276
+Rule: Users can see conversion facts when ASW table is shown
+
+  Scenario: ASW table shown  
+     When they ASW table is shown
+     Then they see: "Conversion facts: 1 mm = 0.1 cm; 1 inch = 2.54 cm; 1 lb = 0.455 kg; 1 ft = 0.305 m."
+
+@orv2-3276
+Rule: Users can see a legend for the ASW table when ASW table is shown
+
+  Scenario: ASW table shown  
+     When the ASW table is shown
+     Then users see "Legend: Interaxle Spacing (SPC); Axle Spread (SPD); Gross Combination Vehicle Weight (GCVW)"
+
+@orv2-3276
+Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
+
+@orv2-3276
+Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
+  
+  Scenario: truck tractor added
+     When a user adds a truck tractor power unit
+     Then axle units 1 and 2 are shown in the ASW table
+      And they see the axle unit section header "Truck Tractor"
+      And they see the vehicle diagram 
+
+  Scenario: trailer added
+    Given a user has added a power unit
+     When they add a trailer
+     Then they see the ASW table is shown with the power unit and trailer
 
 @orv2-3276
 Rule: Indicate result error(s) on ASW
@@ -310,14 +366,6 @@ Rule: Users must input all mandatory ASW fields before calculation is possible
 
 @orv2-3276
 Rule: Users may optionally initiate manual calculation of the ASW
-
-
-
-@orv2-3276
-Rule:
-
-@orv2-3276
-Rule:
 
 @orv2-3276
 Rule:
