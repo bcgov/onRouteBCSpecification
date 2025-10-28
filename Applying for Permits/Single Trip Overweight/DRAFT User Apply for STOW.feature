@@ -304,7 +304,7 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
 
 # Axle Spacings and Weights (ASW) Table
 
- # See: Applying for Permits/Single Trip Overweight/Wheel spacing and spread diagram.feature for details on the wheel spacing and spread diagram (WSPD) shown with the ASW table.
+ # see Applying for Permits/Single Trip Overweight/Wheel spacing and spread diagram.feature for details on the wheel spacing and spread diagram (WSPD) shown with the ASW table.
 
 @orv2-3276
 Rule: The ASW table section is not visible until a power unit has been added to the application
@@ -460,6 +460,7 @@ Rule: Users may optionally reset the ASW table to remove all inputted ASW data a
      Then all inputted ASW data is removed
       And any calculation results are removed
       But the inputted power unit and trailer(s) axle unit rows remain
+      And the WSPD remains
 
   Scenario: reset asw with calculation
     Given a user has inputted ASW data
@@ -468,6 +469,7 @@ Rule: Users may optionally reset the ASW table to remove all inputted ASW data a
      Then all inputted ASW data is removed
       And any calculation results are removed
       But the inputted power unit and trailer(s) axle unit rows remain
+      And the WSPD remains
 
 # ASW Calculation Results
 @orv2-3276
