@@ -327,6 +327,8 @@ Rule: The ASW table section is not visible until a power unit has been added to 
       And the ASW table includes the following buttons:
         | Calculate |
         | Reset     |
+      And the ASW table shows "Calculation Results"
+      And calculation results are "All fields in Axle Spacing and Weights are required to calculate results."
 
 @orv2-3276
 Rule: Users can see conversion facts when ASW table is shown
