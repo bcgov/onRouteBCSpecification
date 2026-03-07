@@ -126,7 +126,7 @@ Rule: A user can withdraw a submitted permit application in pending review
       And A1-72303011-028 is in review
      When a user chooses to withdraw A1-72303011-028 
      Then they see "Application Status Application(s) have either been withdrawn or are in review by the Provincial Permit Centre." 
-      And A1-72303011-028 label is "In Review"
+      And A1-72303011-028 label is "IR"
 
   Scenario: label is pending review app is withdrawn
     Given A1-72303011-028 label is "PR"

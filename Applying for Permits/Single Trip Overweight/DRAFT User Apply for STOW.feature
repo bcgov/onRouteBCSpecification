@@ -5,6 +5,7 @@ staff = PC, SA, TRAIN, CTPO
 
 Note: These rules cover the user experience for applying for a Single Trip Overweight (STOW) permit application form behaviour specific to a STOW permit application. Other rules (e.g., contact details, date or duration) that are common to more than one permit application type can be found in the Applying for Permits folder.
 
+# Permit Details
 @orv2-3276
 Rule: CVSE Form 1070 is chosen by default and attached to the STOW permit application consecutively beginning after the final page of the issued permit
 @orv2-3276
@@ -26,6 +27,7 @@ Rule: A user can see the source of truth for CVSE forms
      When they select a "Conditions" link
      Then they are directed to the chosen CVSE Form stored at https://www.cvse.ca/whatsnew.html
 
+# Commodity Details
 @orv2-3276
 Rule: Users must input a commodity allowable for an STOW permit
 
@@ -89,6 +91,7 @@ Rule: Users must input a load description
       And they see "This is a required field"
       And the mandatory field is indicated
 
+# Vehicle Information
 @orv2-3276
 Rule: Users can add a power unit only when a commodity is chosen
 
@@ -278,7 +281,6 @@ Rule: The choice and order of allowable trailers is determined by the chosen com
 
 @orv2-3276
 Rule: The chosen trailers are shown in the application form in the order they were added
-
 @orv2-3276
 Rule: The selection of trailers must adhere to an allowable order of jeep first, trailer second, then booster last
 
@@ -286,7 +288,6 @@ Rule: The selection of trailers must adhere to an allowable order of jeep first,
 
 @orv2-3276
 Rule: If jeep(s) and or booster(s) are allowable one or more jeep(s) or booster(s) may be added to the trailer list
-
 @orv2-3276
 Rule: A chosen trailer(s) determines the remaining allowable trailers shown
 
@@ -306,7 +307,21 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
 
  # see Applying for Permits/Single Trip Overweight/Wheel spacing and spread diagram.feature for details on the wheel spacing and spread diagram (WSPD) shown with the ASW table.
 
-@orv2-3276
+@orv2-5245
+Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
+  
+  Scenario: truck tractor added
+     When a user adds a truck tractor power unit
+     Then axle units 1 and 2 are shown in the ASW table
+      And they see the axle unit section header "Truck Tractor"
+      And they see the wheel spacing and spread diagram (WSPD) 
+
+  Scenario: trailer added
+    Given a user has added a power unit
+     When they add a trailer
+     Then they see the ASW table is shown with the power unit and trailer
+
+@orv2-5245
 Rule: The ASW table section is not visible until a power unit has been added to the application
 
   Scenario: no pu added
@@ -337,21 +352,21 @@ Rule: The ASW table section is not visible until a power unit has been added to 
       And the ASW table shows "Calculation Results"
       And calculation results are "All fields in Axle Spacing and Weights are required to calculate results."
 
-@orv2-3276
+@orv2-5245
 Rule: Users can see conversion facts when ASW table is shown
 
   Scenario: ASW table shown  
      When they ASW table is shown
      Then they see: "Conversion facts: 1 mm = 0.1 cm; 1 inch = 2.54 cm; 1 lb = 0.455 kg; 1 ft = 0.305 m."
 
-@orv2-3276
+@orv2-5245
 Rule: Users can see a legend for the ASW table when ASW table is shown
 
   Scenario: ASW table shown  
      When the ASW table is shown
      Then users see "Legend: Interaxle Spacing (SPC); Axle Spread (SPD); Gross Combination Vehicle Weight (GCVW)"
 
-@orv2-3276
+@orv2-5245
 Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
 
   Scenario: axle unit description
@@ -359,14 +374,14 @@ Rule: User can choose to see a description of axle unit and no. of axles when AS
      Then users can choose to see a description of the difference between axle unit and no. of axles
 
 # ASW Initiate Calculation
-@orv2-3276
+@orv2-
 Rule: Calculate button is enabled when all mandatory ASW fields are inputted
 
   Scenario: all mandatory fields inputted
      When a user has inputted all mandatory ASW fields
      Then the Calculate button is available
 
-@orv2-3276
+@orv2-
 Rule: Users must input all mandatory ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
 
   Scenario: new vehicle added
@@ -375,7 +390,7 @@ Rule: Users must input all mandatory ASW fields before calculation is possible e
      Then the ASW is updated to include the new axle units
       And the Calculate button is not available
 
-@orv2-3276
+@orv2-
 Rule: Users may optionally initiate manual calculation of the ASW
 
   Scenario: manual calculation partial input
@@ -390,7 +405,7 @@ Rule: Users may optionally initiate manual calculation of the ASW
      Then they see the calculation results are shown 
       And they can continue
   
-@orv2-3276
+@orv2-
 Rule: The ASW is automatically calculated when a user attempts to continue to review and confirm if all mandatory ASW fields are inputted
 
   Scenario: continue to review and confirm partial input
@@ -413,8 +428,8 @@ Rule: The ASW is automatically calculated when a user attempts to continue to re
      Then the calculation results shown
       And they cannot continue
 
-@orv2-3276
-Rule: User stay on the application form when calculation on continue has errors 
+@orv2-
+Rule: Users stay on the application form when calculation on continue has errors 
 
   Scenario: calculation errors on continue
     Given a user has inputted all mandatory ASW fields
@@ -437,21 +452,7 @@ Rule: User stay on the application form when calculation on continue has errors
       And they cannot continue
 
 # ASW Table Updates
-@orv2-3276
-Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
-  
-  Scenario: truck tractor added
-     When a user adds a truck tractor power unit
-     Then axle units 1 and 2 are shown in the ASW table
-      And they see the axle unit section header "Truck Tractor"
-      And they see the wheel spacing and spread diagram (WSPD) 
-
-  Scenario: trailer added
-    Given a user has added a power unit
-     When they add a trailer
-     Then they see the ASW table is shown with the power unit and trailer
-
-@orv2-3276
+@orv2-
 Rule: Users may optionally reset the ASW table to remove all inputted ASW data and calculation results
 
   Scenario: reset asw no calculation
@@ -472,22 +473,24 @@ Rule: Users may optionally reset the ASW table to remove all inputted ASW data a
       And the WSPD remains
 
 # ASW Calculation Results
-@orv2-3276
+@orv2-
 Rule: Indicate result error(s) on ASW
 
-@orv2-3276
+@orv2-
 Rule: Calculation results are shown on review and confirm details page
 
-@orv2-3276
+@orv2-
 Rule:
 
-@orv2-3276
+@orv2-
 Rule:
 
-@orv2-3276
+@orv2-
 Rule:
 
-@orv2-3276
+@orv2-
+
+# Trip Details
 Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
   Scenario: no origin or destination is inputted
@@ -584,7 +587,6 @@ Rule: hwy sequence is limited to a maximum of 3 characters per sequence step inp
 
 @orv2-3276
 Rule: A maximum of 32 sequence steps may be inputted
-
 @orv2-3276
 Rule: Show one row of eight steps with an option to add additional rows of eight steps
 
@@ -602,7 +604,6 @@ Rule: Show one row of eight steps with an option to add additional rows of eight
 
 @orv2-3276
 Rule: Show sequence information box
-
 @orv2-3276
 Rule: Users must input specific route details
 
@@ -620,9 +621,9 @@ Rule: Users may optionally input application notes
       And continues
      Then the  application note "These are my notes" are saved with the application
 
+# Application Notes
 @orv2-3276
 Rule: Show application notes info box
-
 @orv2-3276
 Rule: Show application details inputted by the user prior to submission or adding to cart
 
@@ -663,8 +664,8 @@ Rule: A user can edit an application
      Then they are directed to the "Permit Application" page
 
 Fee Calculation
-
-@orv2-3276
+# Review and Confirm
+@orv2-
 Rule: The user must complete the attestations
 
  Scenario: Attestations
@@ -681,10 +682,9 @@ Rule: The user must complete the attestations
      Then they see "Checkbox selection is required"
       And the checkboxes are indicated
 
-@orv2-3276
+@orv2-
 Rule: Users are directed to applications in review after submitting the application for review
-
-@orv2-3276
+@orv2-
 Rule: Users can pay for a STOW permit application in the shopping cart that has policy validation warnings
 
 # confirm

@@ -1,4 +1,5 @@
 Feature: Staff Apply for Single Trip Overweight Permit
+As a staff user I want to apply for a single trip overweight permit on behalf of a customer so that I can assist customers who do not have access to the online system or prefer to apply through a staff member.
 
 staff = PC, SA, TRAIN, CTPO
 
