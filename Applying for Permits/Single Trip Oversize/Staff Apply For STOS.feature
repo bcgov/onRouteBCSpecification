@@ -15,9 +15,9 @@ Rule: staff may choose any start date
 Rule: staff may add an STOS permit to the cart
 
 @orv2-2387-2 @orv2-4274-1
-Rule: staff must choose a permit length in increments of one day, with a maximum of 30 days
+Rule: staff must choose a permit duration in increments of one day, with a maximum of 30 days
 
-  Scenario: Permit length accepted
+  Scenario: Permit duration accepted
      When they choose 1 from the list of days availavle:
        | 1 Day |
        | 2 Days |

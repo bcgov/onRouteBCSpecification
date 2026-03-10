@@ -2,7 +2,7 @@
 Feature: As a user I need to be able to record my Overload (OL) number so that I can submit a STOW permit application with ASW evaluation errors for approval by the PPC.
 
 Users:
-CA, PA, PC, SA, TRAIN, CTPO
+CA, PA, PC, SA, TRAIN, 
 
 Rule: The approval number question default answer is no and the approval no. field is hidden on the application form until the user selects yes for the extraordinary load request question
 
@@ -60,6 +60,8 @@ Rule: A user can submit a STOW permit application with ASW evaluation errors if 
      Then the user can submit the STOW permit application even if there are ASW evaluation errors
 #
 # Questions:
+- Do we want to indicate that it is an OL appl in AIP?
+- Indicate the OL app in the queue
 - permissions? Staff uniqueness? - not that I am aware of
 	 - Expiry date exists - if this is true then how do we handle the the expiry date if we are allowing the permit application to be submitted with errors? - Not yet, we will rely on humans to confirm the OL number is valid.
 
