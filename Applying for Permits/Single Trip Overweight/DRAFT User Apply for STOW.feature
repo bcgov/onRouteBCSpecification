@@ -352,6 +352,8 @@ Rule: The ASW table section is not visible until a power unit has been added to 
       And the ASW table shows "Calculation Results"
       And calculation results are "All fields in Axle Spacing and Weights are required to calculate results."
 
+Rule: default tire size is 279.4 for all axle units
+
 @orv2-5245
 Rule: Users can see conversion facts when ASW table is shown
 
@@ -686,6 +688,9 @@ Rule: The user must complete the attestations
 Rule: Users are directed to applications in review after submitting the application for review
 @orv2-
 Rule: Users can pay for a STOW permit application in the shopping cart that has policy validation warnings
+
+Default number of axles is one
+Header rows grouping parts of the vehicle configuration by section
 
 # confirm
 Rule: STOW permit default is a one way trip

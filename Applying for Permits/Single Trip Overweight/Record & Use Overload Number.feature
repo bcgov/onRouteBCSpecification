@@ -34,16 +34,16 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
 
   Scenario: chose no for extraordinary load request
     Given the user is applying for a STOW permit and is on the review and confirm page
-     When the user has selected "No" for the question "Is this an extraordinary load permit application?"
+     When the user has selected "No" for the question "Do you have an extraordinary load approval??"
       And they have continued to review and confirm
      Then the review and confirm page should show:
       | Question                                          | Answer |
-      | Is this an extraordinary load permit application? | No     |
+      | Do you have an extraordinary load approval? | No     |
       And the review and confirm page should not show the header "Approval No."
 
   Scenario: chose yes for extraordinary load request
     Given the user is applying for a STOW permit and is on the review and confirm page
-     When the user has selected "Yes" for the question "Is this an extraordinary load permit application?"
+     When the user has selected "Yes" for the question "Do you have an extraordinary load approval?"
       And they have inputted "12345" into the "Approval No." field
       And they have continued to review and confirm
      Then the review and confirm page should show:
@@ -60,8 +60,8 @@ Rule: A user can submit a STOW permit application with ASW evaluation errors if 
      Then the user can submit the STOW permit application even if there are ASW evaluation errors
 #
 # Questions:
-- permissions? Staff uniqueness?
-	 - Expiry date exists - if this is true then how do we handle the the expiry date if we are allowing the permit application to be submitted with errors?
+- permissions? Staff uniqueness? - not that I am aware of
+	 - Expiry date exists - if this is true then how do we handle the the expiry date if we are allowing the permit application to be submitted with errors? - Not yet, we will rely on humans to confirm the OL number is valid.
 
 # Notes:
 # 2026-03-05
