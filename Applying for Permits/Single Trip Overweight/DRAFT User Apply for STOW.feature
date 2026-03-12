@@ -303,135 +303,13 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
     | Fixed Equipment           | Truck Tractors        | Semi-Trailers            | Booster       |
     | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
-# Axle Spacings and Weights (ASW) Table
 
- # see Applying for Permits/Single Trip Overweight/Wheel spacing and spread diagram.feature for details on the wheel spacing and spread diagram (WSPD) shown with the ASW table.
-
-@orv2-5245
-Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
-  
-  Scenario: truck tractor added
-     When a user adds a truck tractor power unit
-     Then axle units 1 and 2 are shown in the ASW table
-      And they see the axle unit section header "Truck Tractor"
-      And they see the wheel spacing and spread diagram (WSPD) 
-
-  Scenario: trailer added
-    Given a user has added a power unit
-     When they add a trailer
-     Then they see the ASW table is shown with the power unit and trailer
-
-@orv2-5245
-Rule: The ASW table section is not visible until a power unit has been added to the application
-
-  Scenario: no pu added
-     When a user arrives at a new STOW permit application
-     Then the ASW table section is not visible
-
-  Scenario: pu added
-    Given a user has added a power unit
-     When they view the application form
-     Then the ASW table section is visible 
-      And the section name is "Axle Spacings and Weights" 
-      And the ASW table includes the following columns:
-        | Axle Unit             |
-        | No. of Axles          |
-        | No. of Wheels         |
-        | Tire Size (mm)        |
-        | Interaxle Spacing (m) |
-        | Axle Spread (m)       |
-        | Axle Unit Weight (kg) |
-      And the ASW table includes the following rows:
-        | Axle Unit 1                                           |
-        | Interaxle Spacing Between Axle Unit 1 and Axle Unit 2 |
-        | Axle Unit 2                                           |
-      And the ASW table includes a power unit section header
-      And the ASW table includes the following buttons:
-        | Calculate | is not available |
-        | Reset     |
-      And the ASW table shows "Calculation Results"
-      And calculation results are "All fields in Axle Spacing and Weights are required to calculate results."
-
-Rule: default tire size is 279.4 for all axle units
-
-@orv2-5245
-Rule: Users can see conversion facts when ASW table is shown
-
-  Scenario: ASW table shown  
-     When they ASW table is shown
-     Then they see: "Conversion facts: 1 mm = 0.1 cm; 1 inch = 2.54 cm; 1 lb = 0.455 kg; 1 ft = 0.305 m."
-
-@orv2-5245
-Rule: Users can see a legend for the ASW table when ASW table is shown
-
-  Scenario: ASW table shown  
-     When the ASW table is shown
-     Then users see "Legend: Interaxle Spacing (SPC); Axle Spread (SPD); Gross Combination Vehicle Weight (GCVW)"
-
-@orv2-5245
-Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
 
   Scenario: axle unit description
      When the ASW table is shown
      Then users can choose to see a description of the difference between axle unit and no. of axles
 
-# ASW Initiate Calculation
-@orv2-
-Rule: Calculate button is enabled when all mandatory ASW fields are inputted
 
-  Scenario: all mandatory fields inputted
-     When a user has inputted all mandatory ASW fields
-     Then the Calculate button is available
-
-@orv2-
-Rule: Users must input all mandatory ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
-
-  Scenario: new vehicle added
-    Given a user has completed a calculation
-     When they add a new vehicle
-     Then the ASW is updated to include the new axle units
-      And the Calculate button is not available
-
-@orv2-
-Rule: Users may optionally initiate manual calculation of the ASW
-
-  Scenario: manual calculation partial input
-    Given a user has inputted some mandatory ASW fields
-     When they choose to calculate
-     Then they see "All fields in Axle Spacing and Weights are required to calculate results."
-      And they cannot continue
-
-  Scenario: manual calculation all inputted
-    Given a user has inputted all mandatory ASW fields
-     When they choose to calculate
-     Then they see the calculation results are shown 
-      And they can continue
-  
-@orv2-
-Rule: The ASW is automatically calculated when a user attempts to continue to review and confirm if all mandatory ASW fields are inputted
-
-  Scenario: continue to review and confirm partial input
-    Given a user has inputted some mandatory ASW fields
-     When they choose to continue to review and confirm
-     Then they see "All fields in Axle Spacing and Weights are required to calculate results."
-      And they cannot continue
-
-  Scenario: continue to review and confirm all inputted no errors
-    Given a user has inputted all mandatory ASW fields
-      And there are no calculation errors
-     When they choose to continue to review and confirm
-     Then they are directed to the "Review and Confirm Details" page
-      And the calculation results are shown 
-
-  Scenario: continue to review and confirm all inputted with errors
-    Given a user has inputted all mandatory ASW fields
-      And there are calculation errors
-     When they choose to continue to review and confirm
-     Then the calculation results shown
-      And they cannot continue
-
-@orv2-
-Rule: Users stay on the application form when calculation on continue has errors 
 
   Scenario: calculation errors on continue
     Given a user has inputted all mandatory ASW fields
