@@ -31,7 +31,7 @@ Rule: A user can see the source of truth for CVSE forms
 @orv2-3276
 Rule: Users must input a commodity allowable for an STOW permit
 
- # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
+ # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B881efcec-9462-46d8-a908-1e7df42f113a%7D&action=edit&wdinitialsession=3bcc4506-0f70-c7c7-ef0a-ed7f570196b6&wdrldsc=9&wdrldc=1&wdrldr=ContinueInExcel&wdenableroaming=1&wdlcid=en-CA&wdorigin=AuthRedirect.BrowserReload&wdredirectionreason=Force_SingleStepBoot
 
   Scenario: no commodity inputted
      When a users chooses to continue to review and confirm
@@ -43,7 +43,8 @@ Rule: Users must input a commodity allowable for an STOW permit
 @orv2-3276
 Rule: Users can search for a commodity allowable for an STOW permit
 
- # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
+ # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B881efcec-9462-46d8-a908-1e7df42f113a%7D&action=edit&wdinitialsession=3bcc4506-0f70-c7c7-ef0a-ed7f570196b6&wdrldsc=9&wdrldc=1&wdrldr=ContinueInExcel&wdenableroaming=1&wdlcid=en-CA&wdorigin=AuthRedirect.BrowserReload&wdredirectionreason=Force_SingleStepBoot
+
 
   Scenario: Reducible Loads
     Given a user is searching for "Reducible Loads"
@@ -59,7 +60,8 @@ Rule: Users can search for a commodity allowable for an STOW permit
 @orv2-3276
 Rule: Users can scroll the list of commodities allowable for an STOW permit
 
- # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B1B0D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Commodity%20List%2020170825.xlsx&action=default&mobileredirect=true
+ # see STOW commodity list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B881efcec-9462-46d8-a908-1e7df42f113a%7D&action=edit&wdinitialsession=3bcc4506-0f70-c7c7-ef0a-ed7f570196b6&wdrldsc=9&wdrldc=1&wdrldr=ContinueInExcel&wdenableroaming=1&wdlcid=en-CA&wdorigin=AuthRedirect.BrowserReload&wdredirectionreason=Force_SingleStepBoot
+
 
 @orv2-3276
 Rule: Users can change the chosen commodity

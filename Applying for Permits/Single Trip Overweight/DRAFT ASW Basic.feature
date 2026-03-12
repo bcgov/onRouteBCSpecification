@@ -11,12 +11,12 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, removed 
      When a user adds a truck tractor power unit
      Then axle units 1 and 2 are shown in the ASW table
       And they see the axle unit section header "Truck Tractor"
-      And they see the wheel spacing and spread diagram (WSPD) 
 
   Scenario: trailer added
     Given a user has added a power unit
      When they add a trailer
      Then they see the ASW table is shown with the power unit and trailer
+      And they see the axle unit section header "Trailer 1"
 
 @orv2-5245
 Rule: The ASW table section is not visible until a power unit has been added to the application
@@ -48,16 +48,17 @@ Rule: The ASW table section is not visible until a power unit has been added to 
 Rule: The default tire size is 279.4 for all axle units
 
   Scenario: new table
-    Given 
-     When 
-     Then 
+    Given a user has added a power unit
+     When they view the ASW table
+     Then they see that the default tire size for all axle units is 279.4 mm
 
-  Scenario: reset table
-    Given 
-     When 
-     Then 
+@orv2-5245
+Rule: The default number of axles is 1 for all axle units
 
-
+  Scenario: new table
+    Given a user has added a power unit
+     When they view the ASW table
+     Then they see that the default number of axles for all axle units is 1
 
 @orv2-5245
 Rule: Users can see conversion facts when ASW table is shown

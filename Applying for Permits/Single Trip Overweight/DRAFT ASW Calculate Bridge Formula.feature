@@ -61,3 +61,18 @@ Rule: The ASW is automatically calculated when a user attempts to continue to re
 @orv2-5275
 Rule: Users stay on the application form when calculation on continue has errors 
 
+@orv2-5275
+Rule: Resetting the ASW table restore default field values
+
+  Scenario: tire sizes reset
+    Given a user has added a power unit and entered tire sizes for the axle units
+     When they reset the ASW table
+     Then they see that the tire size for all axle units is reset to 279.4 mm
+
+  Scenario: number of axles
+    Given a user has added a power unit and entered tire sizes for the axle units
+     When they reset the ASW table
+     Then the number of axles is reset to 1 for all axle units
+
+@orv2-5275
+Rule: 
