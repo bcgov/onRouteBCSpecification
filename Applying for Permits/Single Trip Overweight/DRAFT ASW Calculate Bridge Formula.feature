@@ -76,3 +76,33 @@ Rule: Resetting the ASW table restore default field values
 
 @orv2-5275
 Rule: 
+# Bridge Formula Calculation Results
+@orv2-
+Rule: Indicate result error(s) on ASW
+
+@orv2-
+Rule: Calculation results are shown on review and confirm details page
+
+# ASW Table Updates
+@orv2-
+Rule: Users may optionally reset the ASW table to remove all inputted ASW data and calculation results
+
+  Scenario: reset asw no calculation
+    Given a user has inputted ASW data
+     When they choose to reset the ASW table
+     Then all inputted ASW data is removed
+      And any calculation results are removed
+      But the inputted power unit and trailer(s) axle unit rows remain
+      And the WSPD remains
+
+  Scenario: reset asw with calculation
+    Given a user has inputted ASW data
+      And they have calculated the ASW
+     When they choose to reset the ASW table
+     Then all inputted ASW data is removed
+      And any calculation results are removed
+      But the inputted power unit and trailer(s) axle unit rows remain
+      And the WSPD remains
+
+Default number of axles is one
+Header rows grouping parts of the vehicle configuration by section
