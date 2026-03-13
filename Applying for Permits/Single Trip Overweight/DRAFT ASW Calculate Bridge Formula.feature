@@ -10,6 +10,13 @@ Rule: Calculate button is enabled when all mandatory ASW fields are inputted
   Scenario: all mandatory fields inputted
      When a user has inputted all mandatory ASW fields
      Then the Calculate button is available
+      And they see "All fields in Axle Spacing and Weights are required to calculate results."
+
+  Scenario: mandatory fields data missing
+    Given a user has inputted some but not all mandatory ASW fields
+     When they view the ASW table
+     Then the Calculate button is not available
+      And they see "All fields in Axle Spacing and Weights are required to calculate results."
 
 @orv2-5275
 Rule: Users must input all mandatory ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
@@ -62,7 +69,7 @@ Rule: The ASW is automatically calculated when a user attempts to continue to re
 Rule: Users stay on the application form when calculation on continue has errors 
 
 @orv2-5275
-Rule: Resetting the ASW table restore default field values
+Rule: Resetting the ASW table restore default field values in the table
 
   Scenario: tire sizes reset
     Given a user has added a power unit and entered tire sizes for the axle units
@@ -75,24 +82,13 @@ Rule: Resetting the ASW table restore default field values
      Then the number of axles is reset to 1 for all axle units
 
 @orv2-5275
-Rule: 
-# Bridge Formula Calculation Results
-@orv2-
-Rule: Indicate result error(s) on ASW
-
-@orv2-
-Rule: Calculation results are shown on review and confirm details page
-
-# ASW Table Updates
-@orv2-
-Rule: Users may optionally reset the ASW table to remove all inputted ASW data and calculation results
+Rule: Resetting the ASW table will remove all inputted ASW data and calculation results
 
   Scenario: reset asw no calculation
     Given a user has inputted ASW data
      When they choose to reset the ASW table
      Then all inputted ASW data is removed
       And any calculation results are removed
-      But the inputted power unit and trailer(s) axle unit rows remain
       And the WSPD remains
 
   Scenario: reset asw with calculation
@@ -101,8 +97,33 @@ Rule: Users may optionally reset the ASW table to remove all inputted ASW data a
      When they choose to reset the ASW table
      Then all inputted ASW data is removed
       And any calculation results are removed
-      But the inputted power unit and trailer(s) axle unit rows remain
       And the WSPD remains
+
+@orv2-5275
+Rule: Resetting the AWS table will remove the additional axle units added by the user
+
+  Scenario: reset asw additional axle units
+    Given a user has added 
+      And additional axle units
+     When they choose to reset the ASW table
+     Then all additional axle units are removed
+      And the ASW table is reset to only show the default power unit axle unit
+
+# Bridge Formula Calculation Results
+@orv2-5275
+Rule: Indicate result error(s) on ASW table when calculation errors are present
+
+  Scenario: calculation errors present
+    Given a user has inputted all mandatory ASW fields
+      And there are calculation errors
+     When they view the ASW table
+     Then they see error indicators on the ASW table
+      And they see error messages indicating the nature of the error(s)
+
+
+Resetting Axle Spacing and Weights will remove all entered data, including any
+additional Axle Units you may have added.
+Cancel Reset
 
 Default number of axles is one
 Header rows grouping parts of the vehicle configuration by section
