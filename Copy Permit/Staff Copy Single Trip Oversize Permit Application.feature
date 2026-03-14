@@ -1,5 +1,6 @@
 Feature: Staff Copy Single Trip Oversize Permit Application
 
-@orv2-4969-19
+@orv2-4728-1
 Rule: Contact information does not contain first name last name and primary phone from copied permit application (same as staff new application behaviour)
+
 

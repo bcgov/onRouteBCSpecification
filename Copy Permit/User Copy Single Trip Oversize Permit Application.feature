@@ -4,10 +4,10 @@ user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 cv client = CA, PA
 
-@orv2-4969-4
+@orv2-4728-2
 Rule: There is no association between the copied permit application and the original permit application application
 
-@orv2-4969-5
+@orv2-4728-3
 Rule: Client Information is from the cv client profile
 
   Scenario: profile client information unchanged
@@ -48,7 +48,7 @@ Rule: Client Information is from the cv client profile
       | Province               | Ontario              |
       | City                   | Toronto              |
 
-@orv2-4969-6
+@orv2-4728-4
 Rule: Contact Information is from the cv client profile for cv clients only
 
   Scenario: profile contact information unchanged
@@ -82,16 +82,16 @@ Rule: Contact Information is from the cv client profile for cv clients only
       | Primary Phone | 555-987-6543        |
       | Client Email  | client@cvclient.com |
 
-@orv2-4969-7
+@orv2-4728-5
 Rule: Start date of the copied permit application is the current date
 
-@orv2-4969-8
+@orv2-4728-6
 Rule: Replicate permit application duration from original permit application to copied permit application
 
-@orv2-4969-9
+@orv2-4728-7
 Rule: Permit application expiry date is calculated based on current date and duration of the copied permit application
 
-@orv2-4969-10
+@orv2-4728-8
 Rule: Replicate CVSE forms from original permit application to copied permit application
 
   Scenario: CVSE form exists
@@ -121,7 +121,7 @@ Rule: Replicate CVSE forms from original permit application to copied permit app
      Then permit application B has CVSE form 3
       And CVSE form 3 can be selected if needed
 
-@orv2-4969-11
+@orv2-4728-9
 Rule: Replicate commodity type from original permit application to copied permit application
 
   Scenario: commodity type exists
@@ -149,10 +149,10 @@ Rule: Replicate commodity type from original permit application to copied permit
      When a user copies permit application A to create permit application B
      Then permit application B has commodity type 2 available to select
 
-@orv2-4969-12
+@orv2-4728-10
 Rule: Replicate load description from original permit application to copied permit application
 
-@orv2-4969-13
+@orv2-4728-11
 Rule: There is no association between the vehicle information on the copied permit application and the cv client vehicle inventory
 
   Scenario: power unit removed from cv client inventory
@@ -167,7 +167,7 @@ Rule: There is no association between the vehicle information on the copied perm
      When a user copies permit application A to create permit application B
      Then permit application B has power unit with plate ABC123
 
-@orv2-4969-14
+@orv2-4728-12
 Rule: Replicate power unit from original permit application to copied permit application
 
   Scenario: no longer LCV cv client
@@ -195,7 +195,7 @@ Rule: Replicate power unit from original permit application to copied permit app
      Then permit application B has no vehicle information 
       And permit application B has no loaded dimensions
 
-@orv2-4969-15
+@orv2-4728-13
 Rule: Replicate trailers from original permit application to copied permit application
 
   Scenario: jeep allowance changed
@@ -227,11 +227,11 @@ Rule: Replicate trailers from original permit application to copied permit appli
      When a user copies permit application A to create permit application B
      Then permit application B has no trailers
 
-@orv2-4969-16
+@orv2-4728-14
 Rule: Replicate Loaded Dimensions from original permit application to copied permit application
 
-@orv2-4969-17
+@orv2-4728-15
 Rule: Replicate Trip Details from original permit application to copied permit application
 
-@orv2-4969-18
+@orv2-4728-16
 Rule: Replicate Application Notes from original permit application to copied permit application

@@ -66,7 +66,38 @@ Rule: The ASW is automatically calculated when a user attempts to continue to re
       And they cannot continue
 
 @orv2-5275
+Rule: Axle unit groups that fail bridge formula are indicated on the ASW table
+
+  Scenario: failed axle group 3
+    Given axle group 3 has failed BF
+     When the calculated return the results
+     Then the user sees axle unit rows 3 and 4 indicated
+
+  Scenario: failed axle group 3 and 4
+    Given axle group 3 has failed BF
+      And axle group 4 has failed BF
+     When the calculated return the results
+     Then the user sees axle unit rows 3 and 4 and 5 indicated
+
+@orv2-5275
 Rule: Users stay on the application form when calculation on continue has errors 
+
+  Scenario: has errors
+    Given a user has inputted all mandatory ASW fields
+      And there are calculation errors
+     When they choose to continue to review and confirm
+     Then they see the calculation results are shown 
+      And they cannot continue
+      And they remain on the application form
+
+  Scenario: no errors
+    Given a user has inputted all mandatory ASW fields
+      And there are no calculation errors
+     When they choose to continue to review and confirm
+     Then they are directed to the "Review and Confirm Details" page
+      And the calculation results are shown
+     When 
+     Then 
 
 @orv2-5275
 Rule: Resetting the ASW table restore default field values in the table
@@ -119,7 +150,6 @@ Rule: Indicate result error(s) on ASW table when calculation errors are present
      When they view the ASW table
      Then they see error indicators on the ASW table
       And they see error messages indicating the nature of the error(s)
-
 
 Resetting Axle Spacing and Weights will remove all entered data, including any
 additional Axle Units you may have added.
