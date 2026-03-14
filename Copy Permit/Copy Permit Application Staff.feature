@@ -1,3 +1,5 @@
+staff = PC, SA, TRAIN, CTPO
+
 @orv2-4978-3
 Rule: staff act as company upon copying a permit from global search for permit results
 
