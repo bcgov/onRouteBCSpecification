@@ -43,8 +43,6 @@ Rule: credit account void and amend with refund permit pdf and receipt are alway
      When 
      Then 
 
-
-
 Rule: Maximum 15 characters allowed in Transaction ID
 
 Enter 16 characters
@@ -95,4 +93,58 @@ Rule:
     Given 
      When 
      Then 
+     
+Stow Return Trip:
 
+Rule: STOW permit default is a one way trip
+
+  Scenario: default trip type new
+     Given a user has started a new STOS application
+     When they view trip details
+     Then they see One Way chosen
+
+Rule: a user can optionally choose to designate the STOW application as a return trip
+
+  Scenario: designate return trip
+     Given a user has started a new STOS application
+      And they have not designated the application as a return trip
+     When they choose to designate the application as a return trip
+     Then the return trip is selected
+
+  Scenario: remove return trip designation
+     Given a user has chosen to designate the application as a return trip
+     When they choose to designate the application as a one way trip
+     Then the return trip is not selected
+
+Rule: a return trip multiplies the one way fee by 2
+
+  Scenario: return trip fee calculation
+     Given a user has designated the application as a return trip
+     When they continue to "Review and Confirm Details" page
+     Then the permit fee is calculated as $30
+
+Rule: if chosen a return trip is indicated on the generated permit pdf
+
+  Scenario: return trip pdf
+     Given a user has designated the application as a return trip
+     When they successfully purchase their permit
+     Then the generated permit pdf indicates "Permitted for return trip along the same route." in the trip details section
+
+  Scenario: one way trip pdf
+     Given a user has designated the application as a one way trip
+     When they successfully purchase their permit
+     Then the generated permit pdf does not indicate "Permitted for return trip along the same route." in the trip details section
+
+Rule: the trip type is shown on review and confirm details
+
+  Scenario: return trip
+     Given a user has chosen to designate the application as a return trip
+     When they continue to "Review and Confirm Details" page
+     Then they see the return trip designation
+      And they see "Permitted for return trip along the same route."
+
+  Scenario: one way trip
+     Given a user has chosen to designate the application as a one way trip
+     When they continue to "Review and Confirm Details" page
+     Then they see the one way trip designation
+      And they do not see "Permitted for return trip along the same route."
