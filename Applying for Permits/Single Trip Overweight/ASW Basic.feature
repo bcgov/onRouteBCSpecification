@@ -4,7 +4,7 @@ Feature: As a user I want to be able to view the ASW table upon inputting my com
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
-@orv2-5245
+@orv2-5245-1
 Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
   
   Scenario: truck tractor added
@@ -14,11 +14,11 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, removed 
 
   Scenario: trailer added
     Given a user has added a power unit
-     When they add a trailer
+     When they add a trailer "Jeep"
      Then they see the ASW table is shown with the power unit and trailer
-      And they see the axle unit section header "Trailer 1"
+      And they see the axle unit section header "Jeep"
 
-@orv2-5245
+@orv2-5245-2
 Rule: The ASW table section is not visible until a power unit has been added to the application
 
   Scenario: no pu added
@@ -44,7 +44,42 @@ Rule: The ASW table section is not visible until a power unit has been added to 
         | Axle Unit 2                                           |
       And the ASW table includes a power unit section header
 
-@orv2-5245
+@orv2-5245-3
+Rule: Users can choose from a list of available tire sizes for each axle unit in the ASW table
+
+  Scenario: ASW table shown
+    Given a user has added a power unit
+     When they view the ASW table
+     Then they can choose from a list of available tire sizes for each axle unit:
+       | 254 (10")   |
+       | 279.4 (11") |
+       | 304.8 (12") |
+       | 315 (12.4") |
+       | 325 (12.8") |
+       | 330 (13")   |
+       | 355 (14")   |
+       | 365 (14.4") |
+       | 368 (14.5") |
+       | 381 (15")   |
+       | 385 (15.2") |
+       | 393 (15.5") |
+       | 406 (16")   |
+       | 425 (16.7") |
+       | 431 (17")   |
+       | 445 (17.5") |
+       | 457 (18")   |
+       | 502 (19.8") |
+       | 508 (20")   |
+       | 520 (20.5") |
+       | 525 (20.7") |
+       | 550 (21.7") |
+       | 609 (24")   |
+       | 622 (24.5") |
+       | 636 (25")   |
+       | 711.2 (28") |
+     And the default tire size for all axle units is 279.4 mm
+
+@orv2-5245-4
 Rule: The default tire size is 279.4 for all axle units
 
   Scenario: new table
@@ -52,7 +87,7 @@ Rule: The default tire size is 279.4 for all axle units
      When they view the ASW table
      Then they see that the default tire size for all axle units is 279.4 mm
 
-@orv2-5245
+@orv2-5245-5
 Rule: The default number of axles is 1 for all axle units
 
   Scenario: new table
@@ -60,20 +95,35 @@ Rule: The default number of axles is 1 for all axle units
      When they view the ASW table
      Then they see that the default number of axles for all axle units is 1
 
-@orv2-5245
+@orv2-5245-6
+Rule: Axle spread is available when there are 2 or more axles in number of axles or number of axles is empty
+
+  Scenario: number of axles is 2
+     When a user inputs 2 
+     Then axle spread is available
+  
+  Scenario: number of axles is 1
+     When a user inputs 1 
+     Then axle spread is not available
+
+  Scenario: number of axles is empty
+     When number of axles is empty
+     Then axle spread is available
+
+@orv2-5245-7
 Rule: Users can see conversion facts when ASW table is shown
 
   Scenario: ASW table shown  
      When they ASW table is shown
      Then they see: "Conversion facts: 1 mm = 0.1 cm; 1 inch = 2.54 cm; 1 lb = 0.455 kg; 1 ft = 0.305 m."
 
-@orv2-5245
+@orv2-5245-8
 Rule: Users can see a legend for the ASW table when ASW table is shown
 
   Scenario: ASW table shown  
      When the ASW table is shown
      Then users see "Legend: Interaxle Spacing (SPC); Axle Spread (SPD); Gross Combination Vehicle Weight (GCVW)"
 
-@orv2-5245
+@orv2-5245-9
 Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
 

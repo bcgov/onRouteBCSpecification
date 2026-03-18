@@ -78,7 +78,6 @@ Rule: Users can change the chosen commodity
      When a user chooses to continue
      Then the commodity type is removed 
       And all inputted vehicle information is removed
-      And all inputted loaded dimensions is removed
 
   Scenario: vehicles do not exist
     Given a user has not added vehicles to the permit application
@@ -109,7 +108,7 @@ Rule: Users can add a power unit only when a commodity is chosen
 
   Scenario: commodity not chosen
      When a user does not choose a commodity
-     Then the option to add a power unit is available
+     Then the option to add a power unit is not available
 
   Scenario: change commodity
     Given commodity is chosen
@@ -125,7 +124,7 @@ Rule: Users can add a power unit only when a commodity is chosen
 @orv2-3276-11
 Rule: Users may only input one power unit allowable for an STOW permit manually or chosen from inventory 
 
- # see STOW vehicle list: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B8C8D6E3E-2C8E-4F2D-8E3C-1F4D1C8D6A3F%7D&file=Single%20Trip%20Overweight%20Vehicle%20List%2020170825.xlsx&action=default&mobileredirect=true
+ # see STOW vehicle list: 
 
   Scenario: pu added
      When a user chooses to add a power unit
