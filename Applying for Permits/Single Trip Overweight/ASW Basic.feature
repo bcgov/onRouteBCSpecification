@@ -35,6 +35,17 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, reset/re
       And all section headers are removed from the ASW table
 
 @orv2-5245-2
+Rule: Show 1 interaxle spacing column for every 2 axle units
+
+  Scenario: default state
+     When a user arrives at the BFCT
+     Then they see 1 interaxle spacing column and input field
+
+  Scenario: add axle unit
+     When a user adds an axle unit
+     Then they see an interaxle spacing column and input field preceding the newly added axle unit
+
+@orv2-5245-3
 Rule: The ASW table section is not visible until a power unit has been added to the application
 
   Scenario: no pu added
@@ -60,7 +71,7 @@ Rule: The ASW table section is not visible until a power unit has been added to 
         | Axle Unit 2                                           |
       And the ASW table includes a power unit section header
 
-@orv2-5245-3
+@orv2-5245-4
 Rule: Users can choose from a list of available tire sizes for each axle unit in the ASW table
 
   Scenario: ASW table shown
@@ -95,7 +106,7 @@ Rule: Users can choose from a list of available tire sizes for each axle unit in
        | 711.2 (28") |
      And the default tire size for all axle units is 279.4 mm
 
-@orv2-5245-4
+@orv2-5245-5
 Rule: The default tire size is 279.4 for all axle units
 
   Scenario: new table
@@ -103,7 +114,7 @@ Rule: The default tire size is 279.4 for all axle units
      When they view the ASW table
      Then they see that the default tire size for all axle units is 279.4 mm
 
-@orv2-5245-5
+@orv2-5245-6
 Rule: The default number of axles is 1 for all axle units
 
   Scenario: new table
@@ -111,7 +122,7 @@ Rule: The default number of axles is 1 for all axle units
      When they view the ASW table
      Then they see that the default number of axles for all axle units is 1
 
-@orv2-5245-6
+@orv2-5245-7
 Rule: Axle spread is available when there are 2 or more axles in number of axles or number of axles is empty
 
   Scenario: number of axles is 2
@@ -126,20 +137,32 @@ Rule: Axle spread is available when there are 2 or more axles in number of axles
      When number of axles is empty
      Then axle spread is available
 
-@orv2-5245-7
+@orv2-5245-8
 Rule: Users can see conversion facts when ASW table is shown
 
   Scenario: ASW table shown  
      When they ASW table is shown
      Then they see: "Conversion facts: 1 mm = 0.1 cm; 1 inch = 2.54 cm; 1 lb = 0.455 kg; 1 ft = 0.305 m."
 
-@orv2-5245-8
+@orv2-5245-9
 Rule: Users can see a legend for the ASW table when ASW table is shown
 
   Scenario: ASW table shown  
      When the ASW table is shown
      Then users see "Legend: Interaxle Spacing (SPC); Axle Spread (SPD); Gross Combination Vehicle Weight (GCVW)"
 
-@orv2-5245-9
+@orv2-5245-10
 Rule: User can choose to see a description of axle unit and no. of axles when ASW table is shown
+@orv2-5245-11
+Rule: Keyboard tab order is left to right per row
+
+  Scenario: axle unit 1 to axle unit 2
+     Given a user is in axle unit 1 no. of axles
+     When they use keyboard tab 6 times
+     Then the cursor is at axle unit 2 no. of axles
+
+  Scenario: axle unit 1 to interaxle spacing between axle unit 1 and 2
+     Given a user is in axle unit 1 no. of axles
+     When they use keyboard tab 5 times
+     Then the cursor is at interaxle spacing between axle unit 1 and 2
 
