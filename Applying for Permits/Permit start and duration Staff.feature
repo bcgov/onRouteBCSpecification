@@ -3,7 +3,6 @@ Feature: Permit start and duration Staff
 staff = PC, SA, TRAIN, CTPO
 
 Permit Start Date Overview:
-
 | Permit | Rule                                |
 | TROS   | Any past date to 60 days from today |
 | TROW   | Any past date to 60 days from today |

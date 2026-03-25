@@ -28,8 +28,14 @@ Rule: users can optionally remove axle units they have added to the ASW table
     Given a user has added axle units to the ASW table for a vehicle configuration that allows axle units
      When the user clicks the remove button for an axle unit entry in the ASW table
      Then the axle unit entry is removed from the ASW table
-
 @orv2-5269-3
+Rule: Added axle unit rows are empty except for No. of Axles which defaults to 1 and Tire Size with defaults to 279.4 (11inches) when an axle unit is added to the ASW table
+
+  Scenario: added axle unit columns are empty
+    Given a user has added an axle unit to the ASW table for a vehicle configuration that allows axle units
+     Then the new axle unit entry has empty fields for axle spacing, and weights
+
+@orv2-5269-4
 Rule: users can hover on the add axle unit button to see a tooltip with information about adding axle units
 
   Scenario: add axle unit
@@ -40,7 +46,7 @@ Rule: users can hover on the add axle unit button to see a tooltip with informat
      When a user hovers on the remove axle unit button for an axle unit entry in the ASW table
      Then they see "Remove Axle Unit" tooltip
 
-@orv2-5269-4
+@orv2-5269-5
 Rule: there is no limit to the number of axle units a user can add for a vehicle configuration that allows axle units
 
   Scenario: user adds multiple axle units

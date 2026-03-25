@@ -52,7 +52,7 @@ Rule: The CV Client is notified via email when a application is approved
        | Company Email    | mandatory   |
        | Additional Email | if inputted |
 
-@orv2-2473-5 @orv2-4449-5
+@orv2-2473-5 @orv2-4449-5 #update to reflect new permit and duration tables
 Rule: Start date and/or expiry date can not be in the past
 
  Scenario: in queue past start date

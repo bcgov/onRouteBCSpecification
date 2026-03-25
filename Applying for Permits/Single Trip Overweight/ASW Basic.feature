@@ -5,18 +5,34 @@ user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
 @orv2-5245-1
-Rule: The ASW table is updated when power unit or trailer(s) are added, removed or changed
+Rule: The ASW table is updated when power unit or trailer(s) are added, reset/removed and includes section headers for the power unit and trailer(s) as well as interaxle spacing between axle units
   
   Scenario: truck tractor added
      When a user adds a truck tractor power unit
      Then axle units 1 and 2 are shown in the ASW table
+      And interaxle spacing between Axle Unit 1 and 2 is shown in the ASW table
       And they see the axle unit section header "Truck Tractor"
 
   Scenario: trailer added
     Given a user has added a power unit
      When they add a trailer "Jeep"
      Then they see the ASW table is shown with the power unit and trailer
+      And interaxle spacing between axles units 2 and 3 is shown in the ASW table
       And they see the axle unit section header "Jeep"
+
+  Scenario: reset trailers
+    Given there are trailers shown in the ASW table
+     When a user clicks "Reset Trailers"
+     Then the trailer axle units are removed from the ASW table
+      And the interaxle spacing between the power unit and first trailer is removed from the ASW table
+      And the trailer section headers are removed from the ASW table
+
+  Scenario: remove power unit
+    Given there is a power unit and trailers shown in the ASW table
+     When a user removes the power unit
+     Then all axle units are removed from the ASW table
+      And all interaxle spacing is removed from the ASW table
+      And all section headers are removed from the ASW table
 
 @orv2-5245-2
 Rule: The ASW table section is not visible until a power unit has been added to the application

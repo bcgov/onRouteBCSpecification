@@ -4,8 +4,11 @@ Feature: As a user I want to be able to be able to calculate bridge formula so t
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
+Evaluation logic: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
+
+# ASW Table Rules:
 @orv2-5275
-Rule: Calculate button is enabled when all mandatory ASW fields are inputted
+Rule: Calculate button is enabled when all ASW fields are inputted
 
   Scenario: all mandatory fields inputted
      When a user has inputted all mandatory ASW fields
@@ -19,7 +22,7 @@ Rule: Calculate button is enabled when all mandatory ASW fields are inputted
       And they see "All fields in Axle Spacing and Weights are required to calculate results."
 
 @orv2-5275
-Rule: Users must input all mandatory ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
+Rule: Users must input all ASW fields before calculation is possible either manually or when attempting to continue to review and confirm
 
   Scenario: new vehicle added
     Given a user has completed a calculation
@@ -43,7 +46,7 @@ Rule: Users may optionally initiate manual calculation of the ASW
       And they can continue
   
 @orv2-5275
-Rule: The ASW is automatically calculated when a user attempts to continue to review and confirm if all mandatory ASW fields are inputted
+Rule: The ASW is automatically calculated when a user attempts to continue to review and confirm if all ASW fields are inputted
 
   Scenario: continue to review and confirm partial input
     Given a user has inputted some mandatory ASW fields
@@ -96,8 +99,25 @@ Rule: Users stay on the application form when calculation on continue has errors
      When they choose to continue to review and confirm
      Then they are directed to the "Review and Confirm Details" page
       And the calculation results are shown
-     When 
-     Then 
+
+@orv2-5275
+Rule: Users are shown a warning message when they attempt to reset the ASW table
+
+  Scenario: choose reset
+    Given a user has inputted ASW data
+     When they choose to reset the ASW table
+     Then they see: "Reset Axle Spacing and Weights Resetting Axle Spacing and Weights will remove all entered data, including any additional Axle Units you may have added." 
+      And they have the option to cancel or confirm the reset
+
+  Scenario: cancel reset
+     When a user chooses to cancel the reset of the ASW table
+     Then they see the ASW table with all inputted data still present
+
+  Scenario: confirm reset
+     When a user chooses to confirm the reset of the ASW table
+     Then they see the ASW table with all data removed and reset to default values
+      And any calculation results are removed
+      And any additional axle units added are removed
 
 @orv2-5275
 Rule: Resetting the ASW table restore default field values in the table
@@ -120,7 +140,6 @@ Rule: Resetting the ASW table will remove all inputted ASW data and calculation 
      When they choose to reset the ASW table
      Then all inputted ASW data is removed
       And any calculation results are removed
-      And the WSPD remains
 
   Scenario: reset asw with calculation
     Given a user has inputted ASW data
@@ -128,7 +147,6 @@ Rule: Resetting the ASW table will remove all inputted ASW data and calculation 
      When they choose to reset the ASW table
      Then all inputted ASW data is removed
       And any calculation results are removed
-      And the WSPD remains
 
 @orv2-5275
 Rule: Resetting the AWS table will remove the additional axle units added by the user
@@ -140,7 +158,39 @@ Rule: Resetting the AWS table will remove the additional axle units added by the
      Then all additional axle units are removed
       And the ASW table is reset to only show the default power unit axle unit
 
-# Bridge Formula Calculation Results
+@orv2-5275
+Rule: Only numbers can be inputted into the ASW table input fields
+
+  Scenario: "ten" inputted 
+     When a user inputs "ten" input number of axles for axle unit 1
+     Then number of axles for axle unit 1 is empty
+
+@orv2-5275
+Rule: Interaxle spacing and Axle Spread have two decimal precision
+
+  Scenario: input whole number
+    Given a user has inputted 10 in axle spread for axle unit 2
+     When they leave the field
+     Then axle spread for axle unit 2 is 10.00
+
+  Scenario: input single decimal place
+    Given a user has inputted 5.5 in axle spread for axle unit 2
+     When they leave the field
+     Then axle spread for axle unit 2 is 5.50
+
+@orv2-5275
+Rule: No. of Axles, No. of Wheels and Axle Unit Weight are whole numbers
+
+  Scenario: input a decimal number round up
+    Given a user has inputted 5000.5 in axle unit weight for axle unit 1
+     When they leave the field
+     Then axle unit weight for axle unit 1 is 5001
+
+  Scenario: input a decimal number round down
+    Given a user has inputted 5000.4 in axle unit weight for axle unit 1
+     When they leave the field
+     Then axle unit weight for axle unit 1 is 5000
+# Bridge Formula Calculation Rules:
 @orv2-5275
 Rule: Indicate result error(s) on ASW table when calculation errors are present
 
@@ -151,9 +201,116 @@ Rule: Indicate result error(s) on ASW table when calculation errors are present
      Then they see error indicators on the ASW table
       And they see error messages indicating the nature of the error(s)
 
-Resetting Axle Spacing and Weights will remove all entered data, including any
-additional Axle Units you may have added.
-Cancel Reset
+@orv2-5275
+Rule: Axle unit groups that fail bridge formula are indicated
 
-Default number of axles is one
-Header rows grouping parts of the vehicle configuration by section
+  Scenario: failed axle group 3
+    Given axle group 3 has failed BF
+     When the calculated return the results
+     Then the user sees axle unit rows 3 and 4 indicated
+
+  Scenario: failed axle group 3 and 4
+    Given axle group 3 has failed BF
+      And axle group 4 has failed BF
+     When the calculated return the results
+     Then the user sees axle unit rows 3 and 4 and 5 indicated
+
+# Notes:
+Bridge calculation failed for Axle Group (Axle Unit X - Axle Unit Y), Axle Group Weight is A, Bridge Formula Weight max is B.
+
+Rule: Show 1 interaxle spacing column for every 2 axle units
+
+  Scenario: default state
+     When a user arrives at the BFCT
+     Then they see 1 interaxle spacing column and input field
+
+  Scenario: add axle unit
+     When a user adds an axle unit
+     Then they see an interaxle spacing column and input field preceding the newly added axle unit
+
+Rule: Axle spread is available when there are 2 or more axles in number of axles or number of axles is empty
+
+  Scenario: number of axles is 2
+     When a user inputs 2 
+     Then axle spread is available
+  
+  Scenario: number of axles is 1
+     When a user inputs 1 
+     Then axle spread is not available
+
+  Scenario: number of axles is empty
+     When number of axles is empty
+     Then axle spread is available
+
+
+
+Rule: 0, -x and empty are invalid input parameters
+
+  Scenario: 0 inputted
+    Given a user input 0 in number of axles for axle unit 2
+     When they choose to calculate 
+     Then they see "Insufficient and/or invalid data."
+      And number of axles for axle unit 2 is indicated
+
+  Scenario: all empty
+    Given a user does not input any data 
+     When they choose to calculate 
+     Then they see "Insufficient and/or invalid data."
+      And all empty fields are indicated
+
+Rule: Calculate bridge calculation wheelbase (BCW) for each axle group
+
+  Scenario: axle group 1
+    Given there are 2 axle units 
+      And axle unit 1 has 1 axle
+      And interaxle spacing is 4.90(m)
+      And axle unit 2 axle spread is 1.50(m)
+     When a user chooses to calculate
+     Then the BCW for axle group 1 is 640(cm)
+
+Rule: Calculate bridge formula (BF) for each axle group as 30 x (BCW) (cm) + 18,000 kg = x (Maximum weight allowed by permit)
+
+  Scenario: calculate 1 axle group
+    Given axle unit 1 has the following parameters
+      | number of axles   | 1    |
+      | axle spread       | null |
+      | interaxle spacing | 4.90 |
+      | axle unit weight  | 4200 |
+      And axle unit 2 has the following parameters
+      | number of axles   | 2     |
+      | axle spread       | 1.50  |
+      | interaxle spacing | N/A   |
+      | axle unit weight  | 15000 |
+     When a user chooses to calculate
+     Then BF is 37200
+
+Rule: Axle groups fail BF when the sum of the axle unit weight for an axle group is greater than the BF result
+
+  Scenario: fail axle group 3 calculation
+    Given axle unit 3 has the following parameters
+      | number of axles   | 2     |
+      | axle spread       | 1.00  |
+      | interaxle spacing | 3.00 |
+      | axle unit weight  | 15600 |
+      And axle unit 4 has the following parameters
+      | number of axles   | 2     |
+      | axle spread       | 1.10  |
+      | interaxle spacing | N/A   |
+      | axle unit weight  | 17800 |
+     When a user chooses to calculate
+     Then the BF result is 33300
+      And the axle group weight is 33400
+      And they see "Bridge calculation failed between Axle Unit 3 and 4, Axle Group Weight is 33400, Bridge Formula Weight max is 33300."
+
+
+Rule: All axle groups must pass BF
+
+  Scenario: failed axle group 3
+    Given axle group 3 has failed BF
+     When the user chooses to calculate
+     Then the user sees "Bridge calculation failed between Axle Unit x and x, Axle Group Weight is x, Bridge Formula Weight max is x."
+
+  Scenario: passed BF
+    Given all axle groups pass BF
+     When the user chooses to calculate
+     Then they see "Bridge Calculation is ok."

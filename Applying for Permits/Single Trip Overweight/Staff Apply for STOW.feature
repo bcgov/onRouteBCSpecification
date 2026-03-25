@@ -13,7 +13,7 @@ Rule: staff must choose a permit length in increments of one day, with a maximum
 
  See: Permit start and duration Staff.feature
 
-@orv2-4467-3
+
 Rule: staff can add a permit to the shopping cart with policy validation warnings
 
   Scenario: only validation warnings
@@ -54,6 +54,6 @@ Rule: staff can add a permit to the shopping cart with policy validation warning
     Given permit application has policy validation warnings
      When staff cancel
 
-@orv2-4467-4
+
 Rule: staff are shown an additional warning when continuing to review and confirm when the permit application has policy validation warnings
 
