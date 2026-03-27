@@ -278,7 +278,7 @@ Rule: All axle groups must pass BF
   Scenario: passed BF
     Given all axle groups pass BF
      When the user chooses to calculate
-     Then they see "Bridge Calculation is ok."
+     Then they see nothing indicating success
 
 # Notes:
 
