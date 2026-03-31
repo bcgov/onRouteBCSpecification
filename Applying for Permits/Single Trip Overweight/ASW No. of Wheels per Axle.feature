@@ -15,10 +15,10 @@ Rule: A single axle unit can have 2, 4 or 8 wheels per axle
     Then the value is accepted
 
     Examples:
-      | wheels |
-      | 2      |
-      | 4      |
-      | 8      |
+      | description              | wheels |
+      | Valid single minimum     | 2      |
+      | Valid single mid value   | 4      |
+      | Valid single maximum     | 8      |
 
 @ORV2-5341-2
 Rule: A tandem axle unit can have 4, 8 or 16 wheels per axle
@@ -29,10 +29,10 @@ Rule: A tandem axle unit can have 4, 8 or 16 wheels per axle
     Then the value is accepted
 
     Examples:
-      | wheels |
-      | 4      |
-      | 8      |
-      | 16     |
+      | description              | wheels |
+      | Valid tandem minimum     | 4      |
+      | Valid tandem mid value   | 8      |
+      | Valid tandem maximum     | 16     |
 
 @ORV2-5341-3
 Rule: A tridem axle unit can have 6, 12 or 24 wheels per axle
@@ -43,10 +43,10 @@ Rule: A tridem axle unit can have 6, 12 or 24 wheels per axle
     Then the value is accepted
 
     Examples:
-      | wheels |
-      | 6      |
-      | 12     |
-      | 24     |
+      | description              | wheels |
+      | Valid tridem minimum     | 6      |
+      | Valid tridem mid value   | 12     |
+      | Valid tridem maximum     | 24     |
 
 @ORV2-5341-4
 Rule: Invalid wheel count for axle unit type is rejected
@@ -61,9 +61,9 @@ Rule: Invalid wheel count for axle unit type is rejected
      And they cannot continue the application
 
     Examples:
-      | axleType | axleUnit | wheels |
-      | single   | 2        | 6      |
-      | tandem   | 3        | 10     |
-      | tridem   | 4        | 8      |
+      | description                    | axleType | axleUnit | wheels |
+      | Invalid for single axle unit   | single   | 2        | 6      |
+      | Invalid for tandem axle unit   | tandem   | 3        | 10     |
+      | Invalid for tridem axle unit   | tridem   | 4        | 8      |
 
 # Notes:

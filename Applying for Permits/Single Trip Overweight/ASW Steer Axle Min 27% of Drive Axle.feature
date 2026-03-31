@@ -17,10 +17,10 @@ Rule: Steer Axle must be a minimum of 27% of Tridem Drive Axle Weight
     Then they do not see a steer axle weight error
 
     Examples:
-      | tridemDriveAxleWeight | steerAxleWeight |
-      | 20000                 | 5400            |
-      | 20000                 | 6000            |
-      | 18000                 | 4860            |
+      | description                  | tridemDriveAxleWeight | steerAxleWeight |
+      | Boundary pass at exactly 27% | 20000                 | 5400            |
+      | Pass above 27% threshold     | 20000                 | 6000            |
+      | Boundary pass at exactly 27% | 18000                 | 4860            |
 
   Scenario Outline: Steer axle weight is below the minimum 27% requirement
     Given the vehicle has a steer axle and a tridem drive axle
@@ -30,8 +30,8 @@ Rule: Steer Axle must be a minimum of 27% of Tridem Drive Axle Weight
     Then they see "Steer Axle must be a minimum of 27% of Tridem Drive Axle Weight."
 
     Examples:
-      | tridemDriveAxleWeight | steerAxleWeight |
-      | 20000                 | 5399            |
-      | 18000                 | 4859            |
-      | 15000                 | 4000            |
+      | description                  | tridemDriveAxleWeight | steerAxleWeight |
+      | Fail just below 27% boundary | 20000                 | 5399            |
+      | Fail just below 27% boundary | 18000                 | 4859            |
+      | Fail well below 27%          | 15000                 | 4000            |
 

@@ -2,8 +2,9 @@
 Feature: As a user I need to be able to record my Overload (OL) number so that I can submit a STOW permit application with ASW evaluation errors for approval by the PPC.
 
 Users:
-CA, PA, PC, SA, TRAIN, 
+CA, PA, PC, SA, TRAIN
 
+@ORV2-5255
 Rule: The approval number question default answer is no and the approval no. field is hidden on the application form until the user selects yes for the extraordinary load request question
 
   Scenario: chose no for extraordinary load request
@@ -29,7 +30,7 @@ Rule: The approval number field is required if the user selects yes for the extr
       And the "Approval No." field is highlighted in red
       And they cannot continue to review and confirm
       
-#
+@ORV2-5255
 Rule: Show user inputted selection on review and confirm if no or yes if no do not show the Approval No. header   
 
   Scenario: chose no for extraordinary load request
@@ -50,7 +51,8 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
       | Question                                          | Answer |
       | Is this an extraordinary load permit application? | Yes    |
       | Approval No.                                      | 12345  |
-#
+
+@ORV2-5255
 Rule: A user can submit a STOW permit application with ASW evaluation errors if they have inputted an OL number
 
   Scenario: submit with ASW evaluation errors
@@ -66,6 +68,7 @@ Rule: A user can submit a STOW permit application with ASW evaluation errors if 
 	 - Expiry date exists - if this is true then how do we handle the the expiry date if we are allowing the permit application to be submitted with errors? - Not yet, we will rely on humans to confirm the OL number is valid.
 
 # Notes:
+- To Discover
 # 2026-03-05
 - Extraordinary Load Request
  - Is this an extraordinary load permit application?

@@ -19,10 +19,10 @@ Rule: Drive Axle Unit and Jeep Axle Unit with the same number of axles must be l
      And they cannot continue the permit application
 
     Examples:
-      | axleUnit2Weight | axleUnit3Weight |
-      | 12000           | 10999           |
-      | 13500           | 12499           |
-      | 15000           | 13900           |
+      | description                    | axleUnit2Weight | axleUnit3Weight |
+      | Fail just over 1000 kg limit   | 12000           | 10999           |
+      | Fail just over 1000 kg limit   | 13500           | 12499           |
+      | Fail well over 1000 kg limit   | 15000           | 13900           |
 
   Scenario Outline: Weight difference is 1000 kg or less
     Given Axle Unit 2 and Axle Unit 3 have the same number of axles
@@ -33,8 +33,8 @@ Rule: Drive Axle Unit and Jeep Axle Unit with the same number of axles must be l
      And they can continue the permit application
 
     Examples:
-      | axleUnit2Weight | axleUnit3Weight |
-      | 12000           | 11000           |
-      | 13500           | 12501           |
-      | 15000           | 15000           |
+      | description                        | axleUnit2Weight | axleUnit3Weight |
+      | Boundary pass at exactly 1000 kg   | 12000           | 11000           |
+      | Pass below 1000 kg limit           | 13500           | 12501           |
+      | Pass with equal weights            | 15000           | 15000           |
 
