@@ -3,7 +3,6 @@ Feature: CV Cleint Apply for a Motive Fuel Permit
 
 CV Client = CA, PA
 
-
 Rule: Users must input an origin, destination and exit point chosen from the resolved geocoder list
 
   Scenario: no origin, destination and exit point is inputted
