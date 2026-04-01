@@ -38,7 +38,7 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, reset/re
 Rule: Show 1 interaxle spacing column for every 2 axle units
 
   Scenario: default state
-     When a user arrives at the BFCT
+     When a user arrives at a new STOW permit application
      Then they see 1 interaxle spacing column and input field
 
   Scenario: add axle unit
