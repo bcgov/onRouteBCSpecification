@@ -35,15 +35,16 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, reset/re
       And all section headers are removed from the ASW table
 
 @orv2-5245-2
-Rule: Show 1 interaxle spacing column for every 2 axle units
+Rule: Show 1 interaxle spacing row for every 2 axle units
 
-  Scenario: default state
+  Scenario: add power unit
      When a user arrives at a new STOW permit application
-     Then they see 1 interaxle spacing column and input field
+      And they add a truck tractor power unit
+     Then they see 1 interaxle spacing row and input field
 
   Scenario: add axle unit
      When a user adds an axle unit
-     Then they see an interaxle spacing column and input field preceding the newly added axle unit
+     Then they see an interaxle spacing row and input field preceding the newly added axle unit
 
 @orv2-5245-3
 Rule: The ASW table section is not visible until a power unit has been added to the application
