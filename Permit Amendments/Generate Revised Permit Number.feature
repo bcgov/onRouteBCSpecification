@@ -18,9 +18,9 @@ Rule: A revision suffix is added to a permit that has been amended
 
      Examples:
        | revision        | permit number with suffix |
-       | first revision  | P2-00408617-873-A01        |
-       | second revision | P2-00408617-873-A02        |
-       | third revision  | P2-00408617-873-A03        |
+       | first revision  | P2-00408617-873-A01       |
+       | second revision | P2-00408617-873-A02       |
+       | third revision  | P2-00408617-873-A03       |
 
 
 

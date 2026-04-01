@@ -1,9 +1,14 @@
 Feature: Staff Manage Queue queue List
+As staff I need to be able to see a list of permit applications submitted for review by CV Clients, so that I can assist them with completing their permit applications and approving issuance.
 
-Staff = SA, PC, CTPO, Trainee
+staff = PC, SA, TRAIN, CTPO
+
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
 
 @orv2-2398-1
-Rule: Staff can see a queue list of applications submitted for review
+Rule: staff can see a queue list of applications submitted for review
 
   Scenario: applications are in queue
     Given applications are in the queue
@@ -24,7 +29,7 @@ Rule: Staff can see a queue list of applications submitted for review
      Then they see "No records found."
 
 @orv2-2398-2
-Rule: Staff can see the elapsed time the submitted application has been in the queue
+Rule: staff can see the elapsed time the submitted application has been in the queue
 
   Scenario: new 5 minute elapsed
     Given application A1-72303011-028 is submitted at 13:30
@@ -36,11 +41,11 @@ Rule: Staff can see the elapsed time the submitted application has been in the q
      When staff choose to view the queue 5 minutes after A1-72303011-028 is submitted
      Then A1-72303011-028 time in queue is 00:05
 
-@orv2-2398-3
-Rule: The time in queue is counted until the application approved or rejected
+@orv2-2398-3 @orv2-2472-6 @orv2-4554-1
+Rule: The time in queue is counted until the application is approved or rejected
 
 @orv2-2398-4
-Rule: The queue list is sorted by the elapsed time in the queue oldest at the top in descending order
+Rule: default sort for queue list is sorted by the elapsed time in the queue oldest at the top in descending order
 
   Scenario: applications are in queue
     Given applications submitted in the following order:
@@ -53,8 +58,21 @@ Rule: The queue list is sorted by the elapsed time in the queue oldest at the to
       | A2-00408617-873 | 2nd |
       | A8-30815429-164 | 3rd |
 
+@orv2-4164
+Rule: staff can optionally sort the queue or claim list by permit start date
+
+  Scenario: sorted by elapsed time in queue
+    Given 
+     When 
+     Then
+
+  Scenario: sorted by permit started date
+    Given 
+     When 
+     Then 
+
 @orv2-2398-5
-Rule: Staff may update the queue list to show its current state manually
+Rule: staff may update the queue list to show its current state manually
 
   Scenario: manual update
      When staff choose to update the queue list
@@ -78,7 +96,7 @@ Rule: The queue list is updated every 30 seconds to reflect its current state
       | A8-30815429-164 | 00:35                 |
 
 @orv2-2398-7
-Rule: Staff may claim an application to review
+Rule: staff may claim an application to review
 
   Scenario: claim a non claimed
     Given A1-72303011-028 is not claimed
@@ -86,9 +104,15 @@ Rule: Staff may claim an application to review
      Then they are directed to review and confirm details
       And attestations are unavailable
 
-  Scenario: claim a claimed
+  Scenario: claim a claimed at claimed applications
     Given A1-72303011-028 is claimed
      When staff claim A1-72303011-028
+     Then they see "Claimed Application This application is already claimed by IDIR username. Would you like to claim it instead?"
+      And IDIR username is the IDIR username of the staff member that is actively processing A1-72303011-028
+
+  Scenario: claim a claimed at applications in queue
+    Given A1-72303011-028 is claimed
+     When staff claim A1-72303011-028 within 30 seconds
      Then they see "Claimed Application This application is already claimed by IDIR username. Would you like to claim it instead?"
       And IDIR username is the IDIR username of the staff member that is actively processing A1-72303011-028
 
@@ -100,7 +124,7 @@ Rule: Staff may claim an application to review
       And A1-72303011-028 remains claimed by staff member B
 
 @orv2-2398-8
-Rule: Claimed applications are grouped together and shown at the bottom of the queue list
+Rule: Claimed applications are shown in their own list
 
   Scenario: some applications claimed
     Given the queue list has the following submitted applications:
@@ -111,9 +135,8 @@ Rule: Claimed applications are grouped together and shown at the bottom of the q
      When the following applications are claimed:
       | A1-72303011-028 |
       | A2-00408617-873 |
-     Then staff see the queue list as follows:
+     Then staff see the claimed list as follows:
       | Application #   | Time in Queue (hh:mm) |
-      | A8-30815429-164 | 00:05                 |
       | A1-72303011-028 | 01:22                 |
       | A2-00408617-873 | 01:07                 |
 
@@ -127,11 +150,15 @@ Rule: Claimed applications are grouped together and shown at the bottom of the q
       | A1-72303011-028 |
       | A2-00408617-873 |
       | A8-30815429-164 |
-     Then staff see the queue list as follows:
+     Then staff see the claimed list as follows:
       | Application #   | Time in Queue (hh:mm) |
       | A1-72303011-028 | 01:22                 |
       | A2-00408617-873 | 01:07                 |
       | A8-30815429-164 | 00:05                 |
+
+@orv2-2398-9
+Rule: The staff queue lists (queued and claimed) are paginated at 25 items by default
+
 
 
 

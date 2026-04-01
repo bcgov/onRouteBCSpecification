@@ -1,9 +1,17 @@
 Feature: Staff Manage Applications in Progress
    As a PPC SA or PC I want to view a list of my applications so that I can manage their submission, payment or deletion.
 
-@orv2-1575-3
-Rule: Staff can view a list of all applications in progress for a specific company
+@orv2-1575-3 @orv2-3835-2
+Rule: only authorized staff can view a list of all applications in progress for a specific company
 
+  Scenario: authorized
+     When PC, SA, TRAIN, FIN, CTPO are at a cv client permits
+     Then they see the option to view applications in progress
+
+  Scenario: not authorized
+     When Fin, EO, HQA are at a cv client permits
+     Then they do not see the option to view applications in progress
+     
   Scenario: View list applications do not exist
     Given Staff is at the "Applications in Progress" tab
      When there are no applications in progress for the CV Client
@@ -21,9 +29,20 @@ Rule: Staff can view a list of all applications in progress for a specific compa
        | Unit #             | the unit no. of the vehicle used in the application                                                                               |
        | Last Updated Date  | the date the permit application was last updated                                                                                  |
        | Permit Start Date  | the start date inputted in the permit application                                                                                 |
-       | Applicant          | the first name and last name of the logged in user that started the permit application or the idir username if completed by staff |
+       | Applicant          | the first name and last name of the logged in user that started the permit application or the idir username if started by staff |
      And only staff can see the idir username
      And the default sort order is "Last Updated Date" newest at the top ascending
+
+@orv2-3071-2
+Rule: Applicant is the user that creates the permit application
+
+  Scenario: staff created permit application
+     When staff view applications in progress
+     Then applicant is IDIR username
+
+  Scenario: cv client created permit application
+     When staff view applications in progress
+     Then applicant is logged in user first name last name
 
 @orv2-1575-4
 Rule: Staff can delete any permit application
@@ -49,3 +68,11 @@ Rule: Staff can edit any application in progress
      When they choose to view an application in progress
      Then they are directed to the selected "Permit Application" page 
 
+@orv2-4992-1  
+Rule: a rejected application in progress shows a rejected label
+
+  Scenario: Rejected application in progress
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+     Then they see "R" (Rejected) label on the application

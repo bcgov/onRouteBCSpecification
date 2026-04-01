@@ -159,7 +159,7 @@ Rule: A void results in a full refund of current permit dollar value
        | $60                     | $60        |
        | $90                     | $90        |
 
-  # Scenario: refund increments 
+ #Scenario: refund increments 
     Given a permit has 30 days or greater <term remaining>
      When the <refund fee total> amount is calculated 
      Then the refund fee total amount is an <increments> of 30 days
@@ -190,43 +190,9 @@ Rule: A void results in a full refund of current permit dollar value
        | $120                    | $90       | $30        | duration shortened  |
 
 # scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
-@orv2-1057-12
-Rule: Default to previous payment method card type
-
-   Scenario: Choose a refund method
-     Given the PPC SA has inputted a reason for voiding
-      When they choose to continue
-      Then they are directed to finish voiding
-       And the previous payment method <consolidated payment method> is used
-
-       Examples:
-         | card type                | PPC prefix               |
-         | ICEPAY - Visa            | ICEPAY - Visa            |
-         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
-         | Web - Visa               | Web - Visa               |
-         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |
-
-@orv2-1057-13
-Rule: Choose cheque payment method
-
-   Scenario: Refund by cheque
-     Given the PPC SA is at the finish voiding page
-      When they choose to refund by cheque
-      Then only refund by cheque is indicated as a refund method
-
-@orv2-1057-14  
-Rule: Input mandatory transaction id
-
-   Scenario: Do not input transaction ID
-     Given the PPC SA has chosen to refund to the previous payment method
-      When they do not input a transaction ID
-       And they attempt to finish
-      Then they see "This is a required field"
-       And "Transaction ID" is indicated
-       And they cannot finish
 
 @orv2-1057-15
-Rule: Return to previous search results when finished void permit
+Rule: If void action was initiated at staff search return to previous search results when finished void permit
 
    Scenario: Return to previous search results
      Given the PPC SA has inputted all mandatory information at finish voiding
@@ -253,12 +219,12 @@ Rule: Generate void permit
       When they choose to finish voiding the permit
       Then the void permit is generated
        And the <permit number> is suffixed with a <revision number> preceded by a "-"
-       And the void permit is labeled as void
+       And the void permit is labeled as "V" (Void)
        And the void permit end date is updated to the date the void permit is generated
 
        Examples:
          | permit number   | revision number |
-         | P2-00408617-873 | R2             |
+         | P2-00408617-873 | R2              |
 
 @orv2-1057-17
 Rule: Voided permit is superseded by void permit
@@ -333,3 +299,60 @@ Rule: PPC SA and PC can view void permit pdf and void permit receipt pdf
 
  @orv2-937-7
  @orv2-937-11
+
+@orv2-1491-2
+Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when voided
+
+  Scenario: cv client issues under no fee flag changes to fee cv client
+    Given ABC Co. is a no fee cv client
+     And they issue permit A
+     And permit A is not expired
+     When staff remove ABC Co. no fee designation
+     Then permit A has a $0 fee
+
+
+Rule: show permit and receipt recipient email addressed on finish voiding
+
+ Send Permit and Receipt to
+ Company Email: info@bandstratransport.com/
+ Additional Email: craig@bandstratransport.com
+
+
+Rule: show reason for voiding on finish voiding
+
+ Reason for Voiding
+ This is the weapon of a Jedi Knight. Not as clumsy or random as a blaster, an elegant weapon for a more civilized age.
+
+# Deprecated
+@orv2-1057-14  
+Rule: Input mandatory transaction id
+
+   Scenario: Do not input transaction ID
+     Given the PPC SA has chosen to refund to the previous payment method
+      When they do not input a transaction ID
+       And they attempt to finish
+      Then they see "This is a required field"
+       And "Transaction ID" is indicated
+       And they cannot finish
+@orv2-1057-13
+Rule: Choose cheque payment method
+
+   Scenario: Refund by cheque
+     Given the PPC SA is at the finish voiding page
+      When they choose to refund by cheque
+      Then only refund by cheque is indicated as a refund method
+@orv2-1057-12
+Rule: Default to previous payment method card type
+
+   Scenario: Choose a refund method
+     Given the PPC SA has inputted a reason for voiding
+      When they choose to continue
+      Then they are directed to finish voiding
+       And the previous payment method <consolidated payment method> is used
+
+       Examples:
+         | card type                | PPC prefix               |
+         | ICEPAY - Visa            | ICEPAY - Visa            |
+         | ICEPAY - Mastercard      | ICEPAY - Mastercard      |
+         | Web - Visa               | Web - Visa               |
+         | Web - Mastercard (Debit) | Web - Mastercard (Debit) |

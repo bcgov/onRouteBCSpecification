@@ -26,6 +26,16 @@ Rule: Show list of applications in progress
        | Applicant           | the first name and last name of the logged in user that started the permit application or Provincial Permit Center if started by staff |
      And the default sort order is "Last Updated Date" newest at the top ascending
 
+@orv2-3071-1
+Rule: Applicant is the user that creates the permit application
+
+  Scenario: staff created permit application
+     When cv client view applications in progress
+     Then applicant is Provincial Permit Center
+
+  Scenario: cv client created permit application
+     When cv client view applications in progress
+     Then applicant is logged in user first name last name
 
 @orv-548-2
 Rule: A CV Client PA can only view and edit applications they create
@@ -78,3 +88,11 @@ Rule: A CV Client CA can edit application in progress started by a CV Client CA 
       When they choose to edit a staff application in progress
       Then they cannot edit the application
   
+@orv2-4992-1  
+Rule: a rejected application in progress shows a rejected label
+
+  Scenario: Rejected application in progress
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+     Then they see "R" (Rejected) label on the application

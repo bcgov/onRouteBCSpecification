@@ -1,8 +1,8 @@
 Feature: Non-auth staff view special authorizations
 
-Non-auth Staff = PC, CTPO, Trainee, EO, FIN
+Non-auth Staff = PC, Train, CTPO, FIN, EO
 
-@orv2-2654-1
+@orv2-2654-1 @orv2-3835-12
 Rule: Non-auth staff can view a CV Clients no fee permits designation status
 
   Scenario: no fee active
@@ -17,7 +17,7 @@ Rule: Non-auth staff can view a CV Clients no fee permits designation status
      Then they see the no fee status as not active
       And they see the no fee permit client type list
 
-@orv2-2654-2
+@orv2-2654-2 @orv2-3835-13
 Rule: Non-auth staff can view a CV Client LCV designation status
 
   Scenario: LCV active
@@ -32,7 +32,7 @@ Rule: Non-auth staff can view a CV Client LCV designation status
      Then they see the LCV status as not active
       And they see "Carrier meets the requirements to operate LCVs in BC."    
 
-@orv2-2654-3
+@orv2-2654-3 @orv2-3835-14
 Rule: Non-auth staff can see a list of a CV Clients active LOA(s)
 
   Scenario: active LOA(s)
@@ -49,7 +49,7 @@ Rule: Non-auth staff can see a list of a CV Clients active LOA(s)
      When Non-auth staff view LOA(s)
      Then the list is sorted by start date newest at the top in descending order      
 
-@orv2-2654-4
+@orv2-2654-4 @orv2-3835-15
 Rule: Non-auth staff can see the status of a CV Clients LOA(s)
 
   Scenario: no active or expired LOA(s)
@@ -71,7 +71,7 @@ Rule: Non-auth staff can see the status of a CV Clients LOA(s)
      When non-auth staff choose to view LOA(s)
      Then they see the option to view expired LOA(S)
 
-@orv2-2654-5
+@orv2-2654-5 @orv2-3835-16
 Rule Non-auth staff can download expired LOA(s)
 
   Scenario: expired LOA(s) exist

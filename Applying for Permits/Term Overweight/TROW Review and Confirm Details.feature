@@ -48,7 +48,6 @@ Rule: The calculated total fee of the permit is shown
      | Description          | Price   |
      | Term Oversize Permit | $100.00 |
 
-
  Scenario: Fee calculation
      Given a CV Client has completed a TROS Permit Application
      When they continue to "Review and Confirm Details" page

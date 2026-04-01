@@ -1,29 +1,71 @@
-Feature: Common features for profile creation workflows
+Feature: CV Client common features for profile creation workflows
+ These rules apply to all onRouteBC account creation workflows.
 
-Rule: The navigation bar is not visible to CV Clients until the profile has been successfully claimed
+User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
 
-  Scenario: profile setup not complete
-    Given a CV Client is in an create onRouteBC profile workflow
-     When they are at any of the following steps:
-       | steps |
-       | welcome to onroutebc - claim profile or not choice |
-       | verify profile | 
-       | company information |
-       | my information |
-     Then the navigation bar is not visible
+@orv2-481-11, @orv2-3322-11, @orv2-3228-19
+Rule: A user can cancel or return to a previous page
 
-Rule: a new user must complete their "My Information"
+  Scenario: Cancel
+     When they choose to cancel
+     Then they are directed to welcome to onRouteBC
 
-  Scenario: Mandatory fields
-    Given a CV Client chooses to proceed to "My Information"
-     When they do not input valid data into any of the following mandatory fields:
-        | field            | type         |
-        | First Name       | User Details |
-        | Last name        | User Details |
-        | Email            | User Details |
-        | Primary Phone    | User Details |
-        | Country          | User Details |
-        | Province / State | User Details |
-        | City             | User Details |
-     Then they see "This is a required field" at each field with invalid data
-      And fields with invalid data are indicated
+  Scenario: Previous
+     When a user chooses to return to a previous page
+     Then they are directed to the previous page in the workflow
+
+@orv2-369-9, @orv2-3322-12, @orv2-3228-20
+Rule: contact details are not saved until the workflow is finished
+
+ Scenario: user navigates away from create new onRouteBC profile workflow
+     Given they are at "Company Information" or "My Information" in the workflow
+     When they navigate away from the page
+     Then the onRouteBC account is not created
+      And no information is saved
+
+@orv2-3322-15, @orv2-3228-21
+Rule: contact details are replicated to company primary contact and user details
+
+  Scenario: all contact details have data
+    Given the following contacts details have data:
+      | contact details             | data           |
+      | First Name                  | John           |
+      | Last Name                   | Doe            |
+      | Email                       | jdoe@email.com |
+      | Primary Phone               | 250-555-1234   |
+      | Ext                         | 123            |
+      | Alternate Phone             | 250-123-555    |
+      | Ext                         | 321            |
+      | Address (Line 1)            | 123 Nowhere St |
+      | Address (Line 2) (optional) | Suite 101      |
+      | Country                     | Canada         |
+      | Province / State            | BC             |
+      | City                        | Vancouver      |
+      | Postal / Zip Code           | V8L 13T        |
+     When a user finishes creating their onRouteBC profile
+     Then data is replicated to primary contact and user details as follows:
+      | contact details             | company mailing address & company contact details | company primary contacts | user details   |
+      | First Name                  |                                                   | John                     | John           |
+      | Last Name                   |                                                   | Doe                      | Doe            |
+      | Email                       | jdoe@email.com                                    | jdoe@email.com           | jdoe@email.com |
+      | Primary Phone               | 250-555-1234                                      | 250-555-1234             | 250-555-1234   |
+      | Ext                         | 123                                               | 123                      | 123            |
+      | Alternate Phone             |                                                   | 250-123-555              | 250-123-555    |
+      | Ext                         |                                                   | 321                      | 321            |
+      | Address (Line 1)            | 123 Nowhere St                                    |                          |                |
+      | Address (Line 2) (optional) | Suite 101                                         |                          |                |
+      | Country                     | Canada                                            | Canada                   | Canada         |
+      | Province / State            | BC                                                | BC                       | BC             |
+      | City                        | Vancouver                                         | Vancouver                | Vancouver      |
+      | Postal / Zip Code           | V8L 13T                                           |                          |                |
+
+@orv2-481, @orv2-3322-17, @orv2-1637-8, @orv2-3228-22
+Rule: a user can view their onRouteBC Client Number upon successful completion of the profile creation workflow
+
+  Scenario: Successfully completed 
+     When they choose to complete the workflow
+     Then they are directed to a success page
+     And they see the following:
+        | their onRouteBC Client No.   |
+        | option to apply for a permit |
+        | option to view their profile |

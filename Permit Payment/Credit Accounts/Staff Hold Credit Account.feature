@@ -136,4 +136,8 @@ Rule: Show credit account hold removed notification
 @orv2-2008-15
 Rule: Suspended company credit accounts are put on hold
 
+@orv2-2008-16
+Rule: credit account users remain unaffected when the account is put on hold
+
+
 # update hold / close history with idir, date/time, "suspended" OR notes from suspend reason

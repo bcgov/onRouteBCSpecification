@@ -1,9 +1,15 @@
 Feature: Staff Edit Application in the Queue
+As staff I need to be able to edit a permit application in the queue, so that I can assist CV Clients with completing their permit applications and approving issuance.
 
-Staff = SA, PC, CTPO, Trainee
+staff = PC, SA, TRAIN, CTPO
 
-@orv2-2472-1
-Rule: Staff can edit an application in the queue
+Note: The following rules apply to the following permit application types:
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
+Staff edit application in queue share the same rules as Staff Apply for STOS.feature and Staff Apply for STOW.feature
+
+@orv2-2472-1 @orv2-4449-6
+Rule: staff can edit an application in the queue
 
   Scenario: leave, save or continue claimed application
     Given A1-72303011-028 is claimed by John
@@ -37,8 +43,8 @@ Rule: Staff can edit an application in the queue
       And they are directed review and confirm
       And A1-72303011-028 attestations are unselected
 
-@orv2-2472-2
-Rule: Staff can save edits made to an application
+@orv2-2472-2 @orv2-4449-7
+Rule: staff can save edits made to an application
 
   Scenario: changes made save
     Given A1-72303011-028 is opened for edit
@@ -55,7 +61,7 @@ Rule: Staff can save edits made to an application
       And they are directed review and confirm
       And A1-72303011-028 attestations are unselected
 
-@orv2-2472-3
+@orv2-2472-3 @orv2-4449-8
 Rule: Attestations are unselected when a application is saved
 
   Scenario: on continue
@@ -70,8 +76,8 @@ Rule: Attestations are unselected when a application is saved
      Then they can continue editing
       And A1-72303011-028 attestations are unselected
 
-@orv2-2472-4
-Rule: Staff can leave an application being edited 
+@orv2-2472-4 @orv2-4449-9
+Rule: staff can leave an application being edited 
 
   Scenario: at review and confirm
     Given A1-72303011-028 is at review and confirm
@@ -104,5 +110,5 @@ Rule: Staff can leave an application being edited
      Then they are directed to A1-72303011-028
       And they can continue editing
 
-@orv2-2472-5
+@orv2-2472-5 @orv2-4449-10
 Rule: An application opened for edit shows the data inputted by the CV Client

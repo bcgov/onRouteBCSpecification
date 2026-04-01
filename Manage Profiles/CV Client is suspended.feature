@@ -1,6 +1,6 @@
 Feature: CV Client is suspended
 
-CV Client = CA, PA, Agent
+CV Client = CA, PA
 
 @orv2-1881-1
 Rule: A suspended CV Client does not have access to the onRouteBC profile
@@ -18,4 +18,10 @@ Rule: A suspended CV Client does not have access to the onRouteBC profile
      When they attempt to access onRouteBC via a bookmarked or cached application URL
       And they submit their valid credentials 
      Then they see "User Unauthorized"
+
+  Scenario: logged in choose permits
+    Given cv client is logged in
+     When they choose to view permits
+     Then they see "User Unauthorized"
+      And they see "Company Suspended"
 

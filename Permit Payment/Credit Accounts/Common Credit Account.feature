@@ -2,8 +2,9 @@ Feature: Common credit account features
 
 cv client = CA, PA
 staff = SA, CTPO, PC, Trainee
+user = CA, PA, PC, SA, TRAIN, FIN, CTPO
 
-Rule: A cv client can have only one active credit account
+Rule: a cv client can have only one active credit account
 
   Scenario: company A credit account closed
      When fin chooses to add company A to company Bs credit account as a user
@@ -19,9 +20,9 @@ Rule: A cv client can have only one active credit account
      When 
      Then 
 
-Co A CA closed
-	- Co A user of Co B
-	- Fin sees Co A as user of Co B on Co A CA tab
+ Co A CA closed
+  - Co A user of Co B
+  - Fin sees Co A as user of Co B on Co A CA tab
 
 Rule: a cv client is assigned a credit account permanently
 
@@ -38,26 +39,91 @@ Rule: a cv client is assigned a credit account permanently
 
 Rule: Choosing credit account as the payment method is indicated
 
- #
-
-Rule: The credit account holder is sent copies of issued permit documents when purchased for a credit account user
+@orv2-1801-1
+Rule: The credit account holder is sent copies of issued permit documents when purchased by a credit account user
 
   Scenario: cv client purchases
-    Given cv client a is the holder
-     And cv client b is the user
-     When cv client b purchases using the credit account
-     Then the permit issuance email and attached permit and receipt pdf are sent to cv client a company email address
+    Given cv client A is the holder
+     And cv client B is the user
+     When cv client B purchases using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client B and cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client B - company email              | amend permit pdf, receipt pdf |
+      | cv client B - additional email (if used) | amend permit pdf, receipt pdf |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
 
-  Scenario: staff purchases
-    Given cv client a is the holder
-     And cv client b is the user
-     When staff purchase on behalf of cv client b using the credit account
-     Then the permit issuance email and attached permit and receipt pdf are sent to cv client a company email address
+  Scenario: staff purchase user
+    Given cv client A is the holder
+     And cv client B is the user
+     When staff purchase on behalf of cv client B using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client B and cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client B - company email              | amend permit pdf, receipt pdf |
+      | cv client B - additional email (if used) | amend permit pdf, receipt pdf |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
 
-Rule: User permit payment receipt Payer Name is the credit account holder Company Legal Name
+  Scenario: staff purchase holder
+    Given cv client A is the holder
+     When staff purchase on behalf of cv client A using the credit account
+     Then the permit pdf and receipt pdf are sent to the cv client A as follows:
+      | email address                            | pdfs sent to email address    |
+      | cv client A - company email              | amend permit pdf, receipt pdf |
+      | cv client A - additional email (if used) | amend permit pdf, receipt pdf |
 
- #
+@orv2-1801-2
+Rule: User permit payment receipt Payer Name is the credit account holder Client Name
 
+@orv2-1801-3
 Rule: Permit payment receipt payment method is Credit Account
 
- #
+Rule: purchase total fee that is greater than the available credit is not allowed
+
+  Scenario: credit account payment exceeds available credit
+    Given the credit account holder has a credit limit of $1000
+     And the current balance is $970
+     And the available balance is $30
+     And there are 2 TROS permits of $30 each in the shopping cart
+     When the client tries to pay for both applications using the credit account
+     Then the payment should not succeed
+      And they see "Transaction failed. Credit Account unavailable."
+
+@orv2-4912-1
+Rule: credit account payment is not allowed when the credit account is different than the one used for the first issuance of the permit
+
+  Scenario: 2 items in cart
+    Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user tries to pay for both applications using the credit account
+     Then the payment should not succeed
+      And they see "Credit Account mismatch. One or more of the selected items use a different credit account from the currently active credit account."
+
+  Scenario: 1 item in cart
+     Given a user is at the cart with 1 item selected
+     And their current credit account is WS0001
+     And the item is permit A issued with credit account WS0002
+     When the user tries to pay for the application using the credit account
+     Then the payment should not succeed
+      And they see "Credit Account mismatch. One or more of the selected items use a different credit account from the currently active credit account."
+
+  Scenario: 2 items in cart invalid deslected
+     Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user deselects permit B
+      And tries to pay for permit A only using the credit account
+     Then the payment should succeed
+
+  Scenario: 2 items in cart pay using credit card
+     Given a user is at the cart with 2 items selected
+     And their current credit account is WS0001
+     And the first item is permit A issued with credit account WS0001
+     And the second item is permit B issued with credit account WS0002
+     When the user chooses credit card as the payment method
+      And tries to pay for both applications using the credit card
+     Then the payment should succeed
+  
+
+

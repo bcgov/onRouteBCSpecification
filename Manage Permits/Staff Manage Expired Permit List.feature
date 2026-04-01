@@ -1,6 +1,8 @@
 Feature: Staff Manage Expired Permit List
    As a PPC SA or PC I need to be able to view a list of Expired permits so that I can complete actions on them and keep track of issued and Expired permits on behalf of CV Clients.
 
+Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
+
 @orv2-1651-1
 Rule: Staff can view all Expired permits
 
@@ -20,15 +22,25 @@ Rule: Staff can view all Expired permits
         | Plate             |
         | Permit Start Date |
         | Permit End Date   |
-        | Applicant         |
+        | Issued By         |
      And the default sort order is "Permit Start Date" newest at the top ascending
-     And Applicant is the first name and last name of the CV Client user that issued the permit or the IDIR username  if issued by the PPC
 
   Scenario: No Expired permits
     Given Staff is at the "Permits" page
       And there are no Expired permits 
      When they choose to view "Expired Permits"
      Then they see "No records found."
+
+@orv2-3072-4
+Rule: Issued by is the user that adds the permit application to the cart
+
+  Scenario: staff add to cart
+     When staff view expired permits list
+     Then issued by is IDIR username
+
+  Scenario: cv client add to cart
+     When staff view expired permits list
+     Then issued by is logged in user first name last name
 
 @orv2-1651-2
 Rule: Staff can view the permit and permit payment receipt pdf
@@ -40,7 +52,25 @@ Rule: Staff can view the permit and permit payment receipt pdf
      Then they see the chosen permit payment receipt pdf in a new browser tab
 
  Scenario: View permit pdf
-     Given the CV Client is at the "Expired Permits" tab
+     Given staff is at the "Expired Permits" tab
        And there are Expired permits 
       When they choose to view the permit
       Then they see the permit pdf in a new browser tab
+
+@orv2-4992-2  
+Rule: a void permit shows a void label
+
+  Scenario: View void permit
+    Given Staff is at the "Expired Permits" tab
+      And there are void permits 
+     When they choose to view a void permit
+     Then they see "V" (Void) label on the permit
+
+@orv2-4992-3
+Rule: a revoked permit shows a revoked label
+
+  Scenario: View revoked permit
+    Given Staff is at the "Expired Permits" tab
+      And there are revoked permits 
+     When they choose to view a revoked permit
+     Then they see "RV" (Revoked) label on the permit

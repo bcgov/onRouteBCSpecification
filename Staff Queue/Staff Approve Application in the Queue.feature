@@ -1,8 +1,13 @@
 Feature: Staff Approve Application in the Queue
+As staff I need to be able to approve a permit application in the queue, so that I can assist CV Clients with completing their permit applications and approving issuance.
 
-Staff = SA, PC, CTPO, Trainee
+Staff = PC, SA, TRAIN, CTPO
 
-@orv2-2473-1
+Note: The following rules apply to the following permit application types
+  - Single Trip Overweight (STOW)
+  - Single Trip Oversize (STOS)
+
+@orv2-2473-1 @orv2-4449-1
 Rule: Staff can approve an application
 
   Scenario: application approved
@@ -18,7 +23,7 @@ Rule: Staff can approve an application
      Then John sees "Application no longer available This application is claimed by Jane"
       And Jane is the idir username
 
-@orv2-2473-2
+@orv2-2473-2 @orv2-4449-2
 Rule: Approved applications are added to the shopping cart
 
   Scenario: application approved
@@ -26,7 +31,7 @@ Rule: Approved applications are added to the shopping cart
      When staff approve A1-72303011-028 
      Then the A1-72303011-028 is added to the shopping cart
 
-@orv2-2473-3
+@orv2-2473-3 @orv2-4449-3
 Rule: The elapsed time in queue stops counting when a application is approved
 
   Scenario: application approved
@@ -36,7 +41,7 @@ Rule: The elapsed time in queue stops counting when a application is approved
       And the elapsed time in queue is 01:15 when approval action is initiated
      Then the total elapsed time in queue for A1-72303011-028 is 01:15
 
-@orv2-2473-4
+@orv2-2473-4 @orv2-4449-4
 Rule: The CV Client is notified via email when a application is approved
 
   Scenario: application approved
@@ -47,4 +52,21 @@ Rule: The CV Client is notified via email when a application is approved
        | Company Email    | mandatory   |
        | Additional Email | if inputted |
 
+@orv2-2473-5 @orv2-4449-5 #update to reflect new permit and duration tables
+Rule: Start date and/or expiry date can not be in the past
 
+ Scenario: in queue past start date
+   When staff claim
+   Then staff see "Start Date and/or Permit Expiry Date is in the past."
+    And they cannot approve the application
+
+ Scenario: in queue start and expiry in the past
+   When staff claim
+   Then staff see "Start Date and/or Permit Expiry Date is in the past."
+    And they cannot approve the application
+
+ Scenario: in queue past start date edit
+   Given staff have claimed the application
+    When staff edit the application
+    Then staff see "Start Date is in the past."
+     And they can continue

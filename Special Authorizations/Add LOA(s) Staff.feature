@@ -10,9 +10,9 @@ Rule: Staff can add an LOA to a CV Client profile
     Given authenticated staff
      When staff choose to add an LOA
      Then they are directed to the first step of the add LOA workflow
-
+|
 @orv2-1152-2
-Rule: Staff must designate at least one permit type to the LOA
+Rule: Staff must designate at least one permit type in the LOA
 
   Scenario: none chosen
     Given staff do not choose a permit type
@@ -20,7 +20,7 @@ Rule: Staff must designate at least one permit type to the LOA
      Then they cannot continue
       And they see "Select at least one item"
       And the mandatory field is indicated
-
+|
 @orv2-1152-3
 Rule: Staff must input an LOA start date
 
@@ -41,10 +41,11 @@ Rule: Staff must input an LOA start date
      Then they cannot choose the date
 
   Scenario: never expires
-    Given staff have chosen LOA never expires
+    Given staff have not chosen LOA never expires
+      And have not chosen an end date
      When they choose to continue
-     Then they see "This is a required field"
-
+     Then they see "This is a required field" 
+|
 @orv2-1152-4
 Rule: Staff must input an LOA expiry date that is not before the LOA start date
 
@@ -59,7 +60,7 @@ Rule: Staff must input an LOA expiry date that is not before the LOA start date
      When staff choose the expiry date 12/31/2023
      Then they cannot choose the date
       And they see "Expiry cannot be before Start Date"
-
+|
 @orv2-1152-5
 Rule: Staff can designate an LOA as non-expiring
 
@@ -70,8 +71,8 @@ Rule: Staff can designate an LOA as non-expiring
   Scenario: viewing active LOA's list
     Given active LOA(s) exist
      When LOA is non expiring
-     Then Never expires is shown
-
+     Then "Never expires" is shown
+|
 @orv2-1152-6
 Rule: Staff must upload a LOA pdf file
 
@@ -83,7 +84,7 @@ Rule: Staff must upload a LOA pdf file
   Scenario: upload
      When staff choose to upload a file
      Then they can choose a file from their local file system to upload
-
+|
 @orv2-1152-7
 Rule: Staff are shown the uploaded LOA pdf filename 
 
@@ -97,16 +98,21 @@ Rule: Staff are shown the uploaded LOA pdf filename
   Scenario: final step of LOA workflow
      When staff are at the final step of the LOA workflow
      Then they see only the filename and file type extension
-
+|
 @orv2-1152-8
-Rule: An LOA pdf file must be uploaded
+Rule: An pdf file must be uploaded
 
+  # confirm
   Scenario: not pdf
     Given staff are choosing a file to upload
      When they choose a .txt file 
      Then they are directed to the first step of the LOA workflow
       And they see "File format not supported"
 
+  Scenario: not pdf
+     When staff are choosing a file to upload
+     Then they see only .pdf files available
+|
 @orv2-1152-9
 Rule: The max file size for an LOA pdf file is 10MB
 
@@ -115,14 +121,14 @@ Rule: The max file size for an LOA pdf file is 10MB
      When they choose a file that is 11MB
      Then they are directed to the first step of the LOA workflow
       And they see "File exceeds maximum size"
-
+|
 @orv2-1152-10
 Rule: Staff can delete an uploaded LOA pdf file
 
   Scenario: delete file warning
     Given a file is uploaded
      When staff choose delete an uploaded pdf file
-     Then they see "Delete item (s)?, Are you sure you want to delete this?"
+     Then they see "Delete item(s)?, Are you sure you want to delete this?"
 
   Scenario: delete file
      When staff choose to delete file
@@ -134,68 +140,47 @@ Rule: Staff can delete an uploaded LOA pdf file
      When staff choose to cancel delete file
      Then the file is deleted
       And they are directed to the first step of the workflow
-
+|
 @orv2-1152-11
 Rule: Staff can input free text notes
+|
+@orv2-2830-1
+Rule: Staff must designate a vehicle type and sub-type
 
-@orv2-1152-12
-Rule: Staff are shown the vehicle inventory information box
+  Scenario: power unit
+     When staff choose power unit vehicle type
+     Then they see all available power unit sub-types
 
-@orv2-1152-13
-Rule: Staff must designate one or more vehicles to the LOA
+  Scenario: trailer
+     When staff choose trailer vehicle type
+     Then they see all available trailer sub-types
 
-  Scenario: none chosen
-    Given staff do not choose a vehicle
-     When they continue to the next step in the workflow
-     Then they cannot continue
-      And they see "Select at least one item"
+  Scenario: no vehicle type 
+    Given staff have not chosen a vehicle type
+     When they choose to continue
+     Then they see "This is a required field"
       And the mandatory field is indicated
 
-@orv2-1152-14
-Rule: Staff can search for a power unit or a trailer in the CV Client vehicle inventory
-
-  Scenario: search power units by VIN
-    Given staff choose to search <power units>
-     When they input the <VIN>
-     Then they see <power units>
-
-   Examples:
-   | VIN    | power units |
-   | 123    | 123456      |
-   | 123456 | 123456      |
-   | 456    | 123456      |
-
-  Scenario: search trailers by VIN
-    Given staff choose to search <trailers>
-     When they input the <VIN>
-     Then they see <trailers>
-
-   Examples:
-   | VIN    | power units |
-   | 123    | 123456      |
-   | 123456 | 123456      |
-   | 456    | 123456      |
-
-@orv2-1152-15
-Rule: A VIN can be designated to one or more LOA(s) 
-
-@orv2-1152-16
-Rule: The list of vehicles are paginated
-
-@orv2-1152-17
+  Scenario: no vehicle sub-type chosen
+    Given staff have not chosen a vehicle sub-type
+     When they choose to continue
+     Then they see "This is a required field"
+      And the mandatory field is indicated
+|
+@orv2-1152-17 @orv2-2830-2
 Rule: Staff are shown all data submitted in the LOA workflow for review 
 
   Scenario: multiple per types designated
      When staff are at the last step of the LOA workflow
      Then they see the following:
-       | data                  | description                                               |
-       | permit type(s)        | list of chosen permit type(s) separated by commas         |
-       | start date            | the chosen start date                                     |
-       | expiry date           | the chosen expiry date or LOA never expires (if chosen)   |
-       | LOA                   | the filename and file type extension of the uploaded file |
-       | additional notes      | shown only if inputted free text notes exist              |
-       | designated vehicle(s) | list of chosen vehicles                                   |
-
+       | data                                 | description                                               |
+       | permit type(s)                       | list of chosen permit type(s) separated by commas         |
+       | start date                           | the chosen start date                                     |
+       | expiry date                          | the chosen expiry date or LOA never expires (if chosen)   |
+       | LOA                                  | the filename and file type extension of the uploaded file |
+       | additional notes                     | shown only if inputted free text notes exist              |
+       | designated vehicle type and sub-type | list of chosen vehicle type ane sub-type                  |
+|
 @orv2-1152-18
 Rule: The LOA is active when the add LOA workflow is completed
 
@@ -204,7 +189,7 @@ Rule: The LOA is active when the add LOA workflow is completed
      When they choose to cancel
      Then the LOA is not saved
       And they are directed to special authorizations
-
+|
 @orv2-1152-19
 Rule: Show LOA added notification
 
@@ -213,4 +198,4 @@ Rule: Show LOA added notification
      Then they are directed to special authorizations
       And they see "LOA Added" notification
       And the LOA is shown in the active LOA list
-
+|

@@ -10,7 +10,7 @@ Rule Staff can edit active or expired LOA(s)
      When staff choose to edit an active or expired LOA
      Then they are directed to the start of the workflow 
       And all previously inputted information is shown
-
+|
 @orv2-2230-3
 Rule Show LOA updated notification
 
@@ -20,7 +20,7 @@ Rule Show LOA updated notification
      Then they are directed to special authorizations
       And they see "LOA Updated" notification
       And the LOA is shown in the active LOA list
-
+|
 @orv2-2230-4
 Rule Staff can delete active LOA(s)
 
@@ -40,7 +40,7 @@ Rule Staff can delete active LOA(s)
      When staff choose to delete an LOA
      Then the LOA is removed from the list 
       But not deleted from onRouteBC
-
+|
 @orv2-2230-5
 Rule Staff can download expired LOA(s)
 
@@ -48,3 +48,4 @@ Rule Staff can download expired LOA(s)
     Given there are expired LOA(s)
      When users choose to view an LOA letter
      Then the LOA is shown in a new browser tab
+|

@@ -7,7 +7,7 @@ Rule: Generate unique permit payment receipt number
     Given a user has a successful financial transaction
       And they are directed to the "Success" page in onRouteBC
      When the permit payment receipt is generated
-     Then the permit payment reciept number is generated that contains the <current date>-<table index/primary key>
+     Then the permit payment receipt number is generated that contains the <current date>-<table index/primary key>
       And the <table index/primary key> starts at 00000001
     
      Examples:

@@ -2,10 +2,23 @@ Feature: Shopping cart
   As a User I need to be able to purchase more than one permit at once, so that I can save time.
 
 User = CA, PA, SA, PC, CTPO, Trainee
+CV Client = CA, PA
+
+@orv2-3176-1
+Rule: Show persistent cart info box
+
+  Scenario: arrive at cart
+     When users arrive at the cart
+     Then they see the following info:
+       "Know your shopping cart.
+       The shopping cart is shared between all users authorized in the company profile for this onRouteBC client account. These
+       users can modify (edit, remove and purchase) any item in the cart.
+       Have any questions? 
+
+       Please contact the Provincial Permit Centre. Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca"
 
 @orv2-1486-9, @orv2-2048-5
 Rule: Navigate to shopping cart from anywhere in onRouteBC
-
 @orv2-1486-10, @orv2-2048-6
 Rule: Cart contains relevant information about each item
 
@@ -20,12 +33,28 @@ Rule: Cart contains relevant information about each item
        | start date         | the inputted started date date of the permit application |
        | expiry date        | the calculated expiry date of the permit application     |
        | item fee           | the fee of the permit application                        |
-       | applicant          | the requested by of the permit application               |
-
+       | applicant          | the first name and last name of the logged in user that started the permit application or the Provincial Permit Center if started by staff |
+       #Or the idir username if viewed by staff
+       
   Scenario: default cart item sort order
     Given a user chooses to view the cart
      When they arrive at the cart
      Then they see the most recently added items at the top of the cart list and previously added items listed newest to oldest in descending order
+
+@orv2-3071-8
+Rule: Applicant is the user that creates the permit application
+
+  Scenario: staff created permit application
+     When staff view shopping cart
+     Then applicant is IDIR username
+
+  Scenario: staff created permit application
+     When cv client view shopping cart
+     Then applicant is Provincial Permit Center
+
+  Scenario: cv client created permit application
+     When staff view shopping cart
+     Then applicant is logged in user first name last name
 
 @orv2-1486-11, @orv2-2048-7
 Rule: Add permit application to shopping cart
@@ -38,26 +67,34 @@ Rule: Add permit application to shopping cart
       And they see notification of the application added to the cart
       And the shopping cart count increases by 1
 
-  Scenario: checkout
+  # Scenario: checkout
     Given the User has completed a permit application
      When they choose to checkout
      Then the application is added to the cart
       And they are directed to the shopping cart
       And the shopping cart count increases by 1
-   
+
 @orv2-1486-12, @orv2-2048-8
 Rule: Show indication in the shopping cart when nothing is in the cart
 
   Scenario: User has no items in cart
     Given the User chooses to view cart
     When they arrive at the cart
-     Then they see "nothing found"
+     Then they see "Cart is empty."
 
   Scenario: other Users have items in cart
     Given the User chooses to view cart
     When they arrive at the cart
      And they are at "my applications"
-     Then they see "nothing found"
+     Then they see "Cart is empty."
+
+@orv2-3176-5
+Rule: Pay now is unavailable when no items are in the cart
+
+  Scenario: all applications
+    Given there are no items in all applications
+     When a user chooses to pay
+     Then pay is not available
 
 @orv2-1486-13, @orv2-2048-9
 Rule: Shopping cart shows number of items in the cart
@@ -99,13 +136,6 @@ Rule: Edit application in the cart
     Given a user chooses to edit an application that is in the cart
      When a different user chooses to edit the same application
      Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      ## And they see the <list of applications> removed from the cart
-
-  ## Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
 
   Scenario: continue edit action
     Given the user is at edit warning 
@@ -114,8 +144,8 @@ Rule: Edit application in the cart
       And the permit application attestations are removed
       And the item is removed from the shopping cart
 
-@orv2-1486-15, @orv2-2048-11
-Rule: Remove applications in the cart
+@orv2-1486-15, @orv2-2048-11, @orv2-3176-2
+Rule: Optionally remove applications in the cart
 
   Scenario: no items in cart
     Given user has no items in the shopping cart
@@ -123,104 +153,159 @@ Rule: Remove applications in the cart
      Then remove from cart is disabled
 
   Scenario: remove an item
-    Given the user has items in the cart
-     When they select one of many items
-      And they choose to remove the selected item
-     Then the item is removed from the cart
+    Given the user has app A in the cart
+     When they select app A
+      And they choose to remove app A
+     Then they see:
+       "Remove Application
+       You are removing 1 items from your cart. Are you sure you want to continue?"
+
+  Scenario: continue on remove application warning
+    Given app A was selected to remove 
+     When they choose to remove
+     Then they are directed to the cart
+      And app A is not in the cart
       And remaining items are all selected in the current filter view
 
-  Scenario: item already removed warning
-    Given user attempts to remove and item from the cart 
-     When they choose to remove an item
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+  Scenario: item already removed update warning
+    Given app A has been removed from the cart
+     When user attempts to remove app A from the cart 
+     Then they see:
+       "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
 
-  Scenario: item already removed continue
-    Given user is at update warning
+  Scenario: continue on remove update warning
+    Given app A has been removed from the cart
+      And user is at update warning
      When they choose to continue
-     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
-      And they see the <list of applications> removed from the cart
+     Then they are directed to the cart all applications
+      And app A is not in the cart
+      And all applications in the cart are selected
+      And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
 
-   Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
+@orv2-1486-16, @orv2-2048-12, @orv2-3176-3
+Rule: Remove purchased or optionally removed applications by other logged in user from the cart 
 
-@orv2-1486-16, @orv2-2048-12
-Rule: Remove items in cart that are not in compliance with policy
+  Scenario 2 users 1 removes 1 pays
+    Given user 1 and 2 are at the cart
+      And app A and app B are in the cart
+      And app B has been removed by user 1
+     When user 2 pays for the cart
+     Then user 2 sees "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And user 1 sees app A
 
   Scenario: continue update cart warning from pay
-    Given permit application(s) in cart are not compliant with policy
-     When a user chooses to pay 
-     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And continuing removes the permit application(s) in cart are not compliant with policy
+    Given app B was invalid
+     When a user chooses continue
+     Then they are directed to to the cart all applications
+      And app B is not in the cart
+      And all applications in the cart are selected
+      And "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
 
+  Scenario: 2 users 1 pays for the entire cart
+    Given user 1 and 2 are at the cart
+      And user 1 pays for the entire cart
+     When user 2 pays for the cart
+     Then user 2 sees "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: 2 users 1 pays for the entire cart continue
+    Given user 1 pays for the entire cart
+      And there are no applications in the cart
+     When a user 2 chooses continue
+     Then they are directed to to the cart all applications
+      And they see "Cart is empty"
+
+@orv2-3176-4
+Rule: Applications that fail policy validation will prevent a CV Client from paying for the cart
+      
   Scenario: start date in the past pay
     Given permit application(s) have a <start date> before the <current date>
      When a user chooses to pay
-     Then these permit application(s) are removed from the cart
-
-  Examples:
-    | start date | current date |
-    | 03/01/2023 | 03/02/2023   |
-
- # Deprecated - items are only checked at pay
-  # Scenario: start date in the past view cart
-    Given permit application(s) have a <start date> before the <current date>
-     When a user views the shopping cart
-     Then these permit application(s) are removed from the cart
-
-  Examples:
-    | start date | current date |
-    | 03/01/2023 | 03/02/2023   |
-   
-@orv2-1486-17, @orv2-2048-13
-Rule: Show items removed from cart 
-
-  Scenario: no items removed
-    Given no items have been removed from the company cart
-     When a user chooses to view the shopping cart
-     Then they do not see an alert box
-
- # NOTE: This has not been implmented yet
-
-      ## And they see the <list of applications> removed from the cart
-
-  Scenario: edit item already removed from cart
-    Given a user chooses to edit an application that is in the cart
-     When a different user chooses to edit the same application
-     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And they see the <list of applications> removed from the cart
-
-  ## Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-876    |
-     | • A2-00408617-878    |
-
-  # Scenario: view cart
-    Given items have been removed from the company cart
-     When a user chooses to view the shopping cart
-     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
-      And they see the <list of applications> removed from the cart
-
-   # Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-
-   # Scenario: pay
-    Given items have been removed from the company cart
-     When a user chooses to pay
      Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
-      And they see the <list of applications> removed from the cart
 
-   # Examples:
-     | list of applications |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
-     | • A2-00408617-873    |
+  Scenario: reduce LOA term
+    Given user has app A in cart
+      And app A uses LOA 1
+      And app A exceeds the LOA 1 end date
+     When they choose to pay
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: LOA vehicle type and sub-type changed and not allowable
+    Given user has app A in cart
+      And app A uses LOA 1
+      And LOA 1 uses vehicle type X and sub-type X
+      And vehicle type X and sub-type X is changed for LOA 1
+      And vehicle type X and sub-type X are not allowable for the permit type
+     When they pay now
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: LOA vehicle type and sub-type changed and allowable
+    Given user has app A in cart
+      And app A uses LOA 1
+      And LOA 1 uses vehicle type X and sub-type X
+      And vehicle type X and sub-type X is changed for LOA 1
+      And vehicle type X and sub-type X are allowable for the permit type
+     When they pay now
+     Then they can continue
+
+  Scenario: LOA vehicle sub-type changed and not allowable
+    Given user has app A in cart
+      And app A uses LOA 1
+      And LOA 1 uses vehicle sub-type X
+      And vehicle sub-type X is changed for LOA 1
+      And vehicle sub-type X is not allowable for the permit type
+     When they pay now
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: LOA vehicle sub-type changed and allowable
+    Given user has app A in cart
+      And app A uses LOA 1
+      And LOA 1 uses vehicle sub-type X
+      And vehicle sub-type X is changed for LOA 1
+      And vehicle sub-type X is allowable for the permit type
+     When they pay now
+     Then they can continue
+
+  Scenario: LOA(s) edited to remove permit type date still valid
+    Given user has app A in cart
+      And app A uses LOA 1
+      And LOA 1 uses app type X
+      And app type X is removed from LOA(s) 1
+     When they pay now
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+
+  Scenario: update cart continue on warning
+     When a user chooses to update cart
+     Then they are directed to the cart all applications
+      And they see:
+       "Your shopping cart cannot be completed.
+       The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
+       the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
+       vehicle."
+      And they see "Invalid Application" at the invalid application
+
+  Scenario: pay again without removing invalid application(s)
+    Given invalid applications remain in the cart
+     When a user chooses to pay
+     Then they see:
+       "Application Errors 
+       Applications in your shopping cart has errors. Please deselect or remove them to continue"
+ 
+   Scenario: pay again close
+      When a CV Client chooses to close the application errors warning
+      Then they are directed to the cart
+       And they see:
+       "Your shopping cart cannot be completed.
+       The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from
+       the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid
+       vehicle."
+      And they see "Invalid Application" at the invalid application
+
+  Scenario: my applications valid all application has invalid
+    Given there is an invalid application in all applications 
+      But not in my applications
+     When a user chooses My Applications
+     Then "Your shopping cart cannot be completed. The shopping cart contains Application(s) with one or more errors. Those applications must be deselected or removed from the cart to proceed with payment. Common errors include, but are not limited to, start date is in the past or an invalid vehicle." is removed
+      And they can continue
 
 @orv2-1486-18, @orv2-2048-14
 Rule: Cart can have an unlimited number of items
@@ -418,22 +503,98 @@ Rule: Send one email per receipt
      When one or more permits of many in cart do not issue
      Then they do not receive the receipt email
 
-@orv2-1486-32, @orv2-2048-28
-Rule: Only authorized users (CA, PA, SA, PC, CTPO, Trainee) can see the shopping cart icon
+@orv2-1486-32, @orv2-2048-28 @orv2-3835-11
+Rule: Only authorized users can see the option to navigate to the shopping cart
 
-## Rule: A permit, void permit or revoked permit is issued when permit number is generated
+  Scenario: authorized
+     When CA, PA, SA, PC, CTPO, Train are on any page
+     Then they see the option to navigate to the shopping cart
 
-## Rule: A permit, void permit or revoked permit that fails issuance are pending permits
+  Scenario: not authorized
+     When FIN, EO, HQA are on any page
+     Then they do not see the option to navigate to the shopping cart
 
-## Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
+@orv2-1486-33, @orv2-2048-29
+Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
 
-## A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
 
-## Rule: Permits is issued but fails permit receipt document generation are active permits
+
+
+# Rule: A permit, void permit or revoked permit is issued when permit number is generated
+
+# Rule: A permit, void permit or revoked permit that fails issuance are pending permits
+
+# Rule: A permit, void permit or revoked permit that is issued but fails permit document generation are active permits
+
+  Scenario: email not sent docs available on onRouteBC
+    Given 
+     When 
+     Then 
+
+  Scenario: email sent docs not available on onRouteBC
+    Given 
+     When 
+     Then 
+
+  Scenario: email not sent docs not available on onRouteBC
+    Given 
+     When 
+     Then 
+
+# A permit or receipt pdf doesn't exist > generate > generate fails > unexpected error
+
+# Rule: Permits is issued but fails permit receipt document generation are active permits
 
   Scenario: pdfs not generated
     Given permit financial transaction successful
      When user chooses to view permit
      Then they are directed to error page
 
-## Rule: Staff see the cart icon only when acting as a company
+# Rule: Staff see the cart icon only when acting as a company
+
+  Scenario: CA and Staff at my applications
+    Given CA and Staff at my applications
+      And another user application in the cart has error
+     When they pay now
+     Then they see the error info box
+      But the they do not see "Application error. Please remove it from the cart."
+
+ # NOTE: This has not been implmented yet
+
+      ## And they see the <list of applications> removed from the cart
+
+  Scenario: edit item already removed from cart
+    Given a user chooses to edit an application that is in the cart
+     When a different user chooses to edit the same application
+     Then the see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+  ## Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-876    |
+     | • A2-00408617-878    |
+
+  # Scenario: view cart
+    Given items have been removed from the company cart
+     When a user chooses to view the shopping cart
+     Then they see "Your shopping cart has changed. Application(s) with errors or updates have been removed from your cart."
+      And they see the <list of applications> removed from the cart
+
+   # Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+
+   # Scenario: pay
+    Given items have been removed from the company cart
+     When a user chooses to pay
+     Then they see "Update Shopping Cart Some items in your shopping cart have changed. Click Update Cart to continue."
+      And they see the <list of applications> removed from the cart
+
+   # Examples:
+     | list of applications |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
+     | • A2-00408617-873    |
