@@ -305,30 +305,6 @@ Rule: A chosen trailer(s) determines the remaining allowable trailers shown
     | Fixed Equipment           | Truck Tractors        | Semi-Trailers            | Booster       |
     | Empty                     | Picker Truck Tractors | Semi-Trailers - Wheelers | Booster       |
 
-  Scenario: axle unit description
-     When the ASW table is shown
-     Then users can choose to see a description of the difference between axle unit and no. of axles
-
-  Scenario: calculation errors on continue
-    Given a user has inputted all mandatory ASW fields
-     When they choose to continue to review and confirm
-      And there are calculation errors
-     Then they stay on the application form
-      And the calculation results shown
-      And they are directed to the first calculation error
-      And the first calculation error is indicated
-      And they cannot continue
-
-  Scenario: only PU needs trailer
-    Given a user has inputted all mandatory ASW fields for power unit only
-      And there are calculation errors because trailers are missing
-     When they choose to continue to review and confirm
-     Then they stay on the application form
-      And the calculation results shown
-      And they are directed to the trailer section
-      And the trailer section is indicated
-      And they cannot continue
-
 # Trip Details
 Rule: Origin and destination may be entered manually or selected from the provided resolved list of geocoder locations
 
