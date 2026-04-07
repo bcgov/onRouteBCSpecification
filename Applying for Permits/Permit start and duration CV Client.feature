@@ -12,6 +12,7 @@ Start Date Rules:
 | QRFR   | Today to 14 days from today |
 | NRSCV  | Today to 14 days from today |
 | NRQCV  | Today to 14 days from today |
+| HC     | Today to 90 days from today |
 
 Rule: a CV Client can choose a start date up to 14 days from today (current date and time the application is initiated)
 
@@ -28,13 +29,14 @@ Rule: a CV Client can choose a start date up to 14 days from today (current date
 Permit Duration Rules:
 
 Duration Overview:
-| Permit | Amend Duration                  |
-| TROS   | Up to 30 days from from today   |
-| TROW   | Up to 30 days from from today   |
-| STOS   | Up to 7 days forward from today |
-| STOW   | Up to 7 days forward from today |
-| MFP    | Up to 7 days forward from today |
-| STFR   | Up to 30 days forward           |
-| QRFR   | N/A                             |
-| NRSCV  | Up to 30 days forward           |
-| NRQCV  | N/A                             |
+| Permit | Amend Duration                                               |
+| TROS   | Up to 30 days from from today                                |
+| TROW   | Up to 30 days from from today                                |
+| STOS   | Up to 7 days forward from today                              |
+| STOW   | Up to 7 days forward from today                              |
+| MFP    | Up to 7 days forward from today                              |
+| STFR   | Up to 30 days forward                                        |
+| QRFR   | N/A                                                          |
+| NRSCV  | Up to 30 days forward                                        |
+| NRQCV  | N/A                                                          |
+| HC     | Up to 365 days forward always expires December 31st 11:59:59 |

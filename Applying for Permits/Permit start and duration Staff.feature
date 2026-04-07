@@ -13,6 +13,7 @@ Permit Start Date Overview:
 | QRFR   | Any past date to 60 days from today |
 | NRSCV  | Any past date to 60 days from today |
 | NRQCV  | Any past date to 60 days from today |
+| HC     | Today to 90 days from today         |
 
 Rule: staff must choose a start date to a maximum of 60 days from today (current date and time the application is initiated)
 
@@ -84,16 +85,17 @@ Rule: staff are notified when start date an/or expiry date are in the past
 Permit Duration Overview:
 
 Duration Overview:
-| Permit | Amend Duration                         |
-| TROS   | Up to 1 y forward in 30 day increments |
-| TROW   | Up to 1 y forward in 30 day increments |
-| STOS   | Up to 30 days forward                  |
-| STOW   | Up to 30 days forward                  |
-| MFP    | Up to 7 days forward                   |
-| STFR   | Up to 30 days forward                  |
-| QRFR   | N/A                                    |
-| NRSCV  | Up to 30 days forward                  |
-| NRQCV  | N/A                                    |
+| Permit | Amend Duration                                               |
+| TROS   | Up to 1 y forward in 30 day increments                       |
+| TROW   | Up to 1 y forward in 30 day increments                       |
+| STOS   | Up to 30 days forward                                        |
+| STOW   | Up to 30 days forward                                        |
+| MFP    | Up to 7 days forward                                         |
+| STFR   | Up to 30 days forward                                        |
+| QRFR   | N/A                                                          |
+| NRSCV  | Up to 30 days forward                                        |
+| NRQCV  | N/A                                                          |
+| HC     | Up to 365 days forward always expires December 31st 11:59:59 |
 
 Rule: staff must choose a permit length in increments of one day, with a maximum of 30 days for STOS, STFR, NRSCV and STOW
 

@@ -360,3 +360,78 @@ Rule: refunds to closed credit accounts are sent to eGARMS as Cash
      When staff make a refund transaction in onRouteBC
      Then the transaction is sent to eGARMS as Cash
       And the transaction is not recorded in the TPS/GARMS credit account A
+
+@orv2-4903 https://moti-imb.atlassian.net/browse/ORV2-4903
+Feature: As staff I want to see credit account user add and remove changes in the account history so that I can keep track of changes to the credit account users.
+
+Staff = FIN
+
+@orv2-4903-1
+Rule: Add and remove users changes synced from TPS/GARMS credit account updates the account history in onRouteBC with a history record for each user added or removed
+
+  Scenario: adding a user from TPS
+    Given 
+     When 
+     Then 
+        | data   | description                                    |
+        | IDIR   | no data                                        |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Added"                                   |
+
+  Scenario: removing a user from TPS
+    Given 
+     When 
+     Then 
+        | data   | description                                    |
+        | IDIR   | no data                                        |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Removed"                                 |
+
+@orv2-4903-2
+Rule: Add and remove users in onRouteBC updates the account history in onRouteBC with a history record for each user added or removed
+
+  Scenario: adding a user
+    Given 
+     When 
+     Then 
+        | data   | description                                    |
+        | IDIR   | logged in user idir username                   |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Added"                                   |
+
+
+  Scenario: removing a user
+    Given 
+     When 
+     Then 
+        | data   | description                                    |
+        | IDIR   | logged in user idir username                   |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Removed"                                 |
+
+  Scenario: bulk remove users
+    Given 
+     When 
+     Then they see the following for each user removed:
+        | data   | description                                    |
+        | IDIR   | logged in user idir username                   |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Removed"                                 |
+
+@orv2-4903-3
+Rule: Removing multiple users at one time creates a unique account history record for each user removed with the same date/time but different IDIR and Action
+
+  Scenario: bulk remove users
+    Given 
+     When 
+     Then they see the following for each user removed:
+        | data   | description                                    |
+        | IDIR   | logged in user idir username                   |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Action | "User Removed"                                 |
