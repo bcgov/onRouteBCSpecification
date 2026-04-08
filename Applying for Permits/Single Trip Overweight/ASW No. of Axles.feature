@@ -4,7 +4,7 @@ Feature: As a user, I need the system to validate that the minimum and maximum n
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
-Evaluation logic Eval No. 21: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
+Evaluation logic Eval No. 8: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
 
 @orv2-5390-1
 Rule: Minimum number of axles is 1
@@ -13,7 +13,7 @@ Rule: Minimum number of axles is 1
     Given a user has added a truck tractor power unit
       And they change the number of axles for an axle unit 2 to 0
      When they choose to calculate or continue to the next step
-     Then they see "No. of Axles for Axle Unit 2 is not permittable." error message
+     Then they see "No. of Axles for Axle Unit 2 cannot be 0." error message
       And the axle unit 2 number of axles input field is indicated
 
   Scenario: At least 1 axle added
@@ -24,7 +24,7 @@ Rule: Minimum number of axles is 1
       And the axle unit 2 number of axles input field is not indicated
 
 @orv2-5390-2
-Rule: Maximum number of axles is 4
+Rule: Maximum number of axles is 3 
 
   Scenario: Exceed maximum number of axles
     Given a user has added a truck tractor power unit
