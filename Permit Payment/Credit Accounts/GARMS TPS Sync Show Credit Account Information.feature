@@ -367,71 +367,86 @@ Feature: As staff I want to see credit account user add and remove changes in th
 Staff = FIN
 
 @orv2-4903-1
-Rule: Add and remove users changes synced from TPS/GARMS credit account updates the account history in onRouteBC with a history record for each user added or removed
+Rule: Added and removed users synced from TPS/GARMS credit account updates the account history in onRouteBC with a unique history record for each user added or removed
 
   Scenario: adding a user from TPS
-    Given 
-     When 
-     Then 
+    Given credit account A has no users in onRouteBC 
+     When staff add user 1 to TPS/GARMS credit account
+      And user 1 has the onRouteBC client number 123
+     Then user 1 is added to the onRouteBC credit account 
+      And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
         | IDIR   | no data                                        |
         | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Reason | "onRouteBC Client No.: 123"                    |
         | Action | "User Added"                                   |
 
   Scenario: removing a user from TPS
-    Given 
-     When 
-     Then 
+    Given credit account A has user 1 in onRouteBC
+     When staff remove user 1 from TPS/GARMS credit account
+      And user 1 has the onRouteBC client number 123
+     Then user 1 is removed from the onRouteBC credit account 
+      And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
         | IDIR   | no data                                        |
         | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Reason | "onRouteBC Client No.: 123"                    |
         | Action | "User Removed"                                 |
 
 @orv2-4903-2
-Rule: Add and remove users in onRouteBC updates the account history in onRouteBC with a history record for each user added or removed
+Rule: Adding a user in onRouteBC updates the account history in onRouteBC with a unique history record for the user added
 
   Scenario: adding a user
-    Given 
-     When 
-     Then 
+    Given credit account A has no users in onRouteBC
+      And user 1 has the onRouteBC client number 123
+     When staff add user 1 to onRouteBC credit account 
+      And staff has the idir username user1
+     Then user 1 is added to the onRouteBC credit account 
+      And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
-        | IDIR   | logged in user idir username                   |
+        | IDIR   | user1                                          |
         | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Reason | "onRouteBC Client No.: 123"                    |
         | Action | "User Added"                                   |
 
-
   Scenario: removing a user
-    Given 
-     When 
-     Then 
+    Given credit account A has user 1 in onRouteBC
+      And user 1 has the onRouteBC client number 123
+     When staff remove user 1 from onRouteBC credit account 
+      And staff has the idir username user1
+     Then user 1 is removed from the onRouteBC credit account 
+      And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
-        | IDIR   | logged in user idir username                   |
+        | IDIR   | user1                                          |
         | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
-        | Action | "User Removed"                                 |
-
-  Scenario: bulk remove users
-    Given 
-     When 
-     Then they see the following for each user removed:
-        | data   | description                                    |
-        | IDIR   | logged in user idir username                   |
-        | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
+        | Reason | "onRouteBC Client No.: 123"                    |
         | Action | "User Removed"                                 |
 
 @orv2-4903-3
-Rule: Removing multiple users at one time creates a unique account history record for each user removed with the same date/time but different IDIR and Action
+Rule: Removing multiple users at one time creates a unique account history record for each user removed with the same date/time
 
-  Scenario: bulk remove users
-    Given 
-     When 
-     Then they see the following for each user removed:
-        | data   | description                                    |
-        | IDIR   | logged in user idir username                   |
-        | Date   | date/time the data was migrated into onRouteBC |
-        | Reason | "onRouteBC Client No.: <client no.>"           |
-        | Action | "User Removed"                                 |
+  Scenario Outline: bulk remove users
+    Given credit account A has 3 users in onRouteBC
+      And the <date> is 2026-01-01 10:00:00
+      And each user has a unique onRouteBC client number
+     When <idir> removes all users from credit account A in onRouteBC at once
+     Then users are removed from the onRouteBC credit account A
+      And the account history for credit account A is updated with a new record for each users with a <reason> that includes their unique client number and an <action> that indicates they were removed
+
+   Examples:
+     | idir  | Date                | Reason                    | Action       |
+     | user1 | 2026-01-01 10:00:00 | onRouteBC Client No.: 123 | User Removed |
+     | user2 | 2026-01-01 10:00:00 | onRouteBC Client No.: 456 | User Removed |
+     | user3 | 2026-01-01 10:00:00 | onRouteBC Client No.: 789 | User Removed |
+
+
+@orv2-4903-4
+Rule: a warning message is shown to staff when they attempt to add a user that is suspended
+
+  Scenario: adding a suspended user
+    Given user 1 is suspended in onRouteBC
+     When staff attempt to add user 1 to a credit account in onRouteBC
+     Then they see a warning message "Client is suspended A suspended client cannot be added as a Credit Account Holder or User."
+      And user 1 cannot be added to the credit account
+
+
