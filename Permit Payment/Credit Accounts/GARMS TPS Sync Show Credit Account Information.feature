@@ -335,7 +335,7 @@ Rule: hide credit account details when eGARMS return code is E9999 (serious erro
 Rule: the credit balance is the sum of the onRouteBC, eGARMS and TPS credit balance
 
 @orv2-4364-6
-Rule: the credit account cannot be used as a payment method when eGARMS return code is E0001, E0002, E0003, E1739 or E0004, E9999, 9998
+Rule: the credit account cannot be used as a payment method when eGARMS return code is E0001, E0002, E0003, E1739 or E0004, E9999, E9998
 
 @orv2-2004-6
 Rule: credit account transactions are sent to eGARMS
@@ -371,9 +371,9 @@ Rule: Added and removed users synced from TPS/GARMS credit account updates the a
 
   Scenario: adding a user from TPS
     Given credit account A has no users in onRouteBC 
-     When staff add user 1 to TPS/GARMS credit account
+     When staff add user 1 to TPS/GARMS credit account A
       And user 1 has the onRouteBC client number 123
-     Then user 1 is added to the onRouteBC credit account 
+     Then user 1 is added to the onRouteBC credit account A
       And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
         | IDIR   | no data                                        |
@@ -395,9 +395,21 @@ Rule: Added and removed users synced from TPS/GARMS credit account updates the a
 
   Scenario: add user not claimed in onRouteBC
     Given credit account A has no users in onRouteBC 
-     When staff add user 1 to TPS/GARMS credit account
+     When staff add user 1 to TPS/GARMS credit account A
       And user 1 has not claimed their onRouteBC client number
-     Then user 1 is added to the onRouteBC credit account 
+     Then user 1 is added to the onRouteBC credit account A
+      And the account history for credit account A is updated with a new record as follows:
+        | data   | description                                    |
+        | IDIR   | no data                                        |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: Not Claimed"            |
+        | Action | "Account User Added"                           |
+
+  Scenario: holder not claimed in onRouteBC
+    Given credit account A has no users in onRouteBC
+      And credit account A holder has not claimed their onRouteBC client number
+     When staff add user 1 to TPS/GARMS credit account A
+     Then user 1 is added to the onRouteBC credit account A
       And the account history for credit account A is updated with a new record as follows:
         | data   | description                                    |
         | IDIR   | no data                                        |
