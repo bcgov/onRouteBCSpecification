@@ -225,6 +225,7 @@ Rule: Users must choose from a list of allowable trailers
       Then there is no option to add another trailer
        And they see the option to reset the list
 
+# 
   Scenario: trailer not inputted
     Given a trailer has not been chosen 
      When a user chooses to continue to review and confirm

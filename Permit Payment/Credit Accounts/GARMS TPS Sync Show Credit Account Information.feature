@@ -379,7 +379,7 @@ Rule: Added and removed users synced from TPS/GARMS credit account updates the a
         | IDIR   | no data                                        |
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "onRouteBC Client No.: 123"                    |
-        | Action | "User Added"                                   |
+        | Action | "Account User Added"                           |
 
   Scenario: removing a user from TPS
     Given credit account A has user 1 in onRouteBC
@@ -391,7 +391,19 @@ Rule: Added and removed users synced from TPS/GARMS credit account updates the a
         | IDIR   | no data                                        |
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "onRouteBC Client No.: 123"                    |
-        | Action | "User Removed"                                 |
+        | Action | "Account User Removed"                         |
+
+  Scenario: add user not claimed in onRouteBC
+    Given credit account A has no users in onRouteBC 
+     When staff add user 1 to TPS/GARMS credit account
+      And user 1 has not claimed their onRouteBC client number
+     Then user 1 is added to the onRouteBC credit account 
+      And the account history for credit account A is updated with a new record as follows:
+        | data   | description                                    |
+        | IDIR   | no data                                        |
+        | Date   | date/time the data was migrated into onRouteBC |
+        | Reason | "onRouteBC Client No.: Not Claimed"            |
+        | Action | "Account User Added"                           |
 
 @orv2-4903-2
 Rule: Adding a user in onRouteBC updates the account history in onRouteBC with a unique history record for the user added
@@ -407,7 +419,7 @@ Rule: Adding a user in onRouteBC updates the account history in onRouteBC with a
         | IDIR   | user1                                          |
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "onRouteBC Client No.: 123"                    |
-        | Action | "User Added"                                   |
+        | Action | "Account User Added"                                   |
 
   Scenario: removing a user
     Given credit account A has user 1 in onRouteBC
@@ -420,7 +432,7 @@ Rule: Adding a user in onRouteBC updates the account history in onRouteBC with a
         | IDIR   | user1                                          |
         | Date   | date/time the data was migrated into onRouteBC |
         | Reason | "onRouteBC Client No.: 123"                    |
-        | Action | "User Removed"                                 |
+        | Action | "Account User Removed"                                 |
 
 @orv2-4903-3
 Rule: Removing multiple users at one time creates a unique account history record for each user removed with the same date/time
@@ -434,19 +446,20 @@ Rule: Removing multiple users at one time creates a unique account history recor
       And the account history for credit account A is updated with a new record for each users with a <reason> that includes their unique client number and an <action> that indicates they were removed
 
    Examples:
-     | idir  | Date                | Reason                    | Action       |
-     | user1 | 2026-01-01 10:00:00 | onRouteBC Client No.: 123 | User Removed |
-     | user2 | 2026-01-01 10:00:00 | onRouteBC Client No.: 456 | User Removed |
-     | user3 | 2026-01-01 10:00:00 | onRouteBC Client No.: 789 | User Removed |
+     | idir  | Date                | Reason                    | Action               |
+     | user1 | 2026-01-01 10:00:00 | onRouteBC Client No.: 123 | Account User Removed |
+     | user2 | 2026-01-01 10:00:00 | onRouteBC Client No.: 456 | Account User Removed |
+     | user3 | 2026-01-01 10:00:00 | onRouteBC Client No.: 789 | Account User Removed |
 
 
 @orv2-4903-4
-Rule: a warning message is shown to staff when they attempt to add a user that is suspended
+Rule: A warning message is shown to staff when they attempt to add a user that is suspended
 
   Scenario: adding a suspended user
     Given user 1 is suspended in onRouteBC
      When staff attempt to add user 1 to a credit account in onRouteBC
-     Then they see a warning message "Client is suspended A suspended client cannot be added as a Credit Account Holder or User."
+     Then they see a warning message "Client is suspended A suspended client cannot be added as a Credit Account User."
       And user 1 cannot be added to the credit account
 
-
+Dev Notes: 
+- All confirmation and warning popups have UI updates that need to be implemented in this story
