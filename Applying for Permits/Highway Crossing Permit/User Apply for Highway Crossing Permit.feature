@@ -1,9 +1,13 @@
-@orv2-5484-20 https://moti-imb.atlassian.net/browse/ORV2-5484-21-5484-22
+@orv2-5484 https://moti-imb.atlassian.net/browse/ORV2-5484-221-5484-232
 Feature: As a user, I need to be able to apply for a Highway Crossing Permit so that I can legally cross a highway with an oversize or overweight load.
+
+users = PC, SA, TRAIN, CTPO, CA, PA
+cv clients = CA, PA
+staff = PC, SA, TRAIN, CTPO
 
 # Application Form
 @orv2-5484-1
-Rule: the default start date is select and the date format is hinted as YYY-MM-DD
+Rule: the default start date is "Select" and the date format is hinted as YYYY-MM-DD
 
   Scenario: default state arrive
     When a user arrives at the application form
@@ -17,19 +21,63 @@ Rule: the default start date is select and the date format is hinted as YYY-MM-D
        And there is a hint that the date format is YYYY-MM-DD 
 
 @orv2-5484-2
-Rule: start date for staff
+Rule: staff can choose a start date Up to 60 days before today to 90 days from today
 
-@orv2-5484-2
-Rule: start date for users
+ #see date rules for staff in Applying for Permits/Permit start and duration Staff.feature
 
-@orv2-5484-2
+  Scenario: choose start date within 60 days in the past
+    Given todays date is 2024-05-10
+     When staff chooses a start date of 2024-03-15
+     Then their start date is available
+
+  Scenario: choose start date more than 60 days in the past
+    Given todays date is 2024-05-10
+     When staff chooses a start date of 2024-02-01
+     Then their start date is not available
+
+  Scenario: choose start date within 90 days in the future
+    Given todays date is 2024-05-10
+     When staff chooses a start date of 2024-07-15
+     Then their start date is available
+
+  Scenario: choose start date more than 90 days in the future
+    Given todays date is 2024-05-10
+     When staff chooses a start date of 2024-08-15
+     Then their start date is not available
+
+@orv2-5484-3
+Rule: cv clients can choose a start date from today to 90 days from today
+
+ #see date rules for cv clients in Applying for Permits/Permit start and duration CV Client.feature
+ 
+  Scenario: choose start date in the past
+    Given todays date is 2024-05-10
+     When a cv client chooses a start date of 2024-05-01
+     Then their start date is not available
+
+  Scenario: choose start date of today
+    Given todays date is 2024-05-10
+     When a cv client chooses a start date of 2024-05-10
+     Then their start date is available
+
+  Scenario: choose start date within 90 days in the future
+    Given todays date is 2024-05-10
+     When a cv client chooses a start date of 2024-07-15
+     Then their start date is available
+
+  Scenario: choose start date more than 90 days in the future
+    Given todays date is 2024-05-10
+     When a cv client chooses a start date of 2024-08-15
+     Then their start date is not available
+
+@orv2-5484-4
 Rule: the default expiry date is the end of the current year at 11:59:59 PM
 
   Scenario: default state
     When a user arrives at the application form
     Then the expiry date is December 31 of the current year at 11:59:59 PM
  
-@orv2-5484-3
+@orv2-5484-5
 Rule: the expiry date is always December 31 at 11:59:59 PM
 
  #See: Applying for Permits/Permit start and duration CV Client.feature And Applying for Permits/Permit start and duration Staff.feature for start date rules and duration rules for Highway Crossing Permits
@@ -39,7 +87,7 @@ Rule: the expiry date is always December 31 at 11:59:59 PM
      When a user chooses a start date of 2027-01-01
      Then the expiry date is December 31, 2027 at 11:59:59 PM
 
-@orv2-5484-4
+@orv2-5484-6
 Rule: the permit fee is a flat fee of $30
 
   Scenario: review and confirm page
@@ -47,7 +95,7 @@ Rule: the permit fee is a flat fee of $30
       And they are on the review and confirm page
      Then the permit fee is shown as $30
 
-@orv2-5484-5
+@orv2-5484-7
 Rule: the only CVSE form is CVSE-1070 and it is chosen by default 
 
   Scenario: default state
@@ -56,10 +104,10 @@ Rule: the only CVSE form is CVSE-1070 and it is chosen by default
      And "CVSE-1070" is selected by default 
      And cannot be changed
 
-@orv2-5484-6
+@orv2-5484-8
 Rule: a section ICBC Certificate of Insurance is shown with information about the certificate and a question "Do you have an ICBC Certificate of Insurance for Crossing Permit (MV1805/APV36)?" with options Yes and No
 
-@orv2-5484-7
+@orv2-5484-9
 Rule: show ICBC Certificate of Insurance info box
 
  "A valid ICBC Certificate of Insurance is required in addition to a Highway Crossing Permit.
@@ -71,7 +119,7 @@ Rule: show ICBC Certificate of Insurance info box
  Once the MV1805/APV36 is obtained, please select Yes to enter the certificate number and enter "NA" for Plate in the Vehicle
  Information section below."
 
-@orv2-5484-8
+@orv2-5484-10
 Rule: No is the default answer for the question "Do you have an ICBC Certificate of Insurance for Crossing Permit (MV1805/APV36)?" and the user must select Yes to see the Certificate Number input field
 
   Scenario: default state
@@ -84,7 +132,7 @@ Rule: No is the default answer for the question "Do you have an ICBC Certificate
      When they select "Yes" for the question "Do you have an ICBC Certificate of Insurance for Crossing Permit (MV1805/APV36)?"
       Then an input field for the Certificate Number is shown
 
-@orv2-5484-9
+@orv2-5484-11
 Rule users can choose to input a Certificate of Insurance number and must enter the certificate number and "NA" for the plate if they select "Yes" for the question "Do you have an ICBC Certificate of Insurance for Crossing Permit (MV1805/APV36)?"
 
   Scenario: input cert number and NA for plate
@@ -106,7 +154,7 @@ Rule users can choose to input a Certificate of Insurance number and must enter 
        And Certificate Number input field is highlighted in red
        And they cannot continue with the application until they input a certificate number
 
-@orv2-5484-10
+@orv2-5484-12
 Rule: vehicle type defaults to select and vehicle sub-type is disabled
 
   Scenario: default state
@@ -114,7 +162,7 @@ Rule: vehicle type defaults to select and vehicle sub-type is disabled
     Then the vehicle type field shows "Select"
      And the vehicle sub-type field is disabled
 
-@orv2-5484-11
+@orv2-5484-13
 Rule: vehicle sub-type is only available when vehicle type is power unit or trailer
 
   Scenario: select power unit
@@ -133,7 +181,7 @@ Rule: vehicle sub-type is only available when vehicle type is power unit or trai
       Then the vehicle sub-type field is disabled and shows "Other"
       And a new input field for "Vehicle Description" is shown
 
-@orv2-5484-12
+@orv2-5484-14
 Rule: choosing a vehicle type of "Other" disables the vehicle sub-type input field
 
   Scenario: other then recall from inventory
@@ -165,7 +213,7 @@ Rule: choosing a vehicle type of "Other" disables the vehicle sub-type input fie
       And the vehicle sub-type is enabled and shows "Select"
       And the user can choose to save the vehicle to inventory
 
-@orv2-5484-13
+@orv2-5484-15
 Rule: choosing a vehicle type of "Other" enables a new input field for "Vehicle Description"
 
   Scenario: other then recall from inventory
@@ -197,7 +245,7 @@ Rule: choosing a vehicle type of "Other" enables a new input field for "Vehicle 
       And the vehicle sub-type is enabled and shows "Select"
       And the user can choose to save the vehicle to inventory
 
-@orv2-5484-14
+@orv2-5484-16
 Rule: a vehicle type of "Other" cannot be saved to vehicle inventory
 
   Scenario: other then save to inventory
@@ -206,7 +254,7 @@ Rule: a vehicle type of "Other" cannot be saved to vehicle inventory
      When a user tries to save the vehicle to inventory
      Then the option to save the vehicle to inventory is not available
 
-@orv2-5484-15
+@orv2-5484-17
 Rule: the maximum number of characters for the "Vehicle Description" field is 100 characters
 
   Scenario: max characters
@@ -219,7 +267,7 @@ Rule: the maximum number of characters for the "Vehicle Description" field is 10
      When they input a vehicle description that is 101 characters long
      Then the 101st character is not accepted
 
-@orv2-5484-16
+@orv2-5484-18
 Rule: "Vehicle Description" field is required when vehicle type is "Other"
 
   Scenario: required field
@@ -229,7 +277,7 @@ Rule: "Vehicle Description" field is required when vehicle type is "Other"
        And the vehicle description input field is highlighted in red
        And they cannot continue with the application until they input a vehicle description
 
-@orv2-5484-17
+@orv2-5484-19
 Rule: choosing a different answer to the question "Do you have an ICBC Certificate of Insurance for Crossing Permit (MV1805/APV36)?" clears the vehicle plate and the Certificate No. input field
 
   Scenario: yes to no
@@ -244,11 +292,11 @@ Rule: choosing a different answer to the question "Do you have an ICBC Certifica
       Then the plate input fields are cleared
 
 # Review and Confirm
-@orv2-5484-18
+@orv2-5484-20
 Rule: if "No" is selected for the question "Do you have an ICBC Certificate of Insurance?" the ICBC Certificate of Insurance section is shown on "review and confirm" page with the following information:
  "ICBC Certificate of Insurance: No"
 
-@orv2-5484-19
+@orv2-5484-21
 Rule: if "Yes" is selected for the question "Do you have an ICBC Certificate of Insurance?" the ICBC Certificate of Insurance section is shown on "review and confirm" page with the following information:
  "ICBC Certificate of Insurance: Yes
  Certificate Number: [user inputted certificate number]"
