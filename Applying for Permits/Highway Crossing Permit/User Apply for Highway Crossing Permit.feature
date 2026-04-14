@@ -17,6 +17,12 @@ Rule: the default start date is select and the date format is hinted as YYY-MM-D
        And there is a hint that the date format is YYYY-MM-DD 
 
 @orv2-5484-2
+Rule: start date for staff
+
+@orv2-5484-2
+Rule: start date for users
+
+@orv2-5484-2
 Rule: the default expiry date is the end of the current year at 11:59:59 PM
 
   Scenario: default state
@@ -57,8 +63,8 @@ Rule: a section ICBC Certificate of Insurance is shown with information about th
 Rule: show ICBC Certificate of Insurance info box
 
  "A valid ICBC Certificate of Insurance is required in addition to a Highway Crossing Permit.
- If the vehicle has a valid BC license plate and insurance, please select No and proceed to the Vehicle Information section below.
 
+ If the vehicle has a valid BC license plate and insurance, please select No and proceed to the Vehicle Information section below.
  If the vehicle does not have a valid BC license plate and insurance, an ICBC Certificate of Insurance for Crossing Permit (MV1805/
  APV36) must be obtained by contacting the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca
 
@@ -248,5 +254,6 @@ Rule: if "Yes" is selected for the question "Do you have an ICBC Certificate of 
  Certificate Number: [user inputted certificate number]"
 
 # Notes:
-- confirm the start date rules for staff any day in past to 90 days from today?
+- fill Plate with certificate number inputted by the user if user selects yes for ICBC certificate of insurance question and inputs a certificate number, plate would not be editable
+- confirm the start date rules for staff any day in past to 90 days from today? - yes
 - Amend, VOID, Revoke

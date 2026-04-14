@@ -3,17 +3,17 @@ Feature: Permit start and duration Staff
 staff = PC, SA, TRAIN, CTPO
 
 Permit Start Date Overview:
-| Permit | Rule                                |
-| TROS   | Any past date to 60 days from today |
-| TROW   | Any past date to 60 days from today |
-| STOS   | Any past date to 60 days from today |
-| STOW   | Any past date to 60 days from today |
-| MFP    | Any past date to 60 days from today |
-| STFR   | Any past date to 60 days from today |
-| QRFR   | Any past date to 60 days from today |
-| NRSCV  | Any past date to 60 days from today |
-| NRQCV  | Any past date to 60 days from today |
-| HC     | Today to 90 days from today         |
+| Permit | Rule                                             |
+| TROS   | Any past date to 60 days from today              |
+| TROW   | Any past date to 60 days from today              |
+| STOS   | Any past date to 60 days from today              |
+| STOW   | Any past date to 60 days from today              |
+| MFP    | Any past date to 60 days from today              |
+| STFR   | Any past date to 60 days from today              |
+| QRFR   | Any past date to 60 days from today              |
+| NRSCV  | Any past date to 60 days from today              |
+| NRQCV  | Any past date to 60 days from today              |
+| HC     | Up to 60 days before today to 90 days from today |
 
 Rule: staff must choose a start date to a maximum of 60 days from today (current date and time the application is initiated)
 
