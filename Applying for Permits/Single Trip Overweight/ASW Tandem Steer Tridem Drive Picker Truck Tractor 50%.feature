@@ -18,7 +18,7 @@ Rule: Tandem steer axle group must be at least 50% of tridem drive axle group fo
 		And operating at permit axle weights is <operatingAtPermitAxleWeights>
 		And towing trailer is <isTowingTrailer>
 		When the user chooses to calculate or continue with the permit application
-		Then they see "Axle Unit X must be at least 50% of Axle Unit Y."
+		Then they see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
 		 And they cannot continue the permit application
 
 		Examples:
@@ -36,7 +36,7 @@ Rule: Tandem steer axle group must be at least 50% of tridem drive axle group fo
 		And operating at permit axle weights is <operatingAtPermitAxleWeights>
 		And towing trailer is <isTowingTrailer>
 		When the user chooses to calculate or continue with the permit application
-		Then they do not see "Axle Unit X must be at least 50% of Axle Unit Y."
+		Then they do not see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
 		 And they do not see "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
 		 And they can continue the permit application
 
@@ -69,7 +69,7 @@ Rule: Tandem steer axle group must be at least 50% of tridem drive axle group fo
 		And the vehicle type is <vehicleType>
 		And the vehicle exceeds CTR Appendix B legal truck or truck tractor definitions is <exceedsLegalDefinition>
 		When the user chooses to calculate or continue with the permit application
-		Then they do not see "Axle Unit X must be at least 50% of Axle Unit Y."
+		Then they do not see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
 		 And they do not see "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
 		 And they can continue the permit application
 

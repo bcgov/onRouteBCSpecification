@@ -34,6 +34,19 @@ Rule: The ASW table is updated when power unit or trailer(s) are added, reset/re
       And all interaxle spacing is removed from the ASW table
       And all section headers are removed from the ASW table
 
+  Scenario: trailer doesn't exist choose none
+    Given there is a power unit shown in the ASW table and no trailers
+     When a user changes the trailer to "None"
+     Then the ASW table remains unchanged with only the power unit axle units shown
+
+  Scenario: trailers exist then choose none
+    Given there is a power unit and trailers shown in the ASW table
+     When a user resets the trailer list
+      And changes the trailer to "None"
+     Then the trailer axle units are removed from the ASW table
+      And the interaxle spacing between the power unit and first trailer is removed from the ASW table
+      And the trailer section headers are removed from the ASW table
+
 @orv2-5245-2
 Rule: Show 1 interaxle spacing row for every 2 axle units
 
