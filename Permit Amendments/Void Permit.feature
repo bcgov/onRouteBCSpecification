@@ -189,8 +189,6 @@ Rule: A void results in a full refund of current permit dollar value
        | $90                     | $0        | $90        | plate change        |
        | $120                    | $90       | $30        | duration shortened  |
 
-# scenario: time passes between open application and choosing to pay - cannot backdate how do we handle this? 
-
 @orv2-1057-15
 Rule: If void action was initiated at staff search return to previous search results when finished void permit
 

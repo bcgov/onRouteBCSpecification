@@ -329,3 +329,4 @@ Rule: if "Yes" is selected for the question "Do you have an ICBC Certificate of 
  Certificate Number: [user inputted certificate number]"
 
 # Notes:
+- vehicle sub-type is is in select state we hide the field on review and confirm page

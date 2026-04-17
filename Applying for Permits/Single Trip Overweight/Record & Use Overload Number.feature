@@ -66,6 +66,7 @@ Rule: A user can submit a STOW permit application with ASW evaluation errors if 
 - Indicate the OL app in the queue
 - permissions? Staff uniqueness? - not that I am aware of
 	 - Expiry date exists - if this is true then how do we handle the the expiry date if we are allowing the permit application to be submitted with errors? - Not yet, we will rely on humans to confirm the OL number is valid.
+  - Do we want to should the errors or warning messages on Review and Confirm if the user has inputted an OL number? - Yes, we should show the errors and warning messages but allow the user to submit anyway if they have an OL number.
 
 # Notes:
 - To Discover
