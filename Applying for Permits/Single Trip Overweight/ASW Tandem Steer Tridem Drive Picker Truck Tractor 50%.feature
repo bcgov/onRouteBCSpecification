@@ -14,7 +14,7 @@ Rule: Tandem steer axle unit must be at least 50% of tridem drive axle unit for 
 		And the vehicle is a picker truck tractor
 		And the tridem drive axle unit weight is <tridemDriveAxleUnitWeight> kg which exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
 		And the tandem steer axle unit weight is <tandemSteerAxleUnitWeight> kg
-		And operating at permit axle weights is <operatingAtPermitAxleWeights>
+		And operating at permit axle weights is <operatingAtPer mitAxleWeights>
 		When the user chooses to calculate or continue with the permit application
 		Then they see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
 		 And the axle unit 1 "Axle Unit Weight (kg)" field is indicated with a red border
