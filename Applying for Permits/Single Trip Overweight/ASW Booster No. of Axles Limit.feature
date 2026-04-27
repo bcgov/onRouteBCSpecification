@@ -6,7 +6,7 @@ staff = PC, SA, TRAIN, CTPO
 
 Evaluation logic Eval No. 17: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
 
-@orv2-5421
+@orv2-5421-1
 Rule: Number of axles in booster axle unit must not exceed the number of axles on the trailer for single trip overweight permits
 
   Scenario: Booster axle unit has more axles than the trailer
