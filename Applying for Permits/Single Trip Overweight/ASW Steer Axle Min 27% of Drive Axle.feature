@@ -27,7 +27,7 @@ Rule: Steer Axle must be a minimum of 27% of Tridem Drive Axle Weight
     And the tridem drive axle weight is <tridemDriveAxleWeight> kg
     And the steer axle weight is <steerAxleWeight> kg
     When the user reviews the permit configuration
-    Then they see "Steer Axle must be a minimum of 27% of Tridem Drive Axle Weight."
+    Then they see "Axle Unit X must be a minimum of 27% of Axle Unit Y axle unit Weight."
 
     Examples:
       | description                  | tridemDriveAxleWeight | steerAxleWeight |
