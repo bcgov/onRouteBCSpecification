@@ -13,6 +13,7 @@ Start Date Rules:
 | NRSCV  | Today to 14 days from today |
 | NRQCV  | Today to 14 days from today |
 | HC     | Today to 90 days from today |
+| STWSE  | Today to 14 days from today |
 
 Rule: a CV Client can choose a start date up to 14 days from today (current date and time the application is initiated)
 
@@ -40,3 +41,4 @@ Duration Overview:
 | NRSCV  | Up to 30 days forward                                        |
 | NRQCV  | N/A                                                          |
 | HC     | Up to 365 days forward always expires December 31st 11:59:59 |
+| STWSE  | Up to 7 days forward from today                              |

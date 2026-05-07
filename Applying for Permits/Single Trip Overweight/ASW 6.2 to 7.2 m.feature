@@ -9,42 +9,78 @@ Evaluation logic Eval No. 20: https://bcgov.sharepoint.com/:x:/r/teams/04314/_la
 @orv2-5514
 Rule: Truck tractor wheelbase derived from the axle unit spacing and spread must not exceed 7.2 m for single steer tandem drive truck tractors
 
-  Scenario: 
-    Given 
-     When 
-     Then
+  Scenario: derived wheelbase is at the maximum allowed value
+    Given a single steer tandem drive truck tractor is the power unit vehicle sub-type
+     When the system derives wheelbase using axle unit 1 spacing + 50% of axle unit 2 spread
+     Then the derived wheelbase is 7.2 m
+      And the wheelbase validation passes
+      And the permit application is not blocked by wheelbase validation
+
+  Scenario: derived wheelbase exceeds the maximum allowed value
+    Given a single steer tandem drive truck tractor is the power unit vehicle sub-type
+      And axle unit 1 spacing is 6.6 m
+      And axle unit 2 spread is 1.4 m
+     When the system derives wheelbase using axle unit 1 spacing + 50% of axle unit 2 spread
+     Then the derived wheelbase is 7.3 m
+      And the wheelbase validation fails
+      And the permit application is blocked
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) field is indicated with a red border
+      And the user sees "Wheelbase for Axle Unit X and Axle Unit Y is greater than 7.2m."
 
 @orv2-5514
 Rule: If the wheelbase is less than 6.2 m then there are no restrictions
 
-  Scenario: 
-    Given 
-     When 
-     Then
+  Scenario: derived wheelbase is below the minimum allowed value
+    Given a single steer tandem drive truck tractor is the vehicle sub-type
+      And axle unit 1 spacing is 5.8 m
+      And axle unit 2 spread is 0.4 m
+     When the system derives wheelbase using axle unit 1 spacing + 50% of axle unit 2 spread
+     Then the derived wheelbase is 6.0 m
+      And the wheelbase validation passes
+      And the permit application is not blocked by wheelbase validation
 
 @orv2-5514
-Rule: If the wheelbase is greater than 7.2 m then the permit application is blocked 
+Rule: If the wheelbase is between 6.2 m and 7.2 m then the only allowed trailer vehicle sub-types are semi-trailers
 
-  Scenario: 
-    Given 
-     When 
-     Then
+  Scenario: semi-trailer is selected
+    Given a single steer tandem drive truck tractor with a derived wheelbase between 6.2 m and 7.2 m
+      And the user selects a semi-trailer as the trailer vehicle sub-type
+     Then the trailer selection is allowed
+      And the permit application is not blocked by trailer type validation
 
-@orv2-5514
-Rule: If the wheelbase is between 6.2 m and 7.2 m then only semi-trailers are allowed
+  Scenario: jeep is selected
+    Given a single steer tandem drive truck tractor with a derived wheelbase between 6.2 m and 7.2 m
+      And the user selects a jeep as the trailer vehicle sub-type
+     Then the trailer selection is not allowed
+      And the permit application is blocked by trailer type validation
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) field is indicated with a red border
+      And the user sees "Wheelbase for Axle Unit X and Axle Unit Y is between 6.2m and 7.2m. See CTPM 5.3.7.A."
 
-  Scenario: 
-    Given 
-     When 
-     Then
-     
-@orv2-5514
-Rule: If the wheelbase is between 6.2 m and 7.2 m then the user is informed to refer to CTPM 5.3.7.A for trailer restrictions
+  Scenario: booster is selected
+    Given a single steer tandem drive truck tractor with a derived wheelbase between 6.2 m and 7.2 m
+      And the user selects a booster as the trailer vehicle sub-type
+     Then the trailer selection is not allowed
+      And the permit application is blocked by trailer type validation
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) field is indicated with a red border
+      And the user sees "Wheelbase for Axle Unit X and Axle Unit Y is between 6.2m and 7.2m. See CTPM 5.3.7.A."
+
+  Scenario: jeep and booster are both selected
+    Given a single steer tandem drive truck tractor with a derived wheelbase between 6.2 m and 7.2 m
+      And the user selects a jeep and a booster as the trailer vehicle sub-types
+     Then both trailer selections are not allowed
+      And the permit application is blocked by trailer type validation
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) field is indicated with a red border
+      And the user sees "Wheelbase for Axle Unit X and Axle Unit Y is between 6.2m and 7.2m. See CTPM 5.3.7.A."
 
 # Notes:
 Evaluating: Truck tractor wheelbase is measured as the longitudinal distance from the centre of the front steering axle (Single only) to the geometric centre of the drive axle unit (Tandem only), we would derive this by using 50% of the drive axle unit spread + the steer axle to drive axle spacing. The wheelbase cannot be beyond 7.2 m. If the wheelbase of a single steer tandem drive truck tractor is 6.2m to 7.2 m then the only trailers allowed is semi-trailer no jeep or booster
 
 Triggers:
+- Commodity
 - Vehicle Sub-type
 - Axle unit 1 type
 - Axle unit 2 type
