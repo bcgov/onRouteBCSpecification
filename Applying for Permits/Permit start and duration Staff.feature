@@ -15,6 +15,7 @@ Permit Start Date Overview:
 | NRQCV  | Any past date to 60 days from today              |
 | HC     | Up to 60 days before today to 90 days from today |
 | STWSE  | Any past date to 60 days from today              |
+| STGVWI | Any past date to 60 days from today              |
 
 Rule: staff must choose a start date to a maximum of 60 days from today (current date and time the application is initiated)
 
@@ -98,6 +99,7 @@ Duration Overview:
 | NRQCV  | N/A                                                          |
 | HC     | Up to 365 days forward always expires December 31st 11:59:59 |
 | STWSE  | Up to 30 days forward                                        |
+| STGVWI | Up to 30 days forward                                        |
 
 Rule: staff must choose a permit length in increments of one day, with a maximum of 30 days for STOS, STFR, NRSCV and STOW
 

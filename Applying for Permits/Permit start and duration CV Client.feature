@@ -14,6 +14,7 @@ Start Date Rules:
 | NRQCV  | Today to 14 days from today |
 | HC     | Today to 90 days from today |
 | STWSE  | Today to 14 days from today |
+| STGVWI | Today to 14 days from today |
 
 Rule: a CV Client can choose a start date up to 14 days from today (current date and time the application is initiated)
 

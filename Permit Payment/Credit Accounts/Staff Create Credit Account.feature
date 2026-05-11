@@ -131,6 +131,26 @@ Rule: Show credit account users
        | Doing Business As (DBA)    | the DBA of the credit account holder                  |
        | onRouteBC Client No.       | the onRouteBC Client No. of the credit account holder |
        | credit account designation | Account Holder                                        |
+#
+# Notes:
+- Create credit account new version:
+- remove the existing design and replace with this one
+- enter WS number
+ - mandatory field if they don't enter a ws number then they see "This is a required field"
+- shows GARMs credit account details
+- confirm add
+- valid WS number but not the right company
+ - can go back 
+- invalid WS number
+ - error message "WS number not found"
+ - stay on the modal where ws entry is made
+- directed to the credit accounts details page
+- history table is updated with account added and shows the following details:
+ - date and time of account creation
+ - idir, date and time of staff that created the account, "Account Added"
 
-
-
+- Raise bug for intermittent eGARMS error bug and assign to Praveen
+- receive payment in onRouteBC?
+- RBC bank payment 
+ - Do they know anything about RBC bank payment?
+- TPS account numbers not added to GARMS account is this OK?
