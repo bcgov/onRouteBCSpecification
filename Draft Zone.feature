@@ -148,3 +148,10 @@ Rule: the trip type is shown on review and confirm details
      When they continue to "Review and Confirm Details" page
      Then they see the one way trip designation
       And they do not see "Permitted for return trip along the same route."
+
+
+
+
+Application has violations and/or warnings
+ 
+I confirm that I have reviewed the violations and/or warnings associated with this permit application and would like to add it to the cart.

@@ -149,7 +149,7 @@ Rule: Show credit account users
  - date and time of account creation
  - idir, date and time of staff that created the account, "Account Added"
 
-- Raise bug for intermittent eGARMS error bug and assign to Praveen
+- Raise bug for intermittent eGARMS error bug and assign to Praveen #nextaction
 - receive payment in onRouteBC?
 - RBC bank payment 
  - Do they know anything about RBC bank payment?
