@@ -68,7 +68,10 @@ Rule: Users must input all dimensions and cannot input negative numbers
 
   Scenario: input negative dimensions
      When a user inputs negative numbers into dimension fields
-     Then they cannot input negative numbers
+      And they choose to continue 
+     Then they see "Must be greater than 0."
+      And the dimension fields are indicated with a red border
+      And they cannot continue
 
   Scenario: no input
     Given a user does not input overall width
