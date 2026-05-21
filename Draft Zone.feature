@@ -149,9 +149,22 @@ Rule: the trip type is shown on review and confirm details
      Then they see the one way trip designation
       And they do not see "Permitted for return trip along the same route."
 
-
-
-
 Application has violations and/or warnings
  
 I confirm that I have reviewed the violations and/or warnings associated with this permit application and would like to add it to the cart.
+
+For a Tandem Drive/Single Jeep axle group, if the axle spread from the tandem drive to the single jeep axle is between 2.4 m and 2.99 m, the allowed weight is 28,000 kg. If the axle spread is between 3.0 m and 3.7 m, the allowed weight is 29,000 kg.
+
+- Rejected from Queue
+    - R in AIP
+  - Rejected > submit to AIR
+    - PR in AIR - not claimed
+    - IR in AIR - claimed
+  - Rejected > AIR withdrawn to AIP
+    - R in AIP
+  - Rejected > Approved in Cart, removed from cart 
+    - Maintain rejection history
+    - NOT R in AIP
+  - Rejected > Staff edits and adds directly to cart from AIP without approving, removed from cart 
+    - Maintain rejection history
+    - R in AIP
