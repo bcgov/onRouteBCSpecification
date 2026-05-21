@@ -47,7 +47,7 @@ Rule: If the wheelbase is between 6.2 m and 7.2 m then the only allowed trailer 
       And the user selects a semi-trailer as the trailer vehicle sub-type
      Then the trailer selection is allowed
       And the permit application is not blocked by trailer type validation
-      But the user does see the warning "Wheelbase for Axle Unit X and Axle Unit Y is between 6.2m and 7.2m. See CTPM 5.3.7.A."
+      But the user does see the warning "Review Compliance Requirements Wheelbase for Axle Unit X and Axle Unit Y is between 6.2m and 7.2m. Semi-Trailer wheelbase must be within dimensions table found in CTPM 5.3.7 A."
 
   Scenario: jeep is selected
     Given a single steer tandem drive truck tractor with a derived wheelbase between 6.2 m and 7.2 m
