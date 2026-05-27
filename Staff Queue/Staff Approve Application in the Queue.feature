@@ -32,7 +32,7 @@ Rule: Approved applications are added to the shopping cart
      Then the A1-72303011-028 is added to the shopping cart
 
 @orv2-2473-3 @orv2-4449-3
-Rule: The elapsed time in queue stops counting when a application is approved
+Rule: The elapsed time in queue stops counting only when a application is approved
 
   Scenario: application approved
     Given A1-72303011-028 is claimed

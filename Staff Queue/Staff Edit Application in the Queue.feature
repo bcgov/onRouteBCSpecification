@@ -112,3 +112,5 @@ Rule: staff can leave an application being edited
 
 @orv2-2472-5 @orv2-4449-10
 Rule: An application opened for edit shows the data inputted by the CV Client
+
+Rule: 

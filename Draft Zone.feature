@@ -155,16 +155,98 @@ I confirm that I have reviewed the violations and/or warnings associated with th
 
 For a Tandem Drive/Single Jeep axle group, if the axle spread from the tandem drive to the single jeep axle is between 2.4 m and 2.99 m, the allowed weight is 28,000 kg. If the axle spread is between 3.0 m and 3.7 m, the allowed weight is 29,000 kg.
 
-- Rejected from Queue
-    - R in AIP
-  - Rejected > submit to AIR
-    - PR in AIR - not claimed
-    - IR in AIR - claimed
-  - Rejected > AIR withdrawn to AIP
-    - R in AIP
-  - Rejected > Approved in Cart, removed from cart 
-    - Maintain rejection history
-    - NOT R in AIP
-  - Rejected > Staff edits and adds directly to cart from AIP without approving, removed from cart 
-    - Maintain rejection history
-    - R in AIP
+@orv2-5553-1
+Rule: a rejected application in progress shows a rejected label
+
+  Scenario: rejected application in progress
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+     Then they see "R" (Rejected) label on the application
+
+@orv2-5553-2
+Rule: a rejected application in progress can be edited and added to cart for submission by staff only
+
+  Scenario: rejected by staff then added to cart from AIP
+    Given the CV Client is at the "Applications in Progress" tab 
+      And they have a rejected application in progress
+     When they view the application in progress
+      And they choose to edit the application 
+      And they add the edited rejected application to cart
+
+@orv2-5553-3
+Rule: a rejected application from queue shows rejected status in applications in progress
+
+  Scenario: rejected from queue shows R in AIP
+    Given the CV Client is at the "Applications in Progress" tab
+      And they have an application rejected from queue
+    When they view the application in progress
+    Then they see "R" (Rejected) label on the application
+
+  Scenario: non-rejected application does not show R in AIP
+    Given the CV Client is at the "Applications in Progress" tab
+      And they have an application in progress that is not rejected
+    When they view the application in progress
+    Then they do not see "R" (Rejected) label on the application
+
+@orv2-5553-4
+Rule: a rejected application submitted to applications in review shows status by claim state
+
+  Scenario: rejected submitted to AIR shows PR when not claimed
+    Given the CV Client has submitted a rejected application to "Applications in Review"
+      And the application has not been claimed
+    When they view the application in "Applications in Review"
+    Then they see "PR" (Pending Review) status on the application
+
+  Scenario: rejected submitted to AIR does not show PR when claimed
+    Given the CV Client has submitted a rejected application to "Applications in Review"
+      And the application has been claimed
+    When they view the application in "Applications in Review"
+    Then they do not see "PR" (Pending Review) status on the application
+      And they see "IR" (In Review) status on the application
+
+@orv2-5553-5
+Rule: a rejected application withdrawn from applications in review back to applications in progress shows rejected label
+
+  Scenario: rejected withdrawn from AIR to AIP shows R
+    Given the CV Client has a rejected application in "Applications in Review"
+    When the application is withdrawn to "Applications in Progress"
+    Then they see "R" (Rejected) label on the application in "Applications in Progress"
+
+  Scenario: withdrawn non-rejected application does not show R
+    Given the CV Client has an application in "Applications in Review" that is not rejected
+    When the application is withdrawn to "Applications in Progress"
+    Then they do not see "R" (Rejected) label on the application in "Applications in Progress"
+
+@orv2-5553-6
+Rule: a rejected application approved to cart from queue and then removed from cart maintains rejection history without rejected label in applications in progress
+
+  Scenario: approved to cart then removed keeps history and not R in AIP
+    Given the CV Client has a rejected application submitted to "Applications in Review"
+      And the application is claimed and approved to cart
+    When they remove the approved application from cart
+    Then rejection history is maintained on the application
+      And they do not see "R" (Rejected) label on the application in "Applications in Progress"
+      And they do not see a rejection banner on the application
+
+  Scenario: approved to cart then removed does not lose rejection history
+    Given the CV Client has a rejected application submitted to "Applications in Review"
+      And the application is claimed and approved to cart
+    When they remove the approved application from cart
+    Then rejection history is maintained on the application
+
+@orv2-5553-7
+Rule: a rejected application added directly to cart by staff and removed from cart maintains rejection state in applications in progress
+
+  Scenario: staff adds rejected application directly to cart and removed shows R in AIP
+    Given staff has added a rejected application directly to cart from "Applications in Progress"
+    When the application is removed from cart
+    Then rejection history is maintained on the application
+      And they see "R" (Rejected) label on the application in "Applications in Progress"
+      And they see a rejection banner on the application
+
+  Scenario: non-rejected staff direct-to-cart removed does not show rejection indicators
+    Given staff has added an application that is not rejected directly to cart from "Applications in Progress"
+    When the application is removed from cart
+    Then they do not see "R" (Rejected) label on the application in "Applications in Progress"
+      And they do not see a rejection banner on the application

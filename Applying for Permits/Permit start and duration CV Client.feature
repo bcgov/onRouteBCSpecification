@@ -43,3 +43,4 @@ Duration Overview:
 | NRQCV  | N/A                                                          |
 | HC     | Up to 365 days forward always expires December 31st 11:59:59 |
 | STWSE  | Up to 7 days forward from today                              |
+| STGVWI | Up to 7 days forward from today                              |
