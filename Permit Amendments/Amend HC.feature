@@ -39,47 +39,51 @@ Rule: staff can change the choice of certificate of insurance and update the cer
       And they can save the changes
       And they are directed to the review and confirm screen
       And they see the updated certificate of insurance and certificate number
-      
+      And the vehicle plate will be replaced by the certificate number
+      And they are unable to recall a vehicle from inventory
+      And they cannot save the vehicle to inventory
+
+  Scenario: change certificate number
+    Given the certificate number is 123
+     When staff change the certificate number to 456
+     Then the certificate number is updated to 456
+      And the vehicle plate is updated to 456
+      And they see the updated certificate number and that the vehicle plate is updated to match
+
   Scenario: change certificate of insurance to no
     Given a permit has a certificate of insurance selected
      When staff choose to change the certificate of insurance to no
      Then they certificate number is deleted
+      And the vehicle plate will be deleted
+      But the other vehicle details remain
       And they certificate number field is hidden
       And they are directed to the review and confirm screen
       And they see the updated certificate of insurance and that the certificate number is removed
 
 @orv2
-Rule: staff can amend any power unit detail except vehicle sub-type and recall a new power unit with an allowable vehicle sub-type without impacting other application data
+Rule: staff can amend power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
-  Scenario: edit power unit
-    Given there is a power unit
-     When staff choose to edit
-     Then they are directed to the edit power unit screen
-      And vehicle sub-type is not available
+  Scenario: icbc is no
+    Given 
+     When 
+     Then 
 
-  Scenario: edit plate
-    Given staff have chosen to edit the power unit
-     When they amend the plate to ABC123
-      And choose done
-     Then they are directed to the application form
-      And the plate is ABC123
+  Scenario: icbc is yes
+    Given 
+     When 
+     Then 
 
-  Scenario: recall new vehicle
-    Given a commodity is chosen
-     When staff choose to recall a new vehicle
-     Then only allowable vehicle sub-types are available
-
-Other vehicle sub-type considerations
-no licensed GVW
-
-@orv2
-Rule: amendments to trailers are subject to policy restrictions that exist in the new STOS application form
+  Scenario: icbc no recall new vehicle that is not other
+    Given 
+     When 
+     Then 
 
 @orv21
 Rule: all amendments are $0 and continue to finish amendment screen
 
 @orv2-4099-9
-Rule: if staff amend results in the NPV being equal to the CPV  ($0) they can continue to refund to multiple payment methods
+Rule: if staff amend results in the NPV being equal to the CPV ($0) they can continue to refund to multiple payment methods
+
 @orv2-4099-10
 Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 

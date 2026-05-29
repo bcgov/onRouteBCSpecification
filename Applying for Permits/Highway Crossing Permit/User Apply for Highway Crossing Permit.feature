@@ -328,5 +328,9 @@ Rule: if "Yes" is selected for the question "Do you have an ICBC Certificate of 
  "ICBC Certificate of Insurance: Yes
  Certificate Number: [user inputted certificate number]"
 
+@orv2-5484-25
+Rule: The highway crossing permit acronym is "HC"
+
 # Notes:
 - vehicle sub-type is is in select state we hide the field on review and confirm page
+

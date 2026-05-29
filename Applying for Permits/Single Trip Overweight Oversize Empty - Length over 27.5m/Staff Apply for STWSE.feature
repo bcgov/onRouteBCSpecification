@@ -7,7 +7,6 @@ Date Rules:
 Applying for Permits/Permit start and duration Staff.feature
 
 
-
 @orv2-5585
 Rule: 
 
