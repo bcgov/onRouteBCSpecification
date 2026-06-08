@@ -3,6 +3,7 @@ Feature: Shopping cart
 
 User = CA, PA, SA, PC, CTPO, Trainee
 CV Client = CA, PA
+
 @orv2-3176-1
 Rule: Show persistent cart info box
 

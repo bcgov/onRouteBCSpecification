@@ -92,6 +92,33 @@ Rule: show credit account status label on historical transactions if applicable
      When staff view permit A historical transactions
      Then the credit account status label is shown as "On Hold" for permit A 
 
+@orv2-4912-2
+Rule: a refund can only be made to the credit account used in the original purchase if the cv client is still a user/holder
+
+  Scenario: user changes credit account
+    Given user x purchases permit A using credit account 1
+      And user x changes to credit account 2
+     When staff refund to multiple payment methods for permit A
+     Then cheque refund is selected by default and cannot be deselected
+
+  Scenario: cv client no longer user/holder 
+    Given permit A is purchased by cv client 1 using credit account Y
+      And cv client A is no longer a user/holder of credit account Y
+     When staff attempt to refund to multiple payment methods for permit A
+     Then cheque refund is selected by default and cannot be deselected
+
+# Notes:
+- eGARMS return code?
+ - disable RTMPM
+ - indicate the return code on the refund summary page
+ - can we refund expired permits? confirm #nextaction
+we send copies of permit and receipt pdf to the credit account holder for:
+new purchase
+void
+amend with refund
+$0 amend
+
+# Deprecated rules:
 @orv2-2004-5
 Rule: upon choosing a credit account historical transaction for a closed credit account, cheque refund is selected by default and cannot be deselected
 
@@ -111,26 +138,3 @@ Rule: upon choosing a credit account historical transaction for a closed credit 
      When staff select permit A historical transaction
      Then cheque refund is not selected by default
       But cheque refund can be optionally selected
-
-@orv2-4912-2
-Rule: a refund can only be made to the credit account used in the original purchase if the cv client is still a user/holder
-
-  Scenario: user changes credit account
-    Given user x purchases permit A using credit account 1
-      And user x changes to credit account 2
-     When staff refund to multiple payment methods for permit A
-     Then cheque refund is selected by default and cannot be deselected
-
-  Scenario: cv client no longer user/holder 
-    Given permit A is purchased by cv client 1 using credit account Y
-      And cv client A is no longer a user/holder of credit account Y
-     When staff attempt to refund to multiple payment methods for permit A
-     Then cheque refund is selected by default and cannot be deselected
-
-# Notes:
-# we send copies of permit and receipt pdf to the credit account holder for:
-# new purchase
-# void
-# amend with refund
-# $0 amend
-

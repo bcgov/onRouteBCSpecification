@@ -1,5 +1,5 @@
 @ORV2-5374 https://moti-imb.atlassian.net/browse/ORV2-5374
-Feature: As a user, I need the system to validate that the Drive Axle is at least 20% of the GCVW or a spcified threahold(tandem = 23000kg, tridem = 28000kg), so that I can ensure the permit configuration is compliant.
+Feature: As a user, I need the system to validate that the Drive Axle is at least 20% of the GCVW or a specified threshold (tandem = 23000kg, tridem = 28000kg), so that I can ensure the permit configuration is compliant.
 
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO

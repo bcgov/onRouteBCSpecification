@@ -343,6 +343,7 @@ Rule: Maximum 15 characters allowed in Transaction ID
       And choose to finish
      Then they see "Maximum 15 characters"
 
+@orv2-4535-9
 Rule: transaction history items are deselected by default when staff are directed to finish
 
 @orv2-4535-5
@@ -357,10 +358,13 @@ Rule: refund amount = $<permit item amount> on generated permit payment receipt 
 @orv2-4535-8
 Rule: total refund due = $<payment total> on generated permit payment receipt PDF
 
+@orv2-4535-10
 Rule: cancel finish refund directs staff to page they initiated the action from
 
+@orv2-4535-11
 Rule: transaction history items are deselected by default when staff are directed to finish
 
+@orv2-4535-12
 Rule: staff cannot input anything into transaction history table at finish until a historical transaction is chosen
 
 @ovr2-5081-1
