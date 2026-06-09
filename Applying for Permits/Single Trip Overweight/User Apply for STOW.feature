@@ -7,17 +7,7 @@ Note: These rules cover the user experience for applying for a Single Trip Overw
 
 # Permit Details
 @orv2-3276-1
-Rule: CVSE Form 1070 is chosen by default and attached to the STOW permit application consecutively beginning after the final page of the issued permit
-@orv2-3276-2
-Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
-
-  Scenario: choose an optional cvse form
-    Given a user choose to attach a cvse form the following list of available optional forms:
-      | Highways with Restrictive Load Limits CVSE-1011                          |
-     When they select "Highways with Restrictive Load Limits CVSE-1011"
-      And they continue to review and confirm the application
-     Then they see "Highways with Restrictive Load Limits CVSE-1011" is attached to the issued permit after the final page of the issued permit 
-      And they see "Permit Scope and Limitation CVSE-1070" is attached to the issued permit before "Highways with Restrictive Load Limits CVSE-1011"
+Rule: CVSE Form 1070 and 1011 is chosen by default and attached to the STOW permit application consecutively beginning after the final page of the issued permit
 
 @orv2-3276-3
 Rule: A user can see the source of truth for CVSE forms
@@ -477,3 +467,15 @@ Rule: A user can edit an application
      Given a user is at the "Review abd Confirm Details" page
      When they choose to edit the application
      Then they are directed to the "Permit Application" page
+
+# Deprecated Rules
+ @orv2-3276-2
+ Rule: CVSE Forms may be optionally chosen for attachment to the issued permit
+
+   Scenario: choose an optional cvse form
+     Given a user choose to attach a cvse form the following list of available optional forms:
+       | Highways with Restrictive Load Limits CVSE-1011                          |
+      When they select "Highways with Restrictive Load Limits CVSE-1011"
+       And they continue to review and confirm the application
+      Then they see "Highways with Restrictive Load Limits CVSE-1011" is attached to the issued permit after the final page of the issued permit 
+       And they see "Permit Scope and Limitation CVSE-1070" is attached to the issued permit before "Highways with Restrictive Load Limits CVSE-1011"

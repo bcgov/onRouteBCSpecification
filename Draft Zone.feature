@@ -250,3 +250,12 @@ Rule: a rejected application added directly to cart by staff and removed from ca
     When the application is removed from cart
     Then they do not see "R" (Rejected) label on the application in "Applications in Progress"
       And they do not see a rejection banner on the application
+
+Rule: when there is a conflict between the overweight value calculated for the axle group and the overweight value calculated for an axle unit, the greater overweight value is used.
+
+It is incumbent upon permit issuers to issue overweight permits for GVW and or allowable weights in excess of the table in Section 7.17 CTR during the seasonal road restriction, provided legal axle unit weights are not exceeded, and the interaxle spacing requirements as outlined below are met.
+
+Interaxle spacing > minimums
+2 individual axle can get 18200 kg
+7.17 allows
+1400 kg difference
