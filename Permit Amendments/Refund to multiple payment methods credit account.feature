@@ -93,7 +93,7 @@ Rule: show credit account status label on historical transactions if applicable
      Then the credit account status label is shown as "On Hold" for permit A 
 
 @orv2-4912-2
-Rule: a refund can only be made to the credit account used in the original purchase if the cv client is still a user/holder
+Rule: a refund can only be made to the credit account used in the original purchase if the cv client is still a holder
 
   Scenario: user changes credit account
     Given user x purchases permit A using credit account 1
@@ -101,7 +101,7 @@ Rule: a refund can only be made to the credit account used in the original purch
      When staff refund to multiple payment methods for permit A
      Then cheque refund is selected by default and cannot be deselected
 
-  Scenario: cv client no longer user/holder 
+  Scenario: cv client no longer holder 
     Given permit A is purchased by cv client 1 using credit account Y
       And cv client A is no longer a user/holder of credit account Y
      When staff attempt to refund to multiple payment methods for permit A
