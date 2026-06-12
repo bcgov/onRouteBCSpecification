@@ -76,3 +76,5 @@ Rule: There must be sufficient credit available to purchase the total transactio
      When staff attempt to pay a transaction
      Then they see "Transaction failed. Credit account unavailable."
       And they cannot complete the transaction 
+
+@orv2-5701

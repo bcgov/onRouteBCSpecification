@@ -100,6 +100,9 @@ Rule: Payment can be made by a CV Client for an application that is unsuccessful
     Given the CV Client has submitted payment details
      When the payment processor does not respond
      Then the application remains in "Applications in Progress"
+
+@orv2-5701
+
 # see applying for permits and manage permit applications in progress, a CV Client will open a permit application and step through the workflow to the payment page to attempt another payment
 
 What do we do with other processing issues (there are too many scenarios to cover them all here):
