@@ -1,4 +1,5 @@
 Feature: Refund to multiple payment methods credit accounts
+As an authorized staff member, I want to be able to refund to multiple payment methods including credit accounts, so that I can process refunds for permit applications that were purchased using multiple payment methods.
 
 Staff = SA
 
