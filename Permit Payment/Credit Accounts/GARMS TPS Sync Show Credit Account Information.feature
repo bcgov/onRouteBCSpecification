@@ -201,7 +201,6 @@ Rule: close/reopen update made in TPS/GARMS credit account updates onRouteBC cre
       When 
       Then 
 
-
 @ovr2-4364-1
 Rule: hide credit account details for holders or users when eGARMS is unavailable
 
