@@ -7,86 +7,16 @@ staff = PC, SA, TRAIN, CTPO
 Evaluation logic Eval No. 18: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
 
 @orv2-5456-1
-Rule: Tandem steer axle unit must be at least 50% of tridem drive axle unit for tandem steer/tridem drive picker truck tractors where the tridem drive axle unit exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
+Rule: 
 
-	Scenario Outline: Tandem steer axle unit weight is below the 50% threshold
-		Given the vehicle configuration is Tandem Steer/Tridem Drive
-		And the vehicle is a picker truck tractor
-		And the tridem drive axle unit weight is <tridemDriveAxleUnitWeight> kg which exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
-		And the tandem steer axle unit weight is <tandemSteerAxleUnitWeight> kg
-		And operating at permit axle weights is <operatingAtPermitAxleWeights>
-		When the user chooses to calculate or continue with the permit application
-		Then they see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
-		 And the axle unit 1 "Axle Unit Weight (kg)" field is indicated with a red border
-		 And they cannot continue the permit application
-
-		Examples:
-			| description                   | tridemDriveAxleUnitWeight | tandemSteerAxleUnitWeight | operatingAtPermitAxleWeights |
-			| Fail just below 50% boundary  | 20000                     | 9999                      | No                           |
-			| Fail well below 50% threshold | 24000                     | 10000                     | Yes                          |
-			| Fail below 50% threshold      | 18000                     | 8000                      | No                           |
-
-@orv2-5456-2
-Rule: A trailer can only be towed when not operating at permit axle weights for tandem steer/tridem drive picker truck tractors where the tridem drive axle unit exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
-
-	Scenario Outline: Towing is allowed when not operating at permit axle weights
-		Given the vehicle configuration is Tandem Steer/Tridem Drive
-		And the vehicle is a picker truck tractor
-		And the tridem drive axle unit weight is <tridemDriveAxleUnitWeight> kg which exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
-		And the tandem steer axle unit weight is <tandemSteerAxleUnitWeight> kg
-		And operating at permit axle weights is <operatingAtPermitAxleWeights>
-		And towing trailer is <isTowingTrailer>
-		When the user chooses to calculate or continue with the permit application
-		Then they do not see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
-		 And they do not see "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
-		 And they can continue the permit application
-
-		Examples:
-			| description                             | tridemDriveAxleUnitWeight | tandemSteerAxleUnitWeight | operatingAtPermitAxleWeights | isTowingTrailer |
-			| Not towing while at permit axle weights | 20000                     | 10000                     | Yes                          | No              |
-			| Pass above 50% at permit axle weights   | 20000                     | 11000                     | Yes                          | No              |
-			| Towing is allowed when not at permit    | 22000                     | 12000                     | No                           | Yes             |
-
-	Scenario Outline: Towing a trailer is blocked when operating at permit axle weights
-		Given the vehicle configuration is Tandem Steer/Tridem Drive
-		And the vehicle is a picker truck tractor
-		And the tridem drive axle unit weight is <tridemDriveAxleUnitWeight> kg which exceeds the CTR Appendix B legal limit of 15200 kg and does not exceed the permit maximum of 28000 kg
-		And the tandem steer axle unit weight is <tandemSteerAxleUnitWeight> kg
-		And operating at permit axle weights is Yes
-		And towing trailer is Yes
-		When the user chooses to calculate or continue with the permit application
-		Then they see "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
-		 And all "Axle Unit Weight (kg)" input fields are indicated with a red border
-		 And they cannot continue the permit application
-
-		Examples:
-			| description                           | tridemDriveAxleUnitWeight | tandemSteerAxleUnitWeight |
-			| Boundary pass for 50% but towing fail | 20000                     | 10000                     |
-			| Above 50% but towing fail             | 22000                     | 12000                     |
-
-	Scenario Outline: Rule is not applicable when prerequisite conditions are not met
-		Given the vehicle configuration is <vehicleConfiguration>
-		And the vehicle type is <vehicleType>
-		And the tridem drive axle unit weight is <tridemDriveAxleUnitWeight> kg
-		When the user chooses to calculate or continue with the permit application
-		Then they do not see "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
-		 And they do not see "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
-		 And they can continue the permit application
-
-		Examples:
-			| description                                                          | vehicleConfiguration      | vehicleType          | tridemDriveAxleUnitWeight |
-			| Not applicable - wrong configuration                                 | Single Steer/Tridem Drive | picker truck tractor | 20000                     |
-			| Not applicable - not a picker truck tractor                          | Tandem Steer/Tridem Drive | truck tractor        | 20000                     |
-			| Not applicable - tridem drive at CTR Appendix B legal limit 15200 kg | Tandem Steer/Tridem Drive | picker truck tractor | 15200                     |
-			| Not applicable - tridem drive exceeds permit maximum of 28000 kg     | Tandem Steer/Tridem Drive | picker truck tractor | 28001                     |
 
 # Notes:
 - Triggers for assessing for 50% rule:
- - Tandem Steer/Tridem Drive configuration
+ - Power unit axle unit types: tandem steer and tridem drive
  - Power Unit vehicle sub types:
-  - Picker Truck Tractor (assumed our only version is only with PME?)
-  - Truck Tractor with Heavy Front Projected Crane (don't have this vehicle sub-type), Truck Tractor with PME?
- - Exceed Legal Weight:
+  - Picker Truck Tractor
+  - Truck Tractor with Heavy Front Projected Crane (don't have this vehicle sub-type), Truck Tractor with PME
+ - When Exceed Legal Axle Weights = Yes for either tandem steer or tridem drive axles a trailer is not allowed:
   - Tridem drive axle unit weight exceeds the CTR Appendix B legal limit of 24000 kg
   - Tandem steer axle unit weight exceeds the CTR Appendix B legal limit of 15200 kg
 
@@ -99,28 +29,69 @@ Rule: A trailer can only be towed when not operating at permit axle weights for 
 	- tandem and tridem drive can get overweight but no trailer, legal weight with trailer
 
  ## Logic:
- IF vehicle configuration = Tandem Steer/Tridem Drive
-AND vehicle type = picker truck tractor
-AND tridem drive axle unit weight > 15200 kg
-AND tridem drive axle unit weight <= 28000 kg
-THEN
-    IF tandem steer axle unit weight < (0.50 * tridem drive axle unit weight)
-    THEN
-        Output = "Axle Unit X must carry a minimum of 50% of Axle Unit Y axle unit weight."
-        Prevent user from continuing
-    ELSE
-        IF operating at permit axle weights = Yes
-        AND towing trailer = Yes
-        THEN
-            Output = "Cannot tow a trailer if Axle Unit X and Axle Unit Y are exceeding legal axle weights."
-            Indicate all "Axle Unit Actual Weight (kg)" input fields
-            Prevent user from continuing
-        ELSE
-            Output = no error
-            Allow user to continue
-ELSE
-    Output = no error
-    Rule is not applicable
+Pseudo-code logic statement designed to apply the **50% weight distribution rule** and the associated **towing prohibition** for non-standard tandem-steer/tridem-drive picker trucks.
+
+### **Pseudo-Code Logic: 50% Rule Application**
+
+```pseudo
+// Logic for Tandem Steer / Tridem Drive Picker Truck Tractors
+// References: CTR Appendix B and Non-Standard Configuration Policy
+
+IF power_unit.axle_configuration == "Tandem Steer / Tridem Drive" AND power_unit.has_PME == TRUE THEN
+
+    // STEP 1: Determine if the power unit is "Non-Standard"
+    // Triggers: Dimensions falling outside CTR Appendix B standard ranges
+    is_non_standard = FALSE
+
+    IF power_unit.wheelbase < 6.6 THEN 
+        is_non_standard = TRUE // Wheelbase is "tighter than standard"
+    ELSE IF power_unit.steer_axle_spread < 1.0 THEN
+        is_non_standard = TRUE // Spread is tighter than standard (single axle territory)
+    ELSE IF power_unit.drive_axle_spread < 2.4 THEN
+        is_non_standard = TRUE // Spread is tighter than standard
+    ELSE IF power_unit.front_projection_PME > 1.0 THEN
+        is_non_standard = TRUE // Exceeds standard front projection limit
+    END IF
+
+    // STEP 2: Apply Restricted Rules if Non-Standard
+    IF is_non_standard == TRUE THEN
+        
+        IF power_unit.operating_weight_mode == "Permit Weights" THEN
+            
+            // 1. Apply the 50% Weight Distribution Rule
+            IF power_unit.axle_unit_1_weight < (0.50 * power_unit.axle_unit_2_weight) THEN
+                REJECT_PERMIT("Axle Unit 1 must carry a minimum 50% of Axle Unit 2 axle unit weight.") 
+            END IF
+
+            // 2. Enforce the Towing Prohibition
+            IF power_unit.is_towing_trailer == TRUE THEN
+                REJECT_PERMIT("Cannot tow a trailer if Axle Unit 1 and Axle Unit 2 are exceeding legal axle weights.")
+            END IF
+
+        ELSE IF power_unit.operating_weight_mode == "Legal Weights" THEN
+            
+            // Standard 40% distribution for loaded tandem/tridem applies
+            IF power_unit.steer_axle_group_weight < (0.40 * power_unit.tridem_drive_group_weight) THEN
+                REJECT_OPERATION("Minimum 40% weight distribution required for loaded unit.")
+            END IF
+
+        END IF
+
+    ELSE // Standard Appendix B Compliant power_unit
+        // Standard steering ratio applies
+        IF power_unit.is_loaded AND power_unit.steer_axle_group_weight < (0.40 * power_unit.tridem_drive_group_weight) THEN
+            REJECT_OPERATION("Standard 40% steering weight ratio not met.")
+        END IF
+    END IF
+
+END IF
+```
+
+### **Summary of Logic Components**
+*   **The Power Unit Trigger:** The logic first isolates vehicles with **tandem steering** and **tridem drive** axles equipped with **Permanently Mounted Equipment (PME)**.
+*   **The Dimension Trigger:** It identifies "non-standard" units by checking if they fall below the minimum dimensions allowed in Appendix B, such as a **wheelbase less than 6.6 m** or axle spreads tighter than standard.
+*   **The Weight Mode Condition:** The rule distinguishes between **legal weights** and **permit weights**. The 50% requirement and towing ban are specifically activated when the operator requests **permit (overload) weights**.
+*   **The Prohibitions:** If all triggers are met, the logic enforces a weight distribution ratio of **0.5:1** (steer to drive) and a complete **ban on towing trailers**.
 
 Permit Axle Weights:
 

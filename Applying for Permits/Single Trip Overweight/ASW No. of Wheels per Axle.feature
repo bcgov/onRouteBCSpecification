@@ -90,9 +90,9 @@ Rule: Invalid wheel count for axle unit = > 3 is rejected
 
     Examples:
       | description                    | axleType | axleUnit | wheels |
-      | Invalid for single axle unit   | single   | 2        | 6      |
-      | Invalid for tandem axle unit   | tandem   | 3        | 10     |
-      | Invalid for tridem axle unit   | tridem   | 4        | 8      |
+      | Invalid for single axle unit   | single   | 3        | 6      |
+      | Invalid for tandem axle unit   | tandem   | 4        | 10     |
+      | Invalid for tridem axle unit   | tridem   | 5        | 8      |
 
 # Notes:
 Axle unit 1 is always steer and axle unit 2 is always drive.
