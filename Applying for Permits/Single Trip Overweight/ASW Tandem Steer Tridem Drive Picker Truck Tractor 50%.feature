@@ -9,53 +9,60 @@ Evaluation logic Eval No. 18: https://bcgov.sharepoint.com/:x:/r/teams/04314/_la
 @orv2-5456-1
 Rule: Tandem steer legal maximum is 15,200 kg for Picker Truck Tractors with PME
 
+@orv2-5456-2
 Rule: Tridem drive legal maximum is 24,000 kg for Picker Truck Tractors with PME (per CTR Appendix B)
 
-Rule: Tandem steer permit maximum is 15,200 kg for Picker Truck Tractors with PME
+@orv2-5456-3
+Rule: Tandem steer permit maximum is 17,000 kg for Picker Truck Tractors with PME
 
+@orv2-5456-4
 Rule: Tridem drive permit maximum is 28,000 kg for Picker Truck Tractors with PME
 
-Rule: A non-standard Picker Truck Tractor with PME is one with tandem steer and tridem drive axles that falls below minimum dimensional thresholds (wheelbase < 6.6 m, steer axle spread < 1.0 m, drive axle spread < 2.4 m, or front projection > 1.0 m)
+@orv2-5456-5
+Rule: A non-standard Picker Truck Tractor with PME is one with tandem steer and tridem drive axles that falls below minimum dimensional thresholds (wheelbase < 6.6 m, steer axle spread < 1.0 m, drive axle spread < 2.4 m)
 
-Scenario Outline: Picker Truck Tractor classification by dimensional thresholds
-        Given the vehicle is a Picker Truck Tractor
-        And the wheelbase is <wheelbase> m
-        And the steer axle spread is <steerAxleSpread> m
-        And the drive axle spread is <driveAxleSpread> m
-        When the system evaluates the non-standard picker truck tractor rule
-        Then the vehicle is <expectedResult>
+ Scenario Outline: Picker Truck Tractor classification by dimensional thresholds
+         Given the vehicle is a Picker Truck Tractor
+         And the wheelbase is <wheelbase> m
+         And the steer axle spread is <steerAxleSpread> m
+         And the drive axle spread is <driveAxleSpread> m
+         When the system evaluates the non-standard picker truck tractor rule
+         Then the vehicle is <expectedResult>
 
-        Examples:
-            | description                          | wheelbase | steerAxleSpread | driveAxleSpread | expectedResult              |
-            | Below the wheelbase threshold        | 6.5       | 1.0             | 2.4             | considered non-standard     |
-            | Meets minimum dimensional thresholds | 6.6       | 1.0             | 2.4             | not considered non-standard |
+         Examples:
+             | description                          | wheelbase | steerAxleSpread | driveAxleSpread | expectedResult              |
+             | Below the wheelbase threshold        | 6.5       | 1.0             | 2.4             | considered non-standard     |
+             | Meets minimum dimensional thresholds | 6.6       | 1.0             | 2.4             | not considered non-standard |
 
  # See Wheelbase and Axle Spread feature for more detailed scenarios on how the dimensional thresholds apply
 
+@orv2-5456-6
 Rule: Apply the 50% tandem steer to tridem drive weight distribution ratio when operating at "Permit Weights" (exceeding legal maximums) for non-standard tandem steer/tridem drive Picker Truck Tractors with PME
 
-Scenario Outline: Picker Truck Tractor meets or fails the 50% weight distribution ratio at Permit Weights
-    Given the vehicle is a non-standard tandem steer/tridem drive Picker Truck Tractor
-    And the operating condition is operating at "Permit Weights"
-    And the tandem steer axle weight is <tandemSteerAxleWeight> kg
-    And the tridem drive axle weight is <tridemDriveAxleWeight> kg
-    When the system evaluates the 50% tandem steer to tridem drive weight distribution rule
-    Then the vehicle is <expectedResult>
+ Scenario Outline: Picker Truck Tractor meets or fails the 50% weight distribution ratio at Permit Weights
+     Given the vehicle is a non-standard tandem steer/tridem drive Picker Truck Tractor
+     And the operating condition is operating at "Permit Weights"
+     And the tandem steer axle weight is <tandemSteerAxleWeight> kg
+     And the tridem drive axle weight is <tridemDriveAxleWeight> kg
+     When the system evaluates the 50% tandem steer to tridem drive weight distribution rule
+     Then the vehicle is <expectedResult>
 
-    Examples:
-        | description                 | tandemSteerAxleWeight | tridemDriveAxleWeight | expectedResult                 |
-        | Meets the 50% requirement   | 10000                 | 20000                 | considered compliant           |
-        | Fails the 50% requirement   | 9000                  | 20000                 | not considered compliant       |
+     Examples:
+         | description                 | tandemSteerAxleWeight | tridemDriveAxleWeight | expectedResult                 |
+         | Meets the 50% requirement   | 10000                 | 20000                 | considered compliant           |
+         | Fails the 50% requirement   | 9000                  | 20000                 | not considered compliant       |
 
+@orv2-5456-7
 Rule: No trailer towing is allowed when operating at "Permit Weights" (exceeding legal maximums) for non-standard tandem steer/tridem drive Picker Truck Tractors with PME
 
-Scenario: Trailer towing is rejected at Permit Weights for a non-standard Picker Truck Tractor
-    Given the vehicle is a non-standard tandem steer/tridem drive Picker Truck Tractor
-    And the operating condition is operating at "Permit Weights"
-    And the vehicle is towing a trailer
-    When the user chooses to calculate or continue with the permit application
-    Then they see "Cannot tow a trailer if Axle Unit 1 and Axle Unit 2 are exceeding legal axle weights."
+ Scenario: Trailer towing is rejected at Permit Weights for a non-standard Picker Truck Tractor
+     Given the vehicle is a non-standard tandem steer/tridem drive Picker Truck Tractor
+     And the operating condition is operating at "Permit Weights"
+     And the vehicle is towing a trailer
+     When the user chooses to calculate or continue with the permit application
+     Then they see "Cannot tow a trailer if Axle Unit 1 and Axle Unit 2 are exceeding legal axle weights."
 
+@orv2-5456-8
 Rule: Apply the standard 40% tandem steer to tridem drive weight distribution ratio when operating at "Legal Weights" for tandem steer/tridem drive Picker Truck Tractors with PME 
 
  # See 40% rule feature for more details on the standard 40% distribution requirement that applies to all tandem steer/tridem drive vehicles at legal weights, including non-standard tandem steer/tridem drive picker truck tractors with PME.
