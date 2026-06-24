@@ -1,10 +1,10 @@
-@ORV2-5255 https://moti-imb.atlassian.net/browse/ORV2-5255
+@orv2-5255 https://moti-imb.atlassian.net/browse/ORV2-5255
 Feature: As a user I need to be able to record my Overload (OL) number so that I can submit a STOW permit application with ASW evaluation errors for approval by the PPC.
 
 Users:
 CA, PA, PC, SA, TRAIN
 
-@ORV2-5255
+@orv2-5255
 Rule: The approval number question default answer is no and the approval no. field is hidden on the application form until the user selects yes for the extraordinary load request question
 
   Scenario: chose no for extraordinary load request
@@ -14,7 +14,8 @@ Rule: The approval number question default answer is no and the approval no. fie
   Scenario: chose yes for extraordinary load request
     Given the user has selected "Yes" for the question "Is this an extraordinary load permit application?"
      Then the "Approval No." field is visible
-#
+
+@orv2-5255
 Rule: The approval number field is required if the user selects yes for the extraordinary load request question
 
   Scenario: chose yes for extraordinary load request and inputted approval no.
@@ -26,11 +27,11 @@ Rule: The approval number field is required if the user selects yes for the extr
     Given the user has selected "Yes" for the question "Is this an extraordinary load permit application?"
      When they have not inputted anything into the "Approval No." field
       And they have attempted to continue to review and confirm
-     Then they see "This is arequired field" error message for the "Approval No." field
+     Then they see "This is a required field" error message for the "Approval No." field
       And the "Approval No." field is highlighted in red
       And they cannot continue to review and confirm
       
-@ORV2-5255
+@orv2-5255
 Rule: Show user inputted selection on review and confirm if no or yes if no do not show the Approval No. header   
 
   Scenario: chose no for extraordinary load request
@@ -52,7 +53,7 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
       | Is this an extraordinary load permit application? | Yes    |
       | Approval No.                                      | 12345  |
 
-@ORV2-5255
+@orv2-5255
 Rule: A user can submit a STOW permit application with ASW evaluation errors if they have inputted an OL number
 
   Scenario: submit with ASW evaluation errors
