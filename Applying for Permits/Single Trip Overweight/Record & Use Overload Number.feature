@@ -39,7 +39,7 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
      When the user has selected "No" for the question "Do you have an extraordinary load approval??"
       And they have continued to review and confirm
      Then the review and confirm page should show:
-      | Question                                          | Answer |
+      | Question                                    | Answer |
       | Do you have an extraordinary load approval? | No     |
       And the review and confirm page should not show the header "Approval No."
 

@@ -100,7 +100,17 @@ Exceptions for Oilfield Bed Trucks (Tridem Drive):
    - If the tridem drive axle spread is between 2.8 meters and less than 3.0 meters, the minimum dimensional wheelbase is 7.8 meters.
    - If the tridem drive axle spread is between 3.0 meters and 3.1 meters, the minimum dimensional wheelbase is 7.9 meters.
 
+# Evaluation Parameters:
+- Vehicle Type
+- Axle Unit 1
+- Interaxle Spacing
+- Axle Unit 2
+- Wheelbase = Axle Unit 1 + Interaxle Spacing + Axle Unit 2
+- Tridem Axle Spread (required for oilfield bed truck evaluations)
+
 # Logic:
+Wheelbase = Axle_Unit_1 + Interaxle_Spacing + Axle_Unit_2
+
 IF Vehicle Type = ""General Tridem Drive Truck/Truck Tractor"" THEN
     IF Wheelbase < 6.6 m THEN
         Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
@@ -128,6 +138,4 @@ ELSE IF Vehicle Type = ""Oilfield Bed Truck (Tridem Drive)"" THEN
     ELSE
         Output = """"   // blank if compliant
     END IF
-ELSE
-    Output = ""Vehicle type not covered by this rule.""
 END IF
