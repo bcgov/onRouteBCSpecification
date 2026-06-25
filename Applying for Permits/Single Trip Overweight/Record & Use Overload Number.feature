@@ -32,7 +32,7 @@ Rule: The approval number field is required if the user selects yes for the extr
       And they cannot continue to review and confirm
       
 @orv2-5255
-Rule: Show user inputted selection on review and confirm if no or yes if no do not show the Approval No. header   
+Rule: Show user inputted selection on review and confirm if no or yes if no do not show the Approval No. field label   
 
   Scenario: chose no for extraordinary load request
     Given the user is applying for a STOW permit and is on the review and confirm page
@@ -41,7 +41,7 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
      Then the review and confirm page should show:
       | Question                                    | Answer |
       | Do you have an extraordinary load approval? | No     |
-      And the review and confirm page should not show the header "Approval No."
+      And the review and confirm page should not show the label "Approval No."
 
   Scenario: chose yes for extraordinary load request
     Given the user is applying for a STOW permit and is on the review and confirm page
@@ -61,7 +61,7 @@ Rule: A user can submit a STOW permit application with ASW evaluation errors if 
      When the user has inputted "OL12345" into the "Overload Number" field
       And they have continued to review and confirm
      Then the user can submit the STOW permit application even if there are ASW evaluation errors
-#
+
 # Questions:
 - Do we want to indicate that it is an OL appl in AIP?
 - Indicate the OL app in the queue

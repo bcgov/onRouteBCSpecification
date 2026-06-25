@@ -259,3 +259,7 @@ Interaxle spacing > minimums
 2 individual axle can get 18200 kg
 7.17 allows
 1400 kg difference
+
+Application in Queue
+Extraordinary Load Applications
+Claimed Applications

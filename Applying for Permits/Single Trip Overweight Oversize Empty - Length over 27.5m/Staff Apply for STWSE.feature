@@ -16,7 +16,7 @@ See User Apply for STWSE feature
 # Dimension Based Submission Rules
 See User Apply for STWSE feature
 
-@orv2-5585
+@orv2-5585-1
 Rule: staff can add an STWSE permit application to the cart with violations for OAW, OAL, OAH
 
   Scenario: > OAW, OAL, OAH violations add to cart
