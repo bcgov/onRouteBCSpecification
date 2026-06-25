@@ -81,19 +81,21 @@ Rule: the legal threshold is used to determine compliance first, and overload is
       | 24000          | 25000        | non-compliant    | 1000           |
 
 @orv2-5617-6
-Rule: the 8-metre axle group rule is applied by measuring the distance between the first and last axle in each eligible axle-group combination and comparing that spread to the CTR 7.17 table
+Rule: the 8-metre axle group rule is applied by measuring the distance between the first and last axle in each eligible axle-group combination and comparing standard axle groups to the CTR 7.17 table while applying the tandem-drive/single-jeep axle-group exception under CTR 7.16(g)
 
-  Scenario Outline: axle-group spread is compared to the CTR 7.17 table
-    Given an eligible axle-group combination has a spread of <spread> m
-     When the system determines the CTR 7.17 table value for that axle-group combination
-     Then the CTR 7.17 table value is <ctr717Value> kg
+  Scenario Outline: axle-group spread is measured from the first to last axle and the resulting threshold branch depends on whether the group is standard or tandem-drive/single-jeep
+    Given an eligible <axleGroupType> axle-group combination has a spread of <spread> m
+     When the system determines the maximum legal weight threshold for that axle-group combination
+     Then the maximum legal weight threshold is <threshold> kg
 
     Examples:
-      | spread | ctr717Value |
-      | 1.0    | 16500       |
-      | 4.2    | 24000       |
-      | 7.6    | 32000       |
-      | 8.0    | 34000       |
+      | axleGroupType            | spread | threshold |
+      | standard                 | 1.0    | 16500     |
+      | standard                 | 4.2    | 24000     |
+      | standard                 | 7.6    | 32000     |
+      | standard                 | 8.0    | 34000     |
+      | tandem-drive/single-jeep | 4.2    | 24000     |
+      | tandem-drive/single-jeep | 6.3    | 27000     |
 
 # Notes:
  - An axle group is 2 or more axle units
