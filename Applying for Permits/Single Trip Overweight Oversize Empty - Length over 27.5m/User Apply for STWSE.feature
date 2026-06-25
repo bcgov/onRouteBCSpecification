@@ -69,7 +69,7 @@ Rule: Users must input all dimensions and cannot input negative numbers
   Scenario: input negative dimensions
      When a user inputs negative numbers into dimension fields
       And they choose to continue 
-     Then they see "Must be greater than 0."
+     Then they see "Must be greater than 0m."
       And the dimension fields are indicated with a red border
       And they cannot continue
 
