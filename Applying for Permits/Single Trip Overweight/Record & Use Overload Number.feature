@@ -1,8 +1,9 @@
 @orv2-5255 https://moti-imb.atlassian.net/browse/ORV2-5255
 Feature: As a user I need to be able to record my Overload (OL) number so that I can submit a STOW permit application with ASW evaluation errors for approval by the PPC.
 
-Users:
-CA, PA, PC, SA, TRAIN
+Users: CA, PA, PC, SA, TRAIN
+CV Client: CA, PA
+
 
 @orv2-5255-1
 Rule: The approval number question default answer is no and the approval no. field is hidden on the application form until the user selects yes for the extraordinary load request question
@@ -54,13 +55,13 @@ Rule: Show user inputted selection on review and confirm if no or yes if no do n
       | Approval No.                                      | 12345  |
 
 @orv2-5255-4
-Rule: A user can submit a STOW permit application with ASW evaluation errors if they have inputted an OL number
+Rule: A cv client can submit a STOW permit application with ASW evaluation errors if they have inputted an OL number
 
   Scenario: submit with ASW evaluation errors
-    Given the user is applying for a STOW permit and is on the review and confirm page
-     When the user has inputted "OL12345" into the "Overload Number" field
+    Given the cv client is applying for a STOW permit and is on the review and confirm page
+     When the cv client has inputted "OL12345" into the "Overload Number" field
       And they have continued to review and confirm
-     Then the user can submit the STOW permit application even if there are ASW evaluation errors
+     Then the cv client can submit the STOW permit application even if there are ASW evaluation errors
 
 # Questions:
 - Do we want to indicate that it is an OL appl in AIP?

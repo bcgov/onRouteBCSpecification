@@ -138,12 +138,31 @@ Rule: staff can complete a refund even if an eGARMS returns as ecode
 @orv2-5679-8
 Rule: staff cannot complete a refund if the credit account is closed in onRouteBC
 
-  Scenario: credit account closed finish
+  Scenario: only credit account closed finish
     Given staff are refunding permit A to multiple payment methods
       And the credit account used for the refund is closed in onRouteBC
+      And it is the only historical transaction
      When they attempt to finish the refund to multiple payment methods workflow for permit A
      Then staff cannot complete the refund to multiple payment methods for permit A
       And they see "Refund can't be processed Refunds can't be processed for closed Credit Accounts."
+      And they have the option to "Close" the message
+
+  Scenario: only credit account open
+    Given staff are refunding permit A to multiple payment methods
+      And the credit account used for the refund is open in onRouteBC
+      And it is the only historical transaction
+      And they have not chosen a historical transaction to refund to
+     When they attempt to finish the refund to multiple payment methods workflow for permit A
+     Then they see "Refund Error Total refund amount does not match total refund due."
+      And they have the option to "Close" the message
+
+  Scenario: multiple transactions credit account closed
+    Given there are multiple transactions
+      And one of the transactions is a credit account transaction for a closed credit account
+      And staff have not chosen a historical transaction to refund to
+     When staff attempt to finish the refund to multiple payment methods workflow for permit A
+     Then staff cannot complete the refund to multiple payment methods for permit A
+      And they see "Refund Error Total refund amount does not match total refund due."
       And they have the option to "Close" the message
 
   Scenario: closing the warning
