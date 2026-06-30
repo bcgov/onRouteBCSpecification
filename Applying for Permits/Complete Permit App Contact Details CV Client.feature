@@ -8,12 +8,12 @@ Feature: Complete Contact Details
      When they choose to start a permit
      Then they are directed to the "Permit Application" page
       And they see the following header information:
-        | permit type name                          |
-        | application number (Empty)                |
-        | company name                              |
-        | onRouteBC client number                   |
-        | company  information confirmation message |
-        | company mailing address                   |
+        | permit type name                                                                         |
+        | application number (Empty)                                                               |
+        | company name                                                                             |
+        | onRouteBC client number                                                                  |
+        | If the Client Mailing Address is incorrect, please contact your onRouteBC Administrator. |
+        | company mailing address                                                                  |
 
   @orv2-549-2
   Scenario: View profile contact information 

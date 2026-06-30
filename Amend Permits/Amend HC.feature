@@ -13,9 +13,7 @@ Rule: staff can change the start date of an issued or active permit
      When staff amend the start date to 05/01/2024
      Then they see "Start date is in the past"
 
-create expired condition
-
-Rule: staff are notified when start date an/or expiry date are in the past
+Rule: staff are notified when start date and/or expiry date are in the past
 
    Scenario: on application form
      Given the current date is 05/02/2025
@@ -64,19 +62,19 @@ Rule: staff can change the choice of certificate of insurance and update the cer
 Rule: staff can amend power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
   Scenario: icbc is no
-    Given 
-     When 
-     Then 
+     When a permit has certificate of insurance as no and a vehicle sub-type that is not other
+     Then staff can recall a new vehicle from inventory
 
   Scenario: icbc is yes
-    Given 
-     When 
-     Then 
+     When a permit has certificate of insurance as yes and a certificate number
+     Then staff cannot recall a new vehicle from inventory
 
   Scenario: icbc no recall new vehicle that is not other
     Given 
      When 
      Then 
+
+Rule: staff can only recall a new power unit from inventory when 
 
 @orv21
 Rule: all amendments are $0 and continue to finish amendment screen

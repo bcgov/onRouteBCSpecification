@@ -263,3 +263,18 @@ Interaxle spacing > minimums
 Application in Queue
 Extraordinary Load Applications
 Claimed Applications
+
+# Queue: Filtering EOL's and Showing Counts
+
+As a staff permit issuer, I want to filter the Applications in Queue by Extraordinary Load and see tab counts for Applications, Extraordinary Loads, and Claimed so that I can quickly find and action the right files.
+
+- Extraordinary Load Applications
+	- new story for queue
+	- claimed application will not be apparent
+	- won't see EOL apps in the Applications in Queue tab
+- New show precise count story for:
+	- changing the name of the tabs
+	- Application
+	- Extraordinary Loads and
+	- Claimed
+	- hide count if 0 applications or EOLs or claimed
