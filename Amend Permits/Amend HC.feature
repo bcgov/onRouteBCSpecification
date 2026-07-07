@@ -1,42 +1,49 @@
-Feature: Amend Highway Crossing Permit
+@orv2-5685-1 https://moti-imb.atlassian.net/browse/ORV2-5685
+Feature: As an authorized staff user, I want to be able to amend a Heavy Commercial (HC) permit so that I can update the permit details on behalf of the applicant.
 
 Staff = PC, SA, TRAIN, CTPO
 
-@orv2
-Rule: staff can amend all contact information except company email
+# Note
+# See the following feature files for additional specs:
+# - User Apply for HC
+# - Staff Apply for HC
+# - Common amend Permit Rules
+# - Permit start and duration Staff
 
-@orv2
+# Contact Information
+@orv2-5685-2
+Rule: staff can change all contact information except company email
+# Permit Details
+ # see Permit start and duration Staff feature file for rules related to permit start and duration
+@orv2-5685-3
 Rule: staff can change the start date of an issued or active permit
 
   Scenario: change start date to previous year
     Given the current date is 05/02/2025
-     When staff amend the start date to 05/01/2024
+     When staff change the start date to 05/01/2024
      Then they see "Start date is in the past"
 
 Rule: staff are notified when start date and/or expiry date are in the past
 
    Scenario: on application form
      Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
+      When staff change the start date to 05/01/25
       Then they see "Start date is in the past"
  
    Scenario: on review and confirm
      Given the current date is 05/02/2025
-      When staff amend the start date to 05/01/25
+      When staff change the start date to 05/01/25
        And continue to review and confirm
       Then they see "Start date and/or expiry date is in the past"
 
+# ICBC Certificate of Insurance
+@orv2-5685-4
 Rule: staff can change the choice of certificate of insurance and update the certificate number
 
   Scenario: change certificate of insurance to yes
     Given a permit has a certificate of insurance selected
      When staff choose to change the certificate of insurance
-     Then they are directed to the edit certificate of insurance screen
-      And they can choose a different certificate of insurance from the dropdown
-      And they can enter a new certificate number
-      And they can save the changes
-      And they are directed to the review and confirm screen
-      And they see the updated certificate of insurance and certificate number
+     Then they can enter a new certificate number
       And the vehicle plate will be replaced by the certificate number
       And they are unable to recall a vehicle from inventory
       And they cannot save the vehicle to inventory
@@ -51,43 +58,91 @@ Rule: staff can change the choice of certificate of insurance and update the cer
   Scenario: change certificate of insurance to no
     Given a permit has a certificate of insurance selected
      When staff choose to change the certificate of insurance to no
-     Then they certificate number is deleted
+     Then the certificate number is deleted
       And the vehicle plate will be deleted
+      And they can edit the vehicle plate field
+      And they are able to recall a vehicle from inventory
+      And the certificate number field is hidden
       But the other vehicle details remain
-      And they certificate number field is hidden
-      And they are directed to the review and confirm screen
-      And they see the updated certificate of insurance and that the certificate number is removed
 
-@orv2
-Rule: staff can amend power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
+# Vehicle Information
+ # see the following feature file for rules related to vehicle information:
+ # - User Apply for HC
+ # - Staff Apply for HC
+@orv2-5685-5
+Rule: staff can change power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
-  Scenario: icbc is no
-     When a permit has certificate of insurance as no and a vehicle sub-type that is not other
-     Then staff can recall a new vehicle from inventory
+  Scenario: other then recall from inventory
+    Given vehicle type is "Other"
+      And there is a vehicle description
+     When staff recalls vehicle A from inventory with the following details:
+      | Vehicle Type | Vehicle Sub-Type |
+      | Power Unit   | Truck Tractor    |
+     Then the vehicle type is updated to "Power Unit"
+      And the vehicle sub-type is updated to "Truck Tractor"
+      And the vehicle description is cleared
+      And the vehicle description input field is unavailable
 
-  Scenario: icbc is yes
-     When a permit has certificate of insurance as yes and a certificate number
-     Then staff cannot recall a new vehicle from inventory
+  Scenario: recall from inventory then other
+    Given vehicle A is in inventory with the following details:
+      | Vehicle Type | Vehicle Sub-Type |
+      | Power Unit   | Truck Tractor    |
+     When staff recalls vehicle A from inventory
+      And they change the vehicle type to "Other"
+     Then the vehicle sub-type is "Select" and disabled
+      And the vehicle description input field is available 
+      And staff cannot save the vehicle to inventory
 
-  Scenario: icbc no recall new vehicle that is not other
-    Given 
-     When 
-     Then 
+  Scenario: change vehicle type to power unit or trailer
+    Given vehicle type is "Other"
+      And there is a vehicle description
+     When staff changes the vehicle type to "Power Unit"
+     Then the vehicle description is cleared
+      And the vehicle description input field is unavailable
+      And the vehicle sub-type is enabled and shows "Select"
+      And staff can choose to save the vehicle to inventory
 
-Rule: staff can only recall a new power unit from inventory when 
+# Finish, Refund and Add to Cart Submission Rules
+@orv2-5685-6
+Rule: if staff amend results in the NPV being equal to the CPV ($0) they can continue to finish amendment screen
 
-@orv21
-Rule: all amendments are $0 and continue to finish amendment screen
+  Scenario: $0 amend plate change
+    Given the CPV is $30
+     When staff amend the vehicle plate
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $30 |
+       | New Permit Value     | $30 |
+       | Total                | $0  |
+      And they can continue to finish amendment screen
 
-@orv2-4099-9
-Rule: if staff amend results in the NPV being equal to the CPV ($0) they can continue to refund to multiple payment methods
+  Scenario: $0 amend forward date to next year
+    Given the CPV is $30
+     When staff amend the return trip designation to one way
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $30 |
+       | New Permit Value     | $30 |
+       | Total                | $0  |
+      And they can continue to finish amendment screen
 
-@orv2-4099-10
+  Scenario: $0 amend backdate to previous year
+    Given the CPV is $30
+     When staff amend the start date to 05/01/2024
+      And continue to review and confirm
+     Then they see the following:
+       | Current Permit Value | $30 |
+       | New Permit Value     | $30 |
+       | Total                | $0  |
+      And they can continue to finish amendment screen
+
+# Review and Confirm
+@orv2-5685-7
 Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 
   Scenario: > CPV
     Given the CPV is $15
-     When staff amend the return trip designation to return trip
+     When staff change the return trip designation to return trip
       And continue to review and confirm
      Then they see the following:
        | Current Permit Value | $15 |
@@ -96,18 +151,22 @@ Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and
 
   Scenario: < CPV
     Given the CPV is $30
-     When staff amend the return trip designation to one way
+     When staff change the return trip designation to one way
       And continue to review and confirm
      Then they see the following:
        | Current Permit Value | $30  |
        | New Permit Value     | $15  |
        | Total                | -$15 |
 
-  Scenario: = CPV ($0 amend)
+  Scenario: = CPV ($0 change)
     Given the CPV is $30
-     When staff amend the vehicle plate
+     When staff change the vehicle plate
       And continue to review and confirm
      Then they see the following:
        | Current Permit Value | $30 |
        | New Permit Value     | $30 |
        | Total                | $0   |
+
+# Fee Calculation and Fee Summary
+ #see fee calculation and fee summary rules in the following feature files:
+ # - User Apply for HC       

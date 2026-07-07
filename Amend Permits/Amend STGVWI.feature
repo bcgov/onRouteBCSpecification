@@ -1,4 +1,4 @@
-@orv2-5765 https://moti-imb.atlassian.net/browse/ORV2-5765 
+@orv2-5765-1 https://moti-imb.atlassian.net/browse/ORV2-5765 
 Feature: As an authorized staff user, I want to be able to amend a Single Trip GVW Increase (STGVWI) permit so that I can update the permit details on behalf of the applicant.
 
 Staff = PC, SA, TRAIN, CTPO
@@ -11,19 +11,19 @@ Staff = PC, SA, TRAIN, CTPO
 # - Permit start and duration Staff
 
 # Contact Information
-@orv2-5765
+@orv2-5765-2
 Rule: staff can change all contact information except company email
 
 # Permit Details
  # see Permit start and duration Staff feature file for rules related to permit start and duration
 
-@orv2-5765
+@orv2-5765-3
 Rule: staff can change the start date of an issued or active permit
 
-@orv2-5765
+@orv2-5765-4
 Rule: staff can change the duration of an issued or active permit
 
-@orv2-5765
+@orv2-5765-5
 Rule: staff are notified when start date and/or expiry date are in the past
 
    Scenario: on application form
@@ -38,7 +38,7 @@ Rule: staff are notified when start date and/or expiry date are in the past
       Then they see "Start date and/or expiry date is in the past"
 
 # Vehicle Information
-@orv2-5765
+@orv2-5765-6
 Rule: staff can change power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
  #see power unit to permit mapping https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/doc2.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
@@ -60,7 +60,7 @@ Rule: staff can change power unit details and recall a new power unit with an al
       And the licensed GVW increase is 4000kg
 
 # Actual GVW (kg)
-@orv2-5765
+@orv2-5765-7
 Rule: staff can change the actual GVW (kg) of an issued or active permit decreasing or increasing the actual GVW (kg)
 
  # see the following feature file for rules related to actual GVW (kg):
@@ -77,13 +77,13 @@ Rule: staff can change the actual GVW (kg) of an issued or active permit decreas
  # - User Apply for STGVWI
  # - Staff Apply for STGVWI
 
-@orv2-5765
+@orv2-5765-8
 Rule: staff can change the total distance of an issued or active permit decreasing or increasing the total distance
 # Finish, Refund and Add to Cart Submission Rules
  #see fee calculation and fee summary rules in the following feature files:
  # - User Apply for STGVWI
 
-@orv2-5765
+@orv2-5765-9
 Rule: if staff amend results in the NPV being equal to the CPV ($0) they can continue to finish amendment screen
 
   Scenario: $0 amend
@@ -96,7 +96,7 @@ Rule: if staff amend results in the NPV being equal to the CPV ($0) they can con
        | Total                | $0  |
       And they can continue to finish amendment screen
 
-@orv2-5765
+@orv2-5765-10
 Rule: if staff amend results in the NPV being higher than the CPV they can add the permit to the cart and pay the difference at checkout
 
   Scenario: licensed GVW decrease (NPV < CPV)
@@ -141,7 +141,7 @@ Rule: if staff amend results in the NPV being higher than the CPV they can add t
        | Total                | $52  |
       And they can add the permit to the cart
 
-@orv2-5765
+@orv2-5765-11
 Rule: if staff amend results in the NPV being less than the CPV they can continue to refund 
 
   Scenario: licensed GVW increase (NPV > CPV)
@@ -188,8 +188,8 @@ Rule: if staff amend results in the NPV being less than the CPV they can continu
 # Review and Confirm
  #see common amend permit rules feature file for rules related to review and confirm
 
-@orv2-5765
-Rule: if staff amend results in the NPV being higher than the CP they are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
+@orv2-5765-12
+Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 
   Scenario: > CPV
     Given the CPV is $15
