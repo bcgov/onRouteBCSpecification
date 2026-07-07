@@ -5,6 +5,7 @@ auth staff = SA
 staff = PC, SA, TRAIN, CTPO
 CV Client = CA, PA
 
+
 Rule: staff must complete all mandatory fields
 
  Scenario: Amending permit application form complete
@@ -21,8 +22,10 @@ Rule: staff must complete all mandatory fields
        And they see "This is a required field"
        And incomplete mandatory fields are indicated
        
-Rule: staff can amend all contact information except company email
+# Permit Details
+Rule: staff can change all contact information except company email
 
+# Amending Permit Applications
 @orv2-4140-1
 Rule: an unfinished amending permit application (APA) is created or iterated on when staff continue to review and confirm
 
@@ -175,12 +178,6 @@ Rule: staff can only amend an issued or active permit
          | banner                | company client number of amending permit                         |
          | company information   | company mailing address of amending permit and DBA if applicable |
 
-@orv2-938-30 @orv2-4015-13
-Rule: staff can view superseded permit and superseded permit receipt pdf  
-
-@orv2-938-9 @orv2-4015-14
-Rule: staff can resend superseded permit documents
-
 @orv2-938-12 @orv2-4015-15
 Rule: staff can see the current issued or active permit data of the permit being amended
 
@@ -271,60 +268,13 @@ Rule: upon finishing $0 or refund permit amendment staff return to page where am
      When they leave 
      Then they are directed to the active permits page
 
-@orv2-4202-15
-# will be applicable to STOW, STWS and ICBC as well
+@orv2-4202-15 @orv2-5765
+# will be applicable to STOW, STWS, STGVWI and ICBC as well
 Rule: choosing add to cart directs staff to active permits if the action was initiated from active permits
-
 @orv2-4202-16
 Rule: choosing add to cart directs staff to search results if the action was initiated from search results
-
-@orv2-938-21 @orv2-4015-20
-Rule: Amending permit is superseded by amended permit
-
-  Scenario: Supersede amending permit
-     When they finish the amending permit application
-     Then the amending permit is labeled as superseded
-
-@orv2-938-22 @orv2-4015-21
-Rule: Generate amended permit pdf
-
-   Scenario: Generate amended permit pdf
-     Given the PPC SA has inputted all mandatory information at finish amendment
-      When they choose to finish amending the permit
-      Then the amended permit pdf is generated
-       And the following information is updated on the generated amended permit pdf:
-         | description      | information                                                                |
-         | permit details   | reflects amendments made                                                   |
-         | revision history | reflects the date/time and free text comment(s) inputted at amended permit |
-         | revised on       | date/time updated to reflect the date the amended pdf is generated         |
-         | permit number    | permit number reflects the revised number                                  |
-
-@orv2-1491-3 @orv2-4015-22
-Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
-
-  Scenario: cv client issues under no fee flag changes to fee cv client
-    Given ABC Co. is a no fee cv client
-     And they issue permit A
-     And permit A is not expired
-     When staff remove ABC Co. no fee designation
-     Then permit A has a $0 fee
-
 @orv2-4015-23
 Rule: staff can choose to amend a permit from staff search for permit results and the cv client profile active permits
-
-@orv2-4845-1
-Rule: if amend results in a credit (NPV is less than CPV) then only SA can continue to refund to multiple payment methods
-
-  Scenario: NPV less than CPV PC, Train, CTPO
-    Given the NPV is less than CPV
-     When PC, Train, CTPO choose to continue at review and confirm
-     Then they see "Authorization Required Your changes have been saved Amending Permit #: P2-00011018-750 This amendment results in a refund. Note the Amending Permit # and inform authorized staff to process the refund. Exit"
-
-  Scenario: NPV less than CPV PC, Train, CTPO warning continue
-    Given PC, Train, CTPO are at authorization required warning modal
-     When they choose to exit
-     Then they are directed to the location they initiated the amendment action from
-
 Rule: staff must complete attestations 
 
  Scenario: Attestations
@@ -347,6 +297,62 @@ Rule: staff can edit an active amending permit application
      Given a PPC SA or PC is at the "Review and Confirm Details" page
      When they choose to edit the amending permit application
      Then they are directed to the amending permit application page
+# Review and Confirm
+Rule: changes made to the amending permit application are reflected on the review and confirm details page and indicated as "Changed"
+# Superseded Versions
+@orv2-938-30 @orv2-4015-13
+Rule: staff can view superseded permit and superseded permit receipt pdf  
+@orv2-938-9 @orv2-4015-14
+Rule: staff can resend superseded permit documents
+@orv2-938-21 @orv2-4015-20
+Rule: Amending permit is superseded by amended permit
+
+  Scenario: Supersede amending permit
+     When they finish the amending permit application
+     Then the amending permit is labeled as superseded
+
+# Generate Documents
+@orv2-938-22 @orv2-4015-21
+Rule: Generate amended permit pdf
+
+   Scenario: Generate amended permit pdf
+     Given the PPC SA has inputted all mandatory information at finish amendment
+      When they choose to finish amending the permit
+      Then the amended permit pdf is generated
+       And the following information is updated on the generated amended permit pdf:
+         | description      | information                                                                |
+         | permit details   | reflects amendments made                                                   |
+         | revision history | reflects the date/time and free text comment(s) inputted at amended permit |
+         | revised on       | date/time updated to reflect the date the amended pdf is generated         |
+         | permit number    | permit number reflects the revised number                                  |
+
+# Fee Rules
+@orv2-1491-3 @orv2-4015-22
+Rule: An issued or active permit issued under a no fee designation maintains a $0 fee when amended
+
+  Scenario: cv client issues under no fee flag changes to fee cv client
+    Given ABC Co. is a no fee cv client
+     And they issue permit A
+     And permit A is not expired
+     When staff remove ABC Co. no fee designation
+     Then permit A has a $0 fee
+
+
+
+@orv2-4845-1
+Rule: if amend results in a credit (NPV is less than CPV) then only SA can continue to refund to multiple payment methods
+
+  Scenario: NPV less than CPV PC, Train, CTPO
+    Given the NPV is less than CPV
+     When PC, Train, CTPO choose to continue at review and confirm
+     Then they see "Authorization Required Your changes have been saved Amending Permit #: P2-00011018-750 This amendment results in a refund. Note the Amending Permit # and inform authorized staff to process the refund. Exit"
+
+  Scenario: NPV less than CPV PC, Train, CTPO warning continue
+    Given PC, Train, CTPO are at authorization required warning modal
+     When they choose to exit
+     Then they are directed to the location they initiated the amendment action from
+
+
 
 ## Deprecated:
  # @orv2-

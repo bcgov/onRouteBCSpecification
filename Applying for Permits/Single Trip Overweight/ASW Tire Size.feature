@@ -8,7 +8,7 @@ Evaluation logic Eval No. 7: https://bcgov.sharepoint.com/:x:/r/teams/04314/_lay
 # Overview:
 Tire load capacity is determined by vehicle type with Crane - All Terrain, Mobile Crane, Rubber Tired Loaders) having unique exceptions, axle type (Steer, Drive), and tire size, with a base rate of 100 kg/cm for most vehicles and 110 kg/cm specifically for Rubber Tired Loaders, and maximum limits that vary by configuration
 
-@orv2-5472
+@orv2-5472-1
 Rule: Steer axle units for all vehicles except Crane - All Terrain, Mobile Crane, Rubber Tired Loaders must have a tire load rate of 100 kg/cm
 
   Scenario Outline: Steer axle tire load rate is within the 100 kg/cm limit
@@ -38,7 +38,7 @@ Rule: Steer axle units for all vehicles except Crane - All Terrain, Mobile Crane
       | Fail just above 100 kg/cm boundary - 385 mm      | 385       | 2             | 7701       | 38.5 x 100 x 2 = 7,700 |
       | Fail just above 100 kg/cm boundary - 445 mm      | 445       | 2             | 8901       | 44.5 x 100 x 2 = 8,900 |
 
-@orv2-5472
+@orv2-5472-2
 Rule: Non-steering axle units for all vehicles except Crane - All Terrain, Mobile Crane, Rubber Tired Loaders must have a tire load rate of 100 kg/cm to a maximum of either 4,550 kg/tire for tires ≥445 or 3000 kg/tire for tires ≤444
 
   Scenario Outline: Non-steering axle tire load rate is within limit for tires ≥445 mm
@@ -91,7 +91,7 @@ Rule: Non-steering axle units for all vehicles except Crane - All Terrain, Mobil
       | Fail just above cap limit - 385 mm | 385       | 4             | 12001      | cap 3,000/tire x 4 = 12,000 |
       | Fail just above cap limit - 431 mm | 431       | 4             | 12001      | cap 3,000/tire x 4 = 12,000 |
 
-@orv2-5472
+@orv2-5472-3
 Rule: Single steering axle units for all vehicles except Crane - All Terrain, Mobile Crane, Rubber Tired Loaders must have a tire load rate of 100 kg/cm to a maximum of 9,100 kg/axle for tires ≥445
 
   Scenario Outline: Single steering axle tire load rate is within the 9,100 kg/axle limit for tires ≥445 mm
@@ -120,7 +120,7 @@ Rule: Single steering axle units for all vehicles except Crane - All Terrain, Mo
       | Fail just above cap limit - 457 mm           | 457       | 2             | 9101       | cap 9,100 kg/axle                    |
       | Fail just above cap limit - 508 mm           | 508       | 2             | 9101       | cap 9,100 kg/axle                    |
 
-@orv2-5472
+@orv2-5472-4
 Rule: All axle units for Crane - All Terrain must have a tire load rate of 100 kg/cm to a maximum of 11,000 kg/axle for tires ≥520 
 
   Scenario Outline: Crane - All Terrain axle tire load rate is within the 11,000 kg/axle limit for tires ≥520 mm
@@ -149,7 +149,7 @@ Rule: All axle units for Crane - All Terrain must have a tire load rate of 100 k
       | Fail just above cap limit - 550 mm           | 550       | 2             | 11001      | cap 11,000 kg/axle                   |
       | Fail just above cap limit - 609 mm           | 609       | 2             | 11001      | cap 11,000 kg/axle                   |
 
-@orv2-5472
+@orv2-5472-5
 Rule: Non-steering axle units for Mobile Crane must have a tire load rate of 100 kg/cm to a maximum of 11,000 kg/axle for tires ≥520
 
   Scenario Outline: Mobile Crane non-steering axle tire load rate is within the 11,000 kg/axle limit for tires ≥520 mm
@@ -178,7 +178,7 @@ Rule: Non-steering axle units for Mobile Crane must have a tire load rate of 100
       | Fail just above cap limit - 550 mm           | 550       | 2             | 11001      | cap 11,000 kg/axle                   |
       | Fail just above cap limit - 609 mm           | 609       | 2             | 11001      | cap 11,000 kg/axle                   |
 
-@orv2-5472
+@orv2-5472-5
 Rule: All axle units for Rubber Tired Loaders must have a tire load rate of 110 kg/cm to a maximum of either 11,000 kg/axle for tires ≥520 or 12,000 kg/axle for tires ≥600 
 
   Scenario Outline: Rubber Tired Loader axle tire load rate is within the 11,000 kg/axle limit for tires ≥520 mm and <600 mm

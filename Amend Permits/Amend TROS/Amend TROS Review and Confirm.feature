@@ -1,5 +1,5 @@
-
-Feature: "Review and Confirm Details"
+@orv2-938
+Feature: Amend TROS permit Review and Confirm Details
    As a PPC SA or PC I need to be able review the information I submitted in the amend permit application so that I can ensure it is accurate before completing.
 
 staff = PC, SA, TRAIN, CTPO
@@ -7,9 +7,6 @@ CV Client = CA, PA
 
 Note: Term Oversize (TROS) amending permit applications share rules and scenarios with new applications (e.g., mandatory fields, province/sate error) and have common amend permit application features (e.g., reason for amendment, revision history). Only unique amending TROS 
 permit application rules are included in this feature file.
-
-@orv2-938-25
-Rule: staff must complete all mandatory fields
 
 @orv2-938-26
 Rule: Show completed amending permit application information
