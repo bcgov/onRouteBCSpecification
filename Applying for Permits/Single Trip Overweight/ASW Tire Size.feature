@@ -39,7 +39,7 @@ Rule: Steer axle units for all vehicles except Crane - All Terrain, Mobile Crane
       | Fail just above 100 kg/cm boundary - 445 mm      | 445       | 2             | 8901       | 44.5 x 100 x 2 = 8,900 |
 
 @orv2-5472-2
-Rule: Non-steering axle units for all vehicles except Crane - All Terrain, Mobile Crane, Rubber Tired Loaders must have a tire load rate of 100 kg/cm to a maximum of either 4,550 kg/tire for tires ≥445 or 3000 kg/tire for tires ≤444
+Rule: Non-steering axle units for all vehicles except Crane - All Terrain, Mobile Crane, Rubber Tired Loaders must have a tire load rate of 100 kg/cm to a maximum of either 4,550 kg/tire for tires ≥445 or 3000 kg/tire for tires ≤444 
 
   Scenario Outline: Non-steering axle tire load rate is within limit for tires ≥445 mm
     Given the vehicle is not a Crane - All Terrain, Mobile Crane, or Rubber Tired Loader

@@ -3,18 +3,23 @@ Feature: As staff I want to apply for a Single Trip Overweight Oversize Empty (S
 
 users = PC, SA, TRAIN, CTPO
 
+# Note
+# See the following feature files for additional specs:
+# - User Apply for STWSE
+# - Permit start and duration Staff
+
 # Permit Details
-See User Apply for STWSE feature AND staff date rules
-Applying for Permits/Permit start and duration Staff.feature
+ # See User Apply for STWSE feature AND staff date rules
+ # Applying for Permits/Permit start and duration Staff.feature
 
 # Vehicle Information
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
-# Dimensions (Metres)
-See User Apply for STWSE feature
+# Dimensions (Metres) 
+ # See User Apply for STWSE feature
 
 # Dimension Based Submission Rules
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
 @orv2-5585-1
 Rule: staff can add an STWSE permit application to the cart with violations for OAW, OAL, OAH
@@ -42,16 +47,16 @@ Rule: staff can add an STWSE permit application to the cart with violations for 
       And they have the option to "Cancel" or "Add to Cart"
 
 # Overload (kg)
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
 # Trip Details
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
 # Review and Confirm
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
 # Fee Calculation and Fee Summary
-See User Apply for STWSE feature
+ # See User Apply for STWSE feature
 
 # Notes:
 staff new application always goes to cart

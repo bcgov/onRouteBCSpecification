@@ -14,7 +14,7 @@ Staff = PC, SA, TRAIN, CTPO
 @orv2-5685-2
 Rule: staff can change all contact information except company email
 # Permit Details
- # see Permit start and duration Staff feature file for rules related to permit start and duration
+ # See Permit start and duration Staff feature file for rules related to permit start and duration
 @orv2-5685-3
 Rule: staff can change the start date of an issued or active permit
 
