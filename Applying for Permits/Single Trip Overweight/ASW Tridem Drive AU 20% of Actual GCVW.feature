@@ -1,5 +1,5 @@
 @ORV2-5374 https://moti-imb.atlassian.net/browse/ORV2-5374
-Feature: As a user, I need the system to validate that the Drive Axle is at least 20% of the GCVW or a specified threshold (tandem = 23000kg, tridem = 28000kg), so that I can ensure the permit configuration is compliant.
+Feature: As a user, I need the system to check that the Drive Axle weight is high enough for supported power unit vehicle sub-types. The minimum required weight is whichever is lower: 20% of actual GCVW, 23000 kg for tandem, or 28000 kg for tridem.
 
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
@@ -16,7 +16,7 @@ Rule: This trigger applies only when the power unit vehicle sub-type is one of t
   | Picker Truck Tractor    |
 
 @ORV2-5374-2
-Rule: For applicable power unit vehicle sub-types, tandem drive axle unit must be at least 20% of actual GCVW, where 23000 kg is the permittable maximum threshold and the applied threshold is the lesser of 20% of actual GCVW or 23000 kg
+Rule: For these vehicle sub-types, the tandem drive axle unit weight must meet the required minimum. The required minimum is the lower of 20% of actual GCVW or 23000 kg.
 
   Scenario Outline: Tandem drive axle unit meets threshold
     Given the power unit vehicle sub-type is <powerUnitVehicleSubtype>
@@ -52,7 +52,7 @@ Rule: For applicable power unit vehicle sub-types, tandem drive axle unit must b
       | Fail with picker truck tractor      | Picker Truck Tractor    | 110000 | 21999                     |
 
 @ORV2-5374-3
-Rule: For applicable power unit vehicle sub-types, tridem drive axle unit must be at least 20% of actual GCVW, where 28000 kg is the permittable maximum threshold and the applied threshold is the lesser of 20% of actual GCVW or 28000 kg
+Rule: For these vehicle sub-types, the tridem drive axle unit weight must meet the required minimum. The required minimum is the lower of 20% of actual GCVW or 28000 kg.
 
   Scenario Outline: Tridem drive axle unit meets threshold
     Given the power unit vehicle sub-type is <powerUnitVehicleSubtype>
