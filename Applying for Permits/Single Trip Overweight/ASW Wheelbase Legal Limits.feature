@@ -1,25 +1,37 @@
 @orv2-5541 https://moti-imb.atlassian.net/browse/ORV2-5541 
-Feature: As a user I need the system to validate that the wheelbase limits are compliant with policy and regulations for single trip overweight permits, so that I can ensure my permit application is compliant.
+Feature: As a user, I need the system to validate wheelbase limits for supported power unit vehicle sub-types, including the oil-field bed truck exception, so that my single trip overweight permit application follows policy and legal requirements.
 
 users = PC, SA, TRAIN, CTPO, CA, PA
 
 Evaluation logic Eval No. 9: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
 
 @orv2-5541-1
-Rule: wheelbase is determined as the sum of Axle Unit X, Interaxle Spacing, and Axle Unit Y
+Rule: This feature applies to the following power unit vehicle sub-types:
+    | powerUnitVehicleSubtype |
+    | Truck                   |
+    | Truck Tractor           |
+    | Truck with PME          |
+    | Truck Tractor with PME  |
+    | Picker Truck Tractor    |
+    And includes the oil-field bed truck exception described in @orv2-5541-4.
+
+@orv2-5541-2
+Rule: For applicable power unit vehicle sub-types, wheelbase is determined as the sum of Axle Unit X, Interaxle Spacing, and Axle Unit Y
 
   Scenario: wheelbase is calculated from axle unit measurements
-      Given the vehicle has Axle Unit X of 2.0 m
+    Given the power unit vehicle sub-type is Truck
+      And the vehicle has Axle Unit X of 2.0 m
         And the Interaxle Spacing is 3.5 m
         And the vehicle has Axle Unit Y of 2.1 m
        When the wheelbase is calculated
        Then the wheelbase is 7.6 m
 
-@orv2-5541-2
-Rule: Tridem drive truck or truck tractor wheelbase must be between 6.6 m and 6.8 m
+@orv2-5541-3
+Rule: For applicable power unit vehicle sub-types, tridem drive truck or truck tractor wheelbase must be between 6.6 m and 6.8 m, except where the oilfield bed truck exception applies
 
   Scenario: wheelbase is below the minimum
-      Given the vehicle type is a tridem drive truck or truck tractor
+    Given the power unit vehicle sub-type is Truck Tractor
+      And the vehicle type is a tridem drive truck or truck tractor
         And Axle Unit 1 is 2.0 m
         And Interaxle Spacing is 2.4 m
         And Axle Unit 2 is 2.1 m
@@ -31,7 +43,8 @@ Rule: Tridem drive truck or truck tractor wheelbase must be between 6.6 m and 6.
         And the Axle Spread (m) fields are indicated with a red border
 
   Scenario: wheelbase is above the maximum
-      Given the vehicle type is a tridem drive truck or truck tractor
+    Given the power unit vehicle sub-type is Truck
+      And the vehicle type is a tridem drive truck or truck tractor
         And Axle Unit 1 is 2.0 m
         And Interaxle Spacing is 2.6 m
         And Axle Unit 2 is 2.3 m
@@ -42,11 +55,12 @@ Rule: Tridem drive truck or truck tractor wheelbase must be between 6.6 m and 6.
         And the Interaxle Spacing (m) field is indicated with a red border
         And the Axle Spread (m) fields are indicated with a red border
 
-@orv2-5541-3
-Rule: Oilfield bed trucks can have a wheelbase of up to 10.0 m and a minimum dimensional wheelbase based on tridem drive axle spread of 2.4 m to 3.1 m
+@orv2-5541-4
+Rule: For the oilfield bed truck exception, wheelbase can be up to 10.0 m with a minimum dimensional wheelbase based on tridem drive axle spread of 2.4 m to 3.1 m
 
   Scenario: oilfield bed truck wheelbase is within the maximum
-      Given the vehicle type is an oilfield bed truck (tridem drive)
+    Given the power unit vehicle sub-type is Truck with PME
+      And the vehicle type is an oilfield bed truck (tridem drive)
         And Axle Unit 1 is 3.0 m
         And Interaxle Spacing is 4.0 m
         And Axle Unit 2 is 3.0 m
@@ -57,7 +71,8 @@ Rule: Oilfield bed trucks can have a wheelbase of up to 10.0 m and a minimum dim
         And the permit application is not blocked by wheelbase validation
 
   Scenario: oilfield bed truck wheelbase exceeds the maximum
-      Given the vehicle type is an oilfield bed truck (tridem drive)
+    Given the power unit vehicle sub-type is Truck with PME
+      And the vehicle type is an oilfield bed truck (tridem drive)
         And Axle Unit 1 is 3.0 m
         And Interaxle Spacing is 4.0 m
         And Axle Unit 2 is 3.1 m
@@ -70,7 +85,8 @@ Rule: Oilfield bed trucks can have a wheelbase of up to 10.0 m and a minimum dim
         And the Axle Spread (m) fields are indicated with a red border
 
   Scenario Outline: oilfield bed truck minimum dimensional wheelbase by axle spread
-      Given the vehicle type is an oilfield bed truck (tridem drive)
+    Given the power unit vehicle sub-type is <powerUnitVehicleSubtype>
+      And the vehicle type is an oilfield bed truck (tridem drive)
         And the tridem drive axle spread is <axle spread> m
         And Axle Unit 1 is <axle unit 1> m
         And Interaxle Spacing is <interaxle spacing> m
@@ -80,13 +96,13 @@ Rule: Oilfield bed trucks can have a wheelbase of up to 10.0 m and a minimum dim
        Then the result is "<result>"
 
       Examples:
-        | axle spread | axle unit 1 | interaxle spacing | axle unit 2 | wheelbase | result                                        |
-        | 2.4         | 2.0         | 3.5               | 2.2         | 7.7       | blank                                         |
-        | 2.8         | 2.0         | 3.6               | 2.2         | 7.8       | blank                                         |
-        | 3.0         | 2.0         | 3.7               | 2.2         | 7.9       | blank                                         |
-        | 2.4         | 2.0         | 3.4               | 2.2         | 7.6       | Wheelbase for Axle Unit 1 is less than 7.7 m. |
-        | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 is less than 7.8 m. |
-        | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 is less than 7.9 m. |
+        | powerUnitVehicleSubtype | axle spread | axle unit 1 | interaxle spacing | axle unit 2 | wheelbase | result                                        |
+        | Truck with PME          | 2.4         | 2.0         | 3.5               | 2.2         | 7.7       | blank                                         |
+        | Truck with PME          | 2.8         | 2.0         | 3.6               | 2.2         | 7.8       | blank                                         |
+        | Truck with PME          | 3.0         | 2.0         | 3.7               | 2.2         | 7.9       | blank                                         |
+        | Truck Tractor with PME  | 2.4         | 2.0         | 3.4               | 2.2         | 7.6       | Wheelbase for Axle Unit 1 is less than 7.7 m. |
+        | Truck with PME          | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 is less than 7.8 m. |
+        | Truck Tractor with PME  | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 is less than 7.9 m. |
 
 # Notes:
 
