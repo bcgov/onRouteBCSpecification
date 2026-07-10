@@ -34,8 +34,7 @@ Rule: For applicable power unit vehicle sub-types configured as single steering 
     Given the power unit vehicle sub-type is Truck Tractor
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
-      And Axle Unit 1 is 2.0 m
-      And Interaxle Spacing is 2.4 m
+      And Interaxle Spacing is 4.4 m
       And Axle Unit 2 is 2.1 m
       And the derived wheelbase is 6.5 m
      When the wheelbase is evaluated
@@ -48,8 +47,7 @@ Rule: For applicable power unit vehicle sub-types configured as single steering 
     Given the power unit vehicle sub-type is Truck Tractor with PME
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
-      And Axle Unit 1 is 2.0 m
-      And Interaxle Spacing is 2.6 m
+      And Interaxle Spacing is 4.6 m
       And Axle Unit 2 is 2.3 m
       And the derived wheelbase is 6.9 m
      When the wheelbase is evaluated
