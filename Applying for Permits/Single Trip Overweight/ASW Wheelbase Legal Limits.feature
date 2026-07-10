@@ -35,7 +35,7 @@ Rule: For applicable power unit vehicle sub-types configured as single steering 
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
       And Interaxle Spacing is 4.4 m
-      And Axle Unit 2 is 2.1 m
+      And Axle Unit 2 Axle Spread is 2.1 m
       And the derived wheelbase is 6.5 m
      When the wheelbase is evaluated
      Then the result is "Wheelbase for Axle Unit 1 is less than 6.6 m."
@@ -48,7 +48,7 @@ Rule: For applicable power unit vehicle sub-types configured as single steering 
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
       And Interaxle Spacing is 4.6 m
-      And Axle Unit 2 is 2.3 m
+      And Axle Unit 2 Axle Spread is 2.3 m
       And the derived wheelbase is 6.9 m
      When the wheelbase is evaluated
      Then the result is "Wheelbase for Axle Unit 1 is greater than 6.8 m."
@@ -88,9 +88,9 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
     Given the power unit vehicle sub-type is Truck with PME
       And the vehicle configuration is tandem steering tridem drive axle
       And the vehicle type is an oilfield bed truck (tridem drive)
-      And Axle Unit 1 is 3.0 m
+      And Axle Unit 1 Axle Spread is 3.0 m
       And Interaxle Spacing is 4.0 m
-      And Axle Unit 2 is 3.0 m
+      And Axle Unit 2 Axle Spread is 3.0 m
       And the tridem drive axle spread is 2.5 m
       And the derived wheelbase is 10.0 m
      When the wheelbase is evaluated
@@ -101,9 +101,9 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
     Given the power unit vehicle sub-type is Truck with PME
       And the vehicle configuration is tandem steering tridem drive axle
       And the vehicle type is an oilfield bed truck (tridem drive)
-      And Axle Unit 1 is 3.0 m
+      And Axle Unit 1 Axle Spread is 3.0 m
       And Interaxle Spacing is 4.0 m
-      And Axle Unit 2 is 3.1 m
+      And Axle Unit 2 Axle Spread is 3.1 m
       And the tridem drive axle spread is 2.5 m
       And the derived wheelbase is 10.1 m
      When the wheelbase is evaluated
@@ -117,9 +117,9 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
       And the vehicle configuration is tandem steering tridem drive axle
       And the vehicle type is an oilfield bed truck (tridem drive)
       And the tridem drive axle spread is <axle spread> m
-      And Axle Unit 1 is <axle unit 1> m
+      And Axle Unit 1 Axle Spread is <axle unit 1> m
       And Interaxle Spacing is <interaxle spacing> m
-      And Axle Unit 2 is <axle unit 2> m
+      And Axle Unit 2 Axle Spread is <axle unit 2> m
       And the derived wheelbase is <wheelbase> m
      When the wheelbase is evaluated
      Then the result is "<result>"
