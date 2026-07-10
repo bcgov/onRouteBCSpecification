@@ -131,6 +131,12 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
         | Truck with PME          | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 is less than 7.8 m. |
         | Truck Tractor with PME  | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 is less than 7.9 m. |
 
+@orv2-5541-6
+Rule: For applicable single steering axle configurations, derived wheelbase is calculated as: Wheelbase = Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
+
+@orv2-5541-7
+Rule: For applicable tandem/tridem steer configurations, derived wheelbase is calculated as: Wheelbase = (Axle Unit 1 Axle Spread / 2) + Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
+
 # Notes:
 
 Single Steering Axle Vehicle Wheelbase Limits:

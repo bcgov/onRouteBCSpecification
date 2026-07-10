@@ -76,6 +76,12 @@ Rule: For all applicable power unit vehicle sub-types, if the wheelbase is betwe
       | booster        |
       | jeep + booster |
 
+@orv2-5514-5
+Rule: For applicable single steer configurations, derived wheelbase is calculated as: Wheelbase = Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
+
+@orv2-5514-6
+Rule: For applicable tandem/tridem steer configurations, derived wheelbase is calculated as: Wheelbase = (Axle Unit 1 Axle Spread / 2) + Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
+
 # Notes:
 Evaluating: Truck tractor wheelbase is measured as the longitudinal distance from the centre of the front steering axle (Single only) to the geometric centre of the drive axle unit (Tandem only), we would derive this by using 50% of the drive axle unit spread + the steer axle to drive axle spacing. The wheelbase cannot be beyond 7.2 m. If the wheelbase of a single steer tandem drive truck tractor is 6.2m to 7.2 m then the only trailers allowed is semi-trailer no jeep or booster
 
