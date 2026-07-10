@@ -62,10 +62,9 @@ Rule: For applicable power unit vehicle sub-types with a tandem steering tridem 
   Scenario: wheelbase is below the 7.7 m minimum for tridem drive axle spread from 2.4 m to less than 2.8 m
     Given the power unit vehicle sub-type is Truck Tractor with PME
       And the vehicle configuration is tandem steering tridem drive axle
-      And the tridem drive axle spread is 2.4 m
-      And Axle Unit 1 is 2.0 m
-      And Interaxle Spacing is 3.4 m
-      And Axle Unit 2 is 2.2 m
+      And Axle Unit 1 Axle Spread is 2.0 m
+      And Interaxle Spacing is 3.2 m
+      And Axle Unit 2 Axle Spread is 2.4 m
       And the derived wheelbase is 7.6 m
      When the wheelbase is evaluated
      Then the result is "Wheelbase for Axle Unit 1 is less than 7.7 m."
@@ -74,10 +73,9 @@ Rule: For applicable power unit vehicle sub-types with a tandem steering tridem 
   Scenario: wheelbase meets the 7.7 m minimum for tridem drive axle spread from 2.4 m to less than 2.8 m
     Given the power unit vehicle sub-type is Truck with PME
       And the vehicle configuration is tandem steering tridem drive axle
-      And the tridem drive axle spread is 2.4 m
-      And Axle Unit 1 is 2.0 m
+      And Axle Unit 1 Axle Spread is 2.0 m
       And Interaxle Spacing is 3.5 m
-      And Axle Unit 2 is 2.2 m
+      And Axle Unit 2 Axle Spread is 2.2 m
       And the derived wheelbase is 7.7 m
      When the wheelbase is evaluated
      Then the result is blank
