@@ -27,7 +27,7 @@ Rule: For all applicable power unit vehicle sub-types, truck tractor wheelbase d
   Scenario: derived wheelbase exceeds the maximum allowed value
     Given an applicable power unit vehicle sub-type is selected
       And a trailer vehicle sub-type is selected
-      And axle unit 1 spacing is 6.6 m
+      And axle unit 2 interaxle spacing is 6.6 m
       And axle unit 2 spread is 1.4 m
      When the system derives wheelbase using axle unit 1 spacing + 50% of axle unit 2 spread
      Then the derived wheelbase is 7.3 m
@@ -42,7 +42,8 @@ Rule: For all applicable power unit vehicle sub-types, if the wheelbase is less 
 
   Scenario: derived wheelbase is below the minimum allowed value
     Given an applicable power unit vehicle sub-type is selected
-      And axle unit 1 spacing is 5.8 m
+      And axle unit1 is a single steer axle
+      And axle unit 2 interaxle spacing is 5.8 m
       And axle unit 2 spread is 0.4 m
      When the system derives wheelbase using axle unit 1 spacing + 50% of axle unit 2 spread
      Then the derived wheelbase is 6.0 m

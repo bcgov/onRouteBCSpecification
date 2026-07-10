@@ -16,7 +16,7 @@ Rule: This feature applies to the following power unit vehicle sub-types:
   And includes the oil-field bed truck exception described in @orv2-5541-4.
 
 @orv2-5541-2
-Rule: For applicable power unit vehicle sub-types, wheelbase is determined as the sum of Axle Unit X, Interaxle Spacing, and Axle Unit Y
+Rule: For applicable power unit vehicle sub-types, wheelbase is determined as the sum of Axle Unit X Axle Spread / 2, Interaxle Spacing, and Axle Unit Y Axle Spread / 2
 
   Scenario: wheelbase is calculated from axle unit measurements
     Given the power unit vehicle sub-type is Truck
