@@ -28,30 +28,60 @@ Rule: For applicable power unit vehicle sub-types, wheelbase is determined as th
      Then the wheelbase is 7.6 m
 
 @orv2-5541-3
-Rule: For applicable power unit vehicle sub-types configured as single steering axle, Truck and Truck with PME must have a minimum wheelbase of 6.6 m. Truck Tractor, Truck Tractor with PME, and Picker Truck Tractor must have a wheelbase between 6.6 m and 6.8 m.
+Rule: For applicable power unit vehicle sub-types where Axle Unit 1 is single steering axle, wheelbase limits are based on Axle Unit 2 drive axle type. Truck and Truck with PME with tridem drive axle must have a minimum wheelbase of 6.6 m. Truck Tractor, Truck Tractor with PME, and Picker Truck Tractor with single or tandem drive axle must have a wheelbase from 3.0 m to 6.2 m, and with tridem drive axle must have a wheelbase from 6.6 m to 6.8 m.
 
-  Scenario: wheelbase is below the minimum
+  Scenario: tridem drive axle wheelbase is below the minimum
     Given the power unit vehicle sub-type is Truck Tractor
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
+      And Axle Unit 2 drive axle type is tridem drive axle
       And Interaxle Spacing is 4.4 m
-      And Axle Unit 2 Axle Spread is 2.1 m
+      And Axle Unit 2 Axle Spread is 4.2 m
       And the derived wheelbase is 6.5 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 1 is less than 6.6 m."
+     Then the result is "Wheelbase for Axle Unit 2 is less than 6.6 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border
 
-  Scenario: wheelbase is above the maximum
+  Scenario: tridem drive axle wheelbase is above the maximum
     Given the power unit vehicle sub-type is Truck Tractor with PME
       And the vehicle configuration is single steering axle
       And the vehicle type is a single steering axle truck tractor
+      And Axle Unit 2 drive axle type is tridem drive axle
       And Interaxle Spacing is 4.6 m
-      And Axle Unit 2 Axle Spread is 2.3 m
+      And Axle Unit 2 Axle Spread is 4.6 m
       And the derived wheelbase is 6.9 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 1 is greater than 6.8 m."
+     Then the result is "Wheelbase for Axle Unit 2 is greater than 6.8 m."
+      And the permit application is blocked by wheelbase validation
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) fields are indicated with a red border
+
+  Scenario: single or tandem drive axle wheelbase is below the minimum
+    Given the power unit vehicle sub-type is Truck Tractor
+      And the vehicle configuration is single steering axle
+      And the vehicle type is a single steering axle truck tractor
+      And Axle Unit 2 drive axle type is tandem drive axle
+      And Interaxle Spacing is 2.0 m
+      And Axle Unit 2 Axle Spread is 1.8 m
+      And the derived wheelbase is 2.9 m
+     When the wheelbase is evaluated
+     Then the result is "Wheelbase for Axle Unit 2 is less than 3.0 m."
+      And the permit application is blocked by wheelbase validation
+      And the Interaxle Spacing (m) field is indicated with a red border
+      And the Axle Spread (m) fields are indicated with a red border
+
+  Scenario: single or tandem drive axle wheelbase is above the maximum
+    Given the power unit vehicle sub-type is Truck Tractor with PME
+      And the vehicle configuration is single steering axle
+      And the vehicle type is a single steering axle truck tractor
+      And Axle Unit 2 drive axle type is tandem drive axle
+      And Interaxle Spacing is 5.0 m
+      And Axle Unit 2 Axle Spread is 2.6 m
+      And the derived wheelbase is 6.3 m
+     When the wheelbase is evaluated
+     Then the result is "Wheelbase for Axle Unit 2 is greater than 6.2 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border
@@ -89,9 +119,8 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
       And the vehicle configuration is tandem steering tridem drive axle
       And the vehicle type is an oilfield bed truck (tridem drive)
       And Axle Unit 1 Axle Spread is 3.0 m
-      And Interaxle Spacing is 4.0 m
+      And Interaxle Spacing is 7.0 m
       And Axle Unit 2 Axle Spread is 3.0 m
-      And the tridem drive axle spread is 2.5 m
       And the derived wheelbase is 10.0 m
      When the wheelbase is evaluated
      Then the result is blank
@@ -102,10 +131,9 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
       And the vehicle configuration is tandem steering tridem drive axle
       And the vehicle type is an oilfield bed truck (tridem drive)
       And Axle Unit 1 Axle Spread is 3.0 m
-      And Interaxle Spacing is 4.0 m
+      And Interaxle Spacing is 7.0 m
       And Axle Unit 2 Axle Spread is 3.1 m
-      And the tridem drive axle spread is 2.5 m
-      And the derived wheelbase is 10.1 m
+      And the derived wheelbase is 10.05 m
      When the wheelbase is evaluated
      Then the result is "Wheelbase for Axle Unit 1 is greater than 10.0 m."
       And the permit application is blocked by wheelbase validation
@@ -131,10 +159,10 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
         | Truck with PME          | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 is less than 7.8 m. |
         | Truck Tractor with PME  | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 is less than 7.9 m. |
 
-@orv2-5541-6
+@orv2-5541-7
 Rule: For applicable single steering axle configurations, derived wheelbase is calculated as: Wheelbase = Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
 
-@orv2-5541-7
+@orv2-5541-8
 Rule: For applicable tandem/tridem steer configurations, derived wheelbase is calculated as: Wheelbase = (Axle Unit 1 Axle Spread / 2) + Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
 
 # Notes:
@@ -166,30 +194,36 @@ This logic applies only to the power unit vehicle sub-types listed in @orv2-5541
 1. Calculate wheelbase as:
    Wheelbase = Axle_Unit_1 + Interaxle_Spacing + Axle_Unit_2
 
-2. Apply single steering axle wheelbase limits by power unit vehicle sub-type:
-  IF PowerUnitVehicleSubtype = ""Truck"" AND Wheelbase < 6.6 m
-   THEN Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
+2. Apply single steering axle (Axle Unit 1) wheelbase limits by power unit vehicle sub-type and Axle Unit 2 (drive axle) configuration:
+  IF AxleUnit1SteeringAxleType IN (""Single Steering Axle"")
+   AND PowerUnitVehicleSubtype IN (""Truck"", ""Truck with PME"")
+   AND AxleUnit2DriveAxleType = ""Tridem Drive Axle""
+   AND Wheelbase < 6.6 m
+   THEN Output = ""Wheelbase for Axle Unit 2 is less than 6.6 m.""
 
-  IF PowerUnitVehicleSubtype = ""Truck with PME"" AND Wheelbase < 6.6 m
-  THEN Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
+  IF AxleUnit1SteeringAxleType IN (""Single Steering Axle"")
+   AND PowerUnitVehicleSubtype IN (""Truck Tractor"", ""Truck Tractor with PME"", ""Picker Truck Tractor"")
+   AND AxleUnit2DriveAxleType IN (""Single Drive Axle"", ""Tandem Drive Axle"")
+   AND Wheelbase < 3.0 m
+   THEN Output = ""Wheelbase for Axle Unit 2 is less than 3.0 m.""
 
-  IF PowerUnitVehicleSubtype = ""Truck Tractor"" AND Wheelbase < 6.6 m
-   THEN Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
+  IF AxleUnit1SteeringAxleType IN (""Single Steering Axle"")
+   AND PowerUnitVehicleSubtype IN (""Truck Tractor"", ""Truck Tractor with PME"", ""Picker Truck Tractor"")
+   AND AxleUnit2DriveAxleType IN (""Single Drive Axle"", ""Tandem Drive Axle"")
+   AND Wheelbase > 6.2 m
+   THEN Output = ""Wheelbase for Axle Unit 2 is greater than 6.2 m.""
 
-  IF PowerUnitVehicleSubtype = ""Truck Tractor with PME"" AND Wheelbase < 6.6 m
-  THEN Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
+  IF AxleUnit1SteeringAxleType IN (""Single Steering Axle"")
+   AND PowerUnitVehicleSubtype IN (""Truck Tractor"", ""Truck Tractor with PME"", ""Picker Truck Tractor"")
+   AND AxleUnit2DriveAxleType = ""Tridem Drive Axle""
+   AND Wheelbase < 6.6 m
+   THEN Output = ""Wheelbase for Axle Unit 2 is less than 6.6 m.""
 
-  IF PowerUnitVehicleSubtype = ""Picker Truck Tractor"" AND Wheelbase < 6.6 m
-  THEN Output = ""Wheelbase for Axle Unit X is less than 6.6 m.""
-
-  IF PowerUnitVehicleSubtype = ""Truck Tractor"" AND Wheelbase > 6.8 m
-  THEN Output = ""Wheelbase for Axle Unit X is greater than 6.8 m.""
-
-  IF PowerUnitVehicleSubtype = ""Truck Tractor with PME"" AND Wheelbase > 6.8 m
-  THEN Output = ""Wheelbase for Axle Unit X is greater than 6.8 m.""
-
-  IF PowerUnitVehicleSubtype = ""Picker Truck Tractor"" AND Wheelbase > 6.8 m
-   THEN Output = ""Wheelbase for Axle Unit X is greater than 6.8 m.""
+  IF AxleUnit1SteeringAxleType IN (""Single Steering Axle"")
+   AND PowerUnitVehicleSubtype IN (""Truck Tractor"", ""Truck Tractor with PME"", ""Picker Truck Tractor"")
+   AND AxleUnit2DriveAxleType = ""Tridem Drive Axle""
+   AND Wheelbase > 6.8 m
+   THEN Output = ""Wheelbase for Axle Unit 2 is greater than 6.8 m.""
 
 3. Apply tandem steering tridem drive axle configuration minimum wheelbase rules:
    IF Tridem Axle Spread >= 2.4 m AND Tridem Axle Spread < 2.8 m AND Wheelbase < 7.7 m
