@@ -11,9 +11,9 @@ To establish the maximum permittable weight for a commercial vehicle, the Minist
 
 See: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B881EFCEC-9462-46D8-A908-1E7DF42F113A%7D&file=Over%20Weight%20Dimension%20Set.xlsx&action=default&mobileredirect=true
 
-The permit maximum is determined by comparing three primary thresholds, with the lowest value becoming the binding limit:
+The permit maximum is determined by comparing three primary maximums, with the lowest value becoming the binding limit:
 1. Axle Unit Policy Maximums
-The Ministry establishes fixed "thresholds" for individual axle units operating under an overweight permit for non-reducible loads:
+The Ministry establishes fixed "maximums" for individual axle units operating under an overweight permit for non-reducible loads:
 Steering Axle: Max 9,100 kg (provided the unit is at legal weights when empty).
 Single Axle (other than steer): Max 11,000 kg.
 Tandem Axle: Max 23,000 kg.
@@ -34,28 +34,28 @@ The absolute maximum Gross Combination Vehicle Weight (GCVW) established by perm
 80-Tonne Routes: Designated highways in the Lower Mainland.
 85-Tonne Routes: Pre-approved major provincial highways and secondary routes for compliant heavy-haul equipment.
 5. Extraordinary Load Review See: Applying for Permits/Single Trip Overweight/Record & Use Overload Number.feature
-If a configuration exceeds the Bridge Formula, the standard policy maximums, or the 85,000 kg route threshold, the maximum is not established by a chart but through an Extraordinary Load Approval. This involves a custom Structural Engineering review to determine if specific bridges on a proposed route can safely support the proposed weights.
+If a configuration exceeds the Bridge Formula, the standard policy maximums, or the 85,000 kg route maximum, the maximum is not established by a chart but through an Extraordinary Load Approval. This involves a custom Structural Engineering review to determine if specific bridges on a proposed route can safely support the proposed weights.
 
 @orv2-5709-1
-Rule: Axle unit policy maximums establish the base permit-weight thresholds for non-reducible loads before applying Bridge Formula and other lower limits.
+Rule: Axle unit policy maximums establish the base permit-weight maximums for non-reducible loads before applying Bridge Formula and other lower limits.
 
-    Scenario Outline: base policy threshold is established before lower-limit comparisons
+    Scenario Outline: base policy maximum is established before lower-limit comparisons
         Given the load is non-reducible
             And the axle unit type is <axleUnitType>
-         When the system determines the base axle unit policy threshold
-         Then the base axle unit policy threshold is <policyThreshold> kg
+         When the system determines the base axle unit policy maximum
+         Then the base axle unit policy maximum is <policyMaximum> kg
 
         Examples:
-            | axleUnitType        | policyThreshold |
-            | steering axle       | 9100            |
-            | single non-steering | 11000           |
-            | tandem axle         | 23000           |
-            | tridem axle         | 28000           |
+            | axleUnitType        | policyMaximum |
+            | steering axle       | 9100          |
+            | single non-steering | 11000         |
+            | tandem axle         | 23000         |
+            | tridem axle         | 28000         |
 
 @orv2-5709-2
 Rule: Steering axle unit policy maximum is 9,100 kg, provided the steering axle is at legal weight when the vehicle is empty.
 
-    Scenario Outline: steering axle policy threshold validation
+    Scenario Outline: steering axle policy maximum validation
         Given the axle unit type is steering axle
             And the steering axle is at legal weight when empty
             And the steering axle weight is <steerAxleWeight> kg
@@ -64,41 +64,41 @@ Rule: Steering axle unit policy maximum is 9,100 kg, provided the steering axle 
 
         Examples:
             | steerAxleWeight | expectedResult                                           |
-            | 9100            | the steering axle weight is at or under policy threshold |
-            | 9101            | the steering axle weight is above policy threshold       |
+            | 9100            | the steering axle weight is at or under policy maximum |
+            | 9101            | Axle Unit Weight for Axle Unit X must not exceed A.      |
 
 @orv2-5709-3
 Rule: Single axle unit policy maximum is 11,000 kg for non-steering single axle units.
 
-    Scenario Outline: single non-steering axle policy threshold validation
+    Scenario Outline: single non-steering axle policy maximum validation
         Given the axle unit type is single non-steering axle
             And the single non-steering axle weight is <singleAxleWeight> kg
          When the user reviews the permit configuration
          Then <expectedResult>
 
         Examples:
-            | singleAxleWeight | expectedResult                                              |
-            | 11000            | the single non-steering axle weight is at or under policy threshold |
-            | 11001            | the single non-steering axle weight is above policy threshold |
+            | singleAxleWeight | expectedResult                                                      |
+            | 11000            | the single non-steering axle weight is at or under policy maximum |
+            | 11001            | Axle Unit Weight for Axle Unit X must not exceed A.                 |
 
 @orv2-5709-4
 Rule: Tandem axle unit policy maximum is 23,000 kg.
 
-    Scenario Outline: tandem axle policy threshold validation
+    Scenario Outline: tandem axle policy maximum validation
         Given the axle unit type is tandem axle
           And the tandem axle weight is <tandemAxleWeight> kg
          When the user reviews the permit configuration
          Then <expectedResult>
 
         Examples:
-            | tandemAxleWeight | expectedResult                                   |
-            | 23000            | the tandem axle weight is at or under policy threshold |
-            | 23001            | the tandem axle weight is above policy threshold |
+            | tandemAxleWeight | expectedResult                                         |
+            | 23000            | the tandem axle weight is at or under policy maximum |
+            | 23001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-5
 Rule: Tridem axle unit policy maximum is 28,000 kg by default.
 
-    Scenario Outline: tridem axle default policy threshold validation
+    Scenario Outline: tridem axle default policy maximum validation
         Given the axle unit type is tridem axle
           And tridem 29,000 kg policy conditions are not satisfied
           And the tridem axle weight is <tridemAxleWeight> kg
@@ -107,13 +107,13 @@ Rule: Tridem axle unit policy maximum is 28,000 kg by default.
 
         Examples:
             | tridemAxleWeight | expectedResult                                         |
-            | 28000            | the tridem axle weight is at or under policy threshold |
-            | 28001            | the tridem axle weight is above policy threshold       |
+            | 28000            | the tridem axle weight is at or under policy maximum |
+            | 28001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-6
 Rule: Tridem axle unit policy maximum can be 29,000 kg when policy conditions related to tridem spread and booster use are satisfied. 
 
-    Scenario Outline: tridem axle 29,000 kg policy threshold eligibility
+    Scenario Outline: tridem axle 29,000 kg policy maximum eligibility
         Given the axle unit type is tridem axle
           And tridem 29,000 kg policy conditions are <policyConditionState>
           And the tridem axle weight is <tridemAxleWeight> kg
@@ -122,15 +122,15 @@ Rule: Tridem axle unit policy maximum can be 29,000 kg when policy conditions re
 
         Examples:
             | policyConditionState | tridemAxleWeight | expectedResult                                         |
-            | satisfied            | 29000            | the tridem axle weight is at or under policy threshold |
-            | satisfied            | 29001            | the tridem axle weight is above policy threshold       |
-            | not satisfied        | 29000            | the tridem axle weight is above policy threshold       |
+            | satisfied            | 29000            | the tridem axle weight is at or under policy maximum |
+            | satisfied            | 29001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
+            | not satisfied        | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-7
 Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or other applicable evaluations, the lower value becomes the permit maximum.
 
     Scenario Outline: lower limit becomes binding permit maximum
-        Given the axle unit policy threshold is <policyThreshold> kg
+        Given the axle unit policy maximum is <policyMaximum> kg
           And the Bridge Formula maximum is <bridgeFormulaMax> kg
           And the tire-load maximum is <tireLoadMax> kg
           And the other applicable maximum is <otherMax> kg
@@ -138,14 +138,17 @@ Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or oth
          Then the binding permit maximum is <permitMax> kg
 
         Examples:
-            | policyThreshold | bridgeFormulaMax | tireLoadMax | otherMax | permitMax |
-            | 23000           | 21000            | 23000       | 23000    | 21000      |
-            | 23000           | 23000            | 20500       | 23000    | 20500      |
-            | 23000           | 23000            | 23000       | 22000    | 22000      |
+            | policyMaximum | bridgeFormulaMax | tireLoadMax | otherMax | permitMax |
+            | 23000         | 21000            | 23000       | 23000    | 21000      |
+            | 23000         | 23000            | 20500       | 23000    | 20500      |
+            | 23000         | 23000            | 23000       | 22000    | 22000      |
 
 # Notes:
  - Confirm:
   - Rule: Steering axle unit policy maximum is 9,100 kg, provided the steering axle is at legal weight when the vehicle is empty.
+
+  # Violation Statements:
+   - Axle Unit Weight for Axle Unit X must not exceed A.
 
  The Ministry distinguishes between the steering axle and "other" axle units when establishing permit maximums to ensure vehicle stability and infrastructure protection:,
  1. Single Axle (Other than Steer): 11,000 kg

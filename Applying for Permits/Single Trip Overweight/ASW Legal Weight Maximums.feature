@@ -4,7 +4,7 @@ Feature: As a user I need the system to validate that the axle unit weights are 
 
 User = PC, SA, TRAIN, CTPO, CA, PA
 
-Evaluation logic Eval No. 4: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
+Evaluation logic Eval No. 3: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B75470B66-E982-4B22-AFE0-9ED4D69E3E27%7D&file=STOW%20Evaluations.xlsx&action=default&mobileredirect=true
 
 # Overview:
  Establishing the legal allowable weight for a commercial vehicle is governed by the "Lesser Of" principle, which dictates that the weight limit is always the lowest value among multiple regulatory criteria. These allowances are determined by evaluating individual axle unit maximums, axle group-weight limits for spans under 8 metres, and configuration-specific standards found in the regulatory appendices.
@@ -220,3 +220,6 @@ Rule: Drive axle unit weight must be greater than 20% of GCVW. See: Applying for
   Rule: For tridem drive axle carrying log loads only, the drive axle unit maximum is 25,500 kg.
   Rule: The 25,500 kg tridem drive value includes the maximum tridem axle weight and maximum additional allowances for transportation of logs and poles. See CTR s. 7.26.
   Rule: For truck tractor with installed crane only (single or tandem steer axle with tandem drive axle), total axle weight is subject to CTR s. 7.17 Table limits, tractor tare weight must be greater than 14,000 kg, and crane centre of gravity must be forward of the truck rear suspension centre.
+
+ # Violation Statements:
+ - A You may require a different permit type Refer to the Commercial Transport Procedures Manual, or contact the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca
