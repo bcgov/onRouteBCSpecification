@@ -8,7 +8,6 @@ Note: These rules cover the user experience for applying for a Single Trip GVW I
 
 # Permit Details
 # See Permit start and duration User feature file for rules related to permit start and duration
-
 @orv2-5606-1
 Rule: CVSE Form CVSE-1070 Permit Scope and Limitations are chosen by default and attached consecutively beginning after the final page of the issued permit
 
