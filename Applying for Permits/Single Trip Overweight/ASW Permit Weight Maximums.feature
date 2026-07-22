@@ -111,20 +111,26 @@ Rule: Tridem axle unit policy maximum is 28,000 kg by default.
             | 28001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-6
-Rule: Tridem axle unit policy maximum can be 29,000 kg when policy conditions related to tridem spread and booster use are satisfied. 
+Rule: Tridem axle unit policy maximum is 29,000 kg only when tridem spread is not less than 2.4 m and not more than 3.7 m, and booster configuration is single-axle booster or no booster; otherwise, if tridem spread is outside 2.4 m to 3.7 m or booster configuration is tandem or tridem booster, the tridem axle unit policy maximum is 28,000 kg.
 
-    Scenario Outline: tridem axle 29,000 kg policy maximum eligibility
+    Scenario Outline: tridem axle policy maximum by spread and booster configuration
         Given the axle unit type is tridem axle
-          And tridem 29,000 kg policy conditions are <policyConditionState>
+          And the tridem spread is <tridemSpread> m
+          And the booster configuration is <boosterConfiguration>
           And the tridem axle weight is <tridemAxleWeight> kg
          When the user reviews the permit configuration
          Then <expectedResult>
 
         Examples:
-            | policyConditionState | tridemAxleWeight | expectedResult                                         |
-            | satisfied            | 29000            | the tridem axle weight is at or under policy maximum |
-            | satisfied            | 29001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
-            | not satisfied        | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.    |
+            | tridemSpread | boosterConfiguration | tridemAxleWeight | expectedResult                                       |
+            | 2.4          | no booster           | 29000            | the tridem axle weight is at or under policy maximum |
+            | 3.7          | single-axle booster  | 29000            | the tridem axle weight is at or under policy maximum |
+            | 3.7          | single-axle booster  | 29001            | Axle Unit Weight for Axle Unit X must not exceed A.  |
+            | 2.3          | no booster           | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
+            | 3.8          | no booster           | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
+            | 2.8          | tandem booster       | 28000            | the tridem axle weight is at or under policy maximum |
+            | 2.8          | tandem booster       | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
+            | 2.8          | tridem booster       | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
 
 @orv2-5709-7
 Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or other applicable evaluations, the lower value becomes the permit maximum.
@@ -180,3 +186,20 @@ Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or oth
  Drive Ratios: Like all drive units, it must carry more than 20% of the GCVW to maintain legal traction and stability.
  Towing Prohibitions: Single steering/single drive axle trucks are generally restricted in their ability to tow heavy multi-axle trailers. For example, the maximum weight allowed for a tridem pony trailer in combination with a single drive truck is restricted to 17,000 kg (rather than the usual 21,000 kg).
  Double-Trailer Restriction: Tandem-steer/single-drive configurations are not permitted in double-trailer combinations (A, B, or C Trains).
+
+ To establish the 29,000 kg permit maximum for a tridem axle unit (typically on a semi-trailer or lowbed), specific rules regarding the axle spread and the type of booster used must be satisfied according to the heavy-haul policies.
+ 1. The Axle Spread Rule
+ To qualify for the higher weight allowance, the tridem axle group must maintain a specific spread (the longitudinal distance between the centers of the first and last axles in the group):
+ Permitted Spread: The spread must be not less than 2.4 metres and not more than 3.7 metres.
+ If the spread falls outside this range, the group may be restricted to a lower legal maximum (typically 24,000 kg) or subject to different Bridge Formula calculations.
+ 2. The Booster Rules
+ The maximum permittable weight of the tridem unit is directly influenced by the configuration of the booster assembly attached to the rear of the trailer:
+ For 29,000 kg: This weight is only permitted if the tridem unit is used in combination with a single-axle booster or with no booster at all.
+ The 28,000 kg Restriction: If the configuration utilizes a tandem or tridem booster, the maximum weight for the tridem trailer axle group is reduced to 28,000 kg.
+ Tridem Booster Limitation: A tridem axle booster itself is only permitted in combination with a tridem lowbed.
+ 3. Additional Supporting Conditions
+ Beyond the spread and booster configuration, several other requirements must be met to legally carry 29,000 kg on the tridem unit:
+ Vehicle Type: This specific allowance is categorized under "Other Axles – Semi-Trailers" and applies specifically to heavy-haul lowbed semi-trailers.
+ Bridge Formula: The group and its relation to other axle units must satisfy the Bridge Formula (30×wheelbase in cm+18,000). If the formula yields a lower value than 29,000 kg for that specific spacing, the lower weight is the binding limit.
+ Interaxle Spacing: For heavy-haul configurations operating under an overweight permit, there is typically a mandatory minimum interaxle spacing of 4.2 metres between the tridem trailer group and adjacent units (like the drive group or a jeep).
+ Tire Loading: The vehicle must have sufficient tire width to ensure the load does not exceed 100 kg per 1 cm of tire width.
