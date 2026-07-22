@@ -1,0 +1,10 @@
+Steer,Drive Axles,Without PME,With PME,Ratio Requirement
+Single,Single or Tandem,"Max. 9 100 kg (truck) [d]; Max. 6 000 kg (truck tractor)","Max. 9 100 kg [c][d]",
+Single,Tridem,Max. 7 300 kg,,"Min. 27% of tridem drive axle unit weight at all times"
+Tandem,Tandem,"Max. 17 000 kg [c]","Max. 17 000 kg [c]",
+Tandem,Tridem,Max. 13 600 kg,Max. 15 200 kg,"Min. 40% of tridem drive axle unit weight when loaded"
+
+Footnote ID,Footnote
+b,"Steering axle weight is exempt from seasonal axle weight restrictions."
+c,"For single or tandem steering axle/tandem drive axle truck tractor with installed crane only, total axle weight is subject to CTR s. 7.17 Table limits and tractor tare weight must be greater than 14 000 kg."
+d,"These cranes must have their centre of gravity located forward of the truck's rear suspension centre."

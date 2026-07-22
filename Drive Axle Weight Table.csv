@@ -1,0 +1,12 @@
+Drive,With or Without PME,Condition/Notes
+Single,Max. 9 100 kg,
+Tandem,Max. 17 000 kg,
+Tridem,Max. 23 000 kg,liquid load
+Tridem,Max. 24 000 kg,fixed load
+Tridem,Max. 24 000 kg,"liquid load with tank centre height less than or equal to 2.4 m"
+Tridem,Max. 24 000 kg,truck tractor
+Tridem,Max. 25 500 kg,log loads only
+
+Footnote ID,Footnote
+e,Drive axle unit must be greater than 20% of GCVW.
+f,"The 25 500 kg shown includes the maximum tridem axle weight and the maximum weight allowances for the transportation of logs and poles (see also CTR s. 7.26)."
