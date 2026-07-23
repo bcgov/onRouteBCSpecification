@@ -126,14 +126,36 @@ Rule: staff can optinally view a tooltip with eGARMS return code definitions whe
       | E1739              | Credit account has exceeded the negative allowed amount. |
       | E9999              | Serious error.                                           |
 
-@orv2-5679-7
-Rule: staff can complete a refund even if an eGARMS returns as ecode  
+@orv2-5841-1
+Rule: staff cannot complete a refund when eGARMS returns the ecodes E0001, E0002, E0003, and E9999
 
   Scenario: eGARMS returns error code
     Given staff are refunding permit A to multiple payment methods
-      And eGARMS returns an error code
-     When are at the final step of the refund to multiple payment methods workflow
-     Then staff can complete the refund to multiple payment methods for permit A
+      And eGARMS returns any of the following ecodes:
+        | E0001 |
+        | E0002 |
+        | E0003 |
+        | E9999 |
+      And there are historical transactions
+     When they attempt to finish the refund to multiple payment methods workflow for permit A
+     Then staff cannot complete the refund to multiple payment methods for permit A
+      And the option to select any historical transaction is disabled
+
+  Scenario: attempt to finish
+    Given eGARMS returns any of the following ecodes:
+        | E0001 |
+        | E0002 |
+        | E0003 |
+        | E9999 |
+     When staff choose to finish
+     Then they see "Refund can't be processed credit Account on hosted for Cred Accounts win GARAMS Return Code E0003: Please contact CVSE Revenue, Phone: (250) 952-0422 or Emall: Isfinance@gov.bc.ca."
+      And they have the option to "Close" the message
+
+@orv2-5841-2
+Rule: closing the warning message returns the user to the refund to multiple payments method (finish amendment or void)
+
+@orv2-5841-3
+Rule: E0004 message is displayed unique to other eGARMS return codes in blue rather than red text
 
 @orv2-5679-8
 Rule: staff cannot complete a refund if the credit account is closed in onRouteBC

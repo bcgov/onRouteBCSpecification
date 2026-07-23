@@ -216,10 +216,15 @@ Rule: Drive axle unit weight must be greater than 20% of GCVW. See: Applying for
 # Notes:
  - Confirm:
   Rule: For tridem drive axle with liquid load, the drive axle unit maximum is 23,000 kg.
+   - ignore in onRouteBC
   Rule: For tridem drive axle with liquid load and tank centre height less than or equal to 2.4 m, the drive axle unit maximum is 24,000 kg.
+   - ignore in onRouteBC
   Rule: For tridem drive axle carrying log loads only, the drive axle unit maximum is 25,500 kg.
+   - ignore in onRouteBC
   Rule: The 25,500 kg tridem drive value includes the maximum tridem axle weight and maximum additional allowances for transportation of logs and poles. See CTR s. 7.26.
+   - ignore in onRouteBC
   Rule: For truck tractor with installed crane only (single or tandem steer axle with tandem drive axle), total axle weight is subject to CTR s. 7.17 Table limits, tractor tare weight must be greater than 14,000 kg, and crane centre of gravity must be forward of the truck rear suspension centre.
+   - ignore in onRouteBC
 
  # Violation Statements:
  - A You may require a different permit type Refer to the Commercial Transport Procedures Manual, or contact the Provincial Permit Centre at Toll-free: 1-800-559-9688 or Email: ppcpermit@gov.bc.ca
