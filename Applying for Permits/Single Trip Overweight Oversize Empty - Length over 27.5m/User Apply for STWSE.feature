@@ -351,6 +351,38 @@ Rule: A user can edit an application
 @orv2-5585-30
 Rule: The overload portion of the permit fee is calculated using the weight of the axle(s) beyond 27.5m to establish the overload permit fee per 10 km rate (or fraction thereof) x (the total distance (km) / 10) rounded to the nearest dollar with a minimum fee of $25.00
 
+ # see General Fee 3(d) for current fee table: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
+
+ Overload permit fee table:
+    | overloadkg      | rateper10km |
+    | 0-2000          | 0.95        |
+    | 2001-3000       | 1.15        |
+    | 3001-4000       | 1.40        |
+    | 4001-5000       | 1.60        |
+    | 5001-6000       | 1.85        |
+    | 6001-7000       | 2.15        |
+    | 7001-8000       | 2.45        |
+    | 8001-9000       | 2.95        |
+    | 9001-10000      | 3.35        |
+    | 10001-11000     | 3.75        |
+    | 11001-12000     | 4.25        |
+    | 12001-13000     | 4.95        |
+    | 13001-14000     | 5.60        |
+    | 14001-15000     | 6.25        |
+    | 15001-16000     | 7.25        |
+    | 16001-17000     | 8.25        |
+    | 17001-18000     | 9.15        |
+    | 18001-19000     | 10.10       |
+    | 19001-20000     | 10.90       |
+    | 20001-21000     | 11.85       |
+    | 21001-22000     | 12.70       |
+    | 22001-23000     | 13.95       |
+    | 23001-24000     | 14.95       |
+    | 24001-25000     | 16.10       |
+    | 25001-26000     | 17.85       |
+    | 26001-27000     | 19.85       |
+    | 27001-28000     | 21.40       |
+
   Scenario Outline: Overload permit fee is calculated from overload weight and total distance
      Given a user has inputted <weight>kg in the weight over 27.5m field
       And they have inputted <distance>km in total distance
@@ -368,7 +400,20 @@ Rule: The overload portion of the permit fee is calculated using the weight of t
       | 10001  | 800      | 300.00  |
       | 12000  | 85       | 36.00   |
 
+@orv2-5585-31
+Rule: For overload greater than 28000 kg, the permit fee per 10 km is 21.40 plus 1.85 for each 900 kg or portion thereof over 28000, with the minimum fee of 25.00, then rounded to the nearest dollar with amounts ending in 0.50 or more rounded up.
 
+  Scenario Outline: Overload permit fee is calculated for overload greater than 28000 kg
+     Given a users calculated <licensedgvwincrease>kg
+      And they have inputted <distance>km in total distance
+     When they continue to the "Review and Confirm Details" page
+     Then they see a overload permit fee of $<fee>
+
+    Examples:
+      | licensedgvwincrease | distance | fee     |
+      | 29000               | 1000     | 2510.00 |
+      | 30700               | 100      | 270.00  |
+      | 33400               | 100      | 330.00  |
 
 
 
