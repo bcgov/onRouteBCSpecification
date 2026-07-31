@@ -1,7 +1,7 @@
 @orv2-5872 https://moti-imb.atlassian.net/browse/ORV2-5872
-Feature: As a user I need the system to validate legal interaxle spacing so that STOW applications comply with Appendix A Table II.
+Feature: As a user I need the system to validate legal interaxle spacing so that STOW applications comply with Appendix A Table II and the Heavy Haul Quick Reference Chart.
 
-Source table: Table II and Heavy Haul Quick Reference https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
+Source table: Table II and Heavy Haul Quick Reference Chart https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
 
 @orv2-5872-1
 Rule: Interaxle spacing between adjacent axle units must meet Table II minimum distances
