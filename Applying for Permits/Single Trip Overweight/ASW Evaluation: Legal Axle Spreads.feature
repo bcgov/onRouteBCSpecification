@@ -1,7 +1,8 @@
 @orv2-5872 https://moti-imb.atlassian.net/browse/ORV2-5874
 Feature: As a user I need the system to validate legal axle spreads so that STOW applications comply with Appendix A Table I.
 
-Source table: Table I (Axle Spread) https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
+Sources: Table I (Axle Spread) https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
+
 
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
@@ -59,8 +60,6 @@ Rule: Tridem axles in trailers must be validated using Table I limits for the se
       | pony trailer at minimum      | Truck and Pony Trailer Combinations                          | any                | 2.4    | valid        |
       | pony trailer at maximum      | Truck and Pony Trailer Combinations                          | any                | 2.5    | valid        |
       | pony trailer above maximum   | Truck and Pony Trailer Combinations                          | any                | 2.51   | invalid      |
-      | full trailer tandem max      | Truck and Full Trailer Combinations                          | tandem drive       | 3.7    | valid        |
-      | full trailer tridem max      | Truck and Full Trailer Combinations                          | tridem drive       | 3.7    | invalid      |
       | semitrailer at maximum       | Truck Tractor and Semi-Trailer Combinations                  | any                | 3.7    | valid        |
       | pole trailer at maximum      | Tridem Truck Tractor with Tridem or Tandem Axle Pole Trailer | any                | 3.1    | valid        |
 

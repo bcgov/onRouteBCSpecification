@@ -96,7 +96,7 @@ Rule: Licensed GVW Increase is calculated live on input of Actual GVW (kg) as th
   Scenario: licensed 40000 actual 46000
     Given a users power unit licensed GVW is 40000
      When they input an actual GVW of 46000
-     Then they see "Licensed GVW Increase (kg): 6000"
+     Then they see "Overload: 6000"
       And they can continue
 
 # Trip Details

@@ -70,3 +70,28 @@ Rule: Start date and/or expiry date can not be in the past
     When staff edit the application
     Then staff see "Start Date is in the past."
      And they can continue
+
+@orv2-5916-1
+Rule: staff can approve a permit application with violations and/or warnings
+
+  Scenario: STWSE > OAW, OAL, OAH violations add to cart
+    Given staff have inputted any of the following dimensions:
+      | Dimension | Value |
+      | OAW       | > 3.2 |
+      | OAL       | > 31  |
+      | OAH       | > 4.3 |
+      And they have continued to review and confirm the application
+     When staff choose to add the application to the cart
+     Then staff see the following modal warning message:
+      "Application has violation(s) and/or warning(s) I confirm that I have reviewed the violation(s) and/or warning(s) associated with this permit application and would like to approve it." 
+      And they have the option to "Cancel" or "Approve"
+  
+  Scenario: STWSE < 27.5m OAL violation
+    Given staff have inputted any of the following dimensions:
+      | Dimension | Value  |
+      | OAL       | < 27.5 |
+      And they have continued to review and confirm the application
+     When staff choose to add the application to the cart
+     Then staff see the following modal warning message:
+      "Application has violation(s) and/or warning(s) I confirm that I have reviewed the violation(s) and/or warning(s) associated with this permit application and would like to approve it." 
+      And they have the option to "Cancel" or "Approve"
