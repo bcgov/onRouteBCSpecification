@@ -78,7 +78,7 @@ Rule: Users are shown a violation statement when exception interaxle spacing is 
       | drive axle to jeep single above max | Drive Axle and Jeep Single Axle           | 3.51    | between 1.2 m and 3.5 m |
 
 @orv2-5872-5
-Rule: Platform Trailer and Platform Trailer - Wheelers axle groups must meet spacing thresholds based on axle group type
+Rule: Exceptions for Platform Trailer and Platform Trailer - Wheelers axle groups must meet spacing thresholds based on axle group type
 
   Scenario Outline: validate platform trailer spacing thresholds by axle group type
     Given a user has a platform trailer with a <axleGroupType> axle group
@@ -99,7 +99,7 @@ Rule: Platform Trailer and Platform Trailer - Wheelers axle groups must meet spa
       | tridem axle group at 7.0             | Tridem        | 7.0     | meets the 7.0 m spacing threshold              |
 
 @orv2-5872-6
-Rule: Standard and wide wheelers must have at least 7.0 m of interaxle spacing between the last drive or jeep axle in the front half and the first trailer or dolly axle in the back half
+Rule: Exceptions for wheelers and wide wheelers must have at least 7.0 m of interaxle spacing between the last drive or jeep axle in the front half and the first trailer or dolly axle in the back half
 
   Scenario Outline: validate the 7.0 m spacing rule for standard and wide wheelers
     Given a user has selected vehicle sub-type <vehicleSubType>
