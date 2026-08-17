@@ -15,6 +15,7 @@ Start Date Rules:
 | HC     | Today to 90 days from today |
 | STWSE  | Today to 14 days from today |
 | STGVWI | Today to 14 days from today |
+| EPTOP  | Today to 14 days from today |
 
 Rule: a CV Client can choose a start date up to 14 days from today (current date and time the application is initiated)
 
@@ -44,3 +45,4 @@ Duration Overview:
 | HC     | Up to 365 days forward always expires December 31st 11:59:59 |
 | STWSE  | Up to 7 days forward from today                              |
 | STGVWI | Up to 7 days forward from today                              |
+| EPTOP  | Up to 7 days forward from today                              |
