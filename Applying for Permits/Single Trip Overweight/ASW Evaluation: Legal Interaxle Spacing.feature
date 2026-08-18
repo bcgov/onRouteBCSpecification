@@ -42,7 +42,7 @@ Rule: Users are shown a violation statement when interaxle spacing is below the 
       And axle unit <axleUnitY> is a <axleTypeB>
      When a user inputs interaxle spacing of <spacing> m between axle unit <axleUnitX> and axle unit <axleUnitY>
      Then interaxle spacing between those axle units is invalid
-      And they see "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be greater than <minSpacing> m."
+      And they see "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least <minSpacing> m."
 
     Examples:
       | description            | axleUnitX | axleTypeA   | axleUnitY | axleTypeB   | spacing | minSpacing |

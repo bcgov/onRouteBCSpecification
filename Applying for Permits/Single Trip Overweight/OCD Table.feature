@@ -102,7 +102,7 @@ Rule: a Licensed GCVW overload is shown in the OCD table as a single row with th
 - Info box will always show
 - Would show in addition to violations
 	- e.g. Bridge violation
-- More then 3 digit numbers will have 
+- More then 3 digit numbers will have commas
 ### Table OCD
 - Show only those overload values that trigger overload calculation which means we could hide columns or rows
 	- e.g., LGVW and Total GCVW, hide Actual and Legal Max columns
