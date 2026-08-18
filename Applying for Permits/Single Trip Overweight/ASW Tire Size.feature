@@ -233,6 +233,15 @@ Rule: All axle units for Rubber Tired Loaders must have a tire load rate of 110 
       | Fail just above cap limit - 622 mm           | 622       | 2             | 12001      | cap 12,000 kg/axle                   |
       | Fail just above cap limit - 711.2 mm         | 711.2     | 2             | 12001      | cap 12,000 kg/axle                   |
 
+@orv2-5903-1
+Rule: A configuration with tandem axle type, 279.4 tires, and 8 wheels is allowed permittable weight exception of up to 23,000kg despite the tire max allowable using the Tire load rate of 100 kg/cm being only 22,352
+
+  Scenario: Tandem axle with 279.4 tires and 8 wheels is allowed permittable weight exception of up to 23,000kg
+    Given the vehicle has a tandem axle unit with 8 tires of 279.4 mm
+    And the tandem axle weight is 23,000 kg
+    When the user calculates the ASW table or chooses to continue with the permit application
+    Then they do not see a tire load rate error for the tandem axle unit
+
 # Notes: 
 1. Steer axle units all vehicles except special vehicle:
 	1. Tire load rate is 100 kg/cm
