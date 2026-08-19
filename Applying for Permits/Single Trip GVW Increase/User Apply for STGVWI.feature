@@ -313,6 +313,20 @@ Rule: For overload greater than 28000 kg, the permit fee per 10 km is 21.40 plus
       | 30700               | 100      | 270.00  |
       | 33400               | 100      | 330.00  |
 
+Example:
+ Overload above 28,000 kg
+ 43,500 - 28,000 = 15,500 kg
+ Number of 900 kg blocks (or portion thereof)
+ 15,500 / 900 = 17.22, so round up to 18 blocks
+ Extra rate per 10 km
+ 18 × 1.85 = 33.30
+ Total rate per 10 km
+ 21.40 + 33.30 = 54.70
+ Distance factor
+ 1,000 km / 10 = 100
+ Fee
+ 54.70 × 100 = 5,470.00
+
 # Notes:
 
 Single Trip - GVW Increase

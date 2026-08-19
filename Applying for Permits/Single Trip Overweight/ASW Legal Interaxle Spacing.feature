@@ -64,7 +64,7 @@ For standard commercial vehicles operating at standard legal weights, the minimu
 | **Tandem Axle** | **Tridem Axle** | **5.5 m** |
 | **Tridem Axle** | **Tridem Axle** | **6.0 m** |
 
-Need yo confirm this legal exception:
+Need to confirm this legal exception:
 1. Single-Axle Jeep with Lowbed Semi-Trailer (CTR Section 7.22)
 
 - The Standard Rule: Standard legal spacings require a minimum gap of 3.0 m between a tandem axle group (the tractor drive) and any adjacent single axle (such as a jeep).
