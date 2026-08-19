@@ -9,3 +9,13 @@ Evaluation logic Eval No. 12: https://bcgov.sharepoint.com/:x:/r/teams/04314/_la
 @orv2-5692-1
 Rule: when there is a conflict between the overweight value calculated for the axle group and the overweight value calculated for an axle unit, or the Licensed GVW vs the Actual GCVW the greater overweight value is used.
 
+  Scenario: Axle unit overload amount is greater than the Licensed GVW vs Actual GCVW overload amount
+    Given the number of axle units is 3
+      And the user has input the following weights for each axle unit:
+       | Axle Unit | Axle Unit Weight (kg) | Legal Max. (kg) |
+       | 1         | 6,000                 | 6,000           |
+       | 2         | 23,000                | 22,000          |
+       | 3         | 23,000                | 22,000          |
+      And the users power unit has a LGVW of 35,000 kg
+     When overload amount is calculated based on LGVW and Total GCVW
+     Then the overload amount that onRouteBC will use to calculate the permit fee is 17,000 kg

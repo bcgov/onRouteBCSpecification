@@ -6,6 +6,15 @@ staff = PC, SA, TRAIN, CTPO
 
 Background: The overload calculations details (OCD) table is shown to the user on the permit application, review and confirm, and permit template pages. It shows the overload amount that onRouteBC will use to calculate the permit fee. The OCD table is shown in addition to any violations that are present (e.g., bridge violation). The OCD table is only shown, if there are overloads present.
 
+| Data Elements    | Description                                                                                                                                                                                                                                                                                                       |
+| Axle Units(s)   | The axle unit(s) that the overload amount is calculated for. This can be a single axle unit, a group of axle units, or all axle units in the ASW table (for Licensed GCVW overloads).                                                                                                                             |
+| LGCVW (kg)      | The Licensed GCVW for the vehicle combination. This is only shown if the overload amount is calculated based on Licensed GCVW vs Actual GCVW.                                                                                                                                                                     |
+| Actual (kg)     | The actual weight of the axle unit(s) (Axle Unit Weight (kg) individually or summed as part of a group) that the overload amount is calculated for. This is only shown if the overload amount is calculated based on a single axle unit or a group of axle units.                                                                                                                   |
+| Legal Max. (kg) | The legal maximum weight for the axle unit(s) that the overload amount is calculated for (Overweight Dimension Set, 7.16g, 7.17). This is only shown if the overload amount is calculated based on a single axle unit or a group of axle units.                                                                                                           |
+| Total GCVW (kg) | The total GCVW for the vehicle combination. This is only shown if the overload amount is calculated based on Licensed GCVW vs Actual GCVW.                                                                                                                                                                        |
+| Overload (kg)   | The overload amount that onRouteBC will use to calculate the permit fee. This is calculated as the difference between the Actual weight and the Legal Max. weight for a single axle unit or a group of axle units, or as the difference between the Total GCVW and the Licensed GCVW for Licensed GCVW overloads. |
+
+
 @orv2-5899-1
 Rule: A user can see the overload calculation details (OCD) table on the permit application, review and confirm, and permit template.
 
@@ -19,6 +28,8 @@ Rule: The OCD table is only shown, if there are overloads present.
 
 @orv2-5899-4
 Rule: The OCD table is defaulted to expanded, but can be collapsed by the user on both the permit application and review and confirm pages.
+
+ # Note: when collapsed white space is not reserved for the OCD table, so that the user can see more of the permit application or review and confirm page.
 
 @orv2-5899-5
 Rule: The OCD table shows only the overload amount details that onRouteBC will use to calculate the permit fee. 
@@ -52,8 +63,8 @@ Rule: Calculated overload amounts not chosen for the permit fee calculation are 
        | 3         | 23,000                |
      When overload amount is calculated based on single axle unit
      Then they see the following columns and rows:
-      | Axle Units(s) | Actual (kg) | Legal Max (kg) | Overload (kg) |
-      | 3             | 23,000       | 17,000        | 6,000         |
+      | Axle Units(s) | Actual (kg) | Legal Max. (kg) | Overload (kg) |
+      | 3             | 23,000      | 17,000          | 6,000         |
      And they see Total (kg) 6,000
 
   Scenario: Axle group and axle units chosen for overload calculation, Actual and Legal Max columns are shown in the OCD table
@@ -63,13 +74,13 @@ Rule: Calculated overload amounts not chosen for the permit fee calculation are 
        | 1         | 7,560                 |
        | 2         | 28,000                |
        | 3         | 26,000                |
-       | 4         | 9,100                |
+       | 4         | 9,100                 |
      When overload amount is calculated based on axle group and axle units
      Then they see the following columns and rows:
-      | Axle Units(s) | Actual (kg) | Legal Max (kg) | Overload (kg) |
-      | 1             | 7,560       | 7,300          | 250           |
-      | 2             | 28,000      | 24,000         | 4,000         |    
-      | 3 - 4         | 35,100      | 31,000         | 4,100         |
+      | Axle Units(s) | Actual (kg) | Legal Max. (kg) | Overload (kg) |
+      | 1             | 7,560       | 7,300           | 250           |
+      | 2             | 28,000      | 24,000          | 4,000         |
+      | 3 - 4         | 35,100      | 31,000          | 4,100         |
      And they see Total (kg) 8,350
 
 @orv2-5899-7
@@ -79,8 +90,8 @@ Rule: Axle groups are shown as a range of axle units in the OCD table. For examp
      When overload amount is calculated based on axle group 3 - 4 
       And there are no other overloads present
      Then they see the following columns and rows:
-      | Axle Units(s) | Actual (kg) | Legal Max (kg) | Overload (kg) |
-      | 3 - 4         | 35,100      | 31,000         | 4,100         |
+      | Axle Units(s) | Actual (kg) | Legal Max. (kg) | Overload (kg) |
+      | 3 - 4         | 35,100      | 31,000          | 4,100         |
      And they see Total (kg) 4,100
 
 @orv2-5899-8
@@ -90,12 +101,17 @@ Rule: a Licensed GCVW overload is shown in the OCD table as a single row with th
     Given the number of axle units is 4
      When overload amount is calculated based on Licensed GCVW vs Actual GCVW
      Then they see the following columns and rows:
-      | Axle Units(s) | Licensed GCVW (kg) | Total GCVW (kg) | Overload (kg) |
-      | 1 - 4         | 70,000             | 70,660          | 660           |
+      | Axle Units(s) | LGCVW (kg) | Total GCVW (kg) | Overload (kg) |
+      | 1 - 4         | 70,000     | 70,660          | 660           |
      And they see Total (kg) 660
 
 @orv2-5899-9
 Rule: Numbers greater than 999 are shown with commas in the OCD table. For example, 1000 is shown as 1,000 and 10000 is shown as 10,000.
+
+@orv2-5899-11
+Rule: The OCD table is updated when the user changes any of the ASW table inputs and recalculates the overload amount.
+
+
 
 # Notes
 - Show how we calculate the overload
