@@ -94,6 +94,9 @@ Rule: a Licensed GCVW overload is shown in the OCD table as a single row with th
       | 1 - 4         | 70,000             | 70,660          | 660           |
      And they see Total (kg) 660
 
+@orv2-5899-9
+Rule: Numbers greater than 999 are shown with commas in the OCD table. For example, 1000 is shown as 1,000 and 10000 is shown as 10,000.
+
 # Notes
 - Show how we calculate the overload
 - Collapsible OCD?
