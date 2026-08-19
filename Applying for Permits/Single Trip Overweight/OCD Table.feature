@@ -21,9 +21,9 @@ Rule: The OCD table is only shown, if there are overloads present.
 Rule: The OCD table is defaulted to expanded, but can be collapsed by the user on both the permit application and review and confirm pages.
 
 @orv2-5899-5
-Rule: The OCD table shows the overload amount that onRouteBC will use to calculate the permit fee. 
+Rule: The OCD table shows only the overload amount details that onRouteBC will use to calculate the permit fee. 
 
- # See: ASW use greater overweight value.feature for how the overload amount is calculated.
+ # See: ASW use greater overweight value.feature for how the overload amount is chosen.
 
 @orv2-5899-6
 Rule: Calculated overload amounts not chosen for the permit fee calculation are not shown in the OCD table. For example, if the overload amount is calculated based on LGVW and Total GCVW, then the Actual and Legal Max columns are hidden in the OCD table.
