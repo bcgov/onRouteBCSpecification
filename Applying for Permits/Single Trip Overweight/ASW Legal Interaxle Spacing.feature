@@ -64,24 +64,24 @@ For standard commercial vehicles operating at standard legal weights, the minimu
 | **Tandem Axle** | **Tridem Axle** | **5.5 m** |
 | **Tridem Axle** | **Tridem Axle** | **6.0 m** |
 
- # Deprecated
+# Deprecated
  @orv2-5872-3
-Rule: A truck tractor with a single-axle jeep and lowbed semi-trailer may use interaxle spacing between 1.2 m and 3.5 m without a permit under CTR Section 7.22 when the qualifying load conditions are met
+ Rule: A truck tractor with a single-axle jeep and lowbed semi-trailer may use interaxle spacing between 1.2 m and 3.5 m without a permit under CTR Section 7.22 when the qualifying load conditions are met
 
-  Scenario Outline: validate CTR Section 7.22 interaxle spacing exception for single-axle jeep with lowbed semi-trailer
-    Given a truck tractor is in combination with a single-axle jeep and a lowbed semi-trailer
-      And the load condition is <loadCondition>
-     When a user inputs interaxle spacing of <spacing> m between the tractor drive axle group and the single-axle jeep
-     Then the interaxle spacing exception result is <result>
-      And the spacing is <legalStatus>
-      And for <legalstatus> of invalid they see "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be between 1.2 and 3.5 m."
+   Scenario Outline: validate CTR Section 7.22 interaxle spacing exception for single-axle jeep with lowbed semi-trailer
+     Given a truck tractor is in combination with a single-axle jeep and a lowbed semi-trailer
+       And the load condition is <loadCondition>
+      When a user inputs interaxle spacing of <spacing> m between the tractor drive axle group and the single-axle jeep
+      Then the interaxle spacing exception result is <result>
+       And the spacing is <legalStatus>
+       And for <legalstatus> of invalid they see "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be between 1.2 and 3.5 m."
 
-    Examples:
-      | description         | loadCondition | spacing | result  | legalStatus |
-      | unladen at minimum  | empty         | 1.2     | valid   | legal       |
-      | empty at maximum    | empty         | 3.5     | valid   | legal       |
-      | empty below minimum | empty         | 1.19    | invalid | invalid     |
-      | empty above maximum | empty         | 3.51    | invalid | invalid     |
+     Examples:
+       | description         | loadCondition | spacing | result  | legalStatus |
+       | unladen at minimum  | empty         | 1.2     | valid   | legal       |
+       | empty at maximum    | empty         | 3.5     | valid   | legal       |
+       | empty below minimum | empty         | 1.19    | invalid | invalid     |
+       | empty above maximum | empty         | 3.51    | invalid | invalid     |
  
  Legal exception:
  1. Single-Axle Jeep with Lowbed Semi-Trailer (CTR Section 7.22)
