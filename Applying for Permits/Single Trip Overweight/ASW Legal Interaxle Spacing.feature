@@ -49,7 +49,23 @@ Rule: Users are shown a violation statement when interaxle spacing is below the 
       | tandem to tridem below | 2         | Tandem Axle | 3         | Tridem Axle | 5.49    | 5.5        |
       | tridem to tridem below | 3         | Tridem Axle | 4         | Tridem Axle | 5.99    | 6.0        |
 
-@orv2-5872-3
+# Notes
+Under British Columbia regulations, **interaxle spacing**—defined as the longitudinal distance separating two axle units measured from the centers of the closest axles—is strictly controlled to protect highway infrastructure and distribute weights safely. 
+
+1. Standard Legal Interaxle Spacings (No Permit Required)
+For standard commercial vehicles operating at standard legal weights, the minimum interaxle spacing is determined by the types of adjacent axle groups:
+
+| Leading Axle Group | Trailing Axle Group | Minimum Legal Spacing |
+| :--- | :--- | :--- |
+| **Single Axle** | **Single Axle** | **3.0 m** |
+| **Single Axle** | **Tandem Axle** | **3.0 m** |
+| **Single Axle** | **Tridem Axle** | **3.0 m** |
+| **Tandem Axle** | **Tandem Axle** | **5.0 m** |
+| **Tandem Axle** | **Tridem Axle** | **5.5 m** |
+| **Tridem Axle** | **Tridem Axle** | **6.0 m** |
+
+ # Deprecated
+ @orv2-5872-3
 Rule: A truck tractor with a single-axle jeep and lowbed semi-trailer may use interaxle spacing between 1.2 m and 3.5 m without a permit under CTR Section 7.22 when the qualifying load conditions are met
 
   Scenario Outline: validate CTR Section 7.22 interaxle spacing exception for single-axle jeep with lowbed semi-trailer
@@ -66,25 +82,11 @@ Rule: A truck tractor with a single-axle jeep and lowbed semi-trailer may use in
       | empty at maximum    | empty         | 3.5     | valid   | legal       |
       | empty below minimum | empty         | 1.19    | invalid | invalid     |
       | empty above maximum | empty         | 3.51    | invalid | invalid     |
+ 
+ Legal exception:
+ 1. Single-Axle Jeep with Lowbed Semi-Trailer (CTR Section 7.22)
 
-# Notes
-Under British Columbia regulations, **interaxle spacing**—defined as the longitudinal distance separating two axle units measured from the centers of the closest axles—is strictly controlled to protect highway infrastructure and distribute weights safely. 
+ - The Standard Rule: Standard legal spacings require a minimum gap of 3.0 m between a tandem axle group (the tractor drive) and any adjacent single axle (such as a jeep).
+ - The Exception: Under CTR Section 7.22, a truck tractor in combination with a single-axle jeep and a lowbed semi-trailer can legally operate with an interaxle spacing of between 1.2 m and 3.5 m without a permit.
+ - The Conditions: This spacing reduction is only permitted if the combination is completely unladen, or is being used to haul a bundle of green, in their natural state, felled or bucked logs or poles.
 
-1. Standard Legal Interaxle Spacings (No Permit Required)
-For standard commercial vehicles operating at standard legal weights, the minimum interaxle spacing is determined by the types of adjacent axle groups:
-
-| Leading Axle Group | Trailing Axle Group | Minimum Legal Spacing |
-| :--- | :--- | :--- |
-| **Single Axle** | **Single Axle** | **3.0 m** |
-| **Single Axle** | **Tandem Axle** | **3.0 m** |
-| **Single Axle** | **Tridem Axle** | **3.0 m** |
-| **Tandem Axle** | **Tandem Axle** | **5.0 m** |
-| **Tandem Axle** | **Tridem Axle** | **5.5 m** |
-| **Tridem Axle** | **Tridem Axle** | **6.0 m** |
-
-Legal exception:
-1. Single-Axle Jeep with Lowbed Semi-Trailer (CTR Section 7.22)
-
-- The Standard Rule: Standard legal spacings require a minimum gap of 3.0 m between a tandem axle group (the tractor drive) and any adjacent single axle (such as a jeep).
-- The Exception: Under CTR Section 7.22, a truck tractor in combination with a single-axle jeep and a lowbed semi-trailer can legally operate with an interaxle spacing of between 1.2 m and 3.5 m without a permit.
-- The Conditions: This spacing reduction is only permitted if the combination is completely unladen, or is being used to haul a bundle of green, in their natural state, felled or bucked logs or poles.

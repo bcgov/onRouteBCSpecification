@@ -43,7 +43,6 @@ Rule: User may optionally choose to view an info box with information about Axle
      When they choose to view the info box for an axle unit
      Then they see an info box with information about Axle Unit and Axle Group
 
-
 # Notes
 No. of Axles change to drop down instead of numbers e.g., 1 to Single
 	- Column header name: Axle Type
@@ -58,3 +57,6 @@ No. of Axles change to drop down instead of numbers e.g., 1 to Single
 	- Axle Unit 1 allowances
 	- Axle unit 2 and beyond allowances
 - Axle Unit info box updates 
+- Reset scenarios - default behaviour
+- Add axle unit default behaviour
+ - single and no of wheels 4
