@@ -1,14 +1,32 @@
 @orv2-5872 https://moti-imb.atlassian.net/browse/ORV2-5874
 Feature: As a user I need the system to validate legal axle spreads so that STOW applications comply with Appendix A Table I.
 
-Sources: Table I (Axle Spread) https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
-
+Sources: 
+ - onRouteBC Data Overweight Dimension Set (OWDS): https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7B881EFCEC-9462-46D8-A908-1E7DF42F113A%7D&file=Over%20Weight%20Dimension%20Set.xlsx&action=default&mobileredirect=true
+ - Regulation Table I (Axle Spread) https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
 
 user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
+Table I - Axle Spread (Between Extreme Axle Centres) Reference Limits:
+| Vehicle / Combination                                           | Single Axles (Steer, Drive or Trailer)   | Tandem Axles (Steer, Drive or Trailer)    | Tandem Axles in Trailer   | Tridem Drive Axles               | Tridem Axles in Trailer                                      |
+| --------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------- | ------------------------- | -------------------------------  | ------------------------------------------------------------ |
+| Truck or Truck Tractor                                          | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | See specific combinations in the OWDS                        |
+| Truck and Pony Trailer Combinations                             | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 2.5 m                                      |
+| Truck Tractor and Semi-Trailer Combinations                     | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 3.7 m                                      |
+| Tridem Truck Tractor with Tridem or Tandem Axle Pole Trailer    | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m          | Pole Trailer: Min. 2.4 m / Max. 3.1 m                        |
+| Truck Tractor and Semi-Trailer - Spread Tandem                  | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 ma                 | Min. 1.86 m / Max. 3.07 m | Not Applicable                   | Not Applicable                                               |
+* Oilfield bed truck exception up to 3.1 m.
+a Truck Tractor and Semi-Trailer - Spread Tandem see Tandem Axles in Trailer			
+
 @orv2-5872-1
 Rule: Users must input axle spreads within Table I limits for single and tandem axle units based on the selected vehicle combination
+
+ Table I Axle Spread Limits for Rule 1:
+ | Axle Unit Type | Vehicle Combination                              | Minimum Legal Spread | Maximum Legal Spread |
+ | Single Axle    | Truck / Truck Tractor / Pony / Semi combinations | N/A                  | 1.0 m                |
+ | Tandem Axle    | Standard combinations                            | 1.0 m                | 1.85 m               |
+ | Tandem Axle    | Truck Tractor and Semi-Trailer - Spread Tandem   | 1.86 m               | 3.07 m               |
 
   Scenario Outline: validate single and tandem axle spread limits by vehicle combination
     Given a user has selected <vehicleCombination>
@@ -28,7 +46,12 @@ Rule: Users must input axle spreads within Table I limits for single and tandem 
       | spread tandem above max  | Truck Tractor and Semi-Trailer - Spread Tandem | Tandem Axle  | 3.08   | invalid |
 
 @orv2-5872-2
-Rule: Tridem drive axle spread must follow Table I limits and include the oilfield bed truck exception
+Rule: Tridem drive axle spread must follow Table I limits for oilfield bed truck exception cases
+
+ Table I Axle Spread Limits for Rule 2:
+ | Axle Unit Type    | Vehicle Combination               | Minimum Legal Spread | Maximum Legal Spread |
+ | Tridem Drive Axle | Standard (non-oilfield)           | 2.4 m                | 2.8 m                |
+ | Tridem Drive Axle | Oilfield bed truck exception only | 2.4 m                | 3.1 m                |
 
   Scenario Outline: validate tridem drive axle spread limits
     Given a user has selected <vehicleCombination>
@@ -48,6 +71,12 @@ Rule: Tridem drive axle spread must follow Table I limits and include the oilfie
 @orv2-5872-3
 Rule: Tridem axles in trailers must be validated using Table I limits for the selected vehicle combination
 
+ Table I Axle Spread Limits for Rule 3:
+ | Axle Unit Type         | Vehicle Combination                                 | Minimum Legal Spread | Maximum Legal Spread |
+ | Tridem Trailer Axle    | Truck and Pony Trailer Combinations                 | 2.4 m                | 2.5 m                |
+ | Tridem Trailer Axle    | Truck Tractor and Semi-Trailer Combinations         | 2.4 m                | 3.7 m                |
+ | Tridem Trailer Axle    | Tridem Truck Tractor + Tandem/Tridem Pole Trailer   | 2.4 m                | 3.1 m                |
+
   Scenario Outline: validate tridem trailer spread limits by vehicle combination
     Given a user has selected <vehicleCombination>
       And a tridem axle in trailer is present in the ASW table
@@ -65,6 +94,12 @@ Rule: Tridem axles in trailers must be validated using Table I limits for the se
 
 @orv2-5872-4
 Rule: Users are shown a violation statement when axle spread is outside the permitted Table I range
+
+ Table I Axle Spread Violation Message Limits for Rule 4:
+ | Axle Unit Type      | Example Vehicle Combination                 | Minimum Legal Spread | Maximum Legal Spread |
+ | Tandem Axle         | Truck Tractor and Semi-Trailer Combinations | 1.0 m                | 1.85 m               |
+ | Tridem Drive Axle   | Truck and Pony Trailer Combinations         | 2.4 m                | 2.8 m                |
+ | Tridem Trailer Axle | Truck and Pony Trailer Combinations         | 2.4 m                | 2.5 m                |
 
   Scenario Outline: invalid axle spread shows the allowed range for the axle unit
     Given a user has selected <vehicleCombination>
