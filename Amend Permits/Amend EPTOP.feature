@@ -41,23 +41,11 @@ Rule: staff are notified when start date and/or expiry date are in the past
 @orv2-5911-5
 Rule: staff can change power unit details and recall a new power unit with an allowable vehicle sub-type without impacting other application data
 
- #see power unit to permit mapping https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/doc2.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
+ # see vehicle to permit mapping: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/doc2.aspx?sourcedoc=%7B61096924-A4AC-4CE8-8B38-209A2ED349C3%7D&file=Vehicle%20to%20Permit%20Mapping.xlsx&action=default&mobileredirect=true
 
-  Scenario: licensed GVW increase
-    Given the current permit has a licensed GVW of 40000kg
-      And the current permit has an actual GVW of 46000kg
-      And the current licensed GVW increase is 6000kg
-     When staff amend the licensed GVW to 45000kg
-     Then the licensed GVW is updated to 45000kg
-      And the licensed GVW increase is 5000kg
-
-  Scenario: licensed GVW decrease
-    Given the current permit has a licensed GVW of 40000kg
-      And the current permit has an actual GVW of 46000kg
-      And the current licensed GVW increase is 6000kg
-     When staff amend the licensed GVW to 35000kg
-     Then the licensed GVW is updated to 35000kg
-      And the licensed GVW increase is 4000kg
+ # see the following feature file for rules related to trip details:
+ # - User Apply for EPTOP
+ # - Staff Apply for EPTOP
 
 # Trip Details
  # see the following feature file for rules related to trip details:

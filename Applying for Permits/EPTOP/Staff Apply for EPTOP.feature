@@ -1,4 +1,4 @@
-@orv2-5588 https://moti-imb.atlassian.net/browse/ORV2-5588
+@orv2-5949 https://moti-imb.atlassian.net/browse/ORV2-5949
 Feature: As staff I want to apply for a Single Trip Overweight Oversize Empty (STWSE) permit with a length over 27.5m so that I can move my vehicle given the length beyond 27.5m triggers a legal "overload" condition regardless of whether a commodity is being carried.
 
 users = PC, SA, TRAIN, CTPO
@@ -21,7 +21,7 @@ users = PC, SA, TRAIN, CTPO
 # Dimension Based Submission Rules
  # See User Apply for STWSE feature
 
-@orv2-5588-1
+@orv2-5949-1
 Rule: staff can add an STWSE permit application to the cart with violations for OAW, OAL, OAH
 
   Scenario: > OAW, OAL, OAH violations add to cart
