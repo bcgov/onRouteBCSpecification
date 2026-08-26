@@ -89,6 +89,25 @@ Note: These rules cover the user experience for applying for a EPTOP. for all us
        And they are on the review and confirm page
       Then the permit fee is shown as $25
 
+ @orv2-5947-10
+ Rule: EPTOP can be free if CV Clients have the free flag on their profile
+
+   Scenario: review and confirm page
+      Given a user has filled out the application form
+       And they are on the review and confirm page
+       And they are a CV Client with the free flag
+      Then the permit fee is shown as $0
+
+# Review and Confirm
+ @orv2-5947-9
+ Rule: Point of Entry is shown on the review and confirm page
+
+   Scenario: review and confirm page
+      Given a user has filled out the application form
+       And they are on the review and confirm page
+      Then they see the point of entry they inputted on the application form
+
 # Notes:
-- under Non-Res in start permit menu
-- if BC then show error on province selection
+ - need to confirm if LOA's can be used with EPTOP's @waitingfor
+ - under Non-Res in start permit menu
+ - if BC then show error on province selection

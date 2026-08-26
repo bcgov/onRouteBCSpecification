@@ -79,7 +79,7 @@ Staff = PC, SA, TRAIN, CTPO
  # see fee calculation and fee summary rules in the following feature files:
  # - User Apply for EPTOP
 
-  @orv2-5953-11
+ @orv2-5953-11
  Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
 
    Scenario: = CPV ($0 amend)
