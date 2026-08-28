@@ -22,8 +22,20 @@ Rule: staff must complete all mandatory fields
        And they see "This is a required field"
        And incomplete mandatory fields are indicated
        
+# Contact Information
+ Rule: staff can change all contact information except company email
 # Permit Details
-Rule: staff can change all contact information except company email
+ Rule: staff can add or remove CVSE forms
+
+  Scenario: add CVSE form
+    Given staff have not added a CVSE form to the permit
+     When they choose to add a CVSE form
+      Then they see a new CVSE form section on the issued permit pdf
+
+ Scenario: remove CVSE form
+    Given staff have added a CVSE form to the permit
+     When they choose to remove the CVSE form
+      Then the CVSE form section is removed from the issued permit pdf
 
 # Amending Permit Applications
 @orv2-4140-1

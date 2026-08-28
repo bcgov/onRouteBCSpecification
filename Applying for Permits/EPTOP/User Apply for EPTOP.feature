@@ -108,6 +108,6 @@ Note: These rules cover the user experience for applying for a EPTOP. for all us
       Then they see the point of entry they inputted on the application form
 
 # Notes:
- - need to confirm if LOA's can be used with EPTOP's @waitingfor
+ - need to confirm if LOA's can be used with EPTOP's #waitingfor Barry
  - under Non-Res in start permit menu
  - if BC then show error on province selection
