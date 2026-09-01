@@ -517,7 +517,9 @@ Rule: Only authorized users can see the option to navigate to the shopping cart
 @orv2-1486-33, @orv2-2048-29
 Rule: Shopping cart item count is refreshed when choosing to view the shopping cart or the browser is reloaded
 
-
+# Shopping Cart
+@orv2-
+Rule: Users can pay for a STOW permit application in the shopping cart that has policy validation warnings
 
 
 # Rule: A permit, void permit or revoked permit is issued when permit number is generated
