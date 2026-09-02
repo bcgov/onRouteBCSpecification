@@ -1,27 +1,31 @@
 @orv2-5727 https://onroutebc.atlassian.net/browse/ORV2-5727
-Feature: 
+Feature: As staff I need to be able to review and confirm my STOW permit application details so that I can add it to the shopping cart.
 
+Staff = PC, SA, TRAIN, CTPO
 
+# Application Submission
+@orv2-5727-1
+Rule: Staff can add a STOW permit application to the shopping cart
 
-@orv2-
-Rule: The user must complete the attestations
+@orv2-5727-2
+Rule: Staff can add a STOW permit application to the cart that has violations and policy validation warnings
 
- Scenario: Attestations
-     Given a user has continued from the "Permit Application" page
-     When they arrive at the "Review and Confirm Details" page
-     Then they see a list of attestations they are required to check in order to proceed to pay
-       | Confirm that this permit is issued to the registered owner (or lessee) of the vehicle being permitted. |
-       | Confirm compliance with the appropriate policy for the selected vehicle(s) and/or commodity(s).        |
-       | Confirm the information in this application is correct.                                                |
+@orv2-5727-3
+Rule: Staff see a warning modal if the application has violations and policy validation warnings when they choose to add to cart
 
- Scenario: Attestations warning
-     Given a user has not checked one or more attestations
-     When they choose to continue
-     Then they see "Checkbox selection is required"
-      And the checkboxes are indicated
+  Scenario: permit application has policy validation warnings and staff choose to continue
+    Given permit application has policy validation warnings
+     When staff choose to add to cart
+     Then they see: "Application has violation(s) and/or warning(s) I confirm that I have reviewed the violation(s) and/or warning(s) associated with this permit application and would like to add it to the cart. Cancel Add to Cart"
 
-@orv2-
-Rule: Users are directed to applications in review after submitting the application for review
-@orv2-
-Rule: Users can pay for a STOW permit application in the shopping cart that has policy validation warnings
+  Scenario: cancel add to cart
+    Given permit application has policy validation warnings
+      And they are at the warning modal
+     When staff choose to cancel
+     Then they are directed back to the review and confirm page
 
+  Scenario: choose to add to cart
+    Given permit application has policy validation warnings
+      And they are at the warning modal
+     When staff choose to add to cart
+     Then they are directed to the shopping cart page

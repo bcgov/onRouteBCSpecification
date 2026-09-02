@@ -5,7 +5,10 @@ Feature:
 CV Client: CA, PA
 
 # Application Submission
-
 Rule: CV Clients must submit a STOW permit application for review by the PPC
+
+Rule: CV Clients can submit a STOW permit application with policy validation warnings for review by the PPC
+
+Rule: CV Clients can submit a STOW permit application with violations for review by the PPC if an extraordinary load approval number has been inputted
 
 Rule: CV Clients are directed to applications in review after submitting the application for review
