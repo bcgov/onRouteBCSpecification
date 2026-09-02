@@ -1,7 +1,11 @@
 @orv2-5400 https://onroutebc.atlassian.net/browse/ORV2-5400
-Feature: 
+Feature: As a user I need to be able to review and confirm my STOW permit application details so that I can submit it for review by the PPC or add it to the shopping cart.
 
 user = PC, SA, TRAIN, CTPO, CA, PA
+
+# Notes
+ # see Staff Review and Confirm STOW.feature for staff review and confirm details
+ # see CV Client Review and Confirm STOW.feature for CV client review and confirm details
 
 # Show Information Inputted by the User and onRouteBC Generated Information
  @orv2-5400-1
