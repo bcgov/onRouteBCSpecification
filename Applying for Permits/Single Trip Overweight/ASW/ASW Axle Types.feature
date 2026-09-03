@@ -29,8 +29,7 @@ Rule: The "No. of Wheels" column in the ASW Table is automatically populated bas
 
   Scenario: No. of Wheels auto-populates based on Axle Type selection
     Given a user has added a truck tractor power unit
-      And they change the Axle Type for an axle unit 2 to "Tandem"
-     When they choose to calculate or continue to the next step #or tab?
+     When they change the Axle Type for an axle unit 2 to "Tandem"
      Then the No. of Wheels for Axle Unit 2 is automatically populated with "4"
 
 @orv2-5935-6

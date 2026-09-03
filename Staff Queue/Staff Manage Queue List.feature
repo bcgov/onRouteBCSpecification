@@ -159,6 +159,28 @@ Rule: Claimed applications are shown in their own list
 @orv2-2398-9
 Rule: The staff queue lists (queued and claimed) are paginated at 25 items by default
 
+@orv2-5730
+Feature: As a staff permit issuer, I want to see the approval no. column in the applications and claimed tab of the queue, counts for the number of applications and number of claimed applications and a menu item in the sticky side bar to go to the queue, the home button will go to a placeholder page for now.
+
+staff = PC, SA, TRAIN, CTPO
+
+@orv2-5730
+Rule:
+
+# Notes
+ ## Approval No. Column
+ - New Approval No. column on both Applications and Claimed tab lists
+ - Filter by Approval No.
+ - Located after time in queue
+ - If no approval no. has been inputted the column row is blank
+ - If multiple numbers then carriage return in the table up to 100 characters
+ - 
+ ## Sticky Side Bar Menu
+ - 
+ ## Application and Claimed Count
+
+
+
 
 
 

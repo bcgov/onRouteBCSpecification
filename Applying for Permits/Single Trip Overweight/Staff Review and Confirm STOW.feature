@@ -31,4 +31,5 @@ Staff = PC, SA, TRAIN, CTPO
      Given permit application has policy validation warnings
        And they are at the warning modal
       When staff choose to add to cart
-      Then they are directed to the shopping cart page
+      Then the permit application is added to the cart
+       And they are directed to AIP
