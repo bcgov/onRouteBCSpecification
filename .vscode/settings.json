@@ -1,9 +1,10 @@
 {
- "autoHide.autoHideSideBar": false,
- "cSpell.words": [
-  "CTPO",
-  "STOS",
-  "Tridem"
- ],
- "editor.fontSize": 15
+  "autoHide.autoHideSideBar": false,
+  "cSpell.words": [
+    "CTPO",
+    "STOS",
+    "Tridem"
+  ],
+  "editor.fontSize": 15
 }
+

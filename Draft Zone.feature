@@ -10,7 +10,6 @@ Staff = PC, SA, TRAIN, FIN, CTPO, EO, HQA
 Auth Staff = PC, SA, TRAIN, CTPO
 Non Auth Staff = FIN, EO, HQA
 
-
 | Permit Type | New Application CV Client                   | Amend Application Staff                                 |
 | TROS        | Now-14 days from now (Editable - CV Client) | N/A                                                             |
 | TROS        | Any-60 days from now (Editable - Staff)     | Any-60 days from now (Editable - Staff)                         |

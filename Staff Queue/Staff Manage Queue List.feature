@@ -164,8 +164,61 @@ Feature: As a staff permit issuer, I want to see the approval no. column in the 
 
 staff = PC, SA, TRAIN, CTPO
 
-@orv2-5730
-Rule:
+# Approval No. Column
+ @orv2-5730
+ Rule: Approval No. column shows user submitted Approval No.(s) 
+
+  Scenario: no number
+     When a user does not submit an approval number with application 123
+     Then there is no approval number for application 123 in the queue
+ 
+  Scenario: number
+     When a user submits approval number ABC with application 123
+     Then staff see approval number ABC for application 123 in the queue
+
+ @orv2-5730
+ Rule: Approval No. column shows all characters submitted by the user 
+
+  Scenario: multiple approval numbers
+     Given a user has submitted the following approval numbers with application 123
+       | abc123 |
+       | 123abc |
+       | 456xyz |
+       | xyz456 |
+      Then staff see the following approval numbers in the queue for application 123
+       | abc123 |
+       | 123abc |
+       | 456xyz |
+       | xyz456 |
+
+# Sticky Side Bar Menu
+ @orv2-5730
+ Rule: Staff can navigate directly to the cue
+
+  Scenario: on global search
+     When staff choose to go to the queue
+     Then they are directed to the queue
+
+ @orv2-5730
+ Rule: the queue menu item is indicated as chosen
+
+    Scenario: on queue
+       When staff are at the queue
+       Then the queue menu item in the sticky side bar is indicated
+
+     Scenario: on home
+       When staff ar at home
+       Then the home menu item in the sticky side bar is indicated
+   
+ @orv2-5730
+ Rule: Staff can navigate directly to the home page
+ # placeholder welcome to onroute page for now
+
+# Application and Claimed Count
+ @orv2-5470
+ Rule: 
+
+
 
 # Notes
  ## Approval No. Column
