@@ -165,7 +165,7 @@ Feature: As a staff permit issuer, I want to see the approval no. column in the 
 staff = PC, SA, TRAIN, CTPO
 
 # Approval No. Column
- @orv2-5730
+ @orv2-5730-1
  Rule: Approval No. column shows user submitted Approval No.(s) 
 
   Scenario: no number
@@ -176,7 +176,7 @@ staff = PC, SA, TRAIN, CTPO
      When a user submits approval number ABC with application 123
      Then staff see approval number ABC for application 123 in the queue
 
- @orv2-5730
+ @orv2-5730-2
  Rule: Approval No. column shows all characters submitted by the user 
 
   Scenario: multiple approval numbers
@@ -192,14 +192,14 @@ staff = PC, SA, TRAIN, CTPO
        | xyz456 |
 
 # Sticky Side Bar Menu
- @orv2-5730
+ @orv2-5730-3
  Rule: Staff can navigate directly to the cue
 
   Scenario: on global search
      When staff choose to go to the queue
      Then they are directed to the queue
 
- @orv2-5730
+ @orv2-5730-4
  Rule: the queue menu item is indicated as chosen
 
     Scenario: on queue
@@ -210,32 +210,29 @@ staff = PC, SA, TRAIN, CTPO
        When staff ar at home
        Then the home menu item in the sticky side bar is indicated
    
- @orv2-5730
+ @orv2-5730-5
  Rule: Staff can navigate directly to the home page
  # placeholder welcome to onroute page for now
 
 # Application and Claimed Count
- @orv2-5470
- Rule: Staff can see the number of applications in the queue
+ @orv2-5730-6
+ Rule: Staff can see the number of applications in the queue 
 
+   Scenario: 100 applications
+      When there are 100 applications in the queue
+      Then staff see 100 in the applications queue counter
 
+  Scenario: 0 applications
+     When there are 0 applications in the queue
+     Then staff do not see a counter
 
-# Notes
- ## Approval No. Column
- - New Approval No. column on both Applications and Claimed tab lists
- - Filter by Approval No.
- - Located after time in queue
- - If no approval no. has been inputted the column row is blank
- - If multiple numbers then carriage return in the table up to 100 characters
- - 
- ## Sticky Side Bar Menu
- - 
- ## Application and Claimed Count
+ @orv2-5730-7
+ Rule: Staff can see the number of claimed application in the queue
 
+  Scenario: 50 claimed applications
+     When there are 50 claimed applications in the queue
+     Then staff see 50 in the claimed applications queue counter
 
-
-
-
-
-
-
+  Scenario: 0 claimed applications
+     When there are 0 claimed applications in the queue
+     Then staff do not see a counter
