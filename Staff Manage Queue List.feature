@@ -216,7 +216,7 @@ staff = PC, SA, TRAIN, CTPO
 
 # Application and Claimed Count
  @orv2-5470
- Rule: 
+ Rule: Staff can see the number of applications in the queue
 
 
 
