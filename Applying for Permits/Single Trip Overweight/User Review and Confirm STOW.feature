@@ -95,7 +95,7 @@ user = PC, SA, TRAIN, CTPO, CA, PA
 
 # Permit Fee
  @orv2-5400-7
- Rule: The overload permit fee is calculated using overload (kg) (or fraction thereof) x (the total distance (km) / 10) rounded to the nearest dollar with a minimum fee of $25.00
+ Rule: The overload permit fee is calculated using the rate for the overload (kg) and each 10 km or fraction thereof of total distance, rounded to the nearest dollar with a minimum fee of $25.00
 
   # see General Fee 3(d) for current fee table: https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/328_91
 

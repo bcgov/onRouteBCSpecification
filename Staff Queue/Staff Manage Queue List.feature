@@ -236,3 +236,4 @@ staff = PC, SA, TRAIN, CTPO
   Scenario: 0 claimed applications
      When there are 0 claimed applications in the queue
      Then staff do not see a counter
+

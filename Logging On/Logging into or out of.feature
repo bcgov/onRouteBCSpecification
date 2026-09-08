@@ -1,4 +1,4 @@
-Feature: Log in or out of onRouteBC
+Feature: Log in or out of onRouteBC 
 
 User = CA, PA, PC, SA, TRAIN, FIN, CTPO, EO, HQA
 CV Client = CA, PA
@@ -40,7 +40,6 @@ Rule: Users are directed to their unique onRouteBC webapp home page after loggin
       And they are directed to the staff home screen
       And they see the global navigation bar (sticky side bar)
 
-
   Scenario: PC, SA, TRAIN, CTPO profile and valid IDIR
     Given PC, SA, TRAIN, CTPO have valid IDIR credentials
       And an onRouteBC profile 
@@ -57,3 +56,4 @@ Rule: Users are directed to their unique onRouteBC webapp home page after loggin
     Given staff does not have an onRouteBC profile
      When they log into onRouteBC using their IDIR credentials
      Then they see "Universal Unauthorized Error" Page
+
