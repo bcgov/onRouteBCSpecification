@@ -8,7 +8,7 @@ Rule: Tandem Drive with a Single Axle Jeep with specific inter-axle spacing and 
 
   Preconditions:
     - Vehicle configuration is Tandem Drive tractor with Single Axle Jeep
-    - Two axle units are being evaluated for combined weight capacity
+    - Axle units 2 and 3 are being evaluated for combined weight capacity
     - Violation status is based on axle spread and inter-axle spacing ranges
 
   Scenario: Tandem Drive Single Axle Jeep with 2.40m-3.00m spread and 1.20m-3.00m spacing permits 28,000kg

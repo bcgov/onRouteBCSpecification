@@ -160,7 +160,7 @@ Rule: Claimed applications are shown in their own list
 Rule: The staff queue lists (queued and claimed) are paginated at 25 items by default
 
 @orv2-5730
-Feature: As a staff permit issuer, I want to see the approval no. column in the applications and claimed tab of the queue, counts for the number of applications and number of claimed applications and a menu item in the sticky side bar to go to the queue, the home button will go to a placeholder page for now.
+Feature: As a staff permit issuer, I want to see the approval no. column in the applications and claimed tab of the queue, counts for the number of applications and number of claimed applications and a menu item in the sticky side bar to go to the queue, the home button will go to Welcome to onRouteBC page for now (staff landing page that can't see the queue e.g., FIN, EO).
 
 staff = PC, SA, TRAIN, CTPO
 
