@@ -22,13 +22,34 @@ Rule: Axle Type defaults to "Single" for all axle units
     Given a user has added a truck tractor power unit
      Then the Axle Type for all axle units is defaulted to "Single"
 
+@orv2-6006-1
+Rule: The default "No. of Wheels" for axle unit 1 (steer) is 2
+
+  Scenario: default no. of wheels for axle unit 1
+     When a user has added a truck tractor power unit
+      And the default Axle Type for axle unit 1 is "Single"
+     Then the No. of Wheels for Axle Unit 1 is automatically populated with "2"
+
+@orv2-6006-2
+Rule: The default "No. of Wheels" for axle unit 2 and beyond (drive and trailer(s)) is 4
+
+  Scenario: default no. of wheels for axle unit 2 and beyond
+     When a user has added a truck tractor power unit
+      And the default Axle Type for an axle unit 2 is "Single"
+     Then the No. of Wheels for Axle Unit 2 is automatically populated with "4"
+
 @orv2-5935-5
-Rule: The "No. of Wheels" column in the ASW Table is automatically populated based on the selected Axle Type for each axle unit based on the minimum allowances for Axle Unit 1 (steer) and Axle Unit 2 and beyond (drive and trailer(s))
+Rule: The "No. of Wheels" column in the ASW Table is automatically populated based on the selected Axle Type and the allowances for Axle Unit type
 
  # See ASW No. of Wheels per Axle feature for the specific allowances for each axle type.
 
-  Scenario: No. of Wheels auto-populates based on Axle Type selection
+  Scenario: default no. of wheels
     Given a user has added a truck tractor power unit
+     When they change the Axle Type for an axle unit 1 to "Single"
+     Then the No. of Wheels for Axle Unit 1 is automatically populated with "2"
+
+ Scenario: default no. of wheels for axle unit 2 and beyond
+    Given a user has added a truck tractor power unit with at least two axle units
      When they change the Axle Type for an axle unit 2 to "Tandem"
      Then the No. of Wheels for Axle Unit 2 is automatically populated with "4"
 

@@ -1,9 +1,9 @@
-@orv2-5872 https://moti-imb.atlassian.net/browse/ORV2-5872
+@orv2-5874 https://moti-imb.atlassian.net/browse/ORV2-5874
 Feature: As a user I need the system to validate legal interaxle spacing so that STOW applications comply with Appendix A Table II and spacing exceptions.
 
 Source table: Table II and spacing exceptions reference https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
 
-@orv2-5872-1
+@orv2-5874-1
 Rule: Interaxle spacing between adjacent axle units must meet Table II minimum distances for vehicles to operate at standard legal weights ((9,100 kg single / 17,000 kg tandem / 24,000 kg tridem)).
 
  Table II Minimum Interaxle Spacing (m) for Standard Legal Weights:
@@ -34,7 +34,7 @@ Rule: Interaxle spacing between adjacent axle units must meet Table II minimum d
       | tandem to tridem below   | Tandem Axle | Tridem Axle | 5.49    | invalid |
       | tridem to tridem below   | Tridem Axle | Tridem Axle | 5.99    | invalid |
 
-@orv2-5872-2
+@orv2-5874-2
 Rule: Users are shown a violation statement when interaxle spacing is below the Table II minimum distance
 
   Scenario Outline: interaxle spacing below minimum shows the required minimum distance between axle units
@@ -65,7 +65,7 @@ For standard commercial vehicles operating at standard legal weights, the minimu
 | **Tridem Axle** | **Tridem Axle** | **6.0 m** |
 
 # Deprecated
- @orv2-5872-3
+ @orv2-5874-3
  Rule: A truck tractor with a single-axle jeep and lowbed semi-trailer may use interaxle spacing between 1.2 m and 3.5 m without a permit under CTR Section 7.22 when the qualifying load conditions are met
 
    Scenario Outline: validate CTR Section 7.22 interaxle spacing exception for single-axle jeep with lowbed semi-trailer
