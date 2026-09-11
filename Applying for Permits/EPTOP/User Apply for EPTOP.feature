@@ -70,7 +70,7 @@ Note: These rules cover the user experience for applying for a EPTOP. for all us
  Rule: users must input a point of entry for the trip
 
    Scenario: input point of entry and point of exit
-      When a user inputs a point of entry and point of exit
+      When a user inputs a point of entry
       Then they can continue to the next step
 
    Scenario: no input to mandatory fields 
