@@ -14,7 +14,6 @@ Table I - Axle Spread (Between Extreme Axle Centres) Reference Limits:
 | Truck or Truck Tractor                                          | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | See specific combinations in the OWDS                        |
 | Truck and Pony Trailer Combinations                             | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 2.5 m                                      |
 | Truck Tractor and Semi-Trailer Combinations                     | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 3.7 m                                      |
-| Tridem Truck Tractor with Tridem or Tandem Axle Pole Trailer    | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m          | Pole Trailer: Min. 2.4 m / Max. 3.1 m                        |
 | Truck Tractor and Semi-Trailer - Spread Tandem                  | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 ma                 | Min. 1.86 m / Max. 3.07 m | Not Applicable                   | Not Applicable                                               |
 * Oilfield bed truck exception up to 3.1 m.
 a Truck Tractor and Semi-Trailer - Spread Tandem see Tandem Axles in Trailer			
@@ -75,7 +74,6 @@ Rule: Tridem axles in trailers must be validated using Table I limits for the se
  | Axle Unit Type         | Vehicle Combination                                 | Minimum Legal Spread | Maximum Legal Spread |
  | Tridem Trailer Axle    | Truck and Pony Trailer Combinations                 | 2.4 m                | 2.5 m                |
  | Tridem Trailer Axle    | Truck Tractor and Semi-Trailer Combinations         | 2.4 m                | 3.7 m                |
- | Tridem Trailer Axle    | Tridem Truck Tractor + Tandem/Tridem Pole Trailer   | 2.4 m                | 3.1 m                |
 
   Scenario Outline: validate tridem trailer spread limits by vehicle combination
     Given a user has selected <vehicleCombination>
@@ -127,3 +125,7 @@ Rule: If Table I marks an axle type as Not Applicable for a vehicle combination,
     Examples:
       | vehicleCombination                             | axleType           |
       | Truck Tractor and Semi-Trailer - Spread Tandem | Tridem Drive Axles |
+
+# Notes:
+ - Removed from STOW allowance | Tridem Truck Tractor with Tridem or Tandem Axle Pole Trailer    | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m          | Pole Trailer: Min. 2.4 m / Max. 3.1 m                        |
+- | Tridem Trailer Axle    | Tridem Truck Tractor + Tandem/Tridem Pole Trailer   | 2.4 m                | 3.1 m                |
