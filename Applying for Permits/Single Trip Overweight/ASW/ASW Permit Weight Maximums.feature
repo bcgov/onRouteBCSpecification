@@ -111,7 +111,7 @@ Rule: Tridem axle unit policy maximum is 28,000 kg by default.
             | 28001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-6
-Rule: Tridem axle unit policy maximum is 29,000 kg only when tridem spread is not less than 2.4 m and not more than 3.7 m, and booster configuration is single-axle booster or no booster; otherwise, if tridem spread is outside 2.4 m to 3.7 m or booster configuration is tandem or tridem booster, the tridem axle unit policy maximum is 28,000 kg.
+Rule: A tridem axle unit on a trailer, including a lowbed semi-trailer, has a policy maximum of 29,000 kg only when tridem spread is not less than 2.4 m and not more than 3.7 m, and booster configuration is single-axle booster or no booster; otherwise, if tridem spread is outside 2.4 m to 3.7 m or booster configuration is tandem or tridem booster, the tridem trailer axle unit policy maximum is 28,000 kg.
 
     Scenario Outline: tridem axle policy maximum by spread and booster configuration
         Given the axle unit type is tridem axle
