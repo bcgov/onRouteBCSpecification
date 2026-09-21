@@ -9,12 +9,28 @@ user = PC, SA, TRAIN, CTPO, CA, PA
 staff = PC, SA, TRAIN, CTPO
 
 Table I - Axle Spread (Between Extreme Axle Centres) Reference Limits:
-| Vehicle / Combination                                           | Single Axles (Steer, Drive or Trailer)   | Tandem Axles (Steer, Drive or Trailer)    | Tandem Axles in Trailer   | Tridem Drive Axles               | Tridem Axles in Trailer                                      |
-| --------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------- | ------------------------- | -------------------------------  | ------------------------------------------------------------ |
-| Truck or Truck Tractor                                          | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | See specific combinations in the OWDS                        |
-| Truck and Pony Trailer Combinations                             | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 2.5 m                                      |
-| Truck Tractor and Semi-Trailer Combinations                     | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 m                  | N/A                       | Min. 2.4 m / Max. 2.8 m (3.1 m*) | Min. 2.4 m / Max. 3.7 m                                      |
-| Truck Tractor and Semi-Trailer - Spread Tandem                  | Max. 1.0 m                               | Min. 1.0 m / Max. 1.85 ma                 | Min. 1.86 m / Max. 3.07 m | Not Applicable                   | Not Applicable                                               |
+| Vehicle / Combination                          | Axle Group                            | Permitted Spread                      |
+| ---------------------                          | ----------                            | ----------------                      |
+| Truck or Truck Tractor                         | Single axle (steer, drive or trailer) | Max. 1.0 m                            |
+| Truck or Truck Tractor                         | Tandem axle (steer, drive or trailer) | Min. 1.0 m / Max. 1.85 m              |
+| Truck or Truck Tractor                         | Tandem axle in trailer                | N/A                                   |
+| Truck or Truck Tractor                         | Tridem drive axle                     | Min. 2.4 m / Max. 2.8 m (3.1 m*)      |
+| Truck or Truck Tractor                         | Tridem axle in trailer                | See specific combinations in the OWDS |
+| Truck and Pony Trailer Combinations            | Single axle (steer, drive or trailer) | Max. 1.0 m                            |
+| Truck and Pony Trailer Combinations            | Tandem axle (steer, drive or trailer) | Min. 1.0 m / Max. 1.85 m              |
+| Truck and Pony Trailer Combinations            | Tandem axle in trailer                | N/A                                   |
+| Truck and Pony Trailer Combinations            | Tridem drive axle                     | Min. 2.4 m / Max. 2.8 m (3.1 m*)      |
+| Truck and Pony Trailer Combinations            | Tridem axle in trailer                | Min. 2.4 m / Max. 2.5 m               |
+| Truck Tractor and Semi-Trailer Combinations    | Single axle (steer, drive or trailer) | Max. 1.0 m                            |
+| Truck Tractor and Semi-Trailer Combinations    | Tandem axle (steer, drive or trailer) | Min. 1.0 m / Max. 1.85 m              |
+| Truck Tractor and Semi-Trailer Combinations    | Tandem axle in trailer                | N/A                                   |
+| Truck Tractor and Semi-Trailer Combinations    | Tridem drive axle                     | Min. 2.4 m / Max. 2.8 m (3.1 m*)      |
+| Truck Tractor and Semi-Trailer Combinations    | Tridem axle in trailer                | Min. 2.4 m / Max. 3.7 m               |
+| Truck Tractor and Semi-Trailer - Spread Tandem | Single axle (steer, drive or trailer) | Max. 1.0 m                            |
+| Truck Tractor and Semi-Trailer - Spread Tandem | Tandem axle (steer, drive or trailer) | Min. 1.0 m / Max. 1.85 m (see note a) |
+| Truck Tractor and Semi-Trailer - Spread Tandem | Tandem axle in trailer                | Min. 1.86 m / Max. 3.07 m             |
+| Truck Tractor and Semi-Trailer - Spread Tandem | Tridem drive axle                     | Not Applicable                        |
+| Truck Tractor and Semi-Trailer - Spread Tandem | Tridem axle in trailer                | Not Applicable                        |
 * Oilfield bed truck exception up to 3.1 m.
 a Truck Tractor and Semi-Trailer - Spread Tandem see Tandem Axles in Trailer			
 
