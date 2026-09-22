@@ -1,7 +1,5 @@
-@orv2- https://moti-imb.atlassian.net/browse/ORV2-
-Feature: As a user I need the system to validate legal interaxle spacing so that STOW applications comply with Appendix A Table II and spacing exceptions.
-
-Source table: Table II and spacing exceptions reference https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourcedoc=%7BBC9D45A8-8095-48DB-8D4F-C7420A2CAA89%7D&file=Spreads_Spacings_Weight_Exceptions.xlsx&action=default&mobileredirect=true
+@orv2-6030 https://moti-imb.atlassian.net/browse/ORV2-6030
+Feature: As a user I need the system to validate interaxle spacing exceptions so that STOW applications comply with Appendix A Table II and spacing exceptions.
 
 # Notes
 Under British Columbia regulations, interaxle spacing — defined as the longitudinal distance separating two axle units measured from the centers of the closest axles—is strictly controlled to protect highway infrastructure and distribute weights safely.
@@ -26,6 +24,7 @@ For standard commercial vehicles operating at standard legal weights, the minimu
 
 Note: If a vehicle satisfies these minimum distances, its axle units are allowed their full standard legal weight limits.
 
+@orv2-6030-1
 Rule: Tandem and tridem jeeps must have at least 4.2 m of interaxle spacing to the adjacent trailer axle group when operating under permit
 
 	Scenario Outline: validate minimum spacing between a jeep and the adjacent trailer axle group
@@ -39,6 +38,7 @@ Rule: Tandem and tridem jeeps must have at least 4.2 m of interaxle spacing to t
 			| tridem jeep at minimum | tridem   | 4.2     | valid   |
 			| jeep below minimum     | tandem   | 4.19    | invalid |
 
+@orv2-6030-2
 Rule: A non-articulating booster attached to the rear of a lowbed must have at least 4.2 m of interaxle spacing from the trailer's last axle, except that a single-axle booster may have spacing below 3.0 m
 
 	Scenario Outline: validate lowbed trailer-to-booster spacing exception
@@ -52,6 +52,7 @@ Rule: A non-articulating booster attached to the rear of a lowbed must have at l
 			| single-axle booster below 3.0 m | single-axle | 2.9     | valid   |
 			| other booster below threshold   | tandem      | 4.19    | invalid |
 
+@orv2-6030-3
 Rule: For standard and wide wheelers, the interaxle spacing from the last drive or jeep axle in the front half of the vehicle to the first trailer or dolly axle in the back half must be at least 7.0 m
 
 	Scenario Outline: validate 7.0 m spacing between the front and back halves of a wheeler
@@ -67,6 +68,7 @@ Rule: For standard and wide wheelers, the interaxle spacing from the last drive 
 			| wide wheeler minimum     | wide        | 7.0     | valid   |
 			| wheeler below minimum    | standard    | 6.99    | invalid |
 
+@orv2-6030-4
 Rule: Platform trailers must meet the applicable interaxle spacing thresholds for their axle groups
 
 	Scenario Outline: validate platform trailer interaxle spacing
