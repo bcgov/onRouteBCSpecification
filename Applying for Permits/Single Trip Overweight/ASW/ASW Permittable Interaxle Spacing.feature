@@ -1,5 +1,7 @@
 @orv2-6030 https://moti-imb.atlassian.net/browse/ORV2-6030
-Feature: As a user I need the system to validate interaxle spacing exceptions so that STOW applications comply with Appendix A Table II and spacing exceptions.
+Feature: As a user I need the system to validate interaxle spacing exceptions so that STOW applications comply with policy spacing exceptions.
+
+User = PC, SA, TRAIN, CTPO, CA, PA
 
 # Notes
 Under British Columbia regulations, interaxle spacing — defined as the longitudinal distance separating two axle units measured from the centers of the closest axles—is strictly controlled to protect highway infrastructure and distribute weights safely.
