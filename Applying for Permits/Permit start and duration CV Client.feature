@@ -16,6 +16,7 @@ Start Date Rules:
 | STWSE  | Today to 14 days from today |
 | STGVWI | Today to 14 days from today |
 | EPTOP  | Today to 14 days from today |
+| STWS   | Today to 14 days from today |
 
 Rule: a CV Client can choose a start date up to 14 days from today (current date and time the application is initiated)
 
@@ -46,3 +47,4 @@ Duration Overview:
 | STWSE  | Up to 7 days forward from today                              |
 | STGVWI | Up to 7 days forward from today                              |
 | EPTOP  | Up to 7 days forward from today                              |
+| STWS   | Up to 7 days forward from today                              |

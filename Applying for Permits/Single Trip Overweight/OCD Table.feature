@@ -111,8 +111,6 @@ Rule: Numbers greater than 999 are shown with commas in the OCD table. For examp
 @orv2-5899-11
 Rule: The OCD table is updated when the user changes any of the ASW table inputs and recalculates the overload amount.
 
-
-
 # Notes
 - Show how we calculate the overload
 - Collapsible OCD?

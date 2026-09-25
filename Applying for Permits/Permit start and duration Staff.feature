@@ -17,6 +17,7 @@ Permit Start Date Overview:
 | STWSE  | Any past date to 60 days from today              |
 | STGVWI | Any past date to 60 days from today              |
 | EPTOP  | Any past date to 60 days from today              |
+| STWS   | Any past date to 60 days from today              |
 
 Rule: staff must choose a start date to a maximum of 60 days from today (current date and time the application is initiated)
 
@@ -102,6 +103,7 @@ Duration Overview:
 | STWSE  | Up to 30 days forward                                        |
 | STGVWI | Up to 30 days forward                                        |
 | EPTOP  | Up to 7 days forward                                         |
+| STWS   | Up to 30 days forward                                        |
 
 Rule: staff must choose a permit length in increments of one day, with a maximum of 30 days for STOS, STFR, NRSCV and STOW
 
