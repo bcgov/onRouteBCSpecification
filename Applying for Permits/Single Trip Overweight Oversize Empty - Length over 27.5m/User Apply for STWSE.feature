@@ -67,11 +67,20 @@ Rule: a user can edit any power unit detail except vehicle type or recall a new 
 Rule: Users must input all dimensions and cannot input negative numbers
 
   Scenario: input negative dimensions
-     When a user inputs negative numbers into dimension fields
-      And they choose to continue 
-     Then they see "Must be greater than 0m."
-      And the dimension fields are indicated with a red border
-      And they cannot continue
+     When a user attempts to input negative numbers into dimension fields
+     Then they cannot input negative numbers into dimension fields
+
+  Scenario: OAW and OAH 0
+     Given a user inputs overall width 0 and overall height 0
+     When they choose to continue
+     Then they cannot continue
+      And they see "Must be greater than 0m."
+      And the overall width and overall height fields are indicated with a red border
+
+  Scenario: front and rear projection 0
+     Given a user inputs front projection 0 and rear projection 0
+     When they choose to continue
+     Then they can continue
 
   Scenario: no input
     Given a user does not input overall width

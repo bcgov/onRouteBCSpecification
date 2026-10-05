@@ -81,7 +81,7 @@ Rule: For applicable power unit vehicle sub-types where Axle Unit 1 is single st
       And Axle Unit 2 Axle Spread is 2.6 m
       And the derived wheelbase is 6.3 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 2 is greater than 6.2 m."
+     Then the result is "Wheelbase for Axle Unit 1 and Axle Unit 2 is greater than 6.2 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border

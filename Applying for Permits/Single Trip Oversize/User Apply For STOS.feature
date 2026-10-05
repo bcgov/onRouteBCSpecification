@@ -283,7 +283,11 @@ Rule: Users may remove all added trailers from the application
 Rule: There is no limit to the number of trailers that can be added to the application
 
 @orv2-2254-21 @orv2-2387-21 @orv2-4015-46 @orv2-2560-30 @orv2-2561-29
-Rule: Users must input load dimensions as numbers
+Rule: Users must input load dimensions as numbers and cannot input negative numbers
+
+  Scenario: input negative dimensions
+     When a user attempts to input negative numbers into dimension fields
+     Then they cannot input negative numbers into dimension fields
 
   Scenario: no loaded dimensions inputted
      When a user chooses to continue to review and confirm

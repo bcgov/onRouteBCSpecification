@@ -16,7 +16,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 # Overweight Dimension set
 
 @orv2-6030-1 
-Rule: A single-axle booster attached to the rear of a semi-trailer with spacing of 4.2 m or greater allows up to the axle unit permittable maximum of 11,000 kg, 7.17 or 7.16g axle group result or bridge formula result if applicable.
+Rule: A single-axle booster attached to the rear of a semi-trailer with spacing of 4.2 m or greater allows up to the axle unit permittable maximum of 11,000 kg, 7.17 axle group result or bridge formula result if applicable.
 
  See the overweight dimension set for specific interaxle spacing requirements filter on:
  | Trailer Type       | Trailer Axle Unit Type |
@@ -27,16 +27,16 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
    Given a single-axle booster is attached to the rear of a semi-trailer
      And the interaxle spacing is 4.2 m or greater
      And the axle unit actual weight is 11,000 kg
-     And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+     And the calculated axle group weight (7.17) results in a higher legal allowable
      And the bridge formula result is higher allowable axle group weight
     Then the overload is the legal maximum amount (9100 kg) - the axle unit actual weight (11,000 kg)
 
   Scenario: axle group wins
    Given a single-axle booster is attached to the rear of a semi-trailer
      And the interaxle spacing is 4.2 m or greater
-     And the calculated 7.17 or 7.16g axle group weight results in a lower legal allowable
+     And the calculated 7.17 axle group weight results in a lower legal allowable
      And the bridge formula result is higher allowable axle group weight
-    Then the overload is the the axle group actual weight - calculated legal allowable axle group (7.17 or 7.16g)
+    Then the overload is the the axle group actual weight - calculated legal allowable axle group (7.17)
 
   Scenario: bridge formula wins
    Given a single-axle booster is attached to the rear of a semi-trailer
@@ -45,7 +45,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Then the overload is the axle group actual weight - the bridge formula result
 
 @orv2-6030-2
-Rule: A single-axle booster attached to the rear of a semi-trailer with spacing between 3.0 m and less than 4.2 m allows only up to the axle unit legal maximum of 9,100 kg, 7.17 or 7.16g axle group result or bridge formula result if applicable.
+Rule: A single-axle booster attached to the rear of a semi-trailer with spacing between 3.0 m and less than 4.2 m allows only up to the axle unit legal maximum of 9,100 kg, 7.17 axle group result or bridge formula result if applicable.
 
  See the overweight dimension set for specific interaxle spacing requirements filter on:
  | Trailer Type       | Trailer Axle Unit Type |
@@ -56,7 +56,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
    Given a single-axle booster is attached to the rear of a semi-trailer
      And the interaxle spacing is between 3.0 m and less than 4.19 m
      And the axle unit actual weight is 9,101 kg
-     And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+     And the calculated axle group weight (7.17) results in a higher legal allowable
      And the bridge formula result is higher allowable axle group weight
     Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
 
@@ -64,7 +64,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Given a single-axle booster is attached to the rear of a semi-trailer
       And the interaxle spacing is between 3.0 m and less than 4.19 m
       And the axle unit actual weight is 9,100 kg
-      And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+      And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
      Then then there is no overload or violation
 
@@ -72,12 +72,12 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Given a single-axle booster is attached to the rear of a semi-trailer
       And the interaxle spacing is between 3.0 m and less than 4.19 m
       And the axle unit actual weight is 9,100 kg
-      And the calculated axle group weight (7.17 or 7.16g) results in a lower legal allowable
+      And the calculated axle group weight (7.17) results in a lower legal allowable
       And the bridge formula result is higher allowable axle group weight
-     Then the overload is the axle group actual weight - calculated legal allowable axle group (7.17 or 7.16g)
+     Then the overload is the axle group actual weight - calculated legal allowable axle group (7.17)
 
 @orv2-6030-3
-Rule: A single-axle booster attached to the rear of a semi-trailer with spacing below 3.0 m allows only up to the axle unit legal maximum of 9,100 kg, 7.17 or 7.16g axle group result, bridge formula result is not applicable.
+Rule: A single-axle booster attached to the rear of a semi-trailer with spacing below 3.0 m allows only up to the axle unit legal maximum of 9,100 kg, 7.17 axle group result, bridge formula result is not applicable.
 
  See the overweight dimension set for specific interaxle spacing requirements filter on:
  | Trailer Type       | Trailer Axle Unit Type |
@@ -88,7 +88,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Given a single-axle booster is attached to the rear of a semi-trailer
       And the interaxle spacing is less than 3.0 m
       And the axle unit actual weight is 9,101 kg
-      And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+      And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
      Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
 
@@ -96,7 +96,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Given a single-axle booster is attached to the rear of a semi-trailer
       And the interaxle spacing is less than 3.0 m
       And the axle unit actual weight is 9,100 kg
-      And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+      And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
      Then there is no overload or violation
 
@@ -104,7 +104,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
     Given a single-axle booster is attached to the rear of a semi-trailer
       And the interaxle spacing is less than 3.0 m
       And the axle unit actual weight is 9,100 kg
-      And the calculated axle group weight (7.17 or 7.16g) results in a higher legal allowable
+      And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
      Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
 
@@ -141,7 +141,7 @@ Rule: For a tridem booster attached to the rear of a semi-trailer, the minimum i
  | Trailer Type       | Trailer Axle Unit Type |
  | ------------------ | --------------------   |
  | Boosters           | Tridem                 |
- 
+
 	Scenario Outline: determine maximum permittable tridem booster weight from trailer-to-booster spacing
 		Given a tridem booster is attached to the rear of a semi-trailer
 		 When a user inputs interaxle spacing of <spacing> m from the trailer's last axle to the booster
