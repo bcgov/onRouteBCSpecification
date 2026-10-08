@@ -1,30 +1,31 @@
-@orv2-4440 https://moti-imb.atlassian.net/browse/ORV2-4440
-Feature: As an authorized staff user, I want to be able to amend a Single Trip Overweight (STOW) permit so that I can update the permit details on behalf of the applicant.
+
+@orv2- https://moti-imb.atlassian.net/browse/ORV2-
+Feature: As an authorized staff user, I want to be able to amend a Single Trip Overweight Oversize (STWS) permit so that I can update the permit details on behalf of the applicant.
 
 Staff = PC, SA, TRAIN, CTPO
 
 # Note
 # See the following feature files for additional specs:
-# - User Apply for STOW
-# - Staff Apply for STOW
+# - User Apply for STWS
+# - Staff Apply for STWS
 # - Common Amend Permit Rules
 # - Permit start and duration Staff
 
 # Contact Information
- @orv2-4440-1
+ @orv2-
  Rule: staff can change all contact information except company email
 
 # Permit Details
  # see Permit start and duration Staff feature file for rules related to permit start and duration
  # see common amend per rules feature file for rules related to permit details
 
- @orv2-4440-2
+ @orv2-
  Rule: staff can change the start date of an issued or active permit
 
- @orv2-4440-3
+ @orv2-
  Rule: staff can change the duration of an issued or active permit
 
- @orv2-4440-4
+ @orv2-
  Rule: staff are notified when start date and/or expiry date are in the past
 
     Scenario: on application form
@@ -40,17 +41,22 @@ Staff = PC, SA, TRAIN, CTPO
 
 # Commodity Details
  # see the following feature file for rules related to commodity details:
- # - User Apply for STOW.feature
- # - Staff Apply for STOW.feature
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
 
 # Vehicle Information
  # see the following feature file for rules related to axle spacings and weights:
- # - User Apply for STOW.feature
- # - Staff Apply for STOW.feature
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
 # Axle Spacings and Weights
  # see the following feature file for rules related to axle spacings and weights:
- # - User Apply for STOW.feature
- # - Staff Apply for STOW.feature
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
+
+# Loaded Dimension
+ # see the following feature file for rules related to loaded dimensions:
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
 
 # Extraordinary Load Requests
  # see the following feature file for rules related to axle spacings and weights:
@@ -58,10 +64,10 @@ Staff = PC, SA, TRAIN, CTPO
 
 # Trip Details
  # see the following feature file for rules related to trip details:
- # - User Apply for STOW.feature
- # - Staff Apply for STOW.feature
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
 
- @orv2-4440-7
+ @orv2-
  Rule: staff can change the total distance of an issued or active permit decreasing or increasing the total distance
 
 # Reason for Amendment
@@ -69,9 +75,9 @@ Staff = PC, SA, TRAIN, CTPO
 
 # Finish, Refund and Add to Cart Submission Rules
  #see fee calculation and fee summary rules in the following feature files:
- # - STOW Review and Confirm.feature
+ # - STWS Review and Confirm.feature
 
- @orv2-4440-8
+ @orv2-
  Rule: if staff amend results in the NPV being equal to the CPV ($0) they can continue to finish amendment screen
 
    Scenario: $0 amend
@@ -84,7 +90,7 @@ Staff = PC, SA, TRAIN, CTPO
         | Total                | $0  |
        And they can continue to finish amendment screen
 
- @orv2-4440-9
+ @orv2-
  Rule: if staff amend results in the NPV being higher than the CPV they can add the permit to the cart and pay the difference at checkout
 
    Scenario: licensed GVW decrease (NPV < CPV)
@@ -129,7 +135,7 @@ Staff = PC, SA, TRAIN, CTPO
         | Total                | $52  |
        And they can add the permit to the cart
 
- @orv2-4440-10
+ @orv2-0
  Rule: if staff amend results in the NPV being less than the CPV they can continue to refund 
 
   Scenario: licensed GVW increase (NPV > CPV)
@@ -175,12 +181,12 @@ Staff = PC, SA, TRAIN, CTPO
 
 # Review and Confirm
  # see the following feature file for rules related to review and confirm:
- # - User Apply for STOW.feature
- # - Staff Apply for STOW.feature
- # - STOW Staff Review and Confirm.feature
- # - STOW User Review and Confirm.feature
+ # - User Apply for STWS.feature
+ # - Staff Apply for STWS.feature
+ # - STWS Staff Review and Confirm.feature
+ # - STWS User Review and Confirm.feature
 
- @orv2-4440-13
+ @orv2-3
  Rule: staff are shown a warning modal when the amendment results in a violation and they choose to add the permit to the cart, refund, or finish the amendment
 
    Scenario: violations add to cart
@@ -209,10 +215,10 @@ Staff = PC, SA, TRAIN, CTPO
 
 # Fee Calculation and Fee Summary
  #see fee calculation and fee summary rules in the following feature files:
- # - STOW Staff Review and Confirm.feature
- # - STOW User Review and Confirm.feature
+ # - STWS Staff Review and Confirm.feature
+ # - STWS User Review and Confirm.feature
 
- @orv2-4440-11
+ @orv2-1
  Rule: staff are shown the Current Permit Value (CPV), New Permit Value (NPV) and the Total debit or credit at review and confirm fee summary
    Scenario: > CPV
      Given the CPV is $15
