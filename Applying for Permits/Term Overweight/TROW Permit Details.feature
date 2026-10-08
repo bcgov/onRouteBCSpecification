@@ -67,6 +67,5 @@ Rule: Relevant CVSE forms are selected by default
     Given the CV Client is at permit details
      When they review the commodities description checklist
      Then the following CVSE forms are selected:
-       | General Permit Conditions            |
        | Permit Scope and Limitation          |
        | Highways and Restrictive Load Limits |
