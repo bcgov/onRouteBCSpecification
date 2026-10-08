@@ -13,6 +13,19 @@ User = PC, SA, TRAIN, CTPO, CA, PA
   Tandem to Tridem: OX---XOO
   Tridem to Tridem: OOX---XOO
 
+# Standard Legal Interaxle Spacings (No Permit Required)
+For standard commercial vehicles operating at standard legal weights, the minimum interaxle spacing is determined by the types of adjacent axle groups:
+
+| Leading Axle Group | Trailing Axle Group | Minimum Legal Spacing |
+| Single Axle        | Single Axle         | 3.0 m                 |
+| Single Axle        | Tandem Axle         | 3.0 m                 |
+| Single Axle        | Tridem Axle         | 3.0 m                 |
+| Tandem Axle        | Tandem Axle         | 5.0 m                 |
+| Tandem Axle        | Tridem Axle         | 5.5 m                 |
+| Tridem Axle        | Tridem Axle         | 6.0 m                 |
+
+Note: If a vehicle satisfies these minimum distances, its axle units are allowed their full standard legal weight limits.
+
 # Overweight Dimension set
 
 @orv2-6030-1 
