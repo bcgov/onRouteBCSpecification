@@ -13,28 +13,28 @@ See: https://bcgov.sharepoint.com/:x:/r/teams/04314/_layouts/15/Doc.aspx?sourced
 
 The permit maximum is determined by comparing three primary maximums, with the lowest value becoming the binding limit:
 1. Axle Unit Policy Maximums
-The Ministry establishes fixed "maximums" for individual axle units operating under an overweight permit for non-reducible loads:
-Steering Axle: Max 9,100 kg (provided the unit is at legal weights when empty).
-Single Axle (other than steer): Max 11,000 kg.
-Tandem Axle: Max 23,000 kg.
-Tridem Axle: Max 28,000 kg or 29,000 kg, depending on the spread and whether a booster is used.
+ The Ministry establishes fixed "maximums" for individual axle units operating under an overweight permit for non-reducible loads:
+ Steering Axle: Max 9,100 kg (provided the unit is at legal weights when empty).
+ Single Axle (other than steer): Max 11,000 kg.
+ Tandem Axle: Max 23,000 kg.
+ Tridem Axle: Max 28,000 kg or 29,000 kg, depending on the spread and whether a booster is used.
 2. The Bridge Formula
-While legal weights for groups under 8 metres use the CTR 7.17 table, permit weights are governed by the Bridge Formula for all axle groups.
-The Calculation: Maximum Permittable Weight (kg)=(30×wheelbase in cm)+18,000.
-The Wheelbase: In this context, wheelbase means the distance between the centers of the first axle and last axle of any group being measured.
-Infrastructure Protection: If the Bridge Formula result for a group is lower than the policy maximum (e.g., it allows only 21,000 kg for a tandem), the Bridge Formula limit prevails. See: Applying for Permits/Single Trip Overweight/ASW Calculate Bridge Formula.feature
+ While legal weights for groups under 8 metres use the CTR 7.17 table, permit weights are governed by the Bridge Formula for all axle groups.
+ The Calculation: Maximum Permittable Weight (kg)=(30×wheelbase in cm)+18,000.
+ The Wheelbase: In this context, wheelbase means the distance between the centers of the first axle and last axle of any group being measured.
+ Infrastructure Protection: If the Bridge Formula result for a group is lower than the policy maximum (e.g., it allows only 21,000 kg for a tandem), the Bridge Formula limit prevails. See: Applying for Permits/Single Trip Overweight/ASW Calculate Bridge Formula.feature
 3. Manufacturer Ratings
-A permit never authorizes a vehicle to exceed its mechanical ratings. The established permit maximum is always restricted by the lowest of:
-GAWR (Gross Axle Weight Rating): The manufacturer’s capacity for that specific axle. (not currently implemented in onRouteBC)
-Tire Rating: Capped at 100 kg per 1 cm of tire width (or 110 kg/cm for municipal fire trucks). See Applying for Permits/Single Trip Overweight/ASW Tire Size.feature
+ A permit never authorizes a vehicle to exceed its mechanical ratings. The established permit maximum is always restricted by the lowest of:
+ GAWR (Gross Axle Weight Rating): The manufacturer’s capacity for that specific axle. (not currently implemented in onRouteBC)
+ Tire Rating: Capped at 100 kg per 1 cm of tire width (or 110 kg/cm for municipal fire trucks). See Applying for Permits/Single Trip Overweight/ASW Tire Size.feature
 4. Route-Specific Maximums (not currently implemented in onRouteBC)
-The absolute maximum Gross Combination Vehicle Weight (GCVW) established by permit is also determined by the approved overload route:
-64,000 kg: The standard maximum for term overweight permits.
-72-Tonne Routes: Specific routes in the Peace River Area pre-approved for up to 72,000 kg.
-80-Tonne Routes: Designated highways in the Lower Mainland.
-85-Tonne Routes: Pre-approved major provincial highways and secondary routes for compliant heavy-haul equipment.
-5. Extraordinary Load Review See: Applying for Permits/Single Trip Overweight/Record & Use Overload Number.feature
-If a configuration exceeds the Bridge Formula, the standard policy maximums, or the 85,000 kg route maximum, the maximum is not established by a chart but through an Extraordinary Load Approval. This involves a custom Structural Engineering review to determine if specific bridges on a proposed route can safely support the proposed weights.
+ The absolute maximum Gross Combination Vehicle Weight (GCVW) established by permit is also determined by the approved overload route:
+ 64,000 kg: The standard maximum for term overweight permits.
+ 72-Tonne Routes: Specific routes in the Peace River Area pre-approved for up to 72,000 kg.
+ 80-Tonne Routes: Designated highways in the Lower Mainland.
+ 85-Tonne Routes: Pre-approved major provincial highways and secondary routes for compliant heavy-haul equipment.
+ 5. Extraordinary Load Review See: Applying for Permits/Single Trip Overweight/Record & Use Overload Number.feature
+ If a configuration exceeds the Bridge Formula, the standard policy maximums, or the 85,000 kg route maximum, the maximum is not established by a chart but through an Extraordinary Load Approval. This involves a custom Structural Engineering review to determine if specific bridges on a proposed route can safely support the proposed weights.
 
 @orv2-5709-1
 Rule: Axle unit policy maximums establish the base permit-weight maximums for non-reducible loads before applying Bridge Formula and other lower limits.
@@ -111,10 +111,10 @@ Rule: Tridem axle unit policy maximum is 28,000 kg by default.
             | 28001            | Axle Unit Weight for Axle Unit X must not exceed A.    |
 
 @orv2-5709-6
-Rule: A tridem axle unit on a trailer, including a lowbed semi-trailer, has a policy maximum of 29,000 kg only when tridem spread is not less than 2.4 m and not more than 3.7 m, and booster configuration is single-axle booster or no booster; otherwise, if tridem spread is outside 2.4 m to 3.7 m or booster configuration is tandem or tridem booster, the tridem trailer axle unit policy maximum is 28,000 kg.
+Rule: A tridem axle unit on a trailer, including a lowbed semi-trailer, qualifies for a policy maximum of 29,000 kg when its spread is from 2.4 m to 3.7 m inclusive and its booster configuration is a single-axle booster or no booster.
 
-    Scenario Outline: tridem axle policy maximum by spread and booster configuration
-        Given the axle unit type is tridem axle
+    Scenario Outline: tridem trailer axle qualifies for the 29,000 kg policy maximum
+        Given the axle unit type is a tridem axle on a trailer
           And the tridem spread is <tridemSpread> m
           And the booster configuration is <boosterConfiguration>
           And the tridem axle weight is <tridemAxleWeight> kg
@@ -126,11 +126,6 @@ Rule: A tridem axle unit on a trailer, including a lowbed semi-trailer, has a po
             | 2.4          | no booster           | 29000            | the tridem axle weight is at or under policy maximum |
             | 3.7          | single-axle booster  | 29000            | the tridem axle weight is at or under policy maximum |
             | 3.7          | single-axle booster  | 29001            | Axle Unit Weight for Axle Unit X must not exceed A.  |
-            | 2.3          | no booster           | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
-            | 3.8          | no booster           | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
-            | 2.8          | tandem booster       | 28000            | the tridem axle weight is at or under policy maximum |
-            | 2.8          | tandem booster       | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
-            | 2.8          | tridem booster       | 29000            | Axle Unit Weight for Axle Unit X must not exceed A.  |
 
 @orv2-5709-7
 Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or other applicable evaluations, the lower value becomes the permit maximum.
@@ -148,6 +143,25 @@ Rule: If a lower maximum is produced by Bridge Formula, tire load rating, or oth
             | 23000         | 21000            | 23000       | 23000    | 21000      |
             | 23000         | 23000            | 20500       | 23000    | 20500      |
             | 23000         | 23000            | 23000       | 22000    | 22000      |
+
+@orv2-5709-8
+Rule: A tridem axle unit on a trailer has a policy maximum of 28,000 kg when its spread is outside 2.4 m to 3.7 m, or when it is paired with a tandem or tridem booster.
+
+    Scenario Outline: tridem trailer axle 28,000 kg maximum validation
+        Given the axle unit type is a tridem axle on a trailer
+          And the tridem spread is <tridemSpread> m
+          And the booster configuration is <boosterConfiguration>
+          And the tridem axle weight is <tridemAxleWeight> kg
+         When the user reviews the permit configuration
+         Then <expectedResult>
+
+        Examples:
+            | tridemSpread | boosterConfiguration | tridemAxleWeight | expectedResult                                       |
+            | 2.3          | no booster           | 28000            | the tridem axle weight is at or under policy maximum |
+            | 3.8          | no booster           | 28000            | the tridem axle weight is at or under policy maximum |
+            | 2.8          | tandem booster       | 28000            | the tridem axle weight is at or under policy maximum |
+            | 2.8          | tridem booster       | 28000            | the tridem axle weight is at or under policy maximum |
+            | 2.8          | tandem booster       | 28001            | Axle Unit Weight for Axle Unit X must not exceed A.  |
 
 # Notes:
  - Confirm:
