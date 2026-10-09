@@ -71,7 +71,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
      And the axle unit actual weight is 9,101 kg
      And the calculated axle group weight (7.17) results in a higher legal allowable
      And the bridge formula result is higher allowable axle group weight
-    Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
+    Then the user sees the violation: "Interaxle Spacing for Axle Unit X restricts Axle Weight to 9100 kg"
 
   Scenario: axle unit wins at legal maximum
     Given a single-axle booster is attached to the rear of a semi-trailer
@@ -103,7 +103,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
       And the axle unit actual weight is 9,101 kg
       And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
-     Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
+     Then the user sees the violation: "Interaxle Spacing for Axle Unit X restricts Axle Group Weight to 9100 kg"
 
   Scenario: axle unit at allowable maximum
     Given a single-axle booster is attached to the rear of a semi-trailer
@@ -119,7 +119,7 @@ Rule: A single-axle booster attached to the rear of a semi-trailer with spacing 
       And the axle unit actual weight is 9,100 kg
       And the calculated axle group weight (7.17) results in a higher legal allowable
       And the bridge formula result is higher allowable axle group weight
-     Then the user sees the violation: "Interaxle Spacing for Axle Group (Axle Unit X - Axle Unit Y) restricts Axle Group Weight to 9100 kg"
+     Then the user sees the violation: "Interaxle Spacing for Axle Unit X restricts Axle Group Weight to 9100 kg"
 
 @orv2-6030-4
 Rule: For a tandem booster attached to the rear of a semi-trailer, the minimum interaxle spacing from the trailer's last axle to the booster is 4.2 m, and spacing of 4.2 m or greater allows up to the maximum permittable booster weight of 23,000 kg.
