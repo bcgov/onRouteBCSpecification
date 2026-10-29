@@ -45,11 +45,11 @@ User = PC, SA, TRAIN, CTPO, CA, PA
     Given a tandem drive tractor paired with a single axle jeep
      When evaluating overweight permit allowances for an axle group spacing of "<group_spacing>" and an inter-axle spacing of "<interaxle_spacing>"
      Then the permittable max group weight is "<permittable_max>"
-      And does the Bridge Formula override the permittable max group weight? "<override_bridge_formula>"
+      And does the Bridge Formula override the permittable max group weight? "<check_bridge_formula_cap>"
       And the legal maximum group weight is "<legal_max>"
 
        Examples:
-         | tier_description      | group_spacing | interaxle_spacing | permittable_max    | override_bridge_formula | legal_max                                |
+         | tier_description      | group_spacing | interaxle_spacing | permittable_max    | check_bridge_formula_cap | legal_max                                |
          | Below Minimum Spacing | < 2.40 m      | < 1.20 m          | 24000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
          | Permit Tier 1 Lookup  | 2.40 - 3.00 m | 1.20 - 3.00 m     | 28000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
          | Permit Tier 2 Lookup  | 3.01 - 3.70 m | 3.01 - 3.50 m     | 29000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
