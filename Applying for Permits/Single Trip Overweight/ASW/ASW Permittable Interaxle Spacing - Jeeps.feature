@@ -5,7 +5,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 
 # Definitions
  Interaxle spacing is the longitudinal distance separating two axle units measured from the centers of the closest axles.
- Axle Group Spacing is the longitudinal distance separating two axle groups measured from the centers of the furthest axles within each group.
+ Axle Group Spacing is the longitudinal distance separating two axle groups measured from the centers of the furthest axles within each axle unit.
 
 # Standard Inter-axle Spacing
  Diagrams: 
@@ -44,16 +44,16 @@ User = PC, SA, TRAIN, CTPO, CA, PA
   Scenario Outline: Evaluating permittable max weight across axle group spacing tiers
     Given a tandem drive tractor paired with a single axle jeep
      When evaluating overweight permit allowances for an axle group spacing of "<group_spacing>" and an inter-axle spacing of "<interaxle_spacing>"
-     Then the permittable max group weight shall be "<permittable_max>"
-      And the Bridge Formula override status shall be "<bridge_formula_override>"
-      And the legal maximum group weight shall be "<legal_max>"
+     Then the permittable max group weight is "<permittable_max>"
+      And does the Bridge Formula override the permittable max group weight? "<override_bridge_formula>"
+      And the legal maximum group weight is "<legal_max>"
 
        Examples:
-         | tier_description      | group_spacing | interaxle_spacing | permittable_max    | bridge_formula_override | legal_max                                |
-         | Below Minimum Spacing | < 2.40 m      | < 1.20 m          | 24000 kg           | False                   | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Permit Tier 1 Lookup  | 2.40 - 3.00 m | 1.20 - 3.00 m     | 28000 kg           | False                   | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Permit Tier 2 Lookup  | 3.01 - 3.70 m | 3.01 - 3.50 m     | 29000 kg           | False                   | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Extended Spacing      | > 3.70 m      | > 3.50 m          | Bridge Formula Cap | True                    | Governed by Table 7.17 (if <= 8 m) or BF |
+         | tier_description      | group_spacing | interaxle_spacing | permittable_max    | override_bridge_formula | legal_max                                |
+         | Below Minimum Spacing | < 2.40 m      | < 1.20 m          | 24000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Permit Tier 1 Lookup  | 2.40 - 3.00 m | 1.20 - 3.00 m     | 28000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Permit Tier 2 Lookup  | 3.01 - 3.70 m | 3.01 - 3.50 m     | 29000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Extended Spacing      | > 3.70 m      | > 3.50 m          | Bridge Formula Cap | Yes                     | Governed by Table 7.17 (if <= 8 m) or BF |
 
   Scenario: interaxle spacing outside jeep exception limits
     Given the vehicle has a single axle jeep
