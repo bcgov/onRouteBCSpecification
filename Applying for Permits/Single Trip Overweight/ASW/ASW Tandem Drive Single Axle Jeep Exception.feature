@@ -1,10 +1,10 @@
 @orv2-5905 https://moti-imb.atlassian.net/browse/ORV2-5905
-Feature: As a user I need the system to understand that a Tandem Drive with Single Axle Jeep with the axle group spreads 2.4 m to 3.0 m or over 3.0 m to 3.7 can break bridge formula up to a permit maximum of 28,000 and 29,000kg respectively.
+Feature: As a user I need the system to understand that a Tandem Drive with Single Axle Jeep with the axle group spacing spreads 2.4 m to 3.0 m or over 3.0 m to 3.7 m can break bridge formula up to a permit maximum of 28,000 and 29,000kg respectively.
 
 users = PC, SA, TRAIN, CTPO, CA, PA
 
 @orv2-5905-1
-Rule: Tandem Drive with a Single Axle Jeep with specific inter-axle spacing and axle spread ranges have unique permittable weight maximum allowances
+Rule: Tandem Drive with a Single Axle Jeep with specific inter-axle spacing and axle group spacing ranges have unique permittable weight maximum allowances
 
   Preconditions:
     - Vehicle configuration is Tandem Drive tractor with Single Axle Jeep
@@ -24,7 +24,7 @@ Rule: Tandem Drive with a Single Axle Jeep with specific inter-axle spacing and 
      Then the maximum permitted combined weight is 29,000kg
 
 @orv2-5905-2
-Rule: Tandem Drive Single Axle Jeep with specific axle spread ranges override bridge formula permittable weight maximum allowances
+Rule: Tandem Drive Single Axle Jeep with specific axle group spacing ranges override bridge formula permittable weight maximum allowances
 
   Preconditions:
     - Vehicle configuration is Tandem Drive tractor with Single Axle Jeep
@@ -33,7 +33,7 @@ Rule: Tandem Drive Single Axle Jeep with specific axle spread ranges override br
     - Maximum permitted weights override standard bridge formula restrictions
 
   Scenario: Bridge formula calculation at 2.40m axle group spacing shows 25,200kg but exception permits 28,000kg
-    Given a Tandem Drive Single Axle Jeep configuration with 2.40m (240cm) wheelbase
+    Given a Tandem Drive Single Axle Jeep configuration with 2.40m axle group spacing (240cm wheelbase)
      When the system calculates bridge formula weight limit: (30 × 240) + 18,000
      Then the standard bridge formula result is 25,200kg
       And the system recognizes this configuration qualifies for policy exception
@@ -41,7 +41,7 @@ Rule: Tandem Drive Single Axle Jeep with specific axle spread ranges override br
       And the bridge formula exception is applied
 
   Scenario: Bridge formula calculation at 3.00m axle group spacing shows 27,000kg but exception permits 29,000kg
-    Given a Tandem Drive Single Axle Jeep configuration with 3.00m (300cm) wheelbase
+    Given a Tandem Drive Single Axle Jeep configuration with 3.00m axle group spacing (300cm wheelbase)
      When the system calculates bridge formula weight limit: (30 × 300) + 18,000
      Then the standard bridge formula result is 27,000kg
       And the system recognizes this configuration qualifies for policy exception
