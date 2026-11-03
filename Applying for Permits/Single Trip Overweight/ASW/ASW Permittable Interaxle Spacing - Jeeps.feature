@@ -64,6 +64,12 @@ User = PC, SA, TRAIN, CTPO, CA, PA
       And the violation message is "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be between <A> and <b> m."
       And the Interaxle Spacing field is indicated with a red border
 
+  Scenario: exceed axle group permit max
+    Given the vehicle has a single axle jeep
+      And the axle group weight is above the permittable maximum
+     Then the permit application is rejected
+      And the violation message is "Axle Unit <axleUnitX> and Axle Unit <axleUnitY> combined must not exceed <permittable_max>"
+
  @orv2-6069-2
  Rule: Multi-axle jeeps (tandem and tridem) require minimum 4.2 m inter-axle spacing under permit
 
