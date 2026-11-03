@@ -104,7 +104,7 @@ Rule: Tridem axles in trailers must be validated using Table I limits for the se
       | pony trailer at maximum      | Truck and Pony Trailer Combinations                          | any                | 2.5    | valid        |
       | pony trailer above maximum   | Truck and Pony Trailer Combinations                          | any                | 2.51   | invalid      |
       | semitrailer at maximum       | Truck Tractor and Semi-Trailer Combinations                  | any                | 3.7    | valid        |
-      | pole trailer at maximum      | Tridem Truck Tractor with Tridem or Tandem Axle Pole Trailer | any                | 3.1    | valid        |
+      | pole trailer at maximum      | Tridem Truck with Tridem or Tandem Axle Pole Trailer | any                | 3.1    | valid        |
 
 @orv2-5872-4
 Rule: Users are shown a violation statement when axle spread is outside the permitted Table I range

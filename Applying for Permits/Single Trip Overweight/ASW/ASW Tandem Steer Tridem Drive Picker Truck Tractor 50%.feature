@@ -60,7 +60,7 @@ Rule: No trailer towing is allowed when operating at "Permit Weights" (exceeding
      And the operating condition is operating at "Permit Weights"
      And the vehicle is towing a trailer
      When the user chooses to calculate or continue with the permit application
-     Then they see "Cannot tow a trailer if Axle Unit 1 and Axle Unit 2 are exceeding legal axle weights."
+     Then they see "Cannot tow a trailer if Axle Unit 1 or Axle Unit 2 are exceeding legal axle weights."
 
 @orv2-5456-8
 Rule: Apply the standard 40% tandem steer to tridem drive weight distribution ratio when operating at "Legal Weights" for tandem steer/tridem drive Picker Truck Tractors with PME 
