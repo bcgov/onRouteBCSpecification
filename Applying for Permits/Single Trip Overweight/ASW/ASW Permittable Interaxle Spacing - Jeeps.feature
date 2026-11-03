@@ -50,10 +50,10 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 
        Examples:
          | tier_description      | group_spacing | interaxle_spacing | permittable_max    | check_bridge_formula_cap | legal_max                                |
-         | Below Minimum Spacing | < 2.40 m      | < 1.20 m          | 24000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Permit Tier 1 Lookup  | 2.40 - 3.00 m | 1.20 - 3.00 m     | 28000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Permit Tier 2 Lookup  | 3.01 - 3.70 m | 3.01 - 3.50 m     | 29000 kg           | No                      | 24000 kg (Greater of 24,000 or 7.17)     |
-         | Extended Spacing      | > 3.70 m      | > 3.50 m          | Bridge Formula Cap | Yes                     | Governed by Table 7.17 (if <= 8 m) or BF |
+         | Below Minimum Spacing | < 2.40 m      | < 1.20 m          | 24000 kg           | No                       | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Permit Tier 1 Lookup  | 2.40 - 3.00 m | 1.20 - 3.50 m     | 28000 kg           | No                       | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Permit Tier 2 Lookup  | 3.01 - 3.70 m | 1.20 - 3.50 m     | 29000 kg           | No                       | 24000 kg (Greater of 24,000 or 7.17)     |
+         | Extended Spacing      | > 3.70 m      | > 3.50 m          | Bridge Formula Cap | Yes                      | Governed by Table 7.17 (if <= 8 m) or BF |
 
   Scenario: interaxle spacing outside jeep exception limits
     Given the vehicle has a single axle jeep

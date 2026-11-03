@@ -50,7 +50,6 @@ Rule: Tandem Drive Single Axle Jeep with specific axle group spacing ranges over
 
 # Notes:
 
-
  Under British Columbia’s heavy-haul permit guidelines, the combination of a **Tandem Drive tractor and a Single-Axle Jeep** is granted a highly specific policy exception. This exception allows the unit to carry weights that exceed standard Bridge Formula calculations. 
 
  The specific policy frameworks, weight caps, and the physical reasoning behind how they "break" the Bridge Formula are outlined below:
