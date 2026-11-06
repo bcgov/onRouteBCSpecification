@@ -1,4 +1,4 @@
-@orv2- https://moti-imb.atlassian.net/browse/ORV2-
+@orv2-6069 https://moti-imb.atlassian.net/browse/ORV2-6069
 Feature: As a user I need the system to validate interaxle spacing exceptions for jeeps so that STOW applications comply with policy spacing exceptions.
 
 User = PC, SA, TRAIN, CTPO, CA, PA
@@ -71,6 +71,9 @@ User = PC, SA, TRAIN, CTPO, CA, PA
       And the violation message is "Axle Unit <axleUnitX> and Axle Unit <axleUnitY> combined must not exceed <permittable_max>"
 
  @orv2-6069-2
+ Rule: The check bridge formula applies only to axle units within the tandem drive and single jeep configuration (typically axle units 2 and 3)
+
+ @orv2-6069-3
  Rule: Multi-axle jeeps (tandem and tridem) require minimum 4.2 m inter-axle spacing under permit
 
   See the overweight dimension set for specific interaxle spacing requirements filter on:
