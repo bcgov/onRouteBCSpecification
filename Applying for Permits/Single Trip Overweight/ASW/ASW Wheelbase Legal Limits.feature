@@ -39,7 +39,7 @@ Rule: For applicable power unit vehicle sub-types where Axle Unit 1 is single st
       And Axle Unit 2 Axle Spread is 4.2 m
       And the derived wheelbase is 6.5 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 2 is less than 6.6 m."
+     Then the result is "Wheelbase for Axle Unit 1 and Axle Unit 2 is less than 6.6 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border
@@ -67,7 +67,7 @@ Rule: For applicable power unit vehicle sub-types where Axle Unit 1 is single st
       And Axle Unit 2 Axle Spread is 1.8 m
       And the derived wheelbase is 2.9 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 2 is less than 3.0 m."
+     Then the result is "Wheelbase for Axle Unit 1 and Axle Unit 2 is less than 3.0 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border
@@ -97,7 +97,7 @@ Rule: For applicable power unit vehicle sub-types with a tandem steering tridem 
       And Axle Unit 2 Axle Spread is 2.4 m
       And the derived wheelbase is 7.6 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 1 is less than 7.7 m."
+     Then the result is "Wheelbase for Axle Unit 1 and Axle Unit 2 is less than 7.7 m."
       And the permit application is blocked by wheelbase validation
 
   Scenario: wheelbase meets the 7.7 m minimum for tridem drive axle spread from 2.4 m to less than 2.8 m
@@ -135,7 +135,7 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
       And Axle Unit 2 Axle Spread is 3.1 m
       And the derived wheelbase is 10.05 m
      When the wheelbase is evaluated
-     Then the result is "Wheelbase for Axle Unit 1 is greater than 10.0 m."
+     Then the result is "Wheelbase for Axle Unit 1 and Axle Unit 2 is greater than 10.0 m."
       And the permit application is blocked by wheelbase validation
       And the Interaxle Spacing (m) field is indicated with a red border
       And the Axle Spread (m) fields are indicated with a red border
@@ -153,11 +153,11 @@ Rule: For oilfield bed trucks with a tandem steering tridem drive axle configura
      Then the result is "<result>"
 
       Examples:
-        | powerUnitVehicleSubtype | axle spread | axle unit 1 | interaxle spacing | axle unit 2 | wheelbase | result                                        |
-        | Truck with PME          | 2.8         | 2.0         | 3.6               | 2.2         | 7.8       | blank                                         |
-        | Truck with PME          | 3.0         | 2.0         | 3.7               | 2.2         | 7.9       | blank                                         |
-        | Truck with PME          | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 is less than 7.8 m. |
-        | Truck Tractor with PME  | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 is less than 7.9 m. |
+        | powerUnitVehicleSubtype | axle spread | axle unit 1 | interaxle spacing | axle unit 2 | wheelbase | result                                                        |
+        | Truck with PME          | 2.8         | 2.0         | 3.6               | 2.2         | 7.8       | blank                                                         |
+        | Truck with PME          | 3.0         | 2.0         | 3.7               | 2.2         | 7.9       | blank                                                         |
+        | Truck with PME          | 2.8         | 2.0         | 3.5               | 2.2         | 7.7       | Wheelbase for Axle Unit 1 and Axle Unit 2 is less than 7.8 m. |
+        | Truck Tractor with PME  | 3.0         | 2.0         | 3.6               | 2.2         | 7.8       | Wheelbase for Axle Unit 1 and Axle Unit 2 is less than 7.9 m. |
 
 @orv2-5541-7
 Rule: For applicable single steering axle configurations, derived wheelbase is calculated as: Wheelbase = Interaxle Spacing + (Axle Unit 2 Axle Spread / 2).
