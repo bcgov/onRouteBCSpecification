@@ -10,11 +10,48 @@ User = PC, SA, TRAIN, CTPO, CA, PA
  Axle Group Spacing is the longitudinal distance separating two axle groups measured from the centers of the furthest axles within each group.
 
 # Inter-axle Spacing
- Diagrams: 
+# Diagrams: 
   Single to Tandem: X---XO
   Tandem to Tandem: OX---XO
   Tandem to Tridem: OX---XOO
   Tridem to Tridem: OOX---XOO
+
+# Diagrams for Wheeler Combinations
+
+ 4-Unit Combination (Tractor + Wheeler Jeep + Wheeler Trailer + Booster)
+ [ TRACTOR ]        [WHEELER JEEP ]      [ WHEELER SEMI-TRAILER ]                     [ BOOSTER ] 
+ Steer Drive       Tandem Axle Unit          Tandem Axle Unit                      Tandem Axle Unit
+ 0 --- 0X =============== X0 --- 0X =============== X0 --- 00 --- 00 --- 0X =============== X0
+        |                 |       |                 |                     |                 | 
+        + Spac1(4.2-7.2 m)+       +-- Spac2 (7 m) --+                     + Spac3(4.2-7.2 m)+
+
+ 3-Unit Combination (Tractor + Wheeler Jeep + Wheeler Trailer)
+ [ TRACTOR ]        [WHEELER JEEP ]      [ WHEELER SEMI-TRAILER ] 
+ Steer Drive       Tandem Axle Unit          Tandem Axle Unit
+ 0 --- 0X =============== X0 --- 0X =============== X0 --- 00 --- 00
+        |                 |       |                 | 
+        + Spac1(4.2-7.2 m)+       + Spacing 2 (7 m) +
+
+ 2-Unit Combination (Tractor + Wheeler Trailer)
+ [ TRACTOR ]      [ WHEELER SEMI-TRAILER ] 
+ Steer Drive         Tandem Axle Unit
+ 0 --- 0X =============== X0 --- 00 --- 00
+        |                 | 
+        +-- Spac1 (7 m) --+
+
+ Adjacent 16/24-Wheel Tandem Axle Groups
+  [ FRONT WHEELER AXLE GROUP ][ REAR WHEELER AXLE GROUP ] 
+      (16/24-Wheel Tandem)       (16/24-Wheel Tandem) 
+      00 ------- 0X ==================== X0 ------- 00 
+                  |                      | 
+                  +---- Min 4.20 m ------+
+
+ Single-to-Single Wheeler Axle Lines (Platform / Wheeler Lines)
+ [ SINGLE WHEELER LINE ]               [ SINGLE WHEELER LINE ]
+ (8-Wheel Single Axle)                 (8-Wheel Single Axle)
+         0X ==================================== X0
+          |                                      | 
+          +------------- Min 1.50 m -------------+
 
 # Standard Legal Interaxle Spacings (No Permit Required)
  For standard commercial vehicles operating at standard legal weights, the minimum interaxle spacing is determined by the types of adjacent axle groups:
@@ -31,82 +68,83 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 
 # Front-to-Back Major Separation for Wheelers 
  @orv2-6071-1
- Rule: Front-half to back-half major separation must be at least 7.00 m for wheeler combinations
+ Rule: Interaxle spacing must be at least 7.00 m between the front half and back half for wheeler combinations
+  The 7.0 m rule applies strictly to the primary gap dividing the front half of the vehicle (tractor drive unit or jeep) from the back half (semi-trailer or dolly)
 
      Scenario Outline: Evaluating major front-to-back wheeler separation distance
        Given a wheeler vehicle combination with a "<wheeler_type>" axle group in the trailer
-       When evaluating the inter-axle spacing between the rearmost drive/jeep axle in the front half and the first trailer/dolly axle in the back half of "<actual_spacing>"
+       When evaluating the inter-axle spacing between the rearmost drive/jeep axle in the front half and the first trailer/dolly axle in the back half of "<actual_interaxle_spacing>"
        Then the front-to-back separation status shall be "<separation_status>"
        And the Table 7.17 applicability flag shall be "<check_table_717>"
        And the permittable max group weight rule shall be "<permittable_max_rule>"
 
        Examples:
-         | wheeler_type    | actual_spacing | separation_status | check_table_717 | permittable_max_rule                                      |
-         | 16-Wheel Tandem | 7.50 m         | PASS              | False           | 31,000 kg (PAW85K / Standard Wheeler)                     |
-         | 16-Wheel Tandem | 6.50 m         | REJECT_TOO_SHORT  | True            | Reverts to Table 7.17 / Standard Heavy Haul Cap           |
-         | 24-Wheel Tridem | 8.20 m         | PASS              | False           | 40,000 kg (PAW85K / Standard Wheeler)                     |
-         | 24-Wheel Tridem | 6.80 m         | REJECT_TOO_SHORT  | True            | Reverts to Table 7.17 / Standard Heavy Haul Cap           |
-         | Wide 24-Wheeler | 7.10 m         | PASS              | False           | Wide Wheeler Matrix (40,000 kg to 52,000 kg by Clear Gap) |
+         | wheeler_type    | actual_interaxle_spacing | separation_status | check_table_717 | permittable_max_rule                                      |
+         | 16-Wheel Tandem | 7.50 m                   | PASS              | False           | 31,000 kg (PAW85K / Standard Wheeler)                     |
+         | 16-Wheel Tandem | 6.50 m                   | REJECT_TOO_SHORT  | True            | Reverts to Table 7.17 / Standard Heavy Haul Cap           |
+         | 24-Wheel Tridem | 8.20 m                   | PASS              | False           | 40,000 kg (PAW85K / Standard Wheeler)                     |
+         | 24-Wheel Tridem | 6.80 m                   | REJECT_TOO_SHORT  | True            | Reverts to Table 7.17 / Standard Heavy Haul Cap           |
+         | Wide 24-Wheeler | 7.10 m                   | PASS              | False           | Wide Wheeler Matrix (40,000 kg to 52,000 kg by Clear Gap) |
 
-  Scenario: invalid wheeler spacing
+  Scenario: invalid wheeler interaxle spacing in the front half
    Given the vehicle is a standard wheeler
     And the last drive or jeep axle is in the front half of the vehicle
-    And the first trailer or dolly axle is in the back half of the vehicle
-    When a user inputs interaxle spacing of 6.99 m between those axle groups
+    When a user inputs interaxle spacing of 6.99 m between the last drive or jeep axle and the first trailer or dolly axle in the back half
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 7.0 m."
      And interaxle spacing is indicated with a red border
 
-# Inter-Axle Gap Between Tractor Drive Unit and Front-Most Wheeler/Jeep
+  Scenario: invalid wheeler interaxle spacing in the back half
+   Given the vehicle is a standard wheeler
+    And the first trailer or dolly axle is in the back half of the vehicle
+    When a user inputs interaxle spacing of 6.99 m between the last drive or jeep axle in the front half and the first trailer or dolly axle
+    Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 7.0 m."
+     And interaxle spacing is indicated with a red border
+
+# Inter-Axle Spacing Between Tractor Drive Unit and Front-Most Wheeler/Jeep
  @orv2-6071-2
- Rule: Inter-axle gap between tractor drive unit and front-most wheeler/jeep must be between 4.20 m and 7.20 m
+ Rule: Inter-axle spacing between tractor drive unit and front-most wheeler/jeep must be between 4.20 m and 7.20 m
 
    Scenario Outline: Evaluating tractor drive to front-most wheeler gap
      Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
-     When evaluating the inter-axle spacing between the tractor rearmost drive axle and the front-most wheeler axle of "<gap_distance>"
-     Then the tractor-to-wheeler gap compliance status shall be "<gap_status>"
+     When evaluating the inter-axle spacing between the tractor rearmost drive axle and the front-most wheeler axle of "<interaxle_spacing_distance>"
+     Then the tractor-to-wheeler spacing compliance status shall be "<interaxle_spacing_status>"
      And the permit approval decision shall be "<permit_decision>"
 
      Examples:
-       | scenario_description      | gap_distance | gap_status         | permit_decision                   |
-       | Compliant Mid-Range Gap   | 5.50 m       | PASS               | APPROVED                          |
-       | Compliant Minimum Gap     | 4.20 m       | PASS               | APPROVED                          |
-       | Compliant Maximum Gap     | 7.20 m       | PASS               | APPROVED                          |
-       | Gap Below 4.20 m Minimum  | 3.80 m       | REJECT_TOO_SHORT   | REJECTED_INVALID_INTERAXLE_GAP    |
-       | Gap Exceeds 7.20 m Maximum| 7.60 m       | REJECT_TOO_LONG    | REJECTED_INVALID_INTERAXLE_GAP    |
+       | scenario_description                   | interaxle_spacing_distance | interaxle_spacing_status | permit_decision                    |
+       | Compliant Mid-Range Spacing            | 5.50 m                     | PASS                     | APPROVED                           |
+       | Compliant Minimum Spacing              | 4.20 m                     | PASS                     | APPROVED                           |
+       | Compliant Maximum Spacing              | 7.20 m                     | PASS                     | APPROVED                           |
+       | Spacing Below 4.20 m Minimum Spacing   | 3.80 m                     | REJECT_TOO_SHORT         | REJECTED_INVALID_INTERAXLE_SPACING |
+       | Spacing Exceeds 7.20 m Maximum Spacing | 7.60 m                     | REJECT_TOO_LONG          | REJECTED_INVALID_INTERAXLE_SPACING |
 
-  Scenario: too short tractor-to-wheeler gap
+  Scenario: too short tractor-to-wheeler spacing
     Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
     When when a user inputs an inter-axle spacing of "3.80 m" between the tractor rearmost drive axle and the front-most wheeler axle
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 4.20 m."
      And interaxle spacing is indicated with a red border
 
-   Scenario: too long tractor-to-wheeler gap
+   Scenario: too long tractor-to-wheeler spacing
      Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
      When when a user inputs an inter-axle spacing of "7.60 m" between the tractor rearmost drive axle and the front-most wheeler axle
      Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must not exceed 7.20 m."
       And interaxle spacing is indicated with a red border
 
-# General clear inter-axle spacing between adjacent wheeler axle groups
+# Inter-axle spacing between adjacent tandem wheeler axle groups
  @orv2-6071-3
- Rule: General clear inter-axle spacing between adjacent wheeler axle groups must be at least 4.20 m
+ Rule: Inter-axle spacing between adjacent tandem or tridem wheeler axle groups must be at least 4.20 m
 
-   Scenario Outline: Evaluating spacing between consecutive wheeler axle groups
-     Given a multi-wheeler combination containing consecutive wheeler axle groups
-     When evaluating the clear inter-axle spacing between adjacent wheeler groups of "<group_gap>"
-     Then the group-to-group spacing status shall be "<group_spacing_status>"
+   Scenario Outline: Evaluating spacing between consecutive tandem or tridem wheeler axle groups
+     Given a multi-wheeler combination containing consecutive tandem or tridem wheeler axle groups
+     When evaluating inter-axle spacing between adjacent tandem or tridem wheeler axle units of "<interaxle_spacing>"
+     Then the interaxle spacing status shall be "<interaxle_spacing_status>"
      And the Bridge Formula check flag shall be "<check_bridge_formula>"
 
      Examples:
-       | group_gap | group_spacing_status | check_bridge_formula                    |
-       | 4.50 m    | PASS                 | True                                    |
-       | 4.20 m    | PASS                 | True                                    |
-       | 3.60 m    | REJECT_TOO_SHORT     | False (Reverts to CTR 7.17 Table limit) |
-
-   Scenario: Invalid tractor-to-wheeler gap
-     Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
-     When when a user inputs an inter-axle spacing of "3.80 m" between the tractor rearmost drive axle and the front-most wheeler axle
-     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 4.20 m."
-     And interaxle spacing is indicated with a red border
+       | interaxle_spacing | interaxle_spacing_status | check_bridge_formula                    |
+       | 4.50 m            | PASS                     | True                                    |
+       | 4.20 m            | PASS                     | True                                    |
+       | 3.60 m            | REJECT_TOO_SHORT         | False (Reverts to CTR 7.17 Table limit) |
 
 # Notes
  The 7.0 m Spacing Rule: For both standard and wide wheelers, the interaxle spacing between the last drive or jeep axle in the front half of the vehicle and the first trailer or dolly axle in the back half must be at least 7.0 m.
@@ -120,8 +158,8 @@ User = PC, SA, TRAIN, CTPO, CA, PA
     * Table 7.17 Exclusion: Because this gap expands the total distance between extreme axles past 8.00 m, CTR Table 7.17 does not apply. The group is evaluated directly against Wheeler permit tables (31,000 kg / 40,000 kg) and the B.C. Bridge Formula.
 
  2. Tractor to Front Wheeler Gap:
-    * Rule: Per CTPM Section 5.3.16.B, when wheeler units/jeeps are positioned directly behind the truck tractor, the inter-axle gap must fall within 4.20 m to 7.20 m.
+    * Rule: Per CTPM Section 5.3.16.B, when wheeler units/jeeps are positioned directly behind the truck tractor, the inter-axle spacing must fall within 4.20 m to 7.20 m.
     * Drawbar Cap: The maximum drawbar length between the tractor and first wheeler unit is 6.00 m under Motor Vehicle Act Regulations.
 
  3. General Group Spacing:
-    * Rule: Adjacent wheeler axle groups require a minimum clear inter-axle spacing of 4.20 m. If the gap drops below 4.20 m, the groups cannot receive wheeler weight allowances and revert to standard axle group calculations under CTR 7.17(2).
+    * Rule: Adjacent wheeler axle groups require a minimum clear inter-axle spacing of 4.20 m. If the spacing drops below 4.20 m, the groups cannot receive wheeler weight allowances and revert to standard axle group calculations under CTR 7.17(2).
