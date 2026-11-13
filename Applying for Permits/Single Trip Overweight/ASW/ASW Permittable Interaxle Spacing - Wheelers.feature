@@ -23,14 +23,14 @@ User = PC, SA, TRAIN, CTPO, CA, PA
  Steer Drive       Tandem Axle Unit          Tandem Axle Unit                      Tandem Axle Unit
  0 --- 0X =============== X0 --- 0X =============== X0 --- 00 --- 00 --- 0X =============== X0
         |                 |       |                 |                     |                 | 
-        + Spac1(4.2-7.2 m)+       +-- Spac2 (7 m) --+                     + Spac3(4.2-7.2 m)+
+        +- Spac1(4.2 m) --+       +-- Spac2 (7 m) --+                     +-- Spac3(4.2 m)--+
 
  3-Unit Combination (Tractor + Wheeler Jeep + Wheeler Trailer)
  [ TRACTOR ]        [WHEELER JEEP ]      [ WHEELER SEMI-TRAILER ] 
  Steer Drive       Tandem Axle Unit          Tandem Axle Unit
  0 --- 0X =============== X0 --- 0X =============== X0 --- 00 --- 00
         |                 |       |                 | 
-        + Spac1(4.2-7.2 m)+       + Spacing 2 (7 m) +
+        +-- Spac1(4.2 m) -+       +-- Spac2 (7 m) -+
 
  2-Unit Combination (Tractor + Wheeler Trailer)
  [ TRACTOR ]      [ WHEELER SEMI-TRAILER ] 
@@ -39,7 +39,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
         |                 | 
         +-- Spac1 (7 m) --+
 
- Adjacent 16/24-Wheel Tandem Axle Groups
+ Adjacent 16/24-Wheel Tandem/Tridem Axle Groups
   [ FRONT WHEELER AXLE GROUP ][ REAR WHEELER AXLE GROUP ] 
       (16/24-Wheel Tandem)       (16/24-Wheel Tandem) 
       00 ------- 0X ==================== X0 ------- 00 
@@ -73,7 +73,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 
      Scenario Outline: Evaluating major front-to-back wheeler separation distance
        Given a wheeler vehicle combination with a "<wheeler_type>" axle group in the trailer
-       When evaluating the inter-axle spacing between the rearmost drive/jeep axle in the front half and the first trailer/dolly axle in the back half of "<actual_interaxle_spacing>"
+       When evaluating the inter-axle spacing between the rearmost drive/jeep axle in the front half and the first trailer axle in the back half of "<actual_interaxle_spacing>"
        Then the front-to-back separation status shall be "<separation_status>"
        And the Table 7.17 applicability flag shall be "<check_table_717>"
        And the permittable max group weight rule shall be "<permittable_max_rule>"
@@ -102,7 +102,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
 
 # Inter-Axle Spacing Between Tractor Drive Unit and Front-Most Wheeler/Jeep
  @orv2-6071-2
- Rule: Inter-axle spacing between tractor drive unit and front-most wheeler/jeep must be between 4.20 m and 7.20 m
+ Rule: Inter-axle spacing between tractor drive unit and front-most wheeler/jeep must be a minimum of 4.20 m
 
    Scenario Outline: Evaluating tractor drive to front-most wheeler gap
      Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
@@ -111,24 +111,16 @@ User = PC, SA, TRAIN, CTPO, CA, PA
      And the permit approval decision shall be "<permit_decision>"
 
      Examples:
-       | scenario_description                   | interaxle_spacing_distance | interaxle_spacing_status | permit_decision                    |
-       | Compliant Mid-Range Spacing            | 5.50 m                     | PASS                     | APPROVED                           |
-       | Compliant Minimum Spacing              | 4.20 m                     | PASS                     | APPROVED                           |
-       | Compliant Maximum Spacing              | 7.20 m                     | PASS                     | APPROVED                           |
-       | Spacing Below 4.20 m Minimum Spacing   | 3.80 m                     | REJECT_TOO_SHORT         | REJECTED_INVALID_INTERAXLE_SPACING |
-       | Spacing Exceeds 7.20 m Maximum Spacing | 7.60 m                     | REJECT_TOO_LONG          | REJECTED_INVALID_INTERAXLE_SPACING |
+       | scenario_description                 | interaxle_spacing_distance | interaxle_spacing_status | permit_decision                    |
+       | Compliant Spacing                    | 5.50 m                     | PASS                     | APPROVED                           |
+       | Compliant Minimum Spacing            | 4.20 m                     | PASS                     | APPROVED                           |
+       | Spacing Below 4.20 m Minimum Spacing | 3.80 m                     | REJECT_TOO_SHORT         | REJECTED_INVALID_INTERAXLE_SPACING |
 
   Scenario: too short tractor-to-wheeler spacing
     Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
     When when a user inputs an inter-axle spacing of "3.80 m" between the tractor rearmost drive axle and the front-most wheeler axle
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 4.20 m."
      And interaxle spacing is indicated with a red border
-
-   Scenario: too long tractor-to-wheeler spacing
-     Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
-     When when a user inputs an inter-axle spacing of "7.60 m" between the tractor rearmost drive axle and the front-most wheeler axle
-     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must not exceed 7.20 m."
-      And interaxle spacing is indicated with a red border
 
 # Inter-axle spacing between adjacent tandem wheeler axle groups
  @orv2-6071-3
