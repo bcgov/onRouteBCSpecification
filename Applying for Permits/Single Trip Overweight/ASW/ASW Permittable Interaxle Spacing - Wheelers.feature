@@ -100,16 +100,16 @@ User = PC, SA, TRAIN, CTPO, CA, PA
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 7.0 m."
      And interaxle spacing is indicated with a red border
 
-# Inter-Axle Spacing Between Tractor Drive Unit and Front-Most Wheeler/Jeep
+# Inter-Axle Spacing Between Tractor Drive Unit and Front-Most Jeeps or Jeep - Wheelers
  @orv2-6071-2
- Rule: Inter-axle spacing between tractor drive unit and front-most wheeler/jeep must be a minimum of 4.20 m
+ Rule: Inter-axle spacing between tractor drive unit and front-most Jeeps or Jeep - Wheelers must be a minimum of 4.20 m
 
    Scenario Outline: Evaluating tractor drive to front-most wheeler gap
-     Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
+     Given a tractor paired with a front-mounted jeep or jeep - wheelers unit
      When evaluating the inter-axle spacing between the tractor rearmost drive axle and the front-most wheeler axle of "<interaxle_spacing_distance>"
-     Then the tractor-to-wheeler spacing compliance status shall be "<interaxle_spacing_status>"
+     Then the tractor-to-wheeler spacing compliance status shall be "<interaxle_spacing_status>"`
      And the permit approval decision shall be "<permit_decision>"
-
+`
      Examples:
        | scenario_description                 | interaxle_spacing_distance | interaxle_spacing_status | permit_decision                    |
        | Compliant Spacing                    | 5.50 m                     | PASS                     | APPROVED                           |
@@ -117,7 +117,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
        | Spacing Below 4.20 m Minimum Spacing | 3.80 m                     | REJECT_TOO_SHORT         | REJECTED_INVALID_INTERAXLE_SPACING |
 
   Scenario: too short tractor-to-wheeler spacing
-    Given a tractor paired with a front-mounted wheeler jeep or wheeler unit
+    Given a tractor paired with a front-mounted jeep or jeep - wheelers unit
     When when a user inputs an inter-axle spacing of "3.80 m" between the tractor rearmost drive axle and the front-most wheeler axle
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 4.20 m."
      And interaxle spacing is indicated with a red border
