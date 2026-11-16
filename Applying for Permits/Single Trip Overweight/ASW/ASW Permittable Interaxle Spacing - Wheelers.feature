@@ -122,10 +122,9 @@ User = PC, SA, TRAIN, CTPO, CA, PA
     Then they see the violation "Interaxle Spacing between Axle Unit <axleUnitX> and Axle Unit <axleUnitY> must be at least 4.20 m."
      And interaxle spacing is indicated with a red border
 
-# Inter-axle spacing between adjacent tandem wheeler axle groups
- # This is valid but already handled in the jeep and booster rules It is primarily applicable to Platform Trailers - Wheelers
+# Inter-axle spacing between adjacent tandem or tridem platform trailers - wheelers axle groups
  @orv2-6071-3
- Rule: Inter-axle spacing between adjacent tandem or tridem wheeler axle groups must be at least 4.20 m
+ Rule: Inter-axle spacing between adjacent tandem or tridem platform trailers - wheelers axle groups must be at least 4.20 m
 
    Scenario Outline: Evaluating spacing between consecutive tandem or tridem wheeler axle groups
      Given a multi-wheeler combination containing consecutive tandem or tridem wheeler axle groups
