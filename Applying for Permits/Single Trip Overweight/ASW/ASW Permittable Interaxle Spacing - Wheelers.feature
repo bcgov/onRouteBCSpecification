@@ -49,7 +49,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
  Single-to-Single Wheeler Axle Lines (Platform / Wheeler Lines)
  [ SINGLE WHEELER LINE ]               [ SINGLE WHEELER LINE ]
  (8-Wheel Single Axle)                 (8-Wheel Single Axle)
-         0X ==================================== X0
+          X ==================================== X
           |                                      | 
           +------------- Min 1.50 m -------------+
 
@@ -123,6 +123,7 @@ User = PC, SA, TRAIN, CTPO, CA, PA
      And interaxle spacing is indicated with a red border
 
 # Inter-axle spacing between adjacent tandem wheeler axle groups
+ # This is valid but already handled in the jeep and booster rules It is primarily applicable to Platform Trailers - Wheelers
  @orv2-6071-3
  Rule: Inter-axle spacing between adjacent tandem or tridem wheeler axle groups must be at least 4.20 m
 
