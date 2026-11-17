@@ -472,33 +472,51 @@ Rule: A warning message is shown to staff when they attempt to add a user that i
      Then they see a warning message "Client is suspended A suspended client cannot be added as a Credit Account User."
       And user 1 cannot be added to the credit account
 
+Rule: A positive GARMS account balance is displayed as a negative Credit Balance in onRouteBC
+
+  Scenario: displaying a positive GARMS account balance
+    Given credit account A has a GARMS account balance of $100.00
+      And credit account A has no onRouteBC unposted transactions
+     When the GARMS account balance is synced to onRouteBC
+      And a user views credit account A
+     Then the Credit Balance is displayed as -$100.00
+
+Rule: A negative GARMS account balance is displayed as a positive Credit Balance in onRouteBC
+
+  Scenario: displaying a negative GARMS account balance
+    Given credit account A has a GARMS account balance of -$100.00
+      And credit account A has no onRouteBC unposted transactions
+     When the GARMS account balance is synced to onRouteBC
+      And a user views credit account A
+     Then the Credit Balance is displayed as $100.00
+
 Dev Notes: 
 - All confirmation and warning popups have UI updates that need to be implemented in this story
 
 # Notes:
-Because Cash, Cheque and ETF payments are submitted in GARMS today AND we need to handle RBC payments and refunds in onRouteBC AND we want to avoid building the Cash, Cheque and ETF payments in onRouteBC.
+ Because Cash, Cheque and ETF payments are submitted in GARMS today AND we need to handle RBC payments and refunds in onRouteBC AND we want to avoid building the Cash, Cheque and ETF payments in onRouteBC.
 
-Starting Balances:
-- onRoute Account Balance = 1000
-- GARMS Account Balance = 1000
+ Starting Balances:
+ - onRoute Account Balance = 1000
+ - GARMS Account Balance = 1000
 
-If an onRoute refund credit of 100 is created first, then:
-- onRoute Account Balance = 1100
-- the 100 refund is immediately reflected in onRoute Account Balance
-- onRoute does not send this transaction to GARMS in real time
-- onRoute Unposted = 100
-- onRoute Unposted is sent to GARMS at end of day in the Credit Extract file
+ If an onRoute refund credit of 100 is created first, then:
+ - onRoute Account Balance = 1100
+ - the 100 refund is immediately reflected in onRoute Account Balance
+ - onRoute does not send this transaction to GARMS in real time
+ - onRoute Unposted = 100
+ - onRoute Unposted is sent to GARMS at end of day in the Credit Extract file
 
-Else if a GARMS payment credit of 100 is created first, then:
-- GARMS Account Balance = 1100
-- onRoute Account Balance remains 1000 until the next GARMS-to-onRoute balance sync (every 5 minutes)
-- onRoute receives GARMS total balance = 1100 (not an individual payment transaction)
-- after sync, onRoute Account Balance = 1100
+ Else if a GARMS payment credit of 100 is created first, then:
+ - GARMS Account Balance = 1100
+ - onRoute Account Balance remains 1000 until the next GARMS-to-onRoute balance sync (every 5 minutes)
+ - onRoute receives GARMS total balance = 1100 (not an individual payment transaction)
+ - after sync, onRoute Account Balance = 1100
 
-Else if both postings exist in any order (onRoute refund 100 and GARMS payment 100), and onRoute has synced with GARMS, then:
-- onRoute uses GARMS total balance from the 5-minute sync, not GARMS transaction detail
-- onRoute Account Balance = 1200 (1100 GARMS synced balance + 100 refund reflected in onRoute balance)
-- onRoute Unposted remains 100 during the day and is sent to GARMS in the end-of-day Credit Extract file
+ Else if both postings exist in any order (onRoute refund 100 and GARMS payment 100), and onRoute has synced with GARMS, then:
+ - onRoute uses GARMS total balance from the 5-minute sync, not GARMS transaction detail
+ - onRoute Account Balance = 1200 (1100 GARMS synced balance + 100 refund reflected in onRoute balance)
+ - onRoute Unposted remains 100 during the day and is sent to GARMS in the end-of-day Credit Extract file
 
-Else:
-- Account balances remain at their last confirmed values
+ Else:
+ - Account balances remain at their last confirmed values
