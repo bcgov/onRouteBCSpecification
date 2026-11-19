@@ -11,6 +11,21 @@ staff = PC, SA, TRAIN, CTPO
 Rule: 
 
 # Notes:
+
+Concrete pumpers:
+•	Tan/tan steer 1-2.2 m axle spread
+•	Tri/Tri 5 m interaxle spacing
+
+Mobile crane
+•	Min interaxle spacing 4.2 m min (does not vary based on steer/drive)
+
+ATC 
+•	Max interaxle spacing 4.2 m (does not vary based on axle type before/after)
+
+Service rig:
+•	Tri/Tri 5 m interaxle spacing
+
+
  - Spread Axle Tandem (S.7.24 CTAR) 18,200 kg for both reducible, non-reducible loads and fixed equipment provided either one of the axles does not exceed 11,000 kg #nextaction 
 
  - Concrete pumper trucks: Tandem Steer Axle Spread: By permit, these specialized vehicles are authorized to use a "Wide Spread" tandem steer axle group with a spread of up to 2.2 m (standard limit is 1.85 m)
