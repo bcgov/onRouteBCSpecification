@@ -4,7 +4,7 @@ Feature: As a system administrator, I need to manage IDIR users in onRoute so th
 Users: SA
 
 # Authorized IDIR User Management Users
- Rule: IDIR user management is is shown only to SA users on the home page
+ 1. Rule: IDIR user management is is shown only to SA users on the home page
 
   Scenario: IDIR user management visibility for SA users
     Given I am logged in as a SA
@@ -16,7 +16,7 @@ Users: SA
      When I am on the home page
      Then I do not see the IDIR user management option
 
- Rule: Only SA can manage IDIR users in onRoute
+ 2. Rule: Only SA can manage IDIR users in onRoute
 
   Scenario: Only SA can manage IDIR users
     Given I am logged in as a SA
@@ -29,7 +29,7 @@ Users: SA
      Then I do not have access to manage IDIR users
 
 # Add New User as Pending
- Rule: SA can add new IDIR user
+ 3. Rule: SA can add new IDIR user
 
   Scenario: no input choose add new user
     Given I am logged in as a SA
@@ -43,7 +43,7 @@ Users: SA
       And I choose to add a new user with valid input
      Then the add user detail modal is displayed
 
- Rule: The add user detail modal displays the inputted IDIR username, available user group options and the options to cancel or add the user
+ 4. Rule: The add user detail modal displays the inputted IDIR username, available user group options and the options to cancel or add the user
 
   Scenario: cancel adding a new user
     Given I am at the add user detail modal
@@ -58,7 +58,15 @@ Users: SA
       And I choose to add a new user with a valid IDIR username but do not select a user group
      Then I see an error indicating that a user group must be selected
 
- Rule: Only one user group can be selected when adding a new IDIR user
+ 5. Rule: Default user group is not selected when adding a new IDIR user
+
+  Scenario: default user group not selected
+    Given I am logged in as a SA
+     When I navigate to the IDIR user management page
+      And I choose to add a new user with valid input
+     Then I see that no user group is selected by default
+
+ 6. Rule: Only one user group can be selected when adding a new IDIR user
 
   Scenario: complete add new user
     Given I am logged in as a SA
@@ -68,7 +76,7 @@ Users: SA
      Then I am directed to the IDIR user management page
       And I see the newly added user in the list
 
- Rule: Newly added users are displayed in the IDIR user management list with their assigned user group and status of pending
+ 7. Rule: Newly added users are displayed in the IDIR user management list with their assigned user group and status of pending
 
   Scenario: newly added user is displayed in the list
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -77,7 +85,7 @@ Users: SA
        | IDIR username | First Name    | Last Name     | User group | Status  |
        | JDOE          | Not Available | Not Available | PC         | Pending |
 
- Rule: A history record is created when a new user is added
+ 8. Rule: A history record is created when a new user is added
 
   Scenario: confirm addition of a new user
     Given I have added a new user
@@ -89,7 +97,7 @@ Users: SA
        | Assigned User Group | User group assigned to the newly added user                               |
 
 # Remove Pending User
- Rule: SA can remove a only pending users
+ 9. Rule: SA can remove a only pending users
 
   Scenario: remove a pending user warning
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -106,8 +114,8 @@ Users: SA
      Then I am directed back to the IDIR user management page
       And I do not see the user "JDOE" in the list
 
-# Post IDIR user login
- Rule: Pending IDIR users that login to onRouteBC become active users
+# Post IDIR user first login
+ 10. Rule: Pending IDIR users that login to onRouteBC become active users
 
   Scenario: pending user becomes active after login
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -115,7 +123,7 @@ Users: SA
      When the user "JDOE" logs in to onRouteBC
      Then the status of the user "JDOE" is updated to active in the IDIR user management list
 
- Rule: A history record is created whenever a new user logs in for the first time
+ 11. Rule: A history record is created whenever a new user logs in for the first time
 
   Scenario: history record is created for first login
     Given I have added a new user
@@ -124,28 +132,42 @@ Users: SA
        | Date/Time                             | Time when the pending user logged in as MMMM DD, YYYY hh:mm am/pm PCT |
        | IDIR username  logged in to onRouteBC | IDIR username with static message "logged in to onRouteBC"            |
       
-
 # Activate Existing User
- Rule: Only deactivated users can be activated
+ 12. Rule: Only deactivated users can be activated
 
   Scenario: activate a deactivated user
     Given I have added a new user "JDOE" and selected user group "PC"
       And the user "JDOE" is in deactivated status
      When I choose to activate the user "JDOE"
-     Then I am directed back to the IDIR user management page
-      And the status of the user "JDOE" is updated to active in the IDIR user management list
+     Then the status of the user "JDOE" is updated to active in the IDIR user management list
+      And the detail modal for the user "JDOE" shows the status as active
+      And the history for the user "JDOE" shows a record of the activation
+      And the user can choose to manually close the user detail modal
+
+ 13. Rule: A history record is created when a user is activated
+
+  Scenario: activate user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in deactivated status
+     When I choose to activate the user "JDOE"
+     Then I see a history record with the following details:
+       | Date/Time                              | Time when the user was activated as MMMM DD, YYYY hh:mm am/pm PCT |
+       | IDIR username status changed to active | IDIR username with static message "status changed to active"      |
+       | Activated by                           | IDIR username of the user who performed the activation            |
 
 # Deactivate Existing User
- Rule: Only active users can be deactivated
+ 14. Rule: Only active users can be deactivated
 
   Scenario: deactivate an active user
     Given I have added a new user "JDOE" and selected user group "PC"
       And the user "JDOE" is in active status
      When I choose to deactivate the user "JDOE"
-     Then I am directed back to the IDIR user management page
-      And the status of the user "JDOE" is updated to deactivated in the IDIR user management list
+     Then the status of the user "JDOE" is updated to deactivated in the IDIR user management list
+      And the detail modal for the user "JDOE" shows the status as deactivated
+      And the history for the user "JDOE" shows a record of the deactivation
+      And the user can choose to manually close the user detail modal
 
- Rule: SA's see a deactivate user info message on the user detail modal for active users
+ 15. Rule: SA's see a deactivate user info message on the user detail modal for active users
 
   Scenario: view info message for an active user
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -153,11 +175,56 @@ Users: SA
      When I choose to view the detail modal for the active user "JDOE"
      Then I see an info message indicating the user can be deactivated
 
-# Edit User Role
- Rule: All users statuses, including pending, active, and deactivated, can have their roles edited
+ 16. Rule: A history record is created when a user is deactivated
 
-# View User Details
- Rule: SA can choose to view the detail modal for a pending user
+  Scenario: deactivate user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in active status
+     When I choose to deactivate the user "JDOE"
+     Then I see a history record with the following details:
+       | Date/Time                                | Time when the user was deactivated as MMMM DD, YYYY hh:mm am/pm PCT |
+       | IDIR username status changed to inactive | IDIR username with static message "status changed to inactive"      |
+       | Deactivated by                           | IDIR username of the user who performed the deactivation            |
+
+# Edit User Role
+ 17. Rule: All users statuses, including pending, active, and deactivated, can have their roles edited
+
+ Scenario: edit user role for a pending user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in pending status
+     When I choose to edit the role of the user "JDOE" to "SA"
+     Then the user's role is updated to "SA"
+      And the user detail modal shows the updated role "SA"
+      And the user can choose to manually close the user detail modal
+
+ Scenario: edit user role for a deactivated user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in deactivated status
+     When I choose to edit the role of the user "JDOE" to "SA"
+     Then the user's role is updated to "SA"
+      And the user detail modal shows the updated role "SA"
+      And the user can choose to manually close the user detail modal
+
+ Scenario: edit user role for an active user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in active status
+     When I choose to edit the role of the user "JDOE" to "SA"
+     Then the user's role is updated to "SA"
+      And the user detail modal shows the updated role "SA"
+      And the user can choose to manually close the user detail modal
+
+ 18. Rule: A history record is created when a user's role is changed
+
+  Scenario: edit user role
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in active status
+     When I choose to edit the role of the user "JDOE" to "SA"
+     Then I see a history record with the following details:
+       | Date/Time           | Time when the user's role was edited as MMMM DD, YYYY hh:mm am/pm PCT |
+       | Assigned User Group | Chosen user group                                                     |
+       | Changed by          | IDIR username of the user who performed the role edit                 |
+
+ 19. Rule: SA can choose to view the detail modal for a pending user
 
   Scenario: view detail modal for a pending user
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -166,7 +233,7 @@ Users: SA
        | IDIR username | First Name    | Last Name     | User group | Status  |
        | JDOE          | Not Available | Not Available | PC         | Pending |
 
- Rule: Active IDIR users first name and last name are displayed in the IDIR user management list
+ 20. Rule: Active IDIR users first name and last name are displayed in the IDIR user management list
 
   Scenario: active user displays first and last name
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -174,7 +241,7 @@ Users: SA
      When I view the IDIR user management list
      Then I see the first and last name of the user "JDOE" displayed correctly
 
- Rule: Active users detail modal displays first and last name, user group, and status correctly
+ 21. Rule: Active users detail modal displays first and last name, user group, and status correctly
 
   Scenario: view detail modal for an active user
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -184,8 +251,18 @@ Users: SA
        | IDIR username | First Name | Last Name | User group | Status |
        | JDOE          | John       | Doe       | PC         | Active |
 
+ 22. Rule: Deactivated users detail modal displays correct information
+
+  Scenario: view detail modal for a deactivated user
+    Given I have added a new user "JDOE" and selected user group "PC"
+      And the user "JDOE" is in deactivated status
+     When I choose to view the detail modal for the deactivated user "JDOE"
+     Then the detail modal is displayed with the following information:
+       | IDIR username | First Name | Last Name | User group | Status      |
+       | JDOE          | John       | Doe       | PC         | Deactivated |
+
 # Sorting user list
- Rule: Newest users are displayed at the top of the IDIR user management list
+ 23. Rule: Newest users are displayed at the top of the IDIR user management list
 
   Scenario: newest users appear at the top
     Given I have added a new user "JDOE" and selected user group "PC"
@@ -193,7 +270,7 @@ Users: SA
      When I view the IDIR user management list
      Then I see the user "ASMIT" displayed above the user "JDOE"
 
- Rule: Users can be sorted by IDIR username, user group, and status
+ 24. Rule: Users can be sorted by IDIR username, user group, and status
 
   Scenario: sort users by IDIR username
     Given I have added a new user "JDOE" and selected user group "PC"
